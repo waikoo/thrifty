@@ -1,14 +1,26 @@
-import React from "react";
-import { StyledHeader } from "./styled/Header.styled";
+"use client";
+import { Banner } from "./Banner";
+import React, { ReactNode } from "react";
+import { StyledHeader, StyledMessage } from "./styled";
+import { bannerMessages } from "./data";
+import { useBanner } from "./hooks";
+// import LocalePicker from './LocalePicker';
 
-export default function Header() {
+type HeaderProps = {
+  children: ReactNode;
+};
+
+export default function Header({ children }: HeaderProps) {
+  const { showBanner, closeBanner } = useBanner(true);
   return (
     <StyledHeader>
-      {/* 
-    Banner
-    Nav
-    Men/Women/Kids - with dropdown hover || click
-    */}
+      {children} {/* ThemeToggler */}
+      {/* <LocalePicker /> */}
+      {showBanner ? <Banner bannerMessages={bannerMessages} closeBanner={closeBanner} /> : null}
     </StyledHeader>
   );
 }
+/* 
+Nav
+Men/Women/Kids - with dropdown hover || click
+*/
