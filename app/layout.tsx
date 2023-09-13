@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import "../styles/styles.css";
 import WithClientWrapper from "./components/WithClientWrapper";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Thrifty",
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="dark">
-      <body className={inter.className}>
+    <html lang="en">
+      <body className="h-screen dark">
         <WithClientWrapper>
           {/* <Header>
             <ThemeToggler clickHandler={clickHandler} />

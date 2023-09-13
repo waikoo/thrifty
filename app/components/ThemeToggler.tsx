@@ -1,6 +1,6 @@
 "use client";
-import React, { MouseEvent } from "react";
-import { SButton, SThemeToggler } from "./styled";
+import { MouseEvent } from "react";
+// import { SButton, SThemeToggler } from "./styled";
 
 interface ThemeTogglerProps {
   clickHandler: (e: MouseEvent<HTMLButtonElement>) => void;
@@ -12,13 +12,13 @@ export default function ThemeToggler({ clickHandler }: ThemeTogglerProps) {
   };
 
   return (
-    <SThemeToggler>
-      <button data-value="light" onClick={handleButtonClick}>
+    <section className="">
+      <button className="bg-white dark:bg-zinc-500" data-value="light" onClick={handleButtonClick}>
         Light
       </button>
-      <SButton data-value="dark" onClick={handleButtonClick}>
+      <button data-value="dark" onClick={handleButtonClick}>
         Dark
-      </SButton>
-    </SThemeToggler>
+      </button>
+    </section>
   );
 }

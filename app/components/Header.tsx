@@ -7,11 +7,6 @@ type HeaderProps = {
 };
 
 export default function Header({ children }: HeaderProps) {
-  // const { closeBanner, closeBannerElement, bannerMessages } = useBanner();
-  // const router = useRouter();
-  // useEffect(() => {
-  //   router.push(`/?b=true`);
-  // }, []);
   return (
     <StyledHeader>
       {children} {/* ThemeToggler */}

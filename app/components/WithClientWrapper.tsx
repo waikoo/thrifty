@@ -1,13 +1,9 @@
 "use client";
-import StyledComponentsRegistry from "@/lib/registry";
 import { ThemeString } from "@/types/theme";
 import { MouseEvent, ReactNode } from "react";
-import { ThemeProvider } from "styled-components";
 import { Header, ThemeToggler } from "../components";
 import { Banner } from "./Banner";
-import { themeStyles } from "./data";
 import { useThemePreference } from "./hooks";
-import { GlobalStyles } from "./styled";
 
 type Props = {
   children: ReactNode;
@@ -22,16 +18,13 @@ const withClientWrapper = ({ children }: Props) => {
   };
 
   return (
-    <StyledComponentsRegistry>
-      <ThemeProvider theme={themeStyles[userThemePreference]}>
-        <GlobalStyles />
-        <Header>
-          <ThemeToggler clickHandler={clickHandler} />
-          <Banner />
-        </Header>
-        {children}
-      </ThemeProvider>
-    </StyledComponentsRegistry>
+    <>
+      <Header>
+        <ThemeToggler clickHandler={clickHandler} />
+        <Banner />
+      </Header>
+      {children}
+    </>
   );
 };
 

@@ -1,13 +1,10 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { chain, banner, theme } from "./middlewares/";
 
-export function middleware(req: NextRequest) {
-  if (!req.nextUrl.searchParams.get("b")) {
-    return NextResponse.redirect(new URL("/?b=true", req.url));
-  }
-  return NextResponse.next();
-}
+const middlewares = [banner, theme];
+
+export default chain(middlewares);
 
 export const config = {
+  // matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
   matcher: "/",
 };

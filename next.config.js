@@ -1,25 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: "/",
-  //       destination: "/?b=true",
-  //       has: [
-  //         {
-  //           type: "query",
-  //           key: "b",
-  //           value: "true",
-  //         },
-  //       ],
-  //       missing: {
-  //         type: "query",
-  //         key: "b",
-  //         value: "undefined",
-  //       },
-  //     },
-  //   ];
-  // },
+  // allows to pass serverasync functions to client components with the "use server" directive inside them
+  experimental: {
+    serverActions: true,
+  },
   compiler: {
     styledComponents: true,
   },
