@@ -1,9 +1,5 @@
-"use client";
-import { Banner } from "./Banner";
-import React, { ReactNode } from "react";
-import { StyledHeader, StyledMessage } from "./styled";
-import { bannerMessages } from "./data";
-import { useBanner } from "./hooks";
+import { ReactNode } from "react";
+import { StyledHeader } from "./styled";
 // import LocalePicker from './LocalePicker';
 
 type HeaderProps = {
@@ -11,16 +7,25 @@ type HeaderProps = {
 };
 
 export default function Header({ children }: HeaderProps) {
-  const { showBanner, closeBanner } = useBanner(true);
+  // const { closeBanner, closeBannerElement, bannerMessages } = useBanner();
+  // const router = useRouter();
+  // useEffect(() => {
+  //   router.push(`/?b=true`);
+  // }, []);
   return (
     <StyledHeader>
       {children} {/* ThemeToggler */}
+      <a
+        href="/"
+        style={{
+          background: "red",
+          color: "white",
+          padding: "1rem",
+        }}>
+        Home
+      </a>
       {/* <LocalePicker /> */}
-      {showBanner ? <Banner bannerMessages={bannerMessages} closeBanner={closeBanner} /> : null}
+      {/* {!closeBanner && <Banner bannerConfig={{ bannerMessages, closeBannerElement }} />} */}
     </StyledHeader>
   );
 }
-/* 
-Nav
-Men/Women/Kids - with dropdown hover || click
-*/

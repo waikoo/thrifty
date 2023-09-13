@@ -9,15 +9,17 @@ export const metadata: Metadata = {
   description: "Maybe this be",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-theme="dark">
       <body className={inter.className}>
-          <WithClientWrapper>{children}</WithClientWrapper>
+        <WithClientWrapper>
+          {/* <Header>
+            <ThemeToggler clickHandler={clickHandler} />
+            <Banner />
+          </Header> */}
+          {children}
+        </WithClientWrapper>
       </body>
     </html>
   );

@@ -6,15 +6,16 @@ Project Description
 
 ### Todo
 
+- [ ] Link messageDisplay & X to theme colors  
 - [ ] Use Clerk for auth  
 - [ ] Make Men/Women/Kids accordion  
 - [ ] Make NavBar  
-- [ ] Make Banner with changing ad messages  
 
 ### In Progress
 
 
 ### Done ✓
 
+- [x] Make Banner with changing ad messages  
 - [x] Make Theme toggler with styled-components  
 

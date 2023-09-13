@@ -1,19 +1,19 @@
 "use client";
-import React, { MouseEvent, ReactNode } from "react";
-import { ThemeProvider } from "styled-components";
 import StyledComponentsRegistry from "@/lib/registry";
-import { GlobalStyles } from "./styled";
-import { useThemePreference } from "./hooks";
 import { ThemeString } from "@/types/theme";
+import { MouseEvent, ReactNode } from "react";
+import { ThemeProvider } from "styled-components";
 import { Header, ThemeToggler } from "../components";
+import { Banner } from "./Banner";
 import { themeStyles } from "./data";
+import { useThemePreference } from "./hooks";
+import { GlobalStyles } from "./styled";
 
 type Props = {
   children: ReactNode;
 };
 
 const withClientWrapper = ({ children }: Props) => {
-  // men | women | kid => useContext ? state sent to page
   const { theme: userThemePreference, setTheme } = useThemePreference();
 
   const clickHandler = ({ target }: MouseEvent<HTMLButtonElement>) => {
@@ -26,8 +26,8 @@ const withClientWrapper = ({ children }: Props) => {
       <ThemeProvider theme={themeStyles[userThemePreference]}>
         <GlobalStyles />
         <Header>
-          {" "}
-          <ThemeToggler clickHandler={clickHandler} />{" "}
+          <ThemeToggler clickHandler={clickHandler} />
+          <Banner />
         </Header>
         {children}
       </ThemeProvider>

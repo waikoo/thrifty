@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const useMessageDisplay = (messages: string[], delay: number): number => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  console.log(currentMessageIndex);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setCurrentMessageIndex(prevIndex => (prevIndex + 1) % messages.length);
@@ -11,7 +11,7 @@ const useMessageDisplay = (messages: string[], delay: number): number => {
 
     return () => clearTimeout(timer);
   }, [currentMessageIndex, messages.length, delay]);
-  console.log(currentMessageIndex);
+
   return currentMessageIndex;
 };
 

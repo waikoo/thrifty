@@ -1,14 +1,15 @@
 "use client";
 import { useState } from "react";
+import { bannerMessages } from "../data";
 
-type Props = {};
+const useBanner = () => {
+  const [closeBanner, setCloseBanner] = useState(false);
 
-const useBanner = (props: Props) => {
-  const [showBanner, setShowBanner] = useState(true);
-  const closeBanner = () => {
-    setShowBanner(!showBanner);
+  const closeBannerElement = () => {
+    setCloseBanner(true);
   };
-  return { showBanner, closeBanner };
+
+  return { closeBanner, closeBannerElement, bannerMessages };
 };
 
 export default useBanner;
