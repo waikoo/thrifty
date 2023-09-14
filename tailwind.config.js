@@ -1,17 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
-  // worked with class:
-  // darkMode: 'class',
-  // darkMode: ["class"],
-  darkMode: '[data-mode="dark"]',
-  // darkMode: ['[data-mode="dark"]'],
-  // darkMode: ["class", '[data-mode="dark"]'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        bb: "hsl(var(--body-bg) / <alpha-value>)",
-        bt: "hsl(var(--body-text) / <alpha-value>)",
+        bkg: "hsl(var(--clr-bkg) / <alpha-value>)",
+        content: "hsl(var(--clr-content) / <alpha-value>)",
       }
     },
   },

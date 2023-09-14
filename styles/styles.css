@@ -4,20 +4,19 @@
 
 @layer base {
   :root {
-    /* --body-bg: 0deg 0% 100%; */
-    --body-text: 171deg 54% 57%;
-    --body-bg: 0deg 0% 50%;
+    --clr-bkg: 0deg 0% 100%;
+    --clr-content: 210deg 15% 10%;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --body-bg: 0deg 0%, 0%;
-      --body-text: 120deg 100% 80%;
+    --clr-bkg: 0deg 0% 100%;
+    --clr-content: 210deg 15% 10%;
     }
 
     :root[data-theme="dark"] {
-      --body-bg: 120deg 100% 80%;
-      --body-text: 0deg 0%, 0%;
+    --clr-content: 0deg 0% 100%;
+    --clr-bkg: 210deg 15% 10%;
     }
   }
 }

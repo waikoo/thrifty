@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
-      <body className="h-screen bg-bb text-bt">
+      <body className="h-screen bg-bkg text-content">
         {/* <Header> */}
         <Suspense fallback={null}>
           <ThemeToggler />

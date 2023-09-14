@@ -8,7 +8,7 @@ export default function Home({ searchParams }: { searchParams: SearchParams }) {
   return (
     /* <RootLayout searchParams={searchParams}> */
     <div>
-      <h1 className="text-3xl font-bold">Home</h1>
+      <h1 className="text-4xl font-bold text-content bg-bkg">Home</h1>
     </div>
     // </RootLayout>
   );
