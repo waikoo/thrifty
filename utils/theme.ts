@@ -27,3 +27,26 @@ export const setThemeAndLocalStorage = (
   setTheme(setDefault ? DEFAULT_THEME : prefersDark ? "dark" : "light");
   localStorage.setItem(localStorageKey, themePreference);
 };
+
+// new Theme
+
+export const getCapitalizedNextTheme = (currentTheme: string | null) => {
+  if (currentTheme) {
+    console.log('currentTheme: ' + currentTheme)
+    return currentTheme.charAt(0)?.toUpperCase() + currentTheme.slice(1);
+  }
+};
+
+export const getOppositeTheme = (currentTheme: string | null) => {
+  // const currentTheme = params.get("theme");
+  if (currentTheme) {
+    return currentTheme === "dark" ? "light" : "dark";
+  }
+};
+
+export const setThemeToLocalStorage = (theme: string | null) => {
+  if (theme && localStorage) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, `${theme === "dark"}`);
+  }
+};
+

@@ -1,33 +1,35 @@
 "use client";
+import { MouseEvent, useEffect } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { MouseEvent } from "react";
+import { LOCAL_STORAGE_KEY, setThemeToLocalStorage } from "@/utils/theme";
 
 const ThemeToggler = (): JSX.Element => {
-  const sParams = useSearchParams();
-  console.log("from ThemeToggler");
-  console.log(sParams.get("theme"));
-  // const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
-  // clickHandler(e);
-  // };
+  const params = new URLSearchParams(useSearchParams());
+  const currentTheme = params.get("theme")
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, `${currentTheme === "dark"}`)
+    if (currentTheme) {
+      document.documentElement.dataset.theme = currentTheme
+      document.documentElement.classList.toggle('dark', currentTheme === 'dark')
+    }
+  }, [params.get("theme")])
 
   return (
     <section className="">
-      <button
-        className="bg-white dark:bg-zinc-500"
-        data-value="light"
-        // onClick={handleButtonClick}
-      >
-        Light
-      </button>
-      <button
-        data-value="dark"
-        className="bg-zinc-500 dark:bg-white text-cyan-50"
-        // onClick={handleButtonClick}
-      >
-        Dark
-      </button>
+      <Link href={{
+        pathname: '/',
+        query: {
+          b: params.get("b"),
+          theme: currentTheme === 'light' ? 'dark' : 'light',
+        }
+      }}>
+        <button className="bg-white dark:bg-zinc-500">{`To ${params.get('theme') === 'light' ? 'Dark' : 'Light'}`}</button>
+      </Link>
     </section>
   );
 };
 
 export default ThemeToggler;
+// TODO: fallback
