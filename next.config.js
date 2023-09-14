@@ -4,9 +4,6 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
-  compiler: {
-    styledComponents: true,
-  },
 };
 
 module.exports = nextConfig;

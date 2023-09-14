@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { StyledHeader } from "./styled";
+// import { StyledHeader } from "./styled";
 // import LocalePicker from './LocalePicker';
 
 type HeaderProps = {
@@ -8,7 +8,7 @@ type HeaderProps = {
 
 export default function Header({ children }: HeaderProps) {
   return (
-    <StyledHeader>
+    <header>
       {children} {/* ThemeToggler */}
       <a
         href="/"
@@ -21,6 +21,6 @@ export default function Header({ children }: HeaderProps) {
       </a>
       {/* <LocalePicker /> */}
       {/* {!closeBanner && <Banner bannerConfig={{ bannerMessages, closeBannerElement }} />} */}
-    </StyledHeader>
+    </header>
   );
 }

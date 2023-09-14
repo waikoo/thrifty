@@ -1,25 +1,26 @@
 import type { Metadata } from "next";
 import "../styles/styles.css";
-import WithClientWrapper from "./components/WithClientWrapper";
+import { Header, ThemeToggler, Banner } from "./components";
+import { ReactNode } from "react";
 
-// const inter = Inter({ subsets: ["latin"] });
+type LayoutProps = {
+  children: ReactNode;
+};
 
 export const metadata: Metadata = {
   title: "Thrifty",
-  description: "Maybe this be",
+  description: "E-commerce portfolio project using Next.js, TypeScript and Tailwind",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <body className="h-screen dark">
-        <WithClientWrapper>
-          {/* <Header>
-            <ThemeToggler clickHandler={clickHandler} />
-            <Banner />
-          </Header> */}
-          {children}
-        </WithClientWrapper>
+        {/* <Header> */}
+        <ThemeToggler />
+        {/* <Banner />  */}
+        {/* </Header> */}
+        {children}
       </body>
     </html>
   );

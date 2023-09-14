@@ -1,24 +1,33 @@
 "use client";
+import { useSearchParams } from "next/navigation";
 import { MouseEvent } from "react";
-// import { SButton, SThemeToggler } from "./styled";
 
-interface ThemeTogglerProps {
-  clickHandler: (e: MouseEvent<HTMLButtonElement>) => void;
-}
-
-export default function ThemeToggler({ clickHandler }: ThemeTogglerProps) {
-  const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
-    clickHandler(e);
-  };
+const ThemeToggler = (): JSX.Element => {
+  const sParams = useSearchParams();
+  console.log("from ThemeToggler");
+  console.log(sParams.get("theme"));
+  // const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+  // clickHandler(e);
+  // };
 
   return (
     <section className="">
-      <button className="bg-white dark:bg-zinc-500" data-value="light" onClick={handleButtonClick}>
+      <button
+        className="bg-white dark:bg-zinc-500"
+        data-value="light"
+        // onClick={handleButtonClick}
+      >
         Light
       </button>
-      <button data-value="dark" onClick={handleButtonClick}>
+      <button
+        data-value="dark"
+        className="bg-zinc-500 dark:bg-white text-cyan-50"
+        // onClick={handleButtonClick}
+      >
         Dark
       </button>
     </section>
   );
-}
+};
+
+export default ThemeToggler;
