@@ -1,6 +1,6 @@
 import { NextMiddleware, NextResponse } from "next/server";
 
-type MiddlewareFactory = (middleware: NextMiddleware) => NextMiddleware;
+export type MiddlewareFactory = (middleware: NextMiddleware) => NextMiddleware;
 
 export const chain = (functions: MiddlewareFactory[], i = 0): NextMiddleware => {
   const current = functions[i];

@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.4.2",
+    "@types/negotiator": "^0.6.1",
     "@types/node": "20.6.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
@@ -16,7 +18,9 @@
     "babel-plugin-styled-components": "^2.1.4",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "negotiator": "^0.6.3",
     "next": "13.4.19",
+    "next-intl": "^2.20.0",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",

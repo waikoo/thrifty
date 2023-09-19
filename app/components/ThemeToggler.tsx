@@ -17,17 +17,16 @@ const ThemeToggler = (): JSX.Element => {
   }, [params.get("theme")])
 
   return (
-    <section className="">
-      <Link href={{
-        pathname: '/',
-        query: {
-          b: params.get("b"),
-          theme: currentTheme === 'light' ? 'dark' : 'light',
-        }
-      }}>
-        <button className="bg-white dark:bg-zinc-500">{`To ${params.get('theme') === 'light' ? 'Dark' : 'Light'}`}</button>
-      </Link>
-    </section>
+    <Link href={{
+      pathname: '/',
+      query: {
+        b: params.get("b"),
+        theme: currentTheme === 'light' ? 'dark' : 'light',
+      }
+    }}>
+      <button className="bg-content text-bkg col-start-1 col-end-2 p-1.5">
+        {`To ${currentTheme === 'light' ? 'Dark' : 'Light'}`}</button>
+    </Link>
   );
 };
 

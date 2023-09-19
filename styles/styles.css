@@ -2,6 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 @layer base {
   :root {
     --clr-bkg: 0deg 0% 100%;

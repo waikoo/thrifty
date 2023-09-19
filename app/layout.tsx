@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../styles/styles.css";
-import { Header, ThemeToggler, Banner } from "./components";
+import { Header, ThemeToggler } from "./components";
 import { ReactNode, Suspense } from "react";
 
 type LayoutProps = {
@@ -15,16 +15,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
-      <body className="h-screen bg-bkg text-content">
-        {/* <Header> */}
-        <Suspense fallback={null}>
-          <ThemeToggler />
-        </Suspense>
-
-        {/* <Banner /> */}
-        {/* </Header> */}
-        <main>{children}</main>
-        <footer></footer>
+      <body className="h-screen bg-bkg text-content flex flex-col">
+        <Header />
+        <main className="mt-5">{children}</main>
+        <footer className="mt-auto">
+          <Suspense fallback={null}> <ThemeToggler /> </Suspense>
+        </footer>
       </body>
     </html>
   );
