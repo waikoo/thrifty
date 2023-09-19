@@ -1,16 +1,13 @@
-import { chain, banner, theme } from "./middlewares/";
+import { chain, banner, theme, locale } from "./middlewares/";
 
 const middlewares = [
-  // locale,
+  locale,
   banner,
-  theme
+  theme,
 ];
 
 export default chain(middlewares);
 
 export const config = {
-  matcher: ['/((?!api|_next|.*\\..*).*)']
-  // matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
-  // '/((?!_next|api|favicon.ico).*)',
-  // matcher: "/",
+  matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)']
 };

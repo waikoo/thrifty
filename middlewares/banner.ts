@@ -7,7 +7,10 @@ export const banner = (middleware: NextMiddleware) => {
       const queryParams = req.nextUrl.searchParams;
 
       if (!queryParams.has("b")) {
-        return NextResponse.redirect(new URL("/?b=true", req.url));
+        const currentUrl = new URL(req.nextUrl.pathname, req.url)
+        currentUrl.searchParams.append('b', 'true')
+
+        return NextResponse.redirect(currentUrl);
       }
       return middleware(req, e);
     }

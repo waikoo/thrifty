@@ -5,14 +5,26 @@ import React from 'react'
 
 const LanguagePicker = () => {
   const params = new URLSearchParams(useSearchParams());
-  console.log(params)
+  // console.log(params)
   return (
     <ul className='flex gap-2 hover:cursor-pointer bg-gray-500 col-start-1 col-end-2 content-center justify-center absolute top-4 left-3'>
-      <Link href={{ pathname: '/en' }}>
+      <Link href={{
+        pathname: '/en',
+        query: {
+          b: params.get("b"),
+          theme: params.get("theme")
+        }
+      }}>
         <li className="text-content">EN</li>
       </Link>
 
-      <Link href={{ pathname: '/de' }}>
+      <Link href={{
+        pathname: '/de',
+        query: {
+          b: params.get("b"),
+          theme: params.get("theme")
+        }
+      }}>
         <li className="text-content">DE</li>
       </Link>
     </ul>

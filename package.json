@@ -9,22 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@formatjs/intl-localematcher": "^0.4.2",
-    "@types/negotiator": "^0.6.1",
     "@types/node": "20.6.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "@types/styled-components": "^5.1.26",
-    "babel-plugin-styled-components": "^2.1.4",
+    "accept-language": "^3.0.18",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
-    "negotiator": "^0.6.3",
+    "i18next": "^23.5.1",
+    "i18next-resources-to-backend": "^1.1.4",
     "next": "13.4.19",
     "next-intl": "^2.20.0",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "styled-components": "^6.0.7",
+    "react-i18next": "^13.2.2",
     "typescript": "5.2.2"
   },
   "devDependencies": {

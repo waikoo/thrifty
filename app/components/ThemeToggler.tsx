@@ -1,12 +1,14 @@
 "use client";
-import { MouseEvent, useEffect } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 import { LOCAL_STORAGE_KEY, setThemeToLocalStorage } from "@/utils/theme";
 
 const ThemeToggler = (): JSX.Element => {
   const params = new URLSearchParams(useSearchParams());
   const currentTheme = params.get("theme")
+  const pathname = usePathname()
+
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, `${currentTheme === "dark"}`)
@@ -18,7 +20,7 @@ const ThemeToggler = (): JSX.Element => {
 
   return (
     <Link href={{
-      pathname: '/',
+      pathname: pathname,
       query: {
         b: params.get("b"),
         theme: currentTheme === 'light' ? 'dark' : 'light',

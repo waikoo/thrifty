@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 
 export const theme = (middleware: NextMiddleware) => {
   return async (req: NextRequest, e: NextFetchEvent) => {
-    const queryParams = req.nextUrl.searchParams;
 
-    if (!queryParams.has("theme")) {
-      const currentUrl = new URL(req.nextUrl);
+    if (!req.nextUrl.searchParams.has("theme")) {
+      const currentUrl = new URL(req.nextUrl.href, req.url);
       currentUrl.searchParams.append("theme", "dark");
+
       return NextResponse.redirect(currentUrl);
     }
     return middleware(req, e);
