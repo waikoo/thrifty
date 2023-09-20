@@ -1,32 +1,30 @@
 "use client";
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import React from 'react'
+import { locales } from '../i18n/settings'
 
 const LanguagePicker = () => {
   const params = new URLSearchParams(useSearchParams());
-  // console.log(params)
-  return (
-    <ul className='flex gap-2 hover:cursor-pointer bg-gray-500 col-start-1 col-end-2 content-center justify-center absolute top-4 left-3'>
-      <Link href={{
-        pathname: '/en',
-        query: {
-          b: params.get("b"),
-          theme: params.get("theme")
-        }
-      }}>
-        <li className="text-content">EN</li>
-      </Link>
+  const pathname = usePathname().slice(1)
 
-      <Link href={{
-        pathname: '/de',
-        query: {
-          b: params.get("b"),
-          theme: params.get("theme")
-        }
-      }}>
-        <li className="text-content">DE</li>
-      </Link>
+  return (
+    <ul className='flex gap-2 hover:cursor-pointer bg-gray-500 col-start-1 col-end-2 content-center justify-center absolute top-4 left-3 p-1.5'>
+      {locales.map((locale, i) => (
+        <Link key={locale} href={{
+          pathname: `/${locale}`,
+          query: {
+            b: params.get("b"),
+            theme: params.get("theme")
+          }
+        }}>
+          <li className={
+            `${pathname === locale ? "text-green-500 font-bold" : "text-content"}
+              ${i === 0 ? "border-r-2 border-gray-400 pr-2" : ""}`}
+          >{`${locale.toUpperCase()} `}
+          </li>
+        </Link>
+      ))}
     </ul>
   )
 }

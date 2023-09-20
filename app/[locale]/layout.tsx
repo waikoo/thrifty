@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang={locale} dir={dir(locale)}>
       <head />
-      <body className="h-screen bg-bkg text-content flex flex-col">
+      <body className="h-screen bg-bkg text-content flex flex-col p-3">
         <Header />
         <main className="mt-5"> {children} </main>
         <footer className="mt-auto">

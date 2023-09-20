@@ -5,6 +5,16 @@ import { fallbackLocale, locales, cookieName } from "../app/i18n/settings";
 
 acceptLanguage.languages(locales);
 
+const getLocale = (req: NextRequest) => {
+  if (req.cookies.has(cookieName)) {
+    return acceptLanguage.get(req.cookies.get(cookieName)?.value)
+  }
+  if (req.headers.has("Accept-Language")) {
+    return acceptLanguage.get(req.headers.get("Accept-Language"));
+  }
+  return fallbackLocale;
+}
+
 export const locale = (middleware: NextMiddleware) => {
 
   return async (req: NextRequest, e: NextFetchEvent) => {
@@ -29,12 +39,3 @@ export const locale = (middleware: NextMiddleware) => {
   };
 };
 
-const getLocale = (req: NextRequest) => {
-  if (req.cookies.has(cookieName)) {
-    return acceptLanguage.get(req.cookies.get(cookieName)?.value)
-  }
-  if (req.headers.has("Accept-Language")) {
-    return acceptLanguage.get(req.headers.get("Accept-Language"));
-  }
-  return fallbackLocale;
-}

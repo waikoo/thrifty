@@ -12,8 +12,8 @@ export default function Banner() {
   return (
     <>
       {banner === "true" ? (
-        <section className="grid grid-cols-3 gap-4 p-3">
-          <span className="col-span-2 col-start-2 col-end-3 self-center">{bannerMessages[idx]}</span>
+        <section className="grid grid-cols-3 gap-4 py-3 px-0">
+          <span className="col-span-2 col-start-2 col-end-3 justify-self-center">{bannerMessages[idx]}</span>
           <Link href={`/?b=false`} className="col-start-3 col-end-4 justify-self-end">
             X
           </Link>

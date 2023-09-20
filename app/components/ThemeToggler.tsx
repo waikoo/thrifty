@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams, usePathname } from "next/navigation";
-import { LOCAL_STORAGE_KEY, setThemeToLocalStorage } from "@/utils/theme";
+import { LOCAL_STORAGE_KEY } from "@/utils/theme";
 
 const ThemeToggler = (): JSX.Element => {
   const params = new URLSearchParams(useSearchParams());
