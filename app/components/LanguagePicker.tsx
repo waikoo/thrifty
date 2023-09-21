@@ -9,7 +9,7 @@ const LanguagePicker = () => {
   const pathname = usePathname().slice(1)
 
   return (
-    <ul className='flex gap-2 hover:cursor-pointer bg-gray-500 col-start-1 col-end-2 content-center justify-center absolute top-4 left-3 p-1.5'>
+    <ul className='flex gap-2 hover:cursor-pointer bg-gray-500 col-start-1 col-end-2 content-center justify-center absolute top-4 p-1.5'>
       {locales.map((locale, i) => (
         <Link key={locale} href={{
           pathname: `/${locale}`,
