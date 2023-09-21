@@ -1,20 +1,28 @@
 "use client";
+import React from 'react'
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { bannerMessages } from "./data";
 import { useMessageDisplay } from "./hooks";
 
 export default function Banner() {
   const idx = useMessageDisplay(bannerMessages, 5000);
   const searchParams = useSearchParams();
-  const banner = searchParams.get("b");
+  const pathname = usePathname()
 
   return (
     <>
-      {banner === "true" ? (
-        <section className="grid grid-cols-3 gap-4 py-3 px-0">
+      {searchParams.get("b") === "true" ? (
+        <section className="grid grid-cols-3 gap-4 py-2 px-3 bg-grey text-bkg">
           <span className="col-span-2 col-start-2 col-end-3 justify-self-center">{bannerMessages[idx]}</span>
-          <Link href={`/?b=false`} className="col-start-3 col-end-4 justify-self-end">
+          <Link href={{
+            pathname: pathname,
+            query: {
+              b: "false",
+              theme: searchParams.get("theme"),
+              category: searchParams.get("category")
+            }
+          }} className="col-start-3 col-end-4 justify-self-end">
             X
           </Link>
         </section>
@@ -22,5 +30,3 @@ export default function Banner() {
     </>
   );
 }
-
-// TODO: render with ThemeToggler component to maitain server state

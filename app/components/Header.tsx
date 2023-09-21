@@ -1,15 +1,15 @@
+import React from 'react'
 import LanguagePicker from './LanguagePicker';
-import Banner from "./Banner";
+import { Navigation } from './navigation';
 
 export default function Header() {
 
   return (
-    <header className="relative">
-      <Banner />
-      <header className="grid grid-cols-3 gap-4">
+    <header className="">
+      <section className="grid grid-cols-3 gap-4">
         <LanguagePicker />
-        {/* <Nav /> */}
-      </header>
+      </section>
+      <Navigation />
     </header>
   );
 }

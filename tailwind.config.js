@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         bkg: "hsl(var(--clr-bkg) / <alpha-value>)",
         content: "hsl(var(--clr-content) / <alpha-value>)",
+        grey: "hsl(var(--clr-grey) / <alpha-value>)",
       }
     },
   },
