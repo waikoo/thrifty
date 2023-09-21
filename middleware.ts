@@ -1,9 +1,10 @@
-import { chain, banner, theme, locale } from "./middlewares/";
+import { chain, banner, theme, locale, category } from "./middlewares/";
 
 const middlewares = [
   locale,
   banner,
   theme,
+  category
 ];
 
 export default chain(middlewares);
