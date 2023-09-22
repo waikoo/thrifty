@@ -27,7 +27,7 @@ export default function RootLayout({
       <head />
       <body className="relative">
         <Banner />
-        <section className="h-screen bg-bkg text-content flex flex-col px-8">
+        <section className="h-screen bg-bkg text-content flex flex-col px-10">
           <Header />
           <main className="mt-5"> {children} </main>
           <footer className="mt-auto">

@@ -16,9 +16,9 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-    --clr-bkg: 0deg 0% 100%;
-    --clr-content: 210deg 15% 10%;
-    --clr-grey: 220deg 9% 46%;
+      --clr-bkg: 0deg 0% 100%;
+      --clr-content: 210deg 15% 10%;
+      --clr-grey: 220deg 9% 46%;
     }
 
     :root[data-theme="dark"] {
@@ -28,3 +28,10 @@
     }
   }
 }
+
+.vertical-text {
+  writing-mode: vertical-rl; /* or vertical-lr for the opposite direction */
+  transform: rotate(180deg);
+  white-space: nowrap; /* Prevents line breaks, keeping the text vertical */
+}
+
