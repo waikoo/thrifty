@@ -1,33 +1,29 @@
-"use client";
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
 import React from 'react'
 import { locales } from '../i18n/settings'
 
-const LanguagePicker = () => {
-  const params = new URLSearchParams(useSearchParams());
-  const pathname = usePathname().slice(1)
+type LanguagePickerProps = {
+  locale: string
+}
+
+const LanguagePicker = ({ locale: endpoint }: LanguagePickerProps) => {
 
   return (
-    <ul className={`flex gap-2 hover:cursor-pointer bg-gray-500 col-start-1 col-end-2 absolute left-6 p-1 
-      top-${params.get('b') === 'true' ? '2' : '0'}`}>
+    <ul className={`flex items-center gap-3 hover:cursor-pointer bg-grey col-start-1 col-end-2 absolute left-6 p-1 top-0`}>
 
-      {locales.map((locale, i) => (
-        <Link key={locale} href={{
-          pathname: `/${locale}`,
-          query: {
-            b: params.get("b"),
-            theme: params.get("theme")
-          }
-        }}>
+      {locales.map((locale) => (
+        <span key={locale} className={`${locale === 'en' ? 'separator' : ''}`}>
           <li className={
-            `${pathname !== locale ? "text-bkg font-bold" : "text-faded"}
-              ${i === 0 ? "border-r-2 border-bkg pr-2" : ""}`}
-          >{`${locale.toUpperCase()} `}
+            `items-center text-content relative ${endpoint !== locale ? "font-extralight" : "font-extrabold"} ${endpoint === 'de' ? 'pl-1/2' : ''} `}>
+
+            <Link href={{ pathname: `/${locale}` }} >
+              {`${locale.toUpperCase()} `}
+            </Link>
+
           </li>
-        </Link>
+        </span>
       ))}
-    </ul>
+    </ul >
   )
 }
 
