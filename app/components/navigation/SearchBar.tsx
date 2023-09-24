@@ -1,20 +1,22 @@
+"use client"
 import React from 'react'
 import { IconSearch } from '.';
+import { useThemeContext } from '../hooks/ThemeProvider';
 
 type SearchBarProps = {
-  theme: string | null
 }
 
-export default function SearchBar({ theme }: SearchBarProps) {
-  const currentTheme = theme === "dark" ? "#fff" : "#191A1A"
+export default function SearchBar({ }: SearchBarProps) {
+  const { theme } = useThemeContext()
+  const color = theme !== "dark" ? "#191A1A" : "#fff"
 
   return (
-    <section className={`text-${currentTheme} flex content-start gap-2`}>
-      <IconSearch theme={theme} />
+    <section className={`text-${color} flex gap-2 items-end`}>
+      <IconSearch />
       <input
         type="search"
         placeholder="SEARCH"
-        className={`bg-transparent text-${currentTheme} outline-0 appearance-none focus:outline-none pt-2 w-full `}
+        className={`bg-transparent text-${color} outline-0 appearance-none focus:outline-none pt-2 w-full self-baseline placeholda`}
         style={{ WebkitAppearance: 'none', appearance: 'none' }}
       />
     </section>

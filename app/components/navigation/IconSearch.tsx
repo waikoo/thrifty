@@ -1,16 +1,18 @@
+"use client"
 import React from "react"
+import { useThemeContext } from "../hooks/ThemeProvider"
 
 type IconSearchProps = {
-  theme: string | null
 }
 
-const IconSearch = ({ theme }: IconSearchProps) => {
-  const currentTheme = theme === "dark" ? "#fff" : "#191A1A"
+const IconSearch = ({ }: IconSearchProps) => {
+  const { theme } = useThemeContext()
+  const color = theme !== "dark" ? "#191A1A" : "#fff"
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="none" className="self-end">
+    <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="none" className="mt-2 self-center">
       <path
-        stroke={currentTheme}
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={2.5}

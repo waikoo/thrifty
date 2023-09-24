@@ -1,11 +1,13 @@
+"use client"
 import React from "react"
+import { useThemeContext } from "../hooks/ThemeProvider"
 
 type IconFavoriteProps = {
-  theme: string | null
 }
 
-const IconFavorite = ({ theme }: IconFavoriteProps) => {
-  const currentTheme = theme === "dark" ? "#fff" : "#191A1A"
+const IconFavorite = ({ }: IconFavoriteProps) => {
+  const { theme } = useThemeContext()
+  const color = theme !== "dark" ? "#191A1A" : "#fff"
 
   return (
     <svg
@@ -16,7 +18,7 @@ const IconFavorite = ({ theme }: IconFavoriteProps) => {
       className="cursor-pointer"
     >
       <path
-        stroke={currentTheme}
+        stroke={color}
         strokeWidth={2.5}
         d="m16.667 7.488-6.745 6.744-6.744-6.744A3.654 3.654 0 1 1 8.345 2.32l.693.694.884.884.884-.884.694-.694a3.654 3.654 0 1 1 5.167 5.168Z"
       />

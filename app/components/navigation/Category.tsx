@@ -2,14 +2,17 @@
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 import React from 'react'
+import { useThemeContext } from '../hooks/ThemeProvider'
 
 type CategoryProps = {
-  theme: string | null
 }
 
-const Category = ({ theme }: CategoryProps) => {
+const Category = ({ }: CategoryProps) => {
+  const { theme } = useThemeContext()
+  const color = theme !== "dark" ? "#191A1A" : "#fff"
+
   const categories = ['men', 'women', 'kids']
-  const currentTheme = theme === "dark" ? "content" : "bkg"
+  // const currentTheme = theme === "dark" ? "content" : "bkg"
   const params = useSearchParams()
   const selected = params.get("category")
 
@@ -21,14 +24,12 @@ const Category = ({ theme }: CategoryProps) => {
             <Link href={{
               pathname: usePathname(),
               query: {
-                b: params.get("b"),
-                theme: params.get("theme"),
                 category: category
               }
             }}
               key={category}>
               <li
-                className={`text-${selected === category ? `${currentTheme} font-bold` : 'faded'}`}>
+                className={`text-${selected === category ? `${color} font-extrabold` : 'faded'}`}>
                 {category.toUpperCase()}
               </li>
             </Link>

@@ -10,7 +10,8 @@
   :root {
     --clr-bkg: 0deg 0% 100%;
     --clr-content: 210deg 15% 10%;
-    --clr-grey: 220deg 9% 46%;
+    --clr-grey: 0deg 0% 85%;
+
     --clr-faded: 0deg 0% 69%;
   }
 
@@ -18,13 +19,13 @@
     :root {
       --clr-bkg: 0deg 0% 100%;
       --clr-content: 210deg 15% 10%;
-      --clr-grey: 220deg 9% 46%;
+      --clr-grey: 0deg 0% 85%;
     }
 
     :root[data-theme="dark"] {
       --clr-bkg: 210deg 15% 10%;
       --clr-content: 0deg 0% 100%;
-      --clr-grey: 220deg 9% 46%;
+      --clr-grey: 0deg 0% 85%;
     }
   }
 }
@@ -33,5 +34,21 @@
   writing-mode: vertical-rl; /* or vertical-lr for the opposite direction */
   transform: rotate(180deg);
   white-space: nowrap; /* Prevents line breaks, keeping the text vertical */
+}
+
+.separator::before  {
+  content: "|";
+  /* width: 5px; */
+  /* height: 15px; */
+  background-color: var(--clr-content);
+  position: absolute;
+  top: 3px;
+  left: 29.5px;
+}
+
+input.placeholda::placeholder {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: black;
 }
 

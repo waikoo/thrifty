@@ -2,8 +2,8 @@ import { chain, banner, theme, locale, category } from "./middlewares/";
 
 const middlewares = [
   locale,
-  banner,
-  theme,
+  // banner,
+  // theme,
   category
 ];
 
