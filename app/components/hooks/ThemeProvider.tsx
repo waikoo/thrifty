@@ -14,9 +14,12 @@ type ThemeContext = {
 export const ThemeContext = createContext<ThemeContext | null>(null)
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState<Theme>(
-    document?.documentElement.classList.contains('dark') ? 'dark' : 'light'
-  )
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+    }
+    return 'light'
+  })
 
   useEffect(() => {
     const observer = new MutationObserver(() => {

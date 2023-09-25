@@ -52,3 +52,6 @@ input.placeholda::placeholder {
   color: black;
 }
 
+html[data-theme="dark"] input.placeholda::placeholder {
+  color: white;
+}

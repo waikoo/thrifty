@@ -3,7 +3,6 @@ import React from "react";
 import { useThemeContext } from "../hooks/ThemeProvider";
 
 type LogoProps = {
-  // theme: string | null;
 };
 
 const Logo = ({ }: LogoProps) => {
