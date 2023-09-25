@@ -4,6 +4,7 @@ import { Banner, ThemeToggler } from '../components'
 import { Suspense } from 'react'
 import "../../styles/styles.css";
 import { Navigation } from '../components/navigation';
+import LanguagePicker from '../components/LanguagePicker';
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -29,7 +30,7 @@ export default function RootLayout({
       <body className="relative">
         <Banner />
         <section className="h-screen bg-bkg text-content flex flex-col px-10">
-
+          <LanguagePicker />
           <Navigation />
           <main className="mt-5">
             {children}

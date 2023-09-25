@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { useTranslation } from '../i18n'
 import { HeroCarousel } from '../components/home'
-import LanguagePicker from '../components/LanguagePicker'
 
 type PageProps = {
   params: {
@@ -15,7 +14,6 @@ export default async function Page({ params: { locale }, searchParams }: PagePro
 
   return (
     <>
-      <LanguagePicker locale={locale} />
       <HeroCarousel />
       {/* <h1 className="text-4xl font-bold text-content bg-bkg">{t('title')}</h1> */}
       {/* <Link href={`/${locale}/second-page`}> */}
