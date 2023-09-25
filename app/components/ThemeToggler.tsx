@@ -8,8 +8,10 @@ const ThemeToggler = (): JSX.Element => {
   const toggleTheme = () => {
     if (darkTheme) {
       document.documentElement.classList.remove('dark')
+      document.documentElement.dataset.theme = 'light'
     } else {
       document.documentElement.classList.add('dark')
+      document.documentElement.dataset.theme = 'dark'
     }
     setDarkTheme(!darkTheme)
     localStorage.setItem(LOCAL_STORAGE_KEY, `${darkTheme}`)

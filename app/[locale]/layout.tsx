@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang={locale} dir={dir(locale)}>
       <head />
-      <body className="relative">
+      <body className="relative bg-bkg">
         <Banner />
         <section className="h-screen bg-bkg text-content flex flex-col px-10">
           <LanguagePicker />

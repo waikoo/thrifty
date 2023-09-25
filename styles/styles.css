@@ -31,9 +31,9 @@
 }
 
 .vertical-text {
-  writing-mode: vertical-rl; /* or vertical-lr for the opposite direction */
+  writing-mode: vertical-rl;
   transform: rotate(180deg);
-  white-space: nowrap; /* Prevents line breaks, keeping the text vertical */
+  white-space: nowrap;
 }
 
 .separator::before  {
