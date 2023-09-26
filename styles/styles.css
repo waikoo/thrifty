@@ -19,13 +19,15 @@
     :root {
       --clr-bkg: 0deg 0% 100%;
       --clr-content: 210deg 15% 10%;
-      --clr-grey: 0deg 0% 85%;
+      --clr-grey: 0deg 0% 45%;
+      --clr-faded: 0deg 0% 69%;
     }
 
     :root[data-theme="dark"] {
       --clr-bkg: 210deg 15% 10%;
       --clr-content: 0deg 0% 100%;
-      --clr-grey: 0deg 0% 85%;
+      --clr-grey: 0deg 0% 45%;
+      --clr-faded: 0deg 0% 69%;
     }
   }
 }
@@ -38,9 +40,7 @@
 
 .separator::before  {
   content: "|";
-  /* width: 5px; */
-  /* height: 15px; */
-  background-color: var(--clr-content);
+  color: black;
   position: absolute;
   top: 3px;
   left: 29.5px;

@@ -1,12 +1,13 @@
 "use client"
 import React from "react";
-import { useThemeContext } from "../hooks/ThemeProvider";
+import { useThemeStore } from "../ThemeToggler";
 
 type LogoProps = {
 };
 
 const Logo = ({ }: LogoProps) => {
-  const { theme } = useThemeContext()
+  const theme = useThemeStore((state) => state.theme)
+
   const color = theme !== "dark" ? "#191A1A" : "#fff"
 
   return (
