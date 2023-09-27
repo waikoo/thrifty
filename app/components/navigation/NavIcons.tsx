@@ -1,15 +1,19 @@
 import React from 'react'
+import { IconAccount, IconFavorite, IconShoppingBag } from './'
 
 type NavIconsProps = {
-  // theme: string | null
-  children: React.ReactNode
+  // children: React.ReactNode
 }
 
-const NavIcons = ({ children }: NavIconsProps) => {
+const NavIcons = ({ }: NavIconsProps) => {
 
   return (
     <nav className="flex gap-6 justify-self-end items-center pt-2">
-      {children}
+      <IconAccount />
+      {/* </IconAccount> */}
+      <IconFavorite />
+      <IconShoppingBag />
+
     </nav>
   )
 }

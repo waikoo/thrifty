@@ -5,14 +5,10 @@ const Navigation = () => {
   return (
     <>
       <nav>
-        <div className={`grid grid-cols-3 pb-2 pt-4 border-b-2 border-content`}>
+        <div className={`grid grid-cols-3 pb-2 pt-4 border-b-2 border-content relative`}>
           <SearchBar />
           <Logo />
-          <NavIcons>
-            <IconAccount />
-            <IconFavorite />
-            <IconShoppingBag />
-          </NavIcons>
+          <NavIcons />
         </div>
 
         <Suspense fallback={<div>Loading...</div>}>
