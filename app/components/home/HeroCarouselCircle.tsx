@@ -1,4 +1,6 @@
 import React from 'react'
+import { useThemeStore } from '../ThemeToggler'
+import { fill, stroke } from '@/utils/theme'
 
 type HeroCarouselCircleProps = {
   cx: number
@@ -8,29 +10,33 @@ type HeroCarouselCircleProps = {
   onClick: () => void
 }
 
-const HeroCarouselCircle = ({ cx, cy, r, isSelected, onClick }: HeroCarouselCircleProps) => (
-  <>
-    <circle
-      cx={cx}
-      cy={cy}
-      r={r + 8}
-      fill="transparent"
-      stroke="none"
-      onMouseDown={onClick}
-      className="cursor-pointer"
-      style={{ pointerEvents: "fill" }}
-    />
+const HeroCarouselCircle = ({ cx, cy, r, isSelected, onClick }: HeroCarouselCircleProps) => {
+  const theme = useThemeStore((state) => state.theme as 'light' | 'dark')
 
-    <circle
-      cx={cx}
-      cy={cy}
-      r={r}
-      fill={isSelected ? "#000" : "#fff"}
-      stroke={isSelected ? "none" : "#000"}
-      className="cursor-pointer"
-      style={{ pointerEvents: "none" }}
-    />
-  </>
-)
+  return (
+    <>
+      <circle
+        cx={cx}
+        cy={cy}
+        r={r + 8}
+        fill="transparent"
+        stroke="none"
+        onMouseDown={onClick}
+        className="cursor-pointer"
+        style={{ pointerEvents: "fill" }}
+      />
+
+      <circle
+        cx={cx}
+        cy={cy}
+        r={r}
+        fill={isSelected ? fill.selected[theme] : fill.unselected[theme]}
+        stroke={stroke[theme]}
+        className="cursor-pointer"
+        style={{ pointerEvents: "none" }}
+      />
+    </>
+  )
+}
 
 export default HeroCarouselCircle
