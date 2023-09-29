@@ -1,6 +1,6 @@
 import { ThemeString } from "../types/theme";
 
-export const DEFAULT_THEME: ThemeString = "dark";
+export const DEFAULT_THEME: ThemeString = "light";
 export const LOCAL_STORAGE_KEY = "wantsDark";
 
 export const stroke = {

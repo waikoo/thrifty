@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { LOCAL_STORAGE_KEY } from "@/utils/theme";
+import { LOCAL_STORAGE_KEY, DEFAULT_THEME } from "@/utils/theme";
 import { create } from 'zustand'
 
 type State = {
@@ -11,10 +11,10 @@ type Action = {
   updateTheme: (theme: State['theme']) => void
 }
 
-let theme = 'dark'
+// let theme = 'light'
 
 export const useThemeStore = create<State & Action>(set => ({
-  theme: theme,
+  theme: DEFAULT_THEME,
   updateTheme: (theme) => set(() => ({ theme: theme }))
 }))
 
