@@ -1,20 +1,24 @@
-import { ThemeString } from "../types/theme";
+import { themeSettings } from "@/app/components/data/";
 
-export const DEFAULT_THEME: ThemeString = "light";
-export const LOCAL_STORAGE_KEY = "wantsDark";
+export const getSvgColor = (window: Window, theme: string | undefined) => {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
-export const stroke = {
-  light: '#000',
-  dark: '#fff',
+  if (prefersDark || theme === 'dark') {
+    return '#fff'
+  } else {
+    return '#191A1A'
+  }
 }
 
-export const fill = {
-  selected: {
-    dark: '#fff',
-    light: '#000',
-  },
-  unselected: {
-    dark: '#000',
-    light: '#fff',
+export const setTheme = (html: HTMLElement, localStorage: Storage, theme: 'dark' | 'light', e?: Event) => {
+  if (e) {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
+    theme = prefersDark.matches
+      ? 'dark'
+      : 'light'
   }
+
+  html.classList[theme === 'dark' ? 'add' : 'remove']('dark');
+  html.dataset.theme = theme;
+  localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, theme);
 }
