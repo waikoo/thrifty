@@ -1,16 +1,20 @@
 "use client"
 import React from "react"
-import { useThemeStore } from "../ThemeToggler"
+import { useThemeStore } from "@/state/themeState"
+import { getSvgColor } from "@/utils/theme"
 
 type IconShoppingBagProps = {
 }
 
 const IconShoppingBag = ({ }: IconShoppingBagProps) => {
-  const theme = useThemeStore((state) => state.theme)
-  const color = theme !== "dark" ? "#191A1A" : "#fff"
+  const color = useThemeStore((state) => getSvgColor(state.theme))
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={16} fill="none" className="cursor-pointer"
+    <svg xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={16}
+      fill="none"
+      className="cursor-pointer"
     >
       <path
         fill={color}

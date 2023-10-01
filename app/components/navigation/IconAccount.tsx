@@ -1,19 +1,17 @@
 "use client"
 import React from 'react'
-import { useThemeStore } from "../ThemeToggler"
 import SignInOrUp from '../SignInOrUp'
 import { useUIStore } from "../state/ui"
+import { getSvgColor } from "@/utils/theme"
+import { useThemeStore } from "@/state/themeState"
 
 type IconAccountProps = {
-  // children: React.ReactNode
 }
 
-const IconAccount = () => {
+const IconAccount = ({ }: IconAccountProps) => {
   const showSignIn = useUIStore((state) => state.showSignIn)
-  console.log(showSignIn)
   const setShowSignIn = useUIStore((state) => state.setShowSignIn)
-  const theme = useThemeStore((state) => state.theme)
-  const color = theme !== "dark" ? "#191A1A" : "#fff"
+  const color = useThemeStore((state) => getSvgColor(state.theme))
 
   return (
     <>

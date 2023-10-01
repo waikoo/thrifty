@@ -1,22 +1,16 @@
 import React, { Suspense } from 'react'
-import { IconAccount, IconFavorite, IconShoppingBag, Category, Logo, NavIcons, SearchBar } from './'
+import { Category, NavBar } from './'
 
 const Navigation = () => {
   return (
-    <>
-      <nav>
-        <div className={`grid grid-cols-3 pb-2 pt-4 border-b-2 border-content relative`}>
-          <SearchBar />
-          <Logo />
-          <NavIcons />
-        </div>
+    <nav>
+      <NavBar />
 
-        <Suspense fallback={<div>Loading...</div>}>
-          <Category />
-        </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Category />
+      </Suspense>
 
-      </nav>
-    </>
+    </nav>
   )
 }
 

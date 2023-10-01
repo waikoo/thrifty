@@ -1,2 +1,3 @@
 export { bannerMessages } from "./bannerMessages";
-export { default as themeStyles } from "../data/themeStyles";
+export { heroCarouselCircleColors, themeSettings } from "./theme"
+

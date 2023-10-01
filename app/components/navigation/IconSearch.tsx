@@ -1,13 +1,13 @@
 "use client"
 import React from "react"
-import { useThemeStore } from "../ThemeToggler"
+import { useThemeStore } from "@/state/themeState"
+import { getSvgColor } from "@/utils/theme"
 
 type IconSearchProps = {
 }
 
 const IconSearch = ({ }: IconSearchProps) => {
-  const theme = useThemeStore((state) => state.theme)
-  const color = theme !== "dark" ? "#191A1A" : "#fff"
+  const color = useThemeStore((state) => getSvgColor(state.theme))
 
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="none" className="mt-2 self-center">

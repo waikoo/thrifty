@@ -5,6 +5,7 @@ import { Suspense } from 'react'
 import "../../styles/styles.css";
 import { Navigation } from '../components/navigation';
 import LanguagePicker from '../components/LanguagePicker';
+import { themeSettings } from '../components/data';
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -17,6 +18,11 @@ type RootLayoutProps = {
   }
 }
 
+export const metadata = {
+  icons: {
+    icon: '../../public/favicon.png',
+  }
+}
 export default function RootLayout({
   children,
   params: {
@@ -25,7 +31,7 @@ export default function RootLayout({
 }: RootLayoutProps) {
 
   return (
-    <html lang={locale} dir={dir(locale)}>
+    <html lang={locale} dir={dir(locale)} data-theme={themeSettings.DEFAULT_THEME}>
       <head />
       <body className="relative bg-bkg">
         <Banner />
