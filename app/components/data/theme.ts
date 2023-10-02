@@ -21,6 +21,6 @@ type TThemeSettings = {
 }
 
 export const themeSettings: TThemeSettings = {
-  DEFAULT_THEME: 'dark',
+  DEFAULT_THEME: 'light',
   LOCAL_STORAGE_KEY: 'wantsDark'
 }
