@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { HeroCarouselNavigator } from '.'
+import  Button  from '../Button'
 
 const HeroCarousel = () => {
   const [selectedCircle, setSelectedCircle] = useState(0);
@@ -23,7 +24,7 @@ const HeroCarousel = () => {
             <p className="text-xs font-light ml-auto min-w-xs pl-auto leading-none">
               Lorem ipsum dolor sit amet consectetur. Vitae orci libero posuere quis elementum non feugiat mi tellus. Nam pellentesque parturient rhoncus odio. Tristique cras cursus in massa nunc tempor adipiscing gravida.
             </p>
-            <button className="border-2 px-5 py-2 text-xs block">SHOP NOW</button>
+            <Button border className="font-bold border-[0.3]">SHOP NOW</Button>
           </div>
         </article>
       </div>
