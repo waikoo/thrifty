@@ -1,6 +1,6 @@
 import React from 'react'
-import { useThemeStore } from '../ThemeToggler'
-import { fill, stroke } from '@/utils/theme'
+import { useThemeStore } from '@/state'
+import { heroCarouselCircleColors as colors } from '../data/'
 
 type HeroCarouselCircleProps = {
   cx: number
@@ -30,8 +30,8 @@ const HeroCarouselCircle = ({ cx, cy, r, isSelected, onClick }: HeroCarouselCirc
         cx={cx}
         cy={cy}
         r={r}
-        fill={isSelected ? fill.selected[theme] : fill.unselected[theme]}
-        stroke={stroke[theme]}
+        fill={isSelected ? colors.fill.selected[theme] : colors.fill.unselected[theme]}
+        stroke={colors.stroke[theme]}
         className="cursor-pointer"
         style={{ pointerEvents: "none" }}
       />
