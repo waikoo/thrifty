@@ -19,10 +19,9 @@ type RootLayoutProps = {
 }
 
 export const metadata = {
-  icons: {
-    icon: '../../public/favicon.png',
-  }
+  title: 'Thrifty'
 }
+
 export default function RootLayout({
   children,
   params: {
