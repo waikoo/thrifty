@@ -2,13 +2,10 @@
 import React from 'react'
 import { bannerMessages } from "./data";
 import { useMessageDisplay } from "./hooks";
-import { useThemeStore } from "./ThemeToggler";
 
 export default function Banner() {
   const [showBanner, setShowBanner] = React.useState(true);
   const idx = useMessageDisplay(bannerMessages, 5000);
-  const theme = useThemeStore((state) => state.theme);
-  const bkg = theme === "dark" ? "bg-greyer" : "bg-grey"
 
   return (
     <>
