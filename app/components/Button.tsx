@@ -1,4 +1,6 @@
+import { TMouseOnButton } from '@/state/userState';
 import { twMerge as tm } from 'tailwind-merge'
+import { useUserStore } from '@/state/userState'
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -6,27 +8,12 @@ type ButtonProps = {
   inverse?: boolean;
   border?: boolean;
   selected?: boolean;
-  setSelected?: (newState: 'login' | 'signup') => void
-  signUp?: () => void
+  submit?: boolean;
+  signUp?: (e: TMouseOnButton) => void
+  signIn?: (e: TMouseOnButton) => void
 }
 
-const Button = ({ children, className, inverse, border, selected, setSelected, signUp }: ButtonProps) => {
-  const newState: 'login' | 'signup' = ((children as string).replace(' ', '').toLowerCase() as 'login' | 'signup')
-  const signInOrLoginHandler = () => {
-
-    if (selected || !setSelected) return
-    setSelected(newState)
-  }
-
-  const signUpHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (signUp) {
-      try {
-        signUp()
-      } catch (error) {
-        console.log(error)
-      }
-    }
-  }
+const Button = ({ children, className, inverse, border, selected, submit, signUp, signIn }: ButtonProps) => {
 
   return (
     <button className={
@@ -37,9 +24,16 @@ const Button = ({ children, className, inverse, border, selected, setSelected, s
         selected && "bg-content text-bkg",
         !selected && "bg-bkg text-content"
       )}
-      onClick={selected || setSelected ? signInOrLoginHandler : (e) => signUpHandler(e)}
-    >{children}
-    </button>
+
+      onClick={
+        (signIn
+          ? (e: TMouseOnButton) => signIn(e)
+          : signUp
+            ? (e: TMouseOnButton) => signUp(e)
+            : () => { }
+        )}
+    > {children}
+    </button >
   )
 }
 
