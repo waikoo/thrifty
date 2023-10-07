@@ -1,6 +1,7 @@
 "use client";
 import { useThemeStore } from "@/state/themeState";
 import { useEffect, useState } from "react";
+import { themeSettings } from "./data";
 
 const ThemeToggler = () => {
   const theme = useThemeStore((state) => state.theme)

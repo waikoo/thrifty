@@ -1,10 +1,9 @@
 import { dir } from 'i18next'
-import { locales } from '../i18n/settings'
-import { Banner, ThemeToggler } from '../components'
 import { Suspense } from 'react'
-import "../../styles/styles.css";
+import { locales } from '../i18n/settings'
+import "@/styles/styles.css";
+import { Banner, ThemeToggler, LanguagePicker } from '../components'
 import { Navigation } from '../components/navigation';
-import LanguagePicker from '../components/LanguagePicker';
 import { themeSettings } from '../components/data';
 
 export async function generateStaticParams() {

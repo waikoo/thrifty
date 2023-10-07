@@ -1,13 +1,17 @@
 "use client"
 import { useThemeStore } from "@/state"
-import { Logo, SearchBar } from "."
-import { useMediaQuery } from "../hooks"
-import { IconAccount, IconFavorite, IconShoppingBag } from './'
+import { useDarkMode, useMediaQuery } from "../hooks"
+import { IconAccount, IconFavorite, IconShoppingBag, Logo, SearchBar } from './'
 import { useEffect } from "react"
 
 const NavBar = () => {
   const updateTheme = useThemeStore((state) => state.updateTheme)
   const prefersDarkMode = useMediaQuery(['(prefers-color-scheme: dark)'], [true], false)
+
+  // if (prefersDarkMode) {
+  //   document.documentElement.dataset.theme = 'dark'
+  //   updateTheme('dark')
+  // }
 
   useEffect(() => {
     const newTheme = prefersDarkMode ? 'dark' : 'light'
