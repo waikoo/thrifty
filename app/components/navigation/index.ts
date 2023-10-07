@@ -8,3 +8,4 @@ export { default as IconSearch } from "./IconSearch";
 export { default as Category } from "./Category";
 export { default as NavBar } from "./NavBar";
 export { default as AccountMenu } from "./AccountMenu";
+export { default as MenuItem } from "./MenuItem"

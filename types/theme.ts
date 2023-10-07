@@ -6,3 +6,7 @@ export interface ThemeReturn {
   theme: ThemeString;
   setTheme: Dispatch<SetStateAction<ThemeString>>;
 }
+
+export type IconMenuProps = {
+  color: string;
+}
