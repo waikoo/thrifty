@@ -38,12 +38,14 @@ const SignInOrUp = () => {
         <div className="flex w-4/5 mx-auto">
           <StateButton
             selected={selected === 'log in'}
+            border={selected === 'log in'}
             authValue={Auth.LOGIN}
             setSelected={setSelected}
           >Log In</StateButton>
 
           <StateButton
             selected={selected === 'sign up'}
+            border={selected === 'log in'}
             authValue={Auth.SIGNUP}
             setSelected={setSelected}
           >Sign Up</StateButton>

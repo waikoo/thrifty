@@ -1,4 +1,4 @@
-import { Auth, AuthModes } from '@/types/auth';
+import { AuthModes } from '@/types/auth';
 import { twMerge as tm } from 'tailwind-merge'
 
 type StateButtonProps = {
@@ -14,7 +14,7 @@ export default function StateButton({ children, className, selected, authValue, 
   return (
     <button className={tm("bg-content text-bkg block w-full p-2 border-bkg",
       className,
-      !selected && "bg-bkg text-content")
+      !selected && "bg-bkg text-content border-[0.1rem] border-content")
     }
       onClick={() => { if (!selected) { return setSelected(authValue) } }}
     >{children}
