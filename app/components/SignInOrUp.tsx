@@ -1,22 +1,27 @@
 "use client"
 import React, { useState } from 'react'
-import { SubmitButton, Input, StateButton, StateButtonContainer } from './'
+import { SubmitButton, Input, StateButton, StateButtonContainer, Spinner, CheckBox } from './'
 import { useAuthMethods, useUserSession, useUserEmail, useUserPassword, useSignIn, useSignUp } from './hooks'
 import { Auth, AuthModes } from '@/types/auth'
 
-const SignInOrUp = () => {
+type SignInOrUpProps = {
+  setShow: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const SignInOrUp = ({ setShow }: SignInOrUpProps) => {
   const [selected, setSelected] = useState<AuthModes>(Auth.LOGIN)
   const [checked, setChecked] = useState(false)
   const { email, setEmail } = useUserEmail()
   const { password, setPassword } = useUserPassword()
 
+  const { signInHook, loading } = useSignIn()
   // const session = useUserSession()
   // const { signIn, signUp } = useAuthMethods()
 
   return (
     <dialog className="fixed inset-0 flex place-items-center border-[0.1rem] border-content ">
-      <section className="p-10 min-w-max bg-bkg flex flex-col gap-16">
-
+      <section className="p-10 min-w-max bg-bkg flex flex-col gap-16 relative">
+        <span className="text-content absolute top-3 right-4  cursor-pointer" onClick={() => setShow(false)}>X</span>
         <StateButtonContainer
           selected={selected}
           setSelected={setSelected}
@@ -26,12 +31,9 @@ const SignInOrUp = () => {
           <Input type="email" value={email} setValue={setEmail} />
           <Input type="password" value={password} setValue={setPassword} />
 
-          <label htmlFor="radio" className="flex gap-2 min-w-full text-content user-select-none">
-            <input type="checkbox" id="radio" className="pr-2" checked={checked} onChange={() => setChecked(!checked)} />
-            <span className="no-select">Keep me logged in</span>
-          </label>
-
-          <SubmitButton onClick={selected === Auth.LOGIN ? useSignIn : useSignUp} >
+          <CheckBox checked={checked} setChecked={setChecked} />
+          {loading ? <Spinner /> : null}
+          <SubmitButton onClick={selected === Auth.LOGIN ? signInHook : useSignUp} >
             {selected === Auth.LOGIN ? Auth.LOGIN : Auth.SIGNUP}
           </SubmitButton>
 
