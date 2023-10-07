@@ -38,13 +38,13 @@ const SignInOrUp = () => {
         <div className="flex w-4/5 mx-auto">
           <StateButton
             selected={selected === 'login'}
-            selectedValue={selected}
+            authValue={Auth.LOGIN}
             setSelected={setSelected}
           >Log In</StateButton>
 
           <StateButton
             selected={selected === 'signup'}
-            selectedValue={selected}
+            authValue={Auth.SIGNUP}
             setSelected={setSelected}
           >Sign Up</StateButton>
         </div>
@@ -57,7 +57,13 @@ const SignInOrUp = () => {
             <input type="checkbox" id="radio" className="pr-2" checked={checked} onChange={() => setChecked(!checked)} />
             <span className="no-select">Keep me logged in</span>
           </label>
-          <Button submit selected>{selected !== Auth.LOGIN ? 'Log In' : 'Sign Up'}</Button>
+
+          <Button submit selected
+            onClick={selected === Auth.LOGIN ? signIn : signUp}
+          >
+            {selected === Auth.LOGIN ? 'Log In' : 'Sign Up'}
+          </Button>
+
         </form>
       </section>
     </dialog>

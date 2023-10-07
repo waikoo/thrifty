@@ -1,6 +1,5 @@
 import { TMouseOnButton } from '@/state/userState';
 import { twMerge as tm } from 'tailwind-merge'
-import { useUserStore } from '@/state/userState'
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -9,12 +8,13 @@ type ButtonProps = {
   border?: boolean;
   selected?: boolean;
   submit?: boolean;
-  signUp?: (e: TMouseOnButton) => void
-  signIn?: (e: TMouseOnButton) => void
+  onClick: (e: TMouseOnButton) => void
+  // signUp?: (e: TMouseOnButton) => void
+  // signIn?: (e: TMouseOnButton) => void
 }
 
-const Button = ({ children, className, inverse, border, selected, submit, signUp, signIn }: ButtonProps) => {
-
+const Button = ({ children, className, inverse, border, selected, submit, onClick }: ButtonProps) => {
+  console.log(onClick)
   return (
     <button className={
       tm("bg-content text-bkg block w-full p-2 border-bkg",
@@ -25,13 +25,7 @@ const Button = ({ children, className, inverse, border, selected, submit, signUp
         !selected && "bg-bkg text-content"
       )}
 
-      onClick={
-        (signIn
-          ? (e: TMouseOnButton) => signIn(e)
-          : signUp
-            ? (e: TMouseOnButton) => signUp(e)
-            : () => { }
-        )}
+      onClick={onClick}
     > {children}
     </button >
   )
