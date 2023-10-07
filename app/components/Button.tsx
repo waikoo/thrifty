@@ -14,7 +14,7 @@ type ButtonProps = {
 }
 
 const Button = ({ children, className, inverse, border, selected, submit, onClick }: ButtonProps) => {
-  console.log(onClick)
+
   return (
     <button className={
       tm("bg-content text-bkg block w-full p-2 border-bkg",
@@ -26,7 +26,7 @@ const Button = ({ children, className, inverse, border, selected, submit, onClic
       )}
 
       onClick={onClick}
-    > {children}
+    > {children?.toString().toUpperCase()}
     </button >
   )
 }

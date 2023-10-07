@@ -37,13 +37,13 @@ const SignInOrUp = () => {
 
         <div className="flex w-4/5 mx-auto">
           <StateButton
-            selected={selected === 'login'}
+            selected={selected === 'log in'}
             authValue={Auth.LOGIN}
             setSelected={setSelected}
           >Log In</StateButton>
 
           <StateButton
-            selected={selected === 'signup'}
+            selected={selected === 'sign up'}
             authValue={Auth.SIGNUP}
             setSelected={setSelected}
           >Sign Up</StateButton>
@@ -61,7 +61,7 @@ const SignInOrUp = () => {
           <Button submit selected
             onClick={selected === Auth.LOGIN ? signIn : signUp}
           >
-            {selected === Auth.LOGIN ? 'Log In' : 'Sign Up'}
+            {selected === Auth.LOGIN ? Auth.LOGIN : Auth.SIGNUP}
           </Button>
 
         </form>

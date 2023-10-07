@@ -1,6 +1,6 @@
 export enum Auth {
-  LOGIN = 'login',
-  SIGNUP = 'signup',
+  LOGIN = 'log in',
+  SIGNUP = 'sign up',
 }
 
 export type AuthModes = Auth.LOGIN | Auth.SIGNUP
