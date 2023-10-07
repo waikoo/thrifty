@@ -14,7 +14,7 @@ const SignInOrUp = ({ setShow }: SignInOrUpProps) => {
   const { email, setEmail } = useUserEmail()
   const { password, setPassword } = useUserPassword()
 
-  const { signInHook, loading } = useSignIn()
+  const { signInHook, loading } = useSignIn(setShow)
   // const session = useUserSession()
   // const { signIn, signUp } = useAuthMethods()
 

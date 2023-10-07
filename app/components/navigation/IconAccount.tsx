@@ -34,7 +34,7 @@ const IconAccount = ({ }: IconAccountProps) => {
         </svg>
       </div>
       {show ? (
-        session ? <AccountMenu /> : <SignInOrUp setShow={setShow} />
+        session ? <AccountMenu setShow={setShow} /> : <SignInOrUp setShow={setShow} />
       ) : null}
     </div>
   )

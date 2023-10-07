@@ -3,7 +3,7 @@ import { twMerge as tm } from 'tailwind-merge'
 type MenuItemProps = {
   className?: string;
   color: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => void
   children: React.ReactNode;
   Img: React.ComponentType<{ color: string }>
 }
