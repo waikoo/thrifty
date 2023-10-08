@@ -1,9 +1,4 @@
-type TColor = {
-  id: number,
-  color: string,
-  imgUrl: string,
-  alt: string
-}
+import { TColor } from "@/types/home";
 
 export const colors: TColor[] = [{
   id: 1,

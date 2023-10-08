@@ -1,5 +1,6 @@
+import { TColor } from '@/types/home'
 import { ColorCarouselElement } from '.'
-import { colors } from '../data'
+import { colors } from '../data/home'
 
 export default function ColorCarousel() {
   return (
@@ -11,12 +12,12 @@ export default function ColorCarousel() {
       </div>
 
       <div className="grid grid-cols-4 gap-5 rounded-2xl p-5">
-        {colors.map(color => (
+        {colors.map(({ id, color, imgUrl, alt }: TColor) => (
           <ColorCarouselElement
-            key={color.id}
-            color={color.color}
-            imgUrl={color.imgUrl}
-            alt={color.alt} />
+            key={id}
+            color={color}
+            imgUrl={imgUrl}
+            alt={alt} />
         ))}
       </div>
 
