@@ -22,8 +22,13 @@ const AccountMenu = () => {
         <MenuItem color={color} className="" onClick={() => { }} Img={IconMenuHelp}>Help</MenuItem>
         <MenuItem color={color} className="" onClick={() => { }} Img={IconMenuContact}>Contact</MenuItem>
 
-        {loading ? <Spinner /> : null}
-        <MenuItem color={color} className="cursor-pointer" onClick={signOutHook} Img={IconMenuLogOut}>Log Out</MenuItem>
+        {/* {loading ? <Spinner /> : null} */}
+        <MenuItem
+          color={color}
+          className="cursor-pointer"
+          onClick={signOutHook}
+          loading={loading}
+          Img={IconMenuLogOut}>Log Out</MenuItem>
       </ul>
     </nav>
   )
