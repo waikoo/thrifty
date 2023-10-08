@@ -40,7 +40,6 @@ export const useUserStore = create<State & Action>((set, get) => ({
     return data.user
   },
   signOut: async () => {
-    console.log('signing out')
     await supabase.auth.signOut();
     set(() => ({ user: null }));
   },

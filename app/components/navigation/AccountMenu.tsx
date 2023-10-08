@@ -1,21 +1,17 @@
 "use client"
-import { useThemeStore, useUserStore } from '@/state/'
-import { MenuItem } from '.'
-import { IconMenuAccount, IconMenuContact, IconMenuHelp, IconMenuLogOut, IconMenuOrders, IconMenuReturns, IconMenuSettings } from './icons/menu'
+import { useThemeStore, useUIStore } from '@/state/'
 import { getSvgColor } from '@/utils/theme'
-import { useSignOut } from '../hooks'
+import { MenuItem } from '.'
 import { Spinner } from '..'
+import { useSignOut } from '../hooks'
+import { IconMenuAccount, IconMenuContact, IconMenuHelp, IconMenuLogOut, IconMenuOrders, IconMenuReturns, IconMenuSettings } from './icons/menu'
 
-type AccountMenuProps = {
-  setShow: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const AccountMenu = ({ setShow }: AccountMenuProps) => {
-  const logout = useUserStore((state) => state.signOut)
+const AccountMenu = () => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
+  const { signOutHook, loading } = useSignOut()
   // const menuItems = ['My Account', 'My Returns', 'My Orders', 'Settings', 'Help', 'Contact', 'Log Out']
   // const icons = [IconMenuAccount, IconMenuReturns, IconMenuOrders, IconMenuSettings, IconMenuHelp, IconMenuContact, IconMenuLogOut]
-  const { signOutHook, loading } = useSignOut(setShow)
+
   return (
     <nav className="absolute bg-bkg p-5 z-10 top-35">
       <ul className="whitespace-no-wrap pr-10">

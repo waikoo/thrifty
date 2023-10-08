@@ -1,18 +1,15 @@
 "use client"
-import React, { useEffect, useState } from 'react'
-import { useThemeStore } from "@/state"
+import { useThemeStore, useUIStore } from "@/state"
 import { getSvgColor } from "@/utils/theme"
-import { SignInOrUp } from '../'
 import { AccountMenu } from '.'
-import { supabase } from '@/app/supabase'
-import { useUserSession } from '../hooks'
+import { Error, SignInOrUp } from '../'
+import { useMyAccount, useSignInOrUp, useUserSession } from '../hooks'
 
-type IconAccountProps = {}
-
-const IconAccount = ({ }: IconAccountProps) => {
-  const [show, setShow] = useState(false)
+const IconAccount = () => {
+  const { showMyAccount, setShowMyAccount } = useMyAccount()
+  const { showSignIn, setShowSignIn } = useSignInOrUp()
   const color = useThemeStore((state) => getSvgColor(state.theme))
-  const session = useUserSession()
+  const { session, error } = useUserSession()
 
   return (
     <div className="relative">
@@ -24,7 +21,9 @@ const IconAccount = ({ }: IconAccountProps) => {
           height={16}
           fill="none"
           className="cursor-pointer"
-          onClick={() => setShow(prevState => !prevState)}
+          onClick={() => !session
+            ? setShowSignIn(showSignIn ? false : true)
+            : setShowMyAccount(showMyAccount ? false : true)}
         >
           <path
             stroke={color}
@@ -33,9 +32,14 @@ const IconAccount = ({ }: IconAccountProps) => {
           />
         </svg>
       </div>
-      {show ? (
-        session ? <AccountMenu setShow={setShow} /> : <SignInOrUp setShow={setShow} />
-      ) : null}
+
+
+      {!error.status ? (
+        showMyAccount ? <AccountMenu />
+          : showSignIn ? <SignInOrUp /> : null
+      ) : <Error>Something went wrong</Error>}
+
+
     </div>
   )
 }
