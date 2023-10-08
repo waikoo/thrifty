@@ -1,3 +1,5 @@
 export { default as HeroCarousel } from './HeroCarousel'
+export { default as ColorCarousel } from './ColorCarousel'
+export { default as ColorCarouselElement } from './ColorCarouselElement'
 export { default as HeroCarouselNavigator } from './HeroCarouselNavigator'
 export { default as HeroCarouselCircle } from './HeroCarouselCircle'
