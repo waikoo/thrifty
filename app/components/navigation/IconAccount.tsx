@@ -1,5 +1,5 @@
 "use client"
-import { useThemeStore, useUIStore } from "@/state"
+import { useThemeStore } from "@/state"
 import { getSvgColor } from "@/utils/theme"
 import { AccountMenu } from '.'
 import { Error, SignInOrUp } from '../'

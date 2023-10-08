@@ -9,4 +9,5 @@ export interface ThemeReturn {
 
 export type IconMenuProps = {
   color: string;
+  isHovered: boolean;
 }
