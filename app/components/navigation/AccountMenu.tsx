@@ -1,8 +1,7 @@
 "use client"
-import { useThemeStore, useUIStore } from '@/state/'
+import { useThemeStore } from '@/state/'
 import { getSvgColor } from '@/utils/theme'
 import { MenuItem } from '.'
-import { Spinner } from '..'
 import { useSignOut } from '../hooks'
 import { IconMenuAccount, IconMenuContact, IconMenuHelp, IconMenuLogOut, IconMenuOrders, IconMenuReturns, IconMenuSettings } from './icons/menu'
 
@@ -13,8 +12,8 @@ const AccountMenu = () => {
   // const icons = [IconMenuAccount, IconMenuReturns, IconMenuOrders, IconMenuSettings, IconMenuHelp, IconMenuContact, IconMenuLogOut]
 
   return (
-    <nav className="absolute bg-bkg p-5 z-10 top-35">
-      <ul className="whitespace-no-wrap pr-10">
+    <nav className="absolute bg-bkg px-12 py-4 z-10 top-8 right-[-7rem] text-base">
+      <ul className="whitespace-no-wrap pr-40">
         <MenuItem color={color} className="" onClick={() => { }} Img={IconMenuAccount}>My Account</MenuItem>
         <MenuItem color={color} className="" onClick={() => { }} Img={IconMenuReturns}>My Returns</MenuItem>
         <MenuItem color={color} className="" onClick={() => { }} Img={IconMenuOrders}>My Orders</MenuItem>
@@ -22,7 +21,6 @@ const AccountMenu = () => {
         <MenuItem color={color} className="" onClick={() => { }} Img={IconMenuHelp}>Help</MenuItem>
         <MenuItem color={color} className="" onClick={() => { }} Img={IconMenuContact}>Contact</MenuItem>
 
-        {/* {loading ? <Spinner /> : null} */}
         <MenuItem
           color={color}
           className="cursor-pointer"
