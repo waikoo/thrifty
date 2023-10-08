@@ -15,7 +15,6 @@ export default function useSignUp() {
     const data = await signUp(e)
     setLoading(false)
     console.log(data)
-    // setShow(false)
     setShowSignIn(false)
 
     router.push(`${pathname}?category=${params.get('category') || 'women'}`)
