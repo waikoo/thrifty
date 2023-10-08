@@ -6,7 +6,7 @@ type ButtonProps = {
   children: React.ReactNode | JSX.Element;
   className?: string;
   inverse?: boolean;
-  onClick: (e: TMouseOnButton) => void
+  onClick?: (e: TMouseOnButton) => void
 }
 
 type SubmitButtonProps = ButtonProps & {
