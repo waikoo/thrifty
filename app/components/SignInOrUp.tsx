@@ -29,7 +29,7 @@ const SignInOrUp = () => {
 
           <CheckBox checked={checked} setChecked={setChecked} />
           <SubmitButton
-            loading={signInLoading}
+            loading={signInLoading ?? signUpLoading}
             onClick={selected === Auth.LOGIN ? signInHook : signUpHook} >
             {selected === Auth.LOGIN ? Auth.LOGIN : Auth.SIGNUP}
           </SubmitButton>
