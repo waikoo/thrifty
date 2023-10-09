@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { HeroCarouselNavigator } from '.';
 import { SubmitButton } from '..';
+import HeroCarouselImages from './HeroCarouselImages';
 
 const HeroCarousel = () => {
   const [selectedCircle, setSelectedCircle] = useState(0);
@@ -9,14 +10,12 @@ const HeroCarousel = () => {
 
   return (
     <section className="flex flex-col gap-5 max-h-fit max-w-full pt-2">
-      <div className={`flex gap-2 px-12 rounded-[2.8125rem] m-0 bg-content text-bkg max-w-[calc(100% - 28xp)] max-h-fit `}>
-        <div className="bg-green-200 flex flex-8 flex-grow">
-          <img src="https://loremflickr.com/150/450/clothes,europe/all" alt="" className="w-1/4 border max-w-full" />
-          <img src="https://loremflickr.com/150/450/clothes,europe/all" alt="" className="w-1/4 border max-w-full" />
-          <img src="https://loremflickr.com/380/450/clothes,europe/all" alt="" className="w-2/4 border max-w-full" />
-        </div>
+      <div className={`flex gap-2 px-12 rounded-[2.8125rem] m-0 bg-content text-bkg max-w-full`}>
 
-        <article className="grid grid-rows-2 gap-5 py-10 max-h-[100%] max-w-[20%]">
+        <HeroCarouselImages selectedCircle={selectedCircle} />
+
+
+        <article className="grid grid-rows-2 gap-5 py-10 max-h-[100%] max-w-[20%] flex-2">
           <h1 className="vertical-text text-5xl font-bold ml-auto height-half self-end mb-5">
             {dynamicTitle}
           </h1>

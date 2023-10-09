@@ -16,16 +16,18 @@ const HeroCarouselNavigator = ({ selectedCircle, setSelectedCircle }: HeroCarous
 
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={65} height={10} fill="none" className="self-center">
-      {circles.map((circle, index) => (
-        <HeroCarouselCircle
-          key={index}
-          cx={circle.cx}
-          cy={circle.cy}
-          r={circle.r}
-          isSelected={selectedCircle === index}
-          onClick={() => setSelectedCircle(index)}
-        />
-      ))}
+      {circles.map((circle, index) => {
+        return (
+          <HeroCarouselCircle
+            key={index}
+            cx={circle.cx}
+            cy={circle.cy}
+            r={circle.r}
+            isSelected={selectedCircle === index}
+            onClick={() => setSelectedCircle(index)}
+          />
+        )
+      })}
     </svg>
   );
 };
