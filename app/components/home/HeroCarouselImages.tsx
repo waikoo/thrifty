@@ -1,17 +1,18 @@
-import { HeroCarouselImagesProps } from '@/types/home';
 import { StaticImageData } from 'next/image';
 import { HeroCarouselLargeImage } from '.';
 import { images } from '../data/home';
+import useHeroCarousel from '../hooks/useHeroCarousel';
 import HeroCarouselSmallImage from './HeroCarouselSmallImage';
 
-export default function HeroCarouselImages({ selectedCircle }: HeroCarouselImagesProps) {
+export default function HeroCarouselImages() {
+  const { selectedCircle } = useHeroCarousel()
+
   return (
-
     <div className="flex flex-8 flex-grow gap-1">
-      {images.small[selectedCircle]?.map((src: StaticImageData, index: number) => {
-        console.log(src)
-        return (
 
+      {images.small[selectedCircle]?.map((src: StaticImageData, index: number) => {
+
+        return (
           <HeroCarouselSmallImage
             key={`Small${index}`}
             src={src}

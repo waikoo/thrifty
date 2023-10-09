@@ -1,6 +1,7 @@
 "use client"
 import React from "react";
 import { HeroCarouselCircle } from ".";
+import useHeroCarousel from "../hooks/useHeroCarousel";
 
 const circles = [
   { cx: 5, cy: 5, r: 5 },
@@ -8,11 +9,8 @@ const circles = [
   { cx: 60, cy: 5, r: 4.5 },
 ];
 
-type HeroCarouselNavigatorProps = {
-  selectedCircle: number;
-  setSelectedCircle: React.Dispatch<React.SetStateAction<number>>;
-}
-const HeroCarouselNavigator = ({ selectedCircle, setSelectedCircle }: HeroCarouselNavigatorProps) => {
+const HeroCarouselNavigator = () => {
+  const { selectedCircle, setSelectedCircle } = useHeroCarousel()
 
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={65} height={10} fill="none" className="self-center">

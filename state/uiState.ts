@@ -13,3 +13,13 @@ export const useUIStore = create<UIState>((set) => ({
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
 }))
+
+type HeroCarouselState = {
+  selectedCircle: number
+  setSelectedCircle: (value: number) => void
+}
+
+export const useHeroCarouselStore = create<HeroCarouselState>((set) => ({
+  selectedCircle: 0,
+  setSelectedCircle: (value) => set({ selectedCircle: value }),
+}))
