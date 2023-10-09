@@ -1,5 +1,4 @@
 "use client"
-import { useThemeStore } from '@/state/themeState';
 import React, { useRef, useState } from 'react';
 import { twMerge as tm } from 'tailwind-merge';
 import { Spinner } from '..';
@@ -15,7 +14,6 @@ type MenuItemProps = {
 };
 
 export default function MenuItem({ children, className, onClick, Img, color, loading }: MenuItemProps) {
-  const theme = useThemeStore((state) => state.theme);
   const menuItemContainer = useRef<HTMLDivElement | null>(null);
   const [isHovered, setIsHovered] = useState(false);
 
