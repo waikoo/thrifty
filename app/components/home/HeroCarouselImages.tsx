@@ -8,7 +8,7 @@ export default function HeroCarouselImages() {
   const { selectedCircle } = useHeroCarousel()
 
   return (
-    <div className="flex flex-8 flex-grow gap-1">
+    <div className="flex flex-8 flex-grow gap-1 h-[550px]">
 
       {images.small[selectedCircle]?.map((src: StaticImageData, index: number) => {
 

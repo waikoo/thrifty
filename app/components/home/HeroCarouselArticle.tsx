@@ -7,7 +7,7 @@ export default function HeroCarouselArticle() {
   return (
     <article className="grid grid-rows-2 gap-5 py-10 max-h-[100%] max-w-[20%] flex-2">
 
-      <h1 className="vertical-text text-5xl font-bold ml-auto height-half self-end mb-5">
+      <h1 className="vertical-text text-5xl font-bold ml-auto self-end my-auto">
         {dynamicTitle}
       </h1>
 
