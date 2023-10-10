@@ -1,36 +1,31 @@
 "use client"
-import { locales } from '@/app/i18n/settings';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
-type LanguagePickerProps = {
-}
-
-const LanguagePicker = ({ }: LanguagePickerProps) => {
-  const params = useSearchParams()
-  const pathname = usePathname().slice(1)
+const LanguagePicker = () => {
+  const pathname = usePathname().split('/')[1]
+  const locales = ['en', 'de']
 
   return (
-    <ul className={`flex items-center gap-3 hover:cursor-pointer bg-faded col-start-1 col-end-2 absolute left-6 p-1 top-0`}>
+    <nav className={`flex items-center gap-3 hover:cursor-pointer bg-faded col-start-1 col-end-2 absolute left-6 p-1 top-0`}>
 
-      {locales.map((locale) => (
+      {locales.map((locale: string) => (
         <span key={locale} className={`${locale === 'en' ? 'separator' : ''}`}>
-          <li className={
-            `items-center text-black relative ${pathname !== locale ? "font-extralight" : "font-extrabold"} ${pathname === 'de' ? 'pl-1/2' : ''} `}>
 
-            <Link href={{
+          <Link
+            href={{
               pathname: `/${locale}`,
-              query: {
-                category: params.get('category')
-              }
-            }} >
-              {`${locale.toUpperCase()} `}
-            </Link>
+            }}
+            className={`items-center text-black relative 
+              ${pathname !== locale ? "font-extralight" : "font-extrabold"} 
+              ${pathname === 'de' ? 'pl-1/2' : ''} `}>
+            {`${locale.toUpperCase()} `}
+          </Link>
 
-          </li>
         </span>
-      ))}
-    </ul >
+      ))
+      }
+    </nav >
   )
 }
 
