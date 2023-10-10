@@ -1,38 +1,33 @@
 "use client"
-import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
-import React from 'react'
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
-type CategoryProps = {
-}
+type CategoryProps = {};
 
 const Category = ({ }: CategoryProps) => {
-  const categories = ['men', 'women', 'kids']
-  const params = useSearchParams()
-  const selected = params.get("category")
+  const categories = ['men', 'women', 'kids'];
+  const [, currentLocale, currentCategory,] = usePathname().split('/');
 
   return (
     <nav className="w-5/12 mx-auto pt-2">
-      <ul className='grid grid-cols-3 w-full justify-items-center cursor-pointer'>
-        {categories.map((category) => {
-          return (
-            <Link href={{
-              pathname: usePathname(),
-              query: {
-                category: category
-              }
-            }}
-              key={category}>
-              <li
-                className={`text-${selected === category ? `content font-extrabold` : 'faded'}`}>
-                {category.toUpperCase()}
-              </li>
+      <ul className="grid grid-cols-3 w-full justify-items-center cursor-pointer">
+        {categories.map((category) => (
+          <li
+            key={category}
+            className={`text-${currentCategory === category ? 'content font-extrabold' : 'faded'
+              }`}
+          >
+            <Link
+              href={`/${currentLocale}/${category}`}
+            >
+              {category.toUpperCase()}
             </Link>
-          )
-        })}
+          </li>
+        ))}
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Category
+export default Category;
+
