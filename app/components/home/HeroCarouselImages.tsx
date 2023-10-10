@@ -12,7 +12,7 @@ export default function HeroCarouselImages({ category }: Category) {
     <div className="flex flex-8 flex-grow gap-1 h-[550px]">
 
       {images[category].small[selectedCircle]?.map((src: StaticImageData, index: number) => {
-        console.log(src)
+
         return (
           <HeroCarouselSmallImage
             key={`Small${index}`}
