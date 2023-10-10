@@ -7,23 +7,33 @@ export type TColor = {
   alt: string
 }
 
+export type Category = {
+  category: 'men' | 'women' | 'kids'
+}
+
+export type PageProps = {
+  params: {
+    lang: string,
+    category: Category['category']
+  },
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
 export type HeroCarouselImagesProps = {
   selectedCircle: number
 }
 
 export type Timages = {
-  small: {
-    [key: number]: StaticImageData[]
-    // '0': StaticImageData[],
-    // '1': StaticImageData[],
-    // '2': StaticImageData[],
-  },
-  large: {
-    [key: number]: StaticImageData
-    // '0': StaticImageData,
-    // '1': StaticImageData,
-    // '2': StaticImageData,
-  }
-}
-
+  men: {
+    small: Record<number, StaticImageData[]>;
+    large: Record<number, StaticImageData>;
+  };
+  women: {
+    small: Record<number, StaticImageData[]>;
+    large: Record<number, StaticImageData>;
+  };
+  kids: {
+    small: Record<number, StaticImageData[]>;
+    large: Record<number, StaticImageData>;
+  };
+};

@@ -6,9 +6,10 @@ type HeroCarouselSmallImageProps = {
   width: number,
   height: number,
   className?: string
+  priority: boolean
 }
 
-export default function HeroCarouselSmallImage({ src, alt, width, height, className }
+export default function HeroCarouselSmallImage({ src, alt, width, height, className, priority }
   : HeroCarouselSmallImageProps) {
 
   return (
@@ -18,6 +19,7 @@ export default function HeroCarouselSmallImage({ src, alt, width, height, classN
         width={width}
         height={height}
         alt={alt}
+        priority={priority}
         className={className} />
     </div>
   )

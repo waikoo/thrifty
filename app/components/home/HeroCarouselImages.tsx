@@ -3,18 +3,20 @@ import { HeroCarouselLargeImage } from '.';
 import { images } from '../data/home';
 import useHeroCarousel from '../hooks/useHeroCarousel';
 import HeroCarouselSmallImage from './HeroCarouselSmallImage';
+import { Category } from '@/types/home';
 
-export default function HeroCarouselImages() {
+export default function HeroCarouselImages({ category }: Category) {
   const { selectedCircle } = useHeroCarousel()
 
   return (
     <div className="flex flex-8 flex-grow gap-1 h-[550px]">
 
-      {images.small[selectedCircle]?.map((src: StaticImageData, index: number) => {
-
+      {images[category].small[selectedCircle]?.map((src: StaticImageData, index: number) => {
+        console.log(src)
         return (
           <HeroCarouselSmallImage
             key={`Small${index}`}
+            priority={src.src.includes('women_new_in')}
             src={src}
             width={200}
             height={350}
@@ -25,7 +27,8 @@ export default function HeroCarouselImages() {
 
       <HeroCarouselLargeImage
         key={`Large${selectedCircle}`}
-        src={images.large[selectedCircle]}
+        src={images[category].large[selectedCircle]}
+        priority={images[category].large[selectedCircle].src.includes('women_new_in')}
         width={410}
         height={350}
         alt={selectedCircle === 0 ? 'newIn_03'

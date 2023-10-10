@@ -5,10 +5,11 @@ type HeroCarouselLargeImageProps = {
   alt: string,
   width: number,
   height: number,
-  className?: string
+  className?: string,
+  priority: boolean
 }
 
-export default function HeroCarouselLargeImage({ src, alt, width, height, className }: HeroCarouselLargeImageProps) {
+export default function HeroCarouselLargeImage({ src, alt, width, height, className, priority }: HeroCarouselLargeImageProps) {
   return (
     <div className="block max-w-full" >
       <Image
@@ -16,6 +17,7 @@ export default function HeroCarouselLargeImage({ src, alt, width, height, classN
         width={width}
         height={height}
         className={className}
+        priority={priority}
         alt={alt} />
     </div>
   )
