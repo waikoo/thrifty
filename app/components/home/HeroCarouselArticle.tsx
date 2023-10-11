@@ -5,7 +5,7 @@ export default function HeroCarouselArticle() {
   const { dynamicTitle } = useHeroCarousel(['NEW IN', 'PROMOS', 'FILTERS'])
 
   return (
-    <article className="grid grid-rows-2 gap-5 py-10 max-h-[100%] max-w-[20%] flex-2">
+    <article className="grid grid-rows-2 gap-5 py-10 h-auto">
 
       <h1 className="vertical-text text-5xl font-bold ml-auto self-end my-auto">
         {dynamicTitle}

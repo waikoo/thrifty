@@ -66,3 +66,7 @@ html[data-theme="light"] input.placeholda::placeholder {
 .no-select {
   user-select: none;
 }
+
+.aspect-ratio {
+  aspect-ratio: 16 / 9;
+}

@@ -37,3 +37,11 @@ export type Timages = {
     large: Record<number, StaticImageData>;
   };
 };
+
+export type HeroCarouselImageProps = {
+  src: StaticImageData,
+  alt: string,
+  className?: string
+  priority: boolean
+}
+

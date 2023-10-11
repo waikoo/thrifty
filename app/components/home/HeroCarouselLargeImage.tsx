@@ -1,21 +1,11 @@
-import Image, { StaticImageData } from 'next/image';
+import { HeroCarouselImageProps } from '@/types/home';
+import Image from 'next/image';
 
-type HeroCarouselLargeImageProps = {
-  src: StaticImageData,
-  alt: string,
-  width: number,
-  height: number,
-  className?: string,
-  priority: boolean
-}
-
-export default function HeroCarouselLargeImage({ src, alt, width, height, className, priority }: HeroCarouselLargeImageProps) {
+export default function HeroCarouselLargeImage({ src, alt, className, priority }: HeroCarouselImageProps) {
   return (
-    <div className="block max-w-full" >
+    <div className="block max-w-[50%]" >
       <Image
         src={src}
-        width={width}
-        height={height}
         className={className}
         priority={priority}
         alt={alt} />

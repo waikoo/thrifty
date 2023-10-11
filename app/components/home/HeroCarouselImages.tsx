@@ -7,9 +7,10 @@ import { Category } from '@/types/home';
 
 export default function HeroCarouselImages({ category }: Category) {
   const { selectedCircle } = useHeroCarousel()
-
+  // 200, 300 small
+  // 410, 350 big
   return (
-    <div className="flex flex-8 flex-grow gap-1 h-[550px]">
+    <div className="flex gap-1 flex-1 min-w-[80%]">
 
       {images[category].small[selectedCircle]?.map((src: StaticImageData, index: number) => {
 
@@ -18,8 +19,6 @@ export default function HeroCarouselImages({ category }: Category) {
             key={`Small${index}`}
             priority={src.src.includes('women_new_in')}
             src={src}
-            width={200}
-            height={350}
             alt={`newIn_${index}`}
             className={'h-full object-cover'} />
         )
@@ -29,8 +28,6 @@ export default function HeroCarouselImages({ category }: Category) {
         key={`Large${selectedCircle}`}
         src={images[category].large[selectedCircle]}
         priority={images[category].large[selectedCircle].src.includes('women_new_in')}
-        width={410}
-        height={350}
         alt={selectedCircle === 0 ? 'newIn_03'
           : selectedCircle === 1 ? 'promos_03'
             : selectedCircle === 2 ? 'filters_03'
