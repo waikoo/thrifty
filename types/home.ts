@@ -1,5 +1,11 @@
 import { StaticImageData } from "next/dist/shared/lib/image-external"
 
+export type TColorCarouselData = {
+  women: TColor[],
+  men: TColor[],
+  kids: TColor[],
+}
+
 export type TColor = {
   id: number,
   color: string,

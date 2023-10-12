@@ -28,36 +28,12 @@ import kids_filters_01 from '@/public/home/kids_filters_01.jpg'
 import kids_filters_02 from '@/public/home/kids_filters_02.jpg'
 import kids_filters_03 from '@/public/home/kids_filters_03.jpg'
 
-import { TColor, Timages } from "@/types/home";
+import { Timages } from "@/types/home";
 
 export const HERO_CAROUSEL_TITLES = ['NEW IN', 'PROMOS', 'FILTERS'] as const
 export type HeroCarouselTitlesTuple = typeof HERO_CAROUSEL_TITLES
 export type HeroCarouselTitle = HeroCarouselTitlesTuple[number]
 
-export const colors: TColor[] = [{
-  id: 1,
-  color: 'blue',
-  imgUrl: 'https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-  alt: 'bluez alt'
-},
-{
-  id: 2,
-  color: 'red',
-  imgUrl: 'https://plus.unsplash.com/premium_photo-1674347953915-1431abd16563?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80',
-  alt: 'redz alt'
-},
-{
-  id: 3,
-  color: 'yellow',
-  imgUrl: 'https://images.unsplash.com/photo-1508808787069-421e7986016e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-  alt: 'yellaz alt'
-},
-{
-  id: 4,
-  color: 'green',
-  imgUrl: 'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-  alt: 'greenz alt'
-}]
 
 export const images: Timages = {
   men: {

@@ -1,11 +1,13 @@
-import { Category, TColor } from '@/types/home'
-import { ColorCarouselElement } from '.'
-import { colors } from '../data/home'
+import { Category } from '@/types/home'
+import ColorCarouselGrid from './ColorCarouselGrid'
 
-export default function ColorCarousel({ category }: Category) {
+type ColorCarouselProps = {
+  category: Category['category']
+}
+export default function ColorCarousel({ category }: ColorCarouselProps) {
 
   return (
-    <section className="flex flex-col gap-5 items-center mt-12">
+    <section className="flex flex-col gap-5 items-center mt-20 w-full">
 
       <div className="flex flex-col items-center">
 
@@ -13,22 +15,14 @@ export default function ColorCarousel({ category }: Category) {
           DISCOVER YOUR PERFECT PALETTE
         </h2>
 
-        <span className="text-[0.75rem] font-medium tracking-[0.07875rem] my-0">
+        <span className="text-[0.75rem] font-medium tracking-[0.07875rem] my-0 pt-2">
           Shop by Your Favorite Colors and Unleash Your Style
         </span>
 
-      </div>
 
-      <div className="grid grid-cols-4 gap-5 rounded-2xl p-5">
-        {colors.map(({ id, color, imgUrl, alt }: TColor) => (
-          <ColorCarouselElement
-            key={id}
-            color={color}
-            imgUrl={imgUrl}
-            alt={alt} />
-        ))}
-      </div>
+        <ColorCarouselGrid category={category} />
 
+      </div>
     </section>
   )
 }

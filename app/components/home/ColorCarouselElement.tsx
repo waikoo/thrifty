@@ -2,15 +2,16 @@ type ColorCarouselElementProps = {
   color: string,
   imgUrl: string,
   alt: string
+  className?: string
 }
 
-export default function ColorCarouselElement({ color, imgUrl, alt }: ColorCarouselElementProps) {
+export default function ColorCarouselElement({ color, imgUrl, alt, className }: ColorCarouselElementProps) {
   const localColor = `bg-${color}-500`
 
   return (
-    <div className="relative grid place-content-center">
+    <div className={`relative grid place-content-center w-[25%] ${className}`}>
       <div
-        className={`${localColor} h-full w-full absolute  opacity-50`}
+        className={`${localColor} h-full w-full absolute`}
       ></div>
 
       <img
