@@ -12,7 +12,9 @@ const Input = ({ type, value, setValue }: InputProps) => {
       placeholder={placeholder}
       value={value}
       onChange={e => setValue(e.target.value)}
-      className="p-2 border-fade border-2" />
+      className="p-2 border-fade border-2"
+      spellCheck={false}
+    />
   )
 }
 
