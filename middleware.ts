@@ -3,6 +3,9 @@ import { handleCategory, handleLocale } from "./middlewares";
 
 export async function middleware(req: NextRequest) {
 
+  if (req.nextUrl.pathname === "/profile/update") {
+    return NextResponse.next();
+  }
   const localeRedirect = await handleLocale(req)
   if (localeRedirect) return localeRedirect
 
@@ -11,7 +14,6 @@ export async function middleware(req: NextRequest) {
 
   // const [lang, category] = req.nextUrl.pathname.toString().split('/').filter(Boolean)
 
-  console.log(req)
   // req.context.lang = lang
   // req.context.category = category
 
