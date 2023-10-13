@@ -1,8 +1,8 @@
 "use client"
 import { useThemeStore } from "@/state"
 import { getSvgColor } from "@/utils/theme"
-import { AccountMenu } from '.'
-import { Error, SignInOrUp } from '../'
+import { AccountMenu, CenterContainer } from '.'
+import { Error } from '../'
 import { useMyAccount, useSignInOrUp, useUserSession } from '../hooks'
 
 const IconAccount = () => {
@@ -36,7 +36,7 @@ const IconAccount = () => {
 
       {!error.status ? (
         showMyAccount ? <AccountMenu />
-          : showSignIn ? <SignInOrUp /> : null
+          : showSignIn ? <CenterContainer /> : null
       ) : <Error>Something went wrong</Error>}
 
 
