@@ -1,0 +1,23 @@
+{
+  "home": {
+    "banner": [
+      "Shipping Info",
+      "Read All About It",
+      "Another One Bites The Dust",
+      "Temperature Rising"
+    ],
+    "buttons": {
+      "hero": "SHOP NOW"
+    },
+    "heroCarousel": {
+      "new in": "NEW IN",
+      "promos": "PROMOS",
+      "filters": "FILTERS"
+    },
+    "colorPalette": {
+      "title": "DISCOVER YOUR PERFECT PALETTE",
+      "p": "Shop by Your Favorite Colors and Unleash Your Style"
+    }
+  },
+  "to-second-page": "To second page"
+}
