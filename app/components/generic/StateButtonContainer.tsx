@@ -5,7 +5,7 @@ import { Auth, StateButtonContainerProps } from "@/types/auth"
 export default function StateButtonContainer({ selected, setSelected }: StateButtonContainerProps) {
   return (
 
-    <div className="flex w-4/5 mx-auto">
+    <div className="flex w-4/5 mx-auto pt-8">
 
       <StateButton
         selected={selected === 'log in'}
