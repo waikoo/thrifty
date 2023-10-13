@@ -9,6 +9,7 @@ export default function HeroCarouselImages({ category }: Category) {
   const { selectedCircle } = useHeroCarousel()
   // 200, 300 small
   // 410, 350 big
+
   return (
     <div className="flex gap-1 flex-1 min-w-[80%]">
 
@@ -17,7 +18,7 @@ export default function HeroCarouselImages({ category }: Category) {
         return (
           <HeroCarouselSmallImage
             key={`Small${index}`}
-            priority={src.src.includes('women_new_in')}
+            priority={true}
             src={src}
             alt={`newIn_${index}`}
             className={'h-full object-cover'} />
@@ -27,7 +28,7 @@ export default function HeroCarouselImages({ category }: Category) {
       <HeroCarouselLargeImage
         key={`Large${selectedCircle}`}
         src={images[category].large[selectedCircle]}
-        priority={images[category].large[selectedCircle].src.includes('women_new_in')}
+        priority={true}
         alt={selectedCircle === 0 ? 'newIn_03'
           : selectedCircle === 1 ? 'promos_03'
             : selectedCircle === 2 ? 'filters_03'
