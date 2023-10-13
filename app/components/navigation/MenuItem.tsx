@@ -1,7 +1,6 @@
 "use client"
 import React, { useRef, useState } from 'react';
 import { twMerge as tm } from 'tailwind-merge';
-import { Spinner } from '..';
 import useEventListener from '../hooks/useEventListener';
 
 type MenuItemProps = {
