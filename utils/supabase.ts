@@ -1,13 +1,18 @@
 import { supabase } from "@/app/supabase";
 
-type HandleRecoverPasswordProps = {
-  e: React.FormEvent;
-  email: string;
-  setShowSignIn: (value: boolean) => void;
-  setShowRecovery: (value: boolean) => void;
-};
+type HandleRecoverPasswordProps = (
+  e: React.FormEvent,
+  email: string,
+  setShowRecovery: (value: boolean) => void,
+  setShowSignIn: (value: boolean) => void,
+) => void;
 
-export const handleRecoverPassword = async ({ e, email, setShowRecovery, setShowSignIn }: HandleRecoverPasswordProps) => {
+export const handleRecoverPassword: HandleRecoverPasswordProps = async (
+  e,
+  email,
+  setShowRecovery,
+  setShowSignIn
+) => {
   e.preventDefault();
   let { data, error }: { data: any, error: any } = await supabase.auth.resetPasswordForEmail(email);
 
