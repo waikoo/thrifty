@@ -42,7 +42,7 @@ export default function MenuItem({ children, className, onClick, Img, color, loa
         "p-5 whitespace-no-wrap w-max",
         loading && "bg-bkg"
       )} onClick={onClick}>
-        {loading ? <Spinner /> : children}
+        {children}
       </li>
     </div>
   );
