@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest) {
 
   const categoryRedirect = await handleCategory(req)
   if (categoryRedirect) return categoryRedirect
-
+  console.log(req.nextUrl.pathname)
   // const [lang, category] = req.nextUrl.pathname.toString().split('/').filter(Boolean)
 
   // req.context.lang = lang
