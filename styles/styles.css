@@ -32,12 +32,6 @@
   }
 }
 
-.vertical-text {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  white-space: nowrap;
-}
-
 .separator::before  {
   content: "|";
   color: black;
@@ -69,4 +63,25 @@ html[data-theme="light"] input.placeholda::placeholder {
 
 .aspect-ratio {
   aspect-ratio: 16 / 9;
+}
+
+/* Typography */
+.hero-h1 {
+  font-size: clamp(12px, 3.75rem, 60px);
+  font-weight: 500;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  /* white-space: nowrap; */
+  line-height: normal;
+}
+
+.hero-p {
+  font-size: clamp(4px, 0.8125rem, 0.9rem);
+  font-weight: 300;
+  line-height: normal;
+}
+
+.nav-category {
+  font-weight: 600;
+  font-size: clamp(4px, 0.875rem, 0.9rem);
 }
