@@ -17,7 +17,7 @@ export default function useSignUp() {
     console.log(data)
     setShowSignIn(false)
 
-    router.push(`${pathname}?category=${params.get('category') || 'women'}`)
+    router.push(`${pathname}`)
   }
   return { signUpHook, loading }
 }
