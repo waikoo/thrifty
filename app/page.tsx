@@ -1,6 +1,6 @@
 import { HeroCarousel } from "@/app/components/home"
 import ColorCarousel from "@/app/components/home/ColorCarousel"
-import { Category, PageProps } from "@/types/home"
+import { Category } from "@/types/home"
 
 type SharedPageProps = {
   params: {
