@@ -1,15 +1,29 @@
 "use client";
-import { useState } from "react";
-import { bannerMessages } from "../data";
+import { useUIStore } from '@/state';
+import { useMessageDisplay } from '.';
+import { bannerMessages } from '../data';
 
-const useBanner = () => {
-  const [closeBanner, setCloseBanner] = useState(false);
+export default function Banner() {
+  const { showBanner, setShowBanner } = useUIStore()
+  const idx = useMessageDisplay(bannerMessages, 5000);
 
-  const closeBannerElement = () => {
-    setCloseBanner(true);
-  };
+  return (
+    <>
+      {showBanner ? (
+        <section className={`grid grid-cols-3 gap-4 py-1 bg-faded px-3 text-black w-full`}>
 
-  return { closeBanner, closeBannerElement, bannerMessages };
-};
+          <span className="col-span-2 col-start-2 col-end-3 justify-self-center">
+            {bannerMessages[idx]}
+          </span>
 
-export default useBanner;
+          <span className="col-start-3 col-end-4 justify-self-end cursor-pointer"
+            onClick={() => setShowBanner(!showBanner)}>
+            X
+          </span>
+
+        </section>
+      ) : null}
+    </>
+  );
+}
+
