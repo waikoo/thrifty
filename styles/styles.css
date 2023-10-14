@@ -11,8 +11,16 @@
     --clr-bkg: 0deg 0% 100%;
     --clr-content: 210deg 15% 10%;
     --clr-grey: 0deg 0% 85%;
-
     --clr-faded: 0deg 0% 69%;
+    --clr-pink: 315deg 70% 67%;
+    --clr-black: 0deg 0% 0%;
+    --clr-blue: 215deg 53% 40%;
+    --clr-white: 0deg 2% 98%;
+    --clr-darkgrey: 220deg 1% 28%;
+    --clr-yellow: 50deg 82% 45%;
+    --clr-red: 348deg 86% 45%;
+    --clr-green: 160deg 48% 24%; 
+    --clr-purple: 283deg 60% 32%;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -84,4 +92,13 @@ html[data-theme="light"] input.placeholda::placeholder {
 .nav-category {
   font-weight: 600;
   font-size: clamp(4px, 0.875rem, 0.9rem);
+}
+
+.glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
