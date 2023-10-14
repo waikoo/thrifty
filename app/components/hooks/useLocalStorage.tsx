@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 const useLocalStorage = (key: string, value: unknown) => {
-  console.log(value)
+
   const [state, setState] = useState(() => {
 
     try {
@@ -16,7 +16,7 @@ const useLocalStorage = (key: string, value: unknown) => {
   const setLocalStorageState = (newState: unknown) => {
     try {
       const newStateValue = typeof newState === 'function' ? newState(state) : newState
-      console.log(newStateValue)
+
       setState(newStateValue)
       window.localStorage.setItem(key, JSON.stringify(newStateValue))
     } catch (e) {
