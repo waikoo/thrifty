@@ -1,6 +1,7 @@
 export { default as useBanner } from "./useBanner";
 export { default as useMessageDisplay } from "./useMessageDisplay";
 export { default as useDarkMode } from "./useDarkMode";
+export { default as useEventListener } from "./useEventListener";
 export { default as useMediaQuery } from "./useMediaQuery";
 export { default as useUserEmail } from "./useUserEmail";
 export { default as useAuthMethods } from "./useAuthMethods";
