@@ -3,7 +3,6 @@ import { usePathname } from "next/navigation";
 
 type withHomeProps = {
   children: React.ReactNode
-  params: { locale: string; category: string }
 }
 
 export default function WithHome({ children }: withHomeProps) {
