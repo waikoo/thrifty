@@ -8,7 +8,6 @@ export default async function handleLocale(req: NextRequest) {
 
   const locales = ['en', 'de']
 
-  // if (!pathname.startsWith(`/en`) && !pathname.startsWith(`/de`)) {
   if (!locales.some(locale => pathname.startsWith(`/${locale}`))) {
     const newPathname = `/${headersLocale}/${defaultCategory}`;
     req.nextUrl.pathname = newPathname;
