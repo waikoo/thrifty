@@ -6,3 +6,4 @@ export { default as ThemeToggler } from "./ThemeToggler";
 export { default as Spinner } from "./Spinner";
 export { default as CheckBox } from "./CheckBox"
 export { default as Error } from "./Error"
+export { default as WithHome } from './WithHome'
