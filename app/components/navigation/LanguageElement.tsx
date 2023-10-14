@@ -14,7 +14,7 @@ export default function LanguageElement({ locale }: LanguageElementProps) {
 
   return (
     <Link href={`/${locale}/${category}`}
-      className={`items-center text-black relative ${selectedLocale} ${increaseSpace} `}>
+      className={`items-center relative ${selectedLocale} ${increaseSpace} `}>
       {uppercaseLocale}
     </Link>
   )
