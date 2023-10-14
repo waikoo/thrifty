@@ -21,12 +21,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html data-theme={themeSettings.DEFAULT_THEME} className={inter.className}>
       <head />
       <body className="relative bg-bkg">
-        <Banner />
-        <section className="h-screen bg-bkg text-content flex flex-col px-20">
-          <LanguagePicker />
+        <section className="h-screen bg-bkg text-content flex flex-col">
           <Navigation />
 
-          <main className="mt-5">
+          <main className="mt-36 px-20">
             {children}
           </main>
 
