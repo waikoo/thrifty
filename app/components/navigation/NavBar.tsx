@@ -1,13 +1,12 @@
 "use client"
-import { WithHome } from "../"
 import { useDarkMode } from "../hooks"
-import { IconAccount, IconFavorite, IconShoppingBag, Logo, SearchBar } from './'
+import { IconAccount, IconFavorite, IconShoppingBag, Logo, SearchBar, WithHome } from './'
 
 const NavBar = () => {
   useDarkMode()
 
   return (
-    <div className={`grid grid-cols-3 pb-2 pt-4 border-b-2 border-content relative`}>
+    <div className={`grid grid-cols-3 pb-2 pt-4 border-b-2 border-content relative w-[87vw]`}>
       <SearchBar />
       <WithHome> <Logo /> </WithHome>
 
