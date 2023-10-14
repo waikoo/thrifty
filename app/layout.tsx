@@ -3,8 +3,8 @@ import { themeSettings } from "@/app/components/data/theme";
 import { Banner } from "@/app/components/generic";
 import { LanguagePicker, Navigation } from "@/app/components/navigation";
 import "@/styles/styles.css";
+import { Inter } from 'next/font/google';
 import { Suspense } from "react";
-import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 export const metadata = {
@@ -13,13 +13,9 @@ export const metadata = {
 
 export type RootLayoutProps = {
   children: React.ReactNode,
-  params: {
-    lang: string,
-    category: string
-  }
 }
 
-export default function RootLayout({ children, params: { lang, category } }: RootLayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps) {
 
   return (
     <html data-theme={themeSettings.DEFAULT_THEME} className={inter.className}>
@@ -27,8 +23,9 @@ export default function RootLayout({ children, params: { lang, category } }: Roo
       <body className="relative bg-bkg">
         <Banner />
         <section className="h-screen bg-bkg text-content flex flex-col px-20">
-          <LanguagePicker {... { lang, category }} />
+          <LanguagePicker />
           <Navigation />
+
           <main className="mt-5">
             {children}
           </main>
