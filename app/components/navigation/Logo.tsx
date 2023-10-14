@@ -7,8 +7,8 @@ type LogoProps = {};
 
 const Logo = ({ }: LogoProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
-  const [, locale, category] = usePathname().split('/')
-  const router = useRouter()
+  // const [, locale, category] = usePathname().split('/')
+  // const router = useRouter()
 
   return (
     <svg
@@ -16,7 +16,7 @@ const Logo = ({ }: LogoProps) => {
       width={132}
       height={21}
       fill="none"
-      onClick={() => router.push(`/${locale}/${category}`)}
+      // onClick={() => router.push(`/${locale}/${category}`)}
       className="col-start-2 col-end-3 justify-self-center self-center cursor-pointer">
       <path
         fill={color}
