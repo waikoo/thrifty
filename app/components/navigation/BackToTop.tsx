@@ -5,13 +5,16 @@ import { useEventListener } from "../hooks";
 export default function BackToTop() {
   const { showBackToTop, setShowBackToTop } = useUIStore();
 
-  useEventListener({
-    eventType: "scroll",
-    listener: () => {
-      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-      setShowBackToTop(scrollTop !== 0)
-    },
-  })
+  if (typeof window !== 'undefined') {
+    useEventListener({
+      eventType: "scroll",
+      listener: () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        setShowBackToTop(scrollTop !== 0)
+      },
+      target: window
+    })
+  }
 
   return (
     <>
