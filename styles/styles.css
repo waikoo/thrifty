@@ -75,16 +75,17 @@ html[data-theme="light"] input.placeholda::placeholder {
 
 /* Typography */
 .hero-h1 {
-  font-size: clamp(12px, 3.75rem, 60px);
+  /* font-size: clamp(12px, 1rem + 120vw, 40px); */
+  /* font-size: calc(12px + (40px - 12px) * ((100vw - 375px) / (1920px - 375px))); */
   font-weight: 500;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  /* white-space: nowrap; */
+  white-space: nowrap;
   line-height: normal;
 }
 
 .hero-p {
-  font-size: clamp(4px, 0.8125rem, 0.9rem);
+  font-size: clamp(2px, 0.7125rem, 1rem);
   font-weight: 300;
   line-height: normal;
 }
@@ -99,6 +100,13 @@ html[data-theme="light"] input.placeholda::placeholder {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  /* border-radius: 16px; */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.textShadow {
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+.clipPath {
+   clip-path: 'inset(0 5 5 0)'; 
 }
