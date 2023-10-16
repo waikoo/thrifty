@@ -6,16 +6,18 @@ const NavBar = () => {
   useDarkMode()
 
   return (
-    <div className={`grid grid-cols-3 pb-2 pt-4 border-b-2 border-content relative w-[87vw]`}>
-      <SearchBar />
-      <WithHome> <Logo /> </WithHome>
+    <section className="w-full max-w-[1440px] ">
+      <div className={`grid grid-cols-3 pb-2 pt-4 w-full border-b-2 border-content relative mx-auto`}>
+        <SearchBar />
+        <WithHome> <Logo /> </WithHome>
 
-      <nav className="flex gap-6 justify-self-end items-center pt-2">
-        <IconAccount />
-        <IconFavorite />
-        <IconShoppingBag />
-      </nav>
-    </div>
+        <nav className="flex items-center gap-6 justify-self-end pt-2">
+          <IconAccount />
+          <IconFavorite />
+          <IconShoppingBag />
+        </nav>
+      </div>
+    </section>
   )
 }
 

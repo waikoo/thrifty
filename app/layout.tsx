@@ -1,14 +1,14 @@
 import ThemeToggler from "@/app/components/ThemeToggler";
 import { themeSettings } from "@/app/components/data/theme";
-import { Banner } from "@/app/components/generic";
-import { LanguagePicker, Navigation } from "@/app/components/navigation";
+import { BackToTop, Banner, Category, LanguagePicker, NavBar } from "@/app/components/navigation";
 import "@/styles/styles.css";
 import { Inter } from 'next/font/google';
 import { Suspense } from "react";
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 export const metadata = {
-  title: 'Thrifty'
+  title: 'Thrifty',
+  description: 'An e-commerce store for second-hand clothing',
 }
 
 export type RootLayoutProps = {
@@ -20,11 +20,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html data-theme={themeSettings.DEFAULT_THEME} className={inter.className}>
       <head />
-      <body className="relative bg-bkg">
-        <section className="h-screen bg-bkg text-content flex flex-col">
-          <Navigation />
+      <body className="bg-bkg relative">
+        <Banner />
+        <section className="bg-bkg text-content mx-auto flex h-screen max-w-[1440px] flex-col items-center px-20">
+          <LanguagePicker />
+          <NavBar />
 
-          <main className="mt-36 px-20">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Category />
+          </Suspense>
+
+          <BackToTop />
+
+          <main className="mt-6 flex w-full flex-col items-center">
             {children}
           </main>
 
