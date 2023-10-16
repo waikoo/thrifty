@@ -1,7 +1,7 @@
 import { Category, TColor } from "@/types/home";
 import { getColors } from "@/utils/getColors";
-import { ColorCarouselImages } from "./";
 import { IconArrow } from "../generic/";
+import { ColorCarouselImages } from "./";
 
 type ColorCarouselGridProps = {
   category: Category['category'];
