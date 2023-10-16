@@ -28,8 +28,9 @@ export default function ColorCarouselElement({ color, imgUrl, alt, className }: 
   })
 
   return (
-    <div className={`relative flex items-center justify-center w-[25%] object-cover ${className}`}
-      ref={imgRef}>
+    <div className={`snap-start relative flex items-center justify-center object-cover cursor-pointer ${className}`}
+      ref={imgRef}
+    >
 
       <div className={`w-full h-full absolute text-white font-black flex items-center justify-center ${localColor} ${isHovered ? 'opacity-50' : 'opacity-0'}"`}
         style={isHovered ? { clipPath: 'inset(0 0 0 0)' } : {}}
@@ -42,7 +43,8 @@ export default function ColorCarouselElement({ color, imgUrl, alt, className }: 
       <img
         src={imgUrl}
         alt={alt}
-        className={`block w-full h-full object-cover h-auto ${isHovered ? 'opacity-50' : null}`} />
+        className={`block w-full h-full object-cover h-auto ${isHovered ? 'opacity-50' : null}`}
+      />
 
 
       {!isHovered && (
