@@ -6,6 +6,8 @@ const ThemeToggler = () => {
   const theme = useThemeStore((state) => state.theme)
   const updateTheme = useThemeStore((state) => state.updateTheme)
   const [nextThemeText, setNextThemeText] = useState<'Light' | 'Dark' | null>(null)
+  const LIGHT = theme === 'dark' ? 'text-gray-500 opacity-70' : 'text-black'
+  const DARK = theme === 'dark' ? 'text-black' : 'text-gray-500 opacity-70'
 
   const handleToggleTheme = () => {
     const newTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'
@@ -19,8 +21,13 @@ const ThemeToggler = () => {
   }, [theme])
 
   return (
-    <button className="bg-content text-bkg col-start-1 col-end-2 p-1.5" onClick={handleToggleTheme}>
-      {`Toggle to ${nextThemeText}`}
+    <button className="col-start-3 col-end-4 mr-4 flex cursor-pointer items-center gap-2 justify-self-end" onClick={handleToggleTheme}>
+      <span className={`${LIGHT}`}>LIGHT</span>
+      <div className={`relative grid h-[1.4rem] w-[2.5rem] items-center rounded-full ${theme !== 'dark' ? 'bg-black' : 'bg-white'} `}>
+        <div className={`absolute h-[0.8rem] w-[0.8rem] rounded-full ${theme !== 'dark' ? 'bg-white' : 'bg-black'} transition-all ${theme === 'dark' ? 'translate-x-[1.4rem]' : 'translate-x-[0.3rem]'}`}></div>
+      </div>
+      <input type="checkbox" checked={theme === 'dark'} className="sr-only" />
+      <span className={`${DARK}`}>DARK</span>
     </button>
   );
 };

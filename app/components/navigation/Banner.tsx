@@ -1,6 +1,7 @@
 "use client";
 import { useUIStore } from '@/state';
 import { bannerMessages } from '../data';
+import { ThemeToggler } from '../generic';
 import useMessageDisplay from '../hooks/useMessageDisplay';
 
 export default function Banner() {
@@ -18,10 +19,7 @@ export default function Banner() {
             {bannerMessages[idx]}
           </span>
 
-          <span className="col-start-3 col-end-4 cursor-pointer justify-self-end"
-            onClick={() => setShowBanner(!showBanner)}>
-            X
-          </span>
+          <ThemeToggler />
 
         </section>
       ) : null}
