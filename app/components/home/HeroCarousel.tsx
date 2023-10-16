@@ -5,9 +5,9 @@ import { HeroCarouselArticle, HeroCarouselImages, HeroCarouselNavigator } from '
 const HeroCarousel = ({ category }: Category) => {
 
   return (
-    <section className="flex flex-col gap-5 max-w-full">
+    <section className="flex max-w-full flex-col gap-5">
 
-      <div className={`flex flex-row gap-2 px-20 rounded-[2.8125rem] m-0 bg-content text-bkg max-w-full aspect-ratio max-h-[39.375rem]`}>
+      <div className={`flex flex-row gap-2 px-20 rounded-[2.8125rem] m-0 bg-content text-bkg max-w-full`}>
         <HeroCarouselImages category={category} />
         <HeroCarouselArticle />
       </div>

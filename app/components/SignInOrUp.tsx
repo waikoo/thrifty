@@ -19,14 +19,14 @@ const SignInOrUp = () => {
 
   return (
     <>
-      <span className="text-content absolute top-3 right-4  cursor-pointer" onClick={() => setShowSignIn(false)}>X</span>
+      <span className="text-content absolute right-4 top-3  cursor-pointer" onClick={() => setShowSignIn(false)}>X</span>
 
       <StateButtonContainer
         selected={selected}
         setSelected={setSelected}
       />
 
-      <form className="bg-bkg grid place-items-center gap-5 min-w-max pt-16">
+      <form className="bg-bkg grid min-w-max place-items-center gap-5 pt-16">
         <Input type="email" value={email} setValue={setEmail} />
         <Input type="password" value={password} setValue={setPassword} />
 
@@ -38,20 +38,20 @@ const SignInOrUp = () => {
           {selected === Auth.LOGIN ? Auth.LOGIN : Auth.SIGNUP}
         </SubmitButton>
 
-        <span className="underline underline-offset-6 cursor-pointer text-content font-normal"
+        <span className="underline-offset-6 text-content cursor-pointer font-normal underline"
           onClick={() => setShowRecovery(true)}>
           Forgot password?
         </span>
 
-        <div className="flex gap-2 text-content">
-          <span className="p-2 border-[0.1rem] border-content cursor-pointer">F</span>
-          <span className="p-2 border-[0.1rem] border-content cursor-pointer">G</span>
-          <span className="p-2 border-[0.1rem] border-content cursor-pointer">A</span>
-          <span className="p-2 border-[0.1rem] border-content cursor-pointer">X</span>
+        <div className="text-content flex gap-2">
+          <span className="border-content cursor-pointer border-[0.1rem] p-2">F</span>
+          <span className="border-content cursor-pointer border-[0.1rem] p-2">G</span>
+          <span className="border-content cursor-pointer border-[0.1rem] p-2">A</span>
+          <span className="border-content cursor-pointer border-[0.1rem] p-2">X</span>
         </div>
 
         <span className="text-content">Don't have an account? <span
-          className="underline underline-offset-6 font-normal text-content"
+          className="underline-offset-6 text-content font-normal underline"
           onClick={signUpHook}
         >Sign up
         </span>

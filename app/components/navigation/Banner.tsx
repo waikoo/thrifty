@@ -11,14 +11,14 @@ export default function Banner() {
   return (
     <>
       {showBanner ? (
-        <section className={`grid grid-cols-3 gap-4 py-1 bg-faded px-3 text-black-500 w-full
+        <section className={` z-20 grid grid-cols-3 gap-4 py-1 bg-faded px-3 text-black-500 w-screen
           ${textColor}`}>
 
           <span className="col-span-2 col-start-2 col-end-3 justify-self-center">
             {bannerMessages[idx]}
           </span>
 
-          <span className="col-start-3 col-end-4 justify-self-end cursor-pointer"
+          <span className="col-start-3 col-end-4 cursor-pointer justify-self-end"
             onClick={() => setShowBanner(!showBanner)}>
             X
           </span>
