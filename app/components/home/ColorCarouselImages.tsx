@@ -1,20 +1,20 @@
-import { Category, TColor } from "@/types/home";
+"use client"
+import { useUIStore } from "@/state/uiState";
+import { TColor } from "@/types/home";
 import { ColorCarouselElement } from ".";
-import { colors } from "../data/home/colorCarouselData";
 
 type ColorCarouselImagesProps = {
-  category: Category['category']
-  count: number
-  clicked: boolean
+  colors: TColor[]
 }
 
-export default function ColorCarouselImages({ category, count, clicked }: ColorCarouselImagesProps) {
-  const start = clicked ? 4 : 0
-  const end = clicked ? colors[category].length : 4
+export default function ColorCarouselImages({ colors }: ColorCarouselImagesProps) {
+  const { isSecondColorPage } = useUIStore()
+  const start = isSecondColorPage ? 4 : 0
+  const end = isSecondColorPage ? colors.length : 4
 
   return (
-    <div className="flex overflow-x-auto w-full gap-6">
-      {colors[category].slice(start, end).map(({ id, color, imgUrl, alt }: TColor) => (
+    <div className="flex w-full gap-6 overflow-x-auto">
+      {colors.slice(start, end).map(({ id, color, imgUrl, alt }: TColor) => (
         <ColorCarouselElement
           key={id}
           color={color}
