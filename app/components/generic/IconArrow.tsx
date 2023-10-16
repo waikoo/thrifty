@@ -1,4 +1,5 @@
 "use client"
+import { useColorCarouselRef } from '@/state/colorCarouselState';
 import { useUIStore } from '@/state/uiState';
 import { twMerge as tm } from 'tailwind-merge';
 
@@ -8,17 +9,18 @@ type IconArrowProps = {
 };
 
 function IconArrow({ left, className }: IconArrowProps) {
-  const { isSecondColorPage, setIsSecondColorPage } = useUIStore()
   const rotateArrow = `transform ${left ? 'scale-x-[-1]' : 'scale-x-1'}`
+  const { containerRef } = useColorCarouselRef()
 
-  const handleClick = () => {
-    if (left) {
-      if (isSecondColorPage) setIsSecondColorPage(false);
-    } else {
-      if (!isSecondColorPage) setIsSecondColorPage(true);
+  const handleScrolling = () => {
+    if (containerRef) {
+      const imageWidth = containerRef.clientWidth;
+      containerRef.scrollTo({
+        left: left ? containerRef.scrollLeft - imageWidth : containerRef.scrollLeft + imageWidth,
+        behavior: 'smooth',
+      });
     }
   }
-
 
   return (
     <svg
@@ -28,7 +30,7 @@ function IconArrow({ left, className }: IconArrowProps) {
       fill="none"
       viewBox="0 0 8 15"
       className={tm(`cursor-pointer ${rotateArrow} ${className}`)}
-      onClick={handleClick}
+      onClick={handleScrolling}
     >
       <path
         fill="#fff"
