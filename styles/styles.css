@@ -110,3 +110,7 @@ html[data-theme="light"] input.placeholda::placeholder {
 .clipPath {
    clip-path: 'inset(0 5 5 0)'; 
 }
+
+.noscrollbar::-webkit-scrollbar {
+  visibility: hidden;
+}
