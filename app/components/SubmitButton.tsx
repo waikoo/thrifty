@@ -6,6 +6,7 @@ type ButtonProps = {
   children: React.ReactNode | JSX.Element;
   className?: string;
   inverse?: boolean;
+  hero?: boolean
   onClick?: (e: TMouseOnButton) => void
 }
 
@@ -13,14 +14,15 @@ type SubmitButtonProps = ButtonProps & {
   loading?: boolean
 }
 
-const SubmitButton = ({ children, className, inverse, loading, onClick }: SubmitButtonProps) => {
+const SubmitButton = ({ children, className, inverse, loading, onClick, hero }: SubmitButtonProps) => {
 
   return (
     <button className={
-      tm("bg-content text-bkg block w-full p-4 mt-6 font-semibold",
+      tm("bg-content text-bkg block w-full p-4 font-semibold",
         className,
         inverse && "bg-bkg text-content border-content",
-        loading && "bg-bkg"
+        loading && "bg-bkg",
+        hero && "h-auto w-full border-[0.05rem] p-0.5 text-[0.85rem] sm:p-1 md:p-2"
       )}
 
       onClick={onClick}
