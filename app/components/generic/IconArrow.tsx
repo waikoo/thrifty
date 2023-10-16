@@ -1,20 +1,21 @@
-import { twMerge as tm } from 'tailwind-merge'
+"use client"
+import { useUIStore } from '@/state/uiState';
+import { twMerge as tm } from 'tailwind-merge';
 
 type IconArrowProps = {
   left?: boolean;
   className?: string
-  clicked: boolean
-  setClicked: (state: boolean) => void
 };
 
-function IconArrow({ left, className, setClicked, clicked }: IconArrowProps) {
+function IconArrow({ left, className }: IconArrowProps) {
+  const { isSecondColorPage, setIsSecondColorPage } = useUIStore()
   const rotateArrow = `transform ${left ? 'scale-x-[-1]' : 'scale-x-1'}`
 
   const handleClick = () => {
     if (left) {
-      if (clicked) setClicked(false);
+      if (isSecondColorPage) setIsSecondColorPage(false);
     } else {
-      if (!clicked) setClicked(true);
+      if (!isSecondColorPage) setIsSecondColorPage(true);
     }
   }
 
