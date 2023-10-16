@@ -6,11 +6,13 @@ type UIState = {
   showRecovery: boolean
   showBanner: boolean
   showBackToTop: boolean
+  isSecondColorPage: boolean
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
   setShowRecovery: (value: boolean | (boolean)) => void
   setShowBanner: (value: boolean | (boolean)) => void
   setShowBackToTop: (value: boolean | (boolean)) => void
+  setIsSecondColorPage: (value: boolean | (boolean)) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -19,11 +21,13 @@ export const useUIStore = create<UIState>((set) => ({
   showRecovery: false,
   showBanner: true,
   showBackToTop: false,
+  isSecondColorPage: false,
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
   setShowRecovery: (value) => set({ showRecovery: value }),
   setShowBanner: (value) => set({ showBanner: value }),
   setShowBackToTop: (value) => set({ showBackToTop: value }),
+  setIsSecondColorPage: (value) => set({ isSecondColorPage: value }),
 }))
 
 type HeroCarouselState = {
