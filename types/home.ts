@@ -7,7 +7,8 @@ export type TColorCarouselData = {
 }
 
 export type TColor = {
-  id: number,
+  id: string,
+  gender: Category['category'],
   color: string,
   imgUrl: string,
   alt: string
