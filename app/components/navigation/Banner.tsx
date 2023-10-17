@@ -3,6 +3,7 @@ import { useUIStore } from '@/state';
 import { bannerMessages } from '../data';
 import { ThemeToggler } from '../generic';
 import useMessageDisplay from '../hooks/useMessageDisplay';
+import LanguagePicker from './LanguagePicker';
 
 export default function Banner() {
   const { showBanner, setShowBanner } = useUIStore()
@@ -12,15 +13,20 @@ export default function Banner() {
   return (
     <>
       {showBanner ? (
-        <section className={` z-20 grid grid-cols-3 gap-4 py-1 bg-faded px-3 text-black-500 w-screen
+        <section className={`z-20 bg-faded text-black-500 w-full  
           ${textColor}`}>
+          <div className="mx-auto grid w-[95%] grid-cols-3 grid-rows-1 items-center gap-4">
 
-          <span className="col-span-2 col-start-2 col-end-3 justify-self-center">
-            {bannerMessages[idx]}
-          </span>
 
-          <ThemeToggler />
+            <LanguagePicker />
 
+            <span className="justify-self-center">
+              {bannerMessages[idx]}
+            </span>
+
+            <ThemeToggler />
+
+          </div>
         </section>
       ) : null}
     </>

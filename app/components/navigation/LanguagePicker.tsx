@@ -14,7 +14,7 @@ const LanguagePicker = () => {
   const top = showBanner ? 'top-0' : 'top-5'
 
   return (
-    <nav lang={lang} className={`flex items-center bg-bkg gap-3 bg-transparent col-start-1 col-end-2 hover:cursor-pointer absolute left-2 p-1 z-50
+    <nav lang={lang} className={`flex items-center bg-bkg gap-3 bg-transparent hover:cursor-pointer py-1 z-50 relative justify-self-start
       ${top} ${textColor}`}>
 
       {locales.map((locale: string) => {
