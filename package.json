@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "jest": "jest",
+    "test": "jest",
     "jest:watch": "jest --watchAll"
   },
   "dependencies": {
@@ -37,21 +37,12 @@
     "zustand": "^4.4.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.1.4",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.5.1",
-    "@types/jest": "^29.5.5",
-    "@types/testing-library__jest-dom": "^6.0.0",
     "autoprefixer": "^10.4.15",
-    "babel-jest": "^29.7.0",
     "bun-types": "^1.0.5",
     "eslint-plugin-jest-dom": "^5.1.0",
     "eslint-plugin-testing-library": "^6.0.2",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3",
-    "ts-jest": "^29.1.1",
     "tsc": "^2.0.4"
   }
 }
