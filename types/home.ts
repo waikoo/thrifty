@@ -14,6 +14,8 @@ export type TColor = {
   alt: string
 }
 
+export type Locales = 'en' | 'de'
+
 export type Category = {
   category: 'men' | 'women' | 'kids'
 }

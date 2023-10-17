@@ -1,0 +1,21 @@
+{
+  "banner": [
+    "Versandinformationen",
+    "Lesen Sie Alle darüber",
+    "Ein anderes Gesicht wird bald zerstört",
+    "Temperatur steigt"
+  ],
+  "heroCarousel": {
+    "button": "EINKAUFEN",
+    "titles": {
+      "one": "NEU IN",
+      "two": "WERBEAKTIONEN",
+      "three": "FILTERN"
+    },
+    "paragraph": "Willkommen bei unserem Online-Secondhand-Shop! Entdecken Sie eine Vielzahl von hochwertigen gebrauchten Artikeln zu günstigen Preisen. Bei uns finden Sie alles von Kleidung über Accessoires bis hin zu Möbeln und mehr. Unser Sortiment wird sorgfältig ausgewählt und regelmäßig aktualisiert, um Ihnen die besten Schnäppchen zu bieten. Tauchen Sie ein in die Welt des nachhaltigen Shoppings und unterstützen Sie die Wiederverwendung von Produkten. Bestellen Sie noch heute und machen Sie Ihr Zuhause zu einem einzigartigen und umweltbewussten Ort!"
+  },
+  "colorCarousel": {
+    "title": "ENTDECKEN SIE IHRE PERFEKTE PALETTE",
+    "p": "Einkaufen nach Ihren Lieblingsfarben und entfesseln Sie Ihren Stil"
+  }
+}

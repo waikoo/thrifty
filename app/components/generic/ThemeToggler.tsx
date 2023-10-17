@@ -1,10 +1,14 @@
 "use client";
-import { useDarkMode } from "../hooks/";
-import { useTogglerStyles } from "../hooks/";
+import { useTranslation } from "@/i18n/client";
+import { Locales } from "@/types/home";
+import { useParams } from "next/navigation";
+import { useDarkMode, useTogglerStyles } from "../hooks/";
 
 const ThemeToggler = () => {
   const { isDark, handleToggleTheme } = useDarkMode()
   const { getStyleForElement, bgColor, circleColor, xPos } = useTogglerStyles();
+  let lang = useParams()?.lang as Locales
+  const { t } = useTranslation(lang, 'layout')
 
   return (
     <button
@@ -12,7 +16,7 @@ const ThemeToggler = () => {
       onClick={handleToggleTheme}
     >
       <span className={`${getStyleForElement('light')}`} >
-        LIGHT
+        {t('theme.light')}
       </span>
 
       <div className={`relative grid h-[1.4rem] w-[2.5rem] items-center rounded-full 
@@ -32,7 +36,7 @@ const ThemeToggler = () => {
       />
 
       <span className={`${getStyleForElement('dark')}`} >
-        DARK
+        {t('theme.dark')}
       </span>
 
     </button>

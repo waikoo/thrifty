@@ -1,0 +1,29 @@
+{
+  "theme": {
+    "light": "LIGHT",
+    "dark": "DARK"
+  },
+  "search": "SEARCH",
+  "category": {
+    "men": "Men",
+    "women": "Women",
+    "kids": "Kids"
+  },
+  "login": {
+    "login": "Log In",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "checkbox": "Keep me logged in",
+    "button": "LOG IN"
+  },
+  "loggedin": {
+    "account": "My Account",
+    "returns": "My Returns",
+    "orders": "My Orders",
+    "settings": "Settings",
+    "help": "Help",
+    "contact": "Contact",
+    "logout": "Log Out"
+  }
+}

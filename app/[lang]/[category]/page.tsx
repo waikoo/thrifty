@@ -1,20 +1,20 @@
 import { HeroCarousel } from "@/app/components/home"
 import ColorCarousel from "@/app/components/home/ColorCarousel"
-import { Category } from "@/types/home"
+import { Category, Locales } from "@/types/home"
 
-type SharedPageProps = {
+type PageProps = {
   params: {
-    lang: string,
+    lang: Locales,
     category: Category['category']
   }
   searchParams: { [key: string]: string | string[] | undefined }
 }
-export default async function SharedPage({ params: { lang, category }, searchParams, }: SharedPageProps) {
+export default async function Page({ params: { lang, category }, searchParams, }: PageProps) {
 
   return (
     <>
-      <HeroCarousel category={category} />
-      <ColorCarousel category={category} />
+      <HeroCarousel {... { lang, category }} />
+      <ColorCarousel {... { lang, category }} />
     </>
   )
 }

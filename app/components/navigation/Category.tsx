@@ -1,16 +1,26 @@
 "use client"
-import { usePathname } from 'next/navigation';
+import { useTranslation } from '@/i18n/client';
+import { Locales } from '@/types/home';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-type CategoryProps = {};
+type CategoryProps = {
+  // lang: Locales
+};
 
 const Category = ({ }: CategoryProps) => {
-  const categories = ['men', 'women', 'kids'];
+  const [_, lang, category] = usePathname().split('/')
+  const { t } = useTranslation(lang as Locales, 'layout')
+  const categories = [
+    t('category.men'),
+    t('category.women'),
+    t('category.kids'),
+  ]
+  // const categories = ['men', 'women', 'kids'];
   const [, currentLocale, currentCategory,] = usePathname().split('/');
-
   return (
-    <nav className="w-5/12 mx-auto pt-2">
-      <ul className="grid grid-cols-3 w-full justify-items-center cursor-pointer">
+    <nav className="mx-auto w-5/12 pt-2">
+      <ul className="grid w-full cursor-pointer grid-cols-3 justify-items-center">
         {categories.map((category) => (
           <li
             key={category}

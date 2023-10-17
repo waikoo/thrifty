@@ -1,15 +1,19 @@
-"use client"
-import { Category } from '@/types/home';
+import { Category, Locales } from '@/types/home';
 import { HeroCarouselArticle, HeroCarouselImages, HeroCarouselNavigator } from '.';
 
-const HeroCarousel = ({ category }: Category) => {
+type HeroCarouselProps = {
+  category: Category['category']
+  lang: Locales
+}
+
+const HeroCarousel = ({ category, lang }: HeroCarouselProps) => {
 
   return (
     <section className="flex max-w-full flex-col gap-5">
 
       <div className={`flex flex-row gap-2 px-20 rounded-[2.8125rem] m-0 bg-content text-bkg max-w-full`}>
-        <HeroCarouselImages category={category} />
-        <HeroCarouselArticle />
+        <HeroCarouselImages {... { category }} />
+        <HeroCarouselArticle {... { lang }} />
       </div>
 
       <HeroCarouselNavigator />
