@@ -1,4 +1,6 @@
 export { default as useBanner } from "./useBanner";
+export { default as useTogglerStyles } from "./useTogglerStyles";
+export { default as useLocalStorage } from "./useLocalStorage";
 export { default as useMessageDisplay } from "./useMessageDisplay";
 export { default as useDarkMode } from "./useDarkMode";
 export { default as useEventListener } from "./useEventListener";
