@@ -10,6 +10,7 @@ export default function CategoryMenu() {
   const divRef = useRef<HTMLDivElement | null>(null)
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    // makes popup disappear on the bottom
     if (e.target === divRef.current) {
       setShowCategoryMenu(false)
     }
