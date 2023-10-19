@@ -38,6 +38,7 @@ export default function ColorCarouselImages({ colors }: ColorCarouselImagesProps
       initialX = (e as MouseEvent).clientX
     },
     target: imagesRef.current,
+    persist: true
   })
 
   useEventListener({
@@ -47,6 +48,7 @@ export default function ColorCarouselImages({ colors }: ColorCarouselImagesProps
       handleScrolling(e as MouseEvent)
     },
     target: imagesRef.current,
+    persist: true
   })
 
 

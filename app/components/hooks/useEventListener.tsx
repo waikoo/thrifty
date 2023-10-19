@@ -7,9 +7,10 @@ type UseEventListenerProps = {
   listener: (event: Event) => void;
   target?: EventTarget | null;
   options?: EventListenerOptions;
+  persist?: boolean
 };
 
-const useEventListener = ({ eventType, listener, target = window, options,
+const useEventListener = ({ eventType, listener, target = window, options, persist
 }: UseEventListenerProps): void => {
 
   const savedListener = useRef<(event: Event) => void>();
@@ -21,8 +22,10 @@ const useEventListener = ({ eventType, listener, target = window, options,
     const eventListener = (event: Event) => savedListener.current?.(event);
     target.addEventListener(eventType, eventListener, options);
 
-    return () => {
-      target.removeEventListener(eventType, eventListener, options);
+    if (!persist) {
+      return () => {
+        target.removeEventListener(eventType, eventListener, options);
+      }
     };
   }, [eventType, target, options]);
 };
