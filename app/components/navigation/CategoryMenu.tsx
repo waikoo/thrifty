@@ -4,6 +4,7 @@ import { useRef } from "react"
 import CategoryKids from "./CategoryKids"
 import CategoryMen from "./CategoryMen"
 import CategoryWomen from "./CategoryWomen"
+import CategoryImage from "./CategoryImage"
 
 export default function CategoryMenu() {
   const { category: hoveredCategory, setShowCategoryMenu } = useUIStore()
@@ -27,15 +28,8 @@ export default function CategoryMenu() {
       {hoveredCategory === 'kids' && <CategoryKids />}
 
       <div className="my-auto flex flex-col gap-10">
-        <div className="w-max-full relative grid cursor-pointer place-items-center">
-          <span className="textShadow absolute text-xl">NEW IN</span>
-          <img src="https://picsum.photos/300/200" />
-        </div>
-
-        <div className="w-max-full relative grid cursor-pointer place-items-center">
-          <span className="textShadow absolute text-xl">PROMOS</span>
-          <img src="https://picsum.photos/300/200" />
-        </div>
+        <CategoryImage>NEW IN</CategoryImage>
+        <CategoryImage>PROMOS</CategoryImage>
       </div>
     </div >
   )
