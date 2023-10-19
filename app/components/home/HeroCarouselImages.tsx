@@ -1,3 +1,4 @@
+"use client"
 import { StaticImageData } from 'next/image';
 import { HeroCarouselLargeImage } from '.';
 import { images } from '../data/home';
@@ -11,7 +12,7 @@ export default function HeroCarouselImages({ category }: Category) {
   // 410, 350 big
 
   return (
-    <div className="flex gap-1 flex-1 min-w-[80%]">
+    <div className="flex min-w-[80%] flex-1 gap-1">
 
       {images[category].small[selectedCircle]?.map((src: StaticImageData, index: number) => {
 
