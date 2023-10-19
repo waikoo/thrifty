@@ -17,7 +17,7 @@ export default function CategoryMenu() {
   }
   return (
     <div
-      className="bg-bkg border-content min-w-screen absolute inset-x-0 z-40 mx-auto flex gap-32 overflow-y-hidden border-t-[0.1rem] px-24 py-12"
+      className="bg-bkg border-content min-w-screen absolute inset-x-0 z-40 mx-auto flex gap-32 overflow-y-hidden border-t-[0.1rem] px-12 py-12"
       onMouseLeave={(e) => handleMouseLeave(e as React.MouseEvent<HTMLDivElement, MouseEvent>)}
       onMouseEnter={() => setShowCategoryMenu(true)}
       ref={divRef}
@@ -26,6 +26,17 @@ export default function CategoryMenu() {
       {hoveredCategory === 'women' && <CategoryWomen />}
       {hoveredCategory === 'kids' && <CategoryKids />}
 
+      <div className="my-auto flex flex-col gap-10">
+        <div className="w-max-full relative grid cursor-pointer place-items-center">
+          <span className="textShadow absolute text-xl">NEW IN</span>
+          <img src="https://picsum.photos/300/200" />
+        </div>
+
+        <div className="w-max-full relative grid cursor-pointer place-items-center">
+          <span className="textShadow absolute text-xl">PROMOS</span>
+          <img src="https://picsum.photos/300/200" />
+        </div>
+      </div>
     </div >
   )
 }
