@@ -4,6 +4,7 @@ import { useUIStore } from '@/state';
 import { Category, Locales } from '@/types/home';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useRef } from 'react';
 import CategoryMenu from './CategoryMenu';
 
 const Category = () => {
@@ -15,8 +16,15 @@ const Category = () => {
     t('category.kids') as Category['category'],
   ]
   const [, currentLocale, currentCategory,] = usePathname().split('/');
-
   const { showCategoryMenu, setCategory, setShowCategoryMenu } = useUIStore()
+
+  const anchorRef = useRef<HTMLAnchorElement | null>(null)
+
+  const handleMouseOut = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    if (e.target === anchorRef.current) {
+      setShowCategoryMenu(false)
+    }
+  }
 
   return (
     <nav className="relative w-full">
@@ -30,10 +38,12 @@ const Category = () => {
             >
               <Link
                 href={`/${currentLocale}/${category.toLowerCase()}`}
+                ref={anchorRef}
                 onMouseOver={() => {
                   setShowCategoryMenu(true)
                   setCategory(category.toLowerCase() as Category['category'])
                 }}
+                onMouseOut={(e) => handleMouseOut}
               >
                 {category.toUpperCase()}
               </Link>
