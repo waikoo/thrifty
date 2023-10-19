@@ -1,26 +1,30 @@
 "use client"
 import { useUIStore } from "@/state/uiState"
 import { useRef } from "react"
+import CategoryKids from "./CategoryKids"
 import CategoryMen from "./CategoryMen"
+import CategoryWomen from "./CategoryWomen"
 
 export default function CategoryMenu() {
-  const { showCategoryMenu, setShowCategoryMenu } = useUIStore()
+  const { category: hoveredCategory, setShowCategoryMenu } = useUIStore()
   const divRef = useRef<HTMLDivElement | null>(null)
 
-  const onMouseOut = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const div = divRef.current as HTMLDivElement
-    if (e.target !== div) {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (e.target === divRef.current) {
       setShowCategoryMenu(false)
     }
   }
   return (
     <div
-      className="bg-bkg border-content min-w-screen absolute inset-x-0 mx-auto flex gap-32 border-t-[0.1rem] px-24 py-12"
-      onMouseLeave={(e) => onMouseOut(e as React.MouseEvent<HTMLDivElement, MouseEvent>)}
+      className="bg-bkg border-content min-w-screen absolute inset-x-0 z-40 mx-auto flex gap-32 overflow-y-hidden border-t-[0.1rem] px-24 py-12"
+      onMouseLeave={(e) => handleMouseLeave(e as React.MouseEvent<HTMLDivElement, MouseEvent>)}
       onMouseEnter={() => setShowCategoryMenu(true)}
       ref={divRef}
     >
-      <CategoryMen />
+      {hoveredCategory === 'men' && <CategoryMen />}
+      {hoveredCategory === 'women' && <CategoryWomen />}
+      {hoveredCategory === 'kids' && <CategoryKids />}
+
     </div >
   )
 }
