@@ -8,8 +8,6 @@ import { Category } from '@/types/home';
 
 export default function HeroCarouselImages({ category }: Category) {
   const { selectedCircle } = useHeroCarousel()
-  // 200, 300 small
-  // 410, 350 big
 
   return (
     <div className="flex min-w-[80%] flex-1 gap-1">
