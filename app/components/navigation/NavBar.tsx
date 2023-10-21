@@ -6,12 +6,11 @@ import { IconAccount, IconFavorite, IconShoppingBag, Logo, SearchBar, WithHome }
 const NavBar = () => {
   useDarkMode()
   const { setShowCategoryMenu } = useUIStore()
-  // makes categorymenu disappear when exiting with mouseover on top
 
   return (
     <section className="w-full max-w-[1440px] ">
       <div className={`grid grid-cols-3 pb-2 pt-4 w-full border-b-2 border-content relative mx-auto`}
-        onMouseEnter={() => setShowCategoryMenu(false)}
+        onMouseEnter={() => setShowCategoryMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
         <SearchBar />
 
