@@ -1,8 +1,9 @@
 import { supabase } from "@/app/supabase";
 import { useEffect, useState } from "react";
+import { Session } from "@supabase/supabase-js";
 
 export default function useUserSession() {
-  const [session, setSession] = useState<unknown | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [error, setError] = useState({
     message: "",
     status: false
