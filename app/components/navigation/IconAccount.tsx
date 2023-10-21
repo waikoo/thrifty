@@ -1,6 +1,8 @@
 "use client"
 import { useThemeStore } from "@/state"
 import { getSvgColor } from "@/utils/theme"
+import { redirect } from "next/navigation"
+import { useEffect } from "react"
 import { AccountMenu, CenterContainer } from '.'
 import { Error } from '../'
 import { useMyAccount, useSignInOrUp, useUserSession } from '../hooks'
@@ -10,6 +12,12 @@ const IconAccount = () => {
   const { showSignIn, setShowSignIn } = useSignInOrUp()
   const color = useThemeStore((state) => getSvgColor(state.theme))
   const { session, error } = useUserSession()
+  // session?.user.role
+
+  // if (session?.user.role) 
+  useEffect(() => {
+    session?.user.role === 'admin' ? redirect("/admin") : null
+  }, [])
 
   return (
     <div className="relative">
@@ -19,7 +27,7 @@ const IconAccount = () => {
           xmlns="http://www.w3.org/2000/svg"
           width={15}
           height={16}
-          fill="none"
+          fill={session ? color : "none"}
           className="cursor-pointer"
           onClick={() => !session
             ? setShowSignIn(showSignIn ? false : true)
