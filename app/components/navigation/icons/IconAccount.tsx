@@ -1,8 +1,9 @@
 "use client"
+import { supabase } from "@/app/supabase"
 import { useThemeStore } from "@/state"
 import { getSvgColor } from "@/utils/theme"
 import { AccountMenu } from ".."
-import { SignInOrUp, Error } from "../.."
+import { Error, SignInOrUp } from "../.."
 import { useMyAccount, useUserSession } from "../../hooks"
 import useSignInOrUp from "../../hooks/useSignInOrUp"
 
