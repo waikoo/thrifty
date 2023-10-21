@@ -50,11 +50,8 @@ const SignInOrUp = () => {
           <span className="border-content cursor-pointer border-[0.1rem] p-2">X</span>
         </div>
 
-        <span className="text-content">Don't have an account? <span
-          className="underline-offset-6 text-content font-normal underline"
-          onClick={signUpHook}
-        >Sign up
-        </span>
+        <span className="text-content">Don&apos;t have an account?
+          <span className="underline-offset-6 text-content font-normal underline" onClick={signUpHook} >Sign up </span>
         </span>
 
       </form>
