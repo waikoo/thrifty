@@ -1,4 +1,4 @@
-import { HeroCarousel } from "@/app/components/home"
+import { ApparelGrid, HeroCarousel } from "@/app/components/home"
 import ColorCarousel from "@/app/components/home/ColorCarousel"
 import NewArrivals from "@/app/components/home/NewArrivals"
 import { Category, Locales } from "@/types/home"
@@ -16,7 +16,8 @@ export default async function Page({ params: { lang, category }, searchParams, }
     <>
       <HeroCarousel {... { lang, category }} />
       <ColorCarousel {... { lang, category }} />
-      <NewArrivals />
+      <NewArrivals {... { lang }} />
+      <ApparelGrid />
     </>
   )
 }
