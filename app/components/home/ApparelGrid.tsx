@@ -9,7 +9,7 @@ type ApparelGridProps = {
 export default async function ApparelGrid({ lang }: ApparelGridProps) {
   const { t } = await createTranslation(lang, 'home')
 
-  const common = `border-content border-[0.07rem]`;
+  const common = `border-content border-[0.2rem]`;
   const text = "h-full w-full self-end text-right";
   const flex = "flex place-items-end";
   const alignment = "align-self-end w-full justify-self-end p-2 text-sm"
@@ -23,35 +23,37 @@ export default async function ApparelGrid({ lang }: ApparelGridProps) {
       <div className={`bg-green ${common}`}></div>
       <div className={`bg-purple row-span-2 ${common}`}></div>
 
-      <div className={`bg-green col-span-1 overflow-hidden ${common}`}>
+      <div className={`bg-green col-span-1 overflow-hidden cursor-pointer ${common}`}>
         <ApparelGridImage src={images[0]} alt="clothes" />
       </div>
 
-      <div className={`${flex} ${text} ${common}`}>
+
+      <div className={`${flex} ${text} ${common}  cursor-pointer`}>
         <h4 className={`${alignment}`}><span>{t('apparelGrid.shoes')}</span></h4>
       </div>
 
-      <div className={`bg-blue ${common}`}>
+      <div className={`bg-blue ${common}  cursor-pointer`}>
         <ApparelGridImage src={images[1]} alt="shoes"
         />
       </div>
 
-      <div className={`${flex} ${text} ${common}`}>
+      <div className={`${flex} ${text} ${common}  cursor-pointer`}>
         <h4 className={`${alignment}`}>{t('apparelGrid.sport')}</h4>
       </div>
 
       <div className={`bg-orange-400 row-span-2 ${common}`}></div>
-      <div className={`${flex} ${text} ${common}`}>
+      <div className={`${flex} ${text} ${common}  cursor-pointer`}>
         <h4 className={`${alignment}`}>{t('apparelGrid.clothing')}</h4>
       </div>
-      <div className={`bg-purple ${common}`}>
-        <ApparelGridImage src={images[2]} alt="accessories" />
 
+      <div className={`bg-purple ${common}  cursor-pointer`}>
+        <ApparelGridImage src={images[2]} alt="accessories" />
       </div>
-      <div className={`${flex} ${text} ${common}`}>
+
+      <div className={`${flex} ${text} ${common}  cursor-pointer`}>
         <h4 className={`${alignment}`}>{t('apparelGrid.accessories')}</h4>
       </div>
-      <div className={`bg-red ${common}`}>
+      <div className={`bg-red ${common}  cursor-pointer`}>
         <ApparelGridImage src={images[3]}
           alt=""
         />
