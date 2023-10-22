@@ -21,5 +21,11 @@
   "newArrivals": {
     "title": "NEUANKÜNFTE",
     "viewAll": "ALLE ANZEIGEN"
+  },
+  "apparelGrid": {
+    "clothing": "KLEIDUNG",
+    "shoes": "SCHUHE",
+    "accessories": "ACCESSOIRES",
+    "sport": "SPORT"
   }
 }

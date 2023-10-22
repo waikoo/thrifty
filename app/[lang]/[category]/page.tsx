@@ -17,7 +17,7 @@ export default async function Page({ params: { lang, category }, searchParams, }
       <HeroCarousel {... { lang, category }} />
       <ColorCarousel {... { lang, category }} />
       <NewArrivals {... { lang }} />
-      <ApparelGrid />
+      <ApparelGrid {...{ lang }} />
     </>
   )
 }

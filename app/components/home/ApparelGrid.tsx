@@ -1,7 +1,14 @@
 import { images } from '../data/apparelImagesSrc'
 import ApparelGridImage from './ApparelGridImage';
+import { createTranslation } from '@/i18n/server'
+import { Locales } from '@/types/home'
 
-export default function ApparelGrid() {
+type ApparelGridProps = {
+  lang: Locales
+}
+export default async function ApparelGrid({ lang }: ApparelGridProps) {
+  const { t } = await createTranslation(lang, 'home')
+
   const common = `border-content border-[0.07rem]`;
   const text = "h-full w-full self-end text-right";
   const flex = "flex place-items-end";
@@ -21,7 +28,7 @@ export default function ApparelGrid() {
       </div>
 
       <div className={`${flex} ${text} ${common}`}>
-        <h4 className={`${alignment}`}><span>SHOES</span></h4>
+        <h4 className={`${alignment}`}><span>{t('apparelGrid.shoes')}</span></h4>
       </div>
 
       <div className={`bg-blue ${common}`}>
@@ -30,19 +37,19 @@ export default function ApparelGrid() {
       </div>
 
       <div className={`${flex} ${text} ${common}`}>
-        <h4 className={`${alignment}`}>SPORT</h4>
+        <h4 className={`${alignment}`}>{t('apparelGrid.sport')}</h4>
       </div>
 
       <div className={`bg-orange-400 row-span-2 ${common}`}></div>
       <div className={`${flex} ${text} ${common}`}>
-        <h4 className={`${alignment}`}>CLOTHING</h4>
+        <h4 className={`${alignment}`}>{t('apparelGrid.clothing')}</h4>
       </div>
       <div className={`bg-purple ${common}`}>
         <ApparelGridImage src={images[2]} alt="accessories" />
 
       </div>
       <div className={`${flex} ${text} ${common}`}>
-        <h4 className={`${alignment}`}>ACCESSORIES</h4>
+        <h4 className={`${alignment}`}>{t('apparelGrid.accessories')}</h4>
       </div>
       <div className={`bg-red ${common}`}>
         <ApparelGridImage src={images[3]}
