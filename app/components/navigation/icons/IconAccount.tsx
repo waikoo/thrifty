@@ -1,5 +1,4 @@
 "use client"
-import { supabase } from "@/app/supabase"
 import { useThemeStore } from "@/state"
 import { getSvgColor } from "@/utils/theme"
 import { AccountMenu } from ".."
