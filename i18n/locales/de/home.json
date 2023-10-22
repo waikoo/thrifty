@@ -17,5 +17,9 @@
   "colorCarousel": {
     "title": "ENTDECKEN SIE IHRE PERFEKTE PALETTE",
     "p": "Einkaufen nach Ihren Lieblingsfarben und entfesseln Sie Ihren Stil"
+  },
+  "newArrivals": {
+    "title": "NEUANKÜNFTE",
+    "viewAll": "ALLE ANZEIGEN"
   }
 }

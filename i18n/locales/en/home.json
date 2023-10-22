@@ -17,5 +17,9 @@
   "colorCarousel": {
     "title": "DISCOVER YOUR PERFECT PALETTE",
     "p": "Shop by Your Favorite Colors and Unleash Your Style"
+  },
+  "newArrivals": {
+    "title": "NEW ARRIVALS",
+    "viewAll": "VIEW ALL"
   }
 }
