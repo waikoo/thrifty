@@ -1,8 +1,8 @@
 import { themeSettings } from "@/app/components/data/theme";
-import { ThemeToggler } from "@/app/components/generic/";
 import { BackToTop, Banner, Category, NavBar } from "@/app/components/navigation";
 import "@/styles/styles.css";
 import { Inter } from 'next/font/google';
+import { Footer } from "./components/footer";
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 export const metadata = {
@@ -30,9 +30,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             {children}
           </main>
 
-          <footer className="mt-auto">
-            <ThemeToggler />
-          </footer>
+          <Footer />
 
         </section>
 
