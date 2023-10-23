@@ -27,5 +27,10 @@
     "shoes": "SHOES",
     "accessories": "ACCESSORIES",
     "sport": "SPORT"
+  },
+  "popularBrands": {
+    "title1": "POPULAR",
+    "title2": "BRANDS",
+    "viewAll": "VIEW ALL"
   }
 }
