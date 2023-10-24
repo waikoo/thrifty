@@ -1,18 +1,27 @@
-export default function NewsletterSubscription() {
+import { createTranslation } from "@/i18n/server"
+import { Locales } from "@/types/home"
+
+type NewsletterSubscriptionProps = {
+  lang: Locales
+}
+
+export default async function NewsletterSubscription({ lang }: NewsletterSubscriptionProps) {
+  const { t } = await createTranslation(lang, 'home')
+
   return (
     <section className="bg-content text-bkg grid w-screen place-items-center gap-4 py-[3rem]">
-      <h3 className="font-semibold">Subscribe to our newsletter</h3>
+      <h3 className="font-semibold">{t('newsletterSubscription.title')}</h3>
 
-      <form className="flex">
+      <form className="flex w-[25%] bg-red-300">
         <input
           type="text"
-          placeholder="Enter your email address"
-          className="bg-bkg text-content p-2"
+          placeholder={t('newsletterSubscription.placeholder')}
+          className="bg-bkg text-content flex-grow p-2"
         />
-        <button className="bg-grey p-2">Subscribe</button>
+        <button className="bg-grey p-2">{t('newsletterSubscription.button')}</button>
       </form>
 
-      <span className="cursor-pointer pt-4 underline underline-offset-2">I would like to unsubscribe</span>
+      <span className="cursor-pointer pt-4 underline underline-offset-2">{t('newsletterSubscription.unsubscribe')}</span>
     </section>
   )
 }

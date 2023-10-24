@@ -32,5 +32,11 @@
     "title1": "BELIEBTE",
     "title2": "MARKEN",
     "viewAll": "ALLE ANZEIGEN"
+  },
+  "newsletterSubscription": {
+    "title": "Abonnieren Sie unseren Newsletter",
+    "placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
+    "button": "Abonnieren",
+    "unsubscribe": "Ich möchte mich Abmelden"
   }
 }

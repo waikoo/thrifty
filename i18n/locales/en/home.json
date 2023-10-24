@@ -32,5 +32,11 @@
     "title1": "POPULAR",
     "title2": "BRANDS",
     "viewAll": "VIEW ALL"
+  },
+  "newsletterSubscription": {
+    "title": "Subscribe to our newsletter",
+    "placeholder": "Enter your email address",
+    "button": "Subscribe",
+    "unsubscribe": "I would like to unsubscribe"
   }
 }
