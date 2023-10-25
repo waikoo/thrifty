@@ -4,9 +4,9 @@ import { useThemeStore } from "@/state"
 import { useMediaQuery, useLocalStorage } from "./"
 import { themeSettings } from "../data"
 
-const useDarkMode = () => {
+const useDarkMode = (htmlDataset: DOMStringMap) => {
   const theme = useThemeStore((state) => state.theme)
-  document.documentElement.dataset.theme = theme
+  htmlDataset.theme = theme
 
   const updateTheme = useThemeStore((state) => state.updateTheme)
   const prefersDarkMode = useMediaQuery(['(prefers-color-scheme: dark)'], [true], false)
@@ -16,13 +16,13 @@ const useDarkMode = () => {
     const newTheme = prefersDarkMode ? 'dark' : 'light'
 
     updateTheme(newTheme)
-    document.documentElement.dataset.theme = newTheme
+    htmlDataset.theme = newTheme
   }, [prefersDarkMode])
 
   const handleToggleTheme = () => {
-    const newTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'
+    const newTheme = htmlDataset.theme === 'dark' ? 'light' : 'dark'
 
-    document.documentElement.dataset.theme = newTheme
+    htmlDataset.theme = newTheme
     updateTheme(newTheme)
   }
 

@@ -5,8 +5,18 @@ import { useParams } from "next/navigation";
 import { useDarkMode, useTogglerStyles } from "../hooks/";
 
 const ThemeToggler = () => {
-  const { isDark, handleToggleTheme } = useDarkMode()
-  const { getStyleForElement, bgColor, circleColor, xPos } = useTogglerStyles();
+  const fallbackDarkMode = {
+    isDark: false,
+    handleToggleTheme: () => { }
+  }
+
+  const { isDark, handleToggleTheme } =
+    typeof document !== 'undefined'
+      ? useDarkMode(document?.documentElement.dataset)
+      : fallbackDarkMode
+
+  const { getStyleForElement, bgColor, circleColor, xPos } = useTogglerStyles(isDark)
+
   let lang = useParams()?.lang as Locales
   const { t } = useTranslation(lang, 'layout')
 

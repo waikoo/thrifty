@@ -4,7 +4,11 @@ import { useDarkMode } from "../hooks"
 import { IconAccount, IconFavorite, IconShoppingBag, Logo, SearchBar, WithHome } from './'
 
 const NavBar = () => {
-  useDarkMode()
+  const htmlDataset = typeof document !== 'undefined' ? document.documentElement.dataset : undefined
+  if (htmlDataset) {
+    useDarkMode(htmlDataset)
+  }
+
   const { setShowCategoryMenu } = useUIStore()
 
   return (

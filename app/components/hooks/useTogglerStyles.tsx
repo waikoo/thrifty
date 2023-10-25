@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import useDarkMode from "./useDarkMode";
 
 
-export default function useTogglerStyles() {
-  const { isDark } = useDarkMode();
+export default function useTogglerStyles(isDark: boolean) {
   const [xPos, setXPos] = useState('translate-x-[0.3rem]');
 
   useEffect(() => {
