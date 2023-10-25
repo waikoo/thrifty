@@ -1,1 +1,5 @@
 export { default as Footer } from './Footer'
+export { default as FooterAccount } from './FooterAccount'
+export { default as FooterShop } from './FooterShop'
+export { default as FooterHelp } from './FooterHelp'
+export { default as FooterContact } from './FooterContact'

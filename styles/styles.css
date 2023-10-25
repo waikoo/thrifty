@@ -114,3 +114,10 @@ html[data-theme="light"] input.placeholda::placeholder {
 .noscrollbar::-webkit-scrollbar {
   visibility: hidden;
 }
+
+.footerTitles {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: normal;
+  text-transform: uppercase;
+}
