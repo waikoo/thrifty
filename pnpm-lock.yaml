@@ -35,6 +35,9 @@ dependencies:
   eslint-config-next:
     specifier: ^13.5.4
     version: 13.5.4(eslint@8.49.0)(typescript@5.2.2)
+  eslint-plugin-jsx-a11y:
+    specifier: ^6.7.1
+    version: 6.7.1(eslint@8.49.0)
   i18next:
     specifier: ^23.5.1
     version: 23.5.1
