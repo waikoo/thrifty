@@ -18,13 +18,13 @@ export default function HeroCarouselArticle({ lang }: HeroCarouselArticleProps) 
   ])
 
   return (
-    <article className="ml-6 grid auto-rows-min grid-rows-2 gap-5 py-6 sm:gap-0 md:gap-2">
+    <article className="ml-6 grid auto-rows-min grid-rows-2 gap-1 py-6 sm:gap-0 md:gap-0">
 
       <h1 className="hero-h1 my-auto ml-auto self-end text-lg sm:text-3xl md:self-start md:text-5xl lg:text-[4rem]">
         {dynamicTitle}
       </h1>
 
-      <div className={`flex flex-col gap-0 sm:gap-0 md:gap-4 lg:gap-10  max-w-[90%] pr-0 pl-5 ml-auto self-start `}>
+      <div className={`flex flex-col justify-center h-full gap-0 sm:gap-0 md:gap-2 lg:gap-8  max-w-[90%] pr-0 pl-5 ml-auto self-start`}>
         <p className="hero-p pl-auto ml-auto leading-none sm:text-xs">
           {t('heroCarousel.paragraph')}
         </p>
