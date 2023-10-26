@@ -7,11 +7,12 @@ export default function Footer() {
 
   return (
     <footer className="flex w-full justify-evenly gap-5 bg-green-300 py-12">
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-7">
 
-        <WithHome> <Logo /> </WithHome>
+        <WithHome className="justify-start" > <Logo /> </WithHome>
         <OpeningHours />
         <ThemeToggler />
+
       </div>
 
       <FooterShop />

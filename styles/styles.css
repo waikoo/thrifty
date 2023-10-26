@@ -42,10 +42,10 @@
 
 .separator::before  {
   content: "|";
-  color: black;
+  color: var(--clr-content);
   position: absolute;
   top: 3px;
-  left: 27px;
+  left: 31px;
 }
 
 input.placeholda::placeholder {
@@ -117,7 +117,12 @@ html[data-theme="light"] input.placeholda::placeholder {
 
 .footerTitles {
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: normal;
   text-transform: uppercase;
+}
+
+.footerText {
+  font-size: 0.875rem;
+  font-weight: 500;
 }

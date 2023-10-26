@@ -1,4 +1,8 @@
 export { default as Footer } from './Footer'
+export { default as Email } from './icons/Email'
+export { default as Phone } from './icons/Phone'
+export { default as Facebook } from './icons/Facebook'
+export { default as Instagram } from './icons/Instagram'
 export { default as FooterAccount } from './FooterAccount'
 export { default as FooterShop } from './FooterShop'
 export { default as FooterHelp } from './FooterHelp'

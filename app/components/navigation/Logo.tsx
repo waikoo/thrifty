@@ -1,10 +1,13 @@
 "use client"
 import { useThemeStore } from "@/state/themeState";
 import { getSvgColor } from "@/utils/theme";
+import { twMerge as tm } from 'tailwind-merge'
 
-type LogoProps = {};
+type LogoProps = {
+  className?: string
+};
 
-const Logo = ({ }: LogoProps) => {
+const Logo = ({ className }: LogoProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
 
   return (
@@ -13,7 +16,7 @@ const Logo = ({ }: LogoProps) => {
       width={132}
       height={21}
       fill="none"
-      className="col-start-2 col-end-3 cursor-pointer self-center justify-self-center"
+      className={`col-start-2 col-end-3 cursor-pointer self-center justify-self-center ${className}`}
     >
       <path
         fill={color}

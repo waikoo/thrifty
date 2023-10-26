@@ -3,8 +3,13 @@ import { useTranslation } from "@/i18n/client";
 import { Locales } from "@/types/home";
 import { useParams } from "next/navigation";
 import { useDarkMode, useTogglerStyles } from "../hooks/";
+import { twMerge as tm } from 'tailwind-merge'
 
-const ThemeToggler = () => {
+type ThemeTogglerProps = {
+  className?: string
+}
+
+const ThemeToggler = ({ className }: ThemeTogglerProps) => {
   const fallbackDarkMode = {
     isDark: false,
     handleToggleTheme: () => { }
@@ -22,7 +27,7 @@ const ThemeToggler = () => {
 
   return (
     <button
-      className="flex cursor-pointer items-center gap-2 justify-self-end"
+      className={tm(`flex cursor-pointer items-center gap-2 justify-self-end ${className}`)}
       onClick={handleToggleTheme}
     >
       <span className={`${getStyleForElement('light')}`} >

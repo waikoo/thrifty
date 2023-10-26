@@ -1,5 +1,4 @@
 "use client"
-import { useUIStore } from "@/state";
 import { usePathname } from "next/navigation";
 import { LanguageElement } from ".";
 
@@ -9,13 +8,10 @@ export type LanguagePickerParams = {
 const LanguagePicker = () => {
   const locales = ['en', 'de'];
   const [_, lang, category] = usePathname()
-  const { showBanner } = useUIStore()
-  const textColor = showBanner ? 'text-black' : 'text-content'
-  const top = showBanner ? 'top-0' : 'top-5'
 
   return (
-    <nav lang={lang} className={`flex items-center bg-bkg gap-3 bg-transparent hover:cursor-pointer py-1 z-50 relative justify-self-start
-      ${top} ${textColor}`}>
+    <nav lang={lang}
+      className={`flex items-center p-2 justify-center bg-bkg gap-3 bg-transparent hover:cursor-pointer py-1 z-50 relative justify-self-start text-content border-content border-[0.05rem]`}>
 
       {locales.map((locale: string) => {
         const className = `${locale === 'en' ? 'separator' : ''}`
