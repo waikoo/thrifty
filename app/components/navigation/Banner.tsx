@@ -18,7 +18,7 @@ export default function Banner() {
           <div className="mx-auto grid w-[95%] grid-cols-3 grid-rows-1 items-center gap-4">
 
 
-            <LanguagePicker />
+            <LanguagePicker isTop />
 
             <span className="justify-self-center">
               {bannerMessages[idx]}
