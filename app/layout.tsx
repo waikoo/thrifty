@@ -17,7 +17,7 @@ export type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
 
   return (
-    <html className={inter.className}>
+    <html data-theme={themeSettings.DEFAULT_THEME} className={inter.className}>
       <head />
       <body className="bg-bkg">
         <Banner />

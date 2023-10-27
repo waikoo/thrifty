@@ -1,15 +1,16 @@
 "use client"
 import { useColorCarouselRef } from "@/state/colorCarouselState";
-import { TColor } from "@/types/home";
+import { Category, TColor } from "@/types/home";
 import { useEffect, useRef } from "react";
 import { ColorCarouselElement } from ".";
 import { useEventListener } from "../hooks";
+import { colors } from '../data/colorCarouselData'
 
 type ColorCarouselImagesProps = {
-  colors: TColor[]
+  category: Category['category']
 }
 
-export default function ColorCarouselImages({ colors }: ColorCarouselImagesProps) {
+export default function ColorCarouselImages({ category }: ColorCarouselImagesProps) {
   const imagesRef = useRef<HTMLDivElement>(null)
   const { containerRef, setContainerRef } = useColorCarouselRef()
   let initialX = 0;
@@ -24,7 +25,6 @@ export default function ColorCarouselImages({ colors }: ColorCarouselImagesProps
         behavior: 'smooth',
       });
     }
-    console.log('handleScrolling triggered')
   }
 
   useEffect(() => {
@@ -34,7 +34,6 @@ export default function ColorCarouselImages({ colors }: ColorCarouselImagesProps
   useEventListener({
     eventType: "mousedown",
     listener: (e) => {
-      console.log('mousedown occurred')
       initialX = (e as MouseEvent).clientX
     },
     target: imagesRef.current,
@@ -44,7 +43,6 @@ export default function ColorCarouselImages({ colors }: ColorCarouselImagesProps
   useEventListener({
     eventType: "dragstart",
     listener: (e) => {
-      console.log('dragstart occurred')
       handleScrolling(e as MouseEvent)
     },
     target: imagesRef.current,
@@ -56,7 +54,7 @@ export default function ColorCarouselImages({ colors }: ColorCarouselImagesProps
   return (
     <div ref={imagesRef} draggable={false}
       className="noscrollbar  grid select-none snap-x snap-mandatory auto-cols-[23%] grid-flow-col gap-[30px] overflow-x-auto overscroll-x-contain">
-      {colors.map(({ id, color, imgUrl, alt }: TColor) => (
+      {colors[category].map(({ id, color, imgUrl, alt }: TColor) => (
         <ColorCarouselElement
           key={id}
           color={color}
