@@ -2,10 +2,16 @@
 const nextConfig = {
   // allows to pass serverasync functions to client components with the "use server" directive inside them
   images: {
-    domains: ['images.unsplash.com', 'plus.unsplash.com'],
-  },
-  experimental: {
-    serverActions: true,
+    remotePatterns:
+      [{
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      }, {
+        protocol: 'https',
+        hostname: 'plus.unsplash.com',
+      }],
+    // images.unsplash.com,
+    // plus.unsplash.com
   },
 };
 
