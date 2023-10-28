@@ -1,12 +1,14 @@
-import { Locales } from '@/types/home'
+import { Category, Locales } from '@/types/home'
 import Image from 'next/image'
 import { createTranslation } from '@/i18n/server'
 import { brandImages } from "../data/"
+import Link from 'next/link'
 
 type PopularBrandsProps = {
   lang: Locales
+  category: Category['category']
 }
-export default async function PopularBrands({ lang }: PopularBrandsProps) {
+export default async function PopularBrands({ lang, category }: PopularBrandsProps) {
   const { t } = await createTranslation(lang, 'home')
 
   return (
@@ -16,7 +18,11 @@ export default async function PopularBrands({ lang }: PopularBrandsProps) {
           {t('popularBrands.title1')}
           <span className="block">{t('popularBrands.title2')}</span></h3>
 
-        <span className="text-xs font-bold underline underline-offset-2">{t('popularBrands.viewAll')}</span>
+        <Link
+          href={`/${lang}/${category}/brands`}
+          className="text-xs font-bold underline underline-offset-2">
+          {t('popularBrands.viewAll')}
+        </Link>
       </div>
 
       <div className="flex w-[60%]">

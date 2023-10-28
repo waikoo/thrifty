@@ -73,16 +73,3 @@ export const images: Timages = {
     }
   },
 }
-//
-// small: {
-//   0: [newIn_01, newIn_02],
-//   1: [promos_01, promos_02],
-//   2: [filters_01, filters_02]
-// },
-// large: {
-//   0: newIn_03,
-//   1: promos_03,
-//   2: filters_03
-// }
-
-
