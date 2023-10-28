@@ -3,7 +3,11 @@ import { useUIStore } from "@/state"
 import { useDarkMode } from "../hooks"
 import { IconAccount, IconFavorite, IconShoppingBag, Logo, SearchBar, WithHome } from './'
 
-const NavBar = () => {
+type NavBarProps = {
+  isAdmin?: boolean
+}
+
+const NavBar = ({ isAdmin }: NavBarProps) => {
   const htmlDataset = typeof document !== 'undefined' ? document.documentElement.dataset : undefined
   if (htmlDataset) {
     useDarkMode(htmlDataset)
@@ -22,8 +26,12 @@ const NavBar = () => {
 
         <nav className="flex items-center gap-6 justify-self-end pt-2">
           <IconAccount />
-          <IconFavorite />
-          <IconShoppingBag />
+          {isAdmin ? 'ADMIN' : (
+            <>
+              <IconFavorite />
+              <IconShoppingBag />
+            </>
+          )}
         </nav>
       </div>
     </section>
