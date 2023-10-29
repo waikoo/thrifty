@@ -2,7 +2,8 @@
 import { ProductInput, ProductSelect } from "@/app/components/admin"
 import { top, bottom } from "@/app/components/data"
 import { getCurrentDate } from "@/utils/getCurrentDate"
-import { useEffect, useState } from "react"
+import { useProductState } from "../hooks"
+import { findContentByName } from "@/utils/findContentByName"
 
 type ProductStateProps = {
   border: string
@@ -11,16 +12,11 @@ type ProductStateProps = {
 export default function ProductState({ border }: ProductStateProps) {
   const paddingRight = 'pr-[10.3rem]';
   const className = border + ' ' + paddingRight;
-  const [brands, setBrands] = useState(bottom.find((item) => item.name === 'BRAND')?.content || []);
-  const [materials, setMaterials] = useState(bottom.find((item) => item.name === 'MATERIAL')?.content || []);
 
-  const handleAddBrand = (newBrand: string) => {
-    setBrands((prevBrands) => [newBrand, ...prevBrands]);
-  };
-
-  const handleAddMaterial = (newMaterial: string) => {
-    setMaterials((prevMaterials) => [newMaterial, ...prevMaterials]);
-  };
+  const { productArray: brands, addItem: addBrand } =
+    useProductState(findContentByName(bottom, 'BRAND'))
+  const { productArray: materials, addItem: addMaterial } =
+    useProductState(findContentByName(bottom, 'MATERIAL'))
 
   return (
     <section className="flex flex-col gap-4">
@@ -40,7 +36,7 @@ export default function ProductState({ border }: ProductStateProps) {
           content: brands,
         }}
         className={className}
-        handleAddItem={handleAddBrand}
+        handleAddItem={addBrand}
       />}
 
       <ProductSelect obj={bottom.find((item) => item.name === 'CONDITION')!} className={className} />
@@ -51,7 +47,7 @@ export default function ProductState({ border }: ProductStateProps) {
           content: materials,
         }}
         className={className}
-        handleAddItem={handleAddMaterial}
+        handleAddItem={addMaterial}
       />}
 
       <div className="flex gap-4">
