@@ -9,7 +9,7 @@ export const top = [{
 
 export const bottom = [{
   name: 'COLOR',
-  content: ['Black', 'White', 'Beige', 'Brown', 'Grey', 'Blue', 'Purple', 'Pink', 'Red', 'Green', 'Yellow', 'Orange', 'Gold', 'Silver']
+  content: ['Beige', 'Black', 'Blue', 'Brown', 'Gold', 'Green', 'Grey', 'Multicolor', 'Orange', 'Pink', 'Purple', 'Red', 'Silver', 'White', 'Yellow']
 },
 {
   name: 'BRAND',
