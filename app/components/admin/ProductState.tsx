@@ -9,11 +9,9 @@ type ProductStateProps = {
 }
 
 export default function ProductState({ }: ProductStateProps) {
-  const paddingRight = 'pr-[10.3rem]';
-  // const className = border + ' ' + paddingRight;
-
   const { productArray: brands, addItem: addBrand } =
     useProductState(findContentByName(bottom, 'BRAND'))
+
   const { productArray: materials, addItem: addMaterial } =
     useProductState(findContentByName(bottom, 'MATERIAL'))
 
