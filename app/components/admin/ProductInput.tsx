@@ -2,10 +2,12 @@ type ProductInputProps = {
   name: string
   placeholder: string
   className: string
+  icon: string
 }
 
-export default function ProductInput({ name, placeholder, className }: ProductInputProps) {
+export default function ProductInput({ name, placeholder, className, icon }: ProductInputProps) {
   const upperCaseName = name.toUpperCase()
+
   return (
     <fieldset className="relative flex w-[50%] items-center gap-4">
       <legend hidden>{upperCaseName}</legend>
@@ -18,6 +20,7 @@ export default function ProductInput({ name, placeholder, className }: ProductIn
         id={name}
         className={`bg-bkg p-2 ${className}`}
       />
+      <span className="absolute right-2">{icon}</span>
     </fieldset>
   )
 }
