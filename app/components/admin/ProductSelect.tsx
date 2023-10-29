@@ -1,6 +1,6 @@
 "use client"
 import { useRef, useState } from 'react'
-import { twMerge as tm } from 'tailwind-merge'
+import { Select } from '.'
 
 type ProductSelectProps = {
   obj: {
@@ -8,33 +8,25 @@ type ProductSelectProps = {
     content: string[]
   }
   className?: string
-  defaultSelect?: string
   handleAddItem?: (newBrand: string) => void
 }
 
-export default function ProductSelect({ obj, className, handleAddItem, defaultSelect = '- Select -' }: ProductSelectProps) {
-  const lowerCaseName = obj.name.toLowerCase()
+export default function ProductSelect({ obj, className, handleAddItem }: ProductSelectProps) {
   const [showAdd, setShowAdd] = useState(false)
   const inputRef = useRef<null | HTMLInputElement>(null)
 
   return (
     <fieldset className="relative flex w-[50%] items-center gap-4">
       <legend hidden>{obj.name}</legend>
-      {obj.name === 'MATERIAL' ? <span className="text-grey absolute left-[-2rem]">Optional</span> : null}
-      <label htmlFor="gender" className="w-32 whitespace-nowrap text-right">{obj.name}</label>
+      {obj.name === 'MATERIAL' ? <span className="text-grey absolute left-[-2rem]">
+        Optional
+      </span> : null}
 
-      <select
-        name={lowerCaseName}
-        id={lowerCaseName}
-        className={tm(`text-content bg-bkg relative right-0 p-2 ${className}`)}>
+      <label htmlFor="gender" className="w-32 whitespace-nowrap text-right">
+        {obj.name}
+      </label>
 
-        <option className="">{defaultSelect}</option>
-
-        {obj.content.map((item) => (
-          <option key={item} value={item.toLowerCase()}>{item}</option>
-        ))}
-      </select>
-
+      <Select name={obj.name} content={obj.content} className={className} />
 
       {obj.name === 'BRAND' || obj.name === 'MATERIAL' ? (
         <div className="absolute right-[-6rem] cursor-pointer"
