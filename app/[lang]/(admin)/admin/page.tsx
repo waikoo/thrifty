@@ -1,8 +1,6 @@
-import { ProductImage } from "@/app/components/admin"
-import ProductState from "@/app/components/admin/ProductState"
+import { ProductImage, ProductState } from "@/app/components/admin"
 
 export default function Page() {
-  // const border = 'border-content border-[1px]'
 
   return (
     <section className="flex flex-col gap-12">
