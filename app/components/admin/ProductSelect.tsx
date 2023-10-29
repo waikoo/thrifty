@@ -7,11 +7,10 @@ type ProductSelectProps = {
     name: string
     content: string[]
   }
-  className?: string
   handleAddItem?: (newBrand: string) => void
 }
 
-export default function ProductSelect({ obj, className, handleAddItem }: ProductSelectProps) {
+export default function ProductSelect({ obj, handleAddItem }: ProductSelectProps) {
   const [showAdd, setShowAdd] = useState(false)
   const inputRef = useRef<null | HTMLInputElement>(null)
 
@@ -26,7 +25,7 @@ export default function ProductSelect({ obj, className, handleAddItem }: Product
         {obj.name}
       </label>
 
-      <Select name={obj.name} content={obj.content} className={className} />
+      <Select name={obj.name} content={obj.content} />
 
       {obj.name === 'BRAND' || obj.name === 'MATERIAL' ? (
         <div className="absolute right-[-6rem] cursor-pointer"

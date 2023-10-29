@@ -1,11 +1,10 @@
 type ProductInputProps = {
   name: string
   placeholder: string
-  className: string
   icon: string
 }
 
-export default function ProductInput({ name, placeholder, className, icon }: ProductInputProps) {
+export default function ProductInput({ name, placeholder, icon }: ProductInputProps) {
   const upperCaseName = name.toUpperCase()
 
   return (
@@ -18,7 +17,7 @@ export default function ProductInput({ name, placeholder, className, icon }: Pro
         type="number"
         name={name}
         id={name}
-        className={`bg-bkg p-2 ${className}`}
+        className={`bg-bkg p-2 adminBorder`}
       />
       <span className="absolute right-2">{icon}</span>
     </fieldset>

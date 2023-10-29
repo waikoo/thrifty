@@ -3,18 +3,17 @@ import { twMerge as tm } from 'tailwind-merge'
 type SelectProps = {
   name: string;
   content: string[];
-  className?: string;
   defaultSelect?: string;
 }
 
-export default function Select({ name, content, className, defaultSelect = '- Select -' }: SelectProps) {
+export default function Select({ name, content, defaultSelect = '- Select -' }: SelectProps) {
   const lowerCaseName = name.toLowerCase()
 
   return (
     <select
       name={lowerCaseName}
       id={lowerCaseName}
-      className={tm(`text-content bg-bkg relative right-0 p-2 ${className}`)}>
+      className={tm(`adminBorder text-content bg-bkg relative right-0 p-2 pr-[10.3rem] `)}>
 
       <option className="">{defaultSelect}</option>
 
