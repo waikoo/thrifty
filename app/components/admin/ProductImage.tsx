@@ -1,20 +1,17 @@
 "use client"
 import { useRef, useState } from "react"
-import Image from 'next/image'
+import { ImageButton, ImagesDisplay } from "."
+import { useProductStore } from "@/state/productState"
 
 type ProductImageProps = {
 }
 
 export default function ProductImage({ }: ProductImageProps) {
-  const [images, setImages] = useState<string[]>([])
+  const { imgUrl, setImgUrl } = useProductStore()
+
+  // const [images, setImages] = useState<string[]>([])
   const inputRef = useRef<HTMLInputElement | null>(null)
 
-  const handleNewImage = () => {
-    if (inputRef && inputRef.current) {
-      inputRef.current.value && setImages([...images, inputRef.current.value]);
-      inputRef.current.value = '';
-    }
-  };
   return (
     <div className="flex w-full flex-col items-center gap-6">
 
@@ -23,18 +20,15 @@ export default function ProductImage({ }: ProductImageProps) {
 
         <div className="flex w-full">
           <input ref={inputRef} type="text" className={`adminBorder w-full p-[0.5rem] bg-bkg`} placeholder="Add link here" />
-          <button className={`adminBorder p-[0.5rem]`} onClick={handleNewImage}>Upload</button>
+
+          <ImageButton {... { inputRef }} />
+          {/* <ImageButton {... { inputRef, images, setImages }} /> */}
         </div>
 
       </div>
 
-      <div className="flex w-full flex-wrap gap-4">
-        {images.map((src, i) => (
-          <div className="w-[23.2%]">
-            <Image key={`admin-imgs-${i}`} src={src} alt="" width={100} height={100} className="block w-full" />
-          </div>
-        ))}
-      </div>
+      <ImagesDisplay />
+      {/* <ImagesDisplay {... { images }} /> */}
 
     </div>
   )
