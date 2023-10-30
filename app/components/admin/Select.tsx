@@ -13,7 +13,7 @@ export default function Select({ name, content, defaultSelect = '- Select -' }: 
     <select
       name={lowerCaseName}
       id={lowerCaseName}
-      className={tm(`adminBorder text-content bg-bkg relative right-0 p-2 pr-[10.3rem] `)}>
+      className={tm(`adminBorder text-content bg-bkg relative p-2 pr-[10.3rem] w-full`)}>
 
       <option className="">{defaultSelect}</option>
 

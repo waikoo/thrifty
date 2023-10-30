@@ -128,7 +128,8 @@ html[data-theme="light"] input.placeholda::placeholder {
 }
 
 .adminBorder {
-  border: 1px solid var(--clr-bkg);
+  border: 1px solid var(--clr-faded);
   border-style: solid;
   border-width: 1px;
+  border-color: var(--clr-faded);
 }

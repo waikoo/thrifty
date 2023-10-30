@@ -1,6 +1,6 @@
 "use client"
 import { useRef, useState } from 'react'
-import { Select } from '.'
+import { AddNew, Optional, Select } from '.'
 
 type ProductSelectProps = {
   obj: {
@@ -17,23 +17,15 @@ export default function ProductSelect({ obj, handleAddItem }: ProductSelectProps
   return (
     <fieldset className="relative flex w-[50%] items-center gap-4">
       <legend hidden>{obj.name}</legend>
-      {obj.name === 'MATERIAL' ? <span className="text-grey absolute left-[-2rem]">
-        Optional
-      </span> : null}
 
-      <label htmlFor="gender" className="w-32 whitespace-nowrap text-right">
-        {obj.name}
+      <label htmlFor={obj.name.toLowerCase()} className="grid grid-cols-[8rem_21rem] gap-4 whitespace-nowrap">
+        <span className="justify-self-end">{obj.name}</span>
+
+        <Select name={obj.name} content={obj.content} />
       </label>
 
-      <Select name={obj.name} content={obj.content} />
-
       {obj.name === 'BRAND' || obj.name === 'MATERIAL' ? (
-        <div className="absolute right-[-6rem] cursor-pointer"
-          onClick={() => setShowAdd(!showAdd)}
-        >
-          <span>+</span>
-          <span className="text-grey">Add new</span>
-        </div>) : null}
+        <AddNew setShowAdd={setShowAdd} showAdd={showAdd} />) : null}
 
       {showAdd ? (
         <div
@@ -49,6 +41,7 @@ export default function ProductSelect({ obj, handleAddItem }: ProductSelectProps
             className="ml-4">Add</button>
         </div>
       ) : null}
+      {obj.name === 'MATERIAL' ? <Optional /> : null}
 
     </fieldset>
 

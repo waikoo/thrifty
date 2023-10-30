@@ -1,3 +1,5 @@
+import { Optional } from "."
+
 type ProductInputProps = {
   name: string
   placeholder: string
@@ -10,16 +12,19 @@ export default function ProductInput({ name, placeholder, icon }: ProductInputPr
   return (
     <fieldset className="relative flex w-[50%] items-center gap-4">
       <legend hidden>{upperCaseName}</legend>
-      {name === 'discount' ? <span className="text-grey absolute left-[-2rem]">Optional</span> : null}
-      <label htmlFor="price" className="w-32 text-right">{upperCaseName}</label>
-      <input
-        placeholder={placeholder}
-        type="number"
-        name={name}
-        id={name}
-        className={`bg-bkg p-2 adminBorder`}
-      />
+      <label htmlFor={name}
+        className="grid grid-cols-[8rem_21rem] gap-4">
+        <span className="justify-self-end">{upperCaseName} </span>
+        <input
+          placeholder={placeholder}
+          type="number"
+          name={name}
+          id={name}
+          className={`bg-bkg p-2 adminBorder`}
+        />
+      </label>
       <span className="absolute right-2">{icon}</span>
+      {name === 'discount' ? <Optional /> : null}
     </fieldset>
   )
 }

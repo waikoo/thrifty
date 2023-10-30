@@ -16,7 +16,7 @@ export default function ProductState({ }: ProductStateProps) {
     useProductState(findContentByName(bottom, 'MATERIAL'))
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-6">
       {top.map((item) => (
         <ProductSelect key={item.name} obj={item} />
       ))}
@@ -45,7 +45,7 @@ export default function ProductState({ }: ProductStateProps) {
         handleAddItem={addMaterial}
       />}
 
-      <div className="flex gap-4">
+      <div className="ml-8 mt-4 flex gap-4">
         <span>DATE ADDED</span>
         <span>{getCurrentDate()}</span>
       </div>
