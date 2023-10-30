@@ -44,7 +44,6 @@ const SignInOrUp = () => {
         </span>
 
         <div className="text-content flex gap-2">
-          <span className="border-content cursor-pointer border-[0.1rem] p-2">F</span>
           <span className="border-content cursor-pointer border-[0.1rem] p-2">G</span>
           <span className="border-content cursor-pointer border-[0.1rem] p-2">A</span>
           <span className="border-content cursor-pointer border-[0.1rem] p-2">X</span>
