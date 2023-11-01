@@ -15,7 +15,7 @@ export default function useSignIn() {
     setLoading(false)
     console.log(data)
     setShowSignIn(false)
-    if (data?.role === 'admin') {
+    if (data?.role === 'authenticated') {
       window.location.href = '/en/admin'
 
       supabase.auth.getUser().then(({ data: { user } }) => {

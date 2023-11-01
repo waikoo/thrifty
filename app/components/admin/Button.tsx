@@ -14,10 +14,13 @@ export default function Button() {
     supabase.auth.getUser().then(({ data: { user } }) => {
       console.log(user)
     })
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      console.log(session)
-    })
+    // supabase.auth.getSession().then(({ data: { session } }) => {
+    //   console.log(session)
+    // })
   }
+  supabase.auth.getSession().then(({ data }) => {
+    console.log(data)
+  })
 
   return (
     <button
