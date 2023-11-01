@@ -15,13 +15,13 @@ const IconAccount = () => {
   // session?.user.role
 
   // if (session?.user.role) 
-  useEffect(() => {
-    session?.user.role === 'admin' ? redirect("/admin") : null
-  }, [])
+  // useEffect(() => {
+  //   session?.user.role === 'admin' ? redirect("/admin") : null
+  // }, [])
 
   return (
     <div className="relative">
-      <div title="Sign In"
+      <div title={session?.user.role ? "Account" : "Sign In"}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

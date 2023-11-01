@@ -1,8 +1,12 @@
 import { supabase } from "@/app/supabase"
 import { create } from 'zustand'
 
+type CounterState = {
+  created?: number,
+  edited?: number,
+}
 
-type State = {
+type Product = {
   gender: string,
   type: string,
   price: number,
@@ -15,6 +19,20 @@ type State = {
   imgUrl: string[]
 }
 
+type State = {
+  gender: string,
+  type: string,
+  price: number,
+  discount: number,
+  size: string,
+  color: string,
+  brand: string,
+  condition: number,
+  material: string,
+  imgUrl: string[]
+  counter: CounterState
+}
+
 type Action = {
   setGender: (value: string) => void,
   setType: (value: string) => void,
@@ -25,7 +43,9 @@ type Action = {
   setBrand: (value: string) => void,
   setCondition: (value: number) => void,
   setMaterial: (value: string) => void,
-  setImgUrl: (value: string[]) => void
+  setImgUrl: (value: string[]) => void,
+  setCounter: (value: Partial<CounterState>) => void
+  saveDraft: () => Promise<void>
 }
 
 export const useProductStore = create<State & Action>((set, get) => ({
@@ -39,6 +59,10 @@ export const useProductStore = create<State & Action>((set, get) => ({
   condition: 0,
   material: '',
   imgUrl: [],
+  counter: {
+    created: 0,
+    edited: 0,
+  },
   setGender: (value: string) => set({ gender: value }),
   setType: (value: string) => set({ type: value }),
   setPrice: (value: number) => set({ price: value }),
@@ -49,16 +73,26 @@ export const useProductStore = create<State & Action>((set, get) => ({
   setCondition: (value: number) => set({ condition: value }),
   setMaterial: (value: string) => set({ material: value }),
   setImgUrl: (value: string[]) => set({ imgUrl: value }),
+  setCounter: (value) => set(state => ({ counter: { ...state.counter, ...value } })),
+  saveDraft: async () => {
 
+    // .select(saveDraft: async () => {
+    const product: Product = {
+      gender: get().gender,
+      type: get().type,
+      price: get().price,
+      discount: get().discount,
+      size: get().size,
+      color: get().color,
+      brand: get().brand,
+      condition: get().condition,
+      material: get().material,
+      imgUrl: get().imgUrl,
+    };
 
-  // saveDraft: async (column, value) => {
-  //
-  //   const { data, error } = await supabase
-  //     .from('draft')
-  //     .insert([
-  //       { column: 'someValue', other_column: 'otherValue' },
-  //     ])
-  //     .select()
-  //
-  // }
+    const { data, error } = await supabase.from('draft').insert([product]);
+    // console.log(get().gender)
+    console.log(data)
+    console.log(error)
+  }
 }))

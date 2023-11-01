@@ -1,11 +1,22 @@
 "use client"
+import { supabase } from "@/app/supabase"
 import { useProductStore } from "@/state/productState"
 
 export default function Button() {
   const state = useProductStore(state => state)
+  const { counter, setCounter, saveDraft } = useProductStore()
 
   const handleSave = () => {
     console.log(state)
+    saveDraft()
+    setCounter({ created: counter.created ? counter.created + 1 : 1 })
+
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      console.log(user)
+    })
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      console.log(session)
+    })
   }
 
   return (
@@ -19,3 +30,4 @@ export default function Button() {
 }
 
 
+// TODO: config object passed into custom hook

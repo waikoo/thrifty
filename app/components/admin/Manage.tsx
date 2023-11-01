@@ -1,6 +1,9 @@
 import { Button, ProductImage, ProductState, StatusBar } from "@/app/components/admin"
+import { supabase } from "@/app/supabase"
 
-export default function Manage() {
+export default async function Manage() {
+  const { data: { user } } = await supabase.auth.getUser()
+  console.log('Manage: user: ' + user)
 
   return (
     <section className="flex flex-col gap-12">

@@ -6,7 +6,7 @@ export default function CenterContainer() {
   const showRecovery = useUIStore((state) => state.showRecovery)
 
   return (
-    <dialog className="fixed inset-0 grid w-full place-items-center bg-transparent">
+    <dialog className="fixed inset-0 z-40 grid w-full place-items-center bg-transparent">
 
       <div className="border-content bg-bkg grid min-h-[25rem] w-[25%] min-w-[15rem] place-items-center border-[0.1rem]">
 

@@ -10,8 +10,6 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'plus.unsplash.com',
       }],
-    // images.unsplash.com,
-    // plus.unsplash.com
   },
 };
 
