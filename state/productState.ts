@@ -31,6 +31,7 @@ type State = {
   material: string,
   imgUrl: string[]
   counter: CounterState
+  isDraftPostedSuccessfully: boolean
 }
 
 type Action = {
@@ -44,8 +45,10 @@ type Action = {
   setCondition: (value: number) => void,
   setMaterial: (value: string) => void,
   setImgUrl: (value: string[]) => void,
-  setCounter: (value: Partial<CounterState>) => void
-  saveDraft: () => Promise<void>
+  setCounter: (value: Partial<CounterState>) => void,
+  saveDraft: () => Promise<any>,
+  setIsDraftPostedSuccessfully: (value: boolean) => void
+  resetProductFields: () => void
 }
 
 export const useProductStore = create<State & Action>((set, get) => ({
@@ -63,6 +66,7 @@ export const useProductStore = create<State & Action>((set, get) => ({
     created: 0,
     edited: 0,
   },
+  isDraftPostedSuccessfully: false,
   setGender: (value: string) => set({ gender: value }),
   setType: (value: string) => set({ type: value }),
   setPrice: (value: number) => set({ price: value }),
@@ -76,7 +80,6 @@ export const useProductStore = create<State & Action>((set, get) => ({
   setCounter: (value) => set(state => ({ counter: { ...state.counter, ...value } })),
   saveDraft: async () => {
 
-    // .select(saveDraft: async () => {
     const product: Product = {
       gender: get().gender,
       type: get().type,
@@ -91,8 +94,26 @@ export const useProductStore = create<State & Action>((set, get) => ({
     };
 
     const { data, error } = await supabase.from('draft').insert([product]);
-    // console.log(get().gender)
-    console.log(data)
-    console.log(error)
+
+    if (!data && !error) {
+      get().setIsDraftPostedSuccessfully(true)
+      get().resetProductFields()
+      get().setCounter({ created: get().counter.created ? get().counter.created! + 1 : 1 })
+    }
+  },
+  setIsDraftPostedSuccessfully: (value: boolean) => set({ isDraftPostedSuccessfully: value }),
+  resetProductFields: () => {
+    set({
+      gender: '',
+      type: '',
+      price: 0,
+      discount: 0,
+      size: '',
+      color: '',
+      brand: '',
+      condition: 0,
+      material: '',
+      imgUrl: [],
+    })
   }
 }))
