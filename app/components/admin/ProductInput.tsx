@@ -1,5 +1,5 @@
-import { useProductStore } from "@/state/productState"
 import { Optional } from "."
+import useProductInputUtils from "../hooks/useProductInputUtils"
 
 type ProductInputProps = {
   name: string
@@ -9,8 +9,7 @@ type ProductInputProps = {
 
 export default function ProductInput({ name, placeholder, icon }: ProductInputProps) {
   const upperCaseName = name.toUpperCase()
-  const { setPrice, setDiscount, setSize } = useProductStore()
-  const size = useProductStore(state => state.size)
+  const { getOnChange, getValue, getType } = useProductInputUtils()
 
   return (
     <fieldset className="relative flex w-[50%] items-center gap-4">
@@ -18,35 +17,15 @@ export default function ProductInput({ name, placeholder, icon }: ProductInputPr
       <label htmlFor={name}
         className="grid grid-cols-[8rem_21rem] gap-4">
         <span className="justify-self-end">{upperCaseName} </span>
-        {name === 'price' || name === 'discount' ? (
-          <input
-            placeholder={placeholder}
-            type="number"
-            name={name}
-            id={name}
-            className={`bg-bkg p-2 adminBorder`}
-            onChange={(e) => {
-              if (name === 'price') {
-                setPrice(+e.target.value)
-              } else if (name === 'discount') {
-                setDiscount(+e.target.value)
-              }
-            }}
-          />
-        ) : (
-          <input
-            placeholder={placeholder}
-            type="text"
-            name={name}
-            id={name}
-            className={`bg-bkg p-2 adminBorder`}
-            onChange={(e) => {
-              if (name === 'size') {
-                setSize(e.target.value)
-              }
-            }}
-          />
-        )}
+        <input
+          placeholder={placeholder}
+          type={getType(name)}
+          name={name}
+          id={name}
+          className={`bg-bkg p-2 adminBorder`}
+          value={getValue(name)}
+          onChange={(e) => getOnChange(e, name)}
+        />
       </label>
       <span className="absolute right-2">{icon}</span>
       {name === 'discount' ? <Optional /> : null}
