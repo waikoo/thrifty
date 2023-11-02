@@ -14,10 +14,18 @@ export default function ImagesDisplay({ }: ImagesDisplayProps) {
   const editRef = useRef<HTMLDivElement | null>(null)
 
   const handleMouseOut = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (!editRef.current?.contains(e.relatedTarget as Node)) {
-      setShowEditOptions(false)
-    }
+    // if (!editRef.current?.contains(e.relatedTarget as Node)) {
+    //   setShowEditOptions(false)
+    // }
   }
+
+  // const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  //   // if (e.target !== editRef.current || e.target !==) {
+  //   console.log(e.target)
+  //   setShowEditOptions(false)
+  //   // }
+  //
+  // }
 
   return (
     <div className="flex w-full flex-wrap gap-4">
@@ -31,6 +39,7 @@ export default function ImagesDisplay({ }: ImagesDisplayProps) {
             height={100}
             className="block w-full"
             onMouseOver={() => setShowEditOptions(true)}
+            // onMouseEnter={(e) => handleMouseEnter(e)}
             onMouseOut={(e) => handleMouseOut(e)}
           />
           {showEditOptions && <ImageEdit {... { src, editRef }} />}
