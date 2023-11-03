@@ -9,7 +9,7 @@ type PopUpProps = {
   }
 }
 
-export default function PopUp({ function: deleteImage, prompt, options: { option1, option2 } }: PopUpProps) {
+export default function ImageDeletionPopUp({ function: deleteImage, prompt, options: { option1, option2 } }: PopUpProps) {
   const { setShowEditOptions, showPopUp } = useUIStore()
   const closePopUp = () => showPopUp(false)
 

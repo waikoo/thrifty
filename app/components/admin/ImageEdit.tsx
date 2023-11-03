@@ -1,6 +1,6 @@
 "use client"
 import { useUIStore, useProductStore } from "@/state"
-import { PopUp, Portal } from "."
+import { ImageDeletionPopUp, Portal } from "."
 
 type ImageEditProps = {
   src: string
@@ -36,7 +36,7 @@ export default function ImageEdit({ src }: ImageEditProps) {
       {/* {popUp && <span>test</span>} */}
       {popUp && (
         <Portal>
-          <PopUp
+          <ImageDeletionPopUp
             function={deleteImage}
             prompt="Are you sure you want to delete this image?"
             options={{ option1: 'Yes', option2: 'No' }}
