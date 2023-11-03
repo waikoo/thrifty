@@ -1,17 +1,20 @@
+"use client"
 import { useUIStore, useProductStore } from "@/state"
-import PopUp from "./PopUp"
+import { PopUp, Portal } from "."
 
 type ImageEditProps = {
   src: string
-  editRef: React.RefObject<HTMLDivElement>
 }
 
-export default function ImageEdit({ src, editRef }: ImageEditProps) {
+export default function ImageEdit({ src }: ImageEditProps) {
   const { imgUrl, setImgUrl } = useProductStore()
   const { setShowEditOptions, popUp, showPopUp } = useUIStore()
+  console.log('popUp: ', popUp)
 
-  const onClickHandler = (src: string) => {
+  const onClickHandler = () => {
+    console.log('clicked')
     showPopUp(true)
+    console.log(popUp)
   }
 
   const deleteImage = () => {
@@ -22,26 +25,32 @@ export default function ImageEdit({ src, editRef }: ImageEditProps) {
     })
   }
 
+  // useEffect(() => {
+  //   console.log(popUp)
+  //   //   if (popUp) {
+  //   //
+  //   //   }
+  // }, [popUp])
   return (
     <>
       <div
         className="absolute right-0 top-0"
-        // onMouseOut={() => setShowEditOptions(false)}
-        onMouseOver={() => setShowEditOptions(true)}
-        onClick={() => onClickHandler(src)}
-        ref={editRef}
+        onMouseEnter={() => setShowEditOptions(true)}
+        onClick={onClickHandler}
       >
         <button
           className="bg-bkg text-content cursor-pointer justify-self-end px-4 py-2 font-semibold "
         > X </button>
       </div>
-
-      {popUp && <PopUp
-        function={deleteImage}
-        prompt="Are you sure you want to delete this image?"
-        options={{ option1: 'Yes', option2: 'No' }}
-        showPopUp={showPopUp}
-      />
+      {/* {popUp && <span>test</span>} */}
+      {popUp && (
+        <Portal>
+          <PopUp
+            function={deleteImage}
+            prompt="Are you sure you want to delete this image?"
+            options={{ option1: 'Yes', option2: 'No' }}
+          />
+        </Portal>)
       }
 
     </>

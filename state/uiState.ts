@@ -44,7 +44,8 @@ export const useUIStore = create<UIState>((set) => ({
   setIsSecondColorPage: (value) => set({ isSecondColorPage: value }),
   setShowCategoryMenu: (value) => set({ showCategoryMenu: value }),
   setShowEditOptions: (value) => set({ showEditOptions: value }),
-  showPopUp: (value) => set({ popUp: value }),
+  showPopUp: (value) => set((state) => ({ ...state, popUp: value })),
+  // showPopUp: (value) => set({ popUp: value }),
 }))
 
 type HeroCarouselState = {

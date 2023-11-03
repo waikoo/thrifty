@@ -11,24 +11,19 @@ type ImagesDisplayProps = {
 export default function ImagesDisplay({ }: ImagesDisplayProps) {
   const { imgUrl } = useProductStore()
   const { showEditOptions, setShowEditOptions } = useUIStore()
-  const editRef = useRef<HTMLDivElement | null>(null)
+  const imageContainerRef = useRef<HTMLDivElement | null>(null)
+  const imageRef = useRef<HTMLImageElement | null>(null)
 
-  const handleMouseOut = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    // if (!editRef.current?.contains(e.relatedTarget as Node)) {
-    //   setShowEditOptions(false)
-    // }
+  const handleMouseEnter = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+    setShowEditOptions(true)
   }
 
-  // const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-  //   // if (e.target !== editRef.current || e.target !==) {
-  //   console.log(e.target)
-  //   setShowEditOptions(false)
-  //   // }
-  //
-  // }
+  const handleMouseLeave = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+    setShowEditOptions(false)
+  }
 
   return (
-    <div className="flex w-full flex-wrap gap-4">
+    <div className="flex w-full flex-wrap gap-4" ref={imageContainerRef}>
 
       {imgUrl.map((src, i) => (
         <div key={`admin-imgs-${i}`} className="relative w-[23.2%]">
@@ -38,11 +33,11 @@ export default function ImagesDisplay({ }: ImagesDisplayProps) {
             width={100}
             height={100}
             className="block w-full"
-            onMouseOver={() => setShowEditOptions(true)}
-            // onMouseEnter={(e) => handleMouseEnter(e)}
-            onMouseOut={(e) => handleMouseOut(e)}
+            ref={imageRef}
+            onMouseEnter={(e) => handleMouseEnter(e)}
+            onMouseLeave={(e) => handleMouseLeave(e)}
           />
-          {showEditOptions && <ImageEdit {... { src, editRef }} />}
+          {showEditOptions && <ImageEdit {... { src }} />}
         </div>
       ))}
 
