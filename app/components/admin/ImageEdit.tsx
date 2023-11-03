@@ -9,12 +9,9 @@ type ImageEditProps = {
 export default function ImageEdit({ src }: ImageEditProps) {
   const { imgUrl, setImgUrl } = useProductStore()
   const { setShowEditOptions, popUp, showPopUp } = useUIStore()
-  console.log('popUp: ', popUp)
 
   const onClickHandler = () => {
-    console.log('clicked')
     showPopUp(true)
-    console.log(popUp)
   }
 
   const deleteImage = () => {
@@ -25,12 +22,6 @@ export default function ImageEdit({ src }: ImageEditProps) {
     })
   }
 
-  // useEffect(() => {
-  //   console.log(popUp)
-  //   //   if (popUp) {
-  //   //
-  //   //   }
-  // }, [popUp])
   return (
     <>
       <div
