@@ -2,7 +2,8 @@ import { Inter } from 'next/font/google';
 import { Banner, NavBar } from "@/app/components/navigation";
 import { themeSettings } from '@/app/components/data';
 import "@/styles/styles.css";
-import { StatusBar, StatusImages } from '@/app/components/admin';
+import { StatusBar } from '@/app/components/admin';
+import { StatusImages } from '@/app/components/admin/indexServer';
 
 type RootLayoutProps = {
   children: React.ReactNode
@@ -34,7 +35,7 @@ export default function RootLayout({ children, params }: RootLayoutProps) {
 
         <footer>
           <StatusBar>
-            {/* <StatusImages /> */}
+            <StatusImages />
           </StatusBar>
 
         </footer>
