@@ -14,6 +14,7 @@ type UIState = {
   popUp: boolean
   addOption: boolean
   statusBar: boolean
+  isSaved: boolean
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
@@ -26,6 +27,7 @@ type UIState = {
   showPopUp: (value: boolean | (boolean)) => void
   showAddOption: (value: boolean | (boolean)) => void
   raiseStatusBar: (value: boolean | (boolean)) => void
+  setIsSaved: (value: boolean | (boolean)) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -41,6 +43,7 @@ export const useUIStore = create<UIState>((set) => ({
   popUp: false,
   addOption: false,
   statusBar: false,
+  isSaved: false,
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
@@ -54,6 +57,7 @@ export const useUIStore = create<UIState>((set) => ({
   // showPopUp: (value) => set({ popUp: value }),
   showAddOption: (value) => set({ addOption: value }),
   raiseStatusBar: (value) => set({ statusBar: value }),
+  setIsSaved: (value) => set({ isSaved: value }),
 }))
 
 type HeroCarouselState = {
