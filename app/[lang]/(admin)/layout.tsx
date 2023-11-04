@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import { Banner, NavBar } from "@/app/components/navigation";
 import { themeSettings } from '@/app/components/data';
 import "@/styles/styles.css";
+import { StatusBar, StatusImages } from '@/app/components/admin';
 
 type RootLayoutProps = {
   children: React.ReactNode
@@ -9,8 +10,8 @@ type RootLayoutProps = {
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 export const metadata = {
-  title: 'Thrifty',
-  description: 'An e-commerce store for second-hand clothing',
+  title: 'Admin - Thrifty',
+  description: 'Admin panel',
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -28,6 +29,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
         </section>
 
+        <footer>
+          <StatusBar>
+            {/* <StatusImages /> */}
+          </StatusBar>
+
+        </footer>
       </body>
     </html>
   )
