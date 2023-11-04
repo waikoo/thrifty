@@ -1,12 +1,10 @@
 "use client"
 import { useUIStore } from "@/state";
 import { useProductStore } from "@/state/productState"
-import { usePathname, useRouter } from 'next/navigation';
 
 export default function Button() {
   const { isSaved, setIsSaved } = useUIStore();
   const { saveDraft } = useProductStore()
-  const router = useRouter()
 
   return (
     <button
@@ -14,7 +12,6 @@ export default function Button() {
       onClick={() => {
         saveDraft()
         setIsSaved(!isSaved)
-        router.refresh()
       }}
     >
       SAVE

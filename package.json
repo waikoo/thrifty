@@ -34,6 +34,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-i18next": "^13.2.2",
+    "server-only": "^0.0.1",
     "tailwind-merge": "^1.14.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
