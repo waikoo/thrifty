@@ -13,25 +13,19 @@ export default function StatusBar({ children }: StatusBarProps) {
   const { isSaved, setIsSaved } = useUIStore();
   const [draftCount, setDraftCount] = useState(0)
   let height = !statusBar ? 'h-0' : 'h-[48vh]'
-  console.log('outside: ' + isSaved)
+
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   )
-  console.log('outside ' + draftCount)
+
   useEffect(() => {
     const fetchDrafts = async () => {
-
-      const { data, error } = await supabase
-        .from('draft')
-        .select('*');
-      console.log('inside ' + data?.length as string)
+      const { data, error } = await supabase.from('draft').select('*');
       setDraftCount(data?.length as number)
     }
     fetchDrafts()
-    console.log('inside ' + isSaved)
-
-  }, [draftCount, isSaved])
+  }, [isSaved])
 
   return (
     <div className={tm(`bg-content ${height} text-bkg fixed bottom-0 left-0 right-0 grid w-screen text-[1.2rem] font-bold`)}
