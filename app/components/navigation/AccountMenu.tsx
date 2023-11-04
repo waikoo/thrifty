@@ -10,19 +10,29 @@ const AccountMenu = () => {
   const { signOutHook, loading } = useSignOut()
 
   return (
-    <nav className="absolute bg-bkg px-12 py-4 z-10 top-8 right-[-7rem] text-base">
+    <nav className="bg-bkg absolute right-[-7rem] top-8 z-10 text-base">
+      <div className="bg-faded w-full px-12 py-4 text-black">
+        <h3 className="font-bold">Welcome, User</h3>
+        <span>email</span>
+      </div>
+
       <ul className="whitespace-no-wrap">
-        {menuItems.map(({ content, Img }) => (
-          <MenuItem
-            color={color}
-            className="cursor-pointer text-content bg-bkg hover:bg-content hover:text-bkg pr-40"
-            key={content}
-            Img={Img}
-            loading={loading}
-            onClick={content === 'Log Out' ? signOutHook : () => { }}
-          >
-            {content}</MenuItem>
-        ))}
+        {menuItems.map(({ content, Img }) => {
+          const logOutBorder = content === 'Log Out' ? 'border-faded border-t-[0.1rem]' : ''
+
+          return (
+            <MenuItem
+              color={color}
+              className={`${logOutBorder} text-content bg-bkg hover:bg-content hover:text-bkg cursor-pointer px-12 pr-40`}
+              key={content}
+              Img={Img}
+              loading={loading}
+              onClick={content === 'Log Out' ? signOutHook : () => { }}
+            >
+              {content}
+            </MenuItem>
+          )
+        })}
       </ul>
     </nav>
   )

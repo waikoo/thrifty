@@ -35,6 +35,7 @@ export const menuItems = [
   {
     content: "Log Out",
     href: "#",
-    Img: IconMenuLogOut,
+    Img: () => null,
+    // Img: IconMenuLogOut,
   }
 ]

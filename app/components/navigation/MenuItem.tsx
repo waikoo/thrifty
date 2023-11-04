@@ -9,7 +9,7 @@ type MenuItemProps = {
   onClick?: (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
   children: React.ReactNode;
   loading?: boolean;
-  Img: React.ComponentType<{ color: string, isHovered: boolean }>;
+  Img?: React.ComponentType<{ color: string, isHovered: boolean }>;
 };
 
 export default function MenuItem({ children, className, onClick, Img, color, loading }: MenuItemProps) {
@@ -33,12 +33,13 @@ export default function MenuItem({ children, className, onClick, Img, color, loa
       className={tm("flex items-center", className)}
       ref={menuItemContainer}
     >
-      <Img color={color}
+      {Img ? (<Img color={color}
         isHovered={isHovered}
-      />
+      />) : null}
+
 
       <li className={tm(
-        "p-5 whitespace-no-wrap w-max",
+        `whitespace-no-wrap w-max p-5 ${!Img ? 'pr-12' : ''}`,
         loading && "bg-bkg"
       )} onClick={onClick}>
         {children}
