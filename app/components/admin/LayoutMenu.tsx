@@ -1,13 +1,15 @@
-import { IconPlus, LayoutMenuItem } from ".";
-import { IconSearch } from "../navigation/icons";
+import { LayoutAddNew, LayoutSearchId } from ".";
 
-export default function LayoutMenu() {
+type LayoutMenuProps = {
+  params: { [key: string]: string | string[] | undefined }
+}
+
+export default function LayoutMenu({ params }: LayoutMenuProps) {
 
   return (
     <div className="flex gap-6">
-      <LayoutMenuItem LayoutIcon={IconPlus} text='ADD NEW' />
-      <LayoutMenuItem LayoutIcon={IconSearch} text='SEARCH ID' />
+      <LayoutAddNew params={params} />
+      <LayoutSearchId />
     </div>
   )
 }
-// TODO: add plus icon
