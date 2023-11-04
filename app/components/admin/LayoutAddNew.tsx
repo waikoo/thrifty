@@ -12,7 +12,7 @@ export default function LayoutAddNew({ params: { lang } }: LayoutAddNewParams) {
 
   return (
     <Link href={`/${lang}/admin/manage`}>
-      <div className={`flex self-center items-end gap-3 cursor-pointer hover:text-bkg hover:bg-content`}
+      <div className={`flex  items-center gap-3 cursor-pointer hover:text-bkg hover:bg-content p-1`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
