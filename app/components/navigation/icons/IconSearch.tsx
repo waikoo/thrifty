@@ -4,15 +4,20 @@ import { useThemeStore } from "@/state/themeState"
 import { getSvgColor } from "@/utils/theme"
 
 type IconSearchProps = {
+  isHovered?: boolean
 }
 
-const IconSearch = ({ }: IconSearchProps) => {
+const IconSearch = ({ isHovered }: IconSearchProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
+  const hoveredColor = useThemeStore((state) => getSvgColor(
+    state.theme === 'dark' ? 'light' : 'dark'
+  ))
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="none" className="mt-2 self-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="none"
+      className={`mt-2 self-center`}>
       <path
-        stroke={color}
+        stroke={isHovered ? hoveredColor : color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={2.5}

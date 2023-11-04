@@ -1,7 +1,7 @@
 "use client"
 import { Locales } from '@/types/home';
 import { useParams } from 'next/dist/client/components/navigation';
-import { IconSearch } from '.';
+import { IconSearch } from './icons';
 import { useTranslation } from '@/i18n/client';
 
 type SearchBarProps = {
@@ -13,7 +13,7 @@ export default function SearchBar({ }: SearchBarProps) {
 
   return (
     <section className={`text-bkg flex gap-2 items-end`}>
-      <IconSearch />
+      <IconSearch home />
       <input
         type="search"
         placeholder={t('search')}
