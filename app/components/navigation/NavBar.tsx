@@ -6,7 +6,7 @@ import { LayoutMenu } from "../admin"
 
 type NavBarProps = {
   isAdmin?: boolean
-  params: { [key: string]: string | string[] | undefined }
+  params?: { [key: string]: string | string[] | undefined }
 }
 
 const NavBar = ({ isAdmin, params }: NavBarProps) => {

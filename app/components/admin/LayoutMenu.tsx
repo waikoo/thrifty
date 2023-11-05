@@ -1,7 +1,7 @@
 import { LayoutAddNew, LayoutSearchId } from ".";
 
 type LayoutMenuProps = {
-  params: { [key: string]: string | string[] | undefined }
+  params?: { [key: string]: string | string[] | undefined }
 }
 
 export default function LayoutMenu({ params }: LayoutMenuProps) {

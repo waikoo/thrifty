@@ -4,10 +4,11 @@ import { IconPlus } from "."
 import { useState } from "react"
 
 type LayoutAddNewParams = {
-  params: { [key: string]: string | string[] | undefined }
+  params?: { [key: string]: string | string[] | undefined }
 }
 
-export default function LayoutAddNew({ params: { lang } }: LayoutAddNewParams) {
+export default function LayoutAddNew({ params }: LayoutAddNewParams) {
+  const lang = params?.lang
   const [isHovered, setIsHovered] = useState(false)
 
   return (
