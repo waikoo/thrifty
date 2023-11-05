@@ -6,7 +6,7 @@ import OpeningHours from "./OpeningHours";
 export default function Footer() {
 
   return (
-    <footer className="flex w-full justify-evenly gap-5 bg-green-300 py-12">
+    <footer className="bg-bkg text-content h-10rem flex w-full justify-evenly gap-5 bg-green-300 py-12">
       <div className="flex flex-col gap-7">
 
         <WithHome className="justify-start" > <Logo /> </WithHome>

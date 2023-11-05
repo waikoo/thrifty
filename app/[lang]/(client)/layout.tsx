@@ -22,18 +22,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body className={`bg-bkg ${inter.className}`}>
         <Banner />
-        <section className="bg-bkg text-content mx-auto flex h-screen max-w-[1600px] flex-col items-center px-20 lg:max-w-[1500px]">
+        <section className="bg-bkg text-content mx-auto flex flex-col items-center px-20 lg:max-w-[1500px]">
           <NavBar />
           <Category />
           <BackToTop />
-
-          <main className="mt-6 flex w-full flex-col items-center">
-            {children}
-          </main>
-
-          <Footer />
-
         </section>
+
+        {children}
+
+        <Footer />
 
       </body>
     </html>
