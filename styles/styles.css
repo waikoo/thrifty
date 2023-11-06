@@ -21,6 +21,11 @@
     --clr-red: 348deg 86% 45%;
     --clr-green: 160deg 48% 24%; 
     --clr-purple: 283deg 60% 32%;
+    --clr-beige: 60deg 56% 91%;
+    --clr-brown: 0deg 51% 33%;
+    --clr-orange: 39deg 100% 50%;
+    --clr-gold: 51deg 100% 50;
+    --clr-silver: 234deg 67% 94%;
   }
 
   @media (prefers-color-scheme: dark) {
