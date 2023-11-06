@@ -53,21 +53,13 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
 
       {isExpanded && (
         <div className="px-8">
-          <div className="relative flex">
-            <FiSearch className="text-grey absolute left-1 top-1/2 -translate-y-1/2" />
-            <input
-              type="search"
-              placeholder="Search Size"
-              className="bg-bkg border-b-[0.1rem] pl-7 outline-none"
-              onChange={onChangeHandler}
-            />
-          </div>
+
+          <FilterSearch setSearchValue={setSearchValue} />
 
           <div className="grid cursor-pointer select-none grid-cols-2 gap-4 pt-4">
             {filteredColors.map((color, i) => {
               const colorOnClick = checkedItems.includes(color) ? 'text-bkg bg-content' : 'bg-bkg text-content'
               const rectColor = `bg-${color.toLowerCase()}`
-              // console.log(color.toLowerCase())
 
               return (
                 <div className={`flex items-center gap-2 ${colorOnClick}`}

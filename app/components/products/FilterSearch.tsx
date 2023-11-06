@@ -1,4 +1,3 @@
-"use client"
 import { FiSearch } from "react-icons/fi"
 
 type FilterSearchProps = {

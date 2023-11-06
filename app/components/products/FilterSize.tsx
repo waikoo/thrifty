@@ -53,15 +53,8 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
 
       {isExpanded && (
         <div className=" px-8">
-          <div className="relative flex">
-            <FiSearch className="text-grey absolute left-1 top-1/2 -translate-y-1/2" />
-            <input
-              type="search"
-              placeholder="Search Size"
-              className="bg-bkg border-b-[0.1rem] pl-7 outline-none"
-              onChange={onChangeHandler}
-            />
-          </div>
+
+          <FilterSearch setSearchValue={setSearchValue} />
 
           <div className="grid cursor-pointer select-none grid-cols-4 gap-2 pt-4">
             {filteredSizes.map((size, i) => {
