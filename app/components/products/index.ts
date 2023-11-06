@@ -1,4 +1,6 @@
 export { default as FilterTop } from './FilterTop'
+export { default as FilterSearch } from './FilterSearch'
+export { default as FilterColor } from './FilterColor'
 export { default as FilterSize } from './FilterSize'
 export { default as FilterTitle } from './FilterTitle'
 export { default as FilterSide } from './FilterSide'
