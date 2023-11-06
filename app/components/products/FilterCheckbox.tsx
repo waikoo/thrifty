@@ -1,7 +1,6 @@
 "use client"
 import { Category } from "@/types/home"
 import { useState } from "react"
-import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { FilterTitle } from "."
 
 type FilterCheckboxProps = {
@@ -35,7 +34,12 @@ export default function FilterCheckbox(props: FilterCheckboxProps) {
 
   return (
     <div>
-      <FilterTitle {... { type, handleToggle, setCheckedItems, isExpanded }} />
+      <FilterTitle
+        type={type}
+        handleToggle={handleToggle}
+        uncheckItems={setCheckedItems}
+        isExpanded={isExpanded}
+      />
 
       {isExpanded && (
         <div className="flex flex-col gap-2 pl-8 pt-4">

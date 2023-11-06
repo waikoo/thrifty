@@ -1,7 +1,6 @@
 "use client"
 import { useState } from "react"
-import { FiChevronDown, FiChevronUp, FiSearch } from "react-icons/fi"
-import { FilterSearch } from "."
+import { FilterSearch, FilterTitle } from "."
 
 type FilterSizeProps = {
   type: string
@@ -12,7 +11,6 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
   const [isExpanded, setIsExpanded] = useState(false)
   const [checkedItems, setCheckedItems] = useState<string[]>([])
   const [searchValue, setSearchValue] = useState("")
-  console.log(checkedItems)
 
   const handleSizeChange = (e: React.MouseEvent<HTMLDivElement>) => {
     const { innerText } = e.currentTarget
@@ -25,31 +23,18 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
     }
   }
 
-  const handleToggle = () => {
-    setIsExpanded(prevIsExpanded => !prevIsExpanded)
-  }
-
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value)
-  }
-
   const filteredSizes = sizes.filter(size =>
     size.toLowerCase().includes(searchValue.toLowerCase())
   )
 
   return (
     <div>
-      <div className="flex justify-between">
-        <h3 className="flex cursor-pointer select-none gap-4 text-[0.875rem] font-bold" onClick={handleToggle}>
-          {isExpanded ? (<FiChevronUp />) : (<FiChevronDown />)}
-          {type}
-        </h3>
-        <span
-          className="cursor-pointer text-[0.75rem]"
-          onClick={() => setCheckedItems([])}>
-          Clear x
-        </span>
-      </div>
+      <FilterTitle
+        type={type}
+        setIsExpanded={setIsExpanded}
+        uncheckItems={setCheckedItems}
+        isExpanded={isExpanded}
+      />
 
       {isExpanded && (
         <div className=" px-8">

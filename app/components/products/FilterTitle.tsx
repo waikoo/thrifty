@@ -2,12 +2,17 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 type FilterTitleProps = {
   type: string
-  handleToggle: () => void
-  setCheckedItems: React.Dispatch<React.SetStateAction<string[]>>
+  setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>
+  uncheckItems: React.Dispatch<React.SetStateAction<string[]>>
   isExpanded: boolean
 }
 
-export default function FilterTitle({ type, handleToggle, setCheckedItems, isExpanded }: FilterTitleProps) {
+export default function FilterTitle({ type, setIsExpanded, uncheckItems, isExpanded }: FilterTitleProps) {
+
+  const handleToggle = () => {
+    setIsExpanded(prevIsExpanded => !prevIsExpanded)
+  }
+
   return (
     <div className="flex justify-between">
 
@@ -20,7 +25,7 @@ export default function FilterTitle({ type, handleToggle, setCheckedItems, isExp
 
       <span
         className="cursor-pointer text-[0.75rem]"
-        onClick={() => setCheckedItems([])}>
+        onClick={() => uncheckItems([])}>
         Clear x
       </span>
 

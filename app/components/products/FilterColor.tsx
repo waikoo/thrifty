@@ -1,7 +1,6 @@
 "use client"
 import { useState } from "react"
-import { FiChevronDown, FiChevronUp, FiSearch } from "react-icons/fi"
-import { FilterSearch } from "."
+import { FilterSearch, FilterTitle } from "."
 
 type FilterColorProps = {
   type: 'COLOR'
@@ -15,7 +14,6 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
 
   const handleColorChange = (e: React.MouseEvent<HTMLDivElement>) => {
     const { innerText } = e.currentTarget
-    console.log(innerText)
 
     if (checkedItems.includes(innerText)) { // take it out
       setCheckedItems(prevCheckedItems =>
@@ -25,31 +23,17 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
     }
   }
 
-  const handleToggle = () => {
-    setIsExpanded(prevIsExpanded => !prevIsExpanded)
-  }
-
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value)
-  }
-
   const filteredColors = colors.filter(color =>
     color.toLowerCase().includes(searchValue.toLowerCase()))
 
   return (
     <div>
-      <div className="flex justify-between">
-        <h3 className="flex cursor-pointer select-none gap-4 text-[0.875rem] font-bold"
-          onClick={handleToggle}>
-          {isExpanded ? (<FiChevronUp />) : (<FiChevronDown />)}
-          {type}
-        </h3>
-        <span
-          className="cursor-pointer text-[0.75rem]"
-          onClick={() => setCheckedItems([])}>
-          Clear x
-        </span>
-      </div>
+      <FilterTitle
+        type={type}
+        setIsExpanded={setIsExpanded}
+        uncheckItems={setCheckedItems}
+        isExpanded={isExpanded}
+      />
 
       {isExpanded && (
         <div className="px-8">
