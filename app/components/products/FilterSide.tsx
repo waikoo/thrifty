@@ -1,5 +1,5 @@
 import { Category } from "@/types/home";
-import { FilterCheckbox, FilterSize } from ".";
+import { FilterCheckbox, FilterColor, FilterSize } from ".";
 
 type FilterSideProps = {
   category: Category['category']
@@ -35,6 +35,11 @@ export default function FilterSide({ category }: FilterSideProps) {
       <FilterSize
         type={"SIZE"}
         sizes={["35", "35.5", "36", "36.5", "37", "37.5", "38", "38.5", "39", "39.5", "40", "40.5", "41", "41.5", "42", "42.5", "43", "43.5", "44", "44.5", "46", "XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL"]} />
+
+      <FilterColor
+        type={"COLOR"}
+        colors={["Black", "White", "Beige", "Brown", "Grey", "Blue", "Purple", "Multicolor", "Pink", "Red", "Green", "Yellow", "Orange", "Gold", "Silver"]}
+      />
 
       <FilterCheckbox
         type={"MATERIAL"}
