@@ -2,6 +2,7 @@
 import { Category } from "@/types/home"
 import { useState } from "react"
 import { FilterTitle } from "."
+import { useFilterChecking, useFilterTitle } from "../hooks"
 
 type FilterCheckboxProps = {
   type: string
@@ -10,33 +11,18 @@ type FilterCheckboxProps = {
 }
 
 export default function FilterCheckbox(props: FilterCheckboxProps) {
+  const { isExpanded, setIsExpanded } = useFilterTitle()
+  const { checkedItems, setCheckedItems, handleCheckboxChange } = useFilterChecking()
+
   const { type, elements } = props
   let category
   if (props.category) category = props.category
-
-  const [checkedItems, setCheckedItems] = useState<string[]>([category || ""])
-  const [isExpanded, setIsExpanded] = useState(false)
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target
-    if (checked) {
-      setCheckedItems((prevCheckedItems) =>
-        [...prevCheckedItems, value])
-    } else {
-      setCheckedItems(prevCheckedItems =>
-        prevCheckedItems.filter(item => item !== value))
-    }
-  }
-
-  const handleToggle = () => {
-    setIsExpanded(prevIsExpanded => !prevIsExpanded)
-  }
 
   return (
     <div>
       <FilterTitle
         type={type}
-        handleToggle={handleToggle}
+        setIsExpanded={setIsExpanded}
         uncheckItems={setCheckedItems}
         isExpanded={isExpanded}
       />
