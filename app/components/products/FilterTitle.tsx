@@ -3,7 +3,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 type FilterTitleProps = {
   type: string
   setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>
-  uncheckItems: React.Dispatch<React.SetStateAction<string[]>>
+  uncheckItems?: React.Dispatch<React.SetStateAction<string[]>>
   isExpanded: boolean
 }
 
@@ -25,7 +25,7 @@ export default function FilterTitle({ type, setIsExpanded, uncheckItems, isExpan
 
       <span
         className="cursor-pointer text-[0.75rem]"
-        onClick={() => uncheckItems([])}>
+        onClick={() => uncheckItems ? uncheckItems([]) : null}>
         Clear x
       </span>
 
