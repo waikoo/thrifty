@@ -1,20 +1,23 @@
 "use client"
 import { Category } from "@/types/home"
 import { useState } from "react"
-import { FilterTitle } from "."
-import { useFilterChecking, useFilterTitle } from "../hooks"
+import { FilterSearch, FilterTitle } from "."
+import { useFilterChecking, useFilterSearch, useFilterTitle } from "../hooks"
 
 type FilterCheckboxProps = {
   type: string
   elements: string[]
   category?: Category['category']
+  search?: boolean
 }
 
 export default function FilterCheckbox(props: FilterCheckboxProps) {
+  const { type, elements, search } = props
   const { isExpanded, setIsExpanded } = useFilterTitle()
   const { checkedItems, setCheckedItems, handleCheckboxChange } = useFilterChecking()
+  const { setSearchValue, filteredItems } = useFilterSearch(elements)
 
-  const { type, elements } = props
+
   let category
   if (props.category) category = props.category
 
@@ -29,7 +32,12 @@ export default function FilterCheckbox(props: FilterCheckboxProps) {
 
       {isExpanded && (
         <div className="flex flex-col gap-2 pl-8 pt-4">
-          {elements.map((element, i) => {
+
+          {search && (
+            <FilterSearch setSearchValue={setSearchValue} />
+          )}
+
+          {filteredItems.map((element, i) => {
             const isChecked = checkedItems.includes(element.toLowerCase())
 
             return (

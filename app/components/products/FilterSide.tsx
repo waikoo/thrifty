@@ -1,5 +1,6 @@
 import { Category } from "@/types/home";
 import { FilterCheckbox, FilterColor, FilterSize } from ".";
+import { brandNamesArray } from "../data/brandsData";
 
 type FilterSideProps = {
   category: Category['category']
@@ -40,6 +41,14 @@ export default function FilterSide({ category }: FilterSideProps) {
         type={"COLOR"}
         colors={["Black", "White", "Beige", "Brown", "Grey", "Blue", "Purple", "Multicolor", "Pink", "Red", "Green", "Yellow", "Orange", "Gold", "Silver"]}
       />
+
+      <FilterCheckbox
+        type={"BRAND"}
+        elements={brandNamesArray}
+        search
+      />
+
+      {/* <FilterCondition /> */}
 
       <FilterCheckbox
         type={"MATERIAL"}
