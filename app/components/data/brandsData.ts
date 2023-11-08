@@ -24,3 +24,6 @@ export const brands: Brands = {
   V: ['Vagabond', 'Vans', 'Vero Moda'],
   Z: ['Zara'],
 }
+
+// All brands in one array
+export const brandNamesArray = Object.values(brands).flat()
