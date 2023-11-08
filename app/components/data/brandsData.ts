@@ -25,5 +25,4 @@ export const brands: Brands = {
   Z: ['Zara'],
 }
 
-// All brands in one array
 export const brandNamesArray = Object.values(brands).flat()
