@@ -6,16 +6,16 @@ export default function Page() {
   let alphabet = [...generateAlphabet()];
 
   return (
-    <>
+    <main>
       <BrandsTopBar {... { alphabet }} />
 
-      <section>
+      <section className="mx-auto max-w-[40rem]">
         {alphabet.map((letter) => (
           brands[letter] ? (
             <BrandsLetter brandsArray={brands[letter]}>{letter}</BrandsLetter>
           ) : null
         ))}
       </section>
-    </>
+    </main>
   )
 }
