@@ -9,12 +9,12 @@ type FilterSideProps = {
 export default function FilterSide({ category }: FilterSideProps) {
 
   return (
-    <aside className="flex w-[350px] flex-col gap-3 border-[2px]">
+    <aside className="flex w-[300px] flex-col gap-6">
 
-      <div>
-        <span>Expand All</span>
+      <div className="text-[0.813rem] font-normal">
+        <span className="underline underline-offset-4">Expand All</span>
         <span> / </span>
-        <span>Clear All</span>
+        <span className="underline underline-offset-4">Clear All</span>
       </div>
 
       <FilterCheckbox
@@ -62,6 +62,10 @@ export default function FilterSide({ category }: FilterSideProps) {
         type={"DATE ADDED"}
         elements={["Today", "Last 3 Days", "This Week"]}
       />
+
+      <button className="bg-faded m-auto w-full whitespace-nowrap py-2 text-[0.813rem] font-semibold text-black">
+        SAVE FILTER
+      </button>
 
     </aside>
   )
