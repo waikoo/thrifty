@@ -14,7 +14,7 @@ export default function BrandsLetter({ children, brandsArray }: BrandsLetterProp
         {children}
       </div>
 
-      {brandsArray.map((brand) => <span className="cursor-pointer text-[1rem] font-normal">{brand}</span>)}
+      {brandsArray.map((brand) => <span className="text-content cursor-pointer text-[1rem] font-normal">{brand}</span>)}
     </section>
   )
 }
