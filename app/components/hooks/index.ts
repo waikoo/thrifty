@@ -1,4 +1,5 @@
 export { default as useBanner } from "./useBanner";
+export { default as useFavoritesOrCart } from "./useFavoritesOrCart";
 export { default as useFilterTitle } from "./useFilterTitle";
 export { default as useFilterChecking } from "./useFilterChecking";
 export { default as useFilterSearch } from "./useFilterSearch";
