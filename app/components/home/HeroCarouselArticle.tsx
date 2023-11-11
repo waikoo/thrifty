@@ -1,14 +1,16 @@
 "use client"
-import { Locales } from "@/types/home"
+import { Category, Locales } from "@/types/home"
 import { useTranslation } from '../../../i18n/client'
 import SubmitButton from "../SubmitButton"
 import useHeroCarousel from "../hooks/useHeroCarousel"
+import Link from "next/link"
 
 type HeroCarouselArticleProps = {
   lang: Locales
+  category: Category['category']
 }
 
-export default function HeroCarouselArticle({ lang }: HeroCarouselArticleProps) {
+export default function HeroCarouselArticle({ lang, category }: HeroCarouselArticleProps) {
   const { t } = useTranslation(lang, 'home')
 
   const { dynamicTitle } = useHeroCarousel([
@@ -29,9 +31,11 @@ export default function HeroCarouselArticle({ lang }: HeroCarouselArticleProps) 
           {t('heroCarousel.paragraph')}
         </p>
 
-        <SubmitButton hero className="border-bkg whitespace-nowrap border-[0.2rem] font-bold">
-          {t('heroCarousel.button')}
-        </SubmitButton>
+        <Link href={`/${lang}/${category}/products`}>
+          <SubmitButton hero className="border-bkg whitespace-nowrap border-[0.2rem] font-bold">
+            {t('heroCarousel.button')}
+          </SubmitButton>
+        </Link>
 
       </div>
 

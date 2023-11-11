@@ -13,7 +13,7 @@ const HeroCarousel = ({ category, lang }: HeroCarouselProps) => {
 
       <div className={`flex flex-row gap-2 px-20 rounded-[2.8125rem] m-0 bg-content text-bkg max-w-full h-[75vh]`}>
         <HeroCarouselImages {... { category }} />
-        <HeroCarouselArticle {... { lang }} />
+        <HeroCarouselArticle {... { lang, category }} />
       </div>
 
       <HeroCarouselNavigator />

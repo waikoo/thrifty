@@ -22,7 +22,7 @@ const SubmitButton = ({ children, className, inverse, loading, onClick, hero }: 
         className,
         inverse && "bg-bkg text-content border-content",
         loading && "bg-bkg",
-        hero && "h-auto w-full border-[0.05rem] p-0.5 text-[0.85rem] sm:p-1 md:p-2"
+        hero && "hover:bg-bkg hover:text-content h-auto w-full border-[0.05rem] p-0.5 text-[0.85rem] sm:p-1 md:p-2"
       )}
 
       onClick={onClick}
