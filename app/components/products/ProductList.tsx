@@ -36,11 +36,13 @@ export default async function ProductList({ lang, category, searchParams }: Prod
 
   return (
     <div className="mx-auto flex w-[80%] flex-wrap justify-between gap-8">
-      {data!.map((product: ProductItemType) => {
+      {data!.map((product: ProductItemType, i: number) => {
         return (
           <ProductItem
             key={product.uuid}
-            product={product} />
+            product={product}
+            index={i}
+          />
         )
       })
       }
