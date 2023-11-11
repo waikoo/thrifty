@@ -13,13 +13,12 @@ type FilterCheckboxProps = {
 
 export default function FilterCheckbox(props: FilterCheckboxProps) {
   const { type, elements, search } = props
-  const { isExpanded, setIsExpanded } = useFilterTitle()
-  const { checkedItems, setCheckedItems, handleCheckboxChange } = useFilterChecking()
-  const { setSearchValue, filteredItems } = useFilterSearch(elements)
-
-
   let category
   if (props.category) category = props.category
+  const { checkedItems, setCheckedItems, handleCheckboxChange } = useFilterChecking(category!)
+  const { isExpanded, setIsExpanded } = useFilterTitle()
+  const { setSearchValue, filteredItems } = useFilterSearch(elements)
+
 
   return (
     <div>

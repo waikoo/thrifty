@@ -1,7 +1,17 @@
+import { Category } from "@/types/home"
 import { useState } from "react"
 
-export default function useFilterChecking() {
-  const [checkedItems, setCheckedItems] = useState<string[]>([])
+type useFilterCheckingType = (
+  category: Category['category']
+) => {
+  checkedItems: string[]
+  setCheckedItems: React.Dispatch<React.SetStateAction<string[]>>
+  handleItemChange: (e: React.MouseEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>) => void
+  handleCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+export default function useFilterChecking(category: Category['category']): useFilterCheckingType {
+  const [checkedItems, setCheckedItems] = useState<string[]>([category])
 
   const handleItemChange = (
     e: React.MouseEvent<HTMLDivElement>
@@ -29,8 +39,7 @@ export default function useFilterChecking() {
     }
   }
 
-
-
+  // FIX: checkedItems error
   return {
     checkedItems,
     setCheckedItems,
