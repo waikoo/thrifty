@@ -11,7 +11,7 @@ type ProductListProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export const getProducts = cache(async () => {
+export const getProducts = cache(async (category: string) => {
   const cookieStore = cookies()
 
   const supabase = createServerClient(
@@ -26,17 +26,17 @@ export const getProducts = cache(async () => {
     }
   )
 
-  const { data, error } = await supabase.from('products').select('*');
+  const { data, error }: { data: ProductItemType[], error: any } = await supabase.from('products').select('*').eq('gender', category);
   return data
 })
 
 export default async function ProductList({ lang, category, searchParams }: ProductListProps) {
-  const data = await getProducts()
+  const data = await getProducts(category)
   console.log(data)
 
   return (
     <div className="mx-auto flex w-[80%] flex-wrap justify-between gap-8">
-      {data!.map((product: ProductItemType, i: number) => {
+      {data && data.map((product: ProductItemType, i: number) => {
         return (
           <ProductItem
             key={product.uuid}
