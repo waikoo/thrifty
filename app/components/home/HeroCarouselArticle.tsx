@@ -31,7 +31,7 @@ export default function HeroCarouselArticle({ lang, category }: HeroCarouselArti
           {t('heroCarousel.paragraph')}
         </p>
 
-        <Link href={`/${lang}/${category}/products`}>
+        <Link href={`/${lang}/${category}/products/?${category}=true`}>
           <SubmitButton hero className="border-bkg whitespace-nowrap border-[0.2rem] font-bold">
             {t('heroCarousel.button')}
           </SubmitButton>
