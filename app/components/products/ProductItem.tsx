@@ -7,13 +7,13 @@ type ProductItemProps = {
 }
 
 export default function ProductItem({ product, index }: ProductItemProps) {
-  const { type, size, price, imgUrl, discount, brand } = product
+  const { type, size, price, img_url, discount, brand } = product
 
   return (
     <div className="w-[20%] flex-grow-0 ">
       <div className="w-full object-cover">
         <Image
-          src={imgUrl[0]}
+          src={img_url[0]}
           alt={'product-image'}
           width={100}
           height={100}
