@@ -1,12 +1,14 @@
-import { Category } from "@/types/home";
+import { Category, Locales } from "@/types/home";
 import { FilterCheckbox, FilterColor, FilterCondition, FilterSize } from ".";
 import { brandNamesArray } from "../data/brandsData";
 
 type FilterSideProps = {
+  lang: Locales
   category: Category['category']
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default function FilterSide({ category }: FilterSideProps) {
+export default function FilterSide({ lang, category, searchParams }: FilterSideProps) {
 
   return (
     <aside className="flex w-[300px] flex-col gap-6">
@@ -18,9 +20,9 @@ export default function FilterSide({ category }: FilterSideProps) {
       </div>
 
       <FilterCheckbox
-        type={"GENDER"}
-        elements={["Men", "Women", "Boys", "Girls"]}
-        category={category} />
+        type={"CATEGORY"}
+        elements={["Men", "Women", "Kids"]}
+      />
 
       <FilterCheckbox
         type={"SHOP BY"}
