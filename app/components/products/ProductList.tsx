@@ -4,6 +4,7 @@ import { ProductItemType } from "@/types/productItem"
 import { ProductItem } from "."
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
+import { fetchProductsByFilters } from '@/utils/fetchProductsByFilters'
 
 type ProductListProps = {
   lang: Locales
@@ -26,14 +27,7 @@ export const getProducts = cache(async (category: string, searchParams: { [key: 
     }
   )
 
-  const searchParameters = searchParams['category']?.toString().split(',')
-  const array = searchParameters || ['men', 'women', 'kids']
-
-  const { data, error }: { data: ProductItemType[] | null, error: any } = await supabase
-    .from('products')
-    .select('*')
-    .in('gender', [array]);
-  return data
+  return await fetchProductsByFilters(supabase, searchParams)
 })
 
 export default async function ProductList({ lang, category, searchParams }: ProductListProps) {
