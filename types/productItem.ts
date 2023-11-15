@@ -4,7 +4,7 @@ export type ProductItemType = {
   size: string
   price: number
   material: string
-  imgUrl: string[]
+  img_url: string[]
   gender: string
   discount: number
   created_at: string
