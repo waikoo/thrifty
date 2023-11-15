@@ -1,6 +1,7 @@
 import { Category, Locales } from "@/types/home";
 import { FilterCheckbox, FilterColor, FilterCondition, FilterSize } from ".";
 import { brandNamesArray } from "../data/brandsData";
+import { filter } from "../data";
 
 type FilterSideProps = {
   lang: Locales
@@ -21,27 +22,26 @@ export default function FilterSide({ lang, category, searchParams }: FilterSideP
 
       <FilterCheckbox
         type={"CATEGORY"}
-        elements={["Men", "Women", "Kids"]}
+        elements={filter.category}
       />
 
       <FilterCheckbox
         type={"SHOP BY"}
-        elements={["All Products", "New In", "Promos"]}
+        elements={filter.shopBy}
       />
 
       <FilterCheckbox
         type={"PRODUCT TYPE"}
-        elements={["Coats", "Jackets", "Tops", "T-Shirts", "Sweaters", "Jeans", "Pants"]}
+        elements={filter.productType}
       />
-      {/* TODO: object[category] -> access right array */}
 
       <FilterSize
         type={"SIZE"}
-        sizes={["35", "35.5", "36", "36.5", "37", "37.5", "38", "38.5", "39", "39.5", "40", "40.5", "41", "41.5", "42", "42.5", "43", "43.5", "44", "44.5", "46", "XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL"]} />
+        sizes={filter.size} />
 
       <FilterColor
         type={"COLOR"}
-        colors={["Black", "White", "Beige", "Brown", "Grey", "Blue", "Purple", "Multicolor", "Pink", "Red", "Green", "Yellow", "Orange", "Gold", "Silver"]}
+        colors={filter.color}
       />
 
       <FilterCheckbox
@@ -52,17 +52,17 @@ export default function FilterSide({ lang, category, searchParams }: FilterSideP
 
       <FilterCondition
         type={"CONDITION"}
-        conditions={[5, 4, 3]}
+        condition={filter.condition}
       />
 
       <FilterCheckbox
         type={"MATERIAL"}
-        elements={["Cotton", "Denim", "Wool", "Satin", "Leather", "Synthetic", "Lace"]}
+        elements={filter.material}
       />
 
       <FilterCheckbox
         type={"DATE ADDED"}
-        elements={["Today", "Last 3 Days", "This Week"]}
+        elements={filter.dateAdded}
       />
 
       <button className="bg-faded m-auto w-full whitespace-nowrap py-2 text-[0.813rem] font-semibold text-black">
