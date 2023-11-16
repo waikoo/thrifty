@@ -10,14 +10,14 @@ type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 export default async function Page({ params: { lang, category }, searchParams, }: PageProps) {
-  getProducts(category)
+  getProducts(category, searchParams)
 
   return (
     <main className="bg-bkg text-content mx-auto px-20 lg:max-w-[1500px]">
       <FilterTop {...{ category }} />
 
       <div className="flex gap-16">
-        <FilterSide {...{ category }} />
+        <FilterSide {...{ lang, category, searchParams }} />
         <ProductList {...{ lang, category, searchParams }} />
       </div>
 
