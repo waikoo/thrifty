@@ -17,7 +17,6 @@ export const metadata = {
 }
 
 export default function RootLayout({ children, params }: RootLayoutProps) {
-  console.log(params)
 
   return (
     <html data-theme={themeSettings.DEFAULT_THEME} className={inter.className}>
