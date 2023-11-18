@@ -1,13 +1,17 @@
+import { Category, Locales } from "@/types/home";
+import Link from "next/link";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 type FilterTitleProps = {
   type: string
+  lang: Locales
+  category: Category['category']
   setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>
-  uncheckItems?: React.Dispatch<React.SetStateAction<string[]>>
   isExpanded: boolean
+  clearedLink: string
 }
 
-export default function FilterTitle({ type, setIsExpanded, uncheckItems, isExpanded }: FilterTitleProps) {
+export default function FilterTitle({ type, setIsExpanded, isExpanded, clearedLink }: FilterTitleProps) {
 
   const handleToggle = () => {
     setIsExpanded(prevIsExpanded => !prevIsExpanded)
@@ -23,11 +27,10 @@ export default function FilterTitle({ type, setIsExpanded, uncheckItems, isExpan
         {type}
       </h3>
 
-      <span
-        className="cursor-pointer text-[0.75rem]"
-        onClick={() => uncheckItems ? uncheckItems([]) : null}>
+      <Link href={`${clearedLink}`}
+        className="cursor-pointer text-[0.75rem]" >
         Clear x
-      </span>
+      </Link>
 
     </div>
 

@@ -1,7 +1,7 @@
 "use client"
 import { Category, Locales } from "@/types/home"
 import { FilterSearch, FilterTitle } from "."
-import { useFilterSearch, useFilterTitle } from "../hooks"
+import { useClearTitle, useFilterSearch, useFilterTitle } from "../hooks"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { getQueryParamCategory } from "@/utils/getQueryParamCategory"
 
@@ -16,6 +16,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
   const { setSearchValue, filteredItems } = useFilterSearch(elements)
   const router = useRouter()
   const pathname = usePathname()
+  const clearedLink = useClearTitle(type)
 
   const lang = pathname.split('/')[1] as Locales
   const category = pathname.split('/')[2] as Category['category']
@@ -53,6 +54,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
         category={category}
         setIsExpanded={setIsExpanded}
         isExpanded={isExpanded}
+        clearedLink={clearedLink}
       />
 
       {isExpanded && (
