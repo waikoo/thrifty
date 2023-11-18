@@ -10,7 +10,7 @@ type FilterCheckboxProps = {
   elements: string[]
   search?: boolean
 }
-// TODO: when all is checked, it unchecks it
+
 export default function FilterCheckbox({ type, elements, search }: FilterCheckboxProps) {
   const { isExpanded, setIsExpanded } = useFilterTitle()
   const { setSearchValue, filteredItems } = useFilterSearch(elements)
@@ -26,19 +26,22 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
     const newParams = new URLSearchParams(searchParamos);
     const value = (e.target as unknown as HTMLInputElement).value;
     const queryParamCategory = getQueryParamCategory(type)
-    console.log('queryParamCategory: ' + queryParamCategory)
 
-    const existingValues = newParams.get(queryParamCategory)?.split(',') || [];
-    // TODO: queryParamCategory doesn't get added (ask AI)
-    if (existingValues.includes(value)) {
-      const newValues = existingValues.filter(val => val !== value)
-      newValues.length > 0
-        ? newParams.set(queryParamCategory, newValues.join(','))
-        : newParams.delete(queryParamCategory)
+    if (!newParams.has(queryParamCategory)) {
+      newParams.append(queryParamCategory, value);
     } else {
-      existingValues.push(value)
-      newParams.set(queryParamCategory, existingValues.join(','))
+      const existingValues = newParams.get(queryParamCategory)?.split(',') || [];
+      if (existingValues.includes(value)) {
+        const newValues = existingValues.filter(val => val !== value);
+        newValues.length > 0
+          ? newParams.set(queryParamCategory, newValues.join(','))
+          : newParams.delete(queryParamCategory);
+      } else {
+        existingValues.push(value);
+        newParams.set(queryParamCategory, existingValues.join(','));
+      }
     }
+
     router.push(`${pathname}?${newParams.toString()}`);
   }
 
@@ -82,6 +85,6 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
           </fieldset>
         </div>
       )}
-      </div>
+    </div>
   )
 }
