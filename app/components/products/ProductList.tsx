@@ -32,10 +32,10 @@ export const getProducts = cache(async (category: string, searchParams: { [key: 
 
 export default async function ProductList({ lang, category, searchParams }: ProductListProps) {
   const data = await getProducts(category, searchParams)
-
+  console.log(data)
   return (
     <div className="mx-auto flex w-[80%] flex-wrap justify-between gap-8">
-      {data && data.map((product: ProductItemType, i: number) => {
+      {data && data.data.map((product: ProductItemType, i: number) => {
         return (
           <ProductItem
             key={product.uuid}
