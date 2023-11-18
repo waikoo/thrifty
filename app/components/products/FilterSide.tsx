@@ -2,6 +2,7 @@ import { Category, Locales } from "@/types/home";
 import { FilterCheckbox, FilterColor, FilterCondition, FilterSize } from ".";
 import { brandNamesArray } from "../data/brandsData";
 import { filter } from "../data";
+import Link from "next/link";
 
 type FilterSideProps = {
   lang: Locales
@@ -17,7 +18,10 @@ export default function FilterSide({ lang, category, searchParams }: FilterSideP
       <div className="text-[0.813rem] font-normal">
         <span className="underline underline-offset-4">Expand All</span>
         <span> / </span>
-        <span className="underline underline-offset-4">Clear All</span>
+        <Link href={`/${lang}/${category}/products`}>
+          <span className="underline underline-offset-4">Clear All</span>
+        </Link>
+
       </div>
 
       <FilterCheckbox
