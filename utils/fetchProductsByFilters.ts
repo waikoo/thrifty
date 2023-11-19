@@ -8,6 +8,7 @@ export async function fetchProductsByFilters(
   const categoryArr = searchParams.category?.toString().split(',')
   const productTypeArr = searchParams['product-type']?.toString().split(',')
   const materialArr = searchParams.material?.toString().split(',')
+  const sizeArr = searchParams.size?.toString().split(',')
 
   let query = supabase
     .from('products')
@@ -15,10 +16,11 @@ export async function fetchProductsByFilters(
     .in('category', categoryArr || filter.category.map(fil => fil.toLowerCase()))
     .in('product-type', productTypeArr || filter.productType.map(fil => fil.toLowerCase()))
     .in('material', materialArr || filter.material.map(fil => fil.toLowerCase()))
+    .in('size', sizeArr || filter.size.map(fil => fil.toLowerCase()))
 
   if (searchParams['shop-by'] === 'new in') {
     query = query.gt('created_at', getLastDayISO())
   }
-  // if (error) console.log('Encountered error: ', error)
+
   return await query
 }
