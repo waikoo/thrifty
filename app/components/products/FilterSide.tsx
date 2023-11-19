@@ -13,7 +13,7 @@ type FilterSideProps = {
 export default function FilterSide({ lang, category, searchParams }: FilterSideProps) {
 
   return (
-    <aside className="flex w-[300px] flex-col gap-6">
+    <aside className="sticky top-10 flex max-h-[600px] w-[300px] flex-col gap-6">
 
       <div className="text-[0.813rem] font-normal">
         <span className="underline underline-offset-4">Expand All</span>
