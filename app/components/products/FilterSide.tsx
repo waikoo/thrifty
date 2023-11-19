@@ -1,10 +1,7 @@
-"use client"
 import { Category, Locales } from "@/types/home";
-import { FilterCheckbox, FilterColor, FilterCondition, FilterSize } from ".";
+import { FilterCheckbox, FilterColor, FilterCondition, FilterSideControls, FilterSize } from ".";
 import { brandNamesArray } from "../data/brandsData";
 import { filter } from "../data";
-import Link from "next/link";
-import { useFilterTitleStore } from "@/state/uiState";
 
 type FilterSideProps = {
   lang: Locales
@@ -13,25 +10,11 @@ type FilterSideProps = {
 }
 
 export default function FilterSide({ lang, category, searchParams }: FilterSideProps) {
-  const expandAllFilters = useFilterTitleStore((state) => state.expandAllComponents)
-  const collapseAllFilters = useFilterTitleStore((state) => state.collapseAllComponents)
-  const areAllExpanded = useFilterTitleStore((state => state.areAllExpanded))
 
   return (
     <aside className="sticky top-10 flex max-h-[600px] w-[300px] flex-col gap-6">
 
-      <div className="text-[0.813rem] font-normal">
-        <span
-          className="cursor-pointer underline underline-offset-4"
-          onClick={() => areAllExpanded ? collapseAllFilters() : expandAllFilters()}
-        >{areAllExpanded ? 'Collapse All' : 'Expand All'}
-        </span>
-
-        <span> / </span>
-        <Link href={`/${lang}/${category}/products?category=${category}`}>
-          <span className="underline underline-offset-4">Clear All</span>
-        </Link>
-      </div>
+      <FilterSideControls category={category} lang={lang} />
 
       <FilterCheckbox
         type={"CATEGORY"}
