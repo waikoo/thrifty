@@ -1,18 +1,25 @@
 "use client"
-import { useFilterChecking, useFilterTitle } from "../hooks"
+import { usePathname } from "next/navigation"
 import FilterTitle from "./FilterTitle"
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"
+import { Category, Locales } from "@/types/home"
+import { useFilterTitleStore } from "@/state/uiState"
+
 type FilterConditionProps = {
   type: string
-  conditions: number[]
+  condition: number[]
 }
 
-export default function FilterCondition({ type, conditions }: FilterConditionProps) {
-  const { isExpanded, setIsExpanded } = useFilterTitle()
+export default function FilterCondition({ type, condition }: FilterConditionProps) {
+  const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
+
+  const pathname = usePathname()
+  const lang = pathname.split('/')[1] as Locales
+  const category = pathname.split('/')[2] as Category['category']
 
   const renderStars = (rating: number) => {
     const starRow = []
-    for (let i = 0; i < conditions[0]; i++) {
+    for (let i = 0; i < condition[0]; i++) {
       starRow.push(
         i < rating
           ? <AiFillStar key={`fill-${i}`} />
@@ -26,16 +33,16 @@ export default function FilterCondition({ type, conditions }: FilterConditionPro
     <div>
       <FilterTitle
         type={type}
-        setIsExpanded={setIsExpanded}
-        isExpanded={isExpanded}
+        lang={lang}
+        category={category}
       />
 
       {isExpanded && (
         <div className="px-8">
-          {conditions.map((condition, i) => {
+          {condition.map((con, i) => {
             return (
               <div key={`div-${i}`} className={"flex"}>
-                {...renderStars(condition)}
+                {...renderStars(con)}
               </div>
             )
           })}

@@ -1,10 +1,11 @@
 "use client"
 import { FilterSearch, FilterTitle } from "."
-import { useClearTitle, useFilterSearch, useFilterTitle } from "../hooks"
+import { useClearTitle, useFilterSearch } from "../hooks"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
 import getLangAndCategory from "@/utils/getLangAndCategory"
 import { useState } from "react"
+import { useFilterTitleStore } from "@/state/uiState"
 
 type FilterCheckboxProps = {
   type: string
@@ -13,10 +14,9 @@ type FilterCheckboxProps = {
 }
 
 export default function FilterCheckbox({ type, elements, search }: FilterCheckboxProps) {
-  const { isExpanded, setIsExpanded } = useFilterTitle()
+  const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
   const { setSearchValue, filteredItems } = useFilterSearch(elements)
   const searchParamos = useSearchParams()
-
   const [checkbox, setCheckbox] = useState(() => {
     const category = searchParamos.get('category')
 
@@ -28,7 +28,6 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
   })
 
   const pathname = usePathname()
-
   const router = useRouter()
 
   const clearedLink = useClearTitle(type)
@@ -71,8 +70,6 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
         type={type}
         lang={lang}
         category={category}
-        setIsExpanded={setIsExpanded}
-        isExpanded={isExpanded}
         clearedLink={clearedLink}
         setCheckbox={setCheckbox}
         checkbox={checkbox}

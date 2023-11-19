@@ -1,9 +1,10 @@
 "use client"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { FilterSearch, FilterTitle } from "."
-import { useClearTitle, useFilterSearch, useFilterTitle } from "../hooks"
+import { useClearTitle, useFilterSearch } from "../hooks"
 import getLangAndCategory from "@/utils/getLangAndCategory"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
+import { useFilterTitleStore } from "@/state/uiState"
 
 type FilterSizeProps = {
   type: 'SIZE'
@@ -11,7 +12,7 @@ type FilterSizeProps = {
 }
 
 export default function FilterSize({ type, sizes }: FilterSizeProps) {
-  const { isExpanded, setIsExpanded } = useFilterTitle()
+  const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
   const { setSearchValue, filteredItems } = useFilterSearch(sizes)
   const clearedLink = useClearTitle(type)
   const pathname = usePathname()
@@ -48,8 +49,6 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
         type={type}
         lang={lang}
         category={category}
-        setIsExpanded={setIsExpanded}
-        isExpanded={isExpanded}
         clearedLink={clearedLink}
       />
 

@@ -1,8 +1,9 @@
 "use client"
 import { usePathname } from "next/navigation"
 import { FilterSearch, FilterTitle } from "."
-import { useClearTitle, useFilterSearch, useFilterTitle } from "../hooks"
+import { useClearTitle, useFilterSearch } from "../hooks"
 import getLangAndCategory from "@/utils/getLangAndCategory"
+import { useFilterTitleStore } from "@/state/uiState"
 
 type FilterColorProps = {
   type: string
@@ -10,7 +11,7 @@ type FilterColorProps = {
 }
 
 export default function FilterColor({ type, colors }: FilterColorProps) {
-  const { isExpanded, setIsExpanded } = useFilterTitle()
+  const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
   const { setSearchValue, filteredItems } = useFilterSearch(colors)
   const clearedLink = useClearTitle(type)
 
@@ -23,8 +24,6 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
         type={type}
         lang={lang}
         category={category}
-        setIsExpanded={setIsExpanded}
-        isExpanded={isExpanded}
         clearedLink={clearedLink}
       />
 

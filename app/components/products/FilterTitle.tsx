@@ -2,23 +2,31 @@ import { Category, Locales } from "@/types/home";
 import Link from "next/link";
 import { ReadonlyURLSearchParams } from "next/navigation";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { useFilterTitleStore } from "@/state/uiState"
 
 type FilterTitleProps = {
   type: string
   lang: Locales
   category: Category['category']
-  setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>
-  isExpanded: boolean
   clearedLink: string
   setCheckbox: React.Dispatch<React.SetStateAction<{ [key: string]: boolean }>>
   checkbox: { [key: string]: boolean }
   searchParamos: ReadonlyURLSearchParams
 }
 
-export default function FilterTitle({ type, category, setIsExpanded, isExpanded, clearedLink, setCheckbox, checkbox, searchParamos }: FilterTitleProps) {
+export default function FilterTitle({
+  type,
+  category,
+  clearedLink,
+  setCheckbox,
+  checkbox,
+  searchParamos }: FilterTitleProps) {
+  const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
+  const setIsExpanded = useFilterTitleStore((state) => state.setExpandedComponent)
+  const unsetIsExpanded = useFilterTitleStore((state) => state.unsetExpandedComponent)
 
   const handleToggle = () => {
-    setIsExpanded(prevIsExpanded => !prevIsExpanded)
+    isExpanded ? unsetIsExpanded(type) : setIsExpanded(type)
   }
 
   return (
@@ -48,6 +56,5 @@ export default function FilterTitle({ type, category, setIsExpanded, isExpanded,
       </Link>
 
     </div>
-
   )
 }
