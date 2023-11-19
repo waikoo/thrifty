@@ -59,7 +59,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
           <FilterSearch setSearchValue={setSearchValue} />
 
           <fieldset
-            className="grid cursor-pointer select-none grid-cols-4 gap-2 pt-4"
+            className="grid w-full select-none grid-cols-4 gap-2 pt-4"
             onClick={handleOnChange}>
             {filteredItems.map((size, i) => {
               const colorOnClick =
@@ -69,14 +69,11 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
                     ? 'text-bkg bg-content'
                     : 'bg-bkg text-content';
 
-
-
-
               return (
                 <div
                   key={`sizes-${i}`}
                   data-value={size}
-                  className={`grid place-items-center border-[0.1rem] p-1 px-4 ${colorOnClick}`}
+                  className={`grid cursor-pointer place-items-center border-[0.1rem] p-1 px-4 text-[0.813rem] ${colorOnClick}`}
                 >
                   {size}</div>
               )
