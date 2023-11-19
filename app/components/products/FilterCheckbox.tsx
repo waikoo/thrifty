@@ -3,7 +3,7 @@ import { Category, Locales } from "@/types/home"
 import { FilterSearch, FilterTitle } from "."
 import { useClearTitle, useFilterSearch, useFilterTitle } from "../hooks"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { getQueryParamCategory } from "@/utils/getQueryParamCategory"
+import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
 
 type FilterCheckboxProps = {
   type: string
@@ -26,7 +26,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
   const handleOnChange = (e: React.ChangeEvent<HTMLFieldSetElement>) => {
     const newParams = new URLSearchParams(searchParamos);
     const value = (e.target as unknown as HTMLInputElement).value;
-    const queryParamCategory = getQueryParamCategory(type)
+    const queryParamCategory = lowerCaseSpaceToDash(type)
 
     if (!newParams.has(queryParamCategory)) {
       newParams.append(queryParamCategory, value);

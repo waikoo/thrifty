@@ -1,4 +1,4 @@
-export function getQueryParamCategory(category: string) {
+export function lowerCaseSpaceToDash(category: string) {
   if (!category.includes(' ')) {
     return category.toLowerCase()
   }
