@@ -16,7 +16,7 @@ export async function fetchProductsByFilters(
     .in('category', categoryArr || filter.category.map(fil => fil.toLowerCase()))
     .in('product-type', productTypeArr || filter.productType.map(fil => fil.toLowerCase()))
     .in('material', materialArr || filter.material.map(fil => fil.toLowerCase()))
-    .in('size', sizeArr || filter.size.map(fil => fil.toLowerCase()))
+    .in('size', sizeArr || filter.size.map(fil => fil))
 
   if (searchParams['shop-by'] === 'new in') {
     query = query.gt('created_at', getLastDayISO())
