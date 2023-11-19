@@ -1,9 +1,10 @@
 "use client"
-import { Category, Locales } from "@/types/home"
 import { FilterSearch, FilterTitle } from "."
 import { useClearTitle, useFilterSearch, useFilterTitle } from "../hooks"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
+import getLangAndCategory from "@/utils/getLangAndCategory"
+import { useState } from "react"
 
 type FilterCheckboxProps = {
   type: string
@@ -14,14 +15,31 @@ type FilterCheckboxProps = {
 export default function FilterCheckbox({ type, elements, search }: FilterCheckboxProps) {
   const { isExpanded, setIsExpanded } = useFilterTitle()
   const { setSearchValue, filteredItems } = useFilterSearch(elements)
+  const searchParamos = useSearchParams()
+
+  const [checkbox, setCheckbox] = useState(() => {
+    const category = searchParamos.get('category')
+
+    return {
+      men: category === 'men',
+      women: category === 'women',
+      kids: category === 'kids',
+    } as { [key: string]: boolean }
+  })
+
   const router = useRouter()
   const pathname = usePathname()
+
   const clearedLink = useClearTitle(type)
+  const { lang, category } = getLangAndCategory(pathname)
 
-  const lang = pathname.split('/')[1] as Locales
-  const category = pathname.split('/')[2] as Category['category']
-
-  const searchParamos = useSearchParams()
+  const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = (e.target as unknown as HTMLInputElement).value;
+    setCheckbox(prevState => ({
+      ...prevState,
+      [value]: !prevState[value as keyof typeof prevState],
+    }));
+  }
 
   const handleOnChange = (e: React.ChangeEvent<HTMLFieldSetElement>) => {
     const newParams = new URLSearchParams(searchParamos);
@@ -76,7 +94,8 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
                   <input
                     type="checkbox"
                     id={`${lowerCaseName}-${i}`}
-                    defaultChecked={searchParamos.get('category') === lowerCaseElement}
+                    checked={checkbox[lowerCaseElement as string] === true}
+                    onChange={onCheckboxChange}
                     value={lowerCaseElement}
                     className="form-checkbox border-grey checked:bg-darkgrey checked:border-darkgrey h-4 w-4 cursor-pointer appearance-none border bg-white outline-[0.1rem] outline-white ring-2 ring-white checked:border-[0.1rem] checked:outline-[0.2rem] checked:outline-white"
                   />
