@@ -1,24 +1,31 @@
 "use client"
+import { usePathname } from "next/navigation"
 import { FilterSearch, FilterTitle } from "."
-import { useFilterChecking, useFilterSearch, useFilterTitle } from "../hooks"
+import { useClearTitle, useFilterSearch, useFilterTitle } from "../hooks"
+import getLangAndCategory from "@/utils/getLangAndCategory"
 
 type FilterColorProps = {
-  type: 'COLOR'
+  type: string
   colors: string[]
 }
 
 export default function FilterColor({ type, colors }: FilterColorProps) {
   const { isExpanded, setIsExpanded } = useFilterTitle()
   const { setSearchValue, filteredItems } = useFilterSearch(colors)
-  const { checkedItems, setCheckedItems, handleItemChange } = useFilterChecking()
+  const clearedLink = useClearTitle(type)
+
+  const pathname = usePathname()
+  const { lang, category } = getLangAndCategory(pathname)
 
   return (
     <div>
       <FilterTitle
         type={type}
+        lang={lang}
+        category={category}
         setIsExpanded={setIsExpanded}
-        uncheckItems={setCheckedItems}
         isExpanded={isExpanded}
+        clearedLink={clearedLink}
       />
 
       {isExpanded && (
@@ -28,12 +35,12 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
 
           <div className="grid cursor-pointer select-none grid-cols-2 gap-4 pt-4">
             {filteredItems.map((color, i) => {
-              const colorOnClick = checkedItems.includes(color) ? 'text-bkg bg-content' : 'bg-bkg text-content'
+              // const colorOnClick = checkedItems.includes(color) ? 'text-bkg bg-content' : 'bg-bkg text-content'
               const rectColor = `bg-${color.toLowerCase()}`
 
               return (
-                <div className={`flex items-center gap-2 ${colorOnClick}`}
-                  onClick={handleItemChange}
+                <div className={`flex items-center gap-2`} // coloronclick was here
+                  // onClick={handleItemChange}
                   key={`filterColor-${i}`}
                 >
                   <div className={`h-8 w-8 ${rectColor}`}></div>

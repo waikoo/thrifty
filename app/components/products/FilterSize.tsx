@@ -1,6 +1,8 @@
 "use client"
+import { usePathname } from "next/navigation"
 import { FilterSearch, FilterTitle } from "."
-import { useFilterChecking, useFilterSearch, useFilterTitle } from "../hooks"
+import { useClearTitle, useFilterChecking, useFilterSearch, useFilterTitle } from "../hooks"
+import getLangAndCategory from "@/utils/getLangAndCategory"
 
 type FilterSizeProps = {
   type: 'SIZE'
@@ -10,15 +12,19 @@ type FilterSizeProps = {
 export default function FilterSize({ type, sizes }: FilterSizeProps) {
   const { isExpanded, setIsExpanded } = useFilterTitle()
   const { setSearchValue, filteredItems } = useFilterSearch(sizes)
-  const { checkedItems, setCheckedItems, handleItemChange } = useFilterChecking()
+  const clearedLink = useClearTitle(type)
+  const pathname = usePathname()
+  const { lang, category } = getLangAndCategory(pathname)
 
   return (
     <div>
       <FilterTitle
         type={type}
+        lang={lang}
+        category={category}
         setIsExpanded={setIsExpanded}
-        uncheckItems={setCheckedItems}
         isExpanded={isExpanded}
+        clearedLink={clearedLink}
       />
 
       {isExpanded && (
@@ -28,13 +34,13 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
 
           <div className="grid cursor-pointer select-none grid-cols-4 gap-2 pt-4">
             {filteredItems.map((size, i) => {
-              const colorOnClick = checkedItems.includes(size) ? 'text-bkg bg-content' : 'bg-bkg text-content'
+              // const colorOnClick = checkedItems.includes(size) ? 'text-bkg bg-content' : 'bg-bkg text-content'
 
               return (
                 <div
                   key={`sizes-${i}`}
-                  className={`grid place-items-center border-[0.1rem] p-1 px-4 ${colorOnClick}`}
-                  onClick={handleItemChange}
+                // className={`grid place-items-center border-[0.1rem] p-1 px-4 ${colorOnClick}`}
+                // onClick={handleItemChange}
                 >
                   {size}</div>
               )
