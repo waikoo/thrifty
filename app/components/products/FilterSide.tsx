@@ -18,10 +18,9 @@ export default function FilterSide({ lang, category, searchParams }: FilterSideP
       <div className="text-[0.813rem] font-normal">
         <span className="underline underline-offset-4">Expand All</span>
         <span> / </span>
-        <Link href={`/${lang}/${category}/products`}>
+        <Link href={`/${lang}/${category}/products?category=${category}`}>
           <span className="underline underline-offset-4">Clear All</span>
         </Link>
-
       </div>
 
       <FilterCheckbox
