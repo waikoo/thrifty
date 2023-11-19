@@ -22,5 +22,9 @@ export async function fetchProductsByFilters(
     query = query.gt('created_at', getLastDayISO())
   }
 
+  if (searchParams['shop-by'] === 'promos') {
+    query = query.gt('discount', 0)
+  }
+
   return await query
 }
