@@ -27,8 +27,9 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
     } as { [key: string]: boolean }
   })
 
-  const router = useRouter()
   const pathname = usePathname()
+
+  const router = useRouter()
 
   const clearedLink = useClearTitle(type)
   const { lang, category } = getLangAndCategory(pathname)
@@ -73,6 +74,9 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
         setIsExpanded={setIsExpanded}
         isExpanded={isExpanded}
         clearedLink={clearedLink}
+        setCheckbox={setCheckbox}
+        checkbox={checkbox}
+        searchParamos={searchParamos}
       />
 
       {isExpanded && (

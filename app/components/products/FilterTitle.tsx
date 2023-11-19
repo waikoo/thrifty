@@ -1,5 +1,6 @@
 import { Category, Locales } from "@/types/home";
 import Link from "next/link";
+import { ReadonlyURLSearchParams } from "next/navigation";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 type FilterTitleProps = {
@@ -9,9 +10,12 @@ type FilterTitleProps = {
   setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>
   isExpanded: boolean
   clearedLink: string
+  setCheckbox: React.Dispatch<React.SetStateAction<{ [key: string]: boolean }>>
+  checkbox: { [key: string]: boolean }
+  searchParamos: ReadonlyURLSearchParams
 }
 
-export default function FilterTitle({ type, setIsExpanded, isExpanded, clearedLink }: FilterTitleProps) {
+export default function FilterTitle({ type, category, setIsExpanded, isExpanded, clearedLink, setCheckbox, checkbox, searchParamos }: FilterTitleProps) {
 
   const handleToggle = () => {
     setIsExpanded(prevIsExpanded => !prevIsExpanded)
@@ -28,7 +32,18 @@ export default function FilterTitle({ type, setIsExpanded, isExpanded, clearedLi
       </h3>
 
       <Link href={`${clearedLink}`}
-        className="cursor-pointer text-[0.75rem]" >
+        className="cursor-pointer text-[0.75rem]"
+        onClick={() => {
+          searchParamos.forEach((key: string) => {
+            key.split(',').forEach((key: string) => {
+              setCheckbox(prevCheckbox => ({
+                ...prevCheckbox,
+                [key]: false
+              }))
+            })
+          })
+        }}
+      >
         Clear x
       </Link>
 
