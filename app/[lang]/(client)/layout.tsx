@@ -24,6 +24,7 @@ export default function RootLayout({ children, params }: RootLayoutProps) {
     <html
       data-theme={themeSettings.DEFAULT_THEME}
       className={`${inter.className} max-w-screen overflow-x-hidden`}
+      lang={lang}
     >
       <head />
       <body className={`bg-bkg w-full ${inter.className}`}>
