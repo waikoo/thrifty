@@ -21,10 +21,12 @@ export default function RootLayout({ children, params }: RootLayoutProps) {
   const lang = typeof params?.lang === 'string' ? params.lang : ''
 
   return (
-    <html data-theme={themeSettings.DEFAULT_THEME} className={inter.className}>
-
+    <html
+      data-theme={themeSettings.DEFAULT_THEME}
+      className={`${inter.className} max-w-screen overflow-x-hidden`}
+    >
       <head />
-      <body className={`bg-bkg ${inter.className}`}>
+      <body className={`bg-bkg w-full ${inter.className}`}>
         <Banner />
         <section className="bg-bkg text-content mx-auto flex flex-col items-center px-20 lg:max-w-[1500px]">
           <NavBar />
