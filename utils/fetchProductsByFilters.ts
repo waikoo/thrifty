@@ -19,7 +19,7 @@ export async function fetchProductsByFilters(
     .in('size', sizeArr || filter.size.map(fil => fil))
 
   if (searchParams['shop-by'] === 'new in') {
-    query = query.gt('created_at', getLastDayISO())
+    query = query.order('created_at', { ascending: false })
   }
 
   if (searchParams['shop-by'] === 'promos') {

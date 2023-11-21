@@ -1,7 +1,9 @@
 import { createTranslation } from '@/i18n/server'
 import { Category, Locales } from '@/types/home'
-import { NewArrivalsGrid } from './serverIndex'
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { useSupabaseServer } from '../hooks/serverIndex';
+import { ProductItemType } from '@/types/productItem';
+import { NewArrivalsControls } from './';
+import Link from 'next/link';
 
 type NewArrivalsProps = {
   lang: Locales
@@ -10,20 +12,31 @@ type NewArrivalsProps = {
 
 export default async function NewArrivals({ lang, category }: NewArrivalsProps) {
   const { t } = await createTranslation(lang, 'home')
+  const supabase = useSupabaseServer()
+
+  let { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .filter('category', 'eq', category)
+    .order('created_at', { ascending: false })
+    .limit(12)
 
   return (
     <section className="bg-content flex w-screen flex-col px-24 pb-10">
       <h3 className="text-bkg py-10 text-2xl font-bold">{t('newArrivals.title')}</h3>
 
-      <div className="flex w-full items-center">
-        <FiChevronLeft className="text-bkg cursor-pointer pr-4 text-4xl" />
+      <NewArrivalsControls
+        data={data as ProductItemType[]}
+        category={category}
+      />
 
-        <NewArrivalsGrid {...{ category }} />
 
-        <FiChevronRight className="text-bkg cursor-pointer pl-4 text-4xl" />
-      </div>
-
-      <span className="text-bkg cursor-pointer self-end underline underline-offset-2">{t('newArrivals.viewAll')}</span>
+      <Link href={`/${lang}/${category}/products?category=${category}&shop-by=new+in`} className="self-end">
+        <span
+          className="text-bkg cursor-pointer underline underline-offset-2" >
+          {t('newArrivals.viewAll')}
+        </span>
+      </Link>
     </section>
   )
 }
