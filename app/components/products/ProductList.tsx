@@ -3,6 +3,7 @@ import { ProductItemType } from "@/types/productItem"
 import { ProductItem, FilterNotFound } from "."
 import { fetchProductsByFilters } from '@/utils/fetchProductsByFilters'
 import { useSupabaseServer } from "../hooks/serverIndex"
+import { NewArrivals } from "../home/serverIndex"
 
 type ProductListProps = {
   lang: Locales
@@ -25,7 +26,10 @@ export default async function ProductList({ lang, category, searchParams }: Prod
         )
       })
         : (
-          <FilterNotFound />
+          <>
+            <FilterNotFound />
+            <NewArrivals {...{ lang, category }} notHome />
+          </>
         )}
     </div>
   )
