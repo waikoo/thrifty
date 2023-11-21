@@ -1,7 +1,7 @@
 "use client"
 import { ProductItemType } from "@/types/productItem"
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { useState } from 'react';
+import { useRef } from 'react';
 import { NewArrivalsGrid } from './'
 import { Category } from "@/types/home";
 
@@ -11,34 +11,43 @@ type NewArrivalsControlsProps = {
 }
 
 export default function NewArrivalsControls({ data, category }: NewArrivalsControlsProps) {
-  const [carouselPosition, setCarouselPosition] = useState(0)
+  const leftRef = useRef<HTMLDivElement>(null)
+  const imagesRef = useRef<HTMLDivElement>(null)
 
-  const handlePrev = () => {
-    if (carouselPosition > 0) {
-      setCarouselPosition(carouselPosition - 1)
+  const handleScrolling = (e: React.MouseEvent<HTMLDivElement>) => {
+    const imagesDiv = imagesRef.current;
+    if (imagesDiv) {
+      const imageWidth = 200
+      imagesDiv.scrollTo({
+        left: e.currentTarget === leftRef.current ? imagesDiv.scrollLeft - imageWidth : imagesDiv.scrollLeft + imageWidth,
+        behavior: 'smooth',
+      });
     }
   }
 
-  const handleNext = () => {
-    if (carouselPosition < (data.length - 6)) {
-      setCarouselPosition(carouselPosition + 1)
-    }
-  }
   return (
-    <div className="flex w-full items-center">
-      <FiChevronLeft
-        className="text-bkg cursor-pointer pr-4 text-4xl"
-        onClick={handlePrev}
-      />
+    <div className="flex items-center">
+      <div
+        ref={leftRef}
+        onClick={handleScrolling}
+      >
+        <FiChevronLeft
+          className="text-bkg cursor-pointer pr-4 text-4xl"
+        />
+      </div>
 
       <NewArrivalsGrid
-        data={data.slice(carouselPosition, carouselPosition + 6)}
+        data={data}
+        imagesRef={imagesRef}
       />
 
-      <FiChevronRight
-        className="text-bkg cursor-pointer pl-4 text-4xl"
-        onClick={handleNext}
-      />
+      <div
+        onClick={handleScrolling}
+      >
+        <FiChevronRight
+          className="text-bkg cursor-pointer pl-4 text-4xl"
+        />
+      </div>
     </div>
 
   )
