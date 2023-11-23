@@ -10,7 +10,7 @@ type NewArrivalsGridProps = {
 export default function NewArrivalsGrid({ data, imagesRef }: NewArrivalsGridProps) {
 
   return (
-    <div className="grid h-auto w-full snap-x snap-mandatory auto-cols-auto grid-flow-col gap-[0.313rem] overflow-x-auto overscroll-x-contain"
+    <div className="scrollbar scrollbar-thumb-darkgrey scrollbar-thumb-rounded scrollbar-thin grid h-auto w-full snap-x snap-mandatory auto-cols-auto grid-flow-col gap-[0.313rem] overflow-x-auto overscroll-x-contain"
       ref={imagesRef}
       draggable={false}
     >
