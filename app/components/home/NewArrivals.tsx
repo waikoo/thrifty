@@ -23,8 +23,8 @@ export default async function NewArrivals({ lang, category, notHome }: NewArriva
     .limit(12)
 
   return (
-    <section className={`${notHome ? 'bg-bkg' : 'bg-content'} flex w-screen flex-col px-24 pb-10`}>
-      <div className="mx-auto w-[80%]">
+    <section className={`${notHome ? 'bg-bkg w-full' : 'bg-content w-screen px-24 pb-10'} flex flex-col`}>
+      <div className={`${notHome ? '' : 'mx-auto w-[80%]'}`}>
         <h3 className={`text-bkg py-10 text-2xl font-bold 
         ${notHome ? 'text-content text-center text-[1rem]' : ''}`}
         >
