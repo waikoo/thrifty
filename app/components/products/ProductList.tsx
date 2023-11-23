@@ -15,7 +15,7 @@ export default async function ProductList({ lang, category, searchParams }: Prod
   const data = await fetchProductsByFilters(useSupabaseServer(), searchParams)
 
   return (
-    <div className="mx-auto flex w-[80%] flex-wrap justify-between gap-8">
+    <div className="mx-auto flex w-[80%] flex-wrap gap-8">
       {data.data.length > 0 ? data.data.map((product: ProductItemType, i: number) => {
         return (
           <ProductItem
