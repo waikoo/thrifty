@@ -12,12 +12,15 @@ export default async function ColorCarouselGrid({ category }: ColorCarouselGridP
 
     <div className="grid grid-cols-[0.5fr_9fr_0.5fr] items-center pt-16">
 
-      <IconArrow left className="col-start-1 justify-self-start" />
+      <div className="col-start-1 cursor-pointer justify-self-start" >
+        <IconArrow left />
+      </div>
 
       <ColorCarouselImages {... { category }} />
 
-      <IconArrow className="col-start-3 justify-self-end" />
-
+      <div className="col-start-3 cursor-pointer justify-self-end" >
+        <IconArrow />
+      </div>
     </div>
   );
 }
