@@ -50,6 +50,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
         lang={lang}
         category={category}
         clearedLink={clearedLink}
+        searchParamos={searchParamos}
       />
 
       {isExpanded && (
@@ -64,7 +65,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
               const colorOnClick =
                 !searchParamos.get('size')
                   ? 'text-content bg-bkg'
-                  : (searchParamos.get('size') && searchParamos.get('size')?.includes(size))
+                  : (searchParamos.get('size') && searchParamos.get('size') === size)
                     ? 'text-bkg bg-content'
                     : 'bg-bkg text-content';
 
