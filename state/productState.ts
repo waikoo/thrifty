@@ -8,6 +8,7 @@ type CounterState = {
 
 type Product = {
   gender: string,
+  category: string,
   type: string,
   price: number,
   discount: number,
@@ -21,6 +22,7 @@ type Product = {
 
 type State = {
   gender: string,
+  category: string,
   type: string,
   price: number,
   discount: number,
@@ -36,6 +38,7 @@ type State = {
 
 type Action = {
   setGender: (value: string) => void,
+  setCategory: (value: string) => void,
   setType: (value: string) => void,
   setPrice: (value: number) => void,
   setDiscount: (value: number) => void,
@@ -53,6 +56,7 @@ type Action = {
 
 export const useProductStore = create<State & Action>((set, get) => ({
   gender: '',
+  category: '',
   type: '',
   price: 0,
   discount: 0,
@@ -68,6 +72,7 @@ export const useProductStore = create<State & Action>((set, get) => ({
   },
   isDraftPostedSuccessfully: false,
   setGender: (value: string) => set({ gender: value }),
+  setCategory: (value: string) => set({ gender: value }),
   setType: (value: string) => set({ type: value }),
   setPrice: (value: number) => set({ price: value }),
   setDiscount: (value: number) => set({ discount: value }),
@@ -82,6 +87,7 @@ export const useProductStore = create<State & Action>((set, get) => ({
 
     const product: Product = {
       gender: get().gender,
+      category: get().category,
       type: get().type,
       price: get().price,
       discount: get().discount,
@@ -105,6 +111,7 @@ export const useProductStore = create<State & Action>((set, get) => ({
   resetProductFields: () => {
     set({
       gender: '',
+      category: '',
       type: '',
       price: 0,
       discount: 0,

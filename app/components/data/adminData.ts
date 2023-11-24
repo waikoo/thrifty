@@ -1,10 +1,14 @@
 export const top = [{
   name: 'GENDER',
-  content: ['Men', 'Women', 'Boys', 'Girls']
+  content: ['Men', 'Women', 'Kids']
+},
+{
+  name: 'CATEGORY',
+  content: ['Accessories', 'Clothing', 'Shoes']
 },
 {
   name: 'PRODUCT TYPE',
-  content: ['Coats', 'Jackets', 'Tops', 'T-Shirts', 'Sweaters', 'Jeans', 'Pants']
+  content: ['Bags', 'Belts', 'Boots', 'Coats', 'Dresses', 'Flats', 'Hats', 'Heels', 'Hoodies', 'Jackets', 'Jeans', 'Jewellery', 'Joggers', 'Pants', 'Sandals', 'Skirts', 'Slippers', 'Sunglasses', 'Sweaters', 'T-Shirts', 'Tops', 'Sneakers']
 }]
 
 export const bottom = [{
