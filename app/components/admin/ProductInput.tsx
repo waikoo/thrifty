@@ -15,7 +15,7 @@ export default function ProductInput({ name, placeholder, icon }: ProductInputPr
     <fieldset className="relative flex w-[50%] items-center gap-4">
       <legend hidden>{upperCaseName}</legend>
       <label htmlFor={name}
-        className="grid grid-cols-[8rem_21rem] gap-4">
+        className="grid grid-cols-[8rem_21rem] items-center gap-4">
         <span className="justify-self-end">{upperCaseName} </span>
         <input
           placeholder={placeholder}
@@ -28,7 +28,7 @@ export default function ProductInput({ name, placeholder, icon }: ProductInputPr
         />
       </label>
       <span className="absolute right-2">{icon}</span>
-      {name === 'discount' ? <Optional /> : null}
+      {name === 'discount' ? <Optional className="top-0" /> : null}
     </fieldset>
   )
 }

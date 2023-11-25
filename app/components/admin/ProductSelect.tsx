@@ -1,6 +1,4 @@
-"use client"
 import { AddNew, Optional, Select } from '.'
-import { useUIStore } from '@/state'
 
 type ProductSelectProps = {
   obj: {
@@ -16,7 +14,7 @@ export default function ProductSelect({ obj: { name, content }, handleAddItem }:
     <fieldset className="relative flex w-[50%] items-center gap-4">
       <legend hidden>{name}</legend>
 
-      <label htmlFor={name.toLowerCase()} className="grid grid-cols-[8rem_21rem] gap-4 whitespace-nowrap">
+      <label htmlFor={name.toLowerCase()} className="grid grid-cols-[8rem_21rem] items-center gap-4 whitespace-nowrap">
         <span className="justify-self-end">{name}</span>
 
         <Select name={name} content={content} />

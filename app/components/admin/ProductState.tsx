@@ -16,7 +16,8 @@ export default function ProductState({ }: ProductStateProps) {
     useProductState(findContentByName(bottom, 'MATERIAL'))
 
   return (
-    <section className="flex w-[50%] flex-col gap-6">
+    <section className="bg-red flex flex-col gap-4">
+
       {top.map((item) => (
         <ProductSelect key={item.name} obj={item} />
       ))}

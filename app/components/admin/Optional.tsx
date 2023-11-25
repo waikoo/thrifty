@@ -1,5 +1,11 @@
-export default function Optional() {
+import { twMerge as tm } from "tailwind-merge"
+
+type OptionalProps = {
+  className?: string
+}
+
+export default function Optional({ className }: OptionalProps) {
 
   return (
-    <span className="text-grey absolute left-[-2rem] top-0">Optional</span>)
+    <span className={tm(`text-grey absolute left-[-2rem] ${className}`)}>Optional</span>)
 }
