@@ -1,9 +1,10 @@
 "use client"
-import { usePathname } from "next/navigation"
+import { usePathname, useSearchParams } from "next/navigation"
 import { FilterSearch, FilterTitle } from "."
 import { useClearTitle, useFilterSearch } from "../hooks"
 import getLangAndCategory from "@/utils/getLangAndCategory"
 import { useFilterTitleStore } from "@/state/uiState"
+import FilterColorItem from "./FilterColorItem"
 
 type FilterColorProps = {
   type: string
@@ -11,12 +12,14 @@ type FilterColorProps = {
 }
 
 export default function FilterColor({ type, colors }: FilterColorProps) {
+  // TODO: try details-summary-content
   const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
   const { setSearchValue, filteredItems } = useFilterSearch(colors)
+  // TODO: move to FilterTitle:
   const clearedLink = useClearTitle(type)
-
   const pathname = usePathname()
   const { lang, category } = getLangAndCategory(pathname)
+  const searchParamos = useSearchParams()
 
   return (
     <div>
@@ -25,6 +28,7 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
         lang={lang}
         category={category}
         clearedLink={clearedLink}
+        searchParamos={searchParamos}
       />
 
       {isExpanded && (
@@ -33,20 +37,13 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
           <FilterSearch setSearchValue={setSearchValue} />
 
           <div className="grid cursor-pointer select-none grid-cols-2 gap-4 pt-4">
-            {filteredItems.map((color, i) => {
-              // const colorOnClick = checkedItems.includes(color) ? 'text-bkg bg-content' : 'bg-bkg text-content'
-              const rectColor = `bg-${color.toLowerCase()}`
-
-              return (
-                <div className={`flex items-center gap-2`} // coloronclick was here
-                  // onClick={handleItemChange}
-                  key={`filterColor-${i}`}
-                >
-                  <div className={`h-8 w-8 ${rectColor}`}></div>
-                  <span>{color}</span>
-                </div>
-              )
-            })}
+            {filteredItems.map((color, i) => (
+              <FilterColorItem
+                key={`filterColor-${i}`}
+                color={color}
+                type={type}
+              />
+            ))}
           </div>
         </div>
       )}
