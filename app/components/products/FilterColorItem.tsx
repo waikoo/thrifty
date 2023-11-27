@@ -36,25 +36,21 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
   }
 
   const colorClasses: { [key: string]: string } = {
-    beige: 'bg-beige',
-    brown: 'bg-brown',
-    white: 'bg-white',
-    grey: 'bg-grey',
-    blue: 'bg-blue',
-    purple: 'bg-purple',
-    multicolor: 'bg-multicolor',
-    pink: 'bg-pink',
-    red: 'bg-red',
-    green: 'bg-green',
-    yellow: 'bg-yellow',
-    orange: 'bg-orange',
-    gold: 'bg-gold',
-    silver: 'bg-silver',
-    black: 'bg-black',
-  };
-
-  const bgColorFor = (item: string): string => {
-    return colorClasses[item.toLowerCase()] || '';
+    Beige: 'bg-beige',
+    Brown: 'bg-brown',
+    White: 'bg-white',
+    Grey: 'bg-grey',
+    Blue: 'bg-blue',
+    Purple: 'bg-purple',
+    Multicolor: 'bg-multicolor',
+    Pink: 'bg-pink',
+    Red: 'bg-red',
+    Green: 'bg-green',
+    Yellow: 'bg-yellow',
+    Orange: 'bg-orange',
+    Gold: 'bg-gold',
+    Silver: 'bg-silver',
+    Black: 'bg-black',
   };
 
   return (
@@ -62,7 +58,22 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
       onClick={handleOnChange}
       data-color={color.toLowerCase()}
     >
-      <div className={`h-8 w-8 ${bgColorFor(color)}`}></div>
+      {color === 'Multicolor' ? (
+        <div className="flex h-8 w-9 flex-wrap gap-0">
+          {Array(9).fill(' ').map((_, i) => {
+            const colors = Object.values(colorClasses)
+            const randomColor = colors[Math.floor(Math.random() * colors.length)]
+            return (
+              <div
+                key={`multicolor-${i}`}
+                className={`h-2 w-2 ${randomColor}`}
+              ></div>
+            )
+          })}
+        </div>
+      ) : (
+        <div className={`h-8 w-8 ${colorClasses[color]}`}></div>
+      )}
       <span>{color}</span>
     </div >
   )
