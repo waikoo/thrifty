@@ -1,29 +1,24 @@
-import { Category, Locales } from "@/types/home";
+"use client"
 import Link from "next/link";
-import { ReadonlyURLSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { useFilterTitleStore } from "@/state/uiState"
+import { useClearTitle } from "../hooks";
 
 type FilterTitleProps = {
   type: string
-  lang: Locales
-  category: Category['category']
-  clearedLink: string
-  setCheckbox: React.Dispatch<React.SetStateAction<{ [key: string]: boolean }>>
-  checkbox: { [key: string]: boolean }
-  searchParamos: ReadonlyURLSearchParams
+  setCheckbox?: React.Dispatch<React.SetStateAction<{ [key: string]: boolean }>>
 }
 
 export default function FilterTitle({
   type,
-  category,
-  clearedLink,
   setCheckbox,
-  checkbox,
-  searchParamos }: FilterTitleProps) {
+}: FilterTitleProps) {
   const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
   const setIsExpanded = useFilterTitleStore((state) => state.setExpandedComponent)
   const unsetIsExpanded = useFilterTitleStore((state) => state.unsetExpandedComponent)
+  const clearedLink = useClearTitle(type)
+  const searchParamos = useSearchParams()
 
   const handleToggle = () => {
     isExpanded ? unsetIsExpanded(type) : setIsExpanded(type)
@@ -44,7 +39,7 @@ export default function FilterTitle({
         onClick={() => {
           searchParamos.forEach((key: string) => {
             key.split(',').forEach((key: string) => {
-              setCheckbox(prevCheckbox => ({
+              setCheckbox!(prevCheckbox => ({
                 ...prevCheckbox,
                 [key]: false
               }))
