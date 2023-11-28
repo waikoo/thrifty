@@ -1,31 +1,31 @@
 "use client"
 import { Auth, AuthModes } from '@/types/auth'
 import { useState } from 'react'
-import { Input, StateButtonContainer } from '..'
-import { SubmitButton } from '../generic'
+import { Input, StateButtonContainer, SubmitButton } from '../generic'
 import CheckBox from '../generic/CheckBox'
-import { useSignIn, useSignInOrUp, useSignUp, useUserEmail, useUserPassword } from '../hooks'
+import { useSignIn, useSignUp, useUserEmail, useUserPassword } from '../hooks'
+import { useUIStore } from '@/state'
 
 const SignInOrUp = () => {
   const [selected, setSelected] = useState<AuthModes>(Auth.LOGIN)
   const [checked, setChecked] = useState(false)
   const { email, setEmail } = useUserEmail()
   const { password, setPassword } = useUserPassword()
-  const { setShowSignIn } = useSignInOrUp()
+  const { setShowSignIn } = useUIStore()
 
   const { signInHook, loading: signInLoading } = useSignIn()
   const { signUpHook, loading: signUpLoading } = useSignUp()
 
   return (
-    <dialog className="fixed inset-0 flex place-items-center border-[0.1rem] border-content ">
-      <section className="p-10 min-w-max bg-bkg flex flex-col gap-16 relative">
-        <span className="text-content absolute top-3 right-4  cursor-pointer" onClick={() => setShowSignIn(false)}>X</span>
+    <dialog className="border-content fixed inset-0 flex place-items-center border-[0.1rem] ">
+      <section className="bg-bkg relative flex min-w-max flex-col gap-16 p-10">
+        <span className="text-content absolute right-4 top-3  cursor-pointer" onClick={() => setShowSignIn(false)}>X</span>
         <StateButtonContainer
           selected={selected}
           setSelected={setSelected}
         />
 
-        <form className="bg-bkg flex items-center flex-col gap-5 justify-center min-w-max ">
+        <form className="bg-bkg flex min-w-max flex-col items-center justify-center gap-5 ">
           <Input type="email" value={email} setValue={setEmail} />
           <Input type="password" value={password} setValue={setPassword} />
 
