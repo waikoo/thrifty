@@ -1,6 +1,5 @@
 import { useUIStore } from "@/state";
-import { RecoverPassword } from ".";
-import { SignInOrUp } from "..";
+import { RecoverPassword, SignInOrUp } from ".";
 
 export default function CenterContainer() {
   const showRecovery = useUIStore((state) => state.showRecovery)

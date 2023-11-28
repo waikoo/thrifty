@@ -11,3 +11,4 @@ export { default as MenuItem } from "./MenuItem"
 export { default as LanguagePicker } from "./LanguagePicker"
 export { default as LanguageElement } from "./LanguageElement"
 export { default as WithHome } from './WithHome'
+export { default as SignInOrUp } from './SignInOrUp'
