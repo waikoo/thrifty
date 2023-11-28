@@ -1,26 +1,24 @@
 "use client"
-import { useThemeStore } from "@/state"
+import { useThemeStore, useUIStore } from "@/state"
 import { getSvgColor } from "@/utils/theme"
-import { AccountMenu } from ".."
-import { Error, SignInOrUp } from "../.."
-import { useMyAccount, useUserSession } from "../../hooks"
-import useSignInOrUp from "../../hooks/useSignInOrUp"
+import { useUserSession } from "../../hooks"
+import { AccountMenu, CenterContainer } from ".."
+import { Error } from "../../"
 
 const IconAccount = () => {
-  const { showMyAccount, setShowMyAccount } = useMyAccount()
-  const { showSignIn, setShowSignIn } = useSignInOrUp()
+  const { showMyAccount, setShowMyAccount, showSignIn, setShowSignIn } = useUIStore()
   const color = useThemeStore((state) => getSvgColor(state.theme))
   const { session, error } = useUserSession()
 
   return (
     <div className="relative">
-      <div title="Sign In"
+      <div title={session?.user.role ? "Account" : "Sign In"}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={15}
           height={16}
-          fill="none"
+          fill={session ? color : "none"}
           className="cursor-pointer"
           onClick={() => !session
             ? setShowSignIn(showSignIn ? false : true)
@@ -34,15 +32,14 @@ const IconAccount = () => {
         </svg>
       </div>
 
-
       {!error.status ? (
         showMyAccount ? <AccountMenu />
-          : showSignIn ? <SignInOrUp /> : null
+          : showSignIn ? <CenterContainer /> : null
       ) : <Error>Something went wrong</Error>}
-
 
     </div>
   )
 }
 
 export default IconAccount
+
