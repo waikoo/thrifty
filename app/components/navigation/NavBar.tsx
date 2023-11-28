@@ -1,7 +1,8 @@
 "use client"
 import { useUIStore } from "@/state"
 import { useDarkMode } from "../hooks"
-import { IconAccount, IconFavorite, IconShoppingBag, Logo, SearchBar, WithHome } from './'
+import { Logo, SearchBar, WithHome } from './'
+import { IconAccount, IconFavorite, IconShoppingBag } from './icons/'
 import { LayoutMenu } from "../admin"
 
 type NavBarProps = {

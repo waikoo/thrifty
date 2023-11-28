@@ -1,6 +1,3 @@
-export { default as IconAccount } from "./IconAccount";
-export { default as IconFavorite } from "./IconFavorite";
-export { default as IconShoppingBag } from "./IconShoppingBag";
 export { default as Logo } from "./Logo";
 export { default as Banner } from "./Banner";
 export { default as BackToTop } from "./BackToTop";
