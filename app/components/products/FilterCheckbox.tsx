@@ -68,12 +68,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
     <div>
       <FilterTitle
         type={type}
-        lang={lang}
-        category={category}
-        clearedLink={clearedLink}
         setCheckbox={setCheckbox}
-        checkbox={checkbox}
-        searchParamos={searchParamos}
       />
 
       {isExpanded && (
@@ -88,20 +83,26 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
               const lowerCaseElement = element.toLowerCase()
 
               return (
-                <label
-                  htmlFor={`${lowerCaseName}-${i}`}
-                  className="flex select-none gap-2 text-[0.75rem]"
-                  key={`${lowerCaseName}-${i}`}>
-                  <input
-                    type="checkbox"
-                    id={`${lowerCaseName}-${i}`}
-                    checked={checkbox[lowerCaseElement as string] === true}
-                    onChange={onCheckboxChange}
-                    value={lowerCaseElement}
-                    className="form-checkbox border-grey checked:bg-darkgrey checked:border-darkgrey h-4 w-4 cursor-pointer appearance-none border bg-white outline-[0.1rem] outline-white ring-2 ring-white checked:border-[0.1rem] checked:outline-[0.2rem] checked:outline-white"
-                  />
-                  {element}
-                </label>
+                ['Clothing', 'Shoes', 'Accessories', 'Sport']
+                  .some(el => el === element)
+                  ? <h3>{element}</h3>
+                  : (
+                    <label
+                      htmlFor={`${lowerCaseName}-${i}`}
+                      className="flex select-none gap-2 text-[0.75rem]"
+                      key={`${lowerCaseName}-${i}`}>
+                      <input
+                        type="checkbox"
+                        id={`${lowerCaseName}-${i}`}
+                        checked={checkbox[lowerCaseElement as string] === true}
+                        onChange={onCheckboxChange}
+                        value={lowerCaseElement}
+                        className="form-checkbox border-grey checked:bg-darkgrey checked:border-darkgrey h-4 w-4 cursor-pointer appearance-none border bg-white outline-[0.1rem] outline-white ring-2 ring-white checked:border-[0.1rem] checked:outline-[0.2rem] checked:outline-white"
+                      />
+                      {element}
+                    </label>
+
+                  )
               )
             })}
           </fieldset>
