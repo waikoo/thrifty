@@ -1,8 +1,6 @@
 "use client"
-import { usePathname } from "next/navigation"
 import FilterTitle from "./FilterTitle"
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"
-import { Category, Locales } from "@/types/home"
 import { useFilterTitleStore } from "@/state/uiState"
 
 type FilterConditionProps = {
@@ -12,10 +10,6 @@ type FilterConditionProps = {
 
 export default function FilterCondition({ type, condition }: FilterConditionProps) {
   const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
-
-  const pathname = usePathname()
-  const lang = pathname.split('/')[1] as Locales
-  const category = pathname.split('/')[2] as Category['category']
 
   const renderStars = (rating: number) => {
     const starRow = []
@@ -33,8 +27,6 @@ export default function FilterCondition({ type, condition }: FilterConditionProp
     <div>
       <FilterTitle
         type={type}
-        lang={lang}
-        category={category}
       />
 
       {isExpanded && (
