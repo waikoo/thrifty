@@ -72,7 +72,7 @@ export const useProductStore = create<State & Action>((set, get) => ({
   },
   isDraftPostedSuccessfully: false,
   setGender: (value: string) => set({ gender: value }),
-  setCategory: (value: string) => set({ gender: value }),
+  setCategory: (value: string) => set({ category: value }),
   setType: (value: string) => set({ type: value }),
   setPrice: (value: string) => set({ price: value }),
   setDiscount: (value: string) => set({ discount: value }),
