@@ -5,17 +5,14 @@ export default function CenterContainer() {
   const showRecovery = useUIStore((state) => state.showRecovery)
 
   return (
-    <dialog className="fixed inset-0 z-40 grid w-full place-items-center bg-transparent">
+    <dialog className="fixed inset-0 z-40 grid h-screen w-full place-items-center bg-black bg-opacity-50">
 
-      <div className="border-content bg-bkg grid min-h-[25rem] w-[25%] min-w-[15rem] place-items-center border-[0.1rem]">
+      <section className="bg-bkg relative p-8">
 
-        <section className="bg-bkg relative p-8">
+        {showRecovery ? <RecoverPassword /> : <SignInOrUp />}
 
-          {showRecovery ? <RecoverPassword /> : <SignInOrUp />}
+      </section>
 
-        </section>
-
-      </div>
     </dialog>
   )
 }
