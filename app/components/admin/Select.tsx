@@ -1,6 +1,5 @@
-import { useProductStore } from '@/state/productState';
 import { twMerge as tm } from 'tailwind-merge'
-import useSelectUtils from '../hooks/useSelectUtils';
+import useSelectUtils, { FieldName } from '../hooks/useSelectUtils';
 
 type SelectProps = {
   name: string;
@@ -9,7 +8,7 @@ type SelectProps = {
 }
 
 export default function Select({ name, content, defaultSelect = '- Select -' }: SelectProps) {
-  const lowerCaseName = name.toLowerCase()
+  const lowerCaseName = name.toLowerCase() as FieldName
   const { getValue, getOnChange } = useSelectUtils()
 
   return (
