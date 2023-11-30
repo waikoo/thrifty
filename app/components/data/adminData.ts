@@ -23,7 +23,7 @@ export const bottom = [{
 },
 {
   name: 'CONDITION',
-  content: ['5', '4', '3']
+  content: ['New with tag', 'New without tag', 'Second Hand']
 },
 {
   name: 'MATERIAL',
