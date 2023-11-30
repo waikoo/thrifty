@@ -29,7 +29,8 @@ export default function ProductInput({ name, placeholder, icon }: ProductInputPr
         />
       </label>
       <span className="absolute right-2">{icon}</span>
-      {name === 'discount' ? <Optional className="top-0" /> : null}
+      {['discount', 'size'].includes(name) ? <Optional /> : null}
+
     </fieldset>
   )
 }
