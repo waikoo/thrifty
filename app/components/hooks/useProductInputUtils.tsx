@@ -1,44 +1,40 @@
 import { useProductStore } from "@/state/productState"
 
+export type FieldName = 'price' | 'discount' | 'size';
 export default function useProductInputUtils() {
   const { price, discount, size, setPrice, setDiscount, setSize } = useProductStore()
 
-  const getOnChange = (e: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
-    switch (fieldName) {
-      case 'price': setPrice(+e.target.value);
-        break;
-      case 'discount': setDiscount(+e.target.value);
-        break;
-      case 'size': setSize(e.target.value);
-        break;
-      default:
-        throw new Error('"name" in getOnChange() from ProductInput does not match')
-    }
+
+  const handlers: Record<FieldName, (value: string) => void> = {
+    price: (value: string) => setPrice(value.replace(/[^0-9]/g, '')),
+    discount: (value: string) => setDiscount(value.replace(/[^0-9]/g, '')),
+    size: setSize,
   };
 
-  const getValue = (fieldName: string) => {
-    switch (fieldName) {
-      case 'price': return price;
-      case 'discount': return discount;
-      case 'size': return size;
-      default:
-        throw new Error('"name" in getValue() from ProductInput does not match')
+  const getOnChange = (e: React.ChangeEvent<HTMLInputElement>, fieldName: FieldName) => {
+    const handler = handlers[fieldName];
+    if (!handler) {
+      throw new Error(`"name" in getOnChange() from ProductInput does not match`);
     }
+    handler(e.target.value);
   };
 
-  const getType = (fieldName: string) => {
-    switch (fieldName) {
-      case 'price': return 'number';
-      case 'discount': return 'number';
-      case 'size': return 'text';
-      default:
-        throw new Error('"name" in getType() from ProductInput does not match')
+  const values: Record<FieldName, string> = {
+    price,
+    discount,
+    size,
+  };
+
+  const getValue = (fieldName: FieldName) => {
+    const value = values[fieldName];
+    if (value === undefined) {
+      throw new Error(`"name" in getValue() from ProductInput does not match`);
     }
-  }
+    return value;
+  };
 
   return {
     getOnChange,
     getValue,
-    getType
   }
 }

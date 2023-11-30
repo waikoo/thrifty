@@ -1,15 +1,15 @@
 import { Optional } from "."
-import useProductInputUtils from "../hooks/useProductInputUtils"
+import useProductInputUtils, { FieldName } from "../hooks/useProductInputUtils"
 
 type ProductInputProps = {
-  name: string
+  name: FieldName
   placeholder: string
   icon: string
 }
 
 export default function ProductInput({ name, placeholder, icon }: ProductInputProps) {
   const upperCaseName = name.toUpperCase()
-  const { getOnChange, getValue, getType } = useProductInputUtils()
+  const { getOnChange, getValue } = useProductInputUtils()
 
   return (
     <fieldset className="relative flex w-[50%] items-center gap-4">
@@ -19,7 +19,8 @@ export default function ProductInput({ name, placeholder, icon }: ProductInputPr
         <span className="justify-self-end">{upperCaseName} </span>
         <input
           placeholder={placeholder}
-          type={getType(name)}
+          type="text"
+          pattern="[0-9]*"
           name={name}
           id={name}
           className={`bg-bkg p-2 adminBorder`}
