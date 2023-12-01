@@ -101,6 +101,8 @@ export const useProductStore = create<State & Action>((set, get) => ({
 
     const { data, error } = await supabase.from('draft').insert([product]);
 
+    if (error) console.log(error)
+
     if (!data && !error) {
       get().setIsDraftPostedSuccessfully(true)
       get().resetProductFields()
