@@ -12,17 +12,17 @@
   },
   "dependencies": {
     "@supabase/auth-helpers-nextjs": "^0.8.1",
-    "@supabase/ssr": "^0.0.5",
+    "@supabase/ssr": "^0.0.10",
     "@supabase/supabase-js": "^2.36.0",
     "@types/negotiator": "^0.6.1",
     "@types/node": "^20.8.9",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "accept-language": "^3.0.18",
-    "bun": "^1.0.9",
+    "bun": "^1.0.13",
     "dotenv": "^16.3.1",
     "eslint": "8.49.0",
-    "eslint-config-next": "^13.5.4",
+    "eslint-config-next": "latest",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "i18next": "^23.5.1",
     "i18next-browser-languagedetector": "^7.1.0",
@@ -38,7 +38,8 @@
     "server-only": "^0.0.1",
     "tailwind-merge": "^1.14.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.2",
+    "url-search-params-polyfill": "^8.2.5",
     "zustand": "^4.4.1"
   },
   "devDependencies": {
@@ -48,12 +49,13 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-testing-library": "^6.0.2",
     "postcss": "^8.4.29",
+    "tailwind-scrollbar": "^3.0.5",
     "tailwindcss": "^3.3.3",
     "tsc": "^2.0.4"
   },
   "module": "index.ts",
   "type": "commonjs",
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.3.2"
   }
 }
