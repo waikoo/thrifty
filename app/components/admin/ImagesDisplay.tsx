@@ -9,7 +9,7 @@ type ImagesDisplayProps = {
 }
 
 export default function ImagesDisplay({ }: ImagesDisplayProps) {
-  const { imgUrl } = useProductStore()
+  const { img_url } = useProductStore()
   const { showEditOptions, setShowEditOptions } = useUIStore()
   const imageContainerRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLImageElement | null>(null)
@@ -25,7 +25,7 @@ export default function ImagesDisplay({ }: ImagesDisplayProps) {
   return (
     <div className="flex w-full flex-wrap gap-4" ref={imageContainerRef}>
 
-      {imgUrl.map((src, i) => (
+      {img_url.map((src, i) => (
         <div key={`admin-imgs-${i}`} className="relative w-[23.2%]">
           <Image
             src={src}

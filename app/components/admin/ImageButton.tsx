@@ -10,11 +10,11 @@ type ImageButtonProps = {
 
 export default function ImageButton({ inputRef }: ImageButtonProps) {
   // export default function ImageButton({ inputRef, images, setImages }: ImageButtonProps) {
-  const { imgUrl, setImgUrl } = useProductStore()
+  const { img_url, setImgUrl } = useProductStore()
 
   const handleNewImage = () => {
     if (inputRef && inputRef.current) {
-      inputRef.current.value && setImgUrl([...imgUrl, inputRef.current.value]);
+      inputRef.current.value && setImgUrl([...img_url, inputRef.current.value]);
       inputRef.current.value = '';
     }
   };

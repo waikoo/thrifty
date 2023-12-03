@@ -11,13 +11,13 @@ type Product = {
   category: string,
   type: string,
   price: string,
-  discount: string,
+  discount: string | number,
   size: string,
   color: string,
   brand: string,
   condition: string,
   material: string,
-  imgUrl: string[]
+  img_url: string[]
 }
 
 type State = {
@@ -25,13 +25,13 @@ type State = {
   category: string,
   type: string,
   price: string,
-  discount: string,
+  discount: string | number,
   size: string,
   color: string,
   brand: string,
   condition: string,
   material: string,
-  imgUrl: string[]
+  img_url: string[]
   counter: CounterState
   isDraftPostedSuccessfully: boolean
 }
@@ -65,7 +65,7 @@ export const useProductStore = create<State & Action>((set, get) => ({
   brand: '',
   condition: '',
   material: '',
-  imgUrl: [],
+  img_url: [],
   counter: {
     created: 0,
     edited: 0,
@@ -81,7 +81,7 @@ export const useProductStore = create<State & Action>((set, get) => ({
   setBrand: (value: string) => set({ brand: value }),
   setCondition: (value: string) => set({ condition: value }),
   setMaterial: (value: string) => set({ material: value }),
-  setImgUrl: (value: string[]) => set({ imgUrl: value }),
+  setImgUrl: (value: string[]) => set({ img_url: value }),
   setCounter: (value) => set(state => ({ counter: { ...state.counter, ...value } })),
   saveDraft: async () => {
 
@@ -90,13 +90,13 @@ export const useProductStore = create<State & Action>((set, get) => ({
       category: get().category,
       type: get().type,
       price: get().price,
-      discount: get().discount,
+      discount: get().discount || 0,
       size: get().size,
       color: get().color,
       brand: get().brand,
       condition: get().condition,
       material: get().material,
-      imgUrl: get().imgUrl,
+      img_url: get().img_url,
     };
 
     const { data, error } = await supabase.from('draft').insert([product]);
@@ -122,7 +122,7 @@ export const useProductStore = create<State & Action>((set, get) => ({
       brand: '',
       condition: '',
       material: '',
-      imgUrl: [],
+      img_url: [],
     })
   }
 }))
