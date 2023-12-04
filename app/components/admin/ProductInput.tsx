@@ -1,8 +1,8 @@
 import { Optional } from "."
-import useProductInputUtils, { FieldName } from "../hooks/useProductInputUtils"
+import useProductInputUtils from "../hooks/useProductInputUtils"
 
 type ProductInputProps = {
-  name: FieldName
+  name: string
   placeholder: string
   icon: string
 }
@@ -19,8 +19,7 @@ export default function ProductInput({ name, placeholder, icon }: ProductInputPr
         <span className="justify-self-end">{upperCaseName} </span>
         <input
           placeholder={placeholder}
-          type="text"
-          pattern="[0-9]*"
+          type={'text'}
           name={name}
           id={name}
           className={`bg-bkg p-2 adminBorder`}

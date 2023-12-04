@@ -2,7 +2,7 @@ import { twMerge as tm } from 'tailwind-merge'
 import useSelectUtils, { FieldName } from '../hooks/useSelectUtils';
 
 type SelectProps = {
-  name: FieldName;
+  name: string;
   content: string[];
   defaultSelect?: string;
 }

@@ -10,8 +10,7 @@ type StatusBarProps = {
 }
 
 export default function StatusBar({ children }: StatusBarProps) {
-  const { raiseStatusBar, statusBar } = useUIStore()
-  const { isSaved, setIsSaved } = useUIStore();
+  const { raiseStatusBar, statusBar, isSaved, setIsSaved } = useUIStore()
   const [draftCount, setDraftCount] = useState(0)
   let height = !statusBar ? 'h-0' : 'h-[48vh]'
 
