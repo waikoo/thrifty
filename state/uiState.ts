@@ -12,6 +12,8 @@ type UIState = {
   category: Category['category'] | null
   showEditOptions: boolean
   popUp: boolean
+  addBrand: boolean
+  addMaterial: boolean
   addOption: boolean
   statusBar: boolean
   isSaved: boolean
@@ -27,7 +29,9 @@ type UIState = {
   setShowCategoryMenu: (value: boolean | (boolean)) => void
   setShowEditOptions: (value: boolean | (boolean)) => void
   showPopUp: (value: boolean | (boolean)) => void
+  showAddBrand: (value: boolean | (boolean)) => void
   showAddOption: (value: boolean | (boolean)) => void
+  showAddMaterial: (value: boolean | (boolean)) => void
   raiseStatusBar: (value: boolean | (boolean)) => void
   setIsSaved: (value: boolean | (boolean)) => void
   // setAreAllExpanded: (value: boolean | (boolean)) => void
@@ -45,7 +49,9 @@ export const useUIStore = create<UIState>((set) => ({
   category: null,
   showEditOptions: false,
   popUp: false,
+  addBrand: false,
   addOption: false,
+  addMaterial: false,
   statusBar: false,
   isSaved: false,
   // areAllExpanded: false,
@@ -61,7 +67,9 @@ export const useUIStore = create<UIState>((set) => ({
   setShowEditOptions: (value) => set({ showEditOptions: value }),
   showPopUp: (value) => set((state) => ({ ...state, popUp: value })),
   // showPopUp: (value) => set({ popUp: value }),
-  showAddOption: (value) => set({ addOption: value }),
+  showAddBrand: (value) => set({ addBrand: value }),
+  showAddOption: (value) => set({ addBrand: value }),
+  showAddMaterial: (value) => set({ addMaterial: value }),
   raiseStatusBar: (value) => set({ statusBar: value }),
   setIsSaved: (value) => set({ isSaved: value }),
   // setAreAllExpanded: (value) => set({ areAllExpanded: value }),
