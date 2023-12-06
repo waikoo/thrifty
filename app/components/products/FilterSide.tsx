@@ -1,15 +1,17 @@
 import { Category, Locales } from "@/types/home";
-import { FilterCheckbox, FilterColor, FilterCondition, FilterSideControls, FilterSize } from ".";
+import { FilterCheckbox, FilterColor, FilterCondition, FilterSideControls, FilterSize, FilterType } from ".";
 import { brandNamesArray } from "../data/brandsData";
 import { filter } from "../data";
+import { ProductItemType } from "@/types/productItem";
 
 type FilterSideProps = {
   lang: Locales
   category: Category['category']
   searchParams: { [key: string]: string | string[] | undefined }
+  data: ProductItemType[]
 }
 
-export default function FilterSide({ lang, category, searchParams }: FilterSideProps) {
+export default async function FilterSide({ lang, category, searchParams, data }: FilterSideProps) {
 
   return (
     <aside className="sticky top-10 flex max-h-[600px] w-[300px] flex-col gap-6">
@@ -28,7 +30,7 @@ export default function FilterSide({ lang, category, searchParams }: FilterSideP
 
       <FilterCheckbox
         type={"PRODUCT TYPE"}
-        elements={filter.productType}
+        elements={filter.productType[category]}
       />
 
       <FilterSize
