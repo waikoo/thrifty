@@ -1,9 +1,9 @@
 import { Inter } from 'next/font/google';
-import { Banner, NavBar } from "@/app/components/navigation";
+import { Banner, Logo } from "@/app/components/navigation";
 import { themeSettings } from '@/app/components/data';
 import "@/styles/styles.css";
-import { StatusBar } from '@/app/components/admin';
-import { StatusImages } from '@/app/components/admin/indexServer';
+import { LayoutAddNew, LayoutSearchId, PublishChanges } from '@/app/components/admin';
+import { IconAccount } from '@/app/components/navigation/icons';
 
 type RootLayoutProps = {
   children: React.ReactNode
@@ -23,20 +23,34 @@ export default function RootLayout({ children, params }: RootLayoutProps) {
       <head className={inter.className} />
       <body className={`bg-bkg ${inter.className}`}>
         <Banner />
-        <section className="bg-bkg text-content mx-auto flex h-screen max-w-[1600px] flex-col items-center px-20 lg:max-w-[1500px]">
-          <NavBar isAdmin params={params} />
+        <section className="bg-bkg text-content mx-auto flex h-[80vh] max-w-[1600px] flex-col items-center px-20 lg:max-w-[1500px]">
 
-          <main className="mt-6 flex w-full flex-col items-center">
+          <nav className="flex w-full items-center justify-between pt-6">
+            <div className="w-[50%]">
+              <LayoutAddNew params={params} />
+            </div>
+
+            <div className="flex w-[50%] items-center">
+              <LayoutSearchId />
+
+              <div className="ml-auto flex items-center gap-2">
+                <IconAccount />
+                <span>ADMIN</span>
+              </div>
+
+            </div>
+          </nav>
+
+          <main className="flex w-full">
             {children}
           </main>
 
         </section>
 
-        <footer>
-          <StatusBar>
-            <StatusImages />
-          </StatusBar>
-
+        <footer className="mx-auto grid max-w-[1600px] grid-cols-3 items-center px-20 lg:max-w-[1500px]">
+          <span className="text-bold text-content underline underline-offset-2">SELECT</span>
+          <Logo />
+          <PublishChanges className="border-content border-2" />
         </footer>
       </body>
     </html>
