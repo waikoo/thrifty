@@ -1,9 +1,9 @@
 "use client"
 import Image from 'next/image'
-import { useStatusImages } from "../hooks";
+import { useDraftTable, } from "../hooks";
 
 export default function StatusImages() {
-  const data = useStatusImages()
+  const data = useDraftTable()
 
   return (
     <div className="flex h-[26.8rem] p-6">
