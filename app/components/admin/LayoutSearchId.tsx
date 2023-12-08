@@ -25,7 +25,7 @@ export default function LayoutSearchId({ }: LayoutMenuItemProps) {
         />
       )
         :
-        (<span className={`self-center`}>SEARCH ID</span>)
+        (<span className={`self-center text-[0.80rem]`}>SEARCH ID</span>)
       }
     </div >
   )

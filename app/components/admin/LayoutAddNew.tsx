@@ -13,12 +13,15 @@ export default function LayoutAddNew({ params }: LayoutAddNewParams) {
 
   return (
     <Link href={`/${lang}/admin/manage`}>
-      <div className={`flex  items-center gap-3 cursor-pointer hover:text-bkg hover:bg-content p-1`}
+      <div className={`w-[18%]`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <IconPlus isHovered={isHovered} />
-        <span className={`self-center`}>ADD NEW</span>
+
+        <div className="hover:text-bkg hover:bg-content flex cursor-pointer items-center gap-3 p-1">
+          <IconPlus isHovered={isHovered} />
+          <span className={`self-center text-[0.80rem]`}>ADD NEW</span>
+        </div>
       </div>
     </Link>
   )
