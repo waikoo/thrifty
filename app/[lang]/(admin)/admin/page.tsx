@@ -1,52 +1,47 @@
 "use client"
+import { LayoutAddNew, LayoutSearchId, PublishChanges } from "@/app/components/admin";
+import AdminContent from "@/app/components/admin/AdminContent";
 import { useDraftTable } from "@/app/components/hooks";
-import { ImEnlarge } from "react-icons/im";
-import Image from 'next/image'
+import { Banner, Logo } from "@/app/components/navigation";
+import { IconAccount } from "@/app/components/navigation/icons";
 
-export default function Page() {
-  const draft = useDraftTable()
+type PageParams = {
+  params: { [key: string]: string | string[] | undefined }
+}
+
+export default function Page({ params }: PageParams) {
 
   return (
-    <>
-      {/* <div id="popup-root"></div> */}
-      <div className="text-bkg flex h-[500px] w-full gap-2">
+    <section className="bg-bkg">
+      <section className="bg-bkg text-content mx-auto flex h-[80vh] max-w-[1600px] flex-col items-center px-20 lg:max-w-[1500px]">
 
-        <div className="bg-content relative h-[70vh] w-[50%]">
-
-
-          <div className="hover:bg-darkgrey flex h-full w-full flex-wrap gap-[0.5rem] overflow-y-scroll rounded-lg p-6">
-            {draft?.filter(el => el.img_url && el.img_url.length > 0).map((el, i) => (
-              <div className="w-[19.1%] flex-grow-0 object-cover"
-                key={i}
-              >
-                <Image
-                  className="block min-w-full"
-                  src={el.img_url[0]}
-                  alt={`new-product-${i}`}
-                  width={100}
-                  height={100} />
-              </div>
-            ))}
+        <nav className="flex w-full items-center justify-between pt-6">
+          <div className="w-[50%]">
+            <LayoutAddNew params={params} />
           </div>
 
+          <div className="flex w-[50%] items-center">
+            <LayoutSearchId />
 
-          <div className="absolute bottom-2 flex w-full justify-between px-6">
-            <span className="font-bold">NEW: {draft.length}</span>
-            <ImEnlarge />
+            <div className="ml-auto flex items-center gap-2">
+              <IconAccount />
+              <span>ADMIN</span>
+            </div>
+
           </div>
+        </nav>
 
-        </div>
+        <main className="flex w-full">
+          <AdminContent />
+        </main>
 
-        <div className="bg-content relative h-[70vh] w-[50%]">
+      </section>
 
-          <div className="align-center absolute bottom-2 flex w-full justify-between px-3">
-            <span className="font-bold">EDITED: 0</span>
-            <ImEnlarge />
-          </div>
-
-        </div>
-
-      </div>
-    </>
+      <footer className="mx-auto grid max-w-[1600px] grid-cols-3 items-center px-20 lg:max-w-[1500px]">
+        <span className="text-bold text-content underline underline-offset-2">SELECT</span>
+        <Logo />
+        <PublishChanges className="border-content border-2" />
+      </footer>
+    </section>
   )
 }
