@@ -1,6 +1,12 @@
+"use client"
 import { supabase } from "@/app/supabase"
+import { twMerge as tm } from "tailwind-merge"
 
-export default function PublishChanges() {
+type PublishChangesProps = {
+  className?: string
+}
+
+export default function PublishChanges({ className }: PublishChangesProps) {
 
   const saveDraftToProducts = async () => {
     try {
@@ -31,7 +37,7 @@ export default function PublishChanges() {
   }
 
   return (
-    <button className="bg-bkg text-content cursor-pointer justify-self-end px-24 py-4 font-semibold tracking-wider"
+    <button className={tm(`bg-bkg text-content cursor-pointer justify-self-end px-24 py-4 font-semibold tracking-wider ${className}`)}
       onClick={saveDraftToProducts}
     >
       PUBLISH CHANGES
