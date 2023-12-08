@@ -7,7 +7,7 @@ type ImageEditProps = {
 }
 
 export default function ImageEdit({ src }: ImageEditProps) {
-  const { imgUrl, setImgUrl } = useProductStore()
+  const { img_url, setImgUrl } = useProductStore()
   const { setShowEditOptions, popUp, showPopUp } = useUIStore()
 
   const onClickHandler = () => {
@@ -15,9 +15,9 @@ export default function ImageEdit({ src }: ImageEditProps) {
   }
 
   const deleteImage = () => {
-    imgUrl.forEach((el, i) => {
+    img_url.forEach((el, i) => {
       if (src === el) {
-        setImgUrl(imgUrl.filter((_, index) => index !== i))
+        setImgUrl(img_url.filter((_, index) => index !== i))
       }
     })
   }
@@ -33,7 +33,7 @@ export default function ImageEdit({ src }: ImageEditProps) {
           className="bg-bkg text-content cursor-pointer justify-self-end px-4 py-2 font-semibold "
         > X </button>
       </div>
-      {/* {popUp && <span>test</span>} */}
+
       {popUp && (
         <Portal>
           <ImageDeletionPopUp
