@@ -8,7 +8,7 @@ export const top = [{
 },
 {
   name: 'PRODUCT TYPE',
-  content: ['Bags', 'Belts', 'Boots', 'Coats', 'Dresses', 'Flats', 'Hats', 'Heels', 'Hoodies', 'Jackets', 'Jeans', 'Jewellery', 'Joggers', 'Pants', 'Sandals', 'Skirts', 'Slippers', 'Sunglasses', 'Sweaters', 'T-Shirts', 'Tops', 'Sneakers']
+  content: ['Bags', 'Belts', 'Boots', 'Coats', 'Dresses', 'Elegant', 'Flats', 'Hats', 'Heels', 'Hoodies', 'Jackets', 'Jeans', 'Jewellery', 'Joggers', 'Pants', 'Sandals', 'Skirts', 'Slippers', 'Sunglasses', 'Sweaters', 'T-Shirts', 'Tops', 'Sneakers']
 }]
 
 export const bottom = [{
