@@ -1,9 +1,22 @@
+"use client"
 import { fetchAllProducts } from "@/utils/fetchAllProducts";
-import { useSupabaseServer } from "@/app/components/hooks/serverIndex"
 import Image from 'next/image'
+import { useUIStore } from "@/state";
+import { useEffect, useState } from "react";
+import { ProductItemType } from "@/types/productItem";
+import { supabase } from "@/app/supabase";
 
-export default async function StatusImages() {
-  const data = await fetchAllProducts(useSupabaseServer(), 'draft')
+export default function StatusImages() {
+  const { isSaved } = useUIStore();
+  const [data, setData] = useState<ProductItemType[]>([]);
+
+  useEffect(() => {
+    const fetchDrafts = async () => {
+      const result = await fetchAllProducts(supabase, 'draft')
+      if (result !== null) setData(result)
+    }
+    fetchDrafts()
+  }, [isSaved])
 
   return (
     <div className="flex h-[26.8rem] p-6">
