@@ -1,6 +1,7 @@
 export type ProductItemType = {
   uuid: string
   type: string
+  category: string
   size: string
   price: number
   material: string
