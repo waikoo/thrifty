@@ -20,7 +20,7 @@ export default function LayoutAddNew({ params }: LayoutAddNewParams) {
 
         <div className="hover:text-bkg hover:bg-content flex cursor-pointer items-center gap-3 p-1">
           <IconPlus isHovered={isHovered} />
-          <span className={`self-center text-[0.80rem]`}>ADD NEW</span>
+          <span className={`self-center text-[0.80rem] whitespace-nowrap`}>ADD NEW</span>
         </div>
       </div>
     </Link>
