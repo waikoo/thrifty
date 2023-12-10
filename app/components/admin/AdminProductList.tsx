@@ -37,17 +37,29 @@ export default function AdminProductList({ draft }: AdminProductListProps) {
           onMouseLeave={() => onMouseLeave(i)}
         >
           <Image
-            className="block min-w-full"
+            className="relative block min-w-full"
             src={el.img_url[0]}
             alt={`new-product-${i}`}
             width={100}
-            height={100} />
+            height={100}
+          />
           {showPopup[i] &&
-            <section >
-              <div className="flex gap-2">
-                <span>ID</span>
-                <span>{el.uuid}</span>
-                <span>{el.created_at}</span>
+            <section>
+              <div className="bg-bkg text-content absolute z-10 grid grid-cols-2 gap-2 p-4 text-center">
+                <span className="justify-self-start">ID: </span>
+                <span className="bg-content text-bkg justify-self-start whitespace-nowrap p-1">{el.uuid}</span>
+                <span className="justify-self-end">GENDER: </span> <span className="justify-self-start">{el.gender}</span>
+                <span className="justify-self-end">CATEGORY: </span> <span className="justify-self-start">{el.category}</span>
+                <span className="justify-self-end whitespace-nowrap">PRODUCT TYPE: </span><span className="justify-self-start">{el.type}</span>
+                <span className="justify-self-end">PRICE: </span><span className="justify-self-start">{el.price}</span>
+                <span className="justify-self-end">DISCOUNT: </span><span className="justify-self-start">{el.discount}</span>
+                <span className="justify-self-end">SIZE: </span><span className="justify-self-start">{el.size}</span>
+                <span className="justify-self-end">COLOR: </span><span className="justify-self-start">{el.color}</span>
+                <span className="justify-self-end">BRAND: </span><span className="justify-self-start">{el.brand}</span>
+                <span className="justify-self-end">CONDITION: </span><span className="justify-self-start">{el.condition}</span>
+                <span className="justify-self-end">MATERIAL: </span><span className="justify-self-start">{el.material}</span>
+                <span className="justify-self-end">DATE ADDED: </span><span className="justify-self-start">{el.created_at}</span>
+                <span className="justify-self-end">{el.img_url.length} Image{el.img_url.length > 1 ? 's' : ''}</span>
               </div>
             </section>
           }
