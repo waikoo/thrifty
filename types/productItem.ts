@@ -9,7 +9,7 @@ export type ProductItemType = {
   gender: string
   discount: number
   created_at: string
-  condition: number
+  condition: string
   color: string
   brand: string
 }
