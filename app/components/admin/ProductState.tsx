@@ -1,9 +1,9 @@
 "use client"
 import { ProductInput, ProductSelect } from "@/app/components/admin"
 import { top, bottom } from "@/app/components/data"
-import { getCurrentDate } from "@/utils/getCurrentDate"
 import { useProductState } from "../hooks"
 import { findContentByName } from "@/utils/findContentByName"
+import { getDayMonthYear } from "@/utils/getDayMonthYear"
 
 type ProductStateProps = {
 }
@@ -48,7 +48,7 @@ export default function ProductState({ }: ProductStateProps) {
 
       <div className="ml-8 mt-4 flex gap-4">
         <span>DATE ADDED</span>
-        <span>{getCurrentDate()}</span>
+        <span>{getDayMonthYear()}</span>
       </div>
     </section>
   );
