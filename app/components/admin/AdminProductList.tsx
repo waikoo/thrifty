@@ -48,8 +48,8 @@ export default function AdminProductList({ draft }: AdminProductListProps) {
           />
           {showPopup[i] &&
             <section className="bg-bkg text-content absolute z-10 w-auto p-4">
-              <span className="whitespace-nowrap">ID: <span className="bg-content text-bkg justify-self-start whitespace-nowrap p-1">{el.uuid}</span></span>
-              <div className="bg-bkg text-content z-10 grid grid-cols-2 gap-2 p-4 text-center">
+              <div className="bg-bkg text-content z-10 grid grid-cols-2 gap-2 text-center">
+                <span className="col-span-2 whitespace-nowrap">ID: <span className="bg-content text-bkg justify-self-start whitespace-nowrap p-1">{el.uuid}</span></span>
                 <span className="justify-self-end">GENDER: </span> <span className="justify-self-start">{capitalize(el.gender)}</span>
                 <span className="justify-self-end">CATEGORY: </span> <span className="justify-self-start">{capitalize(el.category)}</span>
                 <span className="justify-self-end whitespace-nowrap">PRODUCT TYPE: </span><span className="justify-self-start">{capitalize(el.type)}</span>
@@ -61,7 +61,7 @@ export default function AdminProductList({ draft }: AdminProductListProps) {
                 <span className="justify-self-end">CONDITION: </span><span className="justify-self-start">{capitalize(el.condition)}</span>
                 <span className="justify-self-end">MATERIAL: </span><span className="justify-self-start">{capitalize(el.material)}</span>
                 <span className="justify-self-end">DATE ADDED: </span><span className="justify-self-start">{getDayMonthYear(el.created_at)}</span>
-                <span className="justify-self-end">{el.img_url.length} Image{el.img_url.length > 1 ? 's' : ''}</span>
+                <span className="col-span-2 w-full text-center">{el.img_url.length} Image{el.img_url.length > 1 ? 's' : ''}</span>
               </div>
             </section>
           }
