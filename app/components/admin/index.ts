@@ -1,5 +1,6 @@
 export { default as AdminProductList } from './AdminProductList'
 export { default as AdminProductStatus } from './AdminProductStatus'
+export { default as AdminProductSummary } from './AdminProductSummary'
 export { default as AdminProductItem } from './AdminProductItem'
 export { default as AdminProductID } from './AdminProductID'
 export { default as ProductSelect } from './ProductSelect'
