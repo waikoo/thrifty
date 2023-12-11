@@ -1,20 +1,32 @@
-import { ImEnlarge } from "react-icons/im";
+"use client"
 import { useDraftTable } from "../hooks";
 import { AdminProductList, AdminProductStatus } from ".";
+import { useUIStore } from "@/state";
 
 export default function AdminContent() {
   const draft = useDraftTable()
+  const { maximizeNew, maximizeEdited } = useUIStore()
 
   return (<>
     {/* <div id="popup-root"></div> */}
-    <div className="text-bkg flex h-[500px] w-full gap-2">
+    <div className={`text-bkg flex h-[500px] w-full
+      ${maximizeNew ? 'flex-col gap-14' :
+        maximizeEdited ? 'flex-col-reverse gap-14' :
+          'flex-row gap-2'}`}>
 
-      <div className="bg-content relative h-[70vh] w-[50%]">
-        <AdminProductList draft={draft} />
+      <div className={`bg-content relative 
+        ${maximizeNew ? 'h-[60vh] w-full' :
+          maximizeEdited ? 'h-auto w-full' :
+            'h-[70vh] w-[50%]'}`}>
+        {maximizeNew || !maximizeNew && !maximizeEdited ? <AdminProductList draft={draft} /> : null}
+
         <AdminProductStatus draft={draft}>NEW</AdminProductStatus>
       </div>
 
-      <div className="bg-content relative h-[70vh] w-[50%]">
+      <div className={`bg-content relative 
+        ${maximizeNew ? 'h-auto w-full' :
+          maximizeEdited ? 'h-[60vh] w-full' :
+            'h-[70vh] w-[50%]'}`}>
         <AdminProductStatus>EDITED</AdminProductStatus>
       </div>
 

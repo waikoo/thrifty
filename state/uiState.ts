@@ -17,8 +17,8 @@ type UIState = {
   addOption: boolean
   statusBar: boolean
   isSaved: boolean
-  // areAllExpanded: boolean
-  // isExpanded: boolean
+  maximizeNew: boolean
+  maximizeEdited: boolean
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
@@ -34,8 +34,8 @@ type UIState = {
   showAddMaterial: (value: boolean | (boolean)) => void
   raiseStatusBar: (value: boolean | (boolean)) => void
   setIsSaved: (value: boolean | (boolean)) => void
-  // setAreAllExpanded: (value: boolean | (boolean)) => void
-  // setIsExpanded: (value: boolean | (boolean)) => void
+  setMaximizeNew: (value: boolean | (boolean)) => void
+  setMaximizeEdited: (value: boolean | (boolean)) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -54,8 +54,8 @@ export const useUIStore = create<UIState>((set) => ({
   addMaterial: false,
   statusBar: false,
   isSaved: false,
-  // areAllExpanded: false,
-  // isExpanded: false,
+  maximizeNew: false,
+  maximizeEdited: false,
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
@@ -72,8 +72,8 @@ export const useUIStore = create<UIState>((set) => ({
   showAddMaterial: (value) => set({ addMaterial: value }),
   raiseStatusBar: (value) => set({ statusBar: value }),
   setIsSaved: (value) => set({ isSaved: value }),
-  // setAreAllExpanded: (value) => set({ areAllExpanded: value }),
-  // setIsExpanded: (value) => set({ isExpanded: value }),
+  setMaximizeNew: (value) => set({ maximizeNew: value }),
+  setMaximizeEdited: (value) => set({ maximizeEdited: value }),
 }))
 
 type HeroCarouselState = {
