@@ -10,31 +10,24 @@ type AdminProductListProps = {
 }
 
 export default function AdminProductList({ draft }: AdminProductListProps) {
-
   const [showPopup, setShowPopup] = useState(new Array(draft.length).fill(false))
 
-  const onMouseOver = (i: number) => {
+  const onMouseHandler = (i: number, boolean: boolean) => {
     setShowPopup(prevState => {
+
       const newState = [...prevState];
-      newState[i] = true;
+      newState[i] = boolean;
       return newState;
     });
   }
 
-  const onMouseLeave = (i: number) => {
-    setShowPopup(prevState => {
-      const newState = [...prevState];
-      newState[i] = false;
-      return newState;
-    });
-  }
   return (
     <div className="flex h-full w-full flex-wrap gap-[0.5rem] overflow-y-scroll rounded-lg p-6">
       {draft?.filter(el => el.img_url && el.img_url.length > 0).map((el, i) => (
         <div className="w-[19.1%] flex-grow-0 object-cover"
           key={i}
-          onMouseOver={() => onMouseOver(i)}
-          onMouseLeave={() => onMouseLeave(i)}
+          onMouseOver={() => onMouseHandler(i, true)}
+          onMouseLeave={() => onMouseHandler(i, false)}
         >
           <Image
             className="relative block min-w-full"
