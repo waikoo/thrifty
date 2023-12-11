@@ -1,5 +1,5 @@
-import { ProductItemType } from "@/types/productItem";
 import { capitalize } from "@/utils/capitalize";
+import { getDayMonthYear } from "@/utils/getDayMonthYear";
 
 type AdminProductItemProps = {
   children: React.ReactNode
@@ -18,8 +18,13 @@ export default function AdminProductItem({ children, type }: AdminProductItemPro
 
   return (
     <>
-      <span className="justify-self-end">{children}: </span>
-      <span className="justify-self-start">{getValue(type)}</span>
+      <span className="justify-self-end text-[0.6875rem] font-light text-[#E6E6E6]">
+        {children}:
+      </span>
+
+      <span className="justify-self-start whitespace-nowrap text-[0.75rem] font-medium">
+        {children === 'DATE ADDED' ? getDayMonthYear(type as string) : getValue(type)}
+      </span>
     </>
   )
 }
