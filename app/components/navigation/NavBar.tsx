@@ -23,18 +23,14 @@ const NavBar = ({ isAdmin, params }: NavBarProps) => {
       <div className={`grid grid-cols-3 pb-2 pt-4 w-full border-b-2 border-content relative mx-auto`}
         onMouseEnter={() => setShowCategoryMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
-        {isAdmin ? <LayoutMenu params={params} /> : <SearchBar />}
+        <SearchBar />
 
         <WithHome> <Logo /> </WithHome>
 
         <nav className="flex items-center gap-6 justify-self-end pt-2">
           <IconAccount />
-          {isAdmin ? 'ADMIN' : (
-            <>
-              <IconFavorite />
-              <IconShoppingBag />
-            </>
-          )}
+          <IconFavorite />
+          <IconShoppingBag />
         </nav>
       </div>
     </section>
