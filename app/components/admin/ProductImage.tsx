@@ -1,26 +1,28 @@
 "use client"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { ImageButton, ImagesDisplay } from "."
-import { useProductStore } from "@/state/productState"
 
 type ProductImageProps = {
 }
 
 export default function ProductImage({ }: ProductImageProps) {
-  const { imgUrl, setImgUrl } = useProductStore()
   const inputRef = useRef<HTMLInputElement | null>(null)
 
   return (
-    <div className="flex w-[50%] flex-col items-center gap-6">
+    <div className="flex flex-col items-center gap-6">
 
-      <div className="flex w-full items-center justify-center gap-6">
-        <span className="text-bold">URL</span>
+      <div className="grid w-full grid-cols-10">
 
-        <div className="flex w-full">
-          <input ref={inputRef} type="text" className={`adminBorder w-full p-[0.5rem] bg-bkg`} placeholder="Add link here" />
+        <span className="text-content self-center justify-self-center text-[0.8125rem] font-semibold">
+          URL
+        </span>
 
-          <ImageButton {... { inputRef }} />
-        </div>
+        <input ref={inputRef}
+          type="text"
+          className={"bg-bkg border-content col-span-7 w-full border-[0.1rem] p-[0.5rem] text-[0.8125rem] font-medium"}
+          placeholder="Add link here" />
+
+        <ImageButton {... { inputRef }} />
 
       </div>
 

@@ -1,15 +1,11 @@
 "use client"
-
 import { useProductStore } from "@/state/productState";
 
 type ImageButtonProps = {
   inputRef: React.RefObject<HTMLInputElement>
-  // images: string[]
-  // setImages: (images: string[]) => void
 }
 
 export default function ImageButton({ inputRef }: ImageButtonProps) {
-  // export default function ImageButton({ inputRef, images, setImages }: ImageButtonProps) {
   const { img_url, setImgUrl } = useProductStore()
 
   const handleNewImage = () => {
@@ -21,7 +17,7 @@ export default function ImageButton({ inputRef }: ImageButtonProps) {
 
   return (
     <button
-      className={`adminBorder p-[0.5rem]`}
+      className={"border-content text-content col-span-2 border-[0.1rem] p-[0.5rem] text-[0.8125rem] font-semibold"}
       onClick={handleNewImage}>
       Upload
     </button>
