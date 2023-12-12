@@ -1,10 +1,9 @@
 import { Manage } from "@/app/components/admin";
-
-import { Banner, NavBar } from "@/app/components/navigation";
-import { themeSettings } from '@/app/components/data';
+import { Logo } from "@/app/components/navigation";
 import "@/styles/styles.css";
-import { LayoutAddNew, LayoutMenu, LayoutSearchId, StatusBar } from '@/app/components/admin';
+import { LayoutAddNew, LayoutSearchId, StatusBar } from '@/app/components/admin';
 import { StatusImages } from '@/app/components/admin/indexServer';
+import { IconAccount } from "@/app/components/navigation/icons";
 
 type PageProps = {
   params: { [key: string]: string | string[] | undefined }
@@ -14,15 +13,24 @@ export default function Page({ params }: PageProps) {
 
   return (
     <>
-      <section className="bg-bkg text-content mx-auto flex h-screen max-w-[1600px] flex-col items-center px-20 lg:max-w-[1500px]">
-        <NavBar isAdmin params={params} />
+      <header className="bg-bkg text-content border-content mx-auto grid max-w-[1700px] grid-cols-3 items-baseline border-b-[0.1rem] pt-5">
+        <div className="grid w-[35%] grid-cols-2 gap-1">
+          <LayoutAddNew params={params} />
+          <LayoutSearchId />
+        </div>
 
-        <main className="mt-6 flex w-full flex-col items-center">
-          <Manage />
-          <div id="popup-root"></div>
-        </main>
+        <Logo />
 
-      </section>
+        <div className="flex items-baseline gap-2 justify-self-end">
+          <IconAccount /> <span>ADMIN</span>
+        </div>
+      </header>
+
+      <main className="mx-auto mt-6 flex w-full max-w-[1600px] flex-col items-center">
+        <Manage />
+        <div id="popup-root"></div>
+      </main>
+
 
       <footer>
         <StatusBar>

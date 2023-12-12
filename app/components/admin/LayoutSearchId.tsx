@@ -11,7 +11,7 @@ export default function LayoutSearchId({ }: LayoutMenuItemProps) {
   const clicked = isClicked ? 'hover:text-content hover:bg-bkg' : 'hover:text-bkg hover:bg-content'
 
   return (
-    <div className={`${clicked} flex items-center gap-2 cursor-pointer p-1`}
+    <div className={`${clicked} flex whitespace-nowrap self-baseline items-baseline gap-2 cursor-pointer`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => { setIsClicked(true) }}
@@ -20,12 +20,12 @@ export default function LayoutSearchId({ }: LayoutMenuItemProps) {
 
       {isClicked ? (
         <input type="search"
-          className={`bg-transparent text-content outline-0 appearance-none focus:outline-none pt-2 w-full self-center placeholda`}
+          className={"text-content placeholda w-full appearance-none self-baseline bg-transparent outline-0 focus:outline-none"}
           placeholder="Enter your search here..."
         />
       )
         :
-        (<span className={`self-center text-[0.80rem]`}>SEARCH ID</span>)
+        (<span className={"self-baseline text-[0.80rem]"}>SEARCH ID</span>)
       }
     </div >
   )
