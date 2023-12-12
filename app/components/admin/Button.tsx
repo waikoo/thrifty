@@ -8,7 +8,7 @@ export default function Button() {
 
   return (
     <button
-      className={`adminBorder w-16 mx-auto py-3 px-24 items-center justify-center flex`}
+      className={"border-content col-span-2 mx-auto flex w-16 items-center justify-center border-[0.1rem] px-24 py-3 text-white"}
       onClick={() => {
         saveDraft()
         setIsSaved(!isSaved)
