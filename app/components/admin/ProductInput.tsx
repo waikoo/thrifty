@@ -12,17 +12,17 @@ export default function ProductInput({ name, placeholder, icon }: ProductInputPr
   const { getOnChange, getValue } = useProductInputUtils()
 
   return (
-    <fieldset className="relative flex w-[50%] items-center gap-4">
+    <fieldset className="text-content relative flex w-[50%] items-center gap-4">
       <legend hidden>{upperCaseName}</legend>
       <label htmlFor={name}
         className="grid grid-cols-[8rem_21rem] items-center gap-4">
-        <span className="justify-self-end">{upperCaseName} </span>
+        <span className="justify-self-end text-[0.8125rem] font-semibold">{upperCaseName} </span>
         <input
           placeholder={placeholder}
           type={'text'}
           name={name}
           id={name}
-          className={`bg-bkg p-2 adminBorder`}
+          className={"bg-bkg adminBorder p-2 text-[0.8125rem] font-normal"}
           value={getValue(name)}
           onChange={(e) => getOnChange(e, name)}
         />

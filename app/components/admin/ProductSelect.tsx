@@ -11,11 +11,11 @@ type ProductSelectProps = {
 export default function ProductSelect({ obj: { name, content }, handleAddItem }: ProductSelectProps) {
 
   return (
-    <fieldset className="relative flex w-[50%] items-center gap-4">
+    <fieldset className="text-content relative flex w-[50%] items-center gap-4">
       <legend hidden>{name}</legend>
 
       <label htmlFor={name.toLowerCase()} className="grid grid-cols-[8rem_21rem] items-center gap-4 whitespace-nowrap">
-        <span className="justify-self-end">{name}</span>
+        <span className="justify-self-end text-[0.8125rem] font-semibold">{name}</span>
 
         <Select name={name} content={content} />
       </label>
