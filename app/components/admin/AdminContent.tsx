@@ -14,7 +14,7 @@ export default function AdminContent() {
         maximizeEdited ? 'flex-col-reverse gap-14' :
           'flex-row gap-2'}`}>
 
-      <div className={`bg-content relative 
+      <div className={`bg-content relative
         ${maximizeNew ? 'h-[60vh] w-full' :
           maximizeEdited ? 'h-auto w-full' :
             'h-[70vh] w-[50%]'}`}>
