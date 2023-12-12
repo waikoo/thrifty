@@ -37,7 +37,7 @@ export default function PublishChanges({ className }: PublishChangesProps) {
   }
 
   return (
-    <button className={tm(`bg-bkg text-content cursor-pointer justify-self-end px-24 py-4 font-semibold tracking-wider ${className}`)}
+    <button className={tm(`bg-bkg whitespace-nowrap text-content cursor-pointer justify-self-end px-12 py-3 font-semibold tracking-wider hover:bg-content hover:text-bkg ${className}`)}
       onClick={saveDraftToProducts}
     >
       PUBLISH CHANGES
