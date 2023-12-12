@@ -21,9 +21,9 @@ export default function AdminProductList({ draft }: AdminProductListProps) {
   }
 
   return (
-    <div className="mx-auto flex flex-wrap gap-[0.5rem] overflow-y-scroll rounded-lg p-6">
+    <div className="grid grid-cols-[repeat(6,minmax(30px,1fr))] gap-2 p-6">
       {draft?.filter(el => el.img_url && el.img_url.length > 0).map((el, i) => (
-        <div className="h-[5.8rem] w-[5.8rem]"
+        <div className="aspect-square"
           key={i}
           onMouseOver={() => onMouseHandler(i, true)}
           onMouseLeave={() => onMouseHandler(i, false)}
