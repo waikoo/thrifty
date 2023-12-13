@@ -7,14 +7,14 @@ export default function StatusImages() {
 
   return (
     <div className="flex h-[26.8rem] p-6">
-      <div className="hover:bg-darkgrey flex h-full w-[50%] max-w-[50%] flex-wrap gap-[0.5rem] overflow-y-scroll rounded-lg p-6">
+      <div className="hover:bg-darkgrey border-bkg border[0.2rem] flex h-full w-[50%] max-w-[50%] flex-wrap gap-[0.5rem] overflow-y-scroll rounded-lg p-6 ring-1 ring-gray-300">
         {data?.filter(el => el.img_url && el.img_url.length > 0)
           .map((el, i) => (
-            <div className="w-[19.1%] flex-grow-0 object-cover"
+            <div className="aspect-square"
               key={i}
             >
               <Image
-                className="block min-w-full"
+                className="block h-full w-full object-cover"
                 src={el.img_url[0]}
                 alt={`new-product-${i}`}
                 width={100}
