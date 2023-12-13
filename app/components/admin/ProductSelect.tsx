@@ -20,9 +20,9 @@ export default function ProductSelect({ obj: { name, content }, handleAddItem }:
         <Select name={name} content={content} />
       </label>
 
-      {name === 'BRAND' || name === 'MATERIAL' ? <AddNew {... { name, handleAddItem }} /> : null}
+      {['BRAND', 'MATERIAL'].includes(name) ? <AddNew {... { name, handleAddItem }} /> : null}
 
-      {name === 'MATERIAL' ? <Optional /> : null}
+      {['BRAND', 'MATERIAL'].includes(name) ? <Optional /> : null}
 
     </fieldset>
   )
