@@ -18,7 +18,7 @@ export default function LayoutAddNew({ params }: LayoutAddNewParams) {
         onMouseLeave={() => setIsHovered(false)}
       >
 
-        <div className="text-content bg-bkg hover:text-bkg hover:bg-content grid cursor-pointer grid-cols-[auto_auto] items-baseline justify-start gap-2">
+        <div className="text-content bg-bkg hover:text-bkg hover:bg-content grid w-20 cursor-pointer grid-cols-[auto_auto] items-baseline justify-start gap-2">
           <IconPlus isHovered={isHovered} />
           <span className="hover:bg-content w-16 self-baseline whitespace-nowrap text-[0.80rem]">ADD NEW</span>
         </div>
