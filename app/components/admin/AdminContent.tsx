@@ -9,15 +9,15 @@ export default function AdminContent() {
 
   return (<>
     {/* <div id="popup-root"></div> */}
-    <div className={`text-bkg flex h-[500px] w-full
+    <div className={`text-bkg flex h-auto w-full
       ${maximizeNew ? 'flex-col gap-14' :
         maximizeEdited ? 'flex-col-reverse gap-14' :
           'flex-row gap-2'}`}>
 
       <div className={`bg-content relative
-        ${maximizeNew ? 'h-[60vh] w-full' :
+        ${maximizeNew ? 'h-[70vh] w-full' :
           maximizeEdited ? 'h-auto w-full' :
-            'h-[70vh] w-[50%]'}`}>
+            'h-[80vh] w-[50%]'}`}>
         {maximizeNew || !maximizeNew && !maximizeEdited ? <AdminProductList draft={draft} /> : null}
 
         <AdminProductStatus draft={draft}>NEW</AdminProductStatus>
@@ -25,8 +25,8 @@ export default function AdminContent() {
 
       <div className={`bg-content relative 
         ${maximizeNew ? 'h-auto w-full' :
-          maximizeEdited ? 'h-[60vh] w-full' :
-            'h-[70vh] w-[50%]'}`}>
+          maximizeEdited ? 'h-[70vh] w-full' :
+            'h-[80vh] w-[50%]'}`}>
         <AdminProductStatus>EDITED</AdminProductStatus>
       </div>
 

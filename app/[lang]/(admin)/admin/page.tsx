@@ -13,7 +13,7 @@ export default function Page({ params }: PageParams) {
 
   return (
     <section className="bg-bkg">
-      <section className="bg-bkg text-content mx-auto flex h-[80vh] max-w-[1600px] flex-col items-center px-20 lg:max-w-[1500px]">
+      <section className="bg-bkg text-content mx-auto flex h-[90vh] max-w-[1700px] flex-col items-center">
 
         <nav className="flex w-full items-center justify-between pt-6">
           <div className="w-[50%]">
@@ -31,16 +31,18 @@ export default function Page({ params }: PageParams) {
           </div>
         </nav>
 
-        <main className="flex w-full">
+        <main className="w-full">
           <AdminContent />
         </main>
 
       </section>
 
-      <footer className="mx-auto grid max-w-[1600px] grid-cols-3 items-center px-20 lg:max-w-[1500px]">
-        <span className="text-bold text-content underline underline-offset-2">SELECT</span>
-        <Logo />
-        <PublishChanges className="border-content border-2" />
+      <footer className="fixed bottom-0 left-0 right-0 w-screen p-6">
+        <div className="mx-auto grid max-w-[1700px] grid-cols-3 items-baseline">
+          <span className="text-bold text-content underline underline-offset-2">SELECT</span>
+          <Logo />
+          <PublishChanges className="border-content border-2" />
+        </div>
       </footer>
     </section>
   )
