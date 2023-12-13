@@ -15,7 +15,7 @@ export default function StatusBar({ children }: StatusBarProps) {
   let height = !statusBar ? 'h-0' : 'h-[48vh]'
 
   return (
-    <div className={tm(`bg-content ${height} text-bkg fixed bottom-0 left-0 right-0 grid w-screen text-[1.2rem] font-bold`)}
+    <div className={tm(`bg-content ${height} text-bkg fixed bottom-0 left-0 right-0 grid w-screen font-bold`)}
       onMouseEnter={() => raiseStatusBar(true)}
       onMouseLeave={() => raiseStatusBar(false)}
     >
