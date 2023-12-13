@@ -22,13 +22,13 @@ export default function StatusBar({ children }: StatusBarProps) {
       {children}
 
       <div className="bg-content fixed bottom-0 left-0 right-0 w-screen p-6 ">
-        <div className="mx-auto grid max-w-[1700px] grid-cols-[auto_auto_1fr] gap-8 ">
+        <div className={`mx-auto grid max-w-[1700px] ${!statusBar ? 'grid-cols-[auto_auto_1fr]' : 'grid-cols-[48%_auto_1fr]'} items-baseline gap-8`}>
           <span>NEW: {draft.length} </span>
           <span className="justify-self-start">EDITED: 0 </span>
 
           <PublishChanges className="border-bkg border-2" />
         </div>
       </div>
-    </div >
+    </div>
   )
 }
