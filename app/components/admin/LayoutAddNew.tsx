@@ -12,17 +12,16 @@ export default function LayoutAddNew({ params }: LayoutAddNewParams) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <Link href={`/${lang}/admin/manage`} className="self-baseline">
-      <div className={`w-[18%]`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-
-        <div className="text-content bg-bkg hover:text-bkg hover:bg-content grid w-20 cursor-pointer grid-cols-[auto_auto] items-baseline justify-start gap-2">
-          <IconPlus isHovered={isHovered} />
-          <span className="hover:bg-content w-16 self-baseline whitespace-nowrap text-[0.80rem]">ADD NEW</span>
-        </div>
-      </div>
+    <Link
+      href={`/${lang}/admin/manage`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="text-content bg-bkg hover:text-bkg hover:bg-content grid w-20 cursor-pointer grid-cols-[auto_auto] items-baseline justify-start gap-2 self-baseline"
+    >
+      <IconPlus
+        isHovered={isHovered}
+      />
+      <span className="hover:bg-content w-16 self-baseline whitespace-nowrap text-[0.80rem]">ADD NEW</span>
     </Link>
   )
 }
