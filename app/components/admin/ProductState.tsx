@@ -46,9 +46,9 @@ export default function ProductState({ }: ProductStateProps) {
         handleAddItem={addMaterial}
       />}
 
-      <div className="ml-8 mt-4 flex gap-4">
+      <div className="text-content ml-11 mt-4 flex gap-4 text-[0.8125rem] font-semibold">
         <span>DATE ADDED</span>
-        <span>{getDayMonthYear()}</span>
+        <span className="font-normal">{getDayMonthYear()}</span>
       </div>
     </section>
   );
