@@ -16,7 +16,11 @@ export default function ProductInput({ name, placeholder, icon }: ProductInputPr
       <legend hidden>{upperCaseName}</legend>
       <label htmlFor={name}
         className="grid grid-cols-[8rem_21rem] items-center gap-4">
-        <span className="justify-self-end text-[0.8125rem] font-semibold">{upperCaseName} </span>
+        <span className="relative flex flex-row-reverse gap-2 justify-self-end text-[0.8125rem] font-semibold">
+          {upperCaseName}
+          {['discount', 'size'].includes(name) ? <Optional /> : null}
+
+        </span>
         <input
           placeholder={placeholder}
           type={'text'}
@@ -28,7 +32,6 @@ export default function ProductInput({ name, placeholder, icon }: ProductInputPr
         />
       </label>
       <span className="absolute right-2">{icon}</span>
-      {['discount', 'size'].includes(name) ? <Optional /> : null}
 
     </fieldset>
   )
