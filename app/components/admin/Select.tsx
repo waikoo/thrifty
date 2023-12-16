@@ -1,5 +1,7 @@
+"use client"
 import { twMerge as tm } from 'tailwind-merge'
 import useSelectUtils, { FieldName } from '../hooks/useSelectUtils';
+import { useDynamicCategory } from '../hooks';
 
 type SelectProps = {
   name: string;
@@ -10,6 +12,7 @@ type SelectProps = {
 export default function Select({ name, content, defaultSelect = '- Select -' }: SelectProps) {
   const lowerCaseName = name.toLowerCase() as FieldName
   const { getValue, getOnChange } = useSelectUtils()
+  useDynamicCategory(name)
 
   return (
     <select
