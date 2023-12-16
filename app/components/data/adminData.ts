@@ -8,7 +8,12 @@ export const top = [{
 },
 {
   name: 'PRODUCT TYPE',
-  content: ['Bags', 'Belts', 'Boots', 'Coats', 'Dresses', 'Elegant', 'Flats', 'Hats', 'Heels', 'Hoodies', 'Jackets', 'Jeans', 'Jewellery', 'Joggers', 'Pants', 'Sandals', 'Skirts', 'Slippers', 'Sunglasses', 'Sweaters', 'T-Shirts', 'Tops', 'Sneakers']
+  content: {
+    all: ['Bags', 'Belts', 'Boots', 'Coats', 'Dresses', 'Elegant', 'Flats', 'Hats', 'Heels', 'Hoodies', 'Jackets', 'Jeans', 'Jewellery', 'Pants', 'Sandals', 'Skirts', 'Slippers', 'Sunglasses', 'Sweaters', 'T-Shirts', 'Tops', 'Sneakers'],
+    accessories: ['Bags', 'Belts', 'Hats', 'Jewellery', 'Sunglasses', 'Watches'],
+    clothing: ['Coats', 'Dresses', 'Hoodies', 'Jackets', 'Jeans', 'Pants', 'Skirts', 'Sweaters', 'T-Shirts', 'Tops'],
+    shoes: ['Boots', 'Elegant', 'Flats', 'Heels', 'Sandals', 'Slippers', 'Sneakers', 'Trainers']
+  }
 }]
 
 export const bottom = [{

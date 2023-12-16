@@ -12,23 +12,13 @@ type ProductSelectProps = {
 }
 
 export default function ProductSelect({ obj: { name, content }, handleAddItem }: ProductSelectProps) {
-  const { type, category } = useProductStore()
-  // const [typeState, setTypeState] = useState(() => {
-  //   return Array.isArray(content) ? content : content['all']
-  //   return !Array.isArray(content) ? (content[category] as string[]) : (content['all'] as string[])
-  // })
+  const { category } = useProductStore()
 
-  console.log(category)
-  //
-  // useEffect(() => {
-  //   if (name === 'PRODUCT TYPE') {
-  //     setTypeState(() => {
-  //       return !Array.isArray(content)
-  //         ? (content[category] as string[])
-  //         : (content['all'] as string[]);
-  //     });
-  //   }
-  // }, [category]);
+  const getContent = (content: string[] | { [key: string]: string[] }) => {
+    if (Array.isArray(content)) return content
+    if (['', '- Select -'].includes(category)) return content['all']
+    return content[category]
+  }
 
   return (
     <fieldset className="text-content relative flex w-[50%] items-center gap-4">
@@ -44,8 +34,7 @@ export default function ProductSelect({ obj: { name, content }, handleAddItem }:
 
         <Select
           name={name}
-          content={Array.isArray(content) ? content : content['all']}
-        // content={typeState}
+          content={getContent(content)}
         />
       </label>
 
