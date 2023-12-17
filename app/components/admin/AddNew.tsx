@@ -1,6 +1,5 @@
 import { useUIStore } from "@/state"
-import { AddOptionPopUp, Portal } from "."
-import { FaPlus } from "react-icons/fa6";
+import { AddOptionPopUp, IconPlus, Portal } from "."
 
 type AddNewProps = {
   name: string
@@ -24,7 +23,7 @@ export default function AddNew({ name, handleAddItem }: AddNewProps) {
         onClick={onClickHandler}
       >
         <div className="bg-content grid h-[1.3rem] w-[1.3rem] place-items-center self-center">
-          <FaPlus color="bkg" />
+          <IconPlus isAdmin />
         </div>
 
         <span className="text-content font-bold">Add new</span>
