@@ -1,6 +1,5 @@
 "use client"
-import { useEffect, useLayoutEffect, useState } from 'react'
-import { AddNew, Optional, Select } from '.'
+import { AddNew, IconChevronDown, Optional, Select } from '.'
 import { useProductStore } from '@/state'
 
 type ProductSelectProps = {
@@ -40,6 +39,7 @@ export default function ProductSelect({ obj: { name, content }, handleAddItem }:
 
       {['BRAND', 'MATERIAL'].includes(name) ? <AddNew {... { name, handleAddItem }} /> : null}
 
+      <IconChevronDown className="absolute right-3 z-50" />
 
     </fieldset>
   )
