@@ -8,7 +8,7 @@ export default function Button() {
 
   return (
     <button
-      className={"border-content text-content hover:text-bkg hover:bg-content col-span-2 mx-auto flex w-16 items-center justify-center border-[0.1rem] px-24 py-3 text-[0.8125rem] font-semibold"}
+      className={"border-content text-content hover:text-bkg hover:bg-content col-span-2 mx-auto mt-10 flex w-16 items-center justify-center border-[0.1rem] px-24 py-3 text-[0.8125rem] font-semibold"}
       onClick={() => {
         saveDraft()
         setIsSaved(!isSaved)
