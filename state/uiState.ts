@@ -20,6 +20,7 @@ type UIState = {
   maximizeNew: boolean
   maximizeEdited: boolean
   dynamicCategory: string
+  toggleSelected: boolean
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
@@ -38,6 +39,7 @@ type UIState = {
   setMaximizeNew: (value: boolean | (boolean)) => void
   setMaximizeEdited: (value: boolean | (boolean)) => void
   setDynamicCategory: (value: string) => void
+  setToggleSelected: (value: boolean | (boolean)) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -59,6 +61,7 @@ export const useUIStore = create<UIState>((set) => ({
   maximizeNew: false,
   maximizeEdited: false,
   dynamicCategory: '',
+  toggleSelected: false,
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
@@ -69,7 +72,6 @@ export const useUIStore = create<UIState>((set) => ({
   setShowCategoryMenu: (value) => set({ showCategoryMenu: value }),
   setShowEditOptions: (value) => set({ showEditOptions: value }),
   showPopUp: (value) => set((state) => ({ ...state, popUp: value })),
-  // showPopUp: (value) => set({ popUp: value }),
   showAddBrand: (value) => set({ addBrand: value }),
   showAddOption: (value) => set({ addBrand: value }),
   showAddMaterial: (value) => set({ addMaterial: value }),
@@ -78,6 +80,7 @@ export const useUIStore = create<UIState>((set) => ({
   setMaximizeNew: (value) => set({ maximizeNew: value }),
   setMaximizeEdited: (value) => set({ maximizeEdited: value }),
   setDynamicCategory: (value) => set({ dynamicCategory: value }),
+  setToggleSelected: (value) => set({ toggleSelected: value }),
 }))
 
 type HeroCarouselState = {
