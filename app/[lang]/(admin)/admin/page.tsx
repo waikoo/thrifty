@@ -1,5 +1,5 @@
 "use client"
-import { LayoutAddNew, LayoutSearchId, PublishChanges } from "@/app/components/admin";
+import { LayoutAddNew, LayoutSearchId, PublishChanges, SelectProducts } from "@/app/components/admin";
 import AdminContent from "@/app/components/admin/AdminContent";
 import { useDraftTable } from "@/app/components/hooks";
 import { Banner, Logo } from "@/app/components/navigation";
@@ -39,9 +39,11 @@ export default function Page({ params }: PageParams) {
 
       <footer className="fixed bottom-0 left-0 right-0 w-screen p-6">
         <div className="mx-auto grid max-w-[1700px] grid-cols-3 items-baseline">
-          <span className="text-bold text-content underline underline-offset-2">SELECT</span>
+          <SelectProducts />
           <Logo />
-          <PublishChanges className="border-content border-2" />
+          <PublishChanges
+            publishSome
+            className="border-content border-2 text-[0.8125rem] font-semibold" />
         </div>
       </footer>
     </section>
