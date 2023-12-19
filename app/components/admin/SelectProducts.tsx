@@ -4,6 +4,8 @@ import { useDraftStore, useUIStore } from "@/state"
 export default function SelectProducts() {
   const { toggleSelected, setToggleSelected } = useUIStore()
   const { selectedItems } = useDraftStore()
+  const { draftLength } = useUIStore()
+  const mainStyle = draftLength > 0 ? 'text-content cursor-pointer' : 'text-grey cursor-not-allowed'
 
   const deleteSelected = async () => {
     selectedItems.forEach(async (uuid) => {
@@ -21,11 +23,17 @@ export default function SelectProducts() {
     });
   }
 
+  const selectHandler = () => {
+    if (draftLength === 0) return
+
+    setToggleSelected(!toggleSelected)
+  }
+
   return (
     <div className="flex items-baseline gap-4 text-[0.8125rem] font-semibold">
       <span
-        className="text-bold text-content w-content cursor-pointer underline underline-offset-4"
-        onClick={() => setToggleSelected(!toggleSelected)}
+        className={`text-bold w-content underline underline-offset-4 ${mainStyle}`}
+        onClick={selectHandler}
       >
         {!toggleSelected ? 'SELECT' : 'CANCEL'}
       </span>

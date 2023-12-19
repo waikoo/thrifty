@@ -7,11 +7,15 @@ import { useEffect, useState } from "react";
 export default function useDraftTable() {
   const { isSaved } = useUIStore();
   const [draft, setData] = useState<ProductItemType[]>([]);
+  const { setDraftLength } = useUIStore()
 
   useEffect(() => {
     const fetchDrafts = async () => {
       const result = await fetchAllProducts(supabase, 'draft')
-      if (result !== null) setData(result)
+      if (result !== null) {
+        setData(result)
+        setDraftLength(result.length)
+      }
     }
     fetchDrafts()
   }, [isSaved])

@@ -21,6 +21,7 @@ type UIState = {
   maximizeEdited: boolean
   dynamicCategory: string
   toggleSelected: boolean
+  draftLength: number
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
@@ -40,6 +41,7 @@ type UIState = {
   setMaximizeEdited: (value: boolean | (boolean)) => void
   setDynamicCategory: (value: string) => void
   setToggleSelected: (value: boolean | (boolean)) => void
+  setDraftLength: (value: number) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -62,6 +64,7 @@ export const useUIStore = create<UIState>((set) => ({
   maximizeEdited: false,
   dynamicCategory: '',
   toggleSelected: false,
+  draftLength: 0,
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
@@ -81,6 +84,7 @@ export const useUIStore = create<UIState>((set) => ({
   setMaximizeEdited: (value) => set({ maximizeEdited: value }),
   setDynamicCategory: (value) => set({ dynamicCategory: value }),
   setToggleSelected: (value) => set({ toggleSelected: value }),
+  setDraftLength: (value) => set({ draftLength: value }),
 }))
 
 type HeroCarouselState = {
