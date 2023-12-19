@@ -1,11 +1,16 @@
+"use client"
 import { supabase } from "@/app/supabase"
 import { useDraftStore, useUIStore } from "@/state"
+import { useState } from "react"
+import Portal from "./Portal"
+import { Popup } from "../generic"
 
 export default function SelectProducts() {
   const { toggleSelected, setToggleSelected } = useUIStore()
   const { selectedItems } = useDraftStore()
   const { draftLength } = useUIStore()
   const mainStyle = draftLength > 0 ? 'text-content cursor-pointer' : 'text-grey cursor-not-allowed'
+  const [showPopup, setShowPopup] = useState(false)
 
   const deleteSelected = async () => {
     selectedItems.forEach(async (uuid) => {
@@ -21,6 +26,7 @@ export default function SelectProducts() {
       }
       console.log('All rows deleted successfully');
     });
+    setShowPopup(false)
   }
 
   const selectHandler = () => {
@@ -39,12 +45,25 @@ export default function SelectProducts() {
       </span>
 
       {toggleSelected && (
-        <span
-          className="text-bkg bg-content cursor-pointer p-1"
-          onClick={deleteSelected}
-        >
-          DELETE SELECTED
-        </span>
+        <>
+          <span
+            className="text-bkg bg-content cursor-pointer p-1"
+            onClick={() => setShowPopup(true)}
+          >
+            DELETE SELECTED
+          </span>
+
+          {showPopup && (
+            <Portal>
+              <Popup
+                option1={{ value: "DELETE", function: deleteSelected }}
+                option2={{ value: "CANCEL", function: () => setShowPopup(false) }}
+              >
+                Do you want to delete {draftLength} item{draftLength > 1 ? 's' : ''}?</Popup>
+            </Portal>
+
+          )}
+        </>
       )}
     </div>
   )
