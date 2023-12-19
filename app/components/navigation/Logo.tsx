@@ -16,7 +16,7 @@ const Logo = ({ className }: LogoProps) => {
       width={132}
       height={21}
       fill="none"
-      className={`col-start-2 col-end-3 cursor-pointer self-baseline justify-self-center ${className}`}
+      className={`${className}`}
     >
       <path
         fill={color}

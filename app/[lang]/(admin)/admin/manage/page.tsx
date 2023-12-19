@@ -4,12 +4,14 @@ import "@/styles/styles.css";
 import { LayoutAddNew, LayoutSearchId, StatusBar } from '@/app/components/admin';
 import { StatusImages } from '@/app/components/admin/indexServer';
 import { IconAccount } from "@/app/components/navigation/icons";
+import Link from "next/link";
 
 type PageProps = {
   params: { [key: string]: string | string[] | undefined }
 }
 
 export default function Page({ params }: PageProps) {
+  const { lang } = params
 
   return (
     <>
@@ -19,7 +21,9 @@ export default function Page({ params }: PageProps) {
           <LayoutSearchId />
         </div>
 
-        <Logo />
+        <Link href={`/${lang}/admin`} className="col-start-2 col-end-3 cursor-pointer self-baseline justify-self-center ">
+          <Logo />
+        </Link>
 
         <div className="flex items-baseline gap-2 justify-self-end">
           <IconAccount /> <span className="text-[0.75rem] font-semibold tracking-wider">ADMIN</span>
