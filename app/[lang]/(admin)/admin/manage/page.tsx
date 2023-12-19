@@ -13,7 +13,7 @@ export default function Page({ params }: PageProps) {
 
   return (
     <>
-      <header className="bg-bkg text-content border-content mx-auto grid max-w-[1700px] grid-cols-3 items-baseline border-b-[0.1rem] pt-5">
+      <header className="bg-bkg text-content border-content mx-auto grid max-w-[1700px] grid-cols-3 items-baseline border-b-[0.1rem] pb-1 pt-5">
         <div className="grid w-[35%] grid-cols-2 gap-1">
           <LayoutAddNew params={params} />
           <LayoutSearchId />
@@ -22,7 +22,7 @@ export default function Page({ params }: PageProps) {
         <Logo />
 
         <div className="flex items-baseline gap-2 justify-self-end">
-          <IconAccount /> <span>ADMIN</span>
+          <IconAccount /> <span className="text-[0.75rem] font-semibold tracking-wider">ADMIN</span>
         </div>
       </header>
 
