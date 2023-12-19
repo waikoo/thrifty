@@ -43,7 +43,7 @@ export default function Page({ params }: PageParams) {
           <Logo />
           <PublishChanges
             publishSome
-            className="border-content border-2 text-[0.8125rem] font-semibold" />
+            className="text-[0.8125rem] font-semibold" />
         </div>
       </footer>
     </section>
