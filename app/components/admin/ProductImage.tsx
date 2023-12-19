@@ -19,7 +19,7 @@ export default function ProductImage({ }: ProductImageProps) {
 
         <input ref={inputRef}
           type="text"
-          className={"bg-bkg text-content border-content col-span-7 w-full border-[0.1rem] p-[0.5rem] text-[0.8125rem] font-medium"}
+          className={"focus:ring-yellow bg-bkg text-content border-content col-span-7 w-full border-[0.1rem] p-[0.5rem] text-[0.8125rem] font-medium focus:outline-none focus:ring-[0.15rem]"}
           placeholder="Add link here" />
 
         <ImageButton {... { inputRef }} />

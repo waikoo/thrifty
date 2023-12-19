@@ -17,7 +17,7 @@ export default function ImageButton({ inputRef }: ImageButtonProps) {
 
   return (
     <button
-      className={"border-content text-content col-span-2 border-[0.1rem] p-[0.5rem] text-[0.8125rem] font-semibold"}
+      className={"focus:ring-yellow border-content text-content col-span-2 border-[0.1rem] p-[0.5rem] text-[0.8125rem] font-semibold focus:outline-none focus:ring-[0.15rem]"}
       onClick={handleNewImage}>
       Upload
     </button>
