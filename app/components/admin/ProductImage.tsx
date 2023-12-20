@@ -1,11 +1,13 @@
 "use client"
 import { useRef } from "react"
 import { ImageButton, ImagesDisplay } from "."
+import { ProductItemType } from "@/types/productItem"
 
 type ProductImageProps = {
+  uuidMatch: ProductItemType[]
 }
 
-export default function ProductImage({ }: ProductImageProps) {
+export default function ProductImage({ uuidMatch }: ProductImageProps) {
   const inputRef = useRef<HTMLInputElement | null>(null)
 
   return (
@@ -26,7 +28,7 @@ export default function ProductImage({ }: ProductImageProps) {
 
       </div>
 
-      <ImagesDisplay />
+      <ImagesDisplay uuidMatch={uuidMatch} />
 
     </div>
   )

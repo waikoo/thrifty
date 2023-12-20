@@ -4,12 +4,15 @@ import Image from 'next/image'
 import { useRef } from 'react'
 import { ImageEdit } from './'
 import { useUIStore } from '@/state'
+import { ProductItemType } from '@/types/productItem'
 
 type ImagesDisplayProps = {
+  uuidMatch: ProductItemType[]
 }
 
-export default function ImagesDisplay({ }: ImagesDisplayProps) {
+export default function ImagesDisplay({ uuidMatch }: ImagesDisplayProps) {
   const { img_url } = useProductStore()
+  const imgOutput = uuidMatch[0].img_url || img_url
   const { showEditOptions, setShowEditOptions } = useUIStore()
   const imageContainerRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLImageElement | null>(null)
@@ -25,7 +28,7 @@ export default function ImagesDisplay({ }: ImagesDisplayProps) {
   return (
     <div className="flex w-full flex-wrap gap-4" ref={imageContainerRef}>
 
-      {img_url.map((src, i) => (
+      {imgOutput.map((src, i) => (
         <div key={`admin-imgs-${i}`} className="relative w-[23.2%]">
           <Image
             src={src}

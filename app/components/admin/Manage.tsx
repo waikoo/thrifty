@@ -18,7 +18,7 @@ export default async function Manage({ uuid }: ManageProps) {
   return (
     <section className="grid w-full grid-cols-2 px-16">
       <ProductState uuidMatch={uuidMatch as ProductItemType[]} />
-      <ProductImage />
+      <ProductImage uuidMatch={uuidMatch as ProductItemType[]} />
 
       <Button />
     </section>
