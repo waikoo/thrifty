@@ -2,6 +2,7 @@
 import { twMerge as tm } from 'tailwind-merge'
 import useSelectUtils, { FieldName } from '../hooks/useSelectUtils';
 import { useDynamicCategory } from '../hooks';
+import { capitalize } from '@/utils/capitalize';
 
 type SelectProps = {
   name: string;
@@ -20,11 +21,11 @@ export default function Select({ name, content, value, defaultSelect = '- Select
       name={lowerCaseName}
       id={lowerCaseName}
       className={tm("adminBorder focus:ring-yellow text-content bg-bkg relative w-full appearance-none p-2 pr-[10.3rem] text-[0.8125rem] font-normal focus:outline-none focus:ring-[0.15rem]")}
-      value={value || getValue(lowerCaseName)}
+      value={getValue(lowerCaseName)}
       onChange={(e) => getOnChange(e, lowerCaseName)}
     >
 
-      <option className="">{defaultSelect}</option>
+      <option className="">{value && capitalize(value) || defaultSelect}</option>
 
       {content.map((item) => (
         <option key={item} value={item.toLowerCase()}>{item}</option>
