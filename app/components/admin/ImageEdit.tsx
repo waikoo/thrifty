@@ -20,6 +20,7 @@ export default function ImageEdit({ src }: ImageEditProps) {
         setImgUrl(img_url.filter((_, index) => index !== i))
       }
     })
+    showPopUp(false)
   }
 
   return (
