@@ -5,9 +5,10 @@ type ProductInputProps = {
   name: string
   placeholder: string
   icon: string
+  value: string
 }
 
-export default function ProductInput({ name, placeholder, icon }: ProductInputProps) {
+export default function ProductInput({ name, placeholder, icon, value }: ProductInputProps) {
   const upperCaseName = name.toUpperCase()
   const { getOnChange, getValue } = useProductInputUtils()
 
@@ -27,7 +28,7 @@ export default function ProductInput({ name, placeholder, icon }: ProductInputPr
           name={name}
           id={name}
           className={"bg-bkg adminBorder focus:ring-yellow border-2 p-2 text-[0.8125rem] font-normal focus:outline-none focus:ring-[0.15rem]"}
-          value={getValue(name)}
+          value={value || getValue(name)}
           onChange={(e) => getOnChange(e, name)}
         />
       </label>

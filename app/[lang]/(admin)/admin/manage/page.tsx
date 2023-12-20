@@ -1,4 +1,4 @@
-import { Manage } from "@/app/components/admin";
+import { Manage } from "@/app/components/admin/indexServer";
 import { Logo } from "@/app/components/navigation";
 import "@/styles/styles.css";
 import { LayoutAddNew, LayoutSearchId, StatusBar } from '@/app/components/admin';
@@ -8,11 +8,12 @@ import Link from "next/link";
 
 type PageProps = {
   params: { [key: string]: string | string[] | undefined }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default function Page({ params }: PageProps) {
+export default function Page({ params, searchParams }: PageProps) {
   const { lang } = params
-
+  const uuid = searchParams.uuid as string
   return (
     <>
       <header className="bg-bkg text-content border-content mx-auto grid max-w-[1700px] grid-cols-3 items-baseline border-b-[0.1rem] pb-1 pt-5">
@@ -31,7 +32,7 @@ export default function Page({ params }: PageProps) {
       </header>
 
       <main className="mx-auto mt-6 flex w-full max-w-[1600px] flex-col items-center">
-        <Manage />
+        <Manage uuid={uuid} />
         <div id="popup-root"></div>
       </main>
 

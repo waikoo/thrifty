@@ -7,9 +7,10 @@ type SelectProps = {
   name: string;
   content: string[];
   defaultSelect?: string;
+  value?: string
 }
 
-export default function Select({ name, content, defaultSelect = '- Select -' }: SelectProps) {
+export default function Select({ name, content, value, defaultSelect = '- Select -' }: SelectProps) {
   const lowerCaseName = name.toLowerCase() as FieldName
   const { getValue, getOnChange } = useSelectUtils()
   useDynamicCategory(name)
@@ -19,7 +20,7 @@ export default function Select({ name, content, defaultSelect = '- Select -' }: 
       name={lowerCaseName}
       id={lowerCaseName}
       className={tm("adminBorder focus:ring-yellow text-content bg-bkg relative w-full appearance-none p-2 pr-[10.3rem] text-[0.8125rem] font-normal focus:outline-none focus:ring-[0.15rem]")}
-      value={getValue(lowerCaseName)}
+      value={value || getValue(lowerCaseName)}
       onChange={(e) => getOnChange(e, lowerCaseName)}
     >
 

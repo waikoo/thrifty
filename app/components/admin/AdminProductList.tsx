@@ -6,6 +6,7 @@ import { useSummaryPopup } from "../hooks"
 import { useDraftStore, useUIStore } from "@/state"
 import { FaCheckSquare } from "react-icons/fa";
 import { useEffect } from "react"
+import { usePathname, useRouter } from "next/navigation"
 
 type AdminProductListProps = {
   draft: ProductItemType[]
@@ -15,6 +16,7 @@ export default function AdminProductList({ draft }: AdminProductListProps) {
   const { showPopup, onMouseHandler } = useSummaryPopup(draft)
   const { toggleSelected } = useUIStore()
   const { selectedItems, toggleItem, selectAll, deselectAll } = useDraftStore()
+  const [router, pathname] = [useRouter(), usePathname()]
 
   useEffect(() => {
     toggleSelected ? selectAll(draft) : deselectAll()
@@ -28,11 +30,18 @@ export default function AdminProductList({ draft }: AdminProductListProps) {
           key={i}
           onMouseOver={() => onMouseHandler(i, true)}
           onMouseLeave={() => onMouseHandler(i, false)}
-          onClick={() => toggleItem(el.uuid)}
+          onClick={() => {
+            if (toggleSelected) {
+              toggleItem(el.uuid)
+              return
+            }
+            router.push(`${pathname}/manage/?uuid=${el.uuid}`)
+          }
+          }
           data-uuid={el.uuid}
         >
           <Image
-            className="relative block h-full w-full object-cover"
+            className="relative block h-full w-full cursor-pointer object-cover"
             src={el.img_url[0]}
             alt={`new-product-${i}`}
             width={100}
@@ -41,7 +50,8 @@ export default function AdminProductList({ draft }: AdminProductListProps) {
           {selectedItems.includes(el.uuid) && (<div className="absolute right-2 top-2"><FaCheckSquare /></div>)}
           {showPopup[i] && <AdminProductSummary el={el} />}
         </div>
-      ))}
-    </div>
+      ))
+      }
+    </div >
   )
 }

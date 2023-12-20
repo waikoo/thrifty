@@ -8,9 +8,10 @@ type ProductSelectProps = {
     content: string[] | { [key: string]: string[] }
   }
   handleAddItem?: (newBrand: string) => void
+  value?: string
 }
 
-export default function ProductSelect({ obj: { name, content }, handleAddItem }: ProductSelectProps) {
+export default function ProductSelect({ obj: { name, content }, handleAddItem, value }: ProductSelectProps) {
   const { category } = useProductStore()
 
   const getContent = (content: string[] | { [key: string]: string[] }) => {
@@ -34,6 +35,7 @@ export default function ProductSelect({ obj: { name, content }, handleAddItem }:
         <Select
           name={name}
           content={getContent(content)}
+          value={value}
         />
       </label>
 
