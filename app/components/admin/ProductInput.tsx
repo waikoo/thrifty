@@ -1,16 +1,28 @@
+'use client'
+import { useEffect } from "react"
 import { Optional } from "."
 import useProductInputUtils from "../hooks/useProductInputUtils"
+import { useProductStore } from "@/state"
 
 type ProductInputProps = {
   name: string
   placeholder: string
   icon: string
-  value: string
+  value?: string
 }
 
 export default function ProductInput({ name, placeholder, icon, value }: ProductInputProps) {
   const upperCaseName = name.toUpperCase()
   const { getOnChange, getValue } = useProductInputUtils()
+  const { initPrice, initDiscount, initSize } = useProductStore()
+
+  useEffect(() => {
+    if (name === 'price') initPrice(value as string)
+    if (name === 'discount') {
+      initDiscount(value as string === '0' ? '' : value as string)
+    }
+    if (name === 'size') initSize(value as string)
+  }, [])
 
   return (
     <fieldset className="text-content relative flex w-[50%] items-center gap-4">
@@ -28,8 +40,11 @@ export default function ProductInput({ name, placeholder, icon, value }: Product
           name={name}
           id={name}
           className={"bg-bkg adminBorder focus:ring-yellow border-2 p-2 text-[0.8125rem] font-normal focus:outline-none focus:ring-[0.15rem]"}
-          value={value || getValue(name)}
-          onChange={(e) => getOnChange(e, name)}
+          value={getValue(name)}
+          onChange={(e) => {
+            getOnChange(e, name)
+          }
+          }
         />
       </label>
       <span className="absolute right-2">{icon}</span>
