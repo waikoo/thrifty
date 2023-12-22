@@ -1,7 +1,7 @@
 import { Manage } from "@/app/components/admin/indexServer";
 import { Logo } from "@/app/components/navigation";
 import "@/styles/styles.css";
-import { LayoutAddNew, LayoutSearchId, StatusBar } from '@/app/components/admin';
+import { LayoutAddNew, Products, StatusBar } from '@/app/components/admin';
 import { StatusImages } from '@/app/components/admin/indexServer';
 import { IconAccount } from "@/app/components/navigation/icons";
 import Link from "next/link";
@@ -19,7 +19,7 @@ export default function Page({ params, searchParams }: PageProps) {
       <header className="bg-bkg text-content border-content mx-auto grid max-w-[1700px] grid-cols-3 items-baseline border-b-[0.1rem] pb-1 pt-5">
         <div className="grid w-[35%] grid-cols-2 gap-1">
           <LayoutAddNew params={params} />
-          <LayoutSearchId />
+          <Products />
         </div>
 
         <Link href={`/${lang}/admin`} className="col-start-2 col-end-3 cursor-pointer self-baseline justify-self-center ">
