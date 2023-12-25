@@ -1,5 +1,6 @@
 export { default as CheckBox } from "./CheckBox"
 export { default as Input } from './Input'
+export { default as Popup } from './Popup'
 export { default as Error } from './Error'
 export { default as IconArrow } from './IconArrow'
 export { default as Spinner } from "./Spinner";
