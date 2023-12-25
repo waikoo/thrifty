@@ -7,5 +7,5 @@ type OptionalProps = {
 export default function Optional({ className }: OptionalProps) {
 
   return (
-    <span className={tm(`text-grey absolute left-[-2rem] ${className}`)}>Optional</span>)
+    <span className={tm(`text-grey ${className}`)}>Optional</span>)
 }
