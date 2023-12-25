@@ -20,7 +20,7 @@ export default async function Manage({ uuid }: ManageProps) {
       <ProductState uuidMatch={uuidMatch as ProductItemType[]} />
       <ProductImage uuidMatch={uuidMatch as ProductItemType[]} />
 
-      <Button />
+      <Button uuidMatch={uuidMatch as ProductItemType[]} />
     </section>
 
   )

@@ -7,12 +7,12 @@ import { useUIStore } from '@/state'
 import { ProductItemType } from '@/types/productItem'
 
 type ImagesDisplayProps = {
-  uuidMatch: ProductItemType[]
+  uuidMatch?: ProductItemType[]
 }
 
 export default function ImagesDisplay({ uuidMatch }: ImagesDisplayProps) {
   const { img_url } = useProductStore()
-  const imgOutput = uuidMatch[0].img_url || img_url
+  const imgOutput = uuidMatch && uuidMatch[0].img_url || img_url
   const { showEditOptions, setShowEditOptions } = useUIStore()
   const imageContainerRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLImageElement | null>(null)
