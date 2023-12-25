@@ -1,23 +1,25 @@
-import AdminFooter from "@/app/components/admin/AdminFooter";
-import AdminNav from "@/app/components/admin/AdminNav";
+import { AdminFooter, AdminNav } from "@/app/components/admin";
 import { ProductsContent } from "@/app/components/admin/indexServer";
+import { useSupabaseServer } from "@/app/components/hooks/serverIndex";
+import serverQueryTable from "@/utils/serverQueryTable";
 
 type PageParams = {
   params: { [key: string]: string | string[] | undefined }
 }
 
-export default function Page({ params }: PageParams) {
+export default async function Page({ params }: PageParams) {
   const { lang } = params
+  const products = await serverQueryTable('products')
 
   return (
-    <section className="bg-bkg">
+    <section className="bg-bkg min-h-[70vh]">
       <div id="popup-root"></div>
-      <section className="bg-bkg text-content mx-auto flex h-[70vh] max-w-[1700px] flex-col items-center">
+      <section className="bg-bkg text-content mx-auto flex min-h-[70vh] max-w-[1700px] flex-col items-center">
 
         <AdminNav params={params} />
 
         <main className="w-full">
-          <ProductsContent />
+          <ProductsContent products={products} />
         </main>
 
       </section>
