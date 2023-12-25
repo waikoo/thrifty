@@ -35,12 +35,12 @@ export default function useSelectUtils() {
     if (!setter) {
       throw new Error('getOnChange in Select component: "name" does not match');
     }
-    setter(value);
-  };
 
+    setter(value);
+  }
 
   return {
     getValue,
-    getOnChange
+    getOnChange,
   }
 }
