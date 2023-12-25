@@ -12,7 +12,7 @@ export default function Products({ }: ProductsProps) {
   const lang = usePathname().split('/')[1]
 
   return (
-    <div className={`hover:text-bkg hover:bg-content flex whitespace-nowrap self-baseline items-baseline gap-2 cursor-pointer`}
+    <div className={`hover:text-bkg hover:bg-content flex whitespace-nowrap self-baseline items-baseline gap-2 cursor-pointer px-2`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
