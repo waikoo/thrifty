@@ -12,7 +12,7 @@ type ImagesDisplayProps = {
 
 export default function ImagesDisplay({ uuidMatch }: ImagesDisplayProps) {
   const { img_url } = useProductStore()
-  const imgOutput = uuidMatch && uuidMatch[0].img_url || img_url
+  const imgOutput = uuidMatch && uuidMatch?.[0]?.img_url?.length > 0 ? uuidMatch?.[0]?.img_url : img_url
   const { showEditOptions, setShowEditOptions } = useUIStore()
   const imageContainerRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLImageElement | null>(null)

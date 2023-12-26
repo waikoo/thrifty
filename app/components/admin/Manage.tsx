@@ -1,27 +1,19 @@
 import { Button, ProductImage, ProductState } from "@/app/components/admin"
-import { useSupabaseServer } from "../hooks/serverIndex"
-import { ProductItemType } from "@/types/productItem"
+import serverQueryByUUID from "@/utils/serverQueryByUUID"
 
 type ManageProps = {
   uuid: string
 }
 
 export default async function Manage({ uuid }: ManageProps) {
-  const supabase = useSupabaseServer()
-
-  let { data: uuidMatch, error } = await supabase
-    .from('draft')
-    .select('*')
-    .eq('uuid', uuid)
-  if (error) console.warn(error.message)
+  const uuidMatch = await serverQueryByUUID(uuid)
 
   return (
     <section className="grid w-full grid-cols-2 px-16">
-      <ProductState uuidMatch={uuidMatch as ProductItemType[]} />
-      <ProductImage uuidMatch={uuidMatch as ProductItemType[]} />
+      <ProductState uuidMatch={Array.isArray(uuidMatch) ? uuidMatch : uuidMatch.value} />
+      <ProductImage uuidMatch={Array.isArray(uuidMatch) ? uuidMatch : uuidMatch.value} />
 
-      <Button uuidMatch={uuidMatch as ProductItemType[]} />
+      <Button uuidMatch={uuidMatch} />
     </section>
-
   )
 }

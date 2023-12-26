@@ -1,5 +1,6 @@
 import { supabase } from "@/app/supabase"
 import { ProductItemType } from "@/types/productItem"
+import { queryByUUID } from "@/utils/serverQueryByUUID"
 import { create } from 'zustand'
 
 type CounterState = {
@@ -8,7 +9,7 @@ type CounterState = {
 }
 
 type Product = {
-  uuid?: string,
+  uuid?: string | undefined,
   gender: string,
   category: string,
   type: string,
@@ -54,7 +55,11 @@ type Action = {
   setMaterial: (value: string) => void,
   setImgUrl: (value: string[]) => void,
   setCounter: (value: Partial<CounterState>) => void,
-  saveDraft: (uuidMatch: ProductItemType[]) => Promise<any>,
+  getValues: (uuid?: string) => Product,
+  handleManageSave: (uuid?: queryByUUID | ProductItemType[]) => Promise<any>,
+  addToEdited: (uuid: string) => Promise<any>,
+  addToDraft: () => Promise<any>,
+  updateDraft: (uuid: string) => Promise<any>,
   setIsDraftPostedSuccessfully: (value: boolean) => void
   resetProductFields: () => void
 }
@@ -91,10 +96,8 @@ export const useProductStore = create<State & Action>((set, get) => ({
   setMaterial: (value: string) => set({ material: value }),
   setImgUrl: (value: string[]) => set({ img_url: value }),
   setCounter: (value) => set(state => ({ counter: { ...state.counter, ...value } })),
-  saveDraft: async (uuidMatch: ProductItemType[]) => {
-
+  getValues: (uuid?: string) => {
     const product: Product = {
-      uuid: uuidMatch[0].uuid,
       gender: get().gender,
       category: get().category,
       type: get().type,
@@ -105,16 +108,50 @@ export const useProductStore = create<State & Action>((set, get) => ({
       brand: get().brand,
       condition: get().condition,
       material: get().material,
-      img_url: get().img_url,
-    };
+      img_url: get().img_url
+    }
 
+    if (uuid) {
+      product.uuid = uuid
+    }
+    return product
+  },
+  handleManageSave: async (arg?: queryByUUID | ProductItemType[]) => {
+    if (Array.isArray(arg)) {
+      await get().addToDraft()
+    } else {
+      if (arg?.tableOfOrigin === 'draft') await get().updateDraft(arg.value[0].uuid)
+      if (arg?.tableOfOrigin === 'products') await get().addToEdited(arg.value[0].uuid)
+    }
+  },
+  addToEdited: async (uuid: string) => {
+    const { data: editedData, error: editedError } = await supabase
+      .from('edited')
+      .insert([get().getValues(uuid)])
+      .select()
 
-    console.warn(product.price)
-    if (uuidMatch[0].uuid) {
+    if (editedError) console.log(editedError.message)
+
+    if (editedData && !editedError) {
+      get().resetProductFields()
+    }
+  },
+  addToDraft: async () => {
+    const { data, error } = await supabase.from('draft').insert([get().getValues()]);
+    if (error) console.log(error.message)
+
+    if (!data && !error) {
+      get().setIsDraftPostedSuccessfully(true)
+      get().resetProductFields()
+      get().setCounter({ created: get().counter.created ? get().counter.created! + 1 : 1 })
+    }
+  },
+  updateDraft: async (uuid: string) => {
+    if (typeof uuid === 'string') {
       const { data: updateData, error: updateError } = await supabase
         .from('draft')
-        .update(product)
-        .eq('uuid', uuidMatch[0].uuid)
+        .update(get().getValues(uuid))
+        .eq('uuid', uuid)
         .select()
 
       console.log(updateError)
@@ -134,16 +171,6 @@ export const useProductStore = create<State & Action>((set, get) => ({
         console.log(updateData)
         return
       }
-    }
-
-    const { data, error } = await supabase.from('draft').insert([product]);
-
-    if (error) console.log(error)
-
-    if (!data && !error) {
-      get().setIsDraftPostedSuccessfully(true)
-      get().resetProductFields()
-      get().setCounter({ created: get().counter.created ? get().counter.created! + 1 : 1 })
     }
   },
   setIsDraftPostedSuccessfully: (value: boolean) => set({ isDraftPostedSuccessfully: value }),

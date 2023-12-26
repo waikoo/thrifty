@@ -4,7 +4,7 @@ import { ImageButton, ImagesDisplay } from "."
 import { ProductItemType } from "@/types/productItem"
 
 type ProductImageProps = {
-  uuidMatch: ProductItemType[]
+  uuidMatch?: ProductItemType[]
 }
 
 export default function ProductImage({ uuidMatch }: ProductImageProps) {

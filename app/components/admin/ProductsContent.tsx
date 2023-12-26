@@ -1,6 +1,5 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation"
-import { useSupabaseServer } from "../hooks/serverIndex"
 import Image from 'next/image'
 import { ProductItemType } from "@/types/productItem"
 
@@ -10,8 +9,6 @@ type ProductsContentProps = {
 
 export default function ProductsContent({ products }: ProductsContentProps) {
   const [router, pathname] = [useRouter(), usePathname()]
-  console.log(pathname)
-  console.log(pathname.split('/'))
   const [, lang, admin,] = pathname.split('/')
 
   return (

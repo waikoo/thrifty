@@ -1,7 +1,12 @@
 import { useSupabaseServer } from "@/app/components/hooks/serverIndex"
 import { ProductItemType } from "@/types/productItem"
 
-export default async function serverQueryByUUID(uuid: string): Promise<ProductItemType[]> {
+export type queryByUUID = {
+  tableOfOrigin: string
+  value: ProductItemType[]
+}
+
+export default async function serverQueryByUUID(uuid: string): Promise<queryByUUID | ProductItemType[]> {
   const supabase = useSupabaseServer()
 
   let { data: draft, error: draftError } = await supabase
@@ -16,8 +21,19 @@ export default async function serverQueryByUUID(uuid: string): Promise<ProductIt
     .eq('uuid', uuid)
   if (productsError) console.warn(productsError.message)
 
-  if (draft && draft.length > 0) return draft
-  if (products && products.length > 0) return products
+  if (draft && draft.length > 0) {
+    return {
+      tableOfOrigin: 'draft',
+      value: draft
+    }
+  }
+
+  if (products && products.length > 0) {
+    return {
+      tableOfOrigin: 'products',
+      value: products
+    }
+  }
 
   return [{
     uuid: '',

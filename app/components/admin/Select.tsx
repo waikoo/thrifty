@@ -3,6 +3,7 @@ import { twMerge as tm } from 'tailwind-merge'
 import useSelectUtils, { FieldName } from '../hooks/useSelectUtils';
 import { useDynamicCategory } from '../hooks';
 import { capitalize } from '@/utils/capitalize';
+import { useEffect } from 'react';
 
 type SelectProps = {
   name: string;
@@ -13,8 +14,14 @@ type SelectProps = {
 
 export default function Select({ name, content, value, defaultSelect = '- Select -' }: SelectProps) {
   const lowerCaseName = name.toLowerCase() as FieldName
-  const { getValue, getOnChange } = useSelectUtils()
+  const { getValue, getOnChange, setters } = useSelectUtils()
   useDynamicCategory(name)
+
+  useEffect(() => {
+    if (value) {
+      setters[lowerCaseName](value)
+    }
+  }, [])
 
   return (
     <select

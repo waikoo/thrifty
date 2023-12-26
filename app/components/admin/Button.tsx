@@ -2,20 +2,20 @@
 import { useUIStore } from "@/state";
 import { useProductStore } from "@/state/productState"
 import { ProductItemType } from "@/types/productItem";
+import { queryByUUID } from "@/utils/serverQueryByUUID";
 import { usePathname, useRouter } from "next/navigation";
 
 type ButtonProps = {
-  uuidMatch: ProductItemType[]
+  uuidMatch?: queryByUUID | ProductItemType[]
 }
 
 export default function Button({ uuidMatch }: ButtonProps) {
   const { isSaved, setIsSaved } = useUIStore();
-  const { saveDraft } = useProductStore()
-  const pathname = usePathname()
-  const router = useRouter()
+  const { handleManageSave } = useProductStore()
+  const [pathname, router] = [usePathname(), useRouter()]
 
   const onClickHandler = async () => {
-    saveDraft(uuidMatch)
+    handleManageSave(uuidMatch)
     setIsSaved(!isSaved)
     router.push(pathname)
   }

@@ -42,5 +42,6 @@ export default function useSelectUtils() {
   return {
     getValue,
     getOnChange,
+    setters
   }
 }
