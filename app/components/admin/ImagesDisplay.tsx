@@ -12,15 +12,12 @@ type ImagesDisplayProps = {
 
 export default function ImagesDisplay({ uuidMatch }: ImagesDisplayProps) {
   const { img_url, setImgUrl } = useProductStore()
-  const imgOutput = uuidMatch && uuidMatch?.[0]?.img_url?.length > 0 ? uuidMatch?.[0]?.img_url : img_url
   const { showEditOptions, setShowEditOptions } = useUIStore()
   const imageContainerRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLImageElement | null>(null)
 
   useEffect(() => {
-    if (img_url.length === 0) {
-      setImgUrl(imgOutput)
-    }
+    setImgUrl(uuidMatch?.[0]?.img_url || [])
   }, [])
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
@@ -34,7 +31,7 @@ export default function ImagesDisplay({ uuidMatch }: ImagesDisplayProps) {
   return (
     <div className="flex w-full flex-wrap gap-4" ref={imageContainerRef}>
 
-      {imgOutput.map((src, i) => (
+      {img_url.map((src, i) => (
         <div key={`admin-imgs-${i}`} className="relative w-[23.2%]">
           <Image
             src={src}

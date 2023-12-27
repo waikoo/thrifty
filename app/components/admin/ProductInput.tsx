@@ -14,14 +14,20 @@ type ProductInputProps = {
 export default function ProductInput({ name, placeholder, icon, value }: ProductInputProps) {
   const upperCaseName = name.toUpperCase()
   const { getOnChange, getValue } = useProductInputUtils()
-  const { initPrice, initDiscount, initSize } = useProductStore()
+  const { initPrice, initDiscount, initSize, setPrice, setDiscount, setSize } = useProductStore()
 
   useEffect(() => {
-    if (name === 'price') initPrice(value as string)
+    if (name === 'price') {
+      initPrice(value as string)
+      setPrice(value as string)
+    }
     if (name === 'discount') {
       initDiscount(value as string === '0' ? '' : value as string)
     }
-    if (name === 'size') initSize(value as string)
+    if (name === 'size') {
+      initSize(value as string)
+      setSize(value as string)
+    }
   }, [])
 
   return (
