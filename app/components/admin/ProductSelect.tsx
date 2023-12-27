@@ -41,7 +41,7 @@ export default function ProductSelect({ obj: { name, content }, handleAddItem, v
 
       {['BRAND', 'MATERIAL'].includes(name) ? <AddNew {... { name, handleAddItem }} /> : null}
 
-      <IconChevronDown className="absolute right-3 z-50" />
+      <IconChevronDown className="absolute right-3 " />
 
     </fieldset>
   )
