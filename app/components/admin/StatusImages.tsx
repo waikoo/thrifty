@@ -1,11 +1,11 @@
 "use client"
 import Image from 'next/image'
-import { useDraftTable, } from "../hooks";
+import { useDraftTable, useTable, } from "../hooks";
 import { useUIStore } from '@/state';
 import { EditDelete } from '.';
 
 export default function StatusImages() {
-  const data = useDraftTable()
+  const data = useTable('draft')
   const { draftLength, statusBar, showOptions, setShowOptions } = useUIStore()
   const style = `${draftLength === 0 ? '' : 'hover:bg-darkgrey '}`
   const statusStyle = `${statusBar ? 'ring-1 ring-gray-300' : ''}`
