@@ -21,10 +21,23 @@ export default async function serverQueryByUUID(uuid: string): Promise<queryByUU
     .eq('uuid', uuid)
   if (productsError) console.warn(productsError.message)
 
+  let { data: edited, error: editedError } = await supabase
+    .from('edited')
+    .select('*')
+    .eq('uuid', uuid)
+  if (editedError) console.warn(editedError.message)
+
   if (draft && draft.length > 0) {
     return {
       tableOfOrigin: 'draft',
       value: draft
+    }
+  }
+
+  if (edited && edited.length > 0) {
+    return {
+      tableOfOrigin: 'edited',
+      value: edited
     }
   }
 

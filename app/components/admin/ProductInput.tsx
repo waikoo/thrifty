@@ -17,16 +17,17 @@ export default function ProductInput({ name, placeholder, icon, value }: Product
   const { initPrice, initDiscount, initSize, setPrice, setDiscount, setSize } = useProductStore()
 
   useEffect(() => {
-    if (name === 'price') {
-      initPrice(value as string)
-      setPrice(value as string)
+    if (name === 'price' && value) {
+      // initPrice(value)
+      setPrice(value)
     }
-    if (name === 'discount') {
-      initDiscount(value as string === '0' ? '' : value as string)
+    if (name === 'discount' && value) {
+      // initDiscount(value === '0' ? '' : value)
+      setDiscount(value)
     }
-    if (name === 'size') {
-      initSize(value as string)
-      setSize(value as string)
+    if (name === 'size' && value) {
+      // initSize(value)
+      setSize(value)
     }
   }, [])
 

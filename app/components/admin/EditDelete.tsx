@@ -10,9 +10,10 @@ import { usePathname, useRouter } from "next/navigation";
 
 type EditDeleteProps = {
   uuid: string
+  table: 'draft' | 'edited'
 }
 
-const EditDelete = ({ uuid }: EditDeleteProps) => {
+const EditDelete = ({ uuid, table }: EditDeleteProps) => {
   const { setShowOptions } = useUIStore()
   const [showPopup, setShowPopup] = useState(false)
   const [router, pathname] = [useRouter(), usePathname()]
@@ -21,7 +22,7 @@ const EditDelete = ({ uuid }: EditDeleteProps) => {
   const deleteFromDb = async (uuid: string) => {
 
     const { error } = await supabase
-      .from('draft')
+      .from(table)
       .delete()
       .eq('uuid', uuid)
 

@@ -61,6 +61,7 @@ type Action = {
   addToEdited: (uuid: string) => Promise<any>,
   addToDraft: () => Promise<any>,
   updateDraft: (uuid: string) => Promise<any>,
+  updateEdited: (uuid: string) => Promise<any>,
   setIsDraftPostedSuccessfully: (value: boolean) => void
   resetProductFields: () => void
 }
@@ -122,6 +123,10 @@ export const useProductStore = create<State & Action>((set, get) => ({
       await get().addToDraft()
     } else {
       if (arg?.tableOfOrigin === 'draft') await get().updateDraft(arg.value[0].uuid)
+      if (arg?.tableOfOrigin === 'edited') {
+        await get().updateEdited(arg.value[0].uuid)
+        return
+      }
       if (arg?.tableOfOrigin === 'products') await get().addToEdited(arg.value[0].uuid)
     }
   },
@@ -164,7 +169,23 @@ export const useProductStore = create<State & Action>((set, get) => ({
         .eq('uuid', uuid)
         .select()
 
-      console.log(get().getValues(uuid).img_url)
+      if (updateError) {
+        console.error(updateError.message)
+      } else {
+        get().resetProductFields()
+        console.log(updateData)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  },
+  updateEdited: async (uuid: string) => {
+    try {
+      const { data: updateData, error: updateError } = await supabase
+        .from('edited')
+        .update(get().getValues(uuid))
+        .eq('uuid', uuid)
+        .select()
 
       if (updateError) {
         console.error(updateError.message)
