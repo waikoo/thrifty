@@ -18,7 +18,8 @@ export default function AdminContent() {
         ${maximizeNew ? 'h-[70vh] w-full' :
           maximizeEdited ? 'h-auto w-full' :
             'h-[80vh] w-[50%]'}`}>
-        {maximizeNew || !maximizeNew && !maximizeEdited ? <AdminProductList draft={draft} /> : null}
+        {maximizeNew || !maximizeNew && !maximizeEdited
+          && <AdminProductList draft={draft} />}
 
         <AdminProductStatus draft={draft}>NEW</AdminProductStatus>
       </div>

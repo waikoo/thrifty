@@ -1,3 +1,4 @@
+import { useUserSession } from "@/app/components/hooks"
 import { supabase } from "@/app/supabase"
 import { ProductItemType } from "@/types/productItem"
 import { queryByUUID } from "@/utils/serverQueryByUUID"
@@ -147,30 +148,32 @@ export const useProductStore = create<State & Action>((set, get) => ({
     }
   },
   updateDraft: async (uuid: string) => {
-    if (typeof uuid === 'string') {
+    if (typeof uuid !== 'string') {
+      throw new Error("UUID must be a string")
+    }
+
+    if (!get().getValues(uuid).uuid) {
+      console.error('Cannot update draft without UUID')
+      return
+    }
+
+    try {
       const { data: updateData, error: updateError } = await supabase
         .from('draft')
         .update(get().getValues(uuid))
         .eq('uuid', uuid)
         .select()
 
-      console.log(updateError)
-      if (!updateError) {
-        get().resetProductFields()
-        console.log('-------Data Updated----------')
-        console.log(updateData)
-        return
-      }
+      console.log(get().getValues(uuid).img_url)
 
       if (updateError) {
-        console.log('updateErrorMessage: ------------------------------------------')
-        console.log(updateError.message)
-        return
+        console.error(updateError.message)
       } else {
-        console.log('updatedData: ------------------------------------------')
+        get().resetProductFields()
         console.log(updateData)
-        return
       }
+    } catch (error) {
+      console.error(error)
     }
   },
   setIsDraftPostedSuccessfully: (value: boolean) => set({ isDraftPostedSuccessfully: value }),
