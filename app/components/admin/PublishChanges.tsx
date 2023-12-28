@@ -20,7 +20,7 @@ export default function PublishChanges({ className, publishSome }: PublishChange
   const { draftLength, editedLength, toggleSelected } = useUIStore()
   const [showPopup, setShowPopup] = useState(false)
   const router = useRouter()
-  console.log(draftLength + editedLength)
+
   const mainStyle = draftLength + editedLength === 0
     ? 'text-grey border-grey cursor-not-allowed border-2'
     : 'hover:bg-content hover:text-bkg text-content border-content cursor-pointer border-2'
@@ -33,13 +33,10 @@ export default function PublishChanges({ className, publishSome }: PublishChange
   const publishAllText = `Do you want to publish ${tableTotal} item${tableTotal > 1 ? 's' : ''}`
 
   const onClick = async () => {
-    console.log('outside')
+
     if (!publishSome || selectedTotal === tableTotal || !toggleSelected) {
-      console.log('inside')
       await saveDraftToProducts()
-      console.log('after')
       await updateProductsWithEdited()
-      console.log('end')
       return
     }
     if (draftLength === 0) return

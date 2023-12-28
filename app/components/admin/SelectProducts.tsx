@@ -6,11 +6,11 @@ import Portal from "./Portal"
 import { Popup } from "../generic"
 
 export default function SelectProducts() {
-  const { toggleSelected, setToggleSelected, draftLength } = useUIStore()
+  const { toggleSelected, setToggleSelected, draftLength, editedLength } = useUIStore()
   const { selectedItems: selectedDraft } = useDraftStore()
   const { selectedItems: selectedEdited } = useEditedStore()
   const [showPopup, setShowPopup] = useState(false)
-  const mainStyle = draftLength > 0 ? 'text-content cursor-pointer' : 'text-grey cursor-not-allowed'
+  const mainStyle = (draftLength + editedLength) !== 0 ? 'text-content cursor-pointer' : 'text-grey cursor-not-allowed'
 
   const deleteSelected = async () => {
     selectedDraft.forEach(async (uuid) => {
@@ -42,7 +42,7 @@ export default function SelectProducts() {
   }
 
   const selectHandler = () => {
-    if (draftLength === 0) return
+    if (draftLength + editedLength === 0) return
 
     setToggleSelected(!toggleSelected)
   }
