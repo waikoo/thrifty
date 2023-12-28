@@ -31,7 +31,7 @@ const EditDelete = ({ uuid, table }: EditDeleteProps) => {
       return
     }
     setShowPopup(false)
-    router.refresh()
+    router.push(`/${lang}/admin/manage/`)
   }
 
   const handleEdit = () => {
