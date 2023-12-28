@@ -1,29 +1,29 @@
 import { supabase } from "@/app/supabase"
 
-export const saveSomeToProducts = async (selectedItems: string[]) => {
+export const saveSomeToProducts = async (fromTable: string, selectedItems: string[]) => {
 
   try {
     for (const uuid of selectedItems) {
-      const { data: draftRows, error: draftError } = await supabase
-        .from('draft')
+      const { data: rows, error: selectError } = await supabase
+        .from(fromTable)
         .select('*')
         .match({ uuid: uuid });
 
-      if (draftError) {
-        console.log('Error selecting row:', draftError.message);
+      if (selectError) {
+        console.log('Error selecting row:', selectError.message);
         return;
       }
 
-      if (draftRows.length === 0) {
+      if (rows.length === 0) {
         console.log(`Row with UUID ${uuid} not found in draft table`);
         continue;
       }
 
-      const draftRow = draftRows[0];
+      const selectedRow = rows[0];
 
       const { error: insertError } = await supabase
         .from('products')
-        .insert(draftRow);
+        .insert(selectedRow);
 
       if (insertError) {
         console.log('Error inserting row:', insertError.message);
@@ -31,7 +31,7 @@ export const saveSomeToProducts = async (selectedItems: string[]) => {
       }
 
       const { error: deleteError } = await supabase
-        .from('draft')
+        .from(fromTable)
         .delete()
         .match({ uuid: uuid });
 

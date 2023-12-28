@@ -7,14 +7,16 @@ import { useEffect, useState } from "react";
 export default function useTable(table: 'draft' | 'edited' | 'products') {
   const { isSaved } = useUIStore();
   const [draft, setData] = useState<ProductItemType[]>([]);
-  const { setDraftLength } = useUIStore()
+  const { setDraftLength, setEditedLength } = useUIStore()
 
   useEffect(() => {
     const fetchDrafts = async () => {
       const result = await fetchAllProducts(supabase, table)
       if (result !== null) {
         setData(result)
-        setDraftLength(result.length)
+        if (table === 'edited') setEditedLength(result.length)
+        if (table === 'draft') setDraftLength(result.length)
+        // if (table === 'products') setProductsLength(result.length)
       }
     }
     fetchDrafts()

@@ -1,5 +1,5 @@
 "use client"
-import { useDraftStore, useUIStore } from "@/state"
+import { useDraftStore, useEditedStore, useUIStore } from "@/state"
 import { saveDraftToProducts } from "@/utils/saveDraftToProducts"
 import { saveSomeToProducts } from "@/utils/saveSomeToProducts"
 import { useRouter } from "next/navigation"
@@ -7,6 +7,7 @@ import { twMerge as tm } from "tailwind-merge"
 import Portal from "./Portal"
 import { useState } from "react"
 import { Popup } from "../generic"
+import { updateProductsWithEdited } from "@/utils/updateProductsWithEdited"
 
 type PublishChangesProps = {
   className?: string
@@ -14,27 +15,42 @@ type PublishChangesProps = {
 }
 
 export default function PublishChanges({ className, publishSome }: PublishChangesProps) {
-  const { selectedItems } = useDraftStore()
-  const { draftLength } = useUIStore()
+  const { selectedItems: selectedDraftItems } = useDraftStore()
+  const { selectedItems: selectedEditedItems } = useEditedStore()
+  const { draftLength, editedLength, toggleSelected } = useUIStore()
   const [showPopup, setShowPopup] = useState(false)
   const router = useRouter()
-  const mainStyle = draftLength === 0
+  console.log(draftLength + editedLength)
+  const mainStyle = draftLength + editedLength === 0
     ? 'text-grey border-grey cursor-not-allowed border-2'
     : 'hover:bg-content hover:text-bkg text-content border-content cursor-pointer border-2'
 
+  const selectedTotal = selectedDraftItems.length + selectedEditedItems.length
+  const tableTotal = draftLength + editedLength
+
+  const publishSelectedText = `Do you want to publish ${selectedTotal} item${selectedTotal > 1 ? 's' : ''}`
+
+  const publishAllText = `Do you want to publish ${tableTotal} item${tableTotal > 1 ? 's' : ''}`
+
   const onClick = async () => {
-    if (!publishSome) {
+    console.log('outside')
+    if (!publishSome || selectedTotal === tableTotal || !toggleSelected) {
+      console.log('inside')
       await saveDraftToProducts()
+      console.log('after')
+      await updateProductsWithEdited()
+      console.log('end')
       return
     }
     if (draftLength === 0) return
-    await saveSomeToProducts(selectedItems)
+    await saveSomeToProducts('draft', selectedDraftItems)
+    await saveSomeToProducts('edited', selectedEditedItems)
     setShowPopup(false)
     router.refresh()
   }
 
   const popUpHandler = () => {
-    if (draftLength === 0) return
+    if ((draftLength + editedLength) === 0) return
     setShowPopup(true)
   }
 
@@ -53,7 +69,8 @@ export default function PublishChanges({ className, publishSome }: PublishChange
             option1={{ value: "PUBLISH", function: onClick }}
             option2={{ value: "CANCEL", function: () => setShowPopup(false) }}
           >
-            Do you want to publish {draftLength} item{draftLength > 1 ? 's' : ''}?</Popup>
+            {!toggleSelected ? publishAllText : publishSelectedText}
+            ?</Popup>
         </Portal>
       )
       }
