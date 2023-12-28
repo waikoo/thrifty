@@ -1,10 +1,10 @@
 "use client"
-import { useDraftTable } from "../hooks";
+import { useTable } from "../hooks";
 import { AdminProductList, AdminProductStatus } from ".";
 import { useUIStore } from "@/state";
 
 export default function AdminContent() {
-  const draft = useDraftTable()
+  const draft = useTable('draft')
   const { maximizeNew, maximizeEdited } = useUIStore()
 
   return (<>
