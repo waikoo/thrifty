@@ -1,30 +1,30 @@
 "use client"
+import { useEditedStore, useUIStore } from "@/state"
 import { ProductItemType } from "@/types/productItem"
-import Image from 'next/image'
-import { AdminProductSummary } from "."
-import { useSummaryPopup } from "../hooks"
-import { useDraftStore, useUIStore } from "@/state"
-import { FaCheckSquare } from "react-icons/fa";
 import { useEffect } from "react"
+import { useSummaryPopup } from "../hooks"
 import { usePathname, useRouter } from "next/navigation"
+import Image from 'next/image'
+import { FaCheckSquare } from "react-icons/fa"
+import { AdminProductSummary } from "."
 
-type AdminProductListProps = {
-  draft: ProductItemType[]
+type AdminEditedListProps = {
+  edited: ProductItemType[]
 }
 
-export default function AdminProductList({ draft }: AdminProductListProps) {
-  const { showPopup, onMouseHandler } = useSummaryPopup(draft)
+export default function AdminEditedList({ edited }: AdminEditedListProps) {
+  const { showPopup, onMouseHandler } = useSummaryPopup(edited)
   const { toggleSelected } = useUIStore()
-  const { selectedItems, toggleItem, selectAll, deselectAll } = useDraftStore()
+  const { selectedItems, toggleItem, selectAll, deselectAll } = useEditedStore()
   const [router, pathname] = [useRouter(), usePathname()]
 
   useEffect(() => {
-    toggleSelected ? selectAll(draft) : deselectAll()
+    toggleSelected ? selectAll(edited) : deselectAll()
   }, [toggleSelected])
 
   return (
     <div className="grid grid-cols-[repeat(6,minmax(30px,1fr))] gap-2 p-6">
-      {draft?.filter(el => el.img_url && el.img_url.length > 0).map((el, i) => (
+      {edited?.filter(el => el.img_url && el.img_url.length > 0).map((el, i) => (
         <div className={`aspect-square 
           ${toggleSelected ? "cursor-pointer" : ""}`}
           key={i}

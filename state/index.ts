@@ -1,6 +1,6 @@
 export { useThemeStore } from './themeState'
 export { useUIStore } from './uiState'
-export { useDraftStore } from './draftState'
+export { useDraftStore, useEditedStore } from './adminSelectState'
 export { useProductStore } from './productState'
 export { useUserStore } from './userState'
 export { useColorCarouselRef } from './colorCarouselState'

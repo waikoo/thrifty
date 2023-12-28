@@ -1,31 +1,43 @@
 "use client"
 import { supabase } from "@/app/supabase"
-import { useDraftStore, useUIStore } from "@/state"
+import { useDraftStore, useEditedStore, useUIStore } from "@/state"
 import { useState } from "react"
 import Portal from "./Portal"
 import { Popup } from "../generic"
 
 export default function SelectProducts() {
-  const { toggleSelected, setToggleSelected } = useUIStore()
-  const { selectedItems } = useDraftStore()
-  const { draftLength } = useUIStore()
-  const mainStyle = draftLength > 0 ? 'text-content cursor-pointer' : 'text-grey cursor-not-allowed'
+  const { toggleSelected, setToggleSelected, draftLength } = useUIStore()
+  const { selectedItems: selectedDraft } = useDraftStore()
+  const { selectedItems: selectedEdited } = useEditedStore()
   const [showPopup, setShowPopup] = useState(false)
+  const mainStyle = draftLength > 0 ? 'text-content cursor-pointer' : 'text-grey cursor-not-allowed'
 
   const deleteSelected = async () => {
-    selectedItems.forEach(async (uuid) => {
+    selectedDraft.forEach(async (uuid) => {
       const { data, error } = await supabase
         .from('draft')
         .delete()
         .match({ uuid: uuid });
 
       if (error) {
-        console.log('Error deleting row:', error.message);
+        console.log('Error deleting draft row:', error.message);
       } else {
-        console.log('Row deleted successfully:', data);
+        console.log('Draft row deleted successfully:', data);
       }
-      console.log('All rows deleted successfully');
     });
+    selectedEdited.forEach(async (uuid) => {
+      const { data, error } = await supabase
+        .from('edited')
+        .delete()
+        .match({ uuid: uuid });
+
+      if (error) {
+        console.log('Error deleting edited row:', error.message);
+      } else {
+        console.log('Edited row deleted successfully:', data);
+      }
+    });
+    console.log('All rows deleted successfully');
     setShowPopup(false)
   }
 
@@ -59,7 +71,7 @@ export default function SelectProducts() {
                 option1={{ value: "DELETE", function: deleteSelected }}
                 option2={{ value: "CANCEL", function: () => setShowPopup(false) }}
               >
-                Do you want to delete {draftLength} item{draftLength > 1 ? 's' : ''}?</Popup>
+                Do you want to delete {selectedDraft.length + selectedEdited.length} item{selectedDraft.length + selectedEdited.length > 1 ? 's' : ''}?</Popup>
             </Portal>
 
           )}

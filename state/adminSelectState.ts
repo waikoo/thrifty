@@ -20,3 +20,17 @@ export const useDraftStore = create<State>((set) => ({
   })),
   deselectAll: () => set(() => ({ selectedItems: [] })),
 }))
+
+export const useEditedStore = create<State>((set) => ({
+  selectedItems: [],
+  toggleItem: (id) => set((state) => ({
+    selectedItems: state.selectedItems.includes(id)
+      ? state.selectedItems.filter((item) => item !== id)
+      : [...state.selectedItems, id]
+  })),
+  selectAll: (edited) => set(() => ({
+    selectedItems: edited.map((item) => item.uuid)
+  })),
+  deselectAll: () => set(() => ({ selectedItems: [] })),
+}))
+

@@ -1,4 +1,5 @@
 export { default as AdminProductList } from './AdminProductList'
+export { default as AdminEditedList } from './AdminEditedList'
 export { default as AdminNav } from './AdminNav'
 export { default as EditDelete } from './EditDelete'
 export { default as AdminFooter } from './AdminFooter'

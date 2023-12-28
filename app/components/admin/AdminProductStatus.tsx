@@ -4,11 +4,11 @@ import { ImEnlarge } from "react-icons/im";
 import { TbArrowsMinimize } from "react-icons/tb";
 
 type AdminProductStatusProps = {
-  draft?: ProductItemType[]
+  length: number
   children: React.ReactNode
 }
 
-export default function AdminProductStatus({ draft, children, }: AdminProductStatusProps) {
+export default function AdminProductStatus({ length, children, }: AdminProductStatusProps) {
   const { maximizeNew, setMaximizeNew, maximizeEdited, setMaximizeEdited } = useUIStore()
 
   const onClickHandler = () => {
@@ -23,7 +23,7 @@ export default function AdminProductStatus({ draft, children, }: AdminProductSta
 
   return (
     <div className="bg-content absolute bottom-2 flex w-full items-center justify-between px-6 py-[0.55rem]">
-      <span className="font-bold">{children}: {draft?.length || '0'}</span>
+      <span className="font-bold">{children}: {length}</span>
       <div
         className="cursor-pointer"
         onClick={onClickHandler}
