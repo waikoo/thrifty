@@ -1,8 +1,7 @@
 'use client'
-import { useEffect } from "react"
 import { Optional } from "."
+import { useInitValues } from "../hooks"
 import useProductInputUtils from "../hooks/useProductInputUtils"
-import { useProductStore } from "@/state"
 
 type ProductInputProps = {
   name: string
@@ -14,22 +13,7 @@ type ProductInputProps = {
 export default function ProductInput({ name, placeholder, icon, value }: ProductInputProps) {
   const upperCaseName = name.toUpperCase()
   const { getOnChange, getValue } = useProductInputUtils()
-  const { initPrice, initDiscount, initSize, setPrice, setDiscount, setSize } = useProductStore()
-
-  useEffect(() => {
-    if (name === 'price' && value) {
-      // initPrice(value)
-      setPrice(value)
-    }
-    if (name === 'discount' && value) {
-      // initDiscount(value === '0' ? '' : value)
-      setDiscount(value)
-    }
-    if (name === 'size' && value) {
-      // initSize(value)
-      setSize(value)
-    }
-  }, [])
+  useInitValues(!value ? '' : value, name)
 
   return (
     <fieldset className="text-content relative flex w-[50%] items-center gap-4">
