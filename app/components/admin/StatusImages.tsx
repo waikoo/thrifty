@@ -3,6 +3,10 @@ import Image from 'next/image'
 import { useTable } from "../hooks";
 import { useUIStore } from '@/state';
 import { EditDelete } from '.';
+import { ProductItemType } from '@/types/productItem';
+import { supabase } from '@/app/supabase';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function StatusImages() {
   const draft = useTable('draft')
@@ -10,6 +14,23 @@ export default function StatusImages() {
   const { draftLength, statusBar, showOptions, setShowOptions } = useUIStore()
   const style = `${draftLength === 0 ? '' : 'hover:bg-darkgrey '}`
   const statusStyle = `${statusBar ? 'ring-1 ring-gray-300' : ''}`
+  const router = useRouter()
+
+  useEffect(() => {
+    const channel = supabase.channel('realtime draft')
+      .on(
+        'postgres_changes',
+        // 'postgres_changes',
+        { event: '*', schema: 'public', table: 'draft' },
+        (payload: ProductItemType[]) => {
+          console.log('Change received!', payload)
+          router.refresh()
+        }).subscribe()
+
+    return () => {
+      supabase.removeChannel(channel)
+    }
+  }, [])
 
   return (
     <div className="bg-content relative bottom-16 flex h-[46vh] w-full gap-6 p-6">
