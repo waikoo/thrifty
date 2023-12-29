@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react'
 import { ImageEdit } from './'
 import { useUIStore } from '@/state'
 import { ProductItemType } from '@/types/productItem'
+import { useSearchParams } from 'next/navigation'
 
 type ImagesDisplayProps = {
   uuidMatch?: ProductItemType[]
@@ -15,10 +16,11 @@ export default function ImagesDisplay({ uuidMatch }: ImagesDisplayProps) {
   const { showEditOptions, setShowEditOptions } = useUIStore()
   const imageContainerRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLImageElement | null>(null)
+  const params = useSearchParams()
 
   useEffect(() => {
     setImgUrl(uuidMatch?.[0]?.img_url || [])
-  }, [])
+  }, [params])
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     setShowEditOptions(true)
