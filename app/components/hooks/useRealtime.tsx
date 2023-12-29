@@ -4,7 +4,7 @@ import { ProductItemType } from '@/types/productItem';
 import { useUIStore } from '@/state';
 
 export default function useRealtime(table: 'draft' | 'edited' | 'products') {
-  const [tableState, setTableState] = useState<ProductItemType[]>()
+  const [tableState, setTableState] = useState<ProductItemType[]>([])
   const { setDraftLength, setEditedLength, setProductsLength } = useUIStore()
 
   const fetchEdited = async () => {
