@@ -1,47 +1,25 @@
 "use client"
 import Image from 'next/image'
-import { useTable } from "../hooks";
+import { useRealtime, useStatusImagesStyles, useTable } from "../hooks";
 import { useUIStore } from '@/state';
 import { EditDelete } from '.';
-import { ProductItemType } from '@/types/productItem';
-import { supabase } from '@/app/supabase';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 
 export default function StatusImages() {
-  const draft = useTable('draft')
-  const edited = useTable('edited')
-  const { draftLength, statusBar, showOptions, setShowOptions } = useUIStore()
-  const style = `${draftLength === 0 ? '' : 'hover:bg-darkgrey '}`
-  const statusStyle = `${statusBar ? 'ring-1 ring-gray-300' : ''}`
-  const router = useRouter()
-
-  useEffect(() => {
-    const channel = supabase.channel('realtime draft')
-      .on(
-        'postgres_changes',
-        // 'postgres_changes',
-        { event: '*', schema: 'public', table: 'draft' },
-        (payload: ProductItemType[]) => {
-          console.log('Change received!', payload)
-          router.refresh()
-        }).subscribe()
-
-    return () => {
-      supabase.removeChannel(channel)
-    }
-  }, [])
+  const draft = useRealtime('draft')
+  const edited = useRealtime('edited')
+  const { draftStyle, editedStyle, statusStyle } = useStatusImagesStyles()
+  const { showOptions, setShowOptions } = useUIStore()
 
   return (
     <div className="bg-content relative bottom-16 flex h-[46vh] w-full gap-6 p-6">
-      <div className={`w-1/2 grid grid-cols[repeat(6,minmax(30px,1fr))] rounded-lg py-6 ${style} ${statusStyle}`}>
+      <div className={`w-1/2 gap-[1.5rem] grid grid-cols-6 rounded-lg p-6 ${draftStyle} ${statusStyle}`}>
         {draft?.filter(el => el.img_url && el.img_url.length > 0)
           .map((el, i) => (
             <div className="relative aspect-square w-[180px]"
               key={i}
             >
               <Image
-                className="block h-full w-full object-contain"
+                className="block h-full w-full object-cover"
                 src={el.img_url[0]}
                 alt={`new-product-${i}`}
                 width={100}
@@ -55,7 +33,7 @@ export default function StatusImages() {
           ))}
       </div>
 
-      <div className={`w-1/2 gap-6 grid grid-cols[repeat(6,minmax(30px,1fr))] rounded-lg p-6 ${style} ${statusStyle}`}>
+      <div className={`w-1/2 gap-[1.5rem] grid grid-cols-6 rounded-lg p-6 ${editedStyle} ${statusStyle}`}>
         {edited?.filter(el => el.img_url && el.img_url.length > 0)
           .map((el, i) => (
             <div className="relative aspect-square w-[180px]"
