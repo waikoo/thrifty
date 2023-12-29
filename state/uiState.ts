@@ -23,6 +23,7 @@ type UIState = {
   toggleSelected: boolean
   draftLength: number
   editedLength: number
+  productsLength: number
   showOptions: boolean
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
@@ -45,6 +46,7 @@ type UIState = {
   setToggleSelected: (value: boolean | (boolean)) => void
   setDraftLength: (value: number) => void
   setEditedLength: (value: number) => void
+  setProductsLength: (value: number) => void
   setShowOptions: (value: boolean | (boolean)) => void
 }
 
@@ -70,6 +72,7 @@ export const useUIStore = create<UIState>((set) => ({
   toggleSelected: false,
   draftLength: 0,
   editedLength: 0,
+  productsLength: 0,
   showOptions: false,
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
@@ -92,6 +95,7 @@ export const useUIStore = create<UIState>((set) => ({
   setToggleSelected: (value) => set({ toggleSelected: value }),
   setDraftLength: (value) => set({ draftLength: value }),
   setEditedLength: (value) => set({ editedLength: value }),
+  setProductsLength: (value) => set({ editedLength: value }),
   setShowOptions: (value) => set({ showOptions: value }),
 }))
 
