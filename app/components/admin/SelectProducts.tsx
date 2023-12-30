@@ -4,13 +4,17 @@ import { useDraftStore, useEditedStore, useUIStore } from "@/state"
 import { useState } from "react"
 import Portal from "./Portal"
 import { Popup } from "../generic"
+import { useRealtime } from "../hooks"
+import { useRouter } from "next/navigation"
 
 export default function SelectProducts() {
   const { toggleSelected, setToggleSelected, draftLength, editedLength } = useUIStore()
   const { selectedItems: selectedDraft } = useDraftStore()
   const { selectedItems: selectedEdited } = useEditedStore()
   const [showPopup, setShowPopup] = useState(false)
-  const mainStyle = (draftLength + editedLength) !== 0 ? 'text-content cursor-pointer' : 'text-grey cursor-not-allowed'
+  const draft = useRealtime('draft')
+  const edited = useRealtime('edited')
+  const mainStyle = (draft.length + edited.length) !== 0 ? 'text-content cursor-pointer' : 'text-grey cursor-not-allowed'
 
   const deleteSelected = async () => {
     selectedDraft.forEach(async (uuid) => {
@@ -21,8 +25,6 @@ export default function SelectProducts() {
 
       if (error) {
         console.log('Error deleting draft row:', error.message);
-      } else {
-        console.log('Draft row deleted successfully:', data);
       }
     });
     selectedEdited.forEach(async (uuid) => {
@@ -33,16 +35,15 @@ export default function SelectProducts() {
 
       if (error) {
         console.log('Error deleting edited row:', error.message);
-      } else {
-        console.log('Edited row deleted successfully:', data);
       }
     });
-    console.log('All rows deleted successfully');
+    window.location.reload()
+    setToggleSelected(false)
     setShowPopup(false)
   }
 
   const selectHandler = () => {
-    if (draftLength + editedLength === 0) return
+    if ((draft.length + edited.length) === 0) return
 
     setToggleSelected(!toggleSelected)
   }
