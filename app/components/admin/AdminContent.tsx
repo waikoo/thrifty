@@ -1,12 +1,9 @@
 "use client"
-import { useTable } from "../hooks";
 import { AdminEditedList, AdminProductList, AdminProductStatus } from ".";
 import { useUIStore } from "@/state";
 
 export default function AdminContent() {
-  const draft = useTable('draft')
-  const edited = useTable('edited')
-  const { maximizeNew, maximizeEdited } = useUIStore()
+  const { maximizeNew, maximizeEdited, draftLength, editedLength } = useUIStore()
 
   return (<>
     {/* <div id="popup-root"></div> */}
@@ -20,9 +17,9 @@ export default function AdminContent() {
           maximizeEdited ? 'h-auto w-full' :
             'h-[80vh] w-[50%]'}`}>
         {maximizeNew || !maximizeNew && !maximizeEdited
-          && <AdminProductList draft={draft} />}
+          && <AdminProductList />}
 
-        <AdminProductStatus length={draft.length || 0}>NEW</AdminProductStatus>
+        <AdminProductStatus length={draftLength}>NEW</AdminProductStatus>
       </div>
 
       <div className={`bg-content relative 
@@ -30,9 +27,9 @@ export default function AdminContent() {
           maximizeEdited ? 'h-[70vh] w-full' :
             'h-[80vh] w-[50%]'}`}>
         {maximizeEdited || !maximizeEdited && !maximizeNew
-          && <AdminEditedList edited={edited} />}
+          && <AdminEditedList />}
 
-        <AdminProductStatus length={edited.length || 0}>EDITED</AdminProductStatus>
+        <AdminProductStatus length={editedLength}>EDITED</AdminProductStatus>
       </div>
 
     </div>

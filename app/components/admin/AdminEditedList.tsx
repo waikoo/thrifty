@@ -1,18 +1,14 @@
 "use client"
 import { useEditedStore, useUIStore } from "@/state"
-import { ProductItemType } from "@/types/productItem"
 import { useEffect } from "react"
-import { useSummaryPopup } from "../hooks"
+import { useRealtime, useSummaryPopup } from "../hooks"
 import { usePathname, useRouter } from "next/navigation"
 import Image from 'next/image'
 import { FaCheckSquare } from "react-icons/fa"
 import { AdminProductSummary } from "."
 
-type AdminEditedListProps = {
-  edited: ProductItemType[]
-}
-
-export default function AdminEditedList({ edited }: AdminEditedListProps) {
+export default function AdminEditedList() {
+  const edited = useRealtime('edited')
   const { showPopup, onMouseHandler } = useSummaryPopup(edited)
   const { toggleSelected } = useUIStore()
   const { selectedItems, toggleItem, selectAll, deselectAll } = useEditedStore()

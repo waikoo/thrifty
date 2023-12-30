@@ -2,17 +2,14 @@
 import { ProductItemType } from "@/types/productItem"
 import Image from 'next/image'
 import { AdminProductSummary } from "."
-import { useSummaryPopup } from "../hooks"
+import { useRealtime, useSummaryPopup } from "../hooks"
 import { useDraftStore, useUIStore } from "@/state"
 import { FaCheckSquare } from "react-icons/fa";
 import { useEffect } from "react"
 import { usePathname, useRouter } from "next/navigation"
 
-type AdminProductListProps = {
-  draft: ProductItemType[]
-}
-
-export default function AdminProductList({ draft }: AdminProductListProps) {
+export default function AdminProductList() {
+  const draft = useRealtime('draft')
   const { showPopup, onMouseHandler } = useSummaryPopup(draft)
   const { toggleSelected } = useUIStore()
   const { selectedItems, toggleItem, selectAll, deselectAll } = useDraftStore()

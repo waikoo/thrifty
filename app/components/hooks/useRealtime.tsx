@@ -31,8 +31,7 @@ export default function useRealtime(table: 'draft' | 'edited' | 'products') {
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: table },
-        async (payload: any) => {
-          console.log(`${payload.eventType} event received for table: "${table}"!`)
+        () => {
           fetchEdited().then(data => {
             if (data) {
               setTableState(data)
