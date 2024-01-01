@@ -25,6 +25,7 @@ type UIState = {
   editedLength: number
   productsLength: number
   showOptions: boolean
+  onTop: string
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
@@ -48,6 +49,7 @@ type UIState = {
   setEditedLength: (value: number) => void
   setProductsLength: (value: number) => void
   setShowOptions: (value: boolean | (boolean)) => void
+  setOnTop: (value: string) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -74,6 +76,7 @@ export const useUIStore = create<UIState>((set) => ({
   editedLength: 0,
   productsLength: 0,
   showOptions: false,
+  onTop: '',
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
@@ -97,6 +100,7 @@ export const useUIStore = create<UIState>((set) => ({
   setEditedLength: (value) => set({ editedLength: value }),
   setProductsLength: (value) => set({ editedLength: value }),
   setShowOptions: (value) => set({ showOptions: value }),
+  setOnTop: (value) => set({ onTop: value }),
 }))
 
 type HeroCarouselState = {

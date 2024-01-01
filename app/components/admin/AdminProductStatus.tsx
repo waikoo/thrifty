@@ -1,5 +1,7 @@
+"use client"
 import { useUIStore } from "@/state";
 import { ProductItemType } from "@/types/productItem";
+import { useEffect } from "react";
 import { ImEnlarge } from "react-icons/im";
 import { TbArrowsMinimize } from "react-icons/tb";
 
@@ -9,15 +11,38 @@ type AdminProductStatusProps = {
 }
 
 export default function AdminProductStatus({ length, children, }: AdminProductStatusProps) {
-  const { maximizeNew, setMaximizeNew, maximizeEdited, setMaximizeEdited } = useUIStore()
+  const { maximizeNew, setMaximizeNew, maximizeEdited, setMaximizeEdited, onTop, setOnTop } = useUIStore()
+
+  useEffect(() => {
+    if (!maximizeNew && !maximizeEdited) {
+      setOnTop('')
+    }
+  }, [maximizeNew, maximizeEdited])
 
   const onClickHandler = () => {
     const type = typeof children === 'string' ? children.toLowerCase() : ''
 
     if (type === 'new') {
+      if (onTop === 'new') {
+        setOnTop('')
+        setMaximizeNew(false)
+        return
+      } else {
+        setMaximizeEdited(false)
+      }
       setMaximizeNew(!maximizeNew)
+      !maximizeNew ? setOnTop(type) : setOnTop('edited')
     } else if (type === 'edited') {
+      if (onTop === 'edited') {
+        setOnTop('')
+        setMaximizeEdited(false)
+        return
+      } else {
+        setMaximizeNew(false)
+      }
       setMaximizeEdited(!maximizeEdited)
+      if (!maximizeEdited) setOnTop(type)
+      !maximizeEdited ? setOnTop(type) : setOnTop('new')
     }
   }
 
