@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import { useRealtime, useStatusImagesStyles, useTable } from "../hooks";
+import { useRealtime, useStatusImagesStyles } from "../hooks";
 import { useUIStore } from '@/state';
 import { EditDelete } from '.';
 

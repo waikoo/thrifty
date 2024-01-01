@@ -5,7 +5,6 @@ import { useState } from "react"
 import Portal from "./Portal"
 import { Popup } from "../generic"
 import { useRealtime } from "../hooks"
-import { useRouter } from "next/navigation"
 
 export default function SelectProducts() {
   const { toggleSelected, setToggleSelected, draftLength, editedLength } = useUIStore()
