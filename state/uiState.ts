@@ -26,6 +26,8 @@ type UIState = {
   productsLength: number
   showOptions: boolean
   onTop: string
+  hasNoImage: boolean
+  showImgError: boolean
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
@@ -50,6 +52,8 @@ type UIState = {
   setProductsLength: (value: number) => void
   setShowOptions: (value: boolean | (boolean)) => void
   setOnTop: (value: string) => void
+  setHasNoImage: (value: boolean | (boolean)) => void
+  setShowImgError: (value: boolean | (boolean)) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -77,6 +81,8 @@ export const useUIStore = create<UIState>((set) => ({
   productsLength: 0,
   showOptions: false,
   onTop: '',
+  hasNoImage: true,
+  showImgError: false,
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
@@ -101,6 +107,8 @@ export const useUIStore = create<UIState>((set) => ({
   setProductsLength: (value) => set({ editedLength: value }),
   setShowOptions: (value) => set({ showOptions: value }),
   setOnTop: (value) => set({ onTop: value }),
+  setHasNoImage: (value) => set({ hasNoImage: value }),
+  setShowImgError: (value) => set({ showImgError: value }),
 }))
 
 type HeroCarouselState = {

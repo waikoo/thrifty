@@ -4,18 +4,21 @@ import { useProductStore } from "@/state/productState"
 import { ProductItemType } from "@/types/productItem";
 import { queryByUUID } from "@/utils/serverQueryByUUID";
 import { usePathname, useRouter } from "next/navigation";
-import { useUserSession } from "../hooks";
 
 type ButtonProps = {
   uuidMatch?: queryByUUID | ProductItemType[]
 }
 
 export default function Button({ uuidMatch }: ButtonProps) {
-  const { isSaved, setIsSaved } = useUIStore();
+  const { isSaved, setIsSaved, hasNoImage, setShowImgError } = useUIStore();
   const { handleManageSave } = useProductStore()
   const [pathname, router] = [usePathname(), useRouter()]
 
-  const onClickHandler = async () => {
+  const onClickHandler = () => {
+    if (hasNoImage) {
+      setShowImgError(true)
+      return
+    }
     handleManageSave(uuidMatch)
     setIsSaved(!isSaved)
     router.push(pathname)

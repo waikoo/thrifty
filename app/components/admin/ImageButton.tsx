@@ -1,17 +1,49 @@
 "use client"
+import { useUIStore } from "@/state";
 import { useProductStore } from "@/state/productState";
+import { useEffect } from "react";
 
 type ImageButtonProps = {
   inputRef: React.RefObject<HTMLInputElement>
+  setShowValidityError: (value: boolean) => void
 }
 
-export default function ImageButton({ inputRef }: ImageButtonProps) {
+export default function ImageButton(props: ImageButtonProps) {
+  const { inputRef, setShowValidityError } = props
   const { img_url, setImgUrl } = useProductStore()
+  const { setShowImgError, setHasNoImage } = useUIStore()
+
+  useEffect(() => {
+  }, [setShowValidityError])
 
   const handleNewImage = () => {
+    if (inputRef.current?.value === '') {
+      setShowValidityError(false)
+      setShowImgError(true)
+      return
+    } else {
+      setShowImgError(false)
+      if (!inputRef.current?.checkValidity()) {
+        setShowValidityError(true)
+        return
+      } else {
+        setShowValidityError(false)
+        setShowImgError(false)
+        if (img_url.length === 0) {
+          setShowValidityError(true)
+          return
+        } else {
+          setShowValidityError(false)
+        }
+      }
+    }
+
     if (inputRef && inputRef.current) {
+      setHasNoImage(false)
+      setShowValidityError(false)
       inputRef.current.value && setImgUrl([...img_url, inputRef.current.value]);
       inputRef.current.value = '';
+      return
     }
   };
 
