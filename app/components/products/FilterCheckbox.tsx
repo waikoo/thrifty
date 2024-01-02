@@ -4,7 +4,7 @@ import { useClearTitle, useFilterSearch } from "../hooks"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
 import getLangAndCategory from "@/utils/getLangAndCategory"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useFilterTitleStore } from "@/state/uiState"
 
 type FilterCheckboxProps = {
@@ -16,22 +16,46 @@ type FilterCheckboxProps = {
 export default function FilterCheckbox({ type, elements, search }: FilterCheckboxProps) {
   const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
   const { setSearchValue, filteredItems } = useFilterSearch(elements)
-  const searchParamos = useSearchParams()
+  const [searchParamos, pathname, router] = [useSearchParams(), usePathname(), useRouter()]
   const [checkbox, setCheckbox] = useState(() => {
-    const category = searchParamos.get('category')
-
-    return {
-      men: category === 'men',
-      women: category === 'women',
-      kids: category === 'kids',
-    } as { [key: string]: boolean }
+    if (!searchParamos.getAll('gender')[0]) {
+      // TODO: handle
+    }
+    const gend = searchParamos.getAll('gender')?.[0]?.split(',')
+    const cat = searchParamos.getAll('category')?.[0]?.split(',')
+    if (gend?.length > 0) {
+      return {
+        men: gend.includes('men'),
+        women: gend.includes('women'),
+        kids: gend.includes('kids'),
+        clothing: cat?.includes('clothing'),
+        shoes: cat?.includes('shoes'),
+        accessories: cat?.includes('accessories'),
+      } as { [key: string]: boolean }
+    }
   })
-
-  const pathname = usePathname()
-  const router = useRouter()
+  useEffect(() => {
+    setCheckbox(() => {
+      if (!searchParamos.getAll('gender')[0]) {
+        // TODO: handle
+      }
+      const gend = searchParamos.getAll('gender')?.[0]?.split(',')
+      const cat = searchParamos.getAll('category')?.[0]?.split(',')
+      if (gend?.length > 0) {
+        return {
+          men: gend.includes('men'),
+          women: gend.includes('women'),
+          kids: gend.includes('kids'),
+          clothing: cat?.includes('clothing'),
+          shoes: cat?.includes('shoes'),
+          accessories: cat?.includes('accessories'),
+        } as { [key: string]: boolean }
+      }
+    })
+  }, [searchParamos])
 
   const clearedLink = useClearTitle(type)
-  const { lang, category } = getLangAndCategory(pathname)
+  const { lang, gender } = getLangAndCategory(pathname)
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = (e.target as unknown as HTMLInputElement).value;
@@ -68,7 +92,6 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
     <div>
       <FilterTitle
         type={type}
-        setCheckbox={setCheckbox}
       />
 
       {isExpanded && (
@@ -83,26 +106,21 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
               const lowerCaseElement = element.toLowerCase()
 
               return (
-                ['Clothing', 'Shoes', 'Accessories', 'Sport']
-                  .some(el => el === element)
-                  ? <h3>{element}</h3>
-                  : (
-                    <label
-                      htmlFor={`${lowerCaseName}-${i}`}
-                      className="flex select-none gap-2 text-[0.75rem]"
-                      key={`${lowerCaseName}-${i}`}>
-                      <input
-                        type="checkbox"
-                        id={`${lowerCaseName}-${i}`}
-                        checked={checkbox[lowerCaseElement as string] === true}
-                        onChange={onCheckboxChange}
-                        value={lowerCaseElement}
-                        className="form-checkbox border-grey checked:bg-darkgrey checked:border-darkgrey h-4 w-4 cursor-pointer appearance-none border bg-white outline-[0.1rem] outline-white ring-2 ring-white checked:border-[0.1rem] checked:outline-[0.2rem] checked:outline-white"
-                      />
-                      {element}
-                    </label>
+                <label
+                  htmlFor={`${lowerCaseName}-${i}`}
+                  className="flex select-none gap-2 text-[0.75rem]"
+                  key={`${lowerCaseName}-${i}`}>
+                  <input
+                    type="checkbox"
+                    id={`${lowerCaseName}-${i}`}
+                    checked={checkbox[lowerCaseElement as string] === true}
+                    onChange={onCheckboxChange}
+                    value={lowerCaseElement}
+                    className="form-checkbox border-grey checked:bg-darkgrey checked:border-darkgrey h-4 w-4 cursor-pointer appearance-none border bg-white outline-[0.1rem] outline-white ring-2 ring-white checked:border-[0.1rem] checked:outline-[0.2rem] checked:outline-white"
+                  />
+                  {element}
+                </label>
 
-                  )
               )
             })}
           </fieldset>

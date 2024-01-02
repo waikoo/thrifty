@@ -1,26 +1,59 @@
 import { Category, Locales } from "@/types/home";
-import { FilterCheckbox, FilterColor, FilterCondition, FilterSideControls, FilterSize, FilterType } from ".";
+import { FilterCheckbox, FilterColor, FilterCondition, FilterSize } from ".";
 import { brandNamesArray } from "../data/brandsData";
 import { filter } from "../data";
 import { ProductItemType } from "@/types/productItem";
 
 type FilterSideProps = {
   lang: Locales
-  category: Category['category']
+  gender: Category['category']
   searchParams: { [key: string]: string | string[] | undefined }
-  data: ProductItemType[]
 }
 
-export default async function FilterSide({ lang, category, searchParams, data }: FilterSideProps) {
+export default async function FilterSide({ lang, gender, searchParams }: FilterSideProps) {
+  const getType = (searchParams: { [key: string]: string | string[] | undefined }) => {
+    const sp = new URLSearchParams(searchParams);
+    let genderArray = sp.getAll('gender')[0]?.split(',')
+    let categoryArray = sp.getAll('category')[0]?.split(',')
+
+    if (!genderArray) {
+      return filter.type.all;
+    }
+
+    if (!categoryArray || categoryArray.length === 0) {
+      if (genderArray[0] === 'men') { return filter.type.men.all; }
+      if (genderArray[0] === 'women') { return filter.type.women.all; }
+      if (genderArray[0] === 'kids') { return filter.type.kids.all; }
+
+      if (genderArray.includes('men') && genderArray.includes('women')) {
+        return [...new Set([...filter.type.men.all, ...filter.type.women.all])];
+      }
+      if (genderArray.includes('men') && genderArray.includes('kids')) {
+        return [...new Set([...filter.type.men.all, ...filter.type.kids.all])];
+      }
+      if (genderArray.includes('women') && genderArray.includes('kids')) {
+        return [...new Set([...filter.type.women.all, ...filter.type.kids.all])];
+      }
+    }
+
+    let result: string[] = [];
+    genderArray.forEach((gender) => {
+      categoryArray.forEach((category) => {
+        if (filter.type[gender][category]) {
+          result.push(...filter.type[gender][category]);
+        }
+      });
+    });
+
+    return [...new Set(result)];
+  }
 
   return (
     <aside className="sticky top-10 flex max-h-[600px] w-[300px] flex-col gap-6">
 
-      <FilterSideControls category={category} lang={lang} />
-
       <FilterCheckbox
-        type={"CATEGORY"}
-        elements={filter.category}
+        type={"GENDER"}
+        elements={filter.gender}
       />
 
       <FilterCheckbox
@@ -29,8 +62,13 @@ export default async function FilterSide({ lang, category, searchParams, data }:
       />
 
       <FilterCheckbox
+        type={"CATEGORY"}
+        elements={filter.category}
+      />
+
+      <FilterCheckbox
         type={"PRODUCT TYPE"}
-        elements={filter.productType[category]}
+        elements={getType(searchParams)}
       />
 
       <FilterSize
