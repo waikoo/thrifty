@@ -7,20 +7,20 @@ import { fetchProductsByFilters } from "@/utils/fetchProductsByFilters"
 type PageProps = {
   params: {
     lang: Locales,
-    category: Category['category']
+    gender: Category['category']
   }
   searchParams: { [key: string]: string | string[] | undefined }
 }
-export default async function Page({ params: { lang, category }, searchParams, }: PageProps) {
+export default async function Page({ params: { lang, gender }, searchParams }: PageProps) {
   const data = await fetchProductsByFilters(useSupabaseServer(), searchParams)
 
   return (
     <main className="bg-bkg text-content mx-auto px-20 lg:max-w-[1500px]">
-      <FilterTop {...{ category }} />
+      <FilterTop {...{ gender, lang }} />
 
       <div className="flex gap-16">
-        <FilterSide {...{ lang, category, searchParams }} data={data.data} />
-        <ProductList {...{ lang, category, searchParams }} data={data.data} />
+        <FilterSide {...{ lang, gender, searchParams }} />
+        <ProductList {...{ lang, gender, searchParams }} data={data.data} />
       </div>
 
     </main>

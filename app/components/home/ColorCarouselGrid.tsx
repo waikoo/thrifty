@@ -3,10 +3,10 @@ import { IconArrow } from "../generic/";
 import { ColorCarouselImages } from "./";
 
 type ColorCarouselGridProps = {
-  category: Category['category'];
+  gender: Category['category'];
 };
 
-export default async function ColorCarouselGrid({ category }: ColorCarouselGridProps) {
+export default async function ColorCarouselGrid({ gender }: ColorCarouselGridProps) {
 
   return (
 
@@ -16,7 +16,7 @@ export default async function ColorCarouselGrid({ category }: ColorCarouselGridP
         <IconArrow left />
       </div>
 
-      <ColorCarouselImages {... { category }} />
+      <ColorCarouselImages {... { gender }} />
 
       <div className="col-start-3 cursor-pointer justify-self-end" >
         <IconArrow />

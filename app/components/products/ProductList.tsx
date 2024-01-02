@@ -5,12 +5,12 @@ import { NewArrivals } from "../home/serverIndex"
 
 type ProductListProps = {
   lang: Locales
-  category: Category['category']
+  gender: Category['category']
   searchParams: { [key: string]: string | string[] | undefined }
   data: ProductItemType[]
 }
 
-export default async function ProductList({ lang, category, searchParams, data }: ProductListProps) {
+export default async function ProductList({ lang, gender, searchParams, data }: ProductListProps) {
 
   return (
     <div className="mx-auto flex w-[80%] flex-wrap gap-8">
@@ -26,7 +26,7 @@ export default async function ProductList({ lang, category, searchParams, data }
         : (
           <>
             <FilterNotFound />
-            <NewArrivals {...{ lang, category }} notHome />
+            <NewArrivals {...{ lang, gender }} notHome />
           </>
         )}
     </div>

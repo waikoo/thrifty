@@ -7,10 +7,10 @@ import { useEventListener } from "../hooks";
 import { colors } from '../data/colorCarouselData'
 
 type ColorCarouselImagesProps = {
-  category: Category['category']
+  gender: Category['category']
 }
 
-export default function ColorCarouselImages({ category }: ColorCarouselImagesProps) {
+export default function ColorCarouselImages({ gender }: ColorCarouselImagesProps) {
   const imagesRef = useRef<HTMLDivElement>(null)
   const { containerRef, setContainerRef } = useColorCarouselRef()
 
@@ -22,7 +22,7 @@ export default function ColorCarouselImages({ category }: ColorCarouselImagesPro
     <div ref={imagesRef} draggable={false}
       className="noscrollbar grid select-none snap-x snap-mandatory auto-cols-[23%] grid-flow-col gap-[30px] overflow-x-auto overscroll-x-contain">
 
-      {colors[category].map(({ id, color, imgUrl, alt }: TColor) => (
+      {colors[gender].map(({ id, color, imgUrl, alt }: TColor) => (
         <ColorCarouselElement
           key={id}
           color={color}

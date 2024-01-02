@@ -7,10 +7,10 @@ import Link from "next/link"
 
 type HeroCarouselArticleProps = {
   lang: Locales
-  category: Category['category']
+  gender: Category['category']
 }
 
-export default function HeroCarouselArticle({ lang, category }: HeroCarouselArticleProps) {
+export default function HeroCarouselArticle({ lang, gender }: HeroCarouselArticleProps) {
   const { t } = useTranslation(lang, 'home')
 
   const { dynamicTitle } = useHeroCarousel([
@@ -31,7 +31,7 @@ export default function HeroCarouselArticle({ lang, category }: HeroCarouselArti
           {t('heroCarousel.paragraph')}
         </p>
 
-        <Link href={`/${lang}/${category}/products/?category=${category}`}>
+        <Link href={`/${lang}/${gender}/products/?gender=${gender}`}>
           <SubmitButton hero className="border-bkg whitespace-nowrap border-[0.2rem] font-bold">
             {t('heroCarousel.button')}
           </SubmitButton>

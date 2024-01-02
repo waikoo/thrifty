@@ -1,21 +1,17 @@
-import { Category } from "@/types/home";
+import { Category, Locales } from "@/types/home";
 import { IconHideFilters, IconSavedFilters, IconSortBy } from "./icons";
+import FilterSideControls from "./FilterSideControls";
 
 type FilterTopProps = {
-  category: Category['category']
+  gender: Category['category']
+  lang: Locales
 }
 
-export default function FilterTop({ category }: FilterTopProps) {
+export default function FilterTop({ gender, lang }: FilterTopProps) {
 
   return (
     <section className="flex items-baseline justify-between py-6">
-      <div>
-        <span className="text-[0.813rem]">{category.toUpperCase()}</span>
-        <span> / </span>
-        <span className="text-[0.813rem]">CLOTHING</span>
-        <span> / </span>
-        <span className="text-[1.125rem] font-bold">JACKETS</span>
-      </div>
+      <FilterSideControls gender={gender} lang={lang} />
 
       <div className="flex items-center gap-4">
 

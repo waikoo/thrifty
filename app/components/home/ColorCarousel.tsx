@@ -3,11 +3,11 @@ import { Category, Locales } from '@/types/home'
 import ColorCarouselGrid from './ColorCarouselGrid'
 
 type ColorCarouselProps = {
-  category: Category['category']
+  gender: Category['category']
   lang: Locales
 }
 
-export default async function ColorCarousel({ category, lang }: ColorCarouselProps) {
+export default async function ColorCarousel({ gender, lang }: ColorCarouselProps) {
   const { t } = await createTranslation(lang, 'home')
 
   return (
@@ -24,7 +24,7 @@ export default async function ColorCarousel({ category, lang }: ColorCarouselPro
         </span>
 
 
-        <ColorCarouselGrid category={category} />
+        <ColorCarouselGrid gender={gender} />
 
       </div>
     </section>

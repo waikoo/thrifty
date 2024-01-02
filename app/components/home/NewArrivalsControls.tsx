@@ -7,10 +7,10 @@ import { Category } from "@/types/home";
 
 type NewArrivalsControlsProps = {
   data: ProductItemType[]
-  category: Category['category']
+  gender: Category['category']
 }
 
-export default function NewArrivalsControls({ data, category }: NewArrivalsControlsProps) {
+export default function NewArrivalsControls({ data, gender }: NewArrivalsControlsProps) {
   const leftRef = useRef<HTMLDivElement>(null)
   const imagesRef = useRef<HTMLDivElement>(null)
 

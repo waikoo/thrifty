@@ -7,18 +7,18 @@ import Link from 'next/link';
 
 type NewArrivalsProps = {
   lang: Locales
-  category: Category['category']
+  gender: Category['category']
   notHome: boolean
 }
 
-export default async function NewArrivals({ lang, category, notHome }: NewArrivalsProps) {
+export default async function NewArrivals({ lang, gender, notHome }: NewArrivalsProps) {
   const { t } = await createTranslation(lang, 'home')
   const supabase = useSupabaseServer()
 
   let { data, error } = await supabase
     .from('products')
     .select('*')
-    .filter('category', 'eq', category)
+    .filter('gender', 'eq', gender)
     .order('created_at', { ascending: false })
     .limit(12)
 
@@ -33,11 +33,11 @@ export default async function NewArrivals({ lang, category, notHome }: NewArriva
 
         <NewArrivalsControls
           data={data as ProductItemType[]}
-          category={category}
+          gender={gender}
         />
 
         {!notHome && (
-          <Link href={`/${lang}/${category}/products?category=${category}&shop-by=new+in`} className="self-end">
+          <Link href={`/${lang}/${gender}/products?gender=${gender}&shop-by=new+in`} className="self-end">
             <span
               className="text-bkg cursor-pointer underline underline-offset-2" >
               {t('newArrivals.viewAll')}

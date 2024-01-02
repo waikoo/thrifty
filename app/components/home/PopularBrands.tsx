@@ -6,9 +6,9 @@ import Link from 'next/link'
 
 type PopularBrandsProps = {
   lang: Locales
-  category: Category['category']
+  gender: Category['category']
 }
-export default async function PopularBrands({ lang, category }: PopularBrandsProps) {
+export default async function PopularBrands({ lang, gender }: PopularBrandsProps) {
   const { t } = await createTranslation(lang, 'home')
 
   return (
@@ -19,7 +19,7 @@ export default async function PopularBrands({ lang, category }: PopularBrandsPro
           <span className="block">{t('popularBrands.title2')}</span></h3>
 
         <Link
-          href={`/${lang}/${category}/brands`}
+          href={`/${lang}/${gender}/brands`}
           className="text-xs font-bold underline underline-offset-2">
           {t('popularBrands.viewAll')}
         </Link>
