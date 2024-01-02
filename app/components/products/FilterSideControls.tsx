@@ -2,29 +2,36 @@
 import Link from "next/link";
 import { useFilterTitleStore } from "@/state/uiState";
 import { Category, Locales } from "@/types/home";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { GrPowerReset } from 'react-icons/gr'
+import { IconReset } from "./icons";
 
 type FilterSideControlsProps = {
-  category: Category['category']
+  gender: Category['category']
   lang: Locales
 }
 
-export default function FilterSideControls({ category, lang }: FilterSideControlsProps) {
-
+export default function FilterSideControls({ gender, lang }: FilterSideControlsProps) {
   const expandAllFilters = useFilterTitleStore((state) => state.expandAllComponents)
   const collapseAllFilters = useFilterTitleStore((state) => state.collapseAllComponents)
   const areAllExpanded = useFilterTitleStore((state => state.areAllExpanded))
 
   return (
-    <div className="text-[0.813rem] font-normal">
-      <span
-        className="cursor-pointer underline underline-offset-4"
-        onClick={() => areAllExpanded ? collapseAllFilters() : expandAllFilters()}
-      >{areAllExpanded ? 'Collapse All' : 'Expand All'}
-      </span>
+    <div className="flex items-center gap-5 text-[0.813rem] font-normal">
+      <div className="flex items-center gap-1">
+        <span
+          className="cursor-pointer"
+          onClick={() => areAllExpanded ? collapseAllFilters() : expandAllFilters()}
+        >{areAllExpanded ? 'Collapse All' : 'Expand All'}
+        </span>
+        <span>{areAllExpanded ? (<AiOutlineMinus />) : (<AiOutlinePlus />)}</span>
+      </div>
 
-      <span> / </span>
-      <Link href={`/${lang}/${category}/products?category=${category}`}>
-        <span className="underline underline-offset-4">Clear All</span>
+      <Link
+        href={`/${lang}/${gender}/products?gender=${gender}`}
+        className="flex items-center gap-1">
+        <span className="">Reset All</span>
+        <IconReset />
       </Link>
     </div>
   )
