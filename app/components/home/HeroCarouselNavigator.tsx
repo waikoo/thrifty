@@ -1,5 +1,4 @@
 "use client"
-import React from "react";
 import { HeroCarouselCircle } from ".";
 import useHeroCarousel from "../hooks/useHeroCarousel";
 

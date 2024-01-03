@@ -23,6 +23,8 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
     }
     const gend = searchParamos.getAll('gender')?.[0]?.split(',')
     const cat = searchParamos.getAll('category')?.[0]?.split(',')
+    const shopBy = searchParamos.getAll('shop-by')?.[0]?.split(',')
+    console.log(shopBy)
     if (gend?.length > 0) {
       return {
         men: gend.includes('men'),
@@ -31,6 +33,8 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
         clothing: cat?.includes('clothing'),
         shoes: cat?.includes('shoes'),
         accessories: cat?.includes('accessories'),
+        promos: shopBy?.includes('promos'),
+        ['new in']: shopBy?.includes('new in'),
       } as { [key: string]: boolean }
     }
   })
@@ -41,6 +45,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
       }
       const gend = searchParamos.getAll('gender')?.[0]?.split(',')
       const cat = searchParamos.getAll('category')?.[0]?.split(',')
+      const shopBy = searchParamos.getAll('shop-by')?.[0]?.split(',')
       if (gend?.length > 0) {
         return {
           men: gend.includes('men'),
@@ -49,6 +54,8 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
           clothing: cat?.includes('clothing'),
           shoes: cat?.includes('shoes'),
           accessories: cat?.includes('accessories'),
+          promos: shopBy?.includes('promos'),
+          ['new in']: shopBy?.includes('new in'),
         } as { [key: string]: boolean }
       }
     })

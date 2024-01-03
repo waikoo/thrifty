@@ -18,6 +18,8 @@ export default function HeroCarouselArticle({ lang, gender }: HeroCarouselArticl
     t('heroCarousel.titles.two'),
     t('heroCarousel.titles.three')
   ])
+  const shopBy = dynamicTitle !== 'FILTERS' ? '&shop-by=' : ''
+  const param = dynamicTitle === 'NEW IN' ? 'new+in' : dynamicTitle === 'PROMOS' ? 'promos' : ''
 
   return (
     <article className="ml-6 grid auto-rows-min grid-rows-2 gap-1 py-6 sm:gap-0 md:gap-0">
@@ -31,7 +33,7 @@ export default function HeroCarouselArticle({ lang, gender }: HeroCarouselArticl
           {t('heroCarousel.paragraph')}
         </p>
 
-        <Link href={`/${lang}/${gender}/products/?gender=${gender}`}>
+        <Link href={`/${lang}/${gender}/products/?gender=${gender}${shopBy}${param}`}>
           <SubmitButton hero className="border-bkg whitespace-nowrap border-[0.2rem] font-bold">
             {t('heroCarousel.button')}
           </SubmitButton>
