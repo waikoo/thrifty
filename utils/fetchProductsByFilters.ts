@@ -1,3 +1,4 @@
+import { brandNamesArray } from "@/app/components/data/brandsData"
 import { filter } from "@/app/components/data/filterArrays"
 
 export async function fetchProductsByFilters(
@@ -6,18 +7,22 @@ export async function fetchProductsByFilters(
 ) {
   const byGenderParams = searchParams.gender?.toString().split(',')
   const byCategoryParams = searchParams.category?.toString().split(',')
-  const productTypeArr = searchParams.type?.toString().split(',')
-  const materialArr = searchParams.material?.toString().split(',')
-  const sizeArr = searchParams.size?.toString().split(',')
+  const byTypeParams = searchParams.type?.toString().split(',')
+  const byMaterialParams = searchParams.material?.toString().split(',')
+  const bySizeParams = searchParams.size?.toString().split(',')
+  const byColorParams = searchParams.color?.toString().split(',')
+  const byBrandParams = searchParams.brand?.toString().split(',')
 
   let query = supabase
     .from('products')
     .select('*')
     .in('gender', byGenderParams || filter.gender.map(fil => fil.toLowerCase()))
     .in('category', byCategoryParams || filter.category.map((fil) => fil.toLowerCase()))
-    .in('type', productTypeArr || filter.type.all.map(fil => fil.toLowerCase()))
-    .in('material', materialArr || filter.material.map(fil => fil.toLowerCase()))
-    .in('size', sizeArr || filter.size.map(fil => fil))
+    .in('type', byTypeParams || filter.type.all.map(fil => fil.toLowerCase()))
+    .in('material', byMaterialParams || filter.material.map(fil => fil.toLowerCase()))
+    .in('size', bySizeParams || filter.size.map(fil => fil.toLowerCase()))
+    .in('color', byColorParams || filter.color.map(fil => fil.toLowerCase()))
+    .in('brand', byBrandParams || brandNamesArray.map(fil => fil.toLowerCase()))
 
   if (searchParams['shop-by'] === 'new in') {
     query = query.order('created_at', { ascending: false })

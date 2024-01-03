@@ -1,4 +1,5 @@
 export { default as useBanner } from "./useBanner";
+export { default as useQueryParams } from "./useQueryParams";
 export { default as useInitValues } from "./useInitValues";
 export { default as useSummaryPopup } from "./useSummaryPopup";
 export { default as useClearTitle } from "./useClearTitle";
