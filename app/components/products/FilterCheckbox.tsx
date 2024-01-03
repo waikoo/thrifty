@@ -24,7 +24,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
     const gend = searchParamos.getAll('gender')?.[0]?.split(',')
     const cat = searchParamos.getAll('category')?.[0]?.split(',')
     const shopBy = searchParamos.getAll('shop-by')?.[0]?.split(',')
-    console.log(shopBy)
+
     if (gend?.length > 0) {
       return {
         men: gend.includes('men'),
