@@ -49,7 +49,7 @@ export default async function FilterSide({ lang, gender, searchParams }: FilterS
   }
 
   return (
-    <aside className="sticky top-10 flex max-h-[600px] w-[300px] flex-col gap-6">
+    <aside className="sticky top-10 flex w-[300px] flex-col gap-6">
 
       <FilterCheckbox
         type={"GENDER"}

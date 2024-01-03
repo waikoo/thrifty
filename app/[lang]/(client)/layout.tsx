@@ -23,11 +23,11 @@ export default function RootLayout({ children, params }: RootLayoutProps) {
   return (
     <html
       data-theme={themeSettings.DEFAULT_THEME}
-      className={`${inter.className} max-w-screen overflow-x-hidden`}
+      className={`${inter.className} max-w-screen min-h-screen overflow-x-hidden`}
       lang={lang}
     >
       <head />
-      <body className={`bg-bkg w-full ${inter.className}`}>
+      <body className={`bg-bkg w-full min-h-screen ${inter.className}`}>
         <Banner />
         <section className="bg-bkg text-content mx-auto flex flex-col items-center px-20 lg:max-w-[1500px]">
           <NavBar />
