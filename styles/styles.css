@@ -144,3 +144,42 @@ html[data-theme="light"] input.placeholda::placeholder {
 .shadow-custom {
   box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.25);
 }
+
+.range_slider:first-of-type {
+  background: none;
+}
+
+.range_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  /* background: var(--clr-bkg); */
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.range_slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  /* background: var(--clr-bkg); */
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.slider>input:first-of-type,
+.slider>input:last-of-type::-moz-range-progress {
+  background-color: var(--clr-faded);
+}
+
+.slider>input:first-of-type::-moz-range-progress {
+  background-color: var(--clr-bkg);
+}
+
+.slider>input:first-of-type {
+  background-color: dodgerblue;
+}

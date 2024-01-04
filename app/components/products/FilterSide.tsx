@@ -1,5 +1,5 @@
 import { Category, Locales } from "@/types/home";
-import { FilterCheckbox, FilterColor, FilterCondition, FilterSize } from ".";
+import { FilterCheckbox, FilterColor, FilterCondition, FilterSize, FilterSlider } from ".";
 import { brandNamesArray } from "../data/brandsData";
 import { filter } from "../data";
 import { ProductItemType } from "@/types/productItem";
@@ -69,6 +69,14 @@ export default async function FilterSide({ lang, gender, searchParams }: FilterS
       <FilterCheckbox
         type={"TYPE"}
         elements={getType(searchParams)}
+      />
+
+      <FilterSlider
+        type={"PRICE"}
+      />
+
+      <FilterSlider
+        type={"DISCOUNT"}
       />
 
       <FilterSize

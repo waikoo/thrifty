@@ -1,4 +1,5 @@
 export { default as FilterTop } from './FilterTop'
+export { default as FilterSlider } from './FilterSlider'
 export { default as FilterNotFound } from './FilterNotFound'
 export { default as FilterNotFoundImg } from './FilterNotFoundImg'
 export { default as ProductItem } from './ProductItem'
