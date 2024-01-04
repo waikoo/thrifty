@@ -1,8 +1,8 @@
 "use client"
 import { useFilterTitleStore } from "@/state/uiState"
 import { FilterTitle } from "."
-import { useEffect, useState } from "react"
-
+import { useState } from "react"
+import { useDbMinMaxValues, useFilterSlider } from "../hooks"
 
 type FilterSliderProps = {
   type: "DISCOUNT" | "PRICE"
@@ -10,37 +10,11 @@ type FilterSliderProps = {
 
 export default function FilterSlider({ type }: FilterSliderProps) {
   const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
-
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(999);
   const [result, setResult] = useState(0)
-
-  useEffect(() => {
-    if ((left - right) !== result) {
-      setResult(right - left)
-    }
-  }, [left, right])
-
-  const handleLeftChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const target = e.target as HTMLInputElement
-    const newLeft = Number(target.value)
-    setLeft(Math.min(newLeft, right - 1))
-  }
-  const handleRightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const target = e.target as HTMLInputElement
-    const newRight = Number(target.value)
-    setRight(Math.max(left + 1, newRight))
-  }
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const target = e.target as HTMLInputElement
-    const value = Number(target.value)
-    if (target.name === 'left') {
-      setLeft(value)
-    } else if (target.name === 'right') {
-      setRight(value)
-    }
-  }
+  useDbMinMaxValues(type, setLeft, setRight, left, right)
+  const { handleLeftChange, handleRightChange, handleInputChange } = useFilterSlider(setLeft, setRight, setResult, left, right, result)
 
   return (
     <div>
@@ -68,8 +42,19 @@ export default function FilterSlider({ type }: FilterSliderProps) {
               className="range_slider pointer-events-none absolute left-0 top-8 z-20 h-[0.12rem] w-full cursor-pointer appearance-none rounded" />
           </div>
           <div className="flex justify-between">
-            <input type="text" name="left" value={left} className="text-bkg mt-12 h-8 w-16" onChange={handleInputChange} />
-            <input type="text" name="right" value={right} className="text-bkg mt-12 h-8 w-16" onChange={handleInputChange} />
+            <input
+              type="text"
+              name="left"
+              value={`${type === 'DISCOUNT' ? '%' : '€'} ${left}`}
+              className="text-bkg mt-12 h-8 w-20"
+              onChange={handleInputChange} />
+            <span className="text-content mt-12">-</span>
+            <input
+              type="text"
+              name="right"
+              value={`${type === 'DISCOUNT' ? '%' : '€'} ${right}`}
+              className="text-bkg mt-12 h-8 w-20"
+              onChange={handleInputChange} />
           </div>
         </div>
       )}

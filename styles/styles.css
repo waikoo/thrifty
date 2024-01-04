@@ -152,10 +152,11 @@ html[data-theme="light"] input.placeholda::placeholder {
 .range_slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background: white;
   border-radius: 50%;
+  padding: 5px;
   /* background: var(--clr-bkg); */
   cursor: pointer;
   pointer-events: auto;

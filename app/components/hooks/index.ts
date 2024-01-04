@@ -1,4 +1,6 @@
 export { default as useBanner } from "./useBanner";
+export { default as useFilterSlider } from "./useFilterSlider";
+export { default as useDbMinMaxValues } from "./useDbMinMaxValues";
 export { default as useQueryParams } from "./useQueryParams";
 export { default as useInitValues } from "./useInitValues";
 export { default as useSummaryPopup } from "./useSummaryPopup";
