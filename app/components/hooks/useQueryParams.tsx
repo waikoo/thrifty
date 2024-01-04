@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
 
-const getParams = (searchParamos: ReadonlyURLSearchParams) => {
+const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]) => {
 
   if (!searchParamos.getAll('gender')[0]) {
     // TODO: handle
@@ -13,8 +13,9 @@ const getParams = (searchParamos: ReadonlyURLSearchParams) => {
   const cat = searchParamos.getAll('category')?.[0]?.split(',')
   const shopBy = searchParamos.getAll('shop-by')?.[0]?.split(',')
   const brandParam = searchParamos.getAll('brand')?.[0]?.split(',')
+  const typeParam = searchParamos.getAll('type')?.[0]?.split(',')
 
-  let nonBrands = gend?.length > 0 && {
+  const others = {
     men: gend.includes('men'),
     women: gend.includes('women'),
     kids: gend.includes('kids'),
@@ -30,21 +31,26 @@ const getParams = (searchParamos: ReadonlyURLSearchParams) => {
     return acc
   }, {} as { [key: string]: boolean })
 
-  const both = { ...nonBrands, ...brands }
+  const dynamicTypes = productType.reduce((acc, type) => {
+    acc[type.toLowerCase()] = typeParam?.includes(type.toLowerCase())
+    return acc
+  }, {} as { [key: string]: boolean })
 
-  return both
+
+  const computedParamState = { ...others, ...brands, ...dynamicTypes }
+
+  return computedParamState
 }
 
+export default function useQueryParams(type: string, elements: string[], searchParamos: ReadonlyURLSearchParams, router: AppRouterInstance, pathname: string) {
 
-export default function useQueryParams(type: string, searchParamos: ReadonlyURLSearchParams, router: AppRouterInstance, pathname: string) {
-  const [checkbox, setCheckbox] = useState(getParams(searchParamos))
+  const [checkbox, setCheckbox] = useState(getParams(searchParamos, elements))
 
   useEffect(() => {
-    setCheckbox(getParams(searchParamos))
+    setCheckbox(getParams(searchParamos, elements))
   }, [searchParamos])
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault()
     const value = (e.target as unknown as HTMLInputElement).value;
     setCheckbox(prevState => ({
       ...prevState,

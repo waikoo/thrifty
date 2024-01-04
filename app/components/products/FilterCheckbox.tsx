@@ -14,20 +14,17 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
   const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
   const { setSearchValue, filteredItems } = useFilterSearch(elements)
   const [searchParamos, pathname, router] = [useSearchParams(), usePathname(), useRouter()]
-  const { checkbox, onCheckboxChange, updateQueryParams } = useQueryParams(type, searchParamos, router, pathname)
+  const { checkbox, onCheckboxChange, updateQueryParams } = useQueryParams(type, elements, searchParamos, router, pathname)
 
   return (
     <div>
-      <FilterTitle
-        type={type}
-      />
+      <FilterTitle type={type} />
 
       {isExpanded && (
         <div className="flex flex-col gap-2 pl-8 pt-4">
 
-          {search && (
-            <FilterSearch setSearchValue={setSearchValue} />
-          )}
+          {search && <FilterSearch setSearchValue={setSearchValue} />}
+
           <fieldset onChange={updateQueryParams} className="flex flex-col">
             {filteredItems.map((element, i) => {
               const lowerCaseName = type.toLowerCase()
@@ -48,7 +45,6 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
                   />
                   {element}
                 </label>
-
               )
             })}
           </fieldset>

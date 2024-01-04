@@ -67,7 +67,7 @@ export default async function FilterSide({ lang, gender, searchParams }: FilterS
       />
 
       <FilterCheckbox
-        type={"PRODUCT TYPE"}
+        type={"TYPE"}
         elements={getType(searchParams)}
       />
 
