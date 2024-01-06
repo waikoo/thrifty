@@ -11,6 +11,18 @@ type ProductListProps = {
 }
 
 export default async function ProductList({ lang, gender, searchParams, data }: ProductListProps) {
+  const newParams = new URLSearchParams(searchParams)
+  const sortBy = newParams?.get('sort-by')
+
+  if (sortBy === 'cheapfirst') {
+    data.sort((a, b) => (a.price > b.price) ? 1 : -1)
+  }
+  if (sortBy === 'expensivefirst') {
+    data.sort((a, b) => (a.price < b.price) ? 1 : -1)
+  }
+  if (sortBy === 'newfirst') {
+    data.sort((a, b) => (a.created_at < b.created_at) ? 1 : -1)
+  }
 
   return (
     <div className="mx-auto flex w-[80%] flex-wrap gap-8">

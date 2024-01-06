@@ -33,7 +33,7 @@ export default function HeroCarouselArticle({ lang, gender }: HeroCarouselArticl
           {t('heroCarousel.paragraph')}
         </p>
 
-        <Link href={`/${lang}/${gender}/products/?gender=${gender}${shopBy}${param}`}>
+        <Link href={`/${lang}/${gender}/products/?gender=${gender}${shopBy}${param}&sort-by=newfirst`}>
           <SubmitButton hero className="border-bkg whitespace-nowrap border-[0.2rem] font-bold">
             {t('heroCarousel.button')}
           </SubmitButton>

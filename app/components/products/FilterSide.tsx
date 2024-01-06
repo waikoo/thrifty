@@ -49,7 +49,11 @@ export default async function FilterSide({ lang, gender, searchParams }: FilterS
   }
 
   return (
-    <aside className="sticky top-10 flex w-[300px] flex-col gap-6">
+    <aside className="sticky flex w-[300px] flex-col gap-6">
+
+      <button className="bg-faded mx-auto w-full whitespace-nowrap py-2 text-[0.813rem] font-semibold text-black">
+        SAVE FILTER
+      </button>
 
       <FilterCheckbox
         type={"GENDER"}
@@ -108,10 +112,6 @@ export default async function FilterSide({ lang, gender, searchParams }: FilterS
         type={"DATE ADDED"}
         elements={filter.dateAdded}
       />
-
-      <button className="bg-faded m-auto w-full whitespace-nowrap py-2 text-[0.813rem] font-semibold text-black">
-        SAVE FILTER
-      </button>
 
     </aside>
   )

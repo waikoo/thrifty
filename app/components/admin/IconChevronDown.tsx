@@ -1,3 +1,4 @@
+"use client"
 import { twMerge as tm } from 'tailwind-merge';
 import { useThemeStore } from "@/state"
 import { getSvgColor } from '@/utils/theme';
