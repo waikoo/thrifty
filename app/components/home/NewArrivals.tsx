@@ -11,7 +11,7 @@ type NewArrivalsProps = {
   notHome: boolean
 }
 
-export default async function NewArrivals({ lang, gender, notHome }: NewArrivalsProps) {
+export default async function NewArrivals({ lang, gender, notHome = false }: NewArrivalsProps) {
   const { t } = await createTranslation(lang, 'home')
   const supabase = useSupabaseServer()
 
