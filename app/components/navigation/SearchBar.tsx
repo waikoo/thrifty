@@ -12,13 +12,13 @@ export default function SearchBar({ }: SearchBarProps) {
   const { t } = useTranslation(lang, 'layout')
 
   return (
-    <section className={`text-bkg flex gap-2 items-end`}>
-      <IconSearch home />
+    <section className={`text-bkg flex gap-2 items-baseline relative top-1`}>
+      <IconSearch className="" />
       <input
         type="search"
         placeholder={t('search')}
-        className={`bg-transparent text-content outline-0 appearance-none focus:outline-none pt-2 w-full self-baseline placeholda`}
-        style={{ WebkitAppearance: 'none', appearance: 'none' }}
+        className={`bg-transparent text-content outline-0 border-none ring-0 focus:ring-0 appearance-none focus:outline-none w-full self-end placeholda`}
+        style={{ WebkitAppearance: 'none' }}
       />
     </section>
   );

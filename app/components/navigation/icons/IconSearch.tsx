@@ -2,23 +2,24 @@
 import React from "react"
 import { useThemeStore } from "@/state/themeState"
 import { getSvgColor } from "@/utils/theme"
+import { twMerge as tm } from "tailwind-merge"
 
 type IconSearchProps = {
   isHovered?: boolean
   isClicked?: boolean
   home?: boolean
+  className?: string
 }
 
-const IconSearch = ({ isHovered, isClicked, home }: IconSearchProps) => {
+const IconSearch = ({ isHovered, isClicked, className }: IconSearchProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
   const hoveredColor = useThemeStore((state) => getSvgColor(
     state.theme === 'dark' ? 'light' : 'dark'
   ))
-  const margin = home ? 'mt-2' : ''
 
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="none"
-      className={`${margin} self-center`}>
+      className={tm(`self-center ${className}`)}>
       <path
         stroke={isHovered && !isClicked ? hoveredColor : color}
         strokeLinecap="round"
