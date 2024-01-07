@@ -6,7 +6,7 @@ export default function FilterDropdown() {
 
   const handleOnChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newParams = new URLSearchParams(searchParams);
-    const value = (e.target as unknown as HTMLInputElement).value;
+    const value = (e.target as unknown as HTMLSelectElement).value;
     const queryParamCategory = 'sort-by'
 
     newParams.set(queryParamCategory, value);
