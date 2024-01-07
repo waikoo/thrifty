@@ -1,6 +1,6 @@
 import { Category, Locales } from "@/types/home"
 import { ProductItemType } from "@/types/productItem"
-import { ProductItem, FilterNotFound } from "."
+import { ProductItem, FilterNotFound, ProductPagination } from "."
 import { NewArrivals } from "../home/serverIndex"
 
 type ProductListProps = {
@@ -25,22 +25,28 @@ export default async function ProductList({ lang, gender, searchParams, data }: 
   }
 
   return (
-    <div className="mx-auto flex w-[80%] flex-wrap gap-8">
-      {data.length > 0 ? data.map((product: ProductItemType, i: number) => {
-        return (
-          <ProductItem
-            key={product.uuid}
-            product={product}
-            index={i}
-          />
-        )
-      })
-        : (
-          <>
-            <FilterNotFound />
-            <NewArrivals {...{ lang, gender }} notHome />
-          </>
-        )}
+    <div className="mx-auto w-[80%]">
+      {data.length > 0 ? (
+        <>
+          <div className="flex flex-wrap gap-8">
+            {data.map((product: ProductItemType, i: number) => {
+              return (
+                <ProductItem
+                  key={product.uuid}
+                  product={product}
+                  index={i}
+                />
+              )
+            })}
+          </div>
+          <ProductPagination searchParams={searchParams} productsLength={data.length} />
+        </>
+      ) : (
+        <>
+          <FilterNotFound />
+          <NewArrivals {...{ lang, gender }} notHome />
+        </>
+      )}
     </div>
   )
 }
