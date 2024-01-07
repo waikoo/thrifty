@@ -16,9 +16,9 @@ const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]
   const typeParam = searchParamos.getAll('type')?.[0]?.split(',')
 
   const others = {
-    men: gend.includes('men'),
-    women: gend.includes('women'),
-    kids: gend.includes('kids'),
+    men: gend?.includes('men'),
+    women: gend?.includes('women'),
+    kids: gend?.includes('kids'),
     clothing: cat?.includes('clothing'),
     shoes: cat?.includes('shoes'),
     accessories: cat?.includes('accessories'),
