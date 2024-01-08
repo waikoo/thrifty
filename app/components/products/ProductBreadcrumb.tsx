@@ -17,8 +17,8 @@ export default function ProductBreadcrumb({ matchedProduct }: ProductBreadcrumbP
   }
 
   return (
-    <section className="bg-grey text-content mt-8 grid w-screen grid-cols-6 p-4">
-      <div className="col-start-2 col-end-6 row-span-1 row-start-1 row-end-2 text-center">
+    <section className="bg-faded text-bkg mt-8 grid w-screen grid-cols-6 p-4">
+      <div className="col-start-2 col-end-6 row-span-1 row-start-1 row-end-2 text-center text-[0.6875rem] font-medium">
         <span>{capitalize(gender)}</span>
         <span>{' > '}</span>
         <span>{capitalize(category)}</span>
@@ -27,13 +27,13 @@ export default function ProductBreadcrumb({ matchedProduct }: ProductBreadcrumbP
         <span>{' > '}</span>
         <span>{capitalize(brand)}</span>
         <span>{' > '}</span>
-        <span>{capitalize(color)} </span>
-        <span>{capitalize(material)} </span>
-        <span>{capitalize(type)} </span>
+        <span className="font-regular text-darkgrey">{capitalize(color)} </span>
+        <span className="font-regular text-darkgrey">{capitalize(material)} </span>
+        <span className="font-regular text-darkgrey">{capitalize(type)} </span>
       </div>
 
       <span
-        className="align-self-center col-start-6 col-end-7 row-span-1 cursor-pointer justify-self-start underline underline-offset-4"
+        className="align-self-center font-regular col-start-6 col-end-7 row-span-1 cursor-pointer justify-self-start text-[0.6875rem] underline underline-offset-4"
         onClick={goBack}>BACK</span>
     </section>
   )
