@@ -35,6 +35,9 @@ export default async function ProductList({ lang, gender, searchParams, data }: 
                   key={product.uuid}
                   product={product}
                   index={i}
+                  searchParams={searchParams}
+                  lang={lang}
+                  gender={gender}
                 />
               )
             })}
