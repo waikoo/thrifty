@@ -5,6 +5,8 @@ import { ProductItemType } from "@/types/productItem"
 import { singleProduct } from "@/app/components/data/mock/singleProduct"
 import ProductImages from "@/app/components/products/ProductImages"
 import { ProductInfo } from "@/app/components/products/ProductInfo"
+import { MockDBProvider } from "@/db/MockDBProvider"
+import ProductRecommendations from "@/app/components/products/ProductRecommendations"
 
 type PageProps = {
   params: {
@@ -22,8 +24,9 @@ export default async function Page({ params: { lang, gender, productId }, search
   //   .select('*')
   //   .eq('uuid', productId)
   //   .single()
-  const data = singleProduct
-  const matchedProduct: ProductItemType = data
+  // const data = singleProduct
+  const db = new MockDBProvider()
+  const matchedProduct: ProductItemType = await db.fetchSingleProduct()
 
   return (
     <>
@@ -33,6 +36,7 @@ export default async function Page({ params: { lang, gender, productId }, search
           <ProductImages matchedProduct={matchedProduct} />
           <ProductInfo matchedProduct={matchedProduct} />
         </section>
+        <ProductRecommendations matchedProduct={matchedProduct} />
       </main>
     </>
   )

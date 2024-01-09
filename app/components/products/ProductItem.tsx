@@ -7,16 +7,17 @@ import { Category, Locales } from "@/types/home"
 type ProductItemProps = {
   product: ProductItemType
   index: number,
-  lang: Locales
-  gender: Category['category']
-  searchParams: { [key: string]: string | string[] | undefined }
+  lang?: Locales
+  gender?: Category['category']
+  className?: string
+  searchParams?: URLSearchParams
 }
 
-export default function ProductItem({ product, index, lang, gender, searchParams }: ProductItemProps) {
+export default function ProductItem({ product, index, lang, gender, className, searchParams }: ProductItemProps) {
   const { type, size, price, img_url, discount, brand } = product
 
   return (
-    <div className="w-[20%] flex-grow-0 ">
+    <div className={`flex-grow-0 ${className}`}>
       <div className="h-[20rem] w-[100%]">
         <Link href={`/${lang}/${gender}/products/${product.uuid}`}>
           <Image
@@ -37,7 +38,7 @@ export default function ProductItem({ product, index, lang, gender, searchParams
           <span>{capitalize(brand)}</span>
           <span>{size}</span>
         </div>
-        <span className="block text-[0.75rem] font-light text-gray-200">{type}</span>
+        <span className="block text-[0.75rem] font-light text-gray-200">{capitalize(type)}</span>
         <span>€{price}</span>
       </div>
     </div>
