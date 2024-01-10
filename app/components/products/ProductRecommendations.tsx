@@ -1,30 +1,22 @@
-import { MockDBProvider } from "@/db/MockDBProvider"
+
 import { ProductItemType } from "@/types/productItem"
-import ProductItem from "@/app/components/products/ProductItem"
-import IconHeart from "@/app/components/products/icons/IconHeart"
+import { fetchAllProducts } from "@/utils/fetchAllProducts"
+import ProductRecommendationsControls from "@/app/components/products/ProductRecommendationsControls"
+import useSupabaseServer from "@/app/components/hooks/useSupabaseServer"
 
 type ProductRecommendationsProps = {
   matchedProduct: ProductItemType
 }
 
 export default async function ProductRecommendations({ matchedProduct }: ProductRecommendationsProps) {
-  const db = new MockDBProvider()
-  const products = await db.fetchAllProducts('products')
-  const eightProductsInCategory = products.filter(product => product.category === matchedProduct.category).slice(0, 8)
+  const products = await fetchAllProducts(useSupabaseServer(), 'products')
+
+  const eightProducts = products?.filter(product => product.category === matchedProduct.category).slice(0, 8)
 
   return (
-    <div className="flex w-full gap-2">
-      {eightProductsInCategory.map((product, index) => (
-        <div className="relative"
-          key={product.uuid}>
-          <ProductItem
-            product={product}
-            index={index}
-            className={""}
-          />
-          <IconHeart className="absolute right-0 top-0" />
-        </div>
-      ))}
-    </div>
-  )
+    <section>
+      <h1 className="text-content block whitespace-nowrap py-10 text-center text-[1rem] font-semibold">SIMILAR PRODUCTS YOU MIGHT LIKE</h1>
+      <ProductRecommendationsControls products={eightProducts!} />
+    </section>
+  );
 }
