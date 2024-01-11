@@ -1,5 +1,6 @@
 "use client"
 import { useRef } from "react";
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import { ProductItemType } from "@/types/productItem";
 import ProductRecommendationsGrid from "@/app/components/products/ProductRecommendationsGrid";
@@ -9,10 +10,10 @@ export type ProductRecommendationsControlsProps = {
 }
 
 export default function ProductRecommendationsControls({ products }: ProductRecommendationsControlsProps) {
-  const leftRef = useRef<HTMLButtonElement>(null)
+  const leftRef = useRef<HTMLDivElement>(null)
   const imagesRef = useRef<HTMLDivElement>(null)
 
-  const handleScrolling = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleScrolling = (e: React.MouseEvent<HTMLDivElement>) => {
     const imagesDiv = imagesRef.current;
     if (imagesDiv) {
       const imageWidth = 200
@@ -24,10 +25,16 @@ export default function ProductRecommendationsControls({ products }: ProductReco
   }
 
   return (
-    <div className="flex w-full">
-      <button onClick={handleScrolling} ref={leftRef}>Previous</button>
+    <div className="flex w-full items-center">
+      <div ref={leftRef} onClick={handleScrolling} >
+        <FiChevronLeft className="text-content cursor-pointer pr-4 text-4xl" />
+      </div>
+
       <ProductRecommendationsGrid products={products} imagesRef={imagesRef} />
-      <button onClick={handleScrolling}>Next</button>
+      <div onClick={handleScrolling} >
+        <FiChevronRight className="text-content cursor-pointer pl-4 text-4xl" />
+      </div>
+
     </div>
   )
 }
