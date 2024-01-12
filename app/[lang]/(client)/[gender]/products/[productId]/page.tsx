@@ -2,11 +2,10 @@ import { useSupabaseServer } from "@/app/components/hooks/serverIndex"
 import ProductBreadcrumb from "@/app/components/products/ProductBreadcrumb"
 import { Category, Locales } from "@/types/home"
 import { ProductItemType } from "@/types/productItem"
-import { singleProduct } from "@/app/components/data/mock/singleProduct"
 import ProductImages from "@/app/components/products/ProductImages"
 import { ProductInfo } from "@/app/components/products/ProductInfo"
-import { MockDBProvider } from "@/db/MockDBProvider"
 import ProductRecommendations from "@/app/components/products/ProductRecommendations"
+import ProductFavoriteAndShare from "@/app/components/products/ProductFavoriteAndShare"
 
 type PageProps = {
   params: {
@@ -18,15 +17,13 @@ type PageProps = {
 }
 
 export default async function Page({ params: { lang, gender, productId }, searchParams }: PageProps) {
-  // const supabase = useSupabaseServer()
-  // const { data, error } = await supabase
-  //   .from('products')
-  //   .select('*')
-  //   .eq('uuid', productId)
-  //   .single()
-  // const data = singleProduct
-  const db = new MockDBProvider()
-  const matchedProduct: ProductItemType = await db.fetchSingleProduct()
+  const supabase = useSupabaseServer()
+  const { data: matched, error } = await supabase
+    .from('products')
+    .select('*')
+    .eq('uuid', productId)
+    .single()
+  const matchedProduct: ProductItemType = matched
 
   return (
     <>
@@ -35,6 +32,8 @@ export default async function Page({ params: { lang, gender, productId }, search
         <section className="flex gap-10">
           <ProductImages matchedProduct={matchedProduct} />
           <ProductInfo matchedProduct={matchedProduct} />
+          <ProductFavoriteAndShare matchedProduct={matchedProduct} />
+
         </section>
         <ProductRecommendations matchedProduct={matchedProduct} />
       </main>

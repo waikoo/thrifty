@@ -173,3 +173,18 @@ export const useFilterTitleStore = create<TFilterTitleState>((set) => ({
   }),
 }));
 
+type TFavoriteStore = {
+  favorites: string[]
+  toggleFavorite: (id: string) => void
+  initFavorites: (favorites: string[]) => void
+}
+
+export const useFavoriteStore = create<TFavoriteStore>((set) => ({
+  favorites: [],
+  toggleFavorite: (id) => set((state) => ({
+    favorites: state.favorites.includes(id)
+      ? state.favorites.filter((item) => item !== id)
+      : [...state.favorites, id]
+  })),
+  initFavorites: (favorites) => set({ favorites })
+}))

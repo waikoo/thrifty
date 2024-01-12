@@ -31,6 +31,7 @@ export default function ProductRecommendationsControls({ products }: ProductReco
       </div>
 
       <ProductRecommendationsGrid products={products} imagesRef={imagesRef} />
+
       <div onClick={handleScrolling} >
         <FiChevronRight className="text-content cursor-pointer pl-4 text-4xl" />
       </div>

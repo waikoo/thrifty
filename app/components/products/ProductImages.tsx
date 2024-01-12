@@ -16,15 +16,15 @@ export default function ProductImages({ matchedProduct }: ProductImagesProps) {
 
       <div className="ml-[7.5rem] w-1/3 flex-col items-center justify-between gap-2">
         {matchedProduct.img_url.map((img: string, index: number) => (
-          <div className="mb-2 w-[6.55rem] cursor-pointer focus:outline-rose-50">
-            <Image key={index} className="block h-full w-full" src={img} alt={'product-image'} width={100} height={100} onClick={() => setEnlargedImage(img)} />
+          <div className="mb-2 w-[6.55rem] cursor-pointer focus:outline-rose-50" key={`productImages-${index}`}>
+            <Image key={index} className="block h-full w-full" src={img} alt={'product-image'} width={100} height={100} onClick={() => setEnlargedImage(img)} priority={true} />
           </div>
         ))}
       </div>
 
       <div className="w-2/3">
         <div className="bg-red h-auto w-[27.3rem] object-cover">
-          <Image className="block h-full w-full" src={enlargedImage} alt={'product-image'} width={100} height={100} />
+          <Image className="block h-full w-full" src={enlargedImage} alt={'product-image'} width={100} height={100} priority={true} />
         </div>
       </div>
 

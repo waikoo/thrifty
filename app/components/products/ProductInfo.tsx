@@ -1,8 +1,8 @@
-import { ProductItemType } from "@/types/productItem"
-import { capitalize } from "@/utils/capitalize"
 import { ProductInfoItem } from "@/app/components/products/ProductInfoItem"
-import { getDeliveryDate } from "@/utils/getDeliveryDate"
 import ProductShippingReturnsInfo from "@/app/components/products/ProductShippingReturnsInfo"
+import { getDeliveryDate } from "@/utils/getDeliveryDate"
+import { capitalize } from "@/utils/capitalize"
+import { ProductItemType } from "@/types/productItem"
 
 type ProductInfoProps = {
   matchedProduct: ProductItemType
@@ -11,7 +11,7 @@ type ProductInfoProps = {
 export const ProductInfo = ({ matchedProduct }: ProductInfoProps) => {
 
   return (
-    <div>
+    <div className="relative">
       <div className="flex w-1/2 flex-col">
         <div className="flex gap-2">
           <span className="whitespace-nowrap text-[0.875rem] font-semibold"> {matchedProduct.brand.toUpperCase()} </span> <span> {capitalize(matchedProduct.type)}</span>
