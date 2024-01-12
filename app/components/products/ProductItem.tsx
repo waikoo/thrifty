@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { capitalize } from '@/utils/capitalize'
 import Link from "next/link"
 import { Category, Locales } from "@/types/home"
+import { twMerge as tm } from 'tailwind-merge'
 
 type ProductItemProps = {
   product: ProductItemType
@@ -17,8 +18,8 @@ export default function ProductItem({ product, index, lang, gender, className, s
   const { type, size, price, img_url, discount, brand } = product
 
   return (
-    <div className={`flex-grow-0 ${className}`}>
-      <div className="h-[20rem] w-[100%]">
+    <div className={`flex-grow-0`}>
+      <div className={tm(`h-[20rem] w-[100%] ${className}`)}>
         <Link href={`/${lang}/${gender}/products/${product.uuid}`}>
           <Image
             src={img_url[0]}

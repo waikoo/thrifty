@@ -13,9 +13,9 @@ export default async function ProductRecommendations({ matchedProduct }: Product
   const eightProducts = products?.filter(product => product.category === matchedProduct.category).slice(0, 8)
 
   return (
-    <section>
+    <section className="mb-20">
       <h1 className="text-content block whitespace-nowrap py-20 text-center text-[1rem] font-semibold">SIMILAR PRODUCTS YOU MIGHT LIKE</h1>
-      <ProductRecommendationsControls products={eightProducts!} />
+      <ProductRecommendationsControls products={eightProducts} />
     </section>
   );
 }

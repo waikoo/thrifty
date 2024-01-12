@@ -16,7 +16,7 @@ export default function ProductRecommendationsControls({ products }: ProductReco
   const handleScrolling = (e: React.MouseEvent<HTMLDivElement>) => {
     const imagesDiv = imagesRef.current;
     if (imagesDiv) {
-      const imageWidth = 200
+      const imageWidth = 300
       imagesDiv.scrollTo({
         left: e.currentTarget === leftRef.current ? imagesDiv.scrollLeft - imageWidth : imagesDiv.scrollLeft + imageWidth,
         behavior: 'smooth',
