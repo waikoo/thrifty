@@ -57,7 +57,7 @@ export default function ProductRecommendationsGrid({ products, imagesRef }: Prod
             <ProductItem
               product={product}
               index={index}
-              className={"select-none"}
+              className={"h-[20rem] w-[100%] select-none "}
             />
 
             <div className="bg-content absolute right-3 top-3 z-20 grid cursor-pointer place-items-center rounded-full p-2" onClick={onClickHandler} data-uuid={product.uuid}>
