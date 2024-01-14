@@ -1,10 +1,10 @@
 "use client"
 import Link from "next/link";
-import { useFilterTitleStore } from "@/state/uiState";
-import { Category, Locales } from "@/types/home";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { GrPowerReset } from 'react-icons/gr'
-import { IconReset } from "./icons";
+
+import { useFilterTitleStore, useUIStore } from "@/state/uiState";
+import { Category, Locales } from "@/types/home";
+import { IconReset } from "@/app/components/products/icons";
 
 type FilterSideControlsProps = {
   gender: Category['category']
@@ -15,8 +15,9 @@ export default function FilterSideControls({ gender, lang }: FilterSideControlsP
   const expandAllFilters = useFilterTitleStore((state) => state.expandAllComponents)
   const collapseAllFilters = useFilterTitleStore((state) => state.collapseAllComponents)
   const areAllExpanded = useFilterTitleStore((state => state.areAllExpanded))
+  const { hideFilters } = useUIStore()
 
-  return (
+  return !hideFilters && (
     <div className="flex items-center gap-5 text-[0.813rem] font-normal">
       <div className="flex items-center gap-1">
         <span

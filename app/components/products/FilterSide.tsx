@@ -1,8 +1,9 @@
+"use client"
 import { Category, Locales } from "@/types/home";
-import { FilterCheckbox, FilterColor, FilterCondition, FilterSize, FilterSlider } from ".";
-import { brandNamesArray } from "../data/brandsData";
-import { filter } from "../data";
-import { ProductItemType } from "@/types/productItem";
+import { FilterCheckbox, FilterColor, FilterCondition, FilterSize, FilterSlider } from "@/app/components/products";
+import { brandNamesArray } from "@/app/components/data/brandsData";
+import { filter } from "@/app/components/data";
+import { useUIStore } from "@/state";
 
 type FilterSideProps = {
   lang: Locales
@@ -10,7 +11,8 @@ type FilterSideProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default async function FilterSide({ lang, gender, searchParams }: FilterSideProps) {
+export default function FilterSide({ lang, gender, searchParams }: FilterSideProps) {
+  const { hideFilters } = useUIStore()
   const getType = (searchParams: { [key: string]: string | string[] | undefined }) => {
     const sp = new URLSearchParams(searchParams);
     let genderArray = sp.getAll('gender')[0]?.split(',')
@@ -48,71 +50,74 @@ export default async function FilterSide({ lang, gender, searchParams }: FilterS
     return [...new Set(result)];
   }
 
-  return (
-    <aside className="sticky flex w-[300px] flex-col gap-6">
+  return (!hideFilters && (
+    (
 
-      <button className="bg-faded mx-auto w-full whitespace-nowrap py-2 text-[0.813rem] font-semibold text-black">
-        SAVE FILTER
-      </button>
+      <aside className="sticky flex w-[300px] flex-col gap-6">
 
-      <FilterCheckbox
-        type={"GENDER"}
-        elements={filter.gender}
-      />
+        <button className="bg-faded mx-auto w-full whitespace-nowrap py-2 text-[0.813rem] font-semibold text-black">
+          SAVE FILTER
+        </button>
 
-      <FilterCheckbox
-        type={"SHOP BY"}
-        elements={filter.shopBy}
-      />
+        <FilterCheckbox
+          type={"GENDER"}
+          elements={filter.gender}
+        />
 
-      <FilterCheckbox
-        type={"CATEGORY"}
-        elements={filter.category}
-      />
+        <FilterCheckbox
+          type={"SHOP BY"}
+          elements={filter.shopBy}
+        />
 
-      <FilterCheckbox
-        type={"TYPE"}
-        elements={getType(searchParams)}
-      />
+        <FilterCheckbox
+          type={"CATEGORY"}
+          elements={filter.category}
+        />
 
-      <FilterSlider
-        type={"PRICE"}
-      />
+        <FilterCheckbox
+          type={"TYPE"}
+          elements={getType(searchParams)}
+        />
 
-      <FilterSlider
-        type={"DISCOUNT"}
-      />
+        <FilterSlider
+          type={"PRICE"}
+        />
 
-      <FilterSize
-        type={"SIZE"}
-        sizes={filter.size} />
+        <FilterSlider
+          type={"DISCOUNT"}
+        />
 
-      <FilterColor
-        type={"COLOR"}
-        colors={filter.color}
-      />
+        <FilterSize
+          type={"SIZE"}
+          sizes={filter.size} />
 
-      <FilterCheckbox
-        type={"BRAND"}
-        elements={brandNamesArray}
-        search
-      />
+        <FilterColor
+          type={"COLOR"}
+          colors={filter.color}
+        />
 
-      <FilterCondition
-        type={"CONDITION"}
-        condition={filter.condition}
-      />
+        <FilterCheckbox
+          type={"BRAND"}
+          elements={brandNamesArray}
+          search
+        />
 
-      <FilterCheckbox
-        type={"MATERIAL"}
-        elements={filter.material}
-      />
+        <FilterCondition
+          type={"CONDITION"}
+          condition={filter.condition}
+        />
 
-      <FilterCheckbox
-        type={"DATE ADDED"}
-        elements={filter.dateAdded}
-      />
+        <FilterCheckbox
+          type={"MATERIAL"}
+          elements={filter.material}
+        />
 
-    </aside>
-  )
+        <FilterCheckbox
+          type={"DATE ADDED"}
+          elements={filter.dateAdded}
+        />
+
+      </aside>
+    )
+  ))
 }
