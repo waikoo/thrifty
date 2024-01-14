@@ -19,7 +19,7 @@ export default function ProductItem({ product, index, lang, gender, className, s
 
   return (
     <div className={`flex-grow-0`}>
-      <div className={tm(`h-[20rem] w-[100%] ${className}`)}>
+      <div className={tm(`${className}`)}>
         <Link href={`/${lang}/${gender}/products/${product.uuid}`}>
           <Image
             src={img_url[0]}

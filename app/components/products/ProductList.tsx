@@ -6,7 +6,7 @@ import { NewArrivals } from "../home/serverIndex"
 type ProductListProps = {
   lang: Locales
   gender: Category['category']
-  searchParams: URLSearchParams
+  searchParams: { [key: string]: string | string[] | undefined }
   data: ProductItemType[]
 }
 
@@ -38,7 +38,7 @@ export default async function ProductList({ lang, gender, searchParams, data }: 
                   searchParams={searchParams}
                   lang={lang}
                   gender={gender}
-                  className={"w-[20%]"}
+                  className={"aspect-square w-[14rem]"}
                 />
               )
             })}
