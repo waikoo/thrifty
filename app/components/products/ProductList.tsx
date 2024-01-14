@@ -1,16 +1,17 @@
 import { Category, Locales } from "@/types/home"
 import { ProductItemType } from "@/types/productItem"
-import { ProductItem, FilterNotFound, ProductPagination } from "."
-import { NewArrivals } from "../home/serverIndex"
+import { ProductItem, FilterNotFound, ProductPagination } from "@/app/components/products"
+import { NewArrivals } from "@/app/components/home/serverIndex"
+import { ReadonlyURLSearchParams } from "next/navigation"
 
 type ProductListProps = {
   lang: Locales
   gender: Category['category']
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: ReadonlyURLSearchParams
   data: ProductItemType[]
 }
 
-export default async function ProductList({ lang, gender, searchParams, data }: ProductListProps) {
+export default function ProductList({ lang, gender, searchParams, data }: ProductListProps) {
   const newParams = new URLSearchParams(searchParams)
   const sortBy = newParams?.get('sort-by')
 
@@ -25,10 +26,10 @@ export default async function ProductList({ lang, gender, searchParams, data }: 
   }
 
   return (
-    <div className="mx-auto w-[80%]">
+    <div className="w-full">
       {data.length > 0 ? (
         <>
-          <div className="flex flex-wrap gap-8">
+          <div className="grid gap-10 sm:grid-cols-3 lg:grid-cols-4">
             {data.map((product: ProductItemType, i: number) => {
               return (
                 <ProductItem
@@ -38,12 +39,12 @@ export default async function ProductList({ lang, gender, searchParams, data }: 
                   searchParams={searchParams}
                   lang={lang}
                   gender={gender}
-                  className={"aspect-square w-[14rem]"}
+                  className={"aspect-square"}
                 />
               )
             })}
           </div>
-          <ProductPagination searchParams={searchParams} productsLength={data.length} />
+          <ProductPagination productsLength={data.length} />
         </>
       ) : (
         <>
