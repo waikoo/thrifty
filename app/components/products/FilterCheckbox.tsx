@@ -1,7 +1,8 @@
 "use client"
-import { FilterSearch, FilterTitle } from "."
-import { useFilterSearch, useQueryParams } from "../hooks"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+
+import { FilterSearch, FilterTitle } from "@/app/components/products"
+import { useFilterSearch, useQueryParams } from "@/app/components/hooks"
 import { useFilterTitleStore } from "@/state/uiState"
 
 type FilterCheckboxProps = {
@@ -30,6 +31,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
               const lowerCaseName = type.toLowerCase()
               const lowerCaseElement = element.toLowerCase()
 
+              // console.log(lowerCaseElement)
               return (
                 <label
                   htmlFor={`${lowerCaseName}-${i}`}
@@ -38,7 +40,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
                   <input
                     type="checkbox"
                     id={`${lowerCaseName}-${i}`}
-                    checked={checkbox[lowerCaseElement]}
+                    checked={checkbox[lowerCaseElement] === true}
                     onChange={onCheckboxChange}
                     value={lowerCaseElement}
                     className="form-checkbox border-grey checked:bg-darkgrey checked:border-darkgrey h-4 w-4 cursor-pointer appearance-none border bg-white outline-[0.1rem] outline-white ring-2 ring-white checked:border-[0.1rem] checked:outline-[0.2rem] checked:outline-white"

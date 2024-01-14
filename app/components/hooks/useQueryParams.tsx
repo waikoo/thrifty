@@ -1,14 +1,11 @@
-import { brandNamesArray } from "@/app/components/data/brandsData"
-import { ReadonlyURLSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
-import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
+import { ReadonlyURLSearchParams } from "next/navigation"
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
+
+import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
 
 const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]) => {
 
-  if (!searchParamos.getAll('gender')[0]) {
-    // TODO: handle
-  }
   const gend = searchParamos.getAll('gender')?.[0]?.split(',')
   const cat = searchParamos.getAll('category')?.[0]?.split(',')
   const shopBy = searchParamos.getAll('shop-by')?.[0]?.split(',')
@@ -26,16 +23,19 @@ const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]
     ['new in']: shopBy?.includes('new in'),
   } as { [key: string]: boolean }
 
-  const brands = brandNamesArray.reduce((acc, brand) => {
-    acc[brand.toLowerCase()] = brandParam?.includes(brand.toLowerCase())
-    return acc
-  }, {} as { [key: string]: boolean })
+  const brands: { [key: string]: boolean } = {};
+  for (const brand of productType) {
+    if (brandParam) {
+      brands[brand.toLowerCase()] = brandParam.includes(brand.toLowerCase());
+    }
+  }
 
-  const dynamicTypes = productType.reduce((acc, type) => {
-    acc[type.toLowerCase()] = typeParam?.includes(type.toLowerCase())
-    return acc
-  }, {} as { [key: string]: boolean })
-
+  const dynamicTypes: { [key: string]: boolean } = {};
+  for (const type of productType) {
+    if (typeParam) {
+      dynamicTypes[type.toLowerCase()] = typeParam.includes(type.toLowerCase());
+    }
+  }
 
   const computedParamState = { ...others, ...brands, ...dynamicTypes }
 
