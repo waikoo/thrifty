@@ -1,5 +1,5 @@
 import { Category, Locales } from '@/types/home';
-import { HeroCarouselArticle, HeroCarouselImages, HeroCarouselNavigator } from '.';
+import { HeroCarouselArticle, HeroCarouselImages, HeroCarouselNavigator } from '@/app/components/home';
 
 type HeroCarouselProps = {
   gender: Category['category']
