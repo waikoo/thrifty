@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import IconHeart from "@/app/components/products/icons/IconHeart"
 import { useFavoriteStore } from "@/state/uiState";
 import { ProductItemType } from "@/types/productItem";
-import useLocalStorage from '@/app/components/hooks/useLocalStorage'
 import updateLocalStorage from "@/utils/updateLocalStorage";
 
 type ProductFavoriteAndShareProps = {

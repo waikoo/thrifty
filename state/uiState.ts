@@ -181,14 +181,22 @@ type TFavoriteStore = {
   favorites: string[]
   toggleFavorite: (id: string) => void
   initFavorites: (favorites: string[]) => void
+  favoritesLength: number
 }
 
 export const useFavoriteStore = create<TFavoriteStore>((set) => ({
   favorites: [],
-  toggleFavorite: (id) => set((state) => ({
-    favorites: state.favorites.includes(id)
+  favoritesLength: 0,
+  toggleFavorite: (id) => set((state) => {
+    const newFavorites = state.favorites.includes(id)
       ? state.favorites.filter((item) => item !== id)
-      : [...state.favorites, id]
-  })),
-  initFavorites: (favorites) => set({ favorites })
+      : [...state.favorites, id];
+
+    return {
+      favorites: newFavorites,
+      favoritesLength: newFavorites.length,
+    };
+  }),
+
+  initFavorites: (favorites) => set({ favorites, favoritesLength: favorites.length }),
 }))

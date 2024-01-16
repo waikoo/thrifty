@@ -1,9 +1,9 @@
 "use client"
 import { useUIStore } from "@/state"
-import { useDarkMode } from "../hooks"
-import { Logo, SearchBar, WithHome } from './'
-import { IconAccount, IconFavorite, IconShoppingBag } from './icons/'
-import { LayoutMenu } from "../admin"
+
+import { useDarkMode } from "@/app/components/hooks"
+import { Logo, SearchBar, WithHome } from '@/app/components/navigation/'
+import { IconAccount, IconFavorite, IconShoppingBag } from '@/app/components/navigation/icons/'
 
 type NavBarProps = {
   isAdmin?: boolean
