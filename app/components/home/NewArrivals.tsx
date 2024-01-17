@@ -1,26 +1,28 @@
-import { createTranslation } from '@/i18n/server'
-import { Category, Locales } from '@/types/home'
-import { useSupabaseServer } from '../hooks/serverIndex';
-import { ProductItemType } from '@/types/productItem';
-import { NewArrivalsControls } from './';
 import Link from 'next/link';
+
+import { createTranslation } from '@/i18n/server'
+import { useSupabaseServer } from '@/app/components/hooks/serverIndex';
+import { NewArrivalsControls } from '@/app/components/home';
+import { Category, Locales } from '@/types/home'
+import { ProductItemType } from '@/types/productItem';
 
 type NewArrivalsProps = {
   lang: Locales
   gender: Category['category']
-  notHome: boolean
+  notHome?: boolean
 }
 
 export default async function NewArrivals({ lang, gender, notHome = false }: NewArrivalsProps) {
   const { t } = await createTranslation(lang, 'home')
   const supabase = useSupabaseServer()
 
-  let { data, error } = await supabase
+  let { data: products, error } = await supabase
     .from('products')
     .select('*')
     .filter('gender', 'eq', gender)
     .order('created_at', { ascending: false })
     .limit(12)
+
 
   return (
     <section className={`${notHome ? 'bg-bkg w-full' : 'bg-content w-screen px-24 pb-10'} flex flex-col`}>
@@ -32,7 +34,7 @@ export default async function NewArrivals({ lang, gender, notHome = false }: New
         </h3>
 
         <NewArrivalsControls
-          data={data as ProductItemType[]}
+          products={products as ProductItemType[]}
           gender={gender}
         />
 

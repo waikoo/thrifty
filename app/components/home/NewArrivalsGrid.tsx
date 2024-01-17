@@ -1,20 +1,21 @@
 "use client"
 import Image from 'next/image'
+
 import { ProductItemType } from "@/types/productItem"
 
 type NewArrivalsGridProps = {
-  data: ProductItemType[]
+  products: ProductItemType[]
   imagesRef: React.RefObject<HTMLDivElement>
 }
 
-export default function NewArrivalsGrid({ data, imagesRef }: NewArrivalsGridProps) {
+export default function NewArrivalsGrid({ products, imagesRef }: NewArrivalsGridProps) {
 
   return (
     <div className="scrollbar scrollbar-thumb-darkgrey scrollbar-thumb-rounded scrollbar-thin grid h-auto w-full snap-x snap-mandatory auto-cols-auto grid-flow-col gap-[0.313rem] overflow-x-auto overscroll-x-contain"
       ref={imagesRef}
       draggable={false}
     >
-      {data?.map((product) => (
+      {products?.map((product, i) => (
         <div className="w-[200px]" key={product.uuid}>
           <Image
             src={product.img_url[0]}

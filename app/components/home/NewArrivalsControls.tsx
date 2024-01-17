@@ -1,16 +1,17 @@
 "use client"
-import { ProductItemType } from "@/types/productItem"
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { useRef } from 'react';
-import { NewArrivalsGrid } from './'
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+
+import { ProductItemType } from "@/types/productItem"
+import { NewArrivalsGrid } from '@/app/components/home'
 import { Category } from "@/types/home";
 
 type NewArrivalsControlsProps = {
-  data: ProductItemType[]
+  products: ProductItemType[]
   gender: Category['category']
 }
 
-export default function NewArrivalsControls({ data, gender }: NewArrivalsControlsProps) {
+export default function NewArrivalsControls({ products, gender }: NewArrivalsControlsProps) {
   const leftRef = useRef<HTMLDivElement>(null)
   const imagesRef = useRef<HTMLDivElement>(null)
 
@@ -37,7 +38,7 @@ export default function NewArrivalsControls({ data, gender }: NewArrivalsControl
       </div>
 
       <NewArrivalsGrid
-        data={data}
+        products={products}
         imagesRef={imagesRef}
       />
 
