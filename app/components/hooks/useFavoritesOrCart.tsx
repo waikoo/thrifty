@@ -7,7 +7,7 @@ export default function useFavoritesOrCart() {
   const includesFavorites = splitPath.includes('favorites')
 
   function getClassName(condition: boolean) {
-    return condition ? 'text-content' : 'text-grey font-light'
+    return condition ? 'text-content border-content border-b-[0.1rem]' : 'text-grey font-light'
   }
 
   return {

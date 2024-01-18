@@ -5,9 +5,10 @@ import { getSvgColor } from "@/utils/theme"
 import { useFavoriteStore } from "@/state/uiState"
 
 type IconFavoriteProps = {
+  stroke?: string
 }
 
-const IconFavorite = ({ }: IconFavoriteProps) => {
+const IconFavorite = ({ stroke }: IconFavoriteProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
   const { favoritesLength } = useFavoriteStore()
 
@@ -22,7 +23,7 @@ const IconFavorite = ({ }: IconFavoriteProps) => {
         fill="none"
       >
         <path
-          stroke={color}
+          stroke={stroke || color}
           strokeWidth={2.5}
           d="m16.667 7.488-6.745 6.744-6.744-6.744A3.654 3.654 0 1 1 8.345 2.32l.693.694.884.884.884-.884.694-.694a3.654 3.654 0 1 1 5.167 5.168Z"
         />
