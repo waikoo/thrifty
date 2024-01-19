@@ -21,16 +21,16 @@ export default function FavoritesOrCart({ lang }: FavoritesOrCartProps) {
 
   return (
     (includesCart || includesFavorites) ? (
-      <div className="text-content justify-content grid w-full w-screen cursor-pointer grid-cols-2 gap-6 px-28 text-[1.125rem] font-medium tracking-wider">
+      <div className="text-content justify-content grid w-screen cursor-pointer grid-cols-2 pt-6 text-[1.125rem] font-medium tracking-wider">
 
         <Link href={`/${lang}/cart`}
-          className={`${isCart} pb-3 flex justify-center items-center gap-2`}>
+          className={`${isCart} border-b-[3px] pb-3 flex justify-center items-center gap-2`}>
           <IconShoppingBag stroke={getIconColor(theme, includesCart)} />
           <span className="text-[0.875rem] font-bold">CART</span>
         </Link>
 
         <Link href={`/${lang}/favorites`}
-          className={`${isFavorites} pb-3 flex justify-center items-center gap-2`}>
+          className={`${isFavorites} border-b-[3px] pb-3 flex justify-center items-center gap-2`}>
           <IconFavorite stroke={getIconColor(theme, includesFavorites)} />
           <span className="text-[0.875rem] font-bold">FAVORITES</span>
         </Link>
