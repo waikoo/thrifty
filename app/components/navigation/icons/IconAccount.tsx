@@ -1,9 +1,9 @@
 "use client"
 import { useThemeStore, useUIStore } from "@/state"
 import { getSvgColor } from "@/utils/theme"
-import { useUserSession } from "../../hooks"
-import { AccountMenu, CenterContainer } from ".."
-import { Error } from "../../"
+import { useUserSession } from "@/app/components/hooks"
+import { AccountMenu, CenterContainer } from "@/app/components/navigation"
+import { Error } from "@/app/components"
 
 const IconAccount = () => {
   const { showMyAccount, setShowMyAccount, showSignIn, setShowSignIn } = useUIStore()
