@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import { useThemeStore } from "@/state/themeState"
 import { getSvgColor } from "@/utils/theme"
 import { useFavoriteStore } from "@/state/uiState"
@@ -10,7 +11,14 @@ type IconFavoriteProps = {
 
 const IconFavorite = ({ stroke }: IconFavoriteProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
-  const { favoritesLength } = useFavoriteStore()
+  const { favoritesLength, initFavorites } = useFavoriteStore()
+
+  useEffect(() => {
+    const favorites = localStorage.getItem('favorites')
+    if (favorites) {
+      initFavorites(JSON.parse(favorites))
+    }
+  }, [])
 
   return (
     <div
