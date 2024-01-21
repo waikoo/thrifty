@@ -53,7 +53,7 @@ export default function FilterSide({ lang, gender, searchParams }: FilterSidePro
   return (!hideFilters && (
     (
 
-      <aside className="sticky z-10 flex w-[300px] flex-col gap-6">
+      <aside className="sticky top-24 z-10 flex w-[300px] flex-col gap-6 self-start pb-10">
 
         <button className="bg-faded mx-auto w-full whitespace-nowrap py-2 text-[0.813rem] font-semibold text-black">
           SAVE FILTER
