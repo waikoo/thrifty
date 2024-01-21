@@ -19,7 +19,7 @@ export default function FilterTop({ gender, lang }: FilterTopProps) {
   }
 
   return (
-    <section className="flex items-baseline justify-between py-6">
+    <section className="bg-bkg sticky top-0 z-50 flex items-baseline justify-between py-6">
       <FilterSideControls gender={gender} lang={lang} />
 
       <div className="ml-auto flex items-center gap-4">
