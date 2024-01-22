@@ -7,9 +7,10 @@ import { useFavoriteStore } from "@/state/uiState"
 
 type IconFavoriteProps = {
   stroke?: string
+  showFavorites?: boolean
 }
 
-const IconFavorite = ({ stroke }: IconFavoriteProps) => {
+const IconFavorite = ({ stroke, showFavorites = true }: IconFavoriteProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
   const { favoritesLength, initFavorites } = useFavoriteStore()
 
@@ -36,7 +37,7 @@ const IconFavorite = ({ stroke }: IconFavoriteProps) => {
           d="m16.667 7.488-6.745 6.744-6.744-6.744A3.654 3.654 0 1 1 8.345 2.32l.693.694.884.884.884-.884.694-.694a3.654 3.654 0 1 1 5.167 5.168Z"
         />
       </svg>
-      {favoritesLength > 0 && (
+      {showFavorites && favoritesLength > 0 && (
         <div className="bg-content text-bkg absolute right-[-15px] top-[-15px] flex h-[20px] w-[20px] items-center justify-center rounded-full p-[5px] text-center">
           <span className="self-center text-sm">{favoritesLength}</span>
         </div>

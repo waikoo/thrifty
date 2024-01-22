@@ -31,7 +31,7 @@ export default function FavoritesOrCart({ lang }: FavoritesOrCartProps) {
 
         <Link href={`/${lang}/favorites`}
           className={`${isFavorites} border-b-[3px] pb-3 flex justify-center items-center gap-2`}>
-          <IconFavorite stroke={getIconColor(theme, includesFavorites)} />
+          <IconFavorite stroke={getIconColor(theme, includesFavorites)} showFavorites={false} />
           <span className="text-[0.875rem] font-bold">FAVORITES</span>
         </Link>
       </div>
