@@ -12,7 +12,7 @@ type NewArrivalsProps = {
   notHome?: boolean
 }
 
-export default async function NewArrivals({ lang, gender, notHome = false }: NewArrivalsProps) {
+export default async function NewArrivals({ lang, gender = 'women', notHome = false }: NewArrivalsProps) {
   const { t } = await createTranslation(lang, 'home')
   const supabase = useSupabaseServer()
 
@@ -22,7 +22,6 @@ export default async function NewArrivals({ lang, gender, notHome = false }: New
     .filter('gender', 'eq', gender)
     .order('created_at', { ascending: false })
     .limit(12)
-
 
   return (
     <section className={`${notHome ? 'bg-bkg w-full' : 'bg-content w-screen px-24 pb-10'} flex flex-col`}>
