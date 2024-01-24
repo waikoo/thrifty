@@ -17,7 +17,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
         <span className="font-semibold">Looks like you haven't added any items to your cart yet!</span>
       </div>
 
-      <NewArrivals lang={lang} gender={gender} />
+      <NewArrivals lang={lang} gender={gender} notHome={true} />
     </main>
   )
 }

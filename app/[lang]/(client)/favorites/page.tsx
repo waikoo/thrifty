@@ -17,7 +17,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
         <span className="font-semibold">Tap or click the heart icon to keep track of the items you love.</span>
       </div>
 
-      <NewArrivals lang={lang} gender={gender} />
+      <NewArrivals lang={lang} gender={gender} notHome={true} />
 
     </main>
   )
