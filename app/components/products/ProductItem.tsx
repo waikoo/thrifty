@@ -1,9 +1,11 @@
-import { ProductItemType } from "@/types/productItem"
 import Image from 'next/image'
-import { capitalize } from '@/utils/capitalize'
 import Link from "next/link"
-import { Category, Locales } from "@/types/home"
 import { twMerge as tm } from 'tailwind-merge'
+
+import { capitalize } from '@/utils/capitalize'
+import { ProductItemType } from "@/types/productItem"
+import { Category, Locales } from "@/types/home"
+import ProductAddToCart from '@/app/components/products/ProductAddToCart'
 
 type ProductItemProps = {
   product: ProductItemType
@@ -15,12 +17,12 @@ type ProductItemProps = {
 }
 
 export default function ProductItem({ product, index, lang, gender, className, searchParams }: ProductItemProps) {
-  const { type, size, price, img_url, discount, brand } = product
+  const { type, size, price, img_url, discount, brand, uuid } = product
 
   return (
     <div className={`flex-grow-0`}>
       <div className={tm(`${className}`)}>
-        <Link href={`/${lang}/${gender}/products/${product.uuid}`}>
+        <Link href={`/${lang}/${gender}/products/${uuid}`}>
           <Image
             src={img_url[0]}
             alt={'product-image'}
@@ -31,9 +33,9 @@ export default function ProductItem({ product, index, lang, gender, className, s
           />
         </Link>
       </div>
-      <div className="bg-darkgrey w-full py-4 text-center text-[0.75rem] font-medium text-white">
-        <span>ADD TO CART</span>
-      </div>
+
+      <ProductAddToCart uuid={uuid} />
+
       <div className="text-content text-[0.75rem] font-semibold">
         <div className="flex justify-between">
           <span>{capitalize(brand)}</span>

@@ -200,3 +200,29 @@ export const useFavoriteStore = create<TFavoriteStore>((set) => ({
 
   initFavorites: (favorites) => set({ favorites, favoritesLength: favorites.length }),
 }))
+
+type TCartStore = {
+  cart: string[]
+  toggleCart: (id: string) => void
+  initCart: (cart: string[]) => void
+  cartLength: number
+}
+
+export const useCartStore = create<TCartStore>((set) => ({
+  cart: [],
+  cartLength: 0,
+  toggleCart: (id) => set((state) => {
+    if (state.cart.includes(id)) {
+      return state
+    }
+    const newCart = [...state.cart, id];
+
+    return {
+      cart: newCart,
+      cartLength: newCart.length,
+    };
+  }),
+
+  initCart: (cart) => set({ cart, cartLength: cart.length }),
+}))
+
