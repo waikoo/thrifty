@@ -1,21 +1,25 @@
 "use client"
 import { useEffect } from "react"
+import { twMerge as tm } from "tailwind-merge"
 
 import { useCartStore } from "@/state/uiState"
 
 type ProductAddToCartProps = {
   uuid: string
+  className: string
 }
 
-export default function ProductAddToCart({ uuid }: ProductAddToCartProps) {
-  const { toggleCart, cart, initCart } = useCartStore()
+export default function ProductAddToCart({ uuid, className }: ProductAddToCartProps) {
+  const { addToCart, cart, initCart } = useCartStore()
 
-  function addToCart(): void {
-    toggleCart(uuid)
+  function addItemToCart(): void {
+    addToCart(uuid)
   }
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart))
+    if (cart.length > 0) {
+      localStorage.setItem('cart', JSON.stringify(cart))
+    }
   }, [cart])
 
   useEffect(() => {
@@ -27,8 +31,8 @@ export default function ProductAddToCart({ uuid }: ProductAddToCartProps) {
   }, [])
 
   return (
-    <div className="bg-darkgrey w-full cursor-pointer py-4 text-center text-[0.75rem] font-medium text-white">
-      <span onClick={addToCart}>ADD TO CART</span>
+    <div className={tm(`bg-darkgrey w-full cursor-pointer py-4 text-center text-[0.75rem] font-medium text-white ${className}`)}>
+      <span className="select-none" onClick={addItemToCart}>ADD TO CART</span>
     </div>
   )
 }

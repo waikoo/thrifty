@@ -203,7 +203,7 @@ export const useFavoriteStore = create<TFavoriteStore>((set) => ({
 
 type TCartStore = {
   cart: string[]
-  toggleCart: (id: string) => void
+  addToCart: (id: string) => void
   initCart: (cart: string[]) => void
   cartLength: number
 }
@@ -211,7 +211,7 @@ type TCartStore = {
 export const useCartStore = create<TCartStore>((set) => ({
   cart: [],
   cartLength: 0,
-  toggleCart: (id) => set((state) => {
+  addToCart: (id) => set((state) => {
     if (state.cart.includes(id)) {
       return state
     }
@@ -223,6 +223,9 @@ export const useCartStore = create<TCartStore>((set) => ({
     };
   }),
 
-  initCart: (cart) => set({ cart, cartLength: cart.length }),
+  initCart: (cart) => set({
+    cart,
+    cartLength: cart.length
+  }),
 }))
 

@@ -1,9 +1,10 @@
+import { Inter } from 'next/font/google';
+
+import "@/styles/styles.css";
 import FavoritesOrCart from "@/app/components/FavoritesOrCart";
 import { themeSettings } from "@/app/components/data/theme";
 import { Footer } from "@/app/components/footer";
 import { BackToTop, Banner, Category, NavBar } from "@/app/components/navigation";
-import "@/styles/styles.css";
-import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 export const metadata = {
