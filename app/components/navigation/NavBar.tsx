@@ -30,7 +30,7 @@ const NavBar = ({ isAdmin, params }: NavBarProps) => {
         <nav className="flex items-center gap-6 justify-self-end pt-2">
           <IconAccount />
           <IconFavorite />
-          <IconShoppingBag />
+          <IconShoppingBag hideCartNumber={true} />
         </nav>
       </div>
     </section>
