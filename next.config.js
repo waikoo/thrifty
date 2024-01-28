@@ -12,6 +12,9 @@ const nextConfig = {
       }, {
         protocol: 'https',
         hostname: 'f.nooncdn.com',
+      }, {
+        protocol: 'https',
+        hostname: 'picsum.photos',
       }],
   },
 };
