@@ -1,26 +1,61 @@
-import Image from "next/image"
+"use client"
+import { useEffect, useState } from "react"
+import { supabase } from "@/app/supabase"
+import { ProductItemType } from "@/types/productItem"
+import CartItem from "@/app/components/cart/CartItem"
+import IconShare from "@/app/components/cart/icons/IconShare"
+import IconDelete from "@/app/components/cart/icons/IconDelete"
+import IconHeart from "./icons/IconHeart"
 
 export default function CartItems() {
+  const [uuids, setUuids] = useState<string[]>([])
+  const [products, setProducts] = useState<ProductItemType[]>([])
+
+  useEffect(() => {
+    const getProducts = async (uuid: string[]) => {
+      let { data: products, error } = await supabase
+        .from('products')
+        .select('*')
+        .in('uuid', uuid)
+      return products
+    }
+
+    const uuidArr = localStorage.getItem('cart')
+    if (uuidArr) {
+      const uuids = JSON.parse(uuidArr)
+      setUuids(uuids)
+
+      getProducts(uuids).then((products => {
+        if (products!!) {
+          setProducts(products)
+        }
+      }))
+    }
+  }, [])
+  console.log(products)
+
   return (
-    <section className="flex">
-      <div>
-        <div className="flex gap-2">
+    <section className="flex justify-between gap-32">
+      <div className="flex flex-col gap-8">
+        <div className="mt-[40px] flex items-center gap-2">
           <input type="checkbox" />
-          <span className="underline underline-offset-2">Share</span>
-          <span className="underline underline-offset-2">Save</span>
-          <span className="underline underline-offset-2">Delete</span>
+          <div className="flex items-center gap-2 underline underline-offset-2">
+            <IconShare />
+            <span>Share</span>
+          </div>
+          <div className="flex items-center gap-2 underline underline-offset-2">
+            <IconHeart />
+            <span> Save </span>
+          </div>
+          <div className="flex items-center gap-2 underline underline-offset-2">
+            <IconDelete />
+            <span> Delete </span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-[auto,auto,1fr,auto,auto,auto]">
-          <input className="col-start-1 col-end-2" type="checkbox" />
-          <Image className="col-start-2 col-end-3" src="https://picsum.photos/200/300" alt="cart image" width={100} height={100} priority={true} />
-          <span className="col-start-3 col-end-4">Stradivarius Jacket</span>
-          <span className="col-start-3 col-end-4">XL</span>
-          <span className="col-start-3 col-end-4">$99</span>
-          <span className="col-start-4 col-end-5">Share</span>
-          <span className="col-start-5 col-end-6">Like</span>
-          <span className="col-start-6 col-end-7">Delete</span>
-          <span className="col-start-5 col-end-7">30 Min.</span>
+        <div className="flex flex-col gap-4">
+          {products.map((product) => (
+            <CartItem key={product.uuid} product={product} />))}
         </div>
       </div>
 

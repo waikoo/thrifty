@@ -16,6 +16,7 @@ export default function Page({ params: { lang, gender }, searchParams, }: PagePr
 
       <CartContent />
       <NewArrivals lang={lang} gender={gender} notHome={true} />
+
     </main>
   )
 }
