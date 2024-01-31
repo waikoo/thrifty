@@ -5,11 +5,13 @@ import { supabase } from "@/app/supabase"
 import { ProductItemType } from "@/types/productItem"
 import CartItem from "@/app/components/cart/CartItem"
 import CartControls from "@/app/components/cart/CartControls"
-import CartOrderSummary from "./CartOrderSummary"
+import CartOrderSummary from "@/app/components/cart/CartOrderSummary"
+import { useCartStore } from "@/state/uiState"
 
 export default function CartItems() {
   const [uuids, setUuids] = useState<string[]>([])
   const [products, setProducts] = useState<ProductItemType[]>([])
+  const { cart } = useCartStore()
 
   useEffect(() => {
     const getProducts = async (uuid: string[]) => {
@@ -31,7 +33,7 @@ export default function CartItems() {
         }
       }))
     }
-  }, [])
+  }, [cart])
 
   return (
     <section className="flex justify-between gap-32">

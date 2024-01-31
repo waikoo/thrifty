@@ -6,12 +6,25 @@ import IconClock from "@/app/components/cart/icons/IconClock"
 import IconShare from "@/app/components/cart/icons/IconShare"
 import IconDelete from "@/app/components/cart/icons/IconDelete"
 import IconHeart from "@/app/components/cart/icons/IconHeart"
+import { useCartStore } from "@/state/uiState"
 
 type CartItemType = {
   product: ProductItemType
 }
 
 export default function CartItem({ product }: CartItemType) {
+  const { removeFromCart } = useCartStore()
+
+  const removeCartItem = () => {
+    removeFromCart(product.uuid)
+
+    const stringifiedCart = localStorage.getItem('cart')
+    if (stringifiedCart) {
+      const cart = JSON.parse(stringifiedCart)
+      const newCart = cart.filter((uuid: string) => uuid !== product.uuid)
+      localStorage.setItem('cart', JSON.stringify(newCart))
+    }
+  }
 
   return (
     <div className="grid-rows-[auto, auto, auto, auto] grid grid-cols-[auto,auto,300px,auto,auto,auto] items-center gap-4 py-4">
@@ -23,7 +36,9 @@ export default function CartItem({ product }: CartItemType) {
 
       <IconShare className="col-start-4 col-end-5 row-start-1 row-end-2 cursor-pointer" />
       <IconHeart className="col-start-5 col-end-6 row-start-1 row-end-2 cursor-pointer" />
-      <IconDelete className="col-start-6 col-end-7 row-start-1 row-end-2 cursor-pointer" />
+      <div onClick={removeCartItem} title="Delete">
+        <IconDelete className="col-start-6 col-end-7 row-start-1 row-end-2 cursor-pointer" />
+      </div>
 
       <div className="row col-start-4 col-end-7 row-start-4 row-end-5 flex items-center gap-2 justify-self-center">
         <IconClock />

@@ -206,6 +206,8 @@ type TCartStore = {
   addToCart: (id: string) => void
   initCart: (cart: string[]) => void
   cartLength: number
+  emptyCart: () => void
+  removeFromCart: (id: string) => void
 }
 
 export const useCartStore = create<TCartStore>((set) => ({
@@ -227,5 +229,17 @@ export const useCartStore = create<TCartStore>((set) => ({
     cart,
     cartLength: cart.length
   }),
+  emptyCart: () => set({
+    cart: [],
+    cartLength: 0
+  }),
+  removeFromCart: (id: string) => set((state) => {
+    const newCart = state.cart.filter((item) => item !== id);
+
+    return {
+      cart: newCart,
+      cartLength: newCart.length,
+    };
+  })
 }))
 
