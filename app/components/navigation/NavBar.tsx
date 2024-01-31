@@ -1,9 +1,11 @@
 "use client"
-import { useUIStore } from "@/state"
+import Link from "next/link"
 
+import { useUIStore } from "@/state"
 import { useDarkMode } from "@/app/components/hooks"
 import { Logo, SearchBar, WithHome } from '@/app/components/navigation/'
 import { IconAccount, IconFavorite, IconShoppingBag } from '@/app/components/navigation/icons/'
+import { usePathname } from "next/navigation"
 
 type NavBarProps = {
   isAdmin?: boolean
@@ -11,6 +13,8 @@ type NavBarProps = {
 }
 
 const NavBar = ({ isAdmin, params }: NavBarProps) => {
+  const lang = usePathname().split('/')[1]
+
   const htmlDataset = typeof document !== 'undefined' ? document.documentElement.dataset : undefined
   if (htmlDataset) {
     useDarkMode(htmlDataset)
@@ -29,8 +33,12 @@ const NavBar = ({ isAdmin, params }: NavBarProps) => {
 
         <nav className="flex items-center gap-6 justify-self-end pt-2">
           <IconAccount />
-          <IconFavorite />
-          <IconShoppingBag hideCartNumber={true} />
+          <Link href={`/${lang}/favorites`}>
+            <IconFavorite />
+          </Link>
+          <Link href={`/${lang}/cart`}>
+            <IconShoppingBag hideCartNumber={true} />
+          </Link>
         </nav>
       </div>
     </section>
