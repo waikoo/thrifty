@@ -1,4 +1,6 @@
 "use client"
+import { useEffect, useRef } from "react"
+
 import { useThemeStore, useUIStore } from "@/state"
 import { getSvgColor } from "@/utils/theme"
 import { useUserSession } from "@/app/components/hooks"
@@ -9,9 +11,25 @@ const IconAccount = () => {
   const { showMyAccount, setShowMyAccount, showSignIn, setShowSignIn } = useUIStore()
   const color = useThemeStore((state) => getSvgColor(state.theme))
   const { session, error } = useUserSession()
+  const divRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (divRef.current && !divRef.current.contains(e.target as Node)) {
+        setShowMyAccount(false);
+        setShowSignIn(false);
+      }
+    };
+
+    window.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      window.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
 
   return (
-    <div className="relative">
+    <div className="relative" ref={divRef}>
       <div title={session?.user.role ? "Account" : "Sign In"}
       >
         <svg
@@ -36,8 +54,6 @@ const IconAccount = () => {
         showMyAccount ? <AccountMenu />
           : showSignIn ? <CenterContainer /> : null
       ) : <Error>Something went wrong</Error>}
-
-
     </div>
   )
 }
