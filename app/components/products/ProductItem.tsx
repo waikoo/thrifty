@@ -13,7 +13,7 @@ type ProductItemProps = {
   lang?: Locales
   gender?: Category['category']
   className?: string
-  searchParams?: URLSearchParams
+  searchParams?: { [key: string]: string | string[] | undefined }
 }
 
 export default function ProductItem({ product, index, lang, gender, className, searchParams }: ProductItemProps) {

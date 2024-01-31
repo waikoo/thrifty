@@ -3,6 +3,7 @@ import { FilterSide, FilterTop } from "@/app/components/products"
 import { ProductList } from "@/app/components/products/serverIndex"
 import { Category, Locales } from "@/types/home"
 import { fetchProductsByFilters } from "@/utils/fetchProductsByFilters"
+import { ReadonlyURLSearchParams } from "next/navigation"
 
 type PageProps = {
   params: {
@@ -12,7 +13,7 @@ type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 export default async function Page({ params: { lang, gender }, searchParams }: PageProps) {
-  const data = await fetchProductsByFilters(useSupabaseServer(), searchParams)
+  const products = await fetchProductsByFilters(useSupabaseServer(), searchParams)
 
   return (
     <main className="bg-bkg text-content mx-auto px-20 lg:max-w-[1500px]">
@@ -20,7 +21,7 @@ export default async function Page({ params: { lang, gender }, searchParams }: P
 
       <div className="flex gap-16">
         <FilterSide {...{ lang, gender, searchParams }} />
-        <ProductList {...{ lang, gender, searchParams }} data={data.data} />
+        <ProductList {...{ lang, gender, searchParams }} products={products.data} />
       </div>
 
     </main>
