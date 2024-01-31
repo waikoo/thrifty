@@ -6,7 +6,7 @@ import { useCartStore } from "@/state/uiState"
 
 type ProductAddToCartProps = {
   uuid: string
-  className: string
+  className?: string
 }
 
 export default function ProductAddToCart({ uuid, className }: ProductAddToCartProps) {
