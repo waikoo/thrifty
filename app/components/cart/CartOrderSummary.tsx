@@ -15,7 +15,7 @@ export default function CartOrderSummary() {
         <span className="text-[0.75rem] font-medium">Shipping</span>
         <span className="justify-self-end text-[0.75rem] font-normal">$10</span>
         <select className="text-bkg bg-faded col-span-full text-[0.75rem] font-medium" name="shipping" id="shipping">
-          <option selected value="home" className="">Home Delivery 2-3 Days</option>
+          <option defaultValue value="home" className="">Home Delivery 2-3 Days</option>
           <option value="store" className="">Collect from store </option>
         </select>
         <span className="my-4 text-[0.875rem] font-semibold">TOTAL COST</span>

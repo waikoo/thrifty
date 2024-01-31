@@ -182,6 +182,7 @@ type TFavoriteStore = {
   toggleFavorite: (id: string) => void
   initFavorites: (favorites: string[]) => void
   favoritesLength: number
+  addToFavorites: (id: string) => void
 }
 
 export const useFavoriteStore = create<TFavoriteStore>((set) => ({
@@ -199,6 +200,10 @@ export const useFavoriteStore = create<TFavoriteStore>((set) => ({
   }),
 
   initFavorites: (favorites) => set({ favorites, favoritesLength: favorites.length }),
+  addToFavorites: (id: string) => set((state) => ({
+    favorites: [...state.favorites, id],
+    favoritesLength: state.favorites.length + 1
+  }))
 }))
 
 type TCartStore = {

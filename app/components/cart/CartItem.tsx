@@ -6,7 +6,7 @@ import IconClock from "@/app/components/cart/icons/IconClock"
 import IconShare from "@/app/components/cart/icons/IconShare"
 import IconDelete from "@/app/components/cart/icons/IconDelete"
 import IconHeart from "@/app/components/cart/icons/IconHeart"
-import { useCartStore } from "@/state/uiState"
+import { useCartStore, useFavoriteStore } from "@/state/uiState"
 
 type CartItemType = {
   product: ProductItemType
@@ -14,6 +14,20 @@ type CartItemType = {
 
 export default function CartItem({ product }: CartItemType) {
   const { removeFromCart } = useCartStore()
+  const { addToFavorites } = useFavoriteStore()
+
+  const addItemToFavorites = () => {
+    addToFavorites(product.uuid)
+
+    const stringifiedFavorites = localStorage.getItem('favorites')
+
+    if (stringifiedFavorites) {
+      const favorites = JSON.parse(stringifiedFavorites)
+      if (favorites.includes(product.uuid)) return
+      const newFavorites = [...favorites, product.uuid]
+      localStorage.setItem('favorites', JSON.stringify(newFavorites))
+    }
+  }
 
   const removeCartItem = () => {
     removeFromCart(product.uuid)
@@ -35,7 +49,9 @@ export default function CartItem({ product }: CartItemType) {
       <span className="col-start-3 col-end-4 row-start-4 row-end-5 text-[0.875rem] font-semibold">€{product.price}</span>
 
       <IconShare className="col-start-4 col-end-5 row-start-1 row-end-2 cursor-pointer" />
-      <IconHeart className="col-start-5 col-end-6 row-start-1 row-end-2 cursor-pointer" />
+      <div onClick={addItemToFavorites} title="Add to Favorites">
+        <IconHeart className="col-start-5 col-end-6 row-start-1 row-end-2 cursor-pointer" />
+      </div>
       <div onClick={removeCartItem} title="Delete">
         <IconDelete className="col-start-6 col-end-7 row-start-1 row-end-2 cursor-pointer" />
       </div>
