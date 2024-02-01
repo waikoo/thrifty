@@ -1,12 +1,13 @@
+"use client"
 import Image from "next/image"
 
+import { useCartStore, useFavoriteStore, useSelectedCartStore } from "@/state/uiState"
 import { ProductItemType } from "@/types/productItem"
 import { capitalize } from "@/utils/capitalize"
 import IconClock from "@/app/components/cart/icons/IconClock"
 import IconShare from "@/app/components/cart/icons/IconShare"
 import IconDelete from "@/app/components/cart/icons/IconDelete"
 import IconHeart from "@/app/components/cart/icons/IconHeart"
-import { useCartStore, useFavoriteStore } from "@/state/uiState"
 
 type CartItemType = {
   product: ProductItemType
@@ -14,6 +15,7 @@ type CartItemType = {
 
 export default function CartItem({ product }: CartItemType) {
   const { removeFromCart } = useCartStore()
+  const { selected, areAllSelected, toggleSelected } = useSelectedCartStore()
   const { addToFavorites } = useFavoriteStore()
 
   const addItemToFavorites = () => {
@@ -40,9 +42,13 @@ export default function CartItem({ product }: CartItemType) {
     }
   }
 
+  const toggleSelectedItem = () => {
+    toggleSelected(product.uuid)
+  }
+
   return (
     <div className="grid-rows-[auto, auto, auto, auto] grid grid-cols-[auto,auto,300px,auto,auto,auto] items-center gap-4 py-4">
-      <input className="col-start-1 col-end-2 row-span-4 self-center" type="checkbox" />
+      <input className="col-start-1 col-end-2 row-span-4 self-center" type="checkbox" checked={selected.includes(product.uuid) || false} onChange={toggleSelectedItem} />
       <Image className="col-start-2 col-end-3 row-span-4" src={product.img_url[0]} alt="cart image" width={100} height={100} priority={true} />
       <span className="col-start-3 col-end-4 row-start-1 row-end-2 text-[0.8125rem] font-medium">{`${capitalize(product.brand)} ${capitalize(product.type)}`}</span>
       <span className="col-start-3 col-end-4 row-start-2 row-end-3 text-[0.8125rem] font-semibold">{product.size}</span>

@@ -183,6 +183,7 @@ type TFavoriteStore = {
   initFavorites: (favorites: string[]) => void
   favoritesLength: number
   addToFavorites: (id: string) => void
+  addSelectedToFavorites: (newFavorites: string[]) => void
 }
 
 export const useFavoriteStore = create<TFavoriteStore>((set) => ({
@@ -200,10 +201,23 @@ export const useFavoriteStore = create<TFavoriteStore>((set) => ({
   }),
 
   initFavorites: (favorites) => set({ favorites, favoritesLength: favorites.length }),
-  addToFavorites: (id: string) => set((state) => ({
-    favorites: [...state.favorites, id],
-    favoritesLength: state.favorites.length + 1
-  }))
+  addToFavorites: (id: string) => set((state) => {
+    if (!state.favorites.includes(id)) {
+      return {
+        favorites: [...state.favorites, id],
+        favoritesLength: state.favorites.length + 1
+      };
+    }
+    return state;
+  }),
+  addSelectedToFavorites: (newFavorites: string[]) => set((state) => {
+    const newFav = newFavorites.filter((newId) => !state.favorites.includes(newId));
+
+    return {
+      favorites: [...state.favorites, ...newFav],
+      favoritesLength: state.favorites.length + newFav.length
+    };
+  }),
 }))
 
 type TCartStore = {
@@ -213,6 +227,7 @@ type TCartStore = {
   cartLength: number
   emptyCart: () => void
   removeFromCart: (id: string) => void
+  removeSelectedFromCart: (selected: string[]) => void
 }
 
 export const useCartStore = create<TCartStore>((set) => ({
@@ -245,6 +260,47 @@ export const useCartStore = create<TCartStore>((set) => ({
       cart: newCart,
       cartLength: newCart.length,
     };
+  }),
+  removeSelectedFromCart: (selected: string[]) => set((state) => {
+    const newCart: string[] = []
+
+    selected.forEach((selectedId) => {
+      state.cart.forEach((cartId) => {
+        if (cartId !== selectedId) {
+          newCart.push(cartId)
+        }
+      })
+    })
+    // console.log(newCart)
+    return {
+      cart: [...newCart],
+      cartLength: state.cart.length + newCart.length
+    }
   })
 }))
 
+type TSelectedCartStore = {
+  selected: string[]
+  areAllSelected: boolean
+  toggleAreAllSelected: () => void
+  toggleSelected: (id: string) => void
+  emptySelectedCart: () => void
+  setAllSelectedCartItemsTo: (array: string[]) => void
+}
+
+export const useSelectedCartStore = create<TSelectedCartStore>((set) => ({
+  selected: [],
+  areAllSelected: false,
+  toggleAreAllSelected: () => set((state) => ({
+    areAllSelected: !state.areAllSelected
+  })),
+  setAllSelectedCartItemsTo: (array: string[]) => set({
+    selected: array
+  }),
+  emptySelectedCart: () => set({ selected: [] }),
+  toggleSelected: (id) => set((state) => ({
+    selected: state.selected.includes(id)
+      ? state.selected.filter((item) => item !== id)
+      : [...state.selected, id],
+  })),
+}))
