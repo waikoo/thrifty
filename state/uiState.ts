@@ -210,8 +210,8 @@ export const useFavoriteStore = create<TFavoriteStore>((set) => ({
     }
     return state;
   }),
-  addSelectedToFavorites: (newFavorites: string[]) => set((state) => {
-    const newFav = newFavorites.filter((newId) => !state.favorites.includes(newId));
+  addSelectedToFavorites: (selected: string[]) => set((state) => {
+    const newFav = selected.filter((newId) => !state.favorites.includes(newId));
 
     return {
       favorites: [...state.favorites, ...newFav],

@@ -9,14 +9,13 @@ export default function CartControls() {
   const { emptyCart, cart, removeSelectedFromCart } = useCartStore()
   const { selected, areAllSelected, toggleAreAllSelected, setAllSelectedCartItemsTo, emptySelectedCart } = useSelectedCartStore()
   const { addSelectedToFavorites } = useFavoriteStore()
-
-  console.log(cart)
+  console.log(selected)
 
   useEffect(() => {
     setAllSelectedCartItemsTo(areAllSelected ? cart : [])
   }, [areAllSelected])
 
-  const emptyCartItems = () => {
+  const deleteSelectedFromCart = () => {
     if (areAllSelected) {
       emptyCart()
       emptySelectedCart()
@@ -33,25 +32,34 @@ export default function CartControls() {
   }
 
   const saveSelectedToFavorites = () => {
-    if (areAllSelected) {
-      addSelectedToFavorites(selected)
-    }
+    addSelectedToFavorites(selected)
+
+    const stringifiedFavorites = localStorage.getItem('favorites')
+    const favoritesFromLocalStorage = stringifiedFavorites ? JSON.parse(stringifiedFavorites) : []
+    selected.forEach(selectedItem => {
+      if (favoritesFromLocalStorage.includes(selectedItem)) return
+      favoritesFromLocalStorage.push(selectedItem)
+    })
+    localStorage.setItem('favorites', JSON.stringify(favoritesFromLocalStorage))
   }
 
   return (
     <div className="mt-[40px] flex items-center gap-2">
       <input type="checkbox" checked={areAllSelected} onChange={toggleAreAllSelected} />
+
       <div className="flex items-center gap-2 underline underline-offset-2">
         <IconShare />
         <span className="text-[0.75rem] font-normal">Share</span>
       </div>
+
       <div className="flex cursor-pointer items-center gap-2 underline underline-offset-2" onClick={saveSelectedToFavorites}>
         <IconHeart />
-        <span className="text-[0.75rem] font-normal"> Save </span>
+        <span className="text-[0.75rem] font-normal">Save</span>
       </div>
-      <div className="flex cursor-pointer items-center gap-2 underline underline-offset-2">
+
+      <div className="flex cursor-pointer items-center gap-2 underline underline-offset-2" onClick={deleteSelectedFromCart}>
         <IconDelete />
-        <span className="text-[0.75rem] font-normal" onClick={emptyCartItems}> Delete </span>
+        <span className="text-[0.75rem] font-normal">Delete</span>
       </div>
     </div>
   )
