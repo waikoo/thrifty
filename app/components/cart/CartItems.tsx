@@ -11,7 +11,7 @@ import { useCartStore } from "@/state/uiState"
 export default function CartItems() {
   const [uuids, setUuids] = useState<string[]>([])
   const [products, setProducts] = useState<ProductItemType[]>([])
-  const { cart } = useCartStore()
+  const { cart, setCartTotalPrice } = useCartStore()
 
   useEffect(() => {
     const getProducts = async (uuid: string[]) => {
@@ -30,6 +30,8 @@ export default function CartItems() {
       getProducts(uuids).then((products => {
         if (products!!) {
           setProducts(products)
+          const cartTotal = products.reduce((acc, curr) => acc + curr.price, 0)
+          setCartTotalPrice(cartTotal)
         }
       }))
     }

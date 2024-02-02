@@ -9,7 +9,6 @@ export default function CartControls() {
   const { emptyCart, cart, removeSelectedFromCart } = useCartStore()
   const { selected, areAllSelected, toggleAreAllSelected, setAllSelectedCartItemsTo, emptySelectedCart } = useSelectedCartStore()
   const { addSelectedToFavorites } = useFavoriteStore()
-  console.log(selected)
 
   useEffect(() => {
     setAllSelectedCartItemsTo(areAllSelected ? cart : [])
