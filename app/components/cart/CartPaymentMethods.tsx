@@ -2,9 +2,13 @@ import { RiVisaLine } from "react-icons/ri";
 import { FaApplePay } from "react-icons/fa";
 import IconMasterCard from "@/app/components/cart/icons/IconMasterCard";
 
-export default function CartPaymentMethods() {
+type CartPaymentMethodsProps = {
+  className?: string
+}
+
+export default function CartPaymentMethods({ className }: CartPaymentMethodsProps) {
   return (
-    <div className="mt-3 flex flex-col gap-2 p-4">
+    <div className={`mt-3 flex flex-col gap-2 p-4 ${className}`}>
       <p className="text-[0.6875rem] font-semibold">ACCEPTED PAYMENT METHODS:</p>
       <div className="flex items-center gap-2">
         <RiVisaLine size="2.6rem" color="#254AA5" />

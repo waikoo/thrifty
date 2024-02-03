@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import CartPaymentMethods from "@/app/components/cart/CartPaymentMethods";
 import { useCartStore } from "@/state/uiState";
+import { usePathname, useRouter } from "next/navigation";
 
 const FREE_HOME_DELIVERY_PRICE = 25
 const DELIVERY = {
@@ -10,7 +11,13 @@ const DELIVERY = {
   store: 0
 }
 
-export default function CartOrderSummary() {
+type CartOrderSummaryProps = {
+  isCheckout?: boolean
+}
+
+export default function CartOrderSummary({ isCheckout }: CartOrderSummaryProps) {
+  const [router, pathname] = [useRouter(), usePathname()]
+  const lang = pathname.split("/")[1]
   const EURO = '€'
   const { cartTotalPrice, cartLength } = useCartStore()
   const [isFreeDelivery, setIsFreeDelivery] = useState(false)
@@ -46,29 +53,34 @@ export default function CartOrderSummary() {
         type: selectRef.current?.value
       },
     })
+    router.push(`/${lang}/checkout`)
   }
 
   return (
-    <div className="max-w-[320px]">
+    <div className="bg-bkg max-w-[320px]">
       <h1 className="my-10 text-center text-[0.875rem] font-semibold">ORDER SUMMARY</h1>
 
-      <div className="border-faded grid grid-cols-2 gap-3 border-[0.1rem] p-6">
-        <span className="text-nowrap text-[0.75rem] font-medium">{freeDeliveryText}</span>
-        <span className="justify-self-end text-[0.75rem] font-normal">{amountUntilFreeDelivery}</span>
+      <div className="border-faded bg-bkg grid grid-cols-2 gap-3 border-[0.1rem] p-6">
+        {!isCheckout && (<>
+          <span className="text-nowrap text-[0.75rem] font-medium">{freeDeliveryText}</span>
+          <span className="justify-self-end text-[0.75rem] font-normal">{amountUntilFreeDelivery}</span>
+        </>)}
         <span className="text-[0.75rem] font-medium">{cartLength} {cartLength > 1 ? "items" : "item"}</span>
         <span className="justify-self-end text-[0.75rem] font-normal">{EURO}{cartTotalPrice}</span>
         <span className="text-[0.75rem] font-medium">Shipping</span>
         <span className="justify-self-end text-[0.75rem] font-normal">{shippingText}</span>
-        <select className="text-bkg bg-faded col-span-full text-[0.75rem] font-medium" name="shipping" id="shipping" ref={selectRef} onChange={selectOnChange}>
-          <option value="home" className="">Home Delivery 2-3 Days</option>
-          <option value="store" className="">Collect from store </option>
-        </select>
+        {!isCheckout &&
+          <select className="text-bkg bg-faded col-span-full text-[0.75rem] font-medium" name="shipping" id="shipping" ref={selectRef} onChange={selectOnChange}>
+            <option value="home" className="">Home Delivery 2-3 Days</option>
+            <option value="store" className="">Collect from store </option>
+          </select>
+        }
         <span className="my-4 text-[0.875rem] font-semibold">TOTAL COST</span>
         <span className="self-center justify-self-end text-[0.875rem] font-semibold">{EURO}{totalPayment}</span>
         <button className="bg-content text-bkg col-span-full p-3 text-[0.875rem] font-semibold" onClick={checkout}>CHECKOUT</button>
       </div>
 
-      <CartPaymentMethods />
+      {!isCheckout && <CartPaymentMethods />}
 
     </div>
   )
