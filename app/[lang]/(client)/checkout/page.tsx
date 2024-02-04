@@ -1,7 +1,8 @@
+import { FaPlus } from "react-icons/fa6";
+
 import CartOrderSummary from "@/app/components/cart/CartOrderSummary"
 import CheckoutForm from "@/app/components/checkout/CheckoutForm"
 import { Category, Locales } from "@/types/home"
-import { FaPlus } from "react-icons/fa6";
 
 type PageProps = {
   params: {
@@ -15,10 +16,11 @@ export default function Page({ params: { lang, gender }, searchParams, }: PagePr
   return (
     <main className="bg-faded text-content mx-auto mt-6 flex w-full flex-col items-center px-20 ">
 
-      <h1 className="text-bkg py-4 text-[1rem] font-extrabold">CHECKOUT</h1>
+      <h1 className="text-bkg py-4 text-[1rem] font-extrabold tracking-wide">CHECKOUT</h1>
 
-      <div className="flex gap-8">
+      <div className="flex gap-12">
         <CheckoutForm className="inline" />
+
         <div className="">
           <CartOrderSummary isCheckout={true} />
 
