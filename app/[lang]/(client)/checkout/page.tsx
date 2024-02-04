@@ -17,14 +17,14 @@ export default function Page({ params: { lang, gender }, searchParams, }: PagePr
 
       <h1 className="text-bkg py-4 text-[1rem] font-extrabold">CHECKOUT</h1>
 
-      <div className="flex gap-8 ">
-        <CheckoutForm className="flex-shrink-0 flex-grow-0" />
-        <div className="bg-bkg flex-shrink-0 flex-grow-0">
+      <div className="flex gap-8">
+        <CheckoutForm className="inline" />
+        <div className="">
           <CartOrderSummary isCheckout={true} />
 
           <div className="bg-bkg border-content flex justify-between border-[0.1rem] p-6">
-            <span className="flex-shrink-0 flex-grow-0">YOUR CART</span>
-            <FaPlus className="flex-shrink-0 flex-grow-0" />
+            <span className="">YOUR CART</span>
+            <FaPlus className="" />
           </div>
         </div>
       </div>

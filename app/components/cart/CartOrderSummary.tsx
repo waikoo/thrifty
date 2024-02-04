@@ -26,8 +26,8 @@ export default function CartOrderSummary({ isCheckout }: CartOrderSummaryProps) 
   const [totalPayment, setTotalPayment] = useState(cartTotalPrice + shippingPrice)
   const selectRef = useRef<HTMLSelectElement | null>(null)
   const freeDeliveryText = isFreeDelivery ? "Free home delivery reached" : "Left until free home delivery"
-  const amountUntilFreeDelivery = FREE_HOME_DELIVERY_PRICE - cartTotalPrice < 0 ? "" : `${EURO}${FREE_HOME_DELIVERY_PRICE - cartTotalPrice}
-`
+  const amountUntilFreeDelivery = FREE_HOME_DELIVERY_PRICE - cartTotalPrice < 0 ? "" : `${EURO}${FREE_HOME_DELIVERY_PRICE - cartTotalPrice}`
+  const h1Style = isCheckout ? "py-4" : "my-10"
 
   useEffect(() => {
     setIsFreeDelivery(cartTotalPrice > FREE_HOME_DELIVERY_PRICE)
@@ -58,7 +58,7 @@ export default function CartOrderSummary({ isCheckout }: CartOrderSummaryProps) 
 
   return (
     <div className="bg-bkg max-w-[320px]">
-      <h1 className="my-10 text-center text-[0.875rem] font-semibold">ORDER SUMMARY</h1>
+      <h1 className={`${h1Style} text-center text-[0.875rem] font-semibold`}>ORDER SUMMARY</h1>
 
       <div className="border-faded bg-bkg grid grid-cols-2 gap-3 border-[0.1rem] p-6">
         {!isCheckout && (<>
