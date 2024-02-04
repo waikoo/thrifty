@@ -13,7 +13,8 @@ type NavBarProps = {
 }
 
 const NavBar = ({ isAdmin, params }: NavBarProps) => {
-  const lang = usePathname().split('/')[1]
+  const pathname = usePathname().split('/')
+  const [lang, gender] = [pathname[1], pathname[2]]
 
   const htmlDataset = typeof document !== 'undefined' ? document.documentElement.dataset : undefined
   if (htmlDataset) {
@@ -24,7 +25,7 @@ const NavBar = ({ isAdmin, params }: NavBarProps) => {
 
   return (
     <section className="w-full max-w-[1440px] ">
-      <div className={`grid grid-cols-3 pb-2 pt-4 w-full border-b-2 border-content relative mx-auto`}
+      <div className={`border-content relative mx-auto grid w-full grid-cols-3 border-b-2 pb-2 pt-4`}
         onMouseEnter={() => setShowCategoryMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
         <SearchBar />
@@ -33,10 +34,10 @@ const NavBar = ({ isAdmin, params }: NavBarProps) => {
 
         <nav className="flex items-center gap-6 justify-self-end pt-2">
           <IconAccount />
-          <Link href={`/${lang}/favorites`}>
+          <Link href={`/${lang}/${gender}/favorites`}>
             <IconFavorite />
           </Link>
-          <Link href={`/${lang}/cart`}>
+          <Link href={`/${lang}/${gender}/cart`}>
             <IconShoppingBag hideCartNumber={true} />
           </Link>
         </nav>
