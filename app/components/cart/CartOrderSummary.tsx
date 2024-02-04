@@ -1,10 +1,9 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 import CartPaymentMethods from "@/app/components/cart/CartPaymentMethods";
 import { useCartStore, useOrderStore, useOrderSummaryStore } from "@/state/uiState";
-import { supabase } from "@/app/supabase";
 import { ProductItemType } from "@/types/productItem";
 import SummaryFreeDelivery from "@/app/components/cart/SummaryFreeDelivery";
 import SummaryShippingSelect from "@/app/components/cart/SummaryShippingSelect";
@@ -12,37 +11,24 @@ import { EURO, FREE_HOME_DELIVERY_PRICE } from "@/app/components/data/orderSumma
 
 type CartOrderSummaryProps = {
   isCheckout?: boolean
+  products?: ProductItemType[] | null
 }
 
-export default function CartOrderSummary({ isCheckout }: CartOrderSummaryProps) {
+export default function CartOrderSummary({ isCheckout, products }: CartOrderSummaryProps) {
   const [router, pathname] = [useRouter(), usePathname()]
-  const [products, setProducts] = useState<ProductItemType[]>([])
   const lang = pathname.split("/")[1]
   const { cart, cartTotalPrice, setCartTotalPrice, cartLength } = useCartStore()
-  const { shippingType, setShippingType, setIsFreeDelivery } = useOrderStore()
-  const { shippingPrice, setShippingPrice, setTotalWithShipping, totalWithShipping, shippingText } = useOrderSummaryStore()
-  // const [totalPayment, setTotalPayment] = useState(cartTotalPrice + shippingPrice)
+  const { setIsFreeDelivery } = useOrderStore()
+  const { shippingPrice, setTotalWithShipping, totalWithShipping, shippingText } = useOrderSummaryStore()
+
   const h1Style = isCheckout ? "py-4" : "my-10"
 
   useEffect(() => {
-    const cartTotalPrice = products.reduce((prev, curr) => prev + curr.price, 0)
-    setCartTotalPrice(cartTotalPrice)
-  }, [products])
-
-  useEffect(() => {
-    const getProducts = async () => {
-      let { data: products, error } = await supabase
-        .from('products')
-        .select('*')
-        .in('uuid', cart)
-
-      if (error) console.log(error)
-      console.log(products)
-      if (products) {
-        setProducts(products)
-      }
+    if (products) {
+      const matches = products.filter((product) => cart.includes(product.uuid))
+      const cartTotalPrice = matches.reduce((prev, curr) => prev + curr.price, 0)
+      setCartTotalPrice(cartTotalPrice)
     }
-    getProducts()
     setTotalWithShipping(cartTotalPrice + shippingPrice)
   }, [])
 
@@ -53,17 +39,6 @@ export default function CartOrderSummary({ isCheckout }: CartOrderSummaryProps) 
 
 
   const checkout = () => {
-    //   // setCheckoutInfo({ })
-    //   console.table({
-    //     payment: {
-    //       total: totalWithShipping,
-    //       currency: EURO
-    //     },
-    //     shipping: {
-    //       price: shippingPrice,
-    //       type: shippingType
-    //     },
-    //   })
     router.push(`/${lang}/checkout`)
   }
 
@@ -77,7 +52,7 @@ export default function CartOrderSummary({ isCheckout }: CartOrderSummaryProps) 
         <span className="text-[0.75rem] font-medium">{cartLength} {cartLength > 1 ? "items" : "item"}</span>
         <span className="justify-self-end text-[0.75rem] font-normal">{EURO}{cartTotalPrice}</span>
         <span className="text-[0.75rem] font-medium">Shipping</span>
-        <span className="justify-self-end text-[0.75rem] font-normal">{isCheckout && EURO}{shippingText}</span>
+        <span className="justify-self-end text-[0.75rem] font-normal">{isCheckout && shippingText !== 'FREE' && EURO}{shippingText}</span>
 
         {!isCheckout && <SummaryShippingSelect />}
 
