@@ -18,7 +18,7 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
   const [router, pathname] = [useRouter(), usePathname()]
   const lang = pathname.split("/")[1]
   const { cart, cartTotalPrice, setCartTotalPrice, cartLength } = useCartStore()
-  const { shippingType, setIsFreeDelivery } = useOrderStore()
+  const { shippingType, setIsFreeDelivery, isFreeDelivery } = useOrderStore()
   const { shippingPrice, setTotalWithShipping, totalWithShipping, shippingText } = useOrderSummaryStore()
 
   const h1Style = isCheckout ? "py-4" : "my-10"
@@ -29,7 +29,6 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
       const cartTotalPrice = matches.reduce((prev, curr) => prev + curr.price, 0)
       setCartTotalPrice(cartTotalPrice)
     }
-    setTotalWithShipping(cartTotalPrice + shippingPrice)
   }, [])
 
   useEffect(() => {
@@ -52,12 +51,12 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
         <span className="text-[0.75rem] font-medium">{cartLength} {cartLength > 1 ? "items" : "item"}</span>
         <span className="justify-self-end text-[0.75rem] font-normal">{EURO}{cartTotalPrice}</span>
         <span className="whitespace-nowrap text-[0.75rem] font-medium">{isCheckout ? (shippingType === "home" ? "Home Delivery 2-3 days" : "Collect from store") : "Shipping"}</span>
-        <span className="justify-self-end text-[0.75rem] font-normal">{cartTotalPrice > FREE_HOME_DELIVERY_PRICE ? "FREE" : `${EURO}${shippingText}`}</span>
+        <span className="justify-self-end text-[0.75rem] font-normal">{isFreeDelivery ? "FREE" : `${EURO}${shippingText}`}</span>
 
         {!isCheckout && <SummaryShippingSelect />}
 
         <span className="my-4 whitespace-nowrap text-[0.875rem] font-semibold">TOTAL COST</span>
-        <span className="self-center justify-self-end text-[0.875rem] font-semibold">{EURO}{totalWithShipping}</span>
+        <span className="self-center justify-self-end text-[0.875rem] font-semibold">{EURO}{isFreeDelivery ? cartTotalPrice : totalWithShipping}</span>
         <button className="bg-content text-bkg col-span-full p-3 text-[0.875rem] font-semibold" onClick={checkout}>CHECKOUT</button>
       </div>
 
