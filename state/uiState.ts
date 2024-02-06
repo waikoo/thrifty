@@ -368,6 +368,8 @@ type TCheckoutStore = {
   setZipcode: (value: string) => void
   paymentType: string
   setPaymentType: (value: string) => void
+  isCartOpen: boolean
+  setIsCartOpen: (value: boolean) => void
 }
 
 export const useCheckoutStore = create<TCheckoutStore>((set) => ({
@@ -395,4 +397,6 @@ export const useCheckoutStore = create<TCheckoutStore>((set) => ({
   setZipcode: (value) => set({ zipcode: value }),
   paymentType: 'card',
   setPaymentType: (value) => set({ paymentType: value }),
+  isCartOpen: false,
+  setIsCartOpen: (value) => set({ isCartOpen: value }),
 }))

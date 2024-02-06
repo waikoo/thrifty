@@ -42,7 +42,7 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
   }
 
   return (
-    <div className="bg-bkg w-[320px] min-w-[320px]">
+    <div className="bg-bkg w-[350px] min-w-[350px]">
       <h1 className={`${h1Style} text-center text-[0.875rem] font-semibold`}>ORDER SUMMARY</h1>
 
       <div className="border-faded bg-bkg grid grid-cols-2 gap-3 border-[0.1rem] p-6">
@@ -57,7 +57,7 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
 
         <span className="my-4 whitespace-nowrap text-[0.875rem] font-semibold">TOTAL COST</span>
         <span className="self-center justify-self-end text-[0.875rem] font-semibold">{EURO}{isFreeDelivery ? cartTotalPrice : totalWithShipping}</span>
-        <button className="bg-content text-bkg col-span-full p-3 text-[0.875rem] font-semibold" onClick={checkout}>CHECKOUT</button>
+        <button className="bg-content text-bkg col-span-full p-3 text-[0.875rem] font-semibold" onClick={checkout}>{isCheckout ? "PAY" : "CHECKOUT"}</button>
       </div>
 
       {!isCheckout && <CartPaymentMethods />}

@@ -1,9 +1,8 @@
-import { FaPlus } from "react-icons/fa6";
-
 import CartOrderSummary from "@/app/components/cart/CartOrderSummary"
+import CheckoutCart from "@/app/components/checkout/CheckoutCart"
 import CheckoutForm from "@/app/components/checkout/CheckoutForm"
-import { Category, Locales } from "@/types/home"
 import { useSupabaseServer } from "@/app/components/hooks/serverIndex"
+import { Category, Locales } from "@/types/home"
 
 type PageProps = {
   params: {
@@ -29,14 +28,12 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
       <div className="flex gap-12">
         <CheckoutForm className="inline" />
 
-        <div className="">
+        <div>
           <CartOrderSummary isCheckout={true} products={products} />
 
-          <div className="bg-bkg border-content flex cursor-pointer items-center justify-between border-[0.1rem] p-6">
-            <span className="">YOUR CART</span>
-            <FaPlus className="" />
-          </div>
+          <CheckoutCart />
         </div>
+
       </div>
     </main>
   )
