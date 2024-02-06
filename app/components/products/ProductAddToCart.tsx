@@ -31,8 +31,8 @@ export default function ProductAddToCart({ uuid, className }: ProductAddToCartPr
   }, [])
 
   return (
-    <div className={tm(`bg-darkgrey w-full cursor-pointer py-4 text-center text-[0.75rem] font-medium text-white ${className}`)}>
-      <span className="select-none" onClick={addItemToCart}>ADD TO CART</span>
-    </div>
+    <button className={tm(`bg-darkgrey w-full cursor-pointer py-4 text-center text-[0.75rem] font-medium text-white ${className}`)} onClick={addItemToCart}>
+      <span className="select-none">ADD TO CART</span>
+    </button>
   )
 }
