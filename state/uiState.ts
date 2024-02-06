@@ -350,6 +350,24 @@ type TCheckoutStore = {
   setIsShippingOpen: (value: boolean) => void
   isPaymentOpen: boolean
   setIsPaymentOpen: (value: boolean) => void
+  firstName: string
+  setFirstName: (value: string) => void
+  lastName: string
+  setLastName: (value: string) => void
+  phone: string
+  setPhone: (value: string) => void
+  email: string
+  setEmail: (value: string) => void
+  address: string
+  setAddress: (value: string) => void
+  city: string
+  setCity: (value: string) => void
+  country: string
+  setCountry: (value: string) => void
+  zipcode: string
+  setZipcode: (value: string) => void
+  paymentType: string
+  setPaymentType: (value: string) => void
 }
 
 export const useCheckoutStore = create<TCheckoutStore>((set) => ({
@@ -359,4 +377,22 @@ export const useCheckoutStore = create<TCheckoutStore>((set) => ({
   setIsShippingOpen: (value) => set({ isShippingOpen: value }),
   isPaymentOpen: true,
   setIsPaymentOpen: (value) => set({ isPaymentOpen: value }),
+  firstName: '',
+  setFirstName: (value) => set({ firstName: value }),
+  lastName: '',
+  setLastName: (value) => set({ lastName: value }),
+  phone: '',
+  setPhone: (value) => set({ phone: value }),
+  email: '',
+  setEmail: (value) => set({ email: value }),
+  address: '',
+  setAddress: (value) => set({ address: value }),
+  city: '',
+  setCity: (value) => set({ city: value }),
+  country: '',
+  setCountry: (value) => set({ country: value }),
+  zipcode: '',
+  setZipcode: (value) => set({ zipcode: value }),
+  paymentType: 'card',
+  setPaymentType: (value) => set({ paymentType: value }),
 }))

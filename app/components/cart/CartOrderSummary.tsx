@@ -42,7 +42,7 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
   }
 
   return (
-    <div className="bg-bkg max-w-[320px]">
+    <div className="bg-bkg w-[320px] min-w-[320px]">
       <h1 className={`${h1Style} text-center text-[0.875rem] font-semibold`}>ORDER SUMMARY</h1>
 
       <div className="border-faded bg-bkg grid grid-cols-2 gap-3 border-[0.1rem] p-6">
