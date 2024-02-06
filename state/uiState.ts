@@ -341,3 +341,22 @@ export const useOrderSummaryStore = create<TOrderSummaryStore>((set) => ({
   totalWithShipping: 0,
   setTotalWithShipping: (value) => set({ totalWithShipping: value }),
 }))
+
+
+type TCheckoutStore = {
+  isContactOpen: boolean
+  setIsContactOpen: (value: boolean) => void
+  isShippingOpen: boolean
+  setIsShippingOpen: (value: boolean) => void
+  isPaymentOpen: boolean
+  setIsPaymentOpen: (value: boolean) => void
+}
+
+export const useCheckoutStore = create<TCheckoutStore>((set) => ({
+  isContactOpen: true,
+  setIsContactOpen: (value) => set({ isContactOpen: value }),
+  isShippingOpen: true,
+  setIsShippingOpen: (value) => set({ isShippingOpen: value }),
+  isPaymentOpen: true,
+  setIsPaymentOpen: (value) => set({ isPaymentOpen: value }),
+}))
