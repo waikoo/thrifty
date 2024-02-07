@@ -9,7 +9,8 @@ type withHomeProps = {
 }
 
 export default function WithHome({ className, children }: withHomeProps) {
-  const [, locale, category] = usePathname().split('/')
+  let [, locale, category] = usePathname().split('/')
+  category = !['men', 'women', 'kids'].includes(category) ? 'women' : category
 
   return (
     <Link

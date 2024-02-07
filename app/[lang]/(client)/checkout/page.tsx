@@ -21,7 +21,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
   }
 
   return (
-    <main className="bg-faded text-content mx-auto mt-6 flex w-full flex-col items-center px-20 ">
+    <main className="bg-faded text-content mx-auto flex w-full flex-col items-center px-20 ">
 
       <h1 className="text-bkg py-4 text-[1rem] font-extrabold tracking-wide">CHECKOUT</h1>
 

@@ -14,7 +14,7 @@ export default function SearchBar({ className }: SearchBarProps) {
   const { t } = useTranslation(lang, 'layout')
 
   return (
-    <section className={`text-bkg relative top-1 flex items-end gap-2 ${className}`}>
+    <section className={`text-bkg relative flex items-end gap-2 ${className} w-full`}>
       <IconSearch className="self-end" />
       <input
         type="search"
