@@ -1,7 +1,6 @@
 "use client"
 import { useThemeStore } from "@/state/themeState";
 import { getSvgColor } from "@/utils/theme";
-import { twMerge as tm } from 'tailwind-merge'
 
 type LogoProps = {
   className?: string

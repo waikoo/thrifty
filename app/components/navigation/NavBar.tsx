@@ -1,11 +1,8 @@
 "use client"
-import Link from "next/link"
-
 import { useUIStore } from "@/state"
 import { useDarkMode } from "@/app/components/hooks"
 import { Logo, SearchBar, WithHome } from '@/app/components/navigation/'
-import { IconAccount, IconFavorite, IconShoppingBag } from '@/app/components/navigation/icons/'
-import { usePathname } from "next/navigation"
+import NavIcons from "@/app/components/navigation/NavIcons"
 
 type NavBarProps = {
   isAdmin?: boolean
@@ -13,8 +10,6 @@ type NavBarProps = {
 }
 
 const NavBar = ({ isAdmin, params }: NavBarProps) => {
-  const pathname = usePathname().split('/')
-  const [lang, gender] = [pathname[1], pathname[2]]
 
   const htmlDataset = typeof document !== 'undefined' ? document.documentElement.dataset : undefined
   if (htmlDataset) {
@@ -28,19 +23,11 @@ const NavBar = ({ isAdmin, params }: NavBarProps) => {
       <div className={`border-content relative mx-auto grid w-full grid-cols-3 border-b-2 pb-2 pt-4`}
         onMouseEnter={() => setShowCategoryMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
-        <SearchBar />
+        <SearchBar className="self-end" />
 
-        <WithHome> <Logo /> </WithHome>
+        <WithHome> <Logo className="self-end" /> </WithHome>
 
-        <nav className="flex items-center gap-6 justify-self-end pt-2">
-          <IconAccount />
-          <Link href={`/${lang}/${gender}/favorites`}>
-            <IconFavorite />
-          </Link>
-          <Link href={`/${lang}/${gender}/cart`}>
-            <IconShoppingBag hideCartNumber={true} />
-          </Link>
-        </nav>
+        <NavIcons className="self-end justify-self-end" />
       </div>
     </section>
   )

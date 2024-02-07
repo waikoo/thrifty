@@ -13,7 +13,7 @@ export default function Banner() {
   return (
     <>
       {showBanner ? (
-        <section className={`z-20 bg-faded text-black-500 w-screen  
+        <section className={`bg-faded text-black-500 z-20 w-screen  
           ${textColor}`}>
           <div className="mx-auto grid grid-cols-3 grid-rows-1 items-center gap-4 px-[2.063rem]">
 
