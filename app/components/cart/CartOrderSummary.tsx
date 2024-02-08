@@ -58,7 +58,7 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
 
         <span className="my-4 whitespace-nowrap text-[0.875rem] font-semibold">TOTAL COST</span>
         <span className="self-center justify-self-end text-[0.875rem] font-semibold">{EURO}{isFreeDelivery ? cartTotalPrice : totalWithShipping}</span>
-        <button className="bg-content text-bkg col-span-full p-3 text-[0.875rem] font-semibold" onClick={checkout}>{isCheckout ? "CONFIRM ORDER" : "CHECKOUT"}</button>
+        <button className={`bg-content text-bkg col-span-full p-3 text-[0.875rem] font-semibold ${borderRadius}`} onClick={checkout}>{isCheckout ? "CONFIRM ORDER" : "CHECKOUT"}</button>
       </div>
 
       {!isCheckout && <CartPaymentMethods />}
