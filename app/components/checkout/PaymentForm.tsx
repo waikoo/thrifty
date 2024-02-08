@@ -1,15 +1,34 @@
 "use client"
+import { useState, useRef, useEffect } from "react"
+
 import CheckoutRadio from "@/app/components/checkout/CheckoutRadio";
 import CheckoutContactTitle from "@/app/components/checkout/CheckoutContactTitle";
 import CartPaymentMethods from "@/app/components/cart/CartPaymentMethods";
+import { borderRadius, opacityHalf, opacityFull } from "@/app/components/data/universalStyles";
 import { useCheckoutStore } from "@/state/uiState";
-import { borderRadius } from "@/app/components/data/universalStyles";
 
 export default function PaymentForm() {
-  const { isPaymentOpen } = useCheckoutStore()
+  const { isPaymentOpen, setIsShippingCompleted, setIsContactCompleted, isPaymentCompleted, setIsPaymentCompleted } = useCheckoutStore()
+  const sectionRef = useRef(null)
+  const [activeBg, setActiveBg] = useState(opacityHalf)
+
+  function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
+    if (e.currentTarget === sectionRef.current) {
+      setIsPaymentCompleted(false)
+      setIsShippingCompleted(true)
+      setIsContactCompleted(true)
+      setActiveBg(opacityFull)
+    }
+  }
+
+  useEffect(() => {
+    if (isPaymentCompleted) {
+      setActiveBg(opacityHalf)
+    }
+  }, [isPaymentCompleted])
 
   return (
-    <section className={`bg-bkg flex flex-col gap-8 p-8 ${borderRadius}`}>
+    <section className={`${activeBg} bg-bkg flex flex-col gap-8 p-8 ${borderRadius}`} ref={sectionRef} onClick={handleOnClick}>
       <CheckoutContactTitle number="3" title="PAYMENT" />
 
       {isPaymentOpen &&

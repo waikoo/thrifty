@@ -370,6 +370,12 @@ type TCheckoutStore = {
   setPaymentType: (value: string) => void
   isCartOpen: boolean
   setIsCartOpen: (value: boolean) => void
+  isContactCompleted: boolean
+  setIsContactCompleted: (value: boolean) => void
+  isShippingCompleted: boolean
+  setIsShippingCompleted: (value: boolean) => void
+  isPaymentCompleted: boolean
+  setIsPaymentCompleted: (value: boolean) => void
 }
 
 export const useCheckoutStore = create<TCheckoutStore>((set) => ({
@@ -399,4 +405,10 @@ export const useCheckoutStore = create<TCheckoutStore>((set) => ({
   setPaymentType: (value) => set({ paymentType: value }),
   isCartOpen: false,
   setIsCartOpen: (value) => set({ isCartOpen: value }),
+  isContactCompleted: false,
+  setIsContactCompleted: (value) => set({ isContactCompleted: value }),
+  isShippingCompleted: false,
+  setIsShippingCompleted: (value) => set({ isShippingCompleted: value }),
+  isPaymentCompleted: false,
+  setIsPaymentCompleted: (value) => set({ isPaymentCompleted: value }),
 }))
