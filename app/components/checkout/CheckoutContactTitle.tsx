@@ -17,8 +17,11 @@ export default function CheckoutContactTitle({ number, title }: CheckoutContactT
   }
 
   return (
-    <div className="flex items-center justify-between">
-      <h2 className="col-start-1 col-end-2 text-[0.8125rem] font-extrabold tracking-wide">{number}. {title}</h2>
+    <div className="relative flex items-center justify-between">
+      <div className="bg-faded absolute -top-14 left-0 right-0 mx-auto grid h-[2.875rem] w-[2.875rem] place-items-center rounded-full">
+        <span className="text-bkg text-[1rem] font-bold">{number}</span>
+      </div>
+      <h2 className="col-start-1 col-end-2 text-[0.8125rem] font-extrabold tracking-wide">{title}</h2>
       <div className="col-start-2 col-end-3 cursor-pointer justify-self-end" onClick={handleOnClick}>
         {(title === 'CONTACT' && isContactOpen)
           || (title === 'SHIPPING' && isShippingOpen)
