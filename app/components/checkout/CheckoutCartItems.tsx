@@ -5,6 +5,7 @@ import { supabase } from "@/app/supabase"
 import { useCartStore, useCheckoutStore } from "@/state/uiState"
 import { ProductItemType } from "@/types/productItem"
 import CheckoutCartItem from "@/app/components/checkout/CheckoutCartItem"
+import { borderBottomRadius } from "@/app/components/data/universalStyles"
 
 export default function CheckoutCartItems() {
   const { isCartOpen } = useCheckoutStore()
@@ -25,8 +26,8 @@ export default function CheckoutCartItems() {
 
   return (
     isCartOpen && (
-      <div>
-        <div className="flex w-[350px] flex-col gap-4">
+      <div className={`bg-bkg ${borderBottomRadius}`}>
+        <div className={`flex w-[350px] flex-col gap-6 py-6`}>
           {products.map((product) => (
             <CheckoutCartItem key={product.uuid} product={product} />))}
         </div>

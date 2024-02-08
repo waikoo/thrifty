@@ -2,12 +2,13 @@
 import CheckoutContactTitle from "@/app/components/checkout/CheckoutContactTitle";
 import CheckoutContact from "@/app/components/checkout/CheckoutContact";
 import { useCheckoutStore } from "@/state/uiState";
+import { borderRadius } from "@/app/components/data/universalStyles";
 
 export default function ContactForm() {
   const { isContactOpen } = useCheckoutStore()
 
   return (
-    <section className="flex flex-col gap-8 p-8">
+    <section className={`bg-bkg flex flex-col gap-8 p-8 ${borderRadius}`}>
       <CheckoutContactTitle number="1" title="CONTACT" />
 
       {isContactOpen &&

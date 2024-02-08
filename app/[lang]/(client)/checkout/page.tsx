@@ -1,6 +1,7 @@
 import CartOrderSummary from "@/app/components/cart/CartOrderSummary"
 import CheckoutCart from "@/app/components/checkout/CheckoutCart"
 import CheckoutForm from "@/app/components/checkout/CheckoutForm"
+import { borderBottomRadius } from "@/app/components/data/universalStyles"
 import { useSupabaseServer } from "@/app/components/hooks/serverIndex"
 import { Category, Locales } from "@/types/home"
 
@@ -25,10 +26,10 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
 
       <h1 className="text-bkg py-4 text-[1rem] font-extrabold tracking-wide">CHECKOUT</h1>
 
-      <div className="flex gap-12">
+      <div className={`flex gap-12 ${borderBottomRadius}`}>
         <CheckoutForm className="inline" />
 
-        <div>
+        <div className={`${borderBottomRadius}`}>
           <CartOrderSummary isCheckout={true} products={products} />
 
           <CheckoutCart />

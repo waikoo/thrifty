@@ -8,6 +8,7 @@ import { ProductItemType } from "@/types/productItem";
 import SummaryFreeDelivery from "@/app/components/cart/SummaryFreeDelivery";
 import SummaryShippingSelect from "@/app/components/cart/SummaryShippingSelect";
 import { EURO, FREE_HOME_DELIVERY_PRICE } from "@/app/components/data/orderSummary";
+import { borderRadius } from "@/app/components/data/universalStyles";
 
 type CartOrderSummaryProps = {
   isCheckout?: boolean
@@ -42,7 +43,7 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
   }
 
   return (
-    <div className="bg-bkg w-[350px] min-w-[350px]">
+    <div className={`bg-bkg w-[350px] min-w-[350px] ${borderRadius}`}>
       <h1 className={`${h1Style} text-center text-[0.875rem] font-semibold`}>ORDER SUMMARY</h1>
 
       <div className="border-faded bg-bkg grid grid-cols-2 gap-3 border-[0.1rem] p-6">
@@ -57,7 +58,7 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
 
         <span className="my-4 whitespace-nowrap text-[0.875rem] font-semibold">TOTAL COST</span>
         <span className="self-center justify-self-end text-[0.875rem] font-semibold">{EURO}{isFreeDelivery ? cartTotalPrice : totalWithShipping}</span>
-        <button className="bg-content text-bkg col-span-full p-3 text-[0.875rem] font-semibold" onClick={checkout}>{isCheckout ? "PAY" : "CHECKOUT"}</button>
+        <button className="bg-content text-bkg col-span-full p-3 text-[0.875rem] font-semibold" onClick={checkout}>{isCheckout ? "CONFIRM ORDER" : "CHECKOUT"}</button>
       </div>
 
       {!isCheckout && <CartPaymentMethods />}

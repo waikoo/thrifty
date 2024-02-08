@@ -9,15 +9,12 @@ type CheckoutFormProps = {
 export default function CheckoutForm({ className }: CheckoutFormProps) {
 
   return (
-    <div className={`bg-bkg mb-[10rem] w-[800px] ${className}`}>
+    <div className={`mb-[10rem] flex w-[800px] flex-col gap-6 ${className}`}>
       <ContactForm />
-      <hr />
 
       <ShippingForm />
-      <hr />
 
       <PaymentForm />
-      <hr />
     </div>
   )
 }
