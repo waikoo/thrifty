@@ -1,10 +1,12 @@
 "use client"
-import { useUIStore } from "@/state/uiState"
 import { useRef } from "react"
+import { useUIStore } from "@/state/uiState"
 import CategoryKids from "./CategoryKids"
 import CategoryMen from "./CategoryMen"
 import CategoryWomen from "./CategoryWomen"
 import CategoryImage from "./CategoryImage"
+import women_01 from "@/public/nav/women_01.jpg"
+import women_02 from "@/public/nav/women_02.jpg"
 
 export default function CategoryMenu() {
   const { category: hoveredCategory, setShowCategoryMenu } = useUIStore()
@@ -30,8 +32,8 @@ export default function CategoryMenu() {
         {hoveredCategory === 'kids' && <CategoryKids />}
 
         <div className="my-auto flex flex-col gap-10">
-          <CategoryImage>NEW IN</CategoryImage>
-          <CategoryImage>PROMOS</CategoryImage>
+          <CategoryImage img={women_01}>NEW IN</CategoryImage>
+          <CategoryImage img={women_02}>PROMOS</CategoryImage>
         </div>
       </div >
     </section>
