@@ -11,7 +11,7 @@ type CheckoutContactProps = {
 }
 
 export default function CheckoutContact({ type, text, id, activeBg, title }: CheckoutContactProps) {
-  const { firstName, setFirstName, lastName, setLastName, phone, setPhone, email, setEmail, address, setAddress, city, setCity, country, setCountry, zipcode, setZipcode, setIsContactErrorFree, setShowNumber, setIsShippingErrorFree } = useCheckoutStore()
+  const { firstName, setFirstName, lastName, setLastName, phone, setPhone, email, setEmail, address, setAddress, city, setCity, country, setCountry, zipcode, setZipcode, setIsContactErrorFree, setIsShippingErrorFree } = useCheckoutStore()
   const [focusLost, setFocusLost] = useState(false)
   const [isEmpty, setIsEmpty] = useState(true)
   const invalidStyle = focusLost && isEmpty && 'invalid:border-red'
@@ -30,6 +30,23 @@ export default function CheckoutContact({ type, text, id, activeBg, title }: Che
     if (id === "city") setCity(target.value)
     if (id === "country") setCountry(target.value)
     if (id === "zipcode") setZipcode(target.value)
+
+    if (title === 'CONTACT') {
+      if (firstName && lastName && phone && email) {
+        setIsContactErrorFree(true)
+      } else {
+        setIsContactErrorFree(false)
+      }
+    }
+
+    if (title === 'SHIPPING') {
+      if (address && city && country && zipcode) {
+        setIsShippingErrorFree(true)
+      } else {
+        setIsShippingErrorFree(false)
+      }
+    }
+
   }
 
   useEffect(() => {
@@ -52,23 +69,6 @@ export default function CheckoutContact({ type, text, id, activeBg, title }: Che
 
   const handleOnBlur = () => {
     setFocusLost(true)
-    if (title === 'CONTACT') {
-      if (firstName && lastName && phone && email) {
-        console.table({ firstName, lastName, phone, email })
-        setIsContactErrorFree(true)
-      } else {
-        setIsContactErrorFree(false)
-      }
-    }
-
-    if (title === 'SHIPPING') {
-      if (address && city && country && zipcode) {
-        setIsShippingErrorFree(true)
-      } else {
-        setShowNumber(false)
-        setIsShippingErrorFree(false)
-      }
-    }
   }
 
   const handleOnFocus = () => {
