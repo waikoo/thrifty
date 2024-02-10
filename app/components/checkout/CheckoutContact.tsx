@@ -11,7 +11,7 @@ type CheckoutContactProps = {
 }
 
 export default function CheckoutContact({ type, text, id, activeBg, title }: CheckoutContactProps) {
-  const { firstName, setFirstName, lastName, setLastName, phone, setPhone, email, setEmail, address, setAddress, city, setCity, country, setCountry, zipcode, setZipcode, setIsContactErrorFree, setShowNumber, showNumber, setIsShippingErrorFree, setIsPaymentErrorFree } = useCheckoutStore()
+  const { firstName, setFirstName, lastName, setLastName, phone, setPhone, email, setEmail, address, setAddress, city, setCity, country, setCountry, zipcode, setZipcode, setIsContactErrorFree, setShowNumber, setIsShippingErrorFree } = useCheckoutStore()
   const [focusLost, setFocusLost] = useState(false)
   const [isEmpty, setIsEmpty] = useState(true)
   const invalidStyle = focusLost && isEmpty && 'invalid:border-red'
@@ -57,7 +57,6 @@ export default function CheckoutContact({ type, text, id, activeBg, title }: Che
         console.table({ firstName, lastName, phone, email })
         setIsContactErrorFree(true)
       } else {
-        // setShowNumber(true)
         setIsContactErrorFree(false)
       }
     }

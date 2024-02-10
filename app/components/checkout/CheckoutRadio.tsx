@@ -9,7 +9,7 @@ type CheckoutRadioProps = {
 
 export default function CheckoutRadio({ text, price, value, name }: CheckoutRadioProps) {
   const { shippingType, setShippingType } = useOrderStore()
-  const { paymentType, setPaymentType } = useCheckoutStore()
+  const { paymentType, setPaymentType, setIsPaymentErrorFree } = useCheckoutStore()
 
   const onChangeHandler = () => {
     if (value === "home" || value === "store") {
@@ -17,6 +17,7 @@ export default function CheckoutRadio({ text, price, value, name }: CheckoutRadi
     }
     if (value === "cash" || value === "card") {
       setPaymentType(value)
+      setIsPaymentErrorFree(true)
     }
   }
 

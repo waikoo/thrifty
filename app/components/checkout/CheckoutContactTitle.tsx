@@ -3,8 +3,6 @@ import { useCheckoutStore } from "@/state/uiState";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 
 import CheckMark from "@/app/components/checkout/CheckMark";
-import ExclamationMark from "@/app/components/checkout/ExclamationMark";
-import { useEffect } from "react";
 
 type CheckoutContactTitleProps = {
   number: string
@@ -12,7 +10,7 @@ type CheckoutContactTitleProps = {
 }
 
 export default function CheckoutContactTitle({ number, title }: CheckoutContactTitleProps) {
-  const { setIsContactOpen, isContactOpen, setIsShippingOpen, isShippingOpen, setIsPaymentOpen, isPaymentOpen, isContactHidden, isPaymentHidden, isShippingHidden, isContactErrorFree, isShippingErrorFree, isPaymentErrorFree, showNumber } = useCheckoutStore()
+  const { setIsContactOpen, isContactOpen, setIsShippingOpen, isShippingOpen, setIsPaymentOpen, isPaymentOpen, isContactErrorFree, isShippingErrorFree, isPaymentErrorFree } = useCheckoutStore()
 
   const handleOnClick = () => {
     if (title === 'CONTACT') setIsContactOpen(!isContactOpen)
