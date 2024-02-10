@@ -370,12 +370,20 @@ type TCheckoutStore = {
   setPaymentType: (value: string) => void
   isCartOpen: boolean
   setIsCartOpen: (value: boolean) => void
-  isContactCompleted: boolean
-  setIsContactCompleted: (value: boolean) => void
-  isShippingCompleted: boolean
-  setIsShippingCompleted: (value: boolean) => void
-  isPaymentCompleted: boolean
-  setIsPaymentCompleted: (value: boolean) => void
+  isContactHidden: boolean
+  setIsContactHidden: (value: boolean) => void
+  isShippingHidden: boolean
+  setIsShippingHidden: (value: boolean) => void
+  isPaymentHidden: boolean
+  setIsPaymentHidden: (value: boolean) => void
+  isContactErrorFree: boolean
+  setIsContactErrorFree: (value: boolean) => void
+  isShippingErrorFree: boolean
+  setIsShippingErrorFree: (value: boolean) => void
+  isPaymentErrorFree: boolean
+  setIsPaymentErrorFree: (value: boolean) => void
+  showNumber: boolean
+  setShowNumber: (value: boolean) => void
 }
 
 export const useCheckoutStore = create<TCheckoutStore>((set) => ({
@@ -405,10 +413,18 @@ export const useCheckoutStore = create<TCheckoutStore>((set) => ({
   setPaymentType: (value) => set({ paymentType: value }),
   isCartOpen: false,
   setIsCartOpen: (value) => set({ isCartOpen: value }),
-  isContactCompleted: false,
-  setIsContactCompleted: (value) => set({ isContactCompleted: value }),
-  isShippingCompleted: false,
-  setIsShippingCompleted: (value) => set({ isShippingCompleted: value }),
-  isPaymentCompleted: false,
-  setIsPaymentCompleted: (value) => set({ isPaymentCompleted: value }),
+  isContactHidden: false,
+  setIsContactHidden: (value) => set({ isContactHidden: value }),
+  isShippingHidden: true,
+  setIsShippingHidden: (value) => set({ isShippingHidden: value }),
+  isPaymentHidden: true,
+  setIsPaymentHidden: (value) => set({ isPaymentHidden: value }),
+  isContactErrorFree: true,
+  setIsContactErrorFree: (value) => set({ isContactErrorFree: value }),
+  isShippingErrorFree: true,
+  setIsShippingErrorFree: (value) => set({ isShippingErrorFree: value }),
+  isPaymentErrorFree: false,
+  setIsPaymentErrorFree: (value) => set({ isPaymentErrorFree: value }),
+  showNumber: true,
+  setShowNumber: (value) => set({ showNumber: value }),
 }))

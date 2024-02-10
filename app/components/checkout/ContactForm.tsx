@@ -2,20 +2,20 @@
 import CheckoutContactTitle from "@/app/components/checkout/CheckoutContactTitle";
 import CheckoutContact from "@/app/components/checkout/CheckoutContact";
 import { useCheckoutStore } from "@/state/uiState";
-import { borderRadius } from "@/app/components/data/universalStyles";
-import { useRef } from "react";
+import { borderRadius, opacityFull, opacityHalf } from "@/app/components/data/universalStyles";
+import { useEffect, useRef } from "react";
 
 
 export default function ContactForm() {
-  const { isContactOpen, isContactCompleted, setIsContactCompleted, setIsPaymentCompleted, setIsShippingCompleted } = useCheckoutStore()
-  const activeBg = isContactCompleted ? 'bg-opacity-50' : 'bg-opacity-100'
+  const { isContactOpen, isContactHidden, setIsContactHidden, setIsPaymentHidden, setIsShippingHidden, isShippingHidden, isContactErrorFree } = useCheckoutStore()
+  const activeBg = isContactHidden ? opacityHalf : opacityFull
   const sectionRef = useRef(null)
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     if (e.currentTarget === sectionRef.current) {
-      setIsContactCompleted(false)
-      setIsShippingCompleted(true)
-      setIsPaymentCompleted(true)
+      setIsContactHidden(false)
+      setIsShippingHidden(true)
+      setIsPaymentHidden(true)
     }
   }
 
@@ -26,15 +26,15 @@ export default function ContactForm() {
       {isContactOpen &&
         <>
           <div className="flex gap-8">
-            <CheckoutContact id="firstname" type="text" text="First Name" activeBg={activeBg} />
-            <CheckoutContact id="lastname" type="text" text="Last Name" activeBg={activeBg} />
+            <CheckoutContact title="CONTACT" id="firstname" type="text" text="First Name" activeBg={activeBg} />
+            <CheckoutContact title="CONTACT" id="lastname" type="text" text="Last Name" activeBg={activeBg} />
           </div>
 
           <div className="flex gap-8">
-            <CheckoutContact id="phone" type="tel" text="Phone Number" activeBg={activeBg} />
-            <CheckoutContact id="email" type="email" text="Email Address" activeBg={activeBg} />
+            <CheckoutContact title="CONTACT" id="phone" type="number" text="Phone Number" activeBg={activeBg} />
+            <CheckoutContact title="CONTACT" id="email" type="email" text="Email Address" activeBg={activeBg} />
           </div>
-          <p className="ml-auto cursor-pointer text-[0.6875rem] font-extrabold">USE DIFFERENT CONTACT</p>
+          <p className="ml-auto cursor-pointer text-[0.6875rem] font-extrabold" onClick={() => { }}>USE DIFFERENT CONTACT</p>
         </>
       }
     </section>

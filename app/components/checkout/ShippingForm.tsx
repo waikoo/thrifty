@@ -8,23 +8,23 @@ import { borderRadius, opacityHalf, opacityFull } from "@/app/components/data/un
 import { useCheckoutStore } from "@/state/uiState";
 
 export default function ShippingForm() {
-  const { isShippingOpen, setIsContactCompleted, isShippingCompleted, setIsPaymentCompleted, setIsShippingCompleted } = useCheckoutStore()
+  const { isShippingOpen, setIsContactHidden, isShippingHidden, setIsPaymentHidden, setIsShippingHidden } = useCheckoutStore()
   const sectionRef = useRef(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     if (e.currentTarget === sectionRef.current) {
-      setIsShippingCompleted(false)
-      setIsContactCompleted(true)
-      setIsPaymentCompleted(true)
+      setIsShippingHidden(false)
+      setIsContactHidden(true)
+      setIsPaymentHidden(true)
       setActiveBg(opacityFull)
     }
   }
   useEffect(() => {
-    if (isShippingCompleted) {
+    if (isShippingHidden) {
       setActiveBg(opacityHalf)
     }
-  }, [isShippingCompleted])
+  }, [isShippingHidden])
 
   return (
     <section className={`${activeBg} bg-bkg flex flex-col gap-8 p-8 ${borderRadius}`} onClick={handleOnClick} ref={sectionRef}>
@@ -38,13 +38,13 @@ export default function ShippingForm() {
           </div>
 
           <div className="flex gap-8">
-            <CheckoutContact id="address" type="text" text="Street, Number, Apartment" activeBg={activeBg} />
-            <CheckoutContact id="city" type="text" text="City" activeBg={activeBg} />
+            <CheckoutContact id="address" type="text" text="Street, Number, Apartment" activeBg={activeBg} title="SHIPPING" />
+            <CheckoutContact id="city" type="text" text="City" activeBg={activeBg} title="SHIPPING" />
           </div>
 
           <div className="flex gap-8">
-            <CheckoutContact id="country" type="text" text="Phone Number" activeBg={activeBg} />
-            <CheckoutContact id="zipcode" type="tel" text="Postal Code" activeBg={activeBg} />
+            <CheckoutContact id="country" type="text" text="Country" activeBg={activeBg} title="SHIPPING" />
+            <CheckoutContact id="zipcode" type="tel" text="Postal Code" activeBg={activeBg} title="SHIPPING" />
           </div>
           <p className="font-regular mr-auto text-[0.6875rem]">*Free shipping above €25 </p>
         </>

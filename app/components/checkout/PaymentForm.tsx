@@ -8,24 +8,24 @@ import { borderRadius, opacityHalf, opacityFull } from "@/app/components/data/un
 import { useCheckoutStore } from "@/state/uiState";
 
 export default function PaymentForm() {
-  const { isPaymentOpen, setIsShippingCompleted, setIsContactCompleted, isPaymentCompleted, setIsPaymentCompleted } = useCheckoutStore()
+  const { isPaymentOpen, setIsShippingHidden, setIsContactHidden, isPaymentHidden, setIsPaymentHidden } = useCheckoutStore()
   const sectionRef = useRef(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     if (e.currentTarget === sectionRef.current) {
-      setIsPaymentCompleted(false)
-      setIsShippingCompleted(true)
-      setIsContactCompleted(true)
+      setIsPaymentHidden(false)
+      setIsShippingHidden(true)
+      setIsContactHidden(true)
       setActiveBg(opacityFull)
     }
   }
 
   useEffect(() => {
-    if (isPaymentCompleted) {
+    if (isPaymentHidden) {
       setActiveBg(opacityHalf)
     }
-  }, [isPaymentCompleted])
+  }, [isPaymentHidden])
 
   return (
     <section className={`${activeBg} bg-bkg flex flex-col gap-8 p-8 ${borderRadius}`} ref={sectionRef} onClick={handleOnClick}>
