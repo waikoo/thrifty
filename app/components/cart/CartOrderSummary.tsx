@@ -13,9 +13,10 @@ import { borderRadius } from "@/app/components/data/universalStyles";
 type CartOrderSummaryProps = {
   isCheckout?: boolean
   products?: ProductItemType[] | null
+  className: string
 }
 
-export default function CartOrderSummary({ isCheckout, products }: CartOrderSummaryProps) {
+export default function CartOrderSummary({ isCheckout, products, className }: CartOrderSummaryProps) {
   const { cart, cartTotalPrice, setCartTotalPrice, cartLength } = useCartStore()
   const { shippingType, setIsFreeDelivery, isFreeDelivery } = useOrderStore()
   const { shippingPrice, setTotalWithShipping, totalWithShipping, shippingText } = useOrderSummaryStore()
@@ -39,7 +40,7 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
     <div className={`bg-bkg w-[350px] min-w-[350px] ${borderRadius}`}>
       <h1 className={`${h1Style} text-center text-[0.875rem] font-semibold`}>ORDER SUMMARY</h1>
 
-      <div className="border-faded bg-bkg grid grid-cols-2 gap-3 border-[0.1rem] p-6">
+      <div className={`border-faded bg-bkg grid grid-cols-2 gap-3 p-6 ${className}`}>
         {!isCheckout && (< SummaryFreeDelivery />)}
 
         <span className="text-[0.75rem] font-medium">{cartLength} {cartLength > 1 ? "items" : "item"}</span>
