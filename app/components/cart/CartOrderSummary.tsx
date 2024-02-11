@@ -1,12 +1,12 @@
 "use client"
 import { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
 
 import CartPaymentMethods from "@/app/components/cart/CartPaymentMethods";
 import { useCartStore, useOrderStore, useOrderSummaryStore } from "@/state/uiState";
 import { ProductItemType } from "@/types/productItem";
 import SummaryFreeDelivery from "@/app/components/cart/SummaryFreeDelivery";
 import SummaryShippingSelect from "@/app/components/cart/SummaryShippingSelect";
+import SummarySubmit from "@/app/components/checkout/SummarySubmit";
 import { EURO, FREE_HOME_DELIVERY_PRICE } from "@/app/components/data/orderSummary";
 import { borderRadius } from "@/app/components/data/universalStyles";
 
@@ -16,8 +16,6 @@ type CartOrderSummaryProps = {
 }
 
 export default function CartOrderSummary({ isCheckout, products }: CartOrderSummaryProps) {
-  const [router, pathname] = [useRouter(), usePathname()]
-  const lang = pathname.split("/")[1]
   const { cart, cartTotalPrice, setCartTotalPrice, cartLength } = useCartStore()
   const { shippingType, setIsFreeDelivery, isFreeDelivery } = useOrderStore()
   const { shippingPrice, setTotalWithShipping, totalWithShipping, shippingText } = useOrderSummaryStore()
@@ -37,11 +35,6 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
     setTotalWithShipping(cartTotalPrice + shippingPrice)
   }, [cartTotalPrice])
 
-
-  const checkout = () => {
-    router.push(`/${lang}/checkout`)
-  }
-
   return (
     <div className={`bg-bkg w-[350px] min-w-[350px] ${borderRadius}`}>
       <h1 className={`${h1Style} text-center text-[0.875rem] font-semibold`}>ORDER SUMMARY</h1>
@@ -58,7 +51,8 @@ export default function CartOrderSummary({ isCheckout, products }: CartOrderSumm
 
         <span className="my-4 whitespace-nowrap text-[0.875rem] font-semibold">TOTAL COST</span>
         <span className="self-center justify-self-end text-[0.875rem] font-semibold">{EURO}{isFreeDelivery ? cartTotalPrice : totalWithShipping}</span>
-        <button className={`bg-content text-bkg col-span-full p-3 text-[0.875rem] font-semibold ${borderRadius}`} onClick={checkout}>{isCheckout ? "CONFIRM ORDER" : "CHECKOUT"}</button>
+
+        <SummarySubmit />
       </div>
 
       {!isCheckout && <CartPaymentMethods />}
