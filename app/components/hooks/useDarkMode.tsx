@@ -1,22 +1,20 @@
 "use client"
 import { useEffect } from "react"
+
 import { useThemeStore } from "@/state"
-import { useMediaQuery, useLocalStorage } from "./"
-import { themeSettings } from "../data"
+import useMediaQuery from "@/app/components/hooks/useMediaQuery"
+import { themeSettings } from "@/app/components/data/theme"
 
 const useDarkMode = (htmlDataset: DOMStringMap) => {
-  const theme = useThemeStore((state) => state.theme)
-  htmlDataset.theme = theme
-
-  const updateTheme = useThemeStore((state) => state.updateTheme)
+  const { theme, updateTheme } = useThemeStore()
   const prefersDarkMode = useMediaQuery(['(prefers-color-scheme: dark)'], [true], false)
-  useLocalStorage(themeSettings.LOCAL_STORAGE_KEY, prefersDarkMode)
 
   useEffect(() => {
     const newTheme = prefersDarkMode ? 'dark' : 'light'
 
     updateTheme(newTheme)
     htmlDataset.theme = newTheme
+    localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (newTheme === 'dark').toString())
   }, [prefersDarkMode])
 
   const handleToggleTheme = () => {
@@ -24,6 +22,7 @@ const useDarkMode = (htmlDataset: DOMStringMap) => {
 
     htmlDataset.theme = newTheme
     updateTheme(newTheme)
+    localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (newTheme === 'dark').toString())
   }
 
   return {
