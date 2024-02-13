@@ -6,6 +6,7 @@ import { capitalize } from '@/utils/capitalize'
 import { ProductItemType } from "@/types/productItem"
 import { Category, Locales } from "@/types/home"
 import ProductAddToCart from '@/app/components/products/ProductAddToCart'
+import { EURO } from '@/app/components/data/orderSummary'
 
 type ProductItemProps = {
   product: ProductItemType
@@ -42,7 +43,7 @@ export default function ProductItem({ product, index, lang, gender, className, s
           <span>{size}</span>
         </div>
         <span className="block text-[0.75rem] font-light text-gray-200">{capitalize(type)}</span>
-        <span>€{price}</span>
+        <span>{EURO}{price}</span>
       </div>
     </div>
   )
