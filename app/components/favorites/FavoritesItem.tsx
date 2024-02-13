@@ -50,12 +50,14 @@ export default function FavoritesItem({ product }: CartItemType) {
       <span className="col-start-3 col-end-4 row-start-2 row-end-3 text-[0.8125rem] font-semibold">{product.size}</span>
       <span className="col-start-3 col-end-4 row-start-4 row-end-5 text-[0.875rem] font-semibold">{EURO}{product.price}</span>
 
-      <div title="Share">
-        <IconShare className="col-start-5 col-end-6 row-start-1 row-end-2 cursor-pointer" />
-      </div>
+      <div className="col-start-4 col-end-7 row-start-1 row-end-2 flex justify-end gap-4">
+        <div title="Share">
+          <IconShare className="col-start-5 col-end-6 row-start-1 row-end-2 cursor-pointer" />
+        </div>
 
-      <div onClick={removeFavoritesItem} title="Delete">
-        <IconDelete className="col-start-6 col-end-7 row-start-1 row-end-2 cursor-pointer" />
+        <div onClick={removeFavoritesItem} title="Delete">
+          <IconDelete className="col-start-6 col-end-7 row-start-1 row-end-2 cursor-pointer" />
+        </div>
       </div>
 
       <div className="row col-start-4 col-end-7 row-start-4 row-end-5 flex items-center gap-2 justify-self-center">
