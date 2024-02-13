@@ -34,7 +34,7 @@ export default function ProductItem({ product, index, lang, gender, className, s
         </Link>
       </div>
 
-      <ProductAddToCart uuid={uuid} />
+      <ProductAddToCart uuid={uuid}>ADD TO CART</ProductAddToCart>
 
       <div className="text-content text-[0.75rem] font-semibold">
         <div className="flex justify-between">

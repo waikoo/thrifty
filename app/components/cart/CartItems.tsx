@@ -7,31 +7,21 @@ import CartItem from "@/app/components/cart/CartItem"
 import CartControls from "@/app/components/cart/CartControls"
 import CartOrderSummary from "@/app/components/cart/CartOrderSummary"
 import { useCartStore } from "@/state/uiState"
+import { fetchProductsByUuids } from "@/utils/fetchProductsByUuids"
+import { getFromLocalStorage } from "@/utils/getFromLocalStorage"
 
 export default function CartItems() {
-  const [uuids, setUuids] = useState<string[]>([])
   const [products, setProducts] = useState<ProductItemType[]>([])
   const { cart, setCartTotalPrice } = useCartStore()
 
   useEffect(() => {
-    const getProducts = async (uuid: string[]) => {
-      let { data: products, error } = await supabase
-        .from('products')
-        .select('*')
-        .in('uuid', uuid)
-      return products
-    }
+    const cartUuids = getFromLocalStorage('cart')
 
-    const uuidArr = localStorage.getItem('cart')
-    if (uuidArr) {
-      const uuids = JSON.parse(uuidArr)
-      setUuids(uuids)
-
-      getProducts(uuids).then((products => {
-        if (products!!) {
-          setProducts(products)
-          const cartTotal = products.reduce((acc, curr) => acc + curr.price, 0)
-          setCartTotalPrice(cartTotal)
+    if (cartUuids) {
+      fetchProductsByUuids(supabase, cartUuids).then((matchedProducts => {
+        if (matchedProducts) {
+          setProducts(matchedProducts)
+          setCartTotalPrice(matchedProducts.reduce((acc, curr) => acc + curr.price, 0))
         }
       }))
     }
@@ -49,7 +39,7 @@ export default function CartItems() {
         </div>
       </div>
 
-      <CartOrderSummary />
+      <CartOrderSummary className="border-[0.1rem]" />
 
     </section>
   )

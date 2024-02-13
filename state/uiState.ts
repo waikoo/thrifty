@@ -185,6 +185,9 @@ type TFavoriteStore = {
   favoritesLength: number
   addToFavorites: (id: string) => void
   addSelectedToFavorites: (newFavorites: string[]) => void
+  removeFromFavorites: (id: string) => void
+  removeSelectedFromFavorites: (selected: string[]) => void
+  emptyFavorites: () => void
 }
 
 export const useFavoriteStore = create<TFavoriteStore>((set) => ({
@@ -219,6 +222,36 @@ export const useFavoriteStore = create<TFavoriteStore>((set) => ({
       favoritesLength: state.favorites.length + newFav.length
     };
   }),
+  removeFromFavorites: (id: string) => set((state) => {
+    if (state.favorites.includes(id)) {
+      return {
+        favorites: state.favorites.filter((item) => item !== id),
+        favoritesLength: state.favorites.length - 1
+      };
+    }
+    return state;
+  }),
+  removeSelectedFromFavorites: (selected: string[]) => set((state) => {
+    const newFavorites: string[] = []
+
+    selected.forEach((selectedId) => {
+      state.favorites.forEach((favoriteId) => {
+        if (favoriteId !== selectedId) {
+          newFavorites.push(favoriteId)
+        }
+      })
+    })
+
+    return {
+      favorites: [...newFavorites],
+      favoritesLength: state.favorites.length + newFavorites.length
+    }
+
+  }),
+  emptyFavorites: () => set({
+    favorites: [],
+    favoritesLength: 0
+  }),
 }))
 
 type TCartStore = {
@@ -231,6 +264,7 @@ type TCartStore = {
   emptyCart: () => void
   removeFromCart: (id: string) => void
   removeSelectedFromCart: (selected: string[]) => void
+  addSelectedFavoritesToCart: (selected: string[]) => void
 }
 
 export const useCartStore = create<TCartStore>((set) => ({
@@ -278,10 +312,19 @@ export const useCartStore = create<TCartStore>((set) => ({
 
     return {
       cart: [...newCart],
-      cartLength: state.cart.length + newCart.length
+      // cartLength: state.cart.length + newCart.length
+      cartLength: newCart.length
     }
   }),
   setCartTotalPrice: (value: number) => set({ cartTotalPrice: value }),
+  addSelectedFavoritesToCart: (selected: string[]) => set((state) => {
+    const newCart = selected.filter((newId) => !state.cart.includes(newId));
+
+    return {
+      cart: [...state.cart, ...newCart],
+      cartLength: state.cart.length + newCart.length
+    }
+  })
 }))
 
 type TSelectedCartStore = {
@@ -308,6 +351,37 @@ export const useSelectedCartStore = create<TSelectedCartStore>((set) => ({
       ? state.selected.filter((item) => item !== id)
       : [...state.selected, id],
   })),
+}))
+
+
+type TSelectedFavoritesStore = {
+  selectedFavorites: string[]
+  areAllFavoritesSelected: boolean
+  toggleAreAllFavoritesSelected: () => void
+  toggleSelectedFavorites: (id: string) => void
+  emptySelectedFavorites: () => void
+  setAllSelectedFavoritesItemsTo: (array: string[]) => void
+  // addSelectedToCart: () => void
+}
+
+export const useSelectedFavoritesStore = create<TSelectedFavoritesStore>((set) => ({
+  selectedFavorites: [],
+  areAllFavoritesSelected: false,
+  toggleAreAllFavoritesSelected: () => set((state) => ({
+    areAllFavoritesSelected: !state.areAllFavoritesSelected
+  })),
+  setAllSelectedFavoritesItemsTo: (array: string[]) => set({
+    selectedFavorites: array
+  }),
+  emptySelectedFavorites: () => set({ selectedFavorites: [] }),
+  toggleSelectedFavorites: (id) => set((state) => ({
+    selectedFavorites: state.selectedFavorites.includes(id)
+      ? state.selectedFavorites.filter((item) => item !== id)
+      : [...state.selectedFavorites, id],
+  })),
+  // addSelectedToCart: (cart) => set((state) => ({
+  //   
+  // }))
 }))
 
 type TOrderStore = {

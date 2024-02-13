@@ -7,9 +7,10 @@ import { useCartStore } from "@/state/uiState"
 type ProductAddToCartProps = {
   uuid: string
   className?: string
+  children?: React.ReactNode
 }
 
-export default function ProductAddToCart({ uuid, className }: ProductAddToCartProps) {
+export default function ProductAddToCart({ uuid, className, children }: ProductAddToCartProps) {
   const { addToCart, cart, initCart } = useCartStore()
 
   function addItemToCart(): void {
@@ -32,7 +33,7 @@ export default function ProductAddToCart({ uuid, className }: ProductAddToCartPr
 
   return (
     <button className={tm(`bg-darkgrey w-full cursor-pointer py-4 text-center text-[0.75rem] font-medium text-white ${className}`)} onClick={addItemToCart}>
-      <span className="select-none">ADD TO CART</span>
+      <span className="select-none">{children}</span>
     </button>
   )
 }

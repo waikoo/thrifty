@@ -13,7 +13,7 @@ import { borderRadius } from "@/app/components/data/universalStyles";
 type CartOrderSummaryProps = {
   isCheckout?: boolean
   products?: ProductItemType[] | null
-  className: string
+  className?: string
 }
 
 export default function CartOrderSummary({ isCheckout, products, className }: CartOrderSummaryProps) {

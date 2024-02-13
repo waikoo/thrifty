@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useThemeStore } from "@/state/themeState"
 import { getSvgColor } from "@/utils/theme"
 import { useCartStore } from "@/state/uiState"
@@ -11,7 +11,7 @@ type IconShoppingBagProps = {
 
 const IconShoppingBag = ({ stroke, hideCartNumber }: IconShoppingBagProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
-  const { initCart, cartLength } = useCartStore()
+  const { cart, initCart, cartLength } = useCartStore()
 
   useEffect(() => {
     const cart = localStorage.getItem('cart')
