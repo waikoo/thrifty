@@ -15,7 +15,6 @@ export const metadata = {
 export type RootLayoutProps = {
   children: React.ReactNode,
   params?: { [key: string]: string | string[] | undefined }
-
 }
 
 export default function RootLayout({ children, params }: RootLayoutProps) {

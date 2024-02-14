@@ -1,9 +1,6 @@
 import { IconMenuProps } from "@/types/theme";
-import React from "react";
-
 
 function IconMenuAccount({ color, isHovered }: IconMenuProps) {
-  console.log('rendered')
 
   return (
     <svg
