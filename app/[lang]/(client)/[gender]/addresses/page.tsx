@@ -8,9 +8,9 @@ type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default function Page({ params }: any) {
+export default function Page({ params }: PageProps) {
 
   return (
-    <div className="text-content">Profile Page</div>
+    <div className="text-content">Addresses Page</div>
   )
 }
