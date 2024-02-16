@@ -498,3 +498,79 @@ export const useCheckoutStore = create<TCheckoutStore>((set) => ({
   isPaymentErrorFree: false,
   setIsPaymentErrorFree: (value) => set({ isPaymentErrorFree: value }),
 }))
+
+type TAddress = {
+  firstName: string,
+  lastName: string,
+  address: string,
+  city: string,
+  zipcode: string,
+  country: string,
+  phone: number,
+  isDefault: boolean
+}
+
+type TAddressStore = {
+  showAddAddress: boolean
+  setShowAddAddress: (value: boolean) => void
+  savedAddresses: TAddress[]
+  firstName: string,
+  setFirstName: (value: string) => void,
+  lastName: string,
+  setLastName: (value: string) => void,
+  address: string,
+  setAddress: (value: string) => void,
+  city: string,
+  setCity: (value: string) => void,
+  country: string,
+  setCountry: (value: string) => void,
+  zipcode: string,
+  setZipcode: (value: string) => void,
+  phone: number,
+  setPhone: (value: number) => void,
+  isDefault: boolean
+  setIsDefault: (value: boolean) => void
+  onSubmitAddress: () => void
+}
+
+export const useAddressStore = create<TAddressStore>((set, get) => ({
+  showAddAddress: false,
+  setShowAddAddress: (value) => set({ showAddAddress: value }),
+  savedAddresses: [],
+  firstName: '',
+  setFirstName: (value) => set({ firstName: value }),
+  lastName: '',
+  setLastName: (value) => set({ lastName: value }),
+  address: '',
+  setAddress: (value) => set({ address: value }),
+  city: '',
+  setCity: (value) => set({ city: value }),
+  country: '',
+  setCountry: (value) => set({ country: value }),
+  zipcode: '',
+  setZipcode: (value) => set({ zipcode: value }),
+  phone: 0,
+  setPhone: (value) => set({ phone: value }),
+  isDefault: false,
+  setIsDefault: (value) => set({ isDefault: value }),
+  onSubmitAddress: () => {
+
+    set({
+      savedAddresses: [
+        ...get().savedAddresses,
+        {
+          firstName: get().firstName,
+          lastName: get().lastName,
+          address: get().address,
+          city: get().city,
+          zipcode: get().zipcode,
+          country: get().country,
+          phone: get().phone,
+          isDefault: get().isDefault
+        }
+      ]
+    })
+    set({ firstName: '', lastName: '', address: '', city: '', zipcode: '', country: '', phone: 0, isDefault: false })
+    set({ showAddAddress: false })
+  }
+}))

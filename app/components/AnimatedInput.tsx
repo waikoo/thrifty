@@ -2,9 +2,11 @@ type AnimatedInputProps = {
   type: string
   id: string
   placeholder: string
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export default function AnimatedInput({ type, id, placeholder }: AnimatedInputProps) {
+export default function AnimatedInput({ type, id, placeholder, value, onChange }: AnimatedInputProps) {
   // invalidStyle ?
 
   return (
@@ -14,8 +16,8 @@ export default function AnimatedInput({ type, id, placeholder }: AnimatedInputPr
         id={id}
         type={type}
         placeholder={placeholder}
-        // value={values[id]}
-        // onChange={handleOnChange}
+        value={value}
+        onChange={onChange}
         spellCheck="false"
         // onFocus={handleOnFocus}
         // onBlur={handleOnBlur}
