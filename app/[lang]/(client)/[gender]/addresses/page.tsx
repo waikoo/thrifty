@@ -18,7 +18,6 @@ export default async function Page({ params }: PageProps) {
     .select('addresses')
 
   const flattenedAddresses = addresses?.flatMap((clientObj) => clientObj.addresses) ?? [];
-
   return (
     <main className="text-content">
       <AddNewAddress />

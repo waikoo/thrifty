@@ -2,7 +2,7 @@ import { DELIVERY } from '@/app/components/data/orderSummary'
 import Category from '@/app/components/navigation/Category'
 import { supabase } from '@/app/supabase'
 import { create } from 'zustand'
-// import { randomUUID } from 'node:crypto'
+import { v4 as uuidv4 } from 'uuid'
 
 type UIState = {
   showSignIn: boolean
@@ -511,7 +511,7 @@ export type TAddress = {
   phone: number,
   isDefault: boolean,
   userId: string,
-  // addressId: string
+  addressId: string
 }
 
 type TAddressStore = {
@@ -534,6 +534,7 @@ type TAddressStore = {
   setPhone: (value: number) => void,
   isDefault: boolean
   setIsDefault: (value: boolean) => void
+  setAsDefault: (addressId: string, userId: string) => void
 }
 
 export const useAddressStore = create<TAddressStore>((set, get) => ({
@@ -560,52 +561,63 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
 
     const { data: { user } } = await supabase.auth.getUser()
     if (user) {
-      set({
-        savedAddresses: [
-          ...get().savedAddresses,
-          {
-            firstName: get().firstName,
-            lastName: get().lastName,
-            address: get().address,
-            city: get().city,
-            zipcode: get().zipcode,
-            country: get().country,
-            phone: get().phone,
-            isDefault: get().isDefault,
-            userId: user.id,
-            // TODO: Add addressId
-            // addressId: randomUUID()
-          }
-        ]
-      })
+      const newAddress = {
+        firstName: get().firstName,
+        lastName: get().lastName,
+        address: get().address,
+        city: get().city,
+        zipcode: get().zipcode,
+        country: get().country,
+        phone: get().phone,
+        isDefault: get().isDefault,
+        userId: user.id,
+        addressId: uuidv4()
+      }
 
-      let { data: addresses, error } = await supabase
+      let { data: dbAddresses, error } = await supabase
         .from('clients')
         .select('addresses')
         .eq('client_id', user.id);
-      console.log(get().savedAddresses)
 
-      if (addresses && addresses.length > 0) {
+      if (dbAddresses && dbAddresses.length > 0) {
         // Update existing addresses
-        const updatedAddresses = [...addresses, get().savedAddresses[0]]; // Add the new address
-
+        const flattenedAddresses = dbAddresses?.flatMap((clientObj) => clientObj.addresses) ?? [];
         const { data, error } = await supabase.from('clients')
-          .update({ addresses: updatedAddresses })
+          .update({ addresses: [...flattenedAddresses, newAddress] })
           .eq('client_id', user.id);
-        console.error(error);
+        if (error) console.error(error);
+        return
       } else {
-        // Insert the new one:
-        const { data, error } = await supabase.from('clients')
+        const { data: updateData, error: updateError } = await supabase
+          .from('clients')
           .insert({
             client_id: user.id,
-            addresses: [get().savedAddresses[0]],
+            addresses: [newAddress],
             email: user.email,
           });
-        console.error(error);
+        if (error) console.error(error);
       }
     }
 
+    // Reset values
     set({ firstName: '', lastName: '', address: '', city: '', zipcode: '', country: '', phone: 0, isDefault: false })
     set({ showAddAddress: false })
   },
+  setAsDefault: async (addressId, userId) => {
+    const { data: dbAddresses, error: dbError } = await supabase
+      .from('clients')
+      .select('addresses')
+    if (dbError) console.error(dbError);
+    const flattenedAddresses = dbAddresses?.flatMap((clientObj) => clientObj.addresses) ?? [];
+    const mappedAddresses = flattenedAddresses.map((address) => {
+      address.isDefault = address.addressId === addressId ? true : false
+      return address
+    })
+    const { data: updateData, error: updateError } = await supabase
+      .from('clients')
+      .update({ addresses: mappedAddresses })
+      .eq('client_id', userId)
+    if (updateError) console.error(updateError);
+
+  }
 }))
