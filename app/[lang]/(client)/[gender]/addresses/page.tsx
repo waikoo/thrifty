@@ -1,8 +1,6 @@
-"use client"
 import AddNewAddress from "@/app/components/addresses/AddNewAddress"
-import AddNewAddressForm from "@/app/components/addresses/AddNewAddressForm"
-import NoSavedAddress from "@/app/components/addresses/NoSavedAddress"
-import { useAddressStore } from "@/state/uiState"
+import ConditionalAddress from "@/app/components/addresses/ConditionalAddress"
+import useSupabaseServer from "@/app/components/hooks/useSupabaseServer"
 import { Category, Locales } from "@/types/home"
 
 type PageProps = {
@@ -13,34 +11,18 @@ type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default function Page({ params }: PageProps) {
-  const { showAddAddress, savedAddresses } = useAddressStore()
-  console.log(savedAddresses.length)
+export default async function Page({ params }: PageProps) {
+  const supabase = useSupabaseServer()
+  const { data: addresses, error } = await supabase
+    .from('clients')
+    .select('addresses')
+
+  const flattenedAddresses = addresses?.flatMap((clientObj) => clientObj.addresses) ?? [];
 
   return (
     <main className="text-content">
       <AddNewAddress />
-
-      {savedAddresses.length === 0 ? <NoSavedAddress /> : (
-        savedAddresses.map((address) => (
-          <>
-            <div key={address.zipcode + 'zipcode'} className="">
-              <span>{address.firstName}</span>
-              <span>{address.lastName}</span>
-              <span>{address.phone}</span>
-              <span>{address.address}</span>
-              <span>{address.city}</span>
-              <span>{address.country}</span>
-            </div>
-
-            <span>EDIT</span>
-            <span>DELETE</span>
-            <span>DEFAULT</span>
-          </>
-        ))
-      )}
-
-      {showAddAddress && <AddNewAddressForm />}
+      <ConditionalAddress dbAddresses={flattenedAddresses} />
     </main>
   )
 }

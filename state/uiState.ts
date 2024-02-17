@@ -1,6 +1,8 @@
 import { DELIVERY } from '@/app/components/data/orderSummary'
 import Category from '@/app/components/navigation/Category'
+import { supabase } from '@/app/supabase'
 import { create } from 'zustand'
+// import { randomUUID } from 'node:crypto'
 
 type UIState = {
   showSignIn: boolean
@@ -499,7 +501,7 @@ export const useCheckoutStore = create<TCheckoutStore>((set) => ({
   setIsPaymentErrorFree: (value) => set({ isPaymentErrorFree: value }),
 }))
 
-type TAddress = {
+export type TAddress = {
   firstName: string,
   lastName: string,
   address: string,
@@ -507,7 +509,9 @@ type TAddress = {
   zipcode: string,
   country: string,
   phone: number,
-  isDefault: boolean
+  isDefault: boolean,
+  userId: string,
+  // addressId: string
 }
 
 type TAddressStore = {
@@ -530,7 +534,6 @@ type TAddressStore = {
   setPhone: (value: number) => void,
   isDefault: boolean
   setIsDefault: (value: boolean) => void
-  onSubmitAddress: () => void
 }
 
 export const useAddressStore = create<TAddressStore>((set, get) => ({
@@ -553,24 +556,56 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
   setPhone: (value) => set({ phone: value }),
   isDefault: false,
   setIsDefault: (value) => set({ isDefault: value }),
-  onSubmitAddress: () => {
+  onSubmitAddress: async () => {
 
-    set({
-      savedAddresses: [
-        ...get().savedAddresses,
-        {
-          firstName: get().firstName,
-          lastName: get().lastName,
-          address: get().address,
-          city: get().city,
-          zipcode: get().zipcode,
-          country: get().country,
-          phone: get().phone,
-          isDefault: get().isDefault
-        }
-      ]
-    })
+    const { data: { user } } = await supabase.auth.getUser()
+    if (user) {
+      set({
+        savedAddresses: [
+          ...get().savedAddresses,
+          {
+            firstName: get().firstName,
+            lastName: get().lastName,
+            address: get().address,
+            city: get().city,
+            zipcode: get().zipcode,
+            country: get().country,
+            phone: get().phone,
+            isDefault: get().isDefault,
+            userId: user.id,
+            // TODO: Add addressId
+            // addressId: randomUUID()
+          }
+        ]
+      })
+
+      let { data: addresses, error } = await supabase
+        .from('clients')
+        .select('addresses')
+        .eq('client_id', user.id);
+      console.log(get().savedAddresses)
+
+      if (addresses && addresses.length > 0) {
+        // Update existing addresses
+        const updatedAddresses = [...addresses, get().savedAddresses[0]]; // Add the new address
+
+        const { data, error } = await supabase.from('clients')
+          .update({ addresses: updatedAddresses })
+          .eq('client_id', user.id);
+        console.error(error);
+      } else {
+        // Insert the new one:
+        const { data, error } = await supabase.from('clients')
+          .insert({
+            client_id: user.id,
+            addresses: [get().savedAddresses[0]],
+            email: user.email,
+          });
+        console.error(error);
+      }
+    }
+
     set({ firstName: '', lastName: '', address: '', city: '', zipcode: '', country: '', phone: 0, isDefault: false })
     set({ showAddAddress: false })
-  }
+  },
 }))
