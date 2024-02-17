@@ -535,6 +535,7 @@ type TAddressStore = {
   isDefault: boolean
   setIsDefault: (value: boolean) => void
   setAsDefault: (addressId: string, userId: string) => void
+  deleteAddress: (addressId: string, userId: string) => void
 }
 
 export const useAddressStore = create<TAddressStore>((set, get) => ({
@@ -619,5 +620,19 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
       .eq('client_id', userId)
     if (updateError) console.error(updateError);
 
+  },
+  deleteAddress: async (addressId, userId) => {
+    const { data: dbAddresses, error: dbError } = await supabase
+      .from('clients')
+      .select('addresses')
+    if (dbError) console.error(dbError);
+    const flattenedAddresses = dbAddresses?.flatMap((clientObj) => clientObj.addresses) ?? [];
+    const filteredAddresses = flattenedAddresses.filter((address) => address.addressId !== addressId)
+
+    const { data: updateData, error: updateError } = await supabase
+      .from('clients')
+      .update({ addresses: filteredAddresses })
+      .eq('client_id', userId)
+    if (updateError) console.error(updateError);
   }
 }))

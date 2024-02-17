@@ -12,7 +12,7 @@ export default function SavedAddresses({ dbAddresses }: SavedAddressProps) {
   return (
     <div className={`flex gap-4 overflow-x-auto`}>
       {dbAddresses.map((address) => (
-        <div key={address.addressId} className={`bg-faded m-5 flex flex-col gap-10 ${borderRadius} max-w-52 p-6 text-[0.8125rem] font-medium text-black`}>
+        <div key={address.addressId} className={`bg-faded m-5 flex flex-col gap-10 ${borderRadius} min-w-[10rem] p-6 text-[0.8125rem] font-medium text-black`}>
           <div className="">
             <div className="flex gap-2">
               <span>{address.firstName}</span>
@@ -26,8 +26,8 @@ export default function SavedAddresses({ dbAddresses }: SavedAddressProps) {
 
           <div className="*:cursor-pointer flex gap-4 text-[0.75rem] font-extrabold">
             <span>EDIT</span>
-            {/* <span onClick={() => deleteAddress(address.id)}>DELETE</span> */}
-            <span onClick={() => setAsDefault(address.addressId, address.userId)}>
+            <span onClick={() => deleteAddress(address.addressId, address.userId)}>DELETE</span>
+            <span onClick={() => setAsDefault(address.addressId, address.userId)} className="whitespace-nowrap">
               {address.isDefault ? 'DEFAULT' : 'SET AS DEFAULT'}
             </span>
           </div>
