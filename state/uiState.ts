@@ -536,6 +536,9 @@ type TAddressStore = {
   setIsDefault: (value: boolean) => void
   setAsDefault: (addressId: string, userId: string) => void
   deleteAddress: (addressId: string, userId: string) => void
+  showEditForm: boolean
+  setShowEditForm: (value: boolean) => void
+  onSubmitAddress: (addressBeingEdited: string) => Promise<void>
 }
 
 export const useAddressStore = create<TAddressStore>((set, get) => ({
@@ -558,11 +561,11 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
   setPhone: (value) => set({ phone: value }),
   isDefault: false,
   setIsDefault: (value) => set({ isDefault: value }),
-  onSubmitAddress: async () => {
+  onSubmitAddress: async (addressBeingEdited: string) => {
 
     const { data: { user } } = await supabase.auth.getUser()
     if (user) {
-      const newAddress = {
+      const newAddress: TAddress = {
         firstName: get().firstName,
         lastName: get().lastName,
         address: get().address,
@@ -572,7 +575,7 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
         phone: get().phone,
         isDefault: get().isDefault,
         userId: user.id,
-        addressId: uuidv4()
+        addressId: addressBeingEdited || uuidv4()
       }
 
       let { data: dbAddresses, error } = await supabase
@@ -581,12 +584,32 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
         .eq('client_id', user.id);
 
       if (dbAddresses && dbAddresses.length > 0) {
-        // Update existing addresses
         const flattenedAddresses = dbAddresses?.flatMap((clientObj) => clientObj.addresses) ?? [];
-        const { data, error } = await supabase.from('clients')
-          .update({ addresses: [...flattenedAddresses, newAddress] })
-          .eq('client_id', user.id);
-        if (error) console.error(error);
+        const existingAddress = flattenedAddresses.find((address) => address.addressId === newAddress.addressId);
+
+        if (existingAddress) { // Check if existing address is being updated
+          const updateProperties = ["firstName", "lastName", "address", "city", "zipcode", "country", "phone", "isDefault"];
+
+          for (const property of updateProperties) { // Overwrite existing address with new values
+            if (newAddress[property] !== existingAddress[property]) {
+              existingAddress[property] = newAddress[property];
+            }
+          }
+          flattenedAddresses[flattenedAddresses.indexOf(existingAddress)] = existingAddress;
+
+          const { data: updateData, error: updateError } = await supabase
+            .from('clients')
+            .update({ addresses: flattenedAddresses })
+            .eq('client_id', user.id);
+          if (updateError) console.error(updateError);
+
+        } else { // Append new address to existing addresses
+          const { data, error } = await supabase
+            .from('clients')
+            .update({ addresses: [...flattenedAddresses, newAddress] })
+            .eq('client_id', user.id);
+          if (error) console.error(error);
+        }
       } else {
         const { data: updateData, error: updateError } = await supabase
           .from('clients')
@@ -602,6 +625,7 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
     // Reset values
     set({ firstName: '', lastName: '', address: '', city: '', zipcode: '', country: '', phone: 0, isDefault: false })
     set({ showAddAddress: false })
+    set({ showEditForm: false })
   },
   setAsDefault: async (addressId, userId) => {
     const { data: dbAddresses, error: dbError } = await supabase
@@ -633,5 +657,7 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
       .update({ addresses: filteredAddresses })
       .eq('client_id', userId)
     if (updateError) console.error(updateError);
-  }
+  },
+  showEditForm: false,
+  setShowEditForm: (value) => set({ showEditForm: value }),
 }))

@@ -1,11 +1,16 @@
 "use client"
 import AnimatedInput from '@/app/components/AnimatedInput'
 import { IoCloseOutline } from 'react-icons/io5'
-import { useAddressStore } from '@/state/uiState'
-import { useRef } from 'react'
+import { TAddress, useAddressStore } from '@/state/uiState'
+import { useEffect, useRef } from 'react'
+import { supabase } from '@/app/supabase'
 
-export default function AddNewAddressForm() {
-  const { setShowAddAddress, firstName, setFirstName, lastName, setLastName, address, setAddress, city, setCity, country, setCountry, zipcode, setZipcode, phone, setPhone, isDefault, setIsDefault, onSubmitAddress, savedAddresses } = useAddressStore()
+type AddNewAddressFormProps = {
+  addressBeingEdited?: string
+}
+
+export default function AddNewAddressForm({ addressBeingEdited }: AddNewAddressFormProps) {
+  const { setShowAddAddress, firstName, setFirstName, lastName, setLastName, address, setAddress, city, setCity, country, setCountry, zipcode, setZipcode, phone, setPhone, isDefault, setIsDefault, onSubmitAddress } = useAddressStore()
   const outerRef = useRef(null)
 
   const closePopup = (e: React.MouseEvent) => {
@@ -13,6 +18,29 @@ export default function AddNewAddressForm() {
       setShowAddAddress(false)
     }
   }
+
+  useEffect(() => {
+    const getAddress = async () => {
+      return await supabase
+        .from('clients')
+        .select('addresses')
+    }
+    getAddress().then((data) => {
+      const flatArr = data.data?.flatMap((clientObj) => clientObj.addresses) ?? [];
+      const targetAddress = flatArr.filter((address: TAddress) => address.addressId === addressBeingEdited)[0]
+
+      if (targetAddress) {
+        setFirstName(targetAddress.firstName)
+        setLastName(targetAddress.lastName)
+        setAddress(targetAddress.address)
+        setCity(targetAddress.city)
+        setCountry(targetAddress.country)
+        setZipcode(targetAddress.zipcode)
+        setPhone(targetAddress.phone)
+        setIsDefault(targetAddress.isDefault)
+      }
+    })
+  }, [])
 
   return (
     <div className="text-bkg absolute inset-0 z-[60] grid h-screen w-screen place-items-center bg-[rgba(0,0,0,0.5)]" ref={outerRef} onClick={closePopup}>
@@ -82,7 +110,7 @@ export default function AddNewAddressForm() {
           <input type="checkbox" checked={isDefault} onChange={() => setIsDefault(!isDefault)} id="default_address" />
           <span>Set as default delivery address</span>
         </label>
-        <button className="bg-bkg text-content mx-auto w-[80%] rounded-full py-4 text-[0.8125rem] font-semibold" onClick={onSubmitAddress}>SAVE</button>
+        <button className="bg-bkg text-content mx-auto w-[80%] rounded-full py-4 text-[0.8125rem] font-semibold" onClick={() => onSubmitAddress(addressBeingEdited)}>SAVE</button>
       </div>
     </div>
   )
