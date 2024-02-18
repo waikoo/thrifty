@@ -587,7 +587,6 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
           .update({ addresses: [...flattenedAddresses, newAddress] })
           .eq('client_id', user.id);
         if (error) console.error(error);
-        return
       } else {
         const { data: updateData, error: updateError } = await supabase
           .from('clients')

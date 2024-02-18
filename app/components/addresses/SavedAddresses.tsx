@@ -1,6 +1,8 @@
 "use client"
-import { TAddress, useAddressStore } from '@/state/uiState'
+import { TAddress, TAddress, useAddressStore } from '@/state/uiState'
 import { borderRadius } from '@/app/components/data/universalStyles'
+import { supabase } from '@/app/supabase'
+import { useEffect, useState } from 'react'
 
 type SavedAddressProps = {
   dbAddresses: TAddress[]
@@ -8,10 +10,24 @@ type SavedAddressProps = {
 
 export default function SavedAddresses({ dbAddresses }: SavedAddressProps) {
   const { deleteAddress, setAsDefault } = useAddressStore()
+  const [updatedAddresses, setUpdatedAddresses] = useState(dbAddresses)
+
+  useEffect(() => {
+    const channels = supabase.channel('custom-all-channel')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'clients' },
+        (payload) => {
+          setUpdatedAddresses((payload.new as { addresses: TAddress[] }).addresses)
+        }
+      )
+      .subscribe()
+  }, [updatedAddresses])
+
 
   return (
     <div className={`flex gap-4 overflow-x-auto`}>
-      {dbAddresses.map((address) => (
+      {updatedAddresses.map((address) => (
         <div key={address.addressId} className={`bg-faded m-5 flex flex-col gap-10 ${borderRadius} min-w-[10rem] p-6 text-[0.8125rem] font-medium text-black`}>
           <div className="">
             <div className="flex gap-2">
