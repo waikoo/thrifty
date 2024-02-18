@@ -587,6 +587,11 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
         const flattenedAddresses = dbAddresses?.flatMap((clientObj) => clientObj.addresses) ?? [];
         const existingAddress = flattenedAddresses.find((address) => address.addressId === newAddress.addressId);
 
+        if (newAddress.isDefault) { // If new is default, reset existing ones to isDefault = false
+          flattenedAddresses.forEach((address) => address.isDefault = false);
+          supabase.from('clients').update({ addresses: flattenedAddresses }).eq('client_id', user.id);
+        }
+
         if (existingAddress) { // Check if existing address is being updated
           const updateProperties = ["firstName", "lastName", "address", "city", "zipcode", "country", "phone", "isDefault"];
 

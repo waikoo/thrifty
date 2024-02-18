@@ -48,10 +48,10 @@ export default function SavedAddresses({ dbAddresses }: SavedAddressProps) {
               <span className="block">{address.country}</span>
             </div>
 
-            <div className="*:cursor-pointer flex gap-4 text-[0.75rem] font-extrabold">
+            <div className="*:cursor-pointer flex items-baseline gap-4 text-[0.75rem] font-extrabold">
               <span onClick={() => handleEdit(address.addressId)}>EDIT</span>
               <span onClick={() => deleteAddress(address.addressId, address.userId)}>DELETE</span>
-              <span onClick={() => setAsDefault(address.addressId, address.userId)} className="whitespace-nowrap">
+              <span onClick={() => setAsDefault(address.addressId, address.userId)} className={`whitespace-nowrap ${address.isDefault ? 'rounded-full bg-black p-1 text-white' : ''}`}>
                 {address.isDefault ? 'DEFAULT' : 'SET AS DEFAULT'}
               </span>
             </div>
