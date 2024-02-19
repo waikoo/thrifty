@@ -106,7 +106,7 @@ export default function AddNewAddressForm({ addressBeingEdited }: AddNewAddressF
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPhone(Number(e.target.value))}
           />
         </div>
-        <label htmlFor="default_address" className="flex  items-center gap-2">
+        <label htmlFor="default_address" className="flex items-center gap-2 text-[0.8125rem] font-semibold">
           <input type="checkbox" checked={isDefault} onChange={() => setIsDefault(!isDefault)} id="default_address" />
           <span>Set as default delivery address</span>
         </label>
