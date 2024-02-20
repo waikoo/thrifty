@@ -1,16 +1,6 @@
-import { Category, Locales } from "@/types/home"
-
-type PageProps = {
-  params: {
-    lang: Locales,
-    gender: Category['category']
-  }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export default function Page({ params }: PageProps) {
+export default function Page() {
 
   return (
-    <div className="text-content">Orders Page</div>
+    <div className="text-content my-20 text-center">It looks like you haven't placed any orders yet</div>
   )
 }
