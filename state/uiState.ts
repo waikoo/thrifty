@@ -666,3 +666,30 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
   showEditForm: false,
   setShowEditForm: (value) => set({ showEditForm: value }),
 }))
+
+
+type TProfile = {
+  currentEmail: string
+  setCurrentEmail: (value: string) => void
+  newEmail: string
+  setNewEmail: (value: string) => void
+  password: string
+  setPassword: (value: string) => void
+  currentPassword: string
+  setCurrentPassword: (value: string) => void
+  newPassword: string
+  setNewPassword: (value: string) => void
+}
+
+export const useProfile = create<TProfile>((set) => ({
+  currentEmail: '',
+  setCurrentEmail: (value) => set({ currentEmail: value }),
+  newEmail: '',
+  setNewEmail: (value) => set({ newEmail: value }),
+  password: '',
+  setPassword: (value) => set({ password: value }),
+  currentPassword: '',
+  setCurrentPassword: (value) => set({ currentPassword: value }),
+  newPassword: '',
+  setNewPassword: (value) => set({ newPassword: value }),
+}))

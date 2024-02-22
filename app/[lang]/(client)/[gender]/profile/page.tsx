@@ -4,6 +4,7 @@ import { useState } from "react"
 import ProfileSettings from "@/app/components/profile/ProfileSettings"
 import { Category, Locales } from "@/types/home"
 import ProfilePopup from "@/app/components/profile/ProfilePopup"
+import { useProfile } from "@/state/uiState"
 
 type PageProps = {
   params: {
@@ -16,6 +17,7 @@ type PageProps = {
 export default function Page({ params }: PageProps) {
   const [showEmailPopup, setShowEmailPopup] = useState(false)
   const [showPasswordPopup, setShowPasswordPopup] = useState(false)
+  const { currentEmail, setCurrentEmail, newEmail, setNewEmail, password, setPassword, currentPassword, setCurrentPassword, newPassword, setNewPassword } = useProfile()
 
   return (
     <main className="text-bkg ">
@@ -37,16 +39,22 @@ export default function Page({ params }: PageProps) {
               type: 'email',
               id: 'current',
               placeholder: 'Current Email',
+              value: currentEmail,
+              onChange: (e: React.ChangeEvent<HTMLInputElement>) => setCurrentEmail(e.target.value)
             }, {
 
               type: 'email',
               id: 'new',
               placeholder: 'New Email',
+              value: newEmail,
+              onChange: (e: React.ChangeEvent<HTMLInputElement>) => setNewEmail(e.target.value)
             }, {
 
               type: 'password',
               id: 'password',
               placeholder: 'Password',
+              value: password,
+              onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)
             }
             ]}
           >EMAIL</ProfilePopup>
@@ -58,11 +66,15 @@ export default function Page({ params }: PageProps) {
               type: 'password',
               id: 'currentPassword',
               placeholder: 'Current Password',
+              value: currentPassword,
+              onChange: (e: React.ChangeEvent<HTMLInputElement>) => setCurrentPassword(e.target.value)
             }, {
 
               type: 'password',
               id: 'newPassword',
               placeholder: 'New Password',
+              value: newPassword,
+              onChange: (e: React.ChangeEvent<HTMLInputElement>) => setNewPassword(e.target.value)
             }]}
           >PASSWORD</ProfilePopup>
         )}

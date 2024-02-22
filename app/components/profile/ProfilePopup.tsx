@@ -6,7 +6,13 @@ import { useRef } from "react";
 type ProfilePopupProps = {
   children: React.ReactNode
   setShowPopup: (popup: boolean) => void
-  inputSettings: { type: string, id: string, placeholder: string }[]
+  inputSettings: {
+    type: string,
+    id: string,
+    placeholder: string
+    value: string
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  }[]
 }
 
 export default function ProfilePopup({ children, setShowPopup, inputSettings }: ProfilePopupProps) {
