@@ -679,9 +679,11 @@ type TProfile = {
   setCurrentPassword: (value: string) => void
   newPassword: string
   setNewPassword: (value: string) => void
+  updateEmail: () => void
+  updatePassword: () => void
 }
 
-export const useProfile = create<TProfile>((set) => ({
+export const useProfile = create<TProfile>((set, get) => ({
   currentEmail: '',
   setCurrentEmail: (value) => set({ currentEmail: value }),
   newEmail: '',
@@ -692,4 +694,16 @@ export const useProfile = create<TProfile>((set) => ({
   setCurrentPassword: (value) => set({ currentPassword: value }),
   newPassword: '',
   setNewPassword: (value) => set({ newPassword: value }),
+  updateEmail: async () => {
+    const { data, error } = await supabase.auth.updateUser({
+      email: get().newEmail,
+    })
+    if (error) console.error(error)
+  },
+  updatePassword: async () => {
+    const { data, error } = await supabase.auth.updateUser({
+      password: get().newPassword
+    })
+    if (error) console.error(error)
+  }
 }))

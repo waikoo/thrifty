@@ -12,16 +12,22 @@ type ProfilePopupProps = {
     placeholder: string
     value: string
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  }[]
+  }[],
+  update: () => void
 }
 
-export default function ProfilePopup({ children, setShowPopup, inputSettings }: ProfilePopupProps) {
+export default function ProfilePopup({ children, setShowPopup, inputSettings, update }: ProfilePopupProps) {
   const outerRef = useRef(null)
 
   const closePopup = (e: React.MouseEvent) => {
     if (e.target === outerRef.current) {
       setShowPopup(false)
     }
+  }
+
+  const submit = () => {
+    update()
+    setShowPopup(false)
   }
 
   return (
@@ -32,7 +38,7 @@ export default function ProfilePopup({ children, setShowPopup, inputSettings }: 
 
         {inputSettings.map((setting) => <AnimatedInput key={setting.id} {...setting} />)}
 
-        <button className="bg-bkg text-content mt-10 rounded-full py-3 text-[0.8125rem] font-semibold">SAVE</button>
+        <button className="bg-bkg text-content mt-10 rounded-full py-3 text-[0.8125rem] font-semibold" onClick={submit}>SAVE</button>
       </div>
     </div>
   )
