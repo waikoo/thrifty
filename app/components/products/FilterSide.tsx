@@ -13,13 +13,13 @@ type FilterSideProps = {
 
 export default function FilterSide({ lang, gender, searchParams }: FilterSideProps) {
   const { hideFilters } = useUIStore()
+
   const getType = (searchParams: { [key: string]: string | string[] | undefined }) => {
-    const sp = new URLSearchParams(searchParams);
-    let genderArray = sp.getAll('gender')[0]?.split(',')
-    let categoryArray = sp.getAll('category')[0]?.split(',')
+    const genderArray = searchParams['gender']?.toString().split(',')
+    const categoryArray = searchParams['category']?.toString().split(',')
 
     if (!genderArray) {
-      return filter.type.all;
+      return filter.type.all.all;
     }
 
     if (!categoryArray || categoryArray.length === 0) {
@@ -39,11 +39,12 @@ export default function FilterSide({ lang, gender, searchParams }: FilterSidePro
     }
 
     let result: string[] = [];
+
     genderArray.forEach((gender) => {
-      categoryArray.forEach((category) => {
-        if (filter.type[gender][category]) {
-          result.push(...filter.type[gender][category]);
-        }
+
+      categoryArray?.forEach((category) => {
+
+        result.push(...filter.type[gender][category]);
       });
     });
 

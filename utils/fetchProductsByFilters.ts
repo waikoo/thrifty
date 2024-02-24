@@ -22,7 +22,7 @@ export async function fetchProductsByFilters(
     .select("*")
     .in("gender", byGenderParams || filter.gender.map(fil => fil.toLowerCase()))
     .in("category", byCategoryParams || filter.category.map(fil => fil.toLowerCase()))
-    .in("type", byTypeParams || filter.type.all.map(fil => fil.toLowerCase()))
+    .in("type", byTypeParams || filter.type.all.all.map(fil => fil.toLowerCase()))
     .in("material", byMaterialParams || filter.material.map(fil => fil.toLowerCase()))
     .in("size", bySizeParams || filter.size.map(fil => fil.toLowerCase()))
     .in("color", byColorParams || filter.color.map(fil => fil.toLowerCase()))

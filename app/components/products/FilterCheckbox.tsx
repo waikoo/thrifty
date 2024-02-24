@@ -7,6 +7,7 @@ import { useFilterTitleStore } from "@/state/uiState"
 
 type FilterCheckboxProps = {
   type: string
+  // elements: any
   elements: string[]
   search?: boolean
 }
