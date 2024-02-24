@@ -1,5 +1,3 @@
-"use client"
-
 import { useThemeStore } from "@/state/themeState"
 import { getSvgColor } from "@/utils/theme"
 
