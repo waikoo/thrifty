@@ -15,7 +15,10 @@ export default async function ProductRecommendations({ matchedProduct }: Product
   return (
     <section className="mb-20">
       <h1 className="text-content block whitespace-nowrap py-20 text-center text-[1rem] font-semibold">SIMILAR PRODUCTS YOU MIGHT LIKE</h1>
-      <ProductRecommendationsControls products={eightProducts} />
+
+      {eightProducts && eightProducts?.length > 0 && (
+        <ProductRecommendationsControls products={eightProducts} />
+      )}
     </section>
   );
 }
