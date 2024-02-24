@@ -1,6 +1,7 @@
-import { supabase } from "@/app/supabase";
 import { useEffect, useState } from "react";
 import { Session } from "@supabase/supabase-js";
+
+import { supabase } from "@/app/supabase";
 
 export default function useUserSession() {
   const [session, setSession] = useState<Session | null>(null);
@@ -19,16 +20,15 @@ export default function useUserSession() {
           message: error.message,
           status: true
         })
-      } else {
-        setSession(data.session);
       }
+      setSession(data.session as Session);
     };
-
     fetchSession();
+
 
     const { data: listener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        if (event === 'SIGNED_OUT' || event === 'USER_DELETED') {
+        if (event === 'SIGNED_OUT') {
           const expires = new Date(0).toUTCString();
           document.cookie = `my-access-token=;"+path=/; expires=${expires} ;SameSite=Lax; secure`
           document.cookie = `my-refresh-token=; path=/; expires=${expires}; SameSite=Lax; secure`
@@ -38,7 +38,6 @@ export default function useUserSession() {
           document.cookie = `my-refresh-token=${session?.refresh_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`
           setSession(null);
         }
-        // setSession(session)
       }
     )
     return () => listener.subscription.unsubscribe()
