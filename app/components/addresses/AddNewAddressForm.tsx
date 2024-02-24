@@ -110,7 +110,7 @@ export default function AddNewAddressForm({ addressBeingEdited }: AddNewAddressF
           <input type="checkbox" checked={isDefault} onChange={() => setIsDefault(!isDefault)} id="default_address" />
           <span>Set as default delivery address</span>
         </label>
-        <button className="bg-bkg text-content mx-auto w-[80%] rounded-full py-4 text-[0.8125rem] font-semibold" onClick={() => onSubmitAddress(addressBeingEdited)}>SAVE</button>
+        <button className="bg-bkg text-content mx-auto w-[80%] rounded-full py-4 text-[0.8125rem] font-semibold" onClick={() => onSubmitAddress(addressBeingEdited || '')}>SAVE</button>
       </div>
     </div>
   )
