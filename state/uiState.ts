@@ -287,7 +287,7 @@ export const useCartStore = create<TCartStore>((set) => ({
 
   initCart: (cart) => set({
     cart,
-    cartLength: cart.length
+    cartLength: cart.length || 0
   }),
   emptyCart: () => set({
     cart: [],
