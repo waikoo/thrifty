@@ -1,6 +1,8 @@
 import { ProductItemType } from "@/types/productItem";
 
-export async function fetchAllProducts(supabase: any, table: string): Promise<ProductItemType[] | null> {
+type TTable = 'products' | 'draft' | 'edited'
+
+export async function fetchAllProducts(supabase: any, table: TTable): Promise<ProductItemType[] | null> {
   const { data, error } = await supabase
     .from(table)
     .select('*');
