@@ -24,12 +24,10 @@ export default function ProductAddToCart({ uuid, className, children }: ProductA
   }, [cart])
 
   useEffect(() => {
-    const stringifiedCart = localStorage.getItem('cart')
-    if (stringifiedCart) {
-      const storedCart = JSON.parse(stringifiedCart)
-      initCart(storedCart)
-    }
-  }, [])
+    const stringifiedCart = localStorage.getItem('cart');
+    const storedCart = stringifiedCart ? JSON.parse(stringifiedCart) : [];
+    initCart(storedCart);
+  }, []);
 
   return (
     <button className={tm(`bg-darkgrey w-full cursor-pointer py-4 text-center text-[0.75rem] font-medium text-white ${className}`)} onClick={addItemToCart}>
