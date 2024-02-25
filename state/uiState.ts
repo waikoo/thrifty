@@ -512,6 +512,7 @@ export type TAddress = {
   isDefault: boolean,
   userId: string,
   addressId: string
+  [key: string]: string | number | boolean
 }
 
 type TAddressStore = {
