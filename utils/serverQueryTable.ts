@@ -1,7 +1,8 @@
 import useSupabaseServer from "@/app/components/hooks/useSupabaseServer";
-import { fetchAllProducts } from "./fetchAllProducts";
+import { TTable } from "@/types/tables";
+import { fetchAllProducts } from "@/utils/fetchAllProducts";
 
-export default async function serverQueryTable(table: string) {
+export default async function serverQueryTable(table: TTable) {
   const data = await fetchAllProducts(
     useSupabaseServer(),
     table
