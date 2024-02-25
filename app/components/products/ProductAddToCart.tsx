@@ -26,6 +26,7 @@ export default function ProductAddToCart({ uuid, className, children }: ProductA
   useEffect(() => {
     const stringifiedCart = localStorage.getItem('cart');
     const storedCart = stringifiedCart ? JSON.parse(stringifiedCart) : [];
+
     initCart(storedCart);
   }, []);
 

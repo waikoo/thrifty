@@ -19,8 +19,8 @@ export default function NavIcons({ className }: NavIconsProps) {
   const { initFavorites, favoritesLength } = useFavoriteStore()
 
   useEffect(() => {
-    initCart(getFromLocalStorage('cart'))
-    initFavorites(getFromLocalStorage('favorites'))
+    initCart(getFromLocalStorage('cart') || [])
+    initFavorites(getFromLocalStorage('favorites') || [])
   }, [])
 
   return (
