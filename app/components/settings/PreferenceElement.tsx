@@ -3,16 +3,19 @@ import { useEffect, useState } from "react"
 
 import { useThemeStore } from "@/state/themeState"
 import { themeSettings } from "@/app/components/data/theme"
+import { useRouter } from "next/navigation"
 
 type PreferenceElementProps = {
   radioValues: string[]
   title: 'SHOPPING' | 'LANGUAGE' | 'THEME'
   defaultChecked: string
+  gender?: 'men' | 'women' | 'kids'
 }
 
-export default function PreferenceElement({ radioValues, title, defaultChecked }: PreferenceElementProps) {
+export default function PreferenceElement({ radioValues, title, defaultChecked, gender }: PreferenceElementProps) {
   const [checked, setChecked] = useState(defaultChecked)
   const { updateTheme } = useThemeStore()
+  const router = useRouter()
 
   useEffect(() => {
     // theme
@@ -21,6 +24,13 @@ export default function PreferenceElement({ radioValues, title, defaultChecked }
       document.documentElement.dataset.theme = checked
       localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (checked === 'dark').toString())
     }
+
+    // language
+    const lang = checked.slice(0, 2)
+    if (lang === 'en' || lang === 'de') {
+      router.push(`/${lang}/${gender}/settings`)
+    }
+
   }, [checked])
 
   const getValue = (value: string) => {

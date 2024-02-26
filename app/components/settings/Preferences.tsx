@@ -10,7 +10,7 @@ export default function Preferences() {
   const languages = ['English', 'Deutsch']
   const themes = ['Light', 'Dark']
 
-  const { lang } = getLangAndGender(usePathname())
+  const { lang, gender } = getLangAndGender(usePathname())
   const prefersDarkMode = useMediaQuery(['(prefers-color-scheme: dark)'], [true], false)
   const theme = prefersDarkMode ? 'dark' : 'light'
 
@@ -20,7 +20,7 @@ export default function Preferences() {
 
       <div className="mt-5">
         <PreferenceElement title={'SHOPPING'} radioValues={genders} defaultChecked={'women'} />
-        <PreferenceElement title={'LANGUAGE'} radioValues={languages} defaultChecked={lang} />
+        <PreferenceElement title={'LANGUAGE'} radioValues={languages} defaultChecked={lang} gender={gender} />
         <PreferenceElement title={'THEME'} radioValues={themes} defaultChecked={theme} />
       </div>
 
