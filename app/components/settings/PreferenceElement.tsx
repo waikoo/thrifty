@@ -1,9 +1,10 @@
 "use client"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
 import { useThemeStore } from "@/state/themeState"
 import { themeSettings } from "@/app/components/data/theme"
-import { useRouter } from "next/navigation"
+import { supabase } from "@/app/supabase"
 
 type PreferenceElementProps = {
   radioValues: string[]
@@ -31,6 +32,26 @@ export default function PreferenceElement({ radioValues, title, defaultChecked, 
       router.push(`/${lang}/${gender}/settings`)
     }
 
+    // gender
+    const saveGenderPreference = async (gender: 'men' | 'women' | 'kids', client_id: string) => {
+      const { data: update, error: updateError } = await supabase.
+        from('clients')
+        .update({ gender_preference: gender })
+        .eq('client_id', client_id)
+      if (updateError) console.error(updateError)
+    }
+
+    const getSession = async () => {
+      return await supabase.auth.getSession()
+    }
+
+    if (checked === 'women' || checked === 'men' || checked === 'kids') {
+      getSession().then(({ data: { session } }) => {
+        if (session) {
+          saveGenderPreference(checked, session.user.id)
+        }
+      })
+    }
   }, [checked])
 
   const getValue = (value: string) => {

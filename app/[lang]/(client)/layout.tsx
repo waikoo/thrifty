@@ -17,7 +17,7 @@ export type RootLayoutProps = {
   params?: { [key: string]: string | string[] | undefined }
 }
 
-export default function RootLayout({ children, params }: RootLayoutProps) {
+export default async function RootLayout({ children, params }: RootLayoutProps) {
   const lang = typeof params?.lang === 'string' ? params.lang : ''
 
   return (
