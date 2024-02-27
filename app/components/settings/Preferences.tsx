@@ -15,8 +15,8 @@ export default function Preferences() {
   const theme = prefersDarkMode ? 'dark' : 'light'
 
   return (
-    <section>
-      <h1 className="text-content mt-8 text-center text-[0.75rem] font-extrabold">PREFERENCES</h1>
+    <section className="">
+      <h1 className="text-content mt-8 flex-1 text-center text-[0.75rem] font-extrabold">PREFERENCES</h1>
 
       <div className="mt-5">
         <PreferenceElement title={'SHOPPING'} radioValues={genders} defaultChecked={'women'} />
