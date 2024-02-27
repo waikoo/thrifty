@@ -14,9 +14,30 @@ type withHomeProps = {
 
 export default function WithHome({ className, children }: withHomeProps) {
   let [, locale, category] = usePathname().split('/')
-  category = !['men', 'women', 'kids'].includes(category) ? 'women' : category
+  const [genderPreference, setGenderPreference] = useState('women')
 
-  const [genderPreference, setGenderPreference] = useState(document.documentElement.dataset.genderpref)
+  useEffect(() => {
+
+    const getUserId = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      return user?.id
+    }
+
+    const getGenderPreference = async () => {
+      const { data, error } = await supabase
+        .from('clients')
+        .select('gender_preference')
+        .eq('client_id', await getUserId())
+      if (error) console.error(error)
+      return data
+    }
+
+    getGenderPreference().then(genderPref => {
+      if (genderPref) {
+        setGenderPreference(genderPref[0].gender_preference)
+      }
+    })
+  }, [])
 
   const channels = supabase.channel('custom-all-channel')
     .on(
