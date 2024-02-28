@@ -1,2 +1,0 @@
-export const HELP_TITLES = ['ABOUT US', 'SHIPPING & DELIVERY', 'RETURNS', 'FAQ', 'CONTACT'
-]

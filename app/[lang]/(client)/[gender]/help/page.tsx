@@ -6,7 +6,7 @@ import Contact from "@/app/components/help/Contact"
 import FAQ from "@/app/components/help/FAQ"
 import Returns from "@/app/components/help/Returns"
 import ShippingAndDelivery from "@/app/components/help/ShippingAndDelivery"
-import { HELP_TITLES } from "@/app/components/data/helpTitles"
+import { HELP_TITLES } from "@/app/components/data/helpData"
 
 export default function Page() {
   const [selected, setSelected] = useState(0)
