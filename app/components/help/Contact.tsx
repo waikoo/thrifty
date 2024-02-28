@@ -2,11 +2,15 @@ import HelpTitle from "@/app/components/help/HelpTitle"
 import OpeningHours from "@/app/components/footer/OpeningHours"
 import FooterContact from "@/app/components/footer/FooterContact"
 
-export default function Contact() {
+type ContactProps = {
+  children: React.ReactNode
+}
+
+export default function Contact({ children }: ContactProps) {
 
   return (
     <>
-      <HelpTitle>CONTACT</HelpTitle>
+      <HelpTitle>{children}</HelpTitle>
       <OpeningHours />
       <br />
       <FooterContact noTitle={true} />

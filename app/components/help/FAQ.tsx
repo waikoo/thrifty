@@ -1,9 +1,13 @@
 import HelpTitle from "@/app/components/help/HelpTitle"
 
-export default function FAQ() {
+type FAQProps = {
+  children: React.ReactNode
+}
+
+export default function FAQ({ children }: FAQProps) {
   return (
     <>
-      <HelpTitle>FAQ</HelpTitle>
+      <HelpTitle>{children}</HelpTitle>
       <ol className="max-w-3xl text-[0.8125rem]">
         <li className="list-decimal font-black"> What items are available on your webshop? </li>
         <ul>
