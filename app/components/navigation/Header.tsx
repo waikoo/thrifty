@@ -8,7 +8,7 @@ import AccountMenuBar from "@/app/components/navigation/AccountMenuBar";
 export default function Header() {
   const pathname = usePathname()
   const isCheckout = pathname.split('/')[2] === 'checkout'
-  const isAccountMenuBarItem = ['profile', 'addresses', 'orders', 'returns', 'settings'].includes(pathname.split('/')[3])
+  const isAccountMenuBarItem = ['profile', 'addresses', 'orders', 'returns', 'settings', 'help'].includes(pathname.split('/')[3])
 
   return (
     !isCheckout ? <>

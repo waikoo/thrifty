@@ -5,6 +5,7 @@ import IconAddresses from "@/app/components/navigation/icons/IconAddresses"
 import IconOrders from "@/app/components/navigation/icons/IconOrders"
 import IconReturns from "@/app/components/navigation/icons/IconReturns"
 import IconSettings from "@/app/components/navigation/icons/IconSettings"
+import IconHelp from "@/app/components/navigation/icons/IconHelp"
 
 export default function AccountMenuBar() {
 
@@ -15,6 +16,7 @@ export default function AccountMenuBar() {
       <AccountMenuBarItem Icon={IconOrders}>ORDERS</AccountMenuBarItem>
       <AccountMenuBarItem Icon={IconReturns}>RETURNS</AccountMenuBarItem>
       <AccountMenuBarItem Icon={IconSettings}>SETTINGS</AccountMenuBarItem>
+      <AccountMenuBarItem Icon={IconHelp}>HELP</AccountMenuBarItem>
     </section>
   )
 }
