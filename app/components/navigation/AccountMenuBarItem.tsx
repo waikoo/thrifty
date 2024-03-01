@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 
 type AccountMenuBarItemProps = {
   children: React.ReactNode
-  Icon: React.FC
+  Icon: React.FC<{ invert: boolean }>;
 }
 
 export default function AccountMenuBarItem({ children, Icon }: AccountMenuBarItemProps) {
@@ -15,7 +15,7 @@ export default function AccountMenuBarItem({ children, Icon }: AccountMenuBarIte
 
   return (
     <div className="flex items-center gap-2">
-      <Icon />
+      <Icon invert={true} />
       <Link
         href={`/${lang}/${gender}/${lowercaseChildren}`}
         className="">
