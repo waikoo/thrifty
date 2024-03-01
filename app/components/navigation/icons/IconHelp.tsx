@@ -2,8 +2,13 @@
 import { useThemeStore } from "@/state/themeState"
 import { getSvgColor } from "@/utils/theme"
 
-function IconHelp() {
-  const color = useThemeStore((state) => getSvgColor(state.theme, true))
+type IconHelpProps = {
+  invert?: boolean
+  isHovered?: boolean
+}
+
+function IconHelp({ invert, isHovered }: IconHelpProps) {
+  const color = useThemeStore((state) => getSvgColor(state.theme, invert ? invert : isHovered))
 
   return (
     <svg

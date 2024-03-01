@@ -1,20 +1,27 @@
 "use client"
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { twMerge as tm } from 'tailwind-merge';
-import useEventListener from '../hooks/useEventListener';
+
+import useEventListener from '@/app/components/hooks/useEventListener';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import getLangAndGender from '@/utils/getLangAndGender';
+import { useUIStore } from '@/state/uiState';
 
 type MenuItemProps = {
   className?: string;
-  color: string;
   onClick?: (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
   children: React.ReactNode;
   loading?: boolean;
-  Img?: React.ComponentType<{ color: string, isHovered: boolean }>;
+  href: string
+  Img?: React.ComponentType<{ isHovered: boolean }>;
 };
 
-export default function MenuItem({ children, className, onClick, Img, color, loading }: MenuItemProps) {
-  const menuItemContainer = useRef<HTMLDivElement | null>(null);
+export default function MenuItem({ children, className, onClick, Img, loading, href }: MenuItemProps) {
+  const menuItemContainer = useRef<HTMLAnchorElement | null>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const { lang, gender } = getLangAndGender(usePathname())
+  const { setShowMyAccount } = useUIStore()
 
   useEventListener({
     eventType: "mouseover",
@@ -28,12 +35,18 @@ export default function MenuItem({ children, className, onClick, Img, color, loa
     target: menuItemContainer.current,
   });
 
+  function closeMenu(): void {
+    setShowMyAccount(false)
+  }
+
   return (
-    <div
+    <Link
+      href={`/${lang}/${gender}/${href}`}
       className={tm("flex items-center", className)}
       ref={menuItemContainer}
+      onClick={closeMenu}
     >
-      {Img ? (<Img color={color}
+      {Img ? (<Img
         isHovered={isHovered}
       />) : null}
 
@@ -44,7 +57,7 @@ export default function MenuItem({ children, className, onClick, Img, color, loa
       )} onClick={onClick}>
         {children}
       </li>
-    </div>
+    </Link>
   );
 }
 
