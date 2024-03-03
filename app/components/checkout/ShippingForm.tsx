@@ -6,8 +6,13 @@ import CheckoutRadio from "@/app/components/checkout/CheckoutRadio";
 import CheckoutContact from "@/app/components/checkout/CheckoutContact";
 import { borderRadius, opacityHalf, opacityFull } from "@/app/components/data/universalStyles";
 import { useCheckoutStore } from "@/state/uiState";
+import { AddressesType } from "@/app/components/checkout/CheckoutForm";
 
-export default function ShippingForm() {
+type ShippingFormProps = {
+  defaultAddress: AddressesType
+}
+
+export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
   const { isShippingOpen, setIsContactHidden, isShippingHidden, setIsPaymentHidden, setIsShippingHidden } = useCheckoutStore()
   const sectionRef = useRef(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
@@ -38,13 +43,42 @@ export default function ShippingForm() {
           </div>
 
           <div className="flex gap-8">
-            <CheckoutContact id="address" type="text" text="Street, Number, Apartment" activeBg={activeBg} title="SHIPPING" />
-            <CheckoutContact id="city" type="text" text="City" activeBg={activeBg} title="SHIPPING" />
+            <CheckoutContact
+              id="address"
+              type="text"
+              text="Street, Number, Apartment"
+              activeBg={activeBg}
+              title="SHIPPING"
+              defaultValue={defaultAddress.address}
+            />
+
+            <CheckoutContact
+              id="city"
+              type="text"
+              text="City"
+              activeBg={activeBg}
+              title="SHIPPING"
+              defaultValue={defaultAddress.city}
+            />
           </div>
 
           <div className="flex gap-8">
-            <CheckoutContact id="country" type="text" text="Country" activeBg={activeBg} title="SHIPPING" />
-            <CheckoutContact id="zipcode" type="tel" text="Postal Code" activeBg={activeBg} title="SHIPPING" />
+            <CheckoutContact
+              id="country"
+              type="text"
+              text="Country"
+              activeBg={activeBg}
+              title="SHIPPING"
+              defaultValue={defaultAddress.country}
+            />
+            <CheckoutContact
+              id="zipcode"
+              type="tel"
+              text="Postal Code"
+              activeBg={activeBg}
+              title="SHIPPING"
+              defaultValue={defaultAddress.zipcode}
+            />
           </div>
           <p className="font-regular mr-auto text-[0.6875rem]">*Free shipping above €25 </p>
         </>

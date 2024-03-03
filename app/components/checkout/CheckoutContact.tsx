@@ -8,9 +8,10 @@ type CheckoutContactProps = {
   id: 'firstname' | 'lastname' | 'phone' | 'email' | 'address' | 'city' | 'country' | 'zipcode'
   activeBg: string
   title: 'CONTACT' | 'SHIPPING' | 'PAYMENT'
+  defaultValue: string
 }
 
-export default function CheckoutContact({ type, text, id, activeBg, title }: CheckoutContactProps) {
+export default function CheckoutContact({ type, text, id, activeBg, title, defaultValue }: CheckoutContactProps) {
   const { firstName, setFirstName, lastName, setLastName, phone, setPhone, email, setEmail, address, setAddress, city, setCity, country, setCountry, zipcode, setZipcode, setIsContactErrorFree, setIsShippingErrorFree } = useCheckoutStore()
   const [focusLost, setFocusLost] = useState(false)
   const [isEmpty, setIsEmpty] = useState(true)
@@ -82,7 +83,7 @@ export default function CheckoutContact({ type, text, id, activeBg, title }: Che
         id={id}
         type={type}
         placeholder={text}
-        value={values[id]}
+        value={defaultValue || values[id]}
         onChange={handleOnChange}
         spellCheck="false"
         onFocus={handleOnFocus}
