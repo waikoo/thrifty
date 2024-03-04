@@ -5,7 +5,7 @@ import CheckoutContactTitle from "@/app/components/checkout/CheckoutContactTitle
 import CheckoutRadio from "@/app/components/checkout/CheckoutRadio";
 import CheckoutContact from "@/app/components/checkout/CheckoutContact";
 import { borderRadius, opacityHalf, opacityFull } from "@/app/components/data/universalStyles";
-import { useCheckoutStore } from "@/state/uiState";
+import { useCheckoutStore, useOrderStore } from "@/state/uiState";
 import { AddressesType } from "@/app/components/checkout/CheckoutForm";
 
 type ShippingFormProps = {
@@ -14,6 +14,7 @@ type ShippingFormProps = {
 
 export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
   const { isShippingOpen, setIsContactHidden, isShippingHidden, setIsPaymentHidden, setIsShippingHidden } = useCheckoutStore()
+  const { shippingType } = useOrderStore()
   const sectionRef = useRef(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
 
@@ -42,44 +43,48 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
             <CheckoutRadio price="Free" text="Collect From Store" value="store" name="shipping" />
           </div>
 
-          <div className="flex gap-8">
-            <CheckoutContact
-              id="address"
-              type="text"
-              text="Street, Number, Apartment"
-              activeBg={activeBg}
-              title="SHIPPING"
-              defaultValue={defaultAddress.address}
-            />
+          {shippingType === "home" &&
+            <>
+              <div className="flex gap-8">
+                <CheckoutContact
+                  id="address"
+                  type="text"
+                  text="Street, Number, Apartment"
+                  activeBg={activeBg}
+                  title="SHIPPING"
+                  defaultValue={defaultAddress.address}
+                />
 
-            <CheckoutContact
-              id="city"
-              type="text"
-              text="City"
-              activeBg={activeBg}
-              title="SHIPPING"
-              defaultValue={defaultAddress.city}
-            />
-          </div>
+                <CheckoutContact
+                  id="city"
+                  type="text"
+                  text="City"
+                  activeBg={activeBg}
+                  title="SHIPPING"
+                  defaultValue={defaultAddress.city}
+                />
+              </div>
 
-          <div className="flex gap-8">
-            <CheckoutContact
-              id="country"
-              type="text"
-              text="Country"
-              activeBg={activeBg}
-              title="SHIPPING"
-              defaultValue={defaultAddress.country}
-            />
-            <CheckoutContact
-              id="zipcode"
-              type="tel"
-              text="Postal Code"
-              activeBg={activeBg}
-              title="SHIPPING"
-              defaultValue={defaultAddress.zipcode}
-            />
-          </div>
+              <div className="flex gap-8">
+                <CheckoutContact
+                  id="country"
+                  type="text"
+                  text="Country"
+                  activeBg={activeBg}
+                  title="SHIPPING"
+                  defaultValue={defaultAddress.country}
+                />
+                <CheckoutContact
+                  id="zipcode"
+                  type="tel"
+                  text="Postal Code"
+                  activeBg={activeBg}
+                  title="SHIPPING"
+                  defaultValue={defaultAddress.zipcode}
+                />
+              </div>
+            </>
+          }
           <p className="font-regular mr-auto text-[0.6875rem]">*Free shipping above €25 </p>
         </>
       }
