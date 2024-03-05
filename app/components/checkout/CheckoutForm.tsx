@@ -25,37 +25,54 @@ export type AddressesType = {
 }
 
 export default function CheckoutForm({ className }: CheckoutFormProps) {
-  const [defaultAddress, setDefaultAddress] = useState<AddressesType>({} as AddressesType)
+  const [displayAddress, setDisplayAddress] = useState<AddressesType>({} as AddressesType)
+  const [addresses, setAddresses] = useState<AddressesType[]>([])
+  const [chosenAddressId, setChosenAddressId] = useState<string>('')
 
   useEffect(() => {
+    const getUserId = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      return user?.id
+    }
     const getAddresses = async () => {
       const { data: addresses, error } = await supabase
         .from('clients')
         .select('addresses')
+        .eq('client_id', await getUserId())
       if (error) console.error(error)
 
       if (addresses) {
         return addresses[0].addresses
       }
-      return []
     }
     getAddresses().then((addresses) => {
-      // console.log(addresses)
+      setAddresses(addresses)
+
       addresses.forEach((address: AddressesType) => {
         if (address.isDefault) {
-          setDefaultAddress(address)
+          setDisplayAddress(address)
         }
       })
     })
   }, [])
 
+  useEffect(() => {
+    if (chosenAddressId) {
+      const chosenAddress = addresses.find((address) => address.addressId === chosenAddressId)
+      if (chosenAddress) {
+        setDisplayAddress(chosenAddress)
+      }
+    }
+  }, [chosenAddressId])
 
-  console.log(defaultAddress)
   return (
     <div className={`mb-[10rem] flex w-[800px] flex-col gap-8 ${className}`}>
-      <ContactForm defaultAddress={defaultAddress} />
+      <ContactForm
+        addresses={addresses}
+        displayAddress={displayAddress}
+        setChosenAddressId={setChosenAddressId} />
 
-      <ShippingForm defaultAddress={defaultAddress} />
+      <ShippingForm defaultAddress={displayAddress} />
 
       <PaymentForm />
     </div>

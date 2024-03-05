@@ -1,5 +1,5 @@
 "use client"
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import CheckoutContactTitle from "@/app/components/checkout/CheckoutContactTitle";
 import CheckoutContact from "@/app/components/checkout/CheckoutContact";
@@ -7,16 +7,21 @@ import { useCheckoutStore } from "@/state/uiState";
 import { borderRadius, opacityFull, opacityHalf } from "@/app/components/data/universalStyles";
 import { AddressesType } from "@/app/components/checkout/CheckoutForm";
 import useUserSession from "@/app/components/hooks/useUserSession";
+import Portal from "@/app/components/admin/Portal";
+import CheckoutDifferentAddressPopup from "@/app/components/checkout/CheckoutDifferentAddressPopup";
 
 type ContactFormProps = {
-  defaultAddress: AddressesType
+  addresses: AddressesType[]
+  displayAddress: AddressesType
+  setChosenAddressId: React.Dispatch<React.SetStateAction<string>>
 }
 
-export default function ContactForm({ defaultAddress }: ContactFormProps) {
-  const { isContactOpen, isContactHidden, setIsContactHidden, setIsPaymentHidden, setIsShippingHidden, isShippingHidden, isContactErrorFree } = useCheckoutStore()
+export default function ContactForm({ addresses, displayAddress, setChosenAddressId }: ContactFormProps) {
+  const { isContactOpen, isContactHidden, setIsContactHidden, setIsPaymentHidden, setIsShippingHidden } = useCheckoutStore()
   const activeBg = isContactHidden ? opacityHalf : opacityFull
   const sectionRef = useRef(null)
   const { session, error } = useUserSession()
+  const [showAddresses, setShowAddresses] = useState(false)
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     if (e.currentTarget === sectionRef.current) {
@@ -26,7 +31,9 @@ export default function ContactForm({ defaultAddress }: ContactFormProps) {
     }
   }
 
-
+  function showSavedAddresses() {
+    setShowAddresses(!showAddresses)
+  }
 
   return (
     <section className={`${activeBg} bg-bkg flex flex-col gap-8 p-8 ${borderRadius}`} ref={sectionRef} onClick={handleOnClick}>
@@ -41,7 +48,7 @@ export default function ContactForm({ defaultAddress }: ContactFormProps) {
               type="text"
               text="First Name"
               activeBg={activeBg}
-              defaultValue={defaultAddress.firstName}
+              defaultValue={displayAddress.firstName}
             />
 
             <CheckoutContact
@@ -50,7 +57,7 @@ export default function ContactForm({ defaultAddress }: ContactFormProps) {
               type="text"
               text="Last Name"
               activeBg={activeBg}
-              defaultValue={defaultAddress.lastName}
+              defaultValue={displayAddress.lastName}
             />
           </div>
 
@@ -61,7 +68,7 @@ export default function ContactForm({ defaultAddress }: ContactFormProps) {
               type="number"
               text="Phone Number"
               activeBg={activeBg}
-              defaultValue={defaultAddress.phone}
+              defaultValue={displayAddress.phone}
             />
             <CheckoutContact
               title="CONTACT"
@@ -72,9 +79,20 @@ export default function ContactForm({ defaultAddress }: ContactFormProps) {
               defaultValue={session?.user.email || ''}
             />
           </div>
-          <p className="ml-auto cursor-pointer text-[0.6875rem] font-extrabold" onClick={() => { }}>USE DIFFERENT CONTACT</p>
+          <p className="ml-auto cursor-pointer text-[0.6875rem] font-extrabold"
+            onClick={showSavedAddresses}>
+            USE DIFFERENT CONTACT
+          </p>
         </>
       }
+      {showAddresses && (
+        <Portal>
+          <CheckoutDifferentAddressPopup
+            addresses={addresses}
+            setChosenAddressId={setChosenAddressId}
+            setShowAddresses={setShowAddresses} />
+        </Portal>
+      )}
     </section>
   )
 }
