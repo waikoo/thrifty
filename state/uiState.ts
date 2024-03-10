@@ -708,3 +708,13 @@ export const useProfile = create<TProfile>((set, get) => ({
     if (error) console.error(error)
   }
 }))
+
+type TNavigation = {
+  showMiniCartView: boolean,
+  setShowMiniCartView: (value: boolean) => void
+}
+
+export const useNavigationStore = create<TNavigation>((set, get) => ({
+  showMiniCartView: false,
+  setShowMiniCartView: (value) => set({ showMiniCartView: value })
+}))

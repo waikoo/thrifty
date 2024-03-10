@@ -1,26 +1,21 @@
 "use client"
-import { useEffect, useState } from "react";
-import Image from 'next/image'
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { supabase } from "@/app/supabase";
 import IconCheckMark from "@/app/components/navigation/icons/IconCheckMark";
+import { useCartStore, useNavigationStore } from "@/state/uiState";
+import MiniCartItem from "@/app/components/navigation/MiniCartItem";
 import getLangAndGender from "@/utils/getLangAndGender";
-import { useCartStore } from "@/state/uiState";
 import { ProductItemType } from "@/types/productItem";
-import { capitalize } from "@/utils/capitalize";
-import { EURO } from "@/app/components/data/orderSummary";
 
-type MinICartViewProps = {
-  miniCartViewRef: React.RefObject<HTMLDivElement>
-  setShowMiniCartView: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-export default function MiniCartView({ miniCartViewRef, setShowMiniCartView }: MinICartViewProps) {
+export default function MiniCartView() {
   const { lang, gender } = getLangAndGender(usePathname())
-  const { cart, removeFromCart } = useCartStore()
+  const { cart } = useCartStore()
   const [cartItems, setCartItems] = useState<ProductItemType[]>([])
+  const miniCartViewRef = useRef<HTMLDivElement>(null)
+  const { setShowMiniCartView } = useNavigationStore()
 
   useEffect(() => {
     const getCartProducts = async () => {
@@ -38,11 +33,21 @@ export default function MiniCartView({ miniCartViewRef, setShowMiniCartView }: M
     })
   }, [cart])
 
+  const onMouseLeave = (e: React.MouseEvent) => {
+    // if cursor leaves MiniCartView, hide MiniCartView 
+    if (e.target === miniCartViewRef.current) {
+      setShowMiniCartView(false)
+    }
+  }
+
   return (
-    <div className="bg-bkg text-content absolute right-0 top-8 z-50 flex flex-col justify-center gap-5 p-4" ref={miniCartViewRef}
+    <div className="bg-bkg text-content absolute right-0 top-8 z-50 flex flex-col justify-center gap-5 p-4"
+      ref={miniCartViewRef}
+      onMouseLeave={onMouseLeave}
     >
 
       <div className="flex flex-col gap-3">
+
         {cartItems.map((item) => (
           <div key={item.uuid}>
             <div className="flex items-baseline justify-center gap-2">
@@ -50,20 +55,10 @@ export default function MiniCartView({ miniCartViewRef, setShowMiniCartView }: M
               <span className="whitespace-nowrap text-[0.75rem] font-medium">Added To Cart</span>
             </div>
 
-            <div className="flex gap-2">
-              <Image src={item.img_url[0]} alt="cart image" width={100} height={100} />
-              <div className="flex flex-col justify-between">
-                <div className="flex items-center justify-between">
-                  <span className="text-[0.625rem] font-medium">{item.brand.toUpperCase()}</span>
-                  <span className="cursor-pointer p-2 text-[0.625rem]" onClick={() => removeFromCart(item.uuid)}>X</span>
-                </div>
-                <span className="text-[0.625rem] font-light">{capitalize(item.color)} {capitalize(item.material)} {capitalize(item.category)}</span>
-                <span className="text-[0.625rem] font-light">Size: {item.size}</span>
-                <span className="text-[0.6875rem] font-semibold">{EURO}{item.price}</span>
-              </div>
-            </div>
+            <MiniCartItem item={item} />
           </div>
         ))}
+
       </div>
 
       <div className="flex justify-between gap-2">
