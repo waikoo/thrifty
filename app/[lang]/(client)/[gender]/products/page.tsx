@@ -3,7 +3,6 @@ import { FilterSide, FilterTop } from "@/app/components/products"
 import { ProductList } from "@/app/components/products/serverIndex"
 import { Category, Locales } from "@/types/home"
 import { fetchProductsByFilters } from "@/utils/fetchProductsByFilters"
-import { ReadonlyURLSearchParams } from "next/navigation"
 
 type PageProps = {
   params: {
@@ -21,7 +20,9 @@ export default async function Page({ params: { lang, gender }, searchParams }: P
 
       <div className="flex gap-16">
         <FilterSide {...{ lang, gender, searchParams }} />
-        <ProductList {...{ lang, gender, searchParams }} products={products.data} />
+        {products.status === 400 ? <p>No products found</p> : (
+          <ProductList {...{ lang, gender, searchParams }} products={products.data} />
+        )}
       </div>
 
     </main>

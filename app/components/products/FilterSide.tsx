@@ -82,10 +82,14 @@ export default function FilterSide({ lang, gender, searchParams }: FilterSidePro
 
         <FilterSlider
           type={"PRICE"}
+          start={0}
+          end={500}
         />
 
         <FilterSlider
           type={"DISCOUNT"}
+          start={0}
+          end={100}
         />
 
         <FilterSize

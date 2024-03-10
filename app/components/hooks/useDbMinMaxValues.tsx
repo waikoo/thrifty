@@ -26,8 +26,8 @@ export default function useDbMinMaxValues(
 
     const handleData = (field: string, data: any[]) => {
       if (data) {
-        setLeft(data.at(0)[field])
-        setRight(data.at(-1)?.[field])
+        setLeft(data[0][field])
+        setRight(data[(data.length - 1)]?.[field])
       }
     }
 
@@ -38,8 +38,4 @@ export default function useDbMinMaxValues(
     })
 
   }, [])
-
-  return (
-    <div>useMinMaxValues</div>
-  )
 }

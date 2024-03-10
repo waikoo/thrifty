@@ -1,18 +1,9 @@
-import { useEffect } from "react"
-
 export default function useFilterSlider(
   setLeft: React.Dispatch<React.SetStateAction<number>>,
   setRight: React.Dispatch<React.SetStateAction<number>>,
-  setResult: React.Dispatch<React.SetStateAction<number>>,
   left: number,
   right: number,
-  result: number
 ) {
-  useEffect(() => {
-    if ((left - right) !== result) {
-      setResult(right - left)
-    }
-  }, [left, right])
 
   const handleLeftChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement

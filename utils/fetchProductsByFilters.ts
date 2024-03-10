@@ -13,6 +13,8 @@ export async function fetchProductsByFilters(
   const bySizeParams = searchParams.size?.toString().split(",");
   const byColorParams = searchParams.color?.toString().split(",");
   const byBrandParams = searchParams.brand?.toString().split(",");
+  const byPriceParams = searchParams.price?.toString().split(",");
+  const byDiscountParams = searchParams.discount?.toString().split(",");
 
   let itemsPerPage = 20;
   const { lowerBound, upperBound } = getPaginationBounds(Number(searchParams.page), itemsPerPage);
@@ -27,6 +29,10 @@ export async function fetchProductsByFilters(
     .in("size", bySizeParams || filter.size.map(fil => fil.toLowerCase()))
     .in("color", byColorParams || filter.color.map(fil => fil.toLowerCase()))
     .in("brand", byBrandParams || brandNamesArray.map(fil => fil.toLowerCase()))
+    .gte("discount", byDiscountParams?.[0] || 0)
+    .lte("discount", byDiscountParams?.[1] || 100)
+    .gte("price", byPriceParams?.[0] || 0)
+    .lte("price", byPriceParams?.[1] || 500)
     .range(lowerBound, upperBound);
 
   if (searchParams["shop-by"] === "new in") {
