@@ -46,7 +46,7 @@ export default function MiniCartView() {
       onMouseLeave={onMouseLeave}
     >
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-6">
 
         {cartItems.map((item) => (
           <div key={item.uuid}>
@@ -64,13 +64,13 @@ export default function MiniCartView() {
       <div className="flex justify-between gap-2">
 
         <Link href={`/${lang}/${gender}/cart`}>
-          <button className="bg-bkg text-content border-content whitespace-nowrap border-[0.1rem] px-4 py-2">
+          <button className="bg-bkg text-content border-content whitespace-nowrap border-[0.1rem] px-4 py-2 text-[10px] font-semibold">
             VIEW CART ({cart.length})
           </button>
         </Link>
 
         <Link href={`/${lang}/checkout`}>
-          <button className="bg-content text-bkg border-bkg border-[0.1rem] px-4 py-2">
+          <button className="bg-content text-bkg border-bkg border-[0.1rem] px-4 py-2 text-[10px] font-semibold">
             CHECKOUT
           </button>
         </Link>

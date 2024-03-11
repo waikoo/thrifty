@@ -16,7 +16,7 @@ export default function MiniCartItem({ item }: MiniCartItemProps) {
       <Image src={item.img_url[0]} alt="cart image" width={100} height={100} />
       <div className="flex flex-col justify-between">
         <div className="flex items-center justify-between">
-          <span className="text-[0.625rem] font-medium">{item.brand.toUpperCase()}</span>
+          <span className="whitespace-nowrap text-[0.625rem] font-medium">{item.brand.toUpperCase()}</span>
           <span className="cursor-pointer p-2 text-[0.625rem]" onClick={() => removeFromCart(item.uuid)}>X</span>
         </div>
         <span className="text-[0.625rem] font-light">{capitalize(item.color)} {capitalize(item.material)} {capitalize(item.category)}</span>
