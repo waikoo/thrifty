@@ -12,7 +12,7 @@ export default function MiniCartItem({ item }: MiniCartItemProps) {
   const { removeFromCart } = useCartStore()
 
   return (
-    <div className="flex gap-2">
+    <div className="bg-bkg z-50 flex gap-2 py-2">
       <Image src={item.img_url[0]} alt="cart image" width={100} height={100} />
       <div className="flex flex-col justify-between">
         <div className="flex items-center justify-between">

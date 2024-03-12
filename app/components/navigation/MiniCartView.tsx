@@ -41,41 +41,43 @@ export default function MiniCartView() {
   }
 
   return (
-    <div className="bg-bkg text-content absolute right-0 top-8 z-50 flex flex-col justify-center gap-5 p-4"
+    <div className="bg-bkg text-content absolute right-0 top-8 z-50 flex min-w-[16rem] flex-col justify-center gap-5 overflow-y-scroll p-4"
       ref={miniCartViewRef}
       onMouseLeave={onMouseLeave}
     >
 
-      <div className="flex flex-col gap-6">
+      <div className="relative">
+        <div className="bg-bkg flex h-[14rem] w-full flex-col gap-6">
 
-        {cartItems.map((item) => (
-          <div key={item.uuid}>
-            <div className="flex items-baseline justify-center gap-2">
-              <IconCheckMark />
-              <span className="whitespace-nowrap text-[0.75rem] font-medium">Added To Cart</span>
+          {cartItems.map((item) => (
+            <div key={item.uuid} className="max-w-content">
+              <div className="flex w-full items-baseline justify-center gap-2">
+                <IconCheckMark />
+                <span className="whitespace-nowrap text-[0.75rem] font-medium">Added To Cart</span>
+              </div>
+
+              <MiniCartItem item={item} />
             </div>
+          ))}
 
-            <MiniCartItem item={item} />
-          </div>
-        ))}
+        </div>
+        <div className="bg-bkg absolute bottom-0 flex justify-between gap-2 pb-4">
 
+          <Link href={`/${lang}/${gender}/cart`}>
+            <button className="bg-bkg text-content border-content whitespace-nowrap border-[0.1rem] px-4 py-2 text-[10px] font-semibold">
+              VIEW CART ({cart.length})
+            </button>
+          </Link>
+
+          <Link href={`/${lang}/checkout`}>
+            <button className="bg-content text-bkg border-bkg border-[0.1rem] px-4 py-2 text-[10px] font-semibold">
+              CHECKOUT
+            </button>
+          </Link>
+
+        </div>
       </div>
 
-      <div className="flex justify-between gap-2">
-
-        <Link href={`/${lang}/${gender}/cart`}>
-          <button className="bg-bkg text-content border-content whitespace-nowrap border-[0.1rem] px-4 py-2 text-[10px] font-semibold">
-            VIEW CART ({cart.length})
-          </button>
-        </Link>
-
-        <Link href={`/${lang}/checkout`}>
-          <button className="bg-content text-bkg border-bkg border-[0.1rem] px-4 py-2 text-[10px] font-semibold">
-            CHECKOUT
-          </button>
-        </Link>
-
-      </div>
     </div>
   )
 }
