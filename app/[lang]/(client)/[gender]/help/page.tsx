@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import AboutUs from "@/app/components/help/AboutUs"
 import Contact from "@/app/components/help/Contact"
@@ -8,8 +8,22 @@ import Returns from "@/app/components/help/Returns"
 import ShippingAndDelivery from "@/app/components/help/ShippingAndDelivery"
 import { HELP_TITLES } from "@/app/components/data/helpData"
 
-export default function Page() {
-  const [selected, setSelected] = useState(0)
+type PageType = {
+  searchParams: {
+    [key: string]: string
+  }
+}
+
+export default function Page({ searchParams }: PageType) {
+  const [selected, setSelected] = useState(searchParams.section ? Number(searchParams.section) : 0)
+
+  useEffect(() => {
+    if (searchParams?.section) {
+      setSelected(Number(searchParams?.section)) // if there is an index in the URL, set it
+      return
+    }
+    setSelected(0) // otherwise use About section as default
+  }, [searchParams?.section])
 
   return (
     <div className="flex">
@@ -19,7 +33,9 @@ export default function Page() {
 
           {HELP_TITLES.map((text, index) => {
             return <li className={`${selected === index ? 'bg-bkg text-content' : ''} cursor-pointer px-5 py-4 pl-48 text-[0.75rem] font-extrabold`}
-              onClick={() => setSelected(index)}>
+              onClick={() => setSelected(index)}
+              key={`${text}-${index}`}
+            >
               {text}
             </li>
           })}
