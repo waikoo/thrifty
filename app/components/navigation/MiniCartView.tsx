@@ -46,7 +46,7 @@ export default function MiniCartView() {
       onMouseLeave={onMouseLeave}
     >
 
-      <div className="relative">
+      <div className="relative h-[15rem]">
         <div className="bg-bkg flex h-[14rem] w-full flex-col gap-6">
 
           {cartItems.map((item) => (
@@ -61,7 +61,7 @@ export default function MiniCartView() {
           ))}
 
         </div>
-        <div className="bg-bkg absolute bottom-0 flex justify-between gap-2 pb-4">
+        <div className="bg-bkg fixed top-[19.4rem] z-50 flex justify-between gap-2 pb-[0.55rem]">
 
           <Link href={`/${lang}/${gender}/cart`}>
             <button className="bg-bkg text-content border-content whitespace-nowrap border-[0.1rem] px-4 py-2 text-[10px] font-semibold">
