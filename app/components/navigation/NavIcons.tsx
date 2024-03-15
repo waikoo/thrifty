@@ -10,6 +10,7 @@ import Account from "@/app/components/navigation/Account"
 import MiniCartView from "@/app/components/navigation/MiniCartView"
 import getLangAndGender from "@/utils/getLangAndGender"
 import { getFromLocalStorage } from "@/utils/getFromLocalStorage"
+import MiniCartButtons from "@/app/components/navigation/MiniCartButtons"
 
 type NavIconsProps = {
   className?: string
@@ -50,7 +51,12 @@ export default function NavIcons({ className }: NavIconsProps) {
         <IconShoppingBag />
         <Number itemLength={cartLength} />
       </Link>
-      {showMiniCartView && <MiniCartView />}
+      {showMiniCartView && (
+        <>
+          <MiniCartView />
+          <MiniCartButtons />
+        </>
+      )}
     </nav>
   )
 }
