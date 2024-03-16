@@ -17,7 +17,7 @@ export default async function Page({ params: { lang, gender }, searchParams }: P
   return (
     <main className="bg-bkg text-content mx-auto px-20 lg:max-w-[1500px]">
       <FilterTop {...{ gender, lang }} />
-
+      <div id="popup-root"></div>
       <div className="flex gap-16">
         <FilterSide {...{ lang, gender, searchParams }} />
         {products.status === 400 ? <p>No products found</p> : (

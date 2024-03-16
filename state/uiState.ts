@@ -718,3 +718,24 @@ export const useNavigationStore = create<TNavigation>((set, get) => ({
   showMiniCartView: false,
   setShowMiniCartView: (value) => set({ showMiniCartView: value })
 }))
+
+type FilterStore = {
+  currentFilters: { [key: string]: string },
+  setCurrentFilters: (value: {}) => void
+  removeFilter: (objectKey: string, objectValue: string) => void
+}
+
+export const useFilterStore = create<FilterStore>((set, get) => ({
+  currentFilters: {},
+  setCurrentFilters: (value) => set({ currentFilters: value }),
+  removeFilter: (objectKey, objectValue) => {
+    const newFilters = { ...get().currentFilters }
+
+    if (!(newFilters[objectKey]).includes(',')) { // if only one entry present, remove key
+      delete newFilters[objectKey]
+    } else if (newFilters[objectKey].split(',').length > 1) { // if more entries present, delete only value
+      newFilters[objectKey] = newFilters[objectKey].split(',').filter((val) => val !== objectValue.toLowerCase()).join(',')
+    }
+    set({ currentFilters: newFilters })
+  }
+}))

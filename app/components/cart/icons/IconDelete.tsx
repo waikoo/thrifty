@@ -1,14 +1,15 @@
 type IconDeleteProps = {
   className?: string
+  size?: string
 }
 
-function IconDelete({ className }: IconDeleteProps) {
+function IconDelete({ className, size }: IconDeleteProps) {
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="11"
-      height="11"
+      width={size}
+      height={size}
       fill="none"
       viewBox="0 0 11 11"
       className={className}

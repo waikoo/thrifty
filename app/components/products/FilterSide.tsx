@@ -1,9 +1,13 @@
 "use client"
-import { Category, Locales } from "@/types/home";
+import { useState } from "react";
+
+import { useUIStore } from "@/state";
 import { FilterCheckbox, FilterColor, FilterCondition, FilterSize, FilterSlider } from "@/app/components/products";
 import { brandNamesArray } from "@/app/components/data/brandsData";
 import { filter } from "@/app/components/data";
-import { useUIStore } from "@/state";
+import SetNewFilter from "@/app/components/products/SetNewFilter";
+import { Category, Locales } from "@/types/home";
+import Portal from "../admin/Portal";
 
 type FilterSideProps = {
   lang: Locales
@@ -13,6 +17,7 @@ type FilterSideProps = {
 
 export default function FilterSide({ lang, gender, searchParams }: FilterSideProps) {
   const { hideFilters } = useUIStore()
+  const [showNewFilter, setShowNewFilter] = useState(false)
 
   const getType = (searchParams: { [key: string]: string | string[] | undefined }) => {
     const genderArray = searchParams['gender']?.toString().split(',')
@@ -56,7 +61,9 @@ export default function FilterSide({ lang, gender, searchParams }: FilterSidePro
 
       <aside className="sticky top-24 z-10 flex w-[300px] flex-col gap-6 self-start pb-10">
 
-        <button className="bg-faded mx-auto w-full whitespace-nowrap py-2 text-[0.813rem] font-semibold text-black">
+        <button className="bg-faded mx-auto w-full whitespace-nowrap py-2 text-[0.813rem] font-semibold text-black"
+          onClick={() => setShowNewFilter(true)}
+        >
           SAVE FILTER
         </button>
 
@@ -122,6 +129,11 @@ export default function FilterSide({ lang, gender, searchParams }: FilterSidePro
           elements={filter.dateAdded}
         />
 
+        {showNewFilter && (
+          <Portal>
+            <SetNewFilter searchParams={searchParams} />
+          </Portal>
+        )}
       </aside>
     )
   ))
