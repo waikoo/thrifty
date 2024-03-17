@@ -4,6 +4,8 @@ import { useState } from "react";
 import IconDelete from "@/app/components/cart/icons/IconDelete";
 import AnimatedInput from "@/app/components/AnimatedInput";
 import FilterItems from "@/app/components/products/FilterItems";
+import { useFilterStore } from "@/state/uiState";
+import useUserSession from "../hooks/useUserSession";
 
 type SetNewFilterProps = {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -12,9 +14,33 @@ type SetNewFilterProps = {
 export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
   const [filterName, setFilterName] = useState<string>("")
   const [filterNotification, setFilterNotification] = useState<boolean>(false)
+  const [showNoFilterNameError, setShowNoFilterNameError] = useState<boolean>(false)
+  const { currentFilters, setCurrentFilters, saveFilterToDb, showNewFilterPopup, setShowNewFilterPopup } = useFilterStore()
+  const { session, error } = useUserSession()
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilterName(e.target.value)
+  }
+
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    if (!filterName) {
+      setShowNoFilterNameError(true)
+      return
+    }
+    const newFilter = {
+      name: filterName,
+      wantsNotification: filterNotification,
+      filters: currentFilters
+    }
+
+    const client_id = session?.user.id
+    const client_email = session?.user.email
+
+    if (client_id && client_email) {
+      saveFilterToDb(newFilter, client_id, client_email)
+    }
+
+    setShowNewFilterPopup(false)
   }
 
   return (
@@ -26,6 +52,7 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
         <h1 className="text-content text-center text-[1rem] font-extrabold">SET NEW FILTER</h1>
 
         <AnimatedInput type="text" id="filterName" placeholder="Filter Name" value={filterName} onChange={handleOnChange} className="border-content border-b-[0.1rem] border-l-0 border-r-0 border-t-0" font="text-[0.8125rem] font-normal" />
+        {showNoFilterNameError && <span className="text-red text-[0.8125rem] font-normal">Please enter a filter name</span>}
 
         <FilterItems searchParams={searchParams} />
 
@@ -34,7 +61,7 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
           <span className="text-content text-[0.8125rem] font-semibold">I would like to get notifications for this filter</span>
         </label>
 
-        <button className="text-bkg bg-content mx-auto w-min rounded-full px-24 py-3">SAVE</button>
+        <button className="text-bkg bg-content mx-auto w-min rounded-full px-24 py-3" onClick={handleSubmit}>SAVE</button>
       </div>
     </section>
   )

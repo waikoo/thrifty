@@ -720,12 +720,19 @@ export const useNavigationStore = create<TNavigation>((set, get) => ({
 }))
 
 type FilterStore = {
-  currentFilters: { [key: string]: string },
+  showNewFilterPopup: boolean,
+  setShowNewFilterPopup: (value: boolean) => void
+  currentFilters: {
+    [key: string]: string
+  },
   setCurrentFilters: (value: {}) => void
   removeFilter: (objectKey: string, objectValue: string) => void
+  saveFilterToDb: (filter: {}, client_id: string, client_email: string) => void
 }
 
 export const useFilterStore = create<FilterStore>((set, get) => ({
+  showNewFilterPopup: false,
+  setShowNewFilterPopup: (value) => set({ showNewFilterPopup: value }),
   currentFilters: {},
   setCurrentFilters: (value) => set({ currentFilters: value }),
   removeFilter: (objectKey, objectValue) => {
@@ -737,5 +744,37 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
       newFilters[objectKey] = newFilters[objectKey].split(',').filter((val) => val !== objectValue.toLowerCase()).join(',')
     }
     set({ currentFilters: newFilters })
+  },
+  saveFilterToDb: async (filter, client_id, client_email) => {
+    const { data, error } = await supabase
+      .from('clients')
+      .select('saved_filters')
+      .eq('client_id', client_id)
+
+    if (error) console.error(error)
+    const savedFiltersInDb = data?.[0].saved_filters
+    console.log(savedFiltersInDb)
+
+    if (savedFiltersInDb === null) { // update 1st time
+      const { data: insertData, error: insertError } = await supabase
+        .from('clients')
+        .update({ saved_filters: [filter] })
+        .eq('client_id', client_id)
+        .eq('email', client_email)
+
+      if (insertError) console.error(insertError);
+      else console.log('inserted successfully')
+    } else { // update existing filters
+
+      savedFiltersInDb.push(filter)
+
+      const { data: updateData, error: updateError } = await supabase
+        .from('clients')
+        .update({ saved_filters: savedFiltersInDb })
+        .eq('client_id', client_id)
+        .eq('email', client_email)
+      if (updateError) console.error(updateError);
+      else console.log('updated successfully')
+    }
   }
 }))
