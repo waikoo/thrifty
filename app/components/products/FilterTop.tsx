@@ -4,6 +4,9 @@ import { IconHideFilters, IconSavedFilters } from "@/app/components/products/ico
 import FilterSideControls from "@/app/components/products/FilterSideControls";
 import { FilterDropdown } from "@/app/components/products";
 import { useUIStore } from "@/state";
+import { useFilterStore } from "@/state/uiState";
+import Portal from "@/app/components/admin/Portal";
+import SavedFilters from "@/app/components/products/SavedFilters";
 
 type FilterTopProps = {
   gender: Category['category']
@@ -12,6 +15,7 @@ type FilterTopProps = {
 
 export default function FilterTop({ gender, lang }: FilterTopProps) {
   const { hideFilters, setHideFilters } = useUIStore()
+  const { showSavedFiltersPopup, setShowSavedFiltersPopup } = useFilterStore()
   const hideOrShowFiltersText = !hideFilters ? 'Hide Filters' : 'Show Filters'
 
   const filterVisibilityHandler = () => {
@@ -29,7 +33,7 @@ export default function FilterTop({ gender, lang }: FilterTopProps) {
           <IconHideFilters />
         </div>
 
-        <div className="flex cursor-pointer justify-center gap-2">
+        <div className="flex cursor-pointer justify-center gap-2" onClick={() => setShowSavedFiltersPopup(true)}>
           <span className="text-[0.875rem] font-medium">Saved Filters</span>
           <IconSavedFilters />
         </div>
@@ -37,6 +41,11 @@ export default function FilterTop({ gender, lang }: FilterTopProps) {
         <FilterDropdown />
 
       </div>
+      {showSavedFiltersPopup && (
+        <Portal>
+          <SavedFilters />
+        </Portal>
+      )}
     </section >
   )
 }

@@ -1,11 +1,14 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { v4 as uuidv4 } from 'uuid'
 
 import IconDelete from "@/app/components/cart/icons/IconDelete";
 import AnimatedInput from "@/app/components/AnimatedInput";
 import FilterItems from "@/app/components/products/FilterItems";
 import { useFilterStore } from "@/state/uiState";
-import useUserSession from "../hooks/useUserSession";
+import useUserSession from "@/app/components/hooks/useUserSession";
+import { supabase } from "@/app/supabase";
 
 type SetNewFilterProps = {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -15,7 +18,7 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
   const [filterName, setFilterName] = useState<string>("")
   const [filterNotification, setFilterNotification] = useState<boolean>(false)
   const [showNoFilterNameError, setShowNoFilterNameError] = useState<boolean>(false)
-  const { currentFilters, setCurrentFilters, saveFilterToDb, showNewFilterPopup, setShowNewFilterPopup } = useFilterStore()
+  const { currentFilters, saveFilterToDb, setShowNewFilterPopup, editingFilterId } = useFilterStore()
   const { session, error } = useUserSession()
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,6 +33,7 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
     const newFilter = {
       name: filterName,
       wantsNotification: filterNotification,
+      filterId: uuidv4(),
       filters: currentFilters
     }
 
@@ -43,10 +47,43 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
     setShowNewFilterPopup(false)
   }
 
+  useEffect(() => {
+    const getUserId = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      return user?.id
+    }
+
+    const getFilters = async () => {
+      try {
+        const userId = await getUserId();
+
+        const { data, error } = await supabase
+          .from('clients')
+          .select('saved_filters')
+          .eq('client_id', userId);
+
+        if (error) {
+          console.error(error);
+        } else if (data) {
+          const savedFilters = data[0].saved_filters;
+          if (savedFilters) {
+            const matchedFilter = savedFilters.filter((filter: { filterId: string }) => filter.filterId === editingFilterId);
+            console.log(matchedFilter[0].name)
+            setFilterName(matchedFilter[0].name);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching filters:', error);
+      }
+    };
+
+    getFilters();
+  }, []);
+
   return (
     <section className="text-bkg absolute inset-0 z-[60] grid h-screen w-screen place-items-center bg-[rgba(0,0,0,0.5)]">
       <div className="bg-bkg w-min-content flex flex-col gap-6 p-7 opacity-100">
-        <div onClick={() => { }}>
+        <div onClick={() => setShowNewFilterPopup(false)}>
           <IconDelete size={"16"} className="ml-auto cursor-pointer" />
         </div>
         <h1 className="text-content text-center text-[1rem] font-extrabold">SET NEW FILTER</h1>
