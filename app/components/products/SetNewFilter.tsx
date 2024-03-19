@@ -9,6 +9,7 @@ import FilterItems from "@/app/components/products/FilterItems";
 import { useFilterStore } from "@/state/uiState";
 import useUserSession from "@/app/components/hooks/useUserSession";
 import { supabase } from "@/app/supabase";
+import { TSavedFilters } from "@/types/filters";
 
 type SetNewFilterProps = {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -18,8 +19,10 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
   const [filterName, setFilterName] = useState<string>("")
   const [filterNotification, setFilterNotification] = useState<boolean>(false)
   const [showNoFilterNameError, setShowNoFilterNameError] = useState<boolean>(false)
-  const { currentFilters, saveFilterToDb, setShowNewFilterPopup, editingFilterId } = useFilterStore()
+  const { currentFilters, saveFilterToDb, setShowNewFilterPopup, editingFilterId, setEditingFilterId, updateFilterInDb } = useFilterStore()
   const { session, error } = useUserSession()
+  const [matchedFilter, setMatchedFilter] = useState({} as TSavedFilters["filters"])
+  const [matchedFilterObject, setMatchedFilterObject] = useState({} as TSavedFilters)
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilterName(e.target.value)
@@ -30,21 +33,33 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
       setShowNoFilterNameError(true)
       return
     }
-    const newFilter = {
-      name: filterName,
-      wantsNotification: filterNotification,
-      filterId: uuidv4(),
-      filters: currentFilters
-    }
 
-    const client_id = session?.user.id
-    const client_email = session?.user.email
+    if (!editingFilterId) {
+      const newFilter = {
+        name: filterName,
+        wantsNotification: filterNotification,
+        filterId: uuidv4(),
+        filters: currentFilters
+      }
 
-    if (client_id && client_email) {
-      saveFilterToDb(newFilter, client_id, client_email)
+      const client_id = session?.user.id
+      const client_email = session?.user.email
+
+      if (client_id && client_email) {
+        saveFilterToDb(newFilter, client_id, client_email)
+      }
+    } else {
+      const client_id = session?.user.id
+      if (client_id) {
+        matchedFilterObject.name = filterName
+        matchedFilterObject.wantsNotification = filterNotification
+        matchedFilterObject.filters = currentFilters
+        updateFilterInDb(matchedFilterObject, client_id)
+      }
     }
 
     setShowNewFilterPopup(false)
+    setEditingFilterId('')
   }
 
   useEffect(() => {
@@ -67,9 +82,12 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
         } else if (data) {
           const savedFilters = data[0].saved_filters;
           if (savedFilters) {
-            const matchedFilter = savedFilters.filter((filter: { filterId: string }) => filter.filterId === editingFilterId);
-            console.log(matchedFilter[0].name)
+            const matchedFilter = savedFilters.filter((filter: { filterId: string }) => {
+              return filter.filterId === editingFilterId
+            });
             setFilterName(matchedFilter[0].name);
+            setMatchedFilter(matchedFilter[0].filters);
+            setMatchedFilterObject(matchedFilter[0])
           }
         }
       } catch (error) {
@@ -77,7 +95,9 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
       }
     };
 
-    getFilters();
+    if (editingFilterId) {
+      getFilters();
+    }
   }, []);
 
   return (
@@ -91,7 +111,7 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
         <AnimatedInput type="text" id="filterName" placeholder="Filter Name" value={filterName} onChange={handleOnChange} className="border-content border-b-[0.1rem] border-l-0 border-r-0 border-t-0" font="text-[0.8125rem] font-normal" />
         {showNoFilterNameError && <span className="text-red text-[0.8125rem] font-normal">Please enter a filter name</span>}
 
-        <FilterItems searchParams={searchParams} />
+        <FilterItems renderedFilters={Object.keys(matchedFilter).length > 0 ? matchedFilter : searchParams} />
 
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={filterNotification} onChange={() => setFilterNotification(!filterNotification)} />

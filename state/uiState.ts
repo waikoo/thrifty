@@ -735,6 +735,7 @@ type FilterStore = {
   deleteFilter: (filterName: string, client_id: string) => void
   setEditingFilterId: (value: string) => void
   editingFilterId: string
+  updateFilterInDb: (filter: TSavedFilters, client_id: string) => void
 }
 
 export const useFilterStore = create<FilterStore>((set, get) => ({
@@ -830,4 +831,27 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
   },
   editingFilterId: '',
   setEditingFilterId: (value) => set({ editingFilterId: value }),
+  updateFilterInDb: async (matchedFilter, client_id) => {
+    const { data, error } = await supabase
+      .from('clients')
+      .select('saved_filters')
+      .eq('client_id', client_id)
+    if (error) console.error(error)
+
+    const savedFiltersInDb = data?.[0].saved_filters // get filters from db
+
+    const updatedFilters = savedFiltersInDb.map((filter: TSavedFilters) => {
+      if (filter.filterId === matchedFilter.filterId) {
+        return { ...filter, ...matchedFilter }; // spread matchedFilter over old values
+      }
+      return filter;
+    });
+
+    const { data: updateData, error: updateError } = await supabase
+      .from('clients')
+      .update({ saved_filters: updatedFilters }) // update filters in db
+      .eq('client_id', client_id)
+    if (updateError) console.error(updateError);
+    else console.log('filter modified successfully')
+  }
 }))

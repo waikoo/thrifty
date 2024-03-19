@@ -3,20 +3,21 @@ import { useEffect } from "react";
 import FilterItem from "@/app/components/products/FilterItem";
 import { useFilterStore } from "@/state/uiState";
 import { capitalize } from "@/utils/capitalize";
+import { TSavedFilters } from "@/types/filters";
 
 type FilterItemsProps = {
-  searchParams: { [key: string]: string | string[] | undefined }
+  renderedFilters: { [key: string]: string | string[] | undefined } | TSavedFilters["filters"]
 }
 
-export default function FilterItems({ searchParams }: FilterItemsProps) {
+export default function FilterItems({ renderedFilters }: FilterItemsProps) {
   const { currentFilters, setCurrentFilters } = useFilterStore()
 
   useEffect(() => { // remove sorting and pagination params
-    const filteredSearchParams = Object.fromEntries(
-      Object.entries(searchParams).filter(([key]) => key !== 'sort-by' && key !== 'page')
-    );
-    setCurrentFilters(filteredSearchParams);
-  }, []);
+    if (renderedFilters['sort-by']) delete renderedFilters['sort-by']
+    if (renderedFilters['page']) delete renderedFilters['page']
+
+    setCurrentFilters(renderedFilters);
+  }, [renderedFilters]);
 
   return (
     <>
@@ -26,6 +27,7 @@ export default function FilterItems({ searchParams }: FilterItemsProps) {
         return (
           <div key={key}>
             <span className="text-content">{key.toUpperCase()}</span>
+
             {typeof value === 'string' && value.split(',').length > 1
               ? value.split(',').map((item) => <FilterItem key={item} objectKey={key}>{capitalize(item)}</FilterItem>)
               : typeof value === 'string' && <FilterItem objectKey={key}>{capitalize(value)}</FilterItem>}
