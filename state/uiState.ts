@@ -736,6 +736,7 @@ type FilterStore = {
   setEditingFilterId: (value: string) => void
   editingFilterId: string
   updateFilterInDb: (filter: TSavedFilters, client_id: string) => void
+  getFilterFromDb: (client_id: string, filterId: string) => Promise<TSavedFilters>
 }
 
 export const useFilterStore = create<FilterStore>((set, get) => ({
@@ -853,5 +854,22 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
       .eq('client_id', client_id)
     if (updateError) console.error(updateError);
     else console.log('filter modified successfully')
+  },
+  getFilterFromDb: async (client_id, filterId) => {
+    const { data, error } = await supabase
+      .from('clients')
+      .select('saved_filters')
+      .eq('client_id', client_id)
+
+    if (error) console.error(error)
+
+    const savedFiltersInDb = data?.[0].saved_filters
+
+    if (savedFiltersInDb) {
+      const matchedFilter = savedFiltersInDb.find((filter: TSavedFilters) => filter.filterId === filterId)
+      return matchedFilter
+    } else {
+      throw new Error('No filter found')
+    }
   }
 }))

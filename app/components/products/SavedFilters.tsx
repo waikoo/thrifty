@@ -1,5 +1,6 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 import { RxCross1 } from "react-icons/rx";
 import { MdEdit } from "react-icons/md";
@@ -24,8 +25,9 @@ export default function SavedFilters() {
   if (session) {
     client_id = session.user.id
   }
-  const { changeNotification, deleteFilter, setEditingFilterId, editingFilterId } = useFilterStore()
-  const { setShowSavedFiltersPopup, showSavedFiltersPopup, setShowNewFilterPopup } = useFilterStore()
+  const { changeNotification, deleteFilter, setEditingFilterId, setShowSavedFiltersPopup, setShowNewFilterPopup, getFilterFromDb } = useFilterStore()
+  const [router, pathname] = [useRouter(), usePathname()]
+  const optionsRef = useRef<HTMLDivElement | null>(null)
 
   const channels = supabase.channel('custom-all-channel')
     .on(
@@ -51,10 +53,28 @@ export default function SavedFilters() {
     })
   }, [])
 
-  const handleEdit = (e: React.MouseEvent<HTMLDivElement>, filterId: string) => {
+  const handleShowOptions = (e: React.MouseEvent<SVGElement>) => {
+    e.stopPropagation()
+    setShowOptions(!showOptions)
+  }
+
+  const handleEdit = (filterId: string) => {
     setShowSavedFiltersPopup(false)
     setShowNewFilterPopup(true)
     setEditingFilterId(filterId)
+  }
+
+  async function handleRunFilter(e: React.MouseEvent<HTMLDivElement>, filterId: string) {
+    console.log(e.target)
+    console.log(e.currentTarget)
+    setShowSavedFiltersPopup(false)
+    const filterFromDb = await getFilterFromDb(client_id, filterId)
+
+    const newParams = new URLSearchParams(filterFromDb.filters) // create new searchParams from saved filters
+    newParams.set('sort-by', 'newfirst') // reset default sorting params
+    newParams.set('page', '1')
+
+    router.push(`${pathname}?${newParams}`);
   }
 
   return (
@@ -77,14 +97,16 @@ export default function SavedFilters() {
         </div>
 
         {savedFilters.map((filter, index) => (
-          <div key={filter.name}>
+          <div key={filter.name} onClick={(e) => handleRunFilter(e, filter.filterId)} className="cursor-pointer" title="Select filter">
             <div className="flex justify-between">
               <p key={index} className="py-0">{filter.name}</p>
-              <div className="flex gap-2">
-                <BsThreeDotsVertical color={color} onClick={() => setShowOptions(!showOptions)} className="cursor-pointer" />
+              <div className="flex gap-2" >
+                <div ref={optionsRef} >
+                  <BsThreeDotsVertical color={color} onClick={(e: React.MouseEvent<SVGElement>) => handleShowOptions(e)} className="cursor-pointer" />
+                </div>
                 {showOptions && (
                   <>
-                    <div onClick={(e) => handleEdit(e, filter.filterId)}>
+                    <div onClick={() => handleEdit(filter.filterId)} >
                       <MdEdit color={color} className="cursor-pointer" />
                     </div>
                     <IoMdNotifications color={color} className="cursor-pointer" onClick={() => changeNotification(filter.filterId, client_id)} />
