@@ -29,7 +29,7 @@ export default function FilterSideControls({ gender, lang }: FilterSideControlsP
       </div>
 
       <Link
-        href={`/${lang}/${gender}/products?gender=${gender}`}
+        href={`/${lang}/${gender}/products?gender=${gender}&page=1`}
         className="flex items-center gap-1">
         <span className="">Reset All</span>
         <IconReset />
