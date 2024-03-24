@@ -35,9 +35,7 @@ export default function ProductItem({ product, index, lang, gender, className, s
         </Link>
       </div>
 
-      <ProductAddToCart uuid={uuid}>ADD TO CART</ProductAddToCart>
-
-      <div className="text-content text-[0.75rem] font-semibold">
+      <div className="text-content my-2 text-[0.75rem] font-semibold">
         <div className="flex justify-between">
           <span>{capitalize(brand)}</span>
           <span className={`${discount > 0 ? 'line-through' : ''}`}>{EURO}{price}</span> {/* original price */}
@@ -53,6 +51,9 @@ export default function ProductItem({ product, index, lang, gender, className, s
           )}
         </div>
       </div>
+
+      <ProductAddToCart uuid={uuid}>ADD TO CART</ProductAddToCart>
+
     </div>
   )
 }
