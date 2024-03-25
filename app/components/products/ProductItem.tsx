@@ -1,11 +1,13 @@
 import Image from 'next/image'
 import Link from "next/link"
+
 import { twMerge as tm } from 'tailwind-merge'
 
 import { capitalize } from '@/utils/capitalize'
 import { ProductItemType } from "@/types/productItem"
 import { Category, Locales } from "@/types/home"
 import ProductAddToCart from '@/app/components/products/ProductAddToCart'
+import ProductToggleFavorite from '@/app/components/products/ProductToggleFavorite'
 import { EURO } from '@/app/components/data/orderSummary'
 
 type ProductItemProps = {
@@ -18,10 +20,12 @@ type ProductItemProps = {
 }
 
 export default function ProductItem({ product, index, lang, gender, className, searchParams }: ProductItemProps) {
-  const { type, size, price, img_url, discount, brand, uuid } = product
+  const { size, price, img_url, discount, brand, uuid } = product
 
   return (
-    <div className={`flex-grow-0`}>
+    <div className={`relative flex-grow-0`}>
+      <ProductToggleFavorite uuid={uuid} />
+
       <div className={tm(`${className}`)}>
         <Link href={`/${lang}/${gender}/products/${uuid}`}>
           <Image
@@ -53,7 +57,6 @@ export default function ProductItem({ product, index, lang, gender, className, s
       </div>
 
       <ProductAddToCart uuid={uuid}>ADD TO CART</ProductAddToCart>
-
     </div>
   )
 }
