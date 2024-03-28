@@ -55,6 +55,7 @@ export default function MiniCartView() {
               <MiniCartItem item={item} />
             </div>
           ))}
+          <br />
         </div>
       </div>
 
