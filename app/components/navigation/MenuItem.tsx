@@ -4,7 +4,7 @@ import { twMerge as tm } from 'tailwind-merge';
 
 import useEventListener from '@/app/components/hooks/useEventListener';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import getLangAndGender from '@/utils/getLangAndGender';
 import { useUIStore } from '@/state/uiState';
 
@@ -22,6 +22,7 @@ export default function MenuItem({ children, className, onClick, Img, loading, h
   const [isHovered, setIsHovered] = useState(false);
   const { lang, gender } = getLangAndGender(usePathname())
   const { setShowMyAccount } = useUIStore()
+  const router = useRouter()
 
   useEventListener({
     eventType: "mouseover",
@@ -35,7 +36,11 @@ export default function MenuItem({ children, className, onClick, Img, loading, h
     target: menuItemContainer.current,
   });
 
-  function closeMenu(): void {
+  function closeMenu(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void {
+    if (children === 'Log Out') {
+      e.preventDefault()
+      router.refresh()
+    }
     setShowMyAccount(false)
   }
 
@@ -52,7 +57,7 @@ export default function MenuItem({ children, className, onClick, Img, loading, h
 
 
       <li className={tm(
-        `whitespace-no-wrap w-max p-5 ${!Img ? 'pr-12' : ''}`,
+        `whitespace-no-wrap w-max p-5 ${children === 'Log Out' ? 'px-1' : ''}`,
         loading && "bg-bkg"
       )} onClick={onClick}>
         {children}

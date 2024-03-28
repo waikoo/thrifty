@@ -37,7 +37,7 @@ export const menuItems = [
   },
   {
     content: "Log Out",
-    href: "#",
+    href: "",
     Img: () => null,
   }
 ]

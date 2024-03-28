@@ -38,7 +38,7 @@ export default function NavIcons({ className }: NavIconsProps) {
     <nav className={`relative flex items-center gap-6 pt-2 ${className}`}>
       <Account />
 
-      <Link href={`/${lang}/${gender}/favorites`} className="relative">
+      <Link href={`/${lang}/${gender}/favorites`} className="relative" title="Favorites">
         <IconFavorite />
         <Number itemLength={favoritesLength} />
       </Link>
@@ -47,6 +47,7 @@ export default function NavIcons({ className }: NavIconsProps) {
         className="relative"
         onMouseEnter={() => setShowMiniCartView(true)}
         onMouseLeave={onMouseLeave}
+        title="Cart"
       >
         <IconShoppingBag />
         <Number itemLength={cartLength} />

@@ -25,7 +25,7 @@ const AccountMenu = () => {
               href={href}
               Img={Img}
               loading={loading}
-              onClick={content === 'Log Out' ? signOutHook : () => { }}
+              onClick={signOutHook}
             >
               {content}
             </MenuItem>
