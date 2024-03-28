@@ -34,6 +34,10 @@ export default function NavIcons({ className }: NavIconsProps) {
     if (e.clientX <= 1600 || e.clientX >= 1622 || e.clientY <= 55) {
       setShowMiniCartView(false)
     }
+    // if cursor goes down, make MiniCartView visible
+    if (e.clientY > 55) {
+      setShowMiniCartView(true)
+    }
   }
 
   return (
