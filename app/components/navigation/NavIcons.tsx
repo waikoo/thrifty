@@ -11,6 +11,7 @@ import MiniCartView from "@/app/components/navigation/MiniCartView"
 import getLangAndGender from "@/utils/getLangAndGender"
 import { getFromLocalStorage } from "@/utils/getFromLocalStorage"
 import MiniCartButtons from "@/app/components/navigation/MiniCartButtons"
+import useUserSession from "@/app/components/hooks/useUserSession"
 
 type NavIconsProps = {
   className?: string
@@ -21,6 +22,7 @@ export default function NavIcons({ className }: NavIconsProps) {
   const { initCart, cartLength } = useCartStore()
   const { initFavorites, favoritesLength } = useFavoriteStore()
   const { showMiniCartView, setShowMiniCartView } = useNavigationStore()
+  const { session, error } = useUserSession()
 
   useEffect(() => {
     initCart(getFromLocalStorage('cart') || [])
@@ -40,7 +42,7 @@ export default function NavIcons({ className }: NavIconsProps) {
 
       <Link href={`/${lang}/${gender}/favorites`} className="relative" title="Favorites">
         <IconFavorite />
-        <Number itemLength={favoritesLength} />
+        {session && <Number itemLength={favoritesLength} />}
       </Link>
 
       <Link href={`/${lang}/${gender}/cart`}
@@ -50,8 +52,9 @@ export default function NavIcons({ className }: NavIconsProps) {
         title="Cart"
       >
         <IconShoppingBag />
-        <Number itemLength={cartLength} />
+        {session && <Number itemLength={cartLength} />}
       </Link>
+
       {showMiniCartView && (
         <>
           <MiniCartView />
