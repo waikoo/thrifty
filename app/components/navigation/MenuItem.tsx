@@ -22,7 +22,6 @@ export default function MenuItem({ children, className, onClick, Img, loading, h
   const [isHovered, setIsHovered] = useState(false);
   const { lang, gender } = getLangAndGender(usePathname())
   const { setShowMyAccount } = useUIStore()
-  const router = useRouter()
 
   useEventListener({
     eventType: "mouseover",
@@ -39,7 +38,7 @@ export default function MenuItem({ children, className, onClick, Img, loading, h
   function closeMenu(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void {
     if (children === 'Log Out') {
       e.preventDefault()
-      router.refresh()
+      window.location.reload()
     }
     setShowMyAccount(false)
   }
