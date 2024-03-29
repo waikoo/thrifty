@@ -20,15 +20,20 @@ export default function WithHome({ className, children }: withHomeProps) {
 
     const getUserId = async () => {
       const { data: { user } } = await supabase.auth.getUser()
+
       return user?.id
     }
 
     const getGenderPreference = async () => {
+      const userId = await getUserId()
+      if (!userId) return
+
       const { data, error } = await supabase
         .from('clients')
         .select('gender_preference')
-        .eq('client_id', await getUserId())
+        .eq('client_id', userId)
       if (error) console.error(error)
+
       return data
     }
 
