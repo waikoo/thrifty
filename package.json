@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@supabase/auth-helpers-nextjs": "^0.8.1",
-    "@supabase/ssr": "^0.0.10",
+    "@supabase/ssr": "^0.1.0",
     "@supabase/supabase-js": "latest",
     "@tailwindcss/forms": "^0.5.7",
     "@types/negotiator": "^0.6.1",
