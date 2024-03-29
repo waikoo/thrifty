@@ -9,6 +9,7 @@ export default function useUserSession() {
     message: "",
     status: false
   })
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
 
   useEffect(() => {
     const fetchSession = async () => {
@@ -23,8 +24,8 @@ export default function useUserSession() {
       }
       setSession(data.session as Session);
     };
-    fetchSession();
 
+    fetchSession();
 
     const { data: listener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
@@ -43,5 +44,21 @@ export default function useUserSession() {
     return () => listener.subscription.unsubscribe()
   }, []);
 
-  return { session, error }
+  useEffect(() => {
+    const fetchAdmin = async () => {
+      if (session?.user.id) {
+        const { data, error } = await supabase
+          .from('clients')
+          .select('is_admin')
+          .eq('client_id', session?.user.id);
+        if (error) console.error(error)
+
+        setIsAdmin(data?.[0]?.is_admin)
+      }
+    }
+
+    fetchAdmin()
+  }, [session?.user.id])
+
+  return { session, isAdmin, error }
 }

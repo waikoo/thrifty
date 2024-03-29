@@ -1,9 +1,10 @@
 "use client"
-import { Auth, AuthModes } from '@/types/auth'
 import { useState } from 'react'
-import { Input, StateButtonContainer, SubmitButton } from '../generic'
-import CheckBox from '../generic/CheckBox'
-import { useSignIn, useSignUp, useUserEmail, useUserPassword } from '../hooks'
+
+import { Auth, AuthModes } from '@/types/auth'
+import { Input, StateButtonContainer, SubmitButton } from '@/app/components/generic'
+import CheckBox from '@/app/components/generic/CheckBox'
+import { useSignIn, useSignUp, useUserEmail, useUserPassword } from '@/app/components/hooks'
 import { useUIStore } from '@/state'
 
 const SignInOrUp = () => {

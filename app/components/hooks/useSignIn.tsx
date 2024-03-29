@@ -1,29 +1,40 @@
-import { supabase } from '@/app/supabase'
-import { useUIStore } from '@/state'
-import { TMouseOnButton, useUserStore } from '@/state/userState'
+"use client"
 import { useState } from 'react'
 
+import { useUIStore } from '@/state'
+import { TMouseOnButton, useUserStore } from '@/state/userState'
+import { useRouter } from 'next/navigation'
+import { supabase } from '@/app/supabase'
+
 export default function useSignIn() {
-  const setShowSignIn = useUIStore((state) => state.setShowSignIn)
-  const signIn = useUserStore(state => state.signIn)
+  const { setShowSignIn } = useUIStore()
+  const { signIn } = useUserStore()
   const [loading, setLoading] = useState(false)
+  const router = useRouter()
+
+  const fetchAdmin = async () => {
+    const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+    if (sessionError) console.error(sessionError)
+
+    const { data, error } = await supabase
+      .from('clients')
+      .select('is_admin')
+      .eq('client_id', sessionData.session?.user.id);
+    if (error) console.error(error)
+    return data?.[0]?.is_admin
+  }
 
   const signInHook = async (e: TMouseOnButton) => {
     e.preventDefault()
+
     setLoading(true)
     const data = await signIn(e)
+    const isAdmin = await fetchAdmin()
     setLoading(false)
-    console.log(data)
     setShowSignIn(false)
-    if (data?.role === 'authenticated') {
-      window.location.href = '/en/admin'
 
-      supabase.auth.getUser().then(({ data: { user } }) => {
-        console.log(user)
-      })
-
-    } else {
-      console.error('Could not get user')
+    if (data?.role === 'authenticated' && isAdmin) {
+      router.push('/en/admin')
     }
   }
 

@@ -6,7 +6,7 @@ import { Error } from "@/app/components"
 import { IconAccount } from '@/app/components/navigation/icons/'
 
 export default function Account() {
-  const { session, error } = useUserSession()
+  const { session, isAdmin, error } = useUserSession()
   const { showMyAccount, setShowMyAccount, showSignIn, setShowSignIn } = useUIStore()
 
   return (
