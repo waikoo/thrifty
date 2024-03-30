@@ -59,7 +59,7 @@ export default function NavIcons({ className }: NavIconsProps) {
         {session && <Number itemLength={cartLength} />}
       </Link>
 
-      {showMiniCartView && (
+      {session && showMiniCartView && (
         <>
           <MiniCartView />
           <MiniCartButtons />
