@@ -40,6 +40,7 @@ export default function MiniCartView() {
     <div className="bg-bkg text-content scrollbar scrollbar-thumb-darkgrey scrollbar-thumb-rounded absolute right-0 top-8 z-50 flex min-w-[16rem] flex-col justify-center gap-5 overflow-y-scroll p-4"
       ref={miniCartViewRef}
       onMouseLeave={onMouseLeave}
+      onMouseEnter={() => setShowMiniCartView(true)}
     >
 
       <div className="relative h-[15rem]">

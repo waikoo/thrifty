@@ -1,5 +1,5 @@
 "use client"
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -23,6 +23,7 @@ export default function NavIcons({ className }: NavIconsProps) {
   const { initFavorites, favoritesLength } = useFavoriteStore()
   const { showMiniCartView, setShowMiniCartView } = useNavigationStore()
   const { session, error } = useUserSession()
+  const linkRef = useRef(null)
 
   useEffect(() => {
     initCart(getFromLocalStorage('cart') || [])
@@ -30,12 +31,11 @@ export default function NavIcons({ className }: NavIconsProps) {
   }, [])
 
   const onMouseLeave = (e: React.MouseEvent) => {
-    // if cursor leaves Link, up, left or right, hide MiniCartView
-    if (e.clientX <= 1600 || e.clientX >= 1622 || e.clientY <= 55) {
-      setShowMiniCartView(false)
-    }
-    // if cursor goes down, make MiniCartView visible
-    if (e.clientY > 55) {
+    if (e.currentTarget === linkRef.current) {
+      if (e.clientY <= 55 || e.clientX <= 1650 || e.clientX >= 1682) {
+        setShowMiniCartView(false)
+        return
+      }
       setShowMiniCartView(true)
     }
   }
@@ -54,6 +54,7 @@ export default function NavIcons({ className }: NavIconsProps) {
         onMouseEnter={() => setShowMiniCartView(true)}
         onMouseLeave={onMouseLeave}
         title="Cart"
+        ref={linkRef}
       >
         <IconShoppingBag />
         {session && <Number itemLength={cartLength} />}
