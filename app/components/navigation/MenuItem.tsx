@@ -6,7 +6,6 @@ import useEventListener from '@/app/components/hooks/useEventListener';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import getLangAndGender from '@/utils/getLangAndGender';
-import { useUIStore } from '@/state/uiState';
 
 type MenuItemProps = {
   className?: string;
@@ -21,7 +20,6 @@ export default function MenuItem({ children, className, onClick, Img, loading, h
   const menuItemContainer = useRef<HTMLAnchorElement | null>(null);
   const [isHovered, setIsHovered] = useState(false);
   const { lang, gender } = getLangAndGender(usePathname())
-  const { setShowMyAccount } = useUIStore()
 
   useEventListener({
     eventType: "mouseover",
@@ -35,20 +33,11 @@ export default function MenuItem({ children, className, onClick, Img, loading, h
     target: menuItemContainer.current,
   });
 
-  function closeMenu(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void {
-    if (children === 'Log Out') {
-      e.preventDefault()
-      window.location.reload()
-    }
-    setShowMyAccount(false)
-  }
-
   return (
     <Link
       href={`/${lang}/${gender}/${href}`}
       className={tm("flex items-center", className)}
       ref={menuItemContainer}
-      onClick={closeMenu}
     >
       {Img ? (<Img
         isHovered={isHovered}

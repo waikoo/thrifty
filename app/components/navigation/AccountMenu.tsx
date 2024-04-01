@@ -1,11 +1,23 @@
 "use client"
-import { MenuItem } from '.'
+import { MenuItem } from '@/app/components/navigation'
 import { menuItems } from '@/app/components/data/navigation'
 import { useSignOut, useUserSession } from '@/app/components/hooks'
+import { useUIStore } from '@/state/uiState';
 
 const AccountMenu = () => {
   const { signOutHook, loading } = useSignOut()
   const { session, error } = useUserSession()
+  const { setShowMyAccount } = useUIStore()
+
+  function signOut(e: React.MouseEvent<HTMLLIElement, MouseEvent>): void {
+    signOutHook(e)
+    closeMenu()
+    window.location.reload()
+  }
+
+  function closeMenu() {
+    setShowMyAccount(false)
+  }
 
   return (
     <nav className="bg-bkg absolute right-[-7rem] top-8 z-10 text-base">
@@ -25,7 +37,7 @@ const AccountMenu = () => {
               href={href}
               Img={Img}
               loading={loading}
-              onClick={signOutHook}
+              onClick={content === 'Log Out' ? signOut : closeMenu}
             >
               {content}
             </MenuItem>
