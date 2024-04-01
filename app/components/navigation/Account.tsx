@@ -2,7 +2,6 @@
 import { useUserSession } from "@/app/components/hooks"
 import { useUIStore } from "@/state"
 import { AccountMenu, CenterContainer } from "@/app/components/navigation"
-import { Error } from "@/app/components"
 import { IconAccount } from '@/app/components/navigation/icons/'
 
 export default function Account() {
@@ -20,10 +19,8 @@ export default function Account() {
         <IconAccount />
       </div>
 
-      {!error.status ? (
-        showMyAccount ? <AccountMenu />
-          : showSignIn ? <CenterContainer /> : null
-      ) : <Error>Something went wrong</Error>}
+      {session && showMyAccount && <AccountMenu />}
+      {!session && showSignIn && <CenterContainer />}
     </div>
   )
 }
