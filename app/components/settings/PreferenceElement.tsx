@@ -72,7 +72,7 @@ export default function PreferenceElement({ radioValues, title, defaultChecked, 
 
       {radioValues.map((value) => (
         <label key={value} className="flex items-center gap-2 text-[0.8125rem] font-normal">
-          <input type="radio" name={title} value={value} checked={getValue(value)} onChange={onChange} />
+          <input type="radio" name={title} value={value} checked={getValue(value)} onChange={onChange} className="checked:bg-black" />
           {value}
         </label>
       ))}
