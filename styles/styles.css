@@ -56,16 +56,11 @@
   left: 32px;
 }
 
-input.placeholda::placeholder {
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-html[data-theme="dark"] input.placeholda::placeholder {
+html[data-theme="dark"] .placeholda::placeholder {
   color: white;
 }
 
-html[data-theme="light"] input.placeholda::placeholder {
+html[data-theme="light"] .placeholda::placeholder {
   color: black;
 }
 

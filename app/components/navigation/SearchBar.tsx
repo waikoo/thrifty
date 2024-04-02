@@ -19,7 +19,7 @@ export default function SearchBar({ className }: SearchBarProps) {
       <input
         type="search"
         placeholder={t('search')}
-        className={`text-content placeholda w-full appearance-none self-end border-none bg-transparent p-0 outline-0 ring-0 focus:outline-none focus:ring-0`}
+        className={`text-content placeholda w-full appearance-none self-end border-none bg-transparent p-0 outline-0 ring-0 placeholder:text-[0.8rem] placeholder:font-semibold focus:outline-none focus:ring-0`}
         style={{ WebkitAppearance: 'none' }}
       />
     </section>
