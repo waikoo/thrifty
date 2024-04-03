@@ -7,9 +7,11 @@ interface FilterType {
 }
 
 interface TFilter {
-  gender: ["Men", "Women", "Kids"];
+  // gender: ["Men", "Women", "Kids"];
+  gender: string[]
   shopBy: string[];
-  category: ["Clothing", "Shoes", "Accessories"];
+  category: string[]
+  // category: ["Clothing", "Shoes", "Accessories"];
   type: FilterType;
   size: string[];
   color: string[];

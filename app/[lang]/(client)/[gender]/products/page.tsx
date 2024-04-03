@@ -20,6 +20,7 @@ export default async function Page({ params: { lang, gender }, searchParams }: P
       <div id="popup-root"></div>
       <div className="flex gap-16">
         <FilterSide {...{ lang, gender, searchParams }} />
+
         {products.status === 400 ? <p>No products found</p> : (
           <ProductList {...{ lang, gender, searchParams }} products={products.data} />
         )}
