@@ -24,6 +24,8 @@ const parseSearchTerms = (searchTerm: string) => {
     type: []
   };
 
+  if (brandNamesArray.includes(capitalize(searchTerm))) filters.brand.push(searchTerm);
+
   queryArr.forEach(term => {
     if (filter.gender.includes(capitalize(term))) filters.gender.push(term);
     if (filter.color.includes(capitalize(term))) filters.color.push(term);
@@ -52,6 +54,7 @@ const buildSearchParams = (filters: Filters, lang: string, gender: string) => {
 export default function getLinkWithSearchParams(searchTerm: string, lang: string, gender: string): string {
   if (searchTerm) {
     const filters = parseSearchTerms(searchTerm);
+    console.log(filters)
     const searchParams = buildSearchParams(filters, lang, gender);
     return searchParams;
   }
