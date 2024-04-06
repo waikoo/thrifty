@@ -16,12 +16,13 @@ const IconFavorite = ({ stroke }: IconFavoriteProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width={19}
         height={16}
+        viewBox="0 0 22 19"
         fill="none"
       >
         <path
           stroke={stroke || color}
-          strokeWidth={2.5}
-          d="m16.667 7.488-6.745 6.744-6.744-6.744A3.654 3.654 0 1 1 8.345 2.32l.693.694.884.884.884-.884.694-.694a3.654 3.654 0 1 1 5.167 5.168Z"
+          strokeWidth={2}
+          d="M10.568 17L2.183 8.604a4.546 4.546 0 016.42-6.421l.872.86 1.104 1.103 1.103-1.103.86-.86a4.546 4.546 0 016.422 6.42L10.568 17z"
         />
       </svg>
     </div>

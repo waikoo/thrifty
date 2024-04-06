@@ -12,14 +12,24 @@ const IconShoppingBag = ({ stroke }: IconShoppingBagProps) => {
 
   return (
     <svg xmlns="http://www.w3.org/2000/svg"
-      width={20}
-      height={16}
+      width={18}
+      height={18}
       fill="none"
+      viewBox="0 0 18 18"
       className="cursor-pointer"
     >
       <path
-        fill={stroke || color}
-        d="M18.03 0H2.727A1.74 1.74 0 0 0 .987 1.74v12.52A1.739 1.739 0 0 0 2.727 16H18.03a1.739 1.739 0 0 0 1.739-1.74V1.74A1.739 1.739 0 0 0 18.03 0Zm-.347 13.913H3.074V2.087h14.609v11.826ZM5.857 4.522a1.043 1.043 0 0 1 2.087 0 2.435 2.435 0 0 0 4.87 0 1.043 1.043 0 1 1 2.086 0 4.522 4.522 0 1 1-9.043 0Z"
+        stroke={stroke || color}
+        strokeWidth={1.62}
+        strokeMiterlimit={10}
+        d="M1.96 6.277H1V16.96l16.062.04V6.237H16.1M5.9 6.297h6.666"
+      />
+
+      <path
+        d="M5.47 9.346V4.602a3.674 3.674 0 011.1-2.571A3.622 3.622 0 019.156 1a3.601 3.601 0 012.584 1.03 3.653 3.653 0 011.1 2.57v4.745"
+        stroke={stroke || color}
+        strokeWidth={1.72}
+        strokeMiterlimit={10}
       />
     </svg>
   )

@@ -4,7 +4,7 @@ import { getSvgColor } from "@/utils/theme"
 import useUserSession from "@/app/components/hooks/useUserSession"
 
 const IconAccount = () => {
-  const { session } = useUserSession()
+  // const { session } = useUserSession()
   const color = useThemeStore((state) => getSvgColor(state.theme))
 
   return (
@@ -12,13 +12,14 @@ const IconAccount = () => {
       xmlns="http://www.w3.org/2000/svg"
       width={15}
       height={16}
-      fill={session ? color : "none"}
+      viewBox="0 0 18 17"
+      // fill={session ? color : "none"}
       className="cursor-pointer"
     >
       <path
         stroke={color}
-        strokeWidth={2.5}
-        d="M10.464 4.348c0 1.728-1.376 3.098-3.036 3.098-1.66 0-3.035-1.37-3.035-3.098 0-1.728 1.376-3.098 3.035-3.098 1.66 0 3.036 1.37 3.036 3.098ZM13.458 14.75H1.398c.608-2.501 3.029-4.457 6.03-4.457 3.002 0 5.423 1.956 6.03 4.457Z"
+        strokeWidth={2}
+        d="M1 17c0-3.132 3.52-5.668 7.853-5.668 4.332 0 7.861 2.536 7.861 5.668M8.853 8.203a3.601 3.601 0 100-7.203 3.601 3.601 0 000 7.203z"
       />
     </svg>
   )
