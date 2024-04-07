@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { useCartStore, useFavoriteStore, useNavigationStore } from "@/state/uiState"
+import { useCartStore, useFavoriteStore } from "@/state/uiState"
 import { IconFavorite, IconShoppingBag } from '@/app/components/navigation/icons/'
 import Number from "@/app/components/navigation/Number"
 import Account from "@/app/components/navigation/Account"
@@ -12,6 +12,7 @@ import getLangAndGender from "@/utils/getLangAndGender"
 import { getFromLocalStorage } from "@/utils/getFromLocalStorage"
 import MiniCartButtons from "@/app/components/navigation/MiniCartButtons"
 import useUserSession from "@/app/components/hooks/useUserSession"
+import { useNavigationStore } from "@/state/client/navigationState"
 
 type NavIconsProps = {
   className?: string

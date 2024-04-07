@@ -3,9 +3,10 @@ import { useEffect, useRef, useState } from "react";
 
 import { supabase } from "@/app/supabase";
 import IconCheckMark from "@/app/components/navigation/icons/IconCheckMark";
-import { useCartStore, useNavigationStore } from "@/state/uiState";
+import { useCartStore } from "@/state/uiState";
 import MiniCartItem from "@/app/components/navigation/MiniCartItem";
 import { ProductItemType } from "@/types/productItem";
+import { useNavigationStore } from "@/state/client/navigationState";
 
 export default function MiniCartView() {
   const { cart } = useCartStore()
