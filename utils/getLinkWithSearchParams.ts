@@ -54,7 +54,6 @@ const buildSearchParams = (filters: Filters, lang: string, gender: string) => {
 export default function getLinkWithSearchParams(searchTerm: string, lang: string, gender: string): string {
   if (searchTerm) {
     const filters = parseSearchTerms(searchTerm);
-    console.log(filters)
     const searchParams = buildSearchParams(filters, lang, gender);
     return searchParams;
   }
