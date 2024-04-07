@@ -4,9 +4,9 @@ import { IconHideFilters, IconSavedFilters } from "@/app/components/products/ico
 import FilterSideControls from "@/app/components/products/FilterSideControls";
 import { FilterDropdown } from "@/app/components/products";
 import { useUIStore } from "@/state";
-import { useFilterStore } from "@/state/uiState";
 import Portal from "@/app/components/admin/Portal";
 import SavedFilters from "@/app/components/products/SavedFilters";
+import { useFilterStore } from "@/state/client/filterState";
 
 type FilterTopProps = {
   gender: Category['category']

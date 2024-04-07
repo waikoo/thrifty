@@ -1,14 +1,12 @@
 "use client"
-import { useState } from "react";
-
 import { useUIStore } from "@/state";
 import { FilterCheckbox, FilterColor, FilterCondition, FilterSize, FilterSlider } from "@/app/components/products";
 import { brandNamesArray } from "@/app/components/data/brandsData";
 import { filter } from "@/app/components/data";
 import SetNewFilter from "@/app/components/products/SetNewFilter";
 import { Category, Locales } from "@/types/home";
-import Portal from "../admin/Portal";
-import { useFilterStore } from "@/state/uiState";
+import Portal from "@/app/components/admin/Portal";
+import { useFilterStore } from "@/state/client/filterState";
 
 type FilterSideProps = {
   lang: Locales
