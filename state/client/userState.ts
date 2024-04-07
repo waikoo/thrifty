@@ -27,7 +27,6 @@ export const useUserStore = create<State & Action>((set, get) => ({
   setPassword: (password) => set(() => ({ password })),
   setUser: (user) => set(() => ({ user })),
   signIn: async (e: TMouseOnButton): Promise<AuthUser | null> => {
-    // e.preventDefault()
     const { email, password } = get()
 
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -47,6 +46,5 @@ export const useUserStore = create<State & Action>((set, get) => ({
     const { email, password, signIn } = get()
     const { data, error } = await supabase.auth.signUp({ email, password });
     if (error) throw error;
-    // if (!error) signIn(e)
   }
 }));

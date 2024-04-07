@@ -1,12 +1,13 @@
 "use client"
+import { useRouter } from "next/navigation";
+
 import { useUIStore } from "@/state/uiState";
 import { handleRecoverPassword } from "@/utils/supabase";
-import { useRouter } from "next/navigation";
-import { Input, SubmitButton } from "../generic";
-import { useUserEmail } from "../hooks";
+import { Input, SubmitButton } from "@/app/components/generic";
+import { useUserStore } from "@/state/client/userState";
 
 export default function RecoverPassword() {
-  const { email, setEmail } = useUserEmail()
+  const { email, setEmail } = useUserStore()
   const { setShowRecovery, setShowSignIn } = useUIStore()
   const router = useRouter()
 

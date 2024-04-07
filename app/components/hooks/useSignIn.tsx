@@ -1,10 +1,10 @@
 "use client"
 import { useState } from 'react'
-
-import { useUIStore } from '@/state'
-import { TMouseOnButton, useUserStore } from '@/state/userState'
 import { useRouter } from 'next/navigation'
+
 import { supabase } from '@/app/supabase'
+import { TMouseOnButton, useUserStore } from '@/state/client/userState'
+import { useUIStore } from '@/state/uiState'
 
 export default function useSignIn() {
   const { setShowSignIn } = useUIStore()

@@ -4,14 +4,14 @@ import { useState } from 'react'
 import { Auth, AuthModes } from '@/types/auth'
 import { Input, StateButtonContainer, SubmitButton } from '@/app/components/generic'
 import CheckBox from '@/app/components/generic/CheckBox'
-import { useSignIn, useSignUp, useUserEmail, useUserPassword } from '@/app/components/hooks'
-import { useUIStore } from '@/state'
+import { useSignIn, useSignUp } from '@/app/components/hooks'
+import { useUIStore } from '@/state/uiState'
+import { useUserStore } from '@/state/client/userState'
 
 const SignInOrUp = () => {
   const [selected, setSelected] = useState<AuthModes>(Auth.LOGIN)
   const [checked, setChecked] = useState(false)
-  const { email, setEmail } = useUserEmail()
-  const { password, setPassword } = useUserPassword()
+  const { email, setEmail, password, setPassword } = useUserStore()
   const { setShowSignIn } = useUIStore()
 
   const { signInHook, loading: signInLoading } = useSignIn()

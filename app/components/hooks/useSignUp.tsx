@@ -1,5 +1,5 @@
 import { useUIStore } from '@/state'
-import { TMouseOnButton, useUserStore } from '@/state/userState'
+import { TMouseOnButton, useUserStore } from '@/state/client/userState'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
@@ -14,7 +14,6 @@ export default function useSignUp() {
     setLoading(true)
     const data = await signUp(e)
     setLoading(false)
-    console.log(data)
     setShowSignIn(false)
 
     router.push(`${pathname}`)

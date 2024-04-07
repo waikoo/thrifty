@@ -1,5 +1,5 @@
 import { useUIStore } from '@/state/uiState'
-import { useUserStore } from '@/state/userState'
+import { useUserStore } from '@/state/client/userState'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
