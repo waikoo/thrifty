@@ -1,4 +1,4 @@
-import { useProductStore } from "@/state/productState"
+import { useProductStore } from "@/state/admin/uploadNewProductToDb";
 
 export default function useProductInputUtils() {
   const { price, discount, size, setPrice, setDiscount, setSize } = useProductStore()

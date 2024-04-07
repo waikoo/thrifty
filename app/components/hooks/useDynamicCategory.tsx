@@ -1,7 +1,9 @@
-import { useProductStore, useUIStore } from "@/state"
 import { useEffect } from "react"
+
 import { top } from "@/app/components/data"
 import { capitalize } from "@/utils/capitalize"
+import { useProductStore } from "@/state/admin/uploadNewProductToDb"
+import { useUIStore } from "@/state/uiState"
 
 export default function useDynamicCategory(name: string) {
   const { type, setCategory } = useProductStore()

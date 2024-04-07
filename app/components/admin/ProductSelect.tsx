@@ -1,6 +1,6 @@
 "use client"
+import { useProductStore } from '@/state/admin/uploadNewProductToDb'
 import { AddNew, IconChevronDown, Optional, Select } from '.'
-import { useProductStore } from '@/state'
 
 type ProductSelectProps = {
   obj: {

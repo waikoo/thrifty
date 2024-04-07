@@ -1,6 +1,7 @@
 import { useEffect } from "react"
-import { useProductStore } from "@/state"
 import { useSearchParams } from "next/navigation"
+
+import { useProductStore } from "@/state/admin/uploadNewProductToDb"
 
 export default function useInitValues(value: string, name: string) {
   const { setPrice, setDiscount, setSize } = useProductStore()

@@ -1,4 +1,3 @@
-import { useUserSession } from "@/app/components/hooks"
 import { supabase } from "@/app/supabase"
 import { ProductItemType } from "@/types/productItem"
 import { queryByUUID } from "@/utils/serverQueryByUUID"

@@ -1,7 +1,8 @@
 "use client"
-import { useUIStore } from "@/state";
-import { useProductStore } from "@/state/productState";
 import { useEffect } from "react";
+
+import { useUIStore } from "@/state";
+import { useProductStore } from "@/state/admin/uploadNewProductToDb";
 
 type ImageButtonProps = {
   inputRef: React.RefObject<HTMLInputElement>

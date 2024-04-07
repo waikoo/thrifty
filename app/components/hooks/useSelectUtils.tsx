@@ -1,4 +1,4 @@
-import { useProductStore } from "@/state/productState"
+import { useProductStore } from "@/state/admin/uploadNewProductToDb";
 
 export type FieldName = 'gender' | 'category' | 'product type' | 'color' | 'brand' | 'material' | 'condition';
 

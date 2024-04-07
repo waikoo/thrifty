@@ -1,9 +1,10 @@
 "use client"
+import { usePathname, useRouter } from "next/navigation";
+
 import { useUIStore } from "@/state";
-import { useProductStore } from "@/state/productState"
 import { ProductItemType } from "@/types/productItem";
 import { queryByUUID } from "@/utils/serverQueryByUUID";
-import { usePathname, useRouter } from "next/navigation";
+import { useProductStore } from "@/state/admin/uploadNewProductToDb";
 
 type ButtonProps = {
   uuidMatch?: queryByUUID | ProductItemType[]

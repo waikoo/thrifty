@@ -1,11 +1,12 @@
 "use client"
-import { useProductStore } from '@/state/productState'
-import Image from 'next/image'
 import { useEffect, useRef } from 'react'
-import { ImageEdit } from './'
+import { useSearchParams } from 'next/navigation'
+import Image from 'next/image'
+
+import { ImageEdit } from '@/app/components/admin/'
 import { useUIStore } from '@/state'
 import { ProductItemType } from '@/types/productItem'
-import { useSearchParams } from 'next/navigation'
+import { useProductStore } from '@/state/admin/uploadNewProductToDb'
 
 type ImagesDisplayProps = {
   uuidMatch?: ProductItemType[]
