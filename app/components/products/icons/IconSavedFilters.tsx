@@ -1,4 +1,4 @@
-import { useThemeStore } from "@/state"
+import { useThemeStore } from "@/state/themeState"
 import { getSvgColor } from '@/utils/theme';
 
 function IconSavedFilters() {
