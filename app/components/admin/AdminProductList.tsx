@@ -1,12 +1,14 @@
 "use client"
-import { ProductItemType } from "@/types/productItem"
-import Image from 'next/image'
-import { AdminProductSummary } from "."
-import { useRealtime, useSummaryPopup } from "../hooks"
-import { useDraftStore, useUIStore } from "@/state"
-import { FaCheckSquare } from "react-icons/fa";
 import { useEffect } from "react"
+import Image from 'next/image'
 import { usePathname, useRouter } from "next/navigation"
+
+import { FaCheckSquare } from "react-icons/fa";
+
+import { AdminProductSummary } from "@/app/components/admin"
+import { useRealtime, useSummaryPopup } from "@/app/components/hooks"
+import { useUIStore } from "@/state/uiState";
+import { useDraftStore } from "@/state/admin/adminSelectState";
 
 export default function AdminProductList() {
   const draft = useRealtime('draft')

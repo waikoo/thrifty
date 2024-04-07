@@ -1,11 +1,14 @@
 "use client"
-import { useEditedStore, useUIStore } from "@/state"
 import { useEffect } from "react"
-import { useRealtime, useSummaryPopup } from "../hooks"
-import { usePathname, useRouter } from "next/navigation"
 import Image from 'next/image'
+
 import { FaCheckSquare } from "react-icons/fa"
-import { AdminProductSummary } from "."
+
+import { usePathname, useRouter } from "next/navigation"
+import { useRealtime, useSummaryPopup } from "@/app/components/hooks"
+import { AdminProductSummary } from "@/app/components/admin"
+import { useUIStore } from "@/state/uiState"
+import { useEditedStore } from "@/state/admin/adminSelectState"
 
 export default function AdminEditedList() {
   const edited = useRealtime('edited')
