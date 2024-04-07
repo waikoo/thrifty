@@ -13,7 +13,6 @@ export { default as useMessageDisplay } from "./useMessageDisplay";
 export { default as useDarkMode } from "./useDarkMode";
 export { default as useEventListener } from "./useEventListener";
 export { default as useMediaQuery } from "./useMediaQuery";
-export { default as useAuthMethods } from "./useAuthMethods";
 export { default as useUserSession } from "./useUserSession";
 export { default as useSignIn } from './useSignIn'
 export { default as useProductState } from './useProductState'
