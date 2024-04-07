@@ -1,6 +1,6 @@
 import IconDelete from "@/app/components/cart/icons/IconDelete";
 import { borderRadius } from "../data/universalStyles";
-import { useFilterStore } from "@/state/uiState";
+import { useFilterStore } from "@/state/client/filterState";
 
 type FilterItemProps = {
   children: React.ReactNode

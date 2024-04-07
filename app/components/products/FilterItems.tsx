@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import FilterItem from "@/app/components/products/FilterItem";
-import { useFilterStore } from "@/state/uiState";
+import { useFilterStore } from "@/state/client/filterState";
 import { capitalize } from "@/utils/capitalize";
 import { TSavedFilters } from "@/types/filters";
 

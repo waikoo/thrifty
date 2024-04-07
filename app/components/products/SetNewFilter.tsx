@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import IconDelete from "@/app/components/cart/icons/IconDelete";
 import AnimatedInput from "@/app/components/AnimatedInput";
 import FilterItems from "@/app/components/products/FilterItems";
-import { useFilterStore } from "@/state/uiState";
+import { useFilterStore } from "@/state/client/filterState";
 import useUserSession from "@/app/components/hooks/useUserSession";
 import { supabase } from "@/app/supabase";
 import { TSavedFilters } from "@/types/filters";

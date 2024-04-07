@@ -13,7 +13,7 @@ import { supabase } from "@/app/supabase";
 import { TSavedFilters } from "@/types/filters";
 import { useThemeStore } from "@/state/themeState";
 import useUserSession from "@/app/components/hooks/useUserSession";
-import { useFilterStore } from "@/state/uiState";
+import { useFilterStore } from "@/state/client/filterState";
 
 export default function SavedFilters() {
   const [savedFilters, setSavedFilters] = useState<TSavedFilters[]>([] as TSavedFilters[])
