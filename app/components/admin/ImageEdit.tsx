@@ -1,6 +1,7 @@
 "use client"
-import { useUIStore, useProductStore } from "@/state"
+import { useUIStore } from "@/state"
 import { ImageDeletionPopUp, Portal } from "."
+import { useProductStore } from "@/state/admin/uploadNewProductToDb"
 
 type ImageEditProps = {
   src: string

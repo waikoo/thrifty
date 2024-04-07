@@ -1,6 +1,7 @@
 "use client"
 import { twMerge as tm } from 'tailwind-merge';
-import { useThemeStore } from "@/state"
+
+import { useThemeStore } from "@/state/themeState"
 import { getSvgColor } from '@/utils/theme';
 
 type IconChevronDownProps = {
