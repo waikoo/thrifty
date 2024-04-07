@@ -1,10 +1,10 @@
 "use client"
-import { useColorCarouselRef } from "@/state/colorCarouselState";
-import { Category, TColor } from "@/types/home";
 import { useEffect, useRef } from "react";
-import { ColorCarouselElement } from ".";
-import { useEventListener } from "../hooks";
-import { colors } from '../data/colorCarouselData'
+
+import { Category, TColor } from "@/types/home";
+import { ColorCarouselElement } from "@/app/components/home";
+import { colors } from '@/app/components/data/colorCarouselData'
+import { useColorCarouselRef } from "@/state/client/colorCarouselState";
 
 type ColorCarouselImagesProps = {
   gender: Category['category']
@@ -12,7 +12,7 @@ type ColorCarouselImagesProps = {
 
 export default function ColorCarouselImages({ gender }: ColorCarouselImagesProps) {
   const imagesRef = useRef<HTMLDivElement>(null)
-  const { containerRef, setContainerRef } = useColorCarouselRef()
+  const { setContainerRef } = useColorCarouselRef()
 
   useEffect(() => {
     setContainerRef(imagesRef.current)
