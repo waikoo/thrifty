@@ -1,7 +1,7 @@
 "use client"
 import { useEffect } from "react"
 
-import { useThemeStore } from "@/state"
+import { useThemeStore } from "@/state/themeState";
 import useMediaQuery from "@/app/components/hooks/useMediaQuery"
 import { themeSettings } from "@/app/components/data/theme"
 

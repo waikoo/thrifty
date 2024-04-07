@@ -1,8 +1,10 @@
 "use client"
 import { usePathname } from "next/navigation";
-import { LanguageElement } from ".";
+
 import { twMerge as tm } from 'tailwind-merge'
-import { useThemeStore } from "@/state";
+
+import { LanguageElement } from "@/app/components/navigation";
+import { useThemeStore } from "@/state/themeState";
 import { getSvgColor } from "@/utils/theme";
 
 export type LanguagePickerParams = {

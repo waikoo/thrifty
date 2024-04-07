@@ -1,6 +1,5 @@
-import React from 'react'
-import { useThemeStore } from '@/state'
-import { heroCarouselCircleColors as colors } from '../data/'
+import { useThemeStore } from "@/state/themeState";
+import { heroCarouselCircleColors as colors } from '@/app/components/data/'
 
 type HeroCarouselCircleProps = {
   cx: number
