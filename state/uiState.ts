@@ -29,8 +29,6 @@ type UIState = {
   onTop: string
   hasNoImage: boolean
   showImgError: boolean
-  left: number
-  right: number
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
@@ -57,8 +55,6 @@ type UIState = {
   setOnTop: (value: string) => void
   setHasNoImage: (value: boolean | (boolean)) => void
   setShowImgError: (value: boolean | (boolean)) => void
-  setLeft: (value: number) => void
-  setRight: (value: number) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -88,8 +84,6 @@ export const useUIStore = create<UIState>((set) => ({
   onTop: '',
   hasNoImage: true,
   showImgError: false,
-  left: 0,
-  right: 999,
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
@@ -116,6 +110,4 @@ export const useUIStore = create<UIState>((set) => ({
   setOnTop: (value) => set({ onTop: value }),
   setHasNoImage: (value) => set({ hasNoImage: value }),
   setShowImgError: (value) => set({ showImgError: value }),
-  setLeft: (value) => set({ left: value }),
-  setRight: (value) => set({ right: value }),
 }))
