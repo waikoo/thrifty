@@ -37,6 +37,9 @@ type State = {
   img_url: string[]
   counter: CounterState
   isDraftPostedSuccessfully: boolean
+  isSaved: boolean
+  hasNoImage: boolean
+  showImgError: boolean
 }
 
 type Action = {
@@ -63,6 +66,9 @@ type Action = {
   updateEdited: (uuid: string) => Promise<any>,
   setIsDraftPostedSuccessfully: (value: boolean) => void
   resetProductFields: () => void
+  setIsSaved: (value: boolean | (boolean)) => void
+  setHasNoImage: (value: boolean | (boolean)) => void
+  setShowImgError: (value: boolean | (boolean)) => void
 }
 
 export const useProductStore = create<State & Action>((set, get) => ({
@@ -211,5 +217,11 @@ export const useProductStore = create<State & Action>((set, get) => ({
       material: '',
       img_url: [],
     })
-  }
+  },
+  isSaved: false,
+  hasNoImage: true,
+  showImgError: false,
+  setIsSaved: (value) => set({ isSaved: value }),
+  setHasNoImage: (value) => set({ hasNoImage: value }),
+  setShowImgError: (value) => set({ showImgError: value }),
 }))

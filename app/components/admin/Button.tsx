@@ -1,7 +1,6 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation";
 
-import { useUIStore } from "@/state";
 import { ProductItemType } from "@/types/productItem";
 import { queryByUUID } from "@/utils/serverQueryByUUID";
 import { useProductStore } from "@/state/admin/uploadNewProductToDb";
@@ -11,8 +10,7 @@ type ButtonProps = {
 }
 
 export default function Button({ uuidMatch }: ButtonProps) {
-  const { isSaved, setIsSaved, hasNoImage, setShowImgError } = useUIStore();
-  const { handleManageSave } = useProductStore()
+  const { isSaved, setIsSaved, hasNoImage, setShowImgError, handleManageSave } = useProductStore();
   const [pathname, router] = [usePathname(), useRouter()]
 
   const onClickHandler = () => {

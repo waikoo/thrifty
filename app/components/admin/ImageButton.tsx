@@ -1,7 +1,6 @@
 "use client"
 import { useEffect } from "react";
 
-import { useUIStore } from "@/state";
 import { useProductStore } from "@/state/admin/uploadNewProductToDb";
 
 type ImageButtonProps = {
@@ -11,8 +10,7 @@ type ImageButtonProps = {
 
 export default function ImageButton(props: ImageButtonProps) {
   const { inputRef, setShowValidityError } = props
-  const { img_url, setImgUrl } = useProductStore()
-  const { setShowImgError, setHasNoImage } = useUIStore()
+  const { img_url, setImgUrl, setShowImgError, setHasNoImage } = useProductStore()
 
   useEffect(() => {
   }, [setShowValidityError])

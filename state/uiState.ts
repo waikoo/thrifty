@@ -17,7 +17,6 @@ type UIState = {
   addMaterial: boolean
   addOption: boolean
   statusBar: boolean
-  isSaved: boolean
   maximizeNew: boolean
   maximizeEdited: boolean
   dynamicCategory: string
@@ -27,8 +26,6 @@ type UIState = {
   productsLength: number
   showOptions: boolean
   onTop: string
-  hasNoImage: boolean
-  showImgError: boolean
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
@@ -43,7 +40,6 @@ type UIState = {
   showAddOption: (value: boolean | (boolean)) => void
   showAddMaterial: (value: boolean | (boolean)) => void
   raiseStatusBar: (value: boolean | (boolean)) => void
-  setIsSaved: (value: boolean | (boolean)) => void
   setMaximizeNew: (value: boolean | (boolean)) => void
   setMaximizeEdited: (value: boolean | (boolean)) => void
   setDynamicCategory: (value: string) => void
@@ -53,8 +49,6 @@ type UIState = {
   setProductsLength: (value: number) => void
   setShowOptions: (value: boolean | (boolean)) => void
   setOnTop: (value: string) => void
-  setHasNoImage: (value: boolean | (boolean)) => void
-  setShowImgError: (value: boolean | (boolean)) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -72,7 +66,6 @@ export const useUIStore = create<UIState>((set) => ({
   addOption: false,
   addMaterial: false,
   statusBar: false,
-  isSaved: false,
   maximizeNew: false,
   maximizeEdited: false,
   dynamicCategory: '',
@@ -82,8 +75,6 @@ export const useUIStore = create<UIState>((set) => ({
   productsLength: 0,
   showOptions: false,
   onTop: '',
-  hasNoImage: true,
-  showImgError: false,
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
@@ -98,7 +89,6 @@ export const useUIStore = create<UIState>((set) => ({
   showAddOption: (value) => set({ addBrand: value }),
   showAddMaterial: (value) => set({ addMaterial: value }),
   raiseStatusBar: (value) => set({ statusBar: value }),
-  setIsSaved: (value) => set({ isSaved: value }),
   setMaximizeNew: (value) => set({ maximizeNew: value }),
   setMaximizeEdited: (value) => set({ maximizeEdited: value }),
   setDynamicCategory: (value) => set({ dynamicCategory: value }),
@@ -108,6 +98,4 @@ export const useUIStore = create<UIState>((set) => ({
   setProductsLength: (value) => set({ editedLength: value }),
   setShowOptions: (value) => set({ showOptions: value }),
   setOnTop: (value) => set({ onTop: value }),
-  setHasNoImage: (value) => set({ hasNoImage: value }),
-  setShowImgError: (value) => set({ showImgError: value }),
 }))
