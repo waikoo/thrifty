@@ -17,15 +17,12 @@ type UIState = {
   addMaterial: boolean
   addOption: boolean
   statusBar: boolean
-  maximizeNew: boolean
-  maximizeEdited: boolean
   dynamicCategory: string
   toggleSelected: boolean
   draftLength: number
   editedLength: number
   productsLength: number
   showOptions: boolean
-  onTop: string
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
@@ -40,15 +37,12 @@ type UIState = {
   showAddOption: (value: boolean | (boolean)) => void
   showAddMaterial: (value: boolean | (boolean)) => void
   raiseStatusBar: (value: boolean | (boolean)) => void
-  setMaximizeNew: (value: boolean | (boolean)) => void
-  setMaximizeEdited: (value: boolean | (boolean)) => void
   setDynamicCategory: (value: string) => void
   setToggleSelected: (value: boolean | (boolean)) => void
   setDraftLength: (value: number) => void
   setEditedLength: (value: number) => void
   setProductsLength: (value: number) => void
   setShowOptions: (value: boolean | (boolean)) => void
-  setOnTop: (value: string) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -66,15 +60,12 @@ export const useUIStore = create<UIState>((set) => ({
   addOption: false,
   addMaterial: false,
   statusBar: false,
-  maximizeNew: false,
-  maximizeEdited: false,
   dynamicCategory: '',
   toggleSelected: false,
   draftLength: 0,
   editedLength: 0,
   productsLength: 0,
   showOptions: false,
-  onTop: '',
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
@@ -89,13 +80,10 @@ export const useUIStore = create<UIState>((set) => ({
   showAddOption: (value) => set({ addBrand: value }),
   showAddMaterial: (value) => set({ addMaterial: value }),
   raiseStatusBar: (value) => set({ statusBar: value }),
-  setMaximizeNew: (value) => set({ maximizeNew: value }),
-  setMaximizeEdited: (value) => set({ maximizeEdited: value }),
   setDynamicCategory: (value) => set({ dynamicCategory: value }),
   setToggleSelected: (value) => set({ toggleSelected: value }),
   setDraftLength: (value) => set({ draftLength: value }),
   setEditedLength: (value) => set({ editedLength: value }),
   setProductsLength: (value) => set({ editedLength: value }),
   setShowOptions: (value) => set({ showOptions: value }),
-  setOnTop: (value) => set({ onTop: value }),
 }))

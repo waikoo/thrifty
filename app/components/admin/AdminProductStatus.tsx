@@ -1,9 +1,10 @@
 "use client"
-import { useUIStore } from "@/state";
-import { ProductItemType } from "@/types/productItem";
 import { useEffect } from "react";
+
 import { ImEnlarge } from "react-icons/im";
 import { TbArrowsMinimize } from "react-icons/tb";
+
+import { useNewAndEditedPositionStore } from "@/state/admin/newAndEditedPositionState";
 
 type AdminProductStatusProps = {
   length: number
@@ -11,7 +12,7 @@ type AdminProductStatusProps = {
 }
 
 export default function AdminProductStatus({ length, children, }: AdminProductStatusProps) {
-  const { maximizeNew, setMaximizeNew, maximizeEdited, setMaximizeEdited, onTop, setOnTop } = useUIStore()
+  const { maximizeNew, setMaximizeNew, maximizeEdited, setMaximizeEdited, onTop, setOnTop } = useNewAndEditedPositionStore()
 
   useEffect(() => {
     if (!maximizeNew && !maximizeEdited) {
