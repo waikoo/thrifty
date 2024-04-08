@@ -1,8 +1,9 @@
 "use client"
-import { useFavoriteStore } from "@/state/uiState";
-import updateLocalStorage from "@/utils/updateLocalStorage";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoMdHeart } from "react-icons/io";
+
+import { useFavoriteStore } from "@/state/client/favoriteState";
+import updateLocalStorage from "@/utils/updateLocalStorage";
 
 type ProductToggleFavoriteType = {
   uuid: string

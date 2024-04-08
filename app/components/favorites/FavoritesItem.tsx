@@ -1,14 +1,15 @@
 "use client"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 
-import { useCartStore, useFavoriteStore, useSelectedCartStore, useSelectedFavoritesStore } from "@/state/uiState"
+import { useCartStore, useSelectedCartStore } from "@/state/uiState"
 import { ProductItemType } from "@/types/productItem"
 import { capitalize } from "@/utils/capitalize"
 import IconShare from "@/app/components/cart/icons/IconShare"
 import IconDelete from "@/app/components/cart/icons/IconDelete"
 import ProductAddToCart from "@/app/components/products/ProductAddToCart"
 import { EURO } from "@/app/components/data/orderSummary"
-import { useEffect, useState } from "react"
+import { useFavoriteStore, useSelectedFavoritesStore } from "@/state/client/favoriteState"
 
 type CartItemType = {
   product: ProductItemType

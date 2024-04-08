@@ -1,9 +1,10 @@
 import { useEffect } from "react"
 
-import { useCartStore, useFavoriteStore, useSelectedCartStore } from "@/state/uiState"
+import { useCartStore, useSelectedCartStore } from "@/state/uiState"
 import IconShare from "@/app/components/cart/icons/IconShare"
 import IconDelete from "@/app/components/cart/icons/IconDelete"
 import IconHeart from "@/app/components/cart/icons/IconHeart"
+import { useFavoriteStore } from "@/state/client/favoriteState"
 
 export default function CartControls() {
   const { emptyCart, cart, removeSelectedFromCart } = useCartStore()

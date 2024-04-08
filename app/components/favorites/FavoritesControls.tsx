@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
+
 import IconShare from '@/app/components/cart/icons/IconShare'
 import IconDelete from '@/app/components/cart/icons/IconDelete'
 import IconFadedCart from '@/app/components/favorites/IconFadedCart'
-import { useCartStore, useFavoriteStore, useSelectedFavoritesStore } from '@/state/uiState'
+import { useCartStore } from '@/state/uiState'
+import { useFavoriteStore, useSelectedFavoritesStore } from '@/state/client/favoriteState'
 
 export default function FavoritesControls() {
   const { selectedFavorites, areAllFavoritesSelected, toggleAreAllFavoritesSelected, setAllSelectedFavoritesItemsTo, emptySelectedFavorites } = useSelectedFavoritesStore()

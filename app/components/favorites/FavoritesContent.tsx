@@ -2,7 +2,7 @@
 
 import FavoritesItems from "@/app/components/favorites/FavoritesItems"
 import EmptyFavorites from "@/app/components/favorites/EmptyFavorites"
-import { useFavoriteStore } from "@/state/uiState"
+import { useFavoriteStore } from "@/state/client/favoriteState"
 
 export default function FavoritesContent() {
   const { favoritesLength } = useFavoriteStore()

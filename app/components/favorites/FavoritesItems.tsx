@@ -1,14 +1,15 @@
 "use client"
 import { useEffect, useState } from "react"
 
-import { useFavoriteStore } from "@/state/uiState"
+import { supabase } from "@/app/supabase"
+
 import { ProductItemType } from "@/types/productItem"
 import { getFromLocalStorage } from "@/utils/getFromLocalStorage"
 import { fetchProductsByUuids } from "@/utils/fetchProductsByUuids"
-import { supabase } from "@/app/supabase"
 import CartItem from "@/app/components/cart/CartItem"
 import FavoritesControls from "@/app/components/favorites/FavoritesControls"
 import FavoritesItem from "@/app/components/favorites/FavoritesItem"
+import { useFavoriteStore } from "@/state/client/favoriteState"
 
 export default function FavoritesItems() {
   const [products, setProducts] = useState<ProductItemType[]>([])
