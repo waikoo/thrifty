@@ -4,7 +4,7 @@ import { useState } from "react"
 import ProfileSettings from "@/app/components/profile/ProfileSettings"
 import { Category, Locales } from "@/types/home"
 import ProfilePopup from "@/app/components/profile/ProfilePopup"
-import { useProfile } from "@/state/uiState"
+import { useProfile } from "@/state/client/profileState"
 import { useUserSession } from "@/app/components/hooks"
 
 type PageProps = {
@@ -18,10 +18,8 @@ type PageProps = {
 export default function Page({ params }: PageProps) {
   const [showEmailPopup, setShowEmailPopup] = useState(false)
   const [showPasswordPopup, setShowPasswordPopup] = useState(false)
-  const { currentEmail, setCurrentEmail, newEmail, setNewEmail, password, setPassword, currentPassword, setCurrentPassword, newPassword, setNewPassword, updateEmail, updatePassword } = useProfile()
-  // current email
+  const { currentEmail, setCurrentEmail, newEmail, setNewEmail, newPassword, setNewPassword, updateEmail, updatePassword } = useProfile()
   const { session } = useUserSession()
-  // console.log(session?.user.email)
 
   return (
     <main className="text-bkg ">
