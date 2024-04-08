@@ -1,7 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation";
 
-import { useUIStore } from "@/state/uiState";
+import { useUIStore } from "@/state/client/uiState";
 import { handleRecoverPassword } from "@/utils/supabase";
 import { Input, SubmitButton } from "@/app/components/generic";
 import { useUserStore } from "@/state/client/userState";

@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 
-import { useUIStore } from "@/state"
+import { useUIStore } from "@/state/client/uiState"
 import { useDarkMode } from "@/app/components/hooks"
 import { Category, Logo, SearchBar, WithHome } from '@/app/components/navigation/'
 import NavIcons from "@/app/components/navigation/NavIcons"

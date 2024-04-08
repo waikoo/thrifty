@@ -1,12 +1,14 @@
 "use client"
+import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+
 import { MdEdit } from "react-icons/md";
 import { FaPlusCircle } from "react-icons/fa";
-import { useUIStore } from '@/state';
-import { Popup } from "../generic"
-import { useState } from "react";
-import Portal from "./Portal";
+
 import { supabase } from "@/app/supabase";
-import { usePathname, useRouter } from "next/navigation";
+import { useUIStore } from '@/state/admin/uiState';
+import { Popup } from "@/app/components/generic"
+import Portal from "@/app/components/admin/Portal";
 
 type EditDeleteProps = {
   uuid: string

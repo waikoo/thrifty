@@ -2,7 +2,7 @@
 import { MenuItem } from '@/app/components/navigation'
 import { menuItems } from '@/app/components/data/navigation'
 import { useSignOut, useUserSession } from '@/app/components/hooks'
-import { useUIStore } from '@/state/uiState';
+import { useUIStore } from '@/state/client/uiState';
 
 const AccountMenu = () => {
   const { signOutHook, loading } = useSignOut()

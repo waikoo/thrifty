@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import { useRealtime, useStatusImagesStyles } from "../hooks";
-import { useUIStore } from '@/state';
+import { useUIStore } from '@/state/admin/uiState';
 import { EditDelete } from '.';
 
 export default function StatusImages() {

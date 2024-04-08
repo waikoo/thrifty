@@ -1,9 +1,9 @@
 "use client";
-import { useUIStore } from '@/state';
-import { bannerMessages } from '../data';
-import { ThemeToggler } from '../generic';
-import useMessageDisplay from '../hooks/useMessageDisplay';
-import LanguagePicker from './LanguagePicker';
+import { useUIStore } from '@/state/client/uiState';
+import { bannerMessages } from '@/app/components/data';
+import { ThemeToggler } from '@/app/components/generic';
+import useMessageDisplay from '@/app/components/hooks/useMessageDisplay';
+import LanguagePicker from '@/app/components/navigation/LanguagePicker';
 
 export default function Banner() {
   const { showBanner } = useUIStore()

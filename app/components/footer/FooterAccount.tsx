@@ -2,8 +2,8 @@
 import getLangAndGender from "@/utils/getLangAndGender";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useUIStore } from "@/state"
 import { useUserSession } from "@/app/components/hooks"
+import { useUIStore } from "@/state/client/uiState";
 
 export default function FooterAccount() {
   const { gender, lang } = getLangAndGender(usePathname())

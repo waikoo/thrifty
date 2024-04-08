@@ -1,7 +1,7 @@
 "use client";
-import { useUIStore } from '@/state';
-import { useMessageDisplay } from '.';
-import { bannerMessages } from '../data';
+import { useUIStore } from '@/state/client/uiState';
+import { useMessageDisplay } from '@/app/components/hooks';
+import { bannerMessages } from '@/app/components/data';
 
 export default function Banner() {
   const { showBanner, setShowBanner } = useUIStore()

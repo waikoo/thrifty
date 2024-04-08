@@ -7,7 +7,7 @@ import { FaCheckSquare } from "react-icons/fa"
 import { usePathname, useRouter } from "next/navigation"
 import { useRealtime, useSummaryPopup } from "@/app/components/hooks"
 import { AdminProductSummary } from "@/app/components/admin"
-import { useUIStore } from "@/state/uiState"
+import { useUIStore } from "@/state/admin/uiState"
 import { useEditedStore } from "@/state/admin/adminSelectState"
 
 export default function AdminEditedList() {

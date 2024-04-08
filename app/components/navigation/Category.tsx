@@ -1,10 +1,12 @@
 "use client"
-import { useTranslation } from '@/i18n/client';
-import { useUIStore } from '@/state';
-import { Category, Locales } from '@/types/home';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import CategoryMenu from './CategoryMenu';
+import Link from 'next/link';
+
+import { useTranslation } from '@/i18n/client';
+
+import { useUIStore } from '@/state/client/uiState';
+import { Category, Locales } from '@/types/home';
+import CategoryMenu from '@/app/components/navigation/CategoryMenu';
 
 const Category = () => {
   const [_, lang, category] = usePathname().split('/')

@@ -1,5 +1,5 @@
 "use client"
-import { useUIStore } from "@/state";
+import { useUIStore } from "@/state/client/uiState";
 import { useEventListener } from "../hooks";
 
 export default function BackToTop() {

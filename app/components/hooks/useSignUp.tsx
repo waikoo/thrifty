@@ -1,7 +1,8 @@
-import { useUIStore } from '@/state'
-import { TMouseOnButton, useUserStore } from '@/state/client/userState'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+
+import { useUIStore } from '@/state/client/uiState'
+import { TMouseOnButton, useUserStore } from '@/state/client/userState'
 
 export default function useSignUp() {
   const setShowSignIn = useUIStore((state) => state.setShowSignIn)

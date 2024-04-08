@@ -5,7 +5,7 @@ import { Auth, AuthModes } from '@/types/auth'
 import { Input, StateButtonContainer, SubmitButton } from '@/app/components/generic'
 import CheckBox from '@/app/components/generic/CheckBox'
 import { useSignIn, useSignUp } from '@/app/components/hooks'
-import { useUIStore } from '@/state/uiState'
+import { useUIStore } from '@/state/client/uiState'
 import { useUserStore } from '@/state/client/userState'
 
 const SignInOrUp = () => {

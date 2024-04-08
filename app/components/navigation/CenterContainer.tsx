@@ -1,7 +1,7 @@
 "use client"
 import { useRef } from "react";
 
-import { useUIStore } from "@/state";
+import { useUIStore } from "@/state/client/uiState";
 import { RecoverPassword, SignInOrUp } from ".";
 
 export default function CenterContainer() {

@@ -7,7 +7,7 @@ type State = {
   setShowOptions: (value: boolean | (boolean)) => void
 }
 
-export const useUIState = create<State>((set) => ({
+export const useUIStore = create<State>((set) => ({
   toggleSelected: false,
   showOptions: false,
   setToggleSelected: (value) => set({ toggleSelected: value }),

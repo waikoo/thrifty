@@ -6,7 +6,7 @@ import Portal from "@/app/components/admin/Portal"
 import { Popup } from "@/app/components/generic"
 import { useRealtime } from "@/app/components/hooks"
 import { useDraftStore, useEditedStore } from "@/state/admin/adminSelectState"
-import { useUIStore } from "@/state/uiState"
+import { useUIStore } from "@/state/admin/uiState"
 
 export default function SelectProducts() {
   const { toggleSelected, setToggleSelected } = useUIStore()

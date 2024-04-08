@@ -1,6 +1,6 @@
 "use client"
 import { useUserSession } from "@/app/components/hooks"
-import { useUIStore } from "@/state"
+import { useUIStore } from "@/state/client/uiState"
 import { AccountMenu, CenterContainer } from "@/app/components/navigation"
 import { IconAccount } from '@/app/components/navigation/icons/'
 

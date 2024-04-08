@@ -10,7 +10,8 @@ import Portal from "@/app/components/admin/Portal"
 import { Popup } from "@/app/components/generic"
 import { updateProductsWithEdited } from "@/utils/updateProductsWithEdited"
 import { useDraftStore, useEditedStore } from "@/state/admin/adminSelectState"
-import { useUIStore } from "@/state/uiState"
+import { useUIStore } from "@/state/admin/uiState"
+import { useStatusBarStore } from "@/state/admin/statusBarState"
 
 type PublishChangesProps = {
   className?: string
@@ -20,7 +21,8 @@ type PublishChangesProps = {
 export default function PublishChanges({ className, publishSome }: PublishChangesProps) {
   const { selectedItems: selectedDraftItems } = useDraftStore()
   const { selectedItems: selectedEditedItems } = useEditedStore()
-  const { draftLength, editedLength, toggleSelected } = useUIStore()
+  const { draftLength, editedLength } = useStatusBarStore()
+  const { toggleSelected } = useUIStore()
   const [showPopup, setShowPopup] = useState(false)
   const router = useRouter()
 

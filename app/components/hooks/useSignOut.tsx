@@ -1,11 +1,12 @@
-import { useUIStore } from '@/state/uiState'
-import { useUserStore } from '@/state/client/userState'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+
+import { useUIStore } from '@/state/client/uiState'
+import { useUserStore } from '@/state/client/userState'
 
 export default function useSignOut() {
-  const signOut = useUserStore(state => state.signOut)
-  const setShowMyAccount = useUIStore((state) => state.setShowMyAccount)
+  const { signOut } = useUserStore()
+  const { setShowMyAccount } = useUIStore()
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 

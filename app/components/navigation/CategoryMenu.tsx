@@ -1,6 +1,6 @@
 "use client"
 import { useRef } from "react"
-import { useUIStore } from "@/state/uiState"
+import { useUIStore } from "@/state/client/uiState"
 import CategoryKids from "./CategoryKids"
 import CategoryMen from "./CategoryMen"
 import CategoryWomen from "./CategoryWomen"

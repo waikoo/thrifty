@@ -7,7 +7,7 @@ import { FaCheckSquare } from "react-icons/fa";
 
 import { AdminProductSummary } from "@/app/components/admin"
 import { useRealtime, useSummaryPopup } from "@/app/components/hooks"
-import { useUIStore } from "@/state/uiState";
+import { useUIStore } from "@/state/admin/uiState";
 import { useDraftStore } from "@/state/admin/adminSelectState";
 
 export default function AdminProductList() {

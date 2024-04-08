@@ -1,9 +1,11 @@
 "use client"
-import { AdminEditedList, AdminProductList, AdminProductStatus } from ".";
-import { useUIStore } from "@/state";
+import { useStatusBarStore } from "@/state/admin/statusBarState";
+import { AdminEditedList, AdminProductList, AdminProductStatus } from "@/app/components/admin";
+import { useNewAndEditedPositionStore } from "@/state/admin/newAndEditedPositionState";
 
 export default function AdminContent() {
-  const { maximizeNew, maximizeEdited, draftLength, editedLength, onTop } = useUIStore()
+  const { maximizeNew, maximizeEdited, onTop } = useNewAndEditedPositionStore()
+  const { draftLength, editedLength } = useStatusBarStore()
 
   return (
     <section className={`text-bkg flex w-full h-[80vh]

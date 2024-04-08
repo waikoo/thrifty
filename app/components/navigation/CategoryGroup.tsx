@@ -1,4 +1,4 @@
-import { useUIStore } from "@/state/uiState"
+import { useUIStore } from "@/state/client/uiState"
 
 
 type CategoryGroupProps = {

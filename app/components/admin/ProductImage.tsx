@@ -2,7 +2,7 @@
 import { useRef, useState } from "react"
 import { ImageButton, ImagesDisplay } from "."
 import { ProductItemType } from "@/types/productItem"
-import { useUIStore } from "@/state"
+import { useProductStore } from "@/state/admin/uploadNewProductToDb"
 
 type ProductImageProps = {
   uuidMatch?: ProductItemType[]
@@ -10,7 +10,7 @@ type ProductImageProps = {
 
 export default function ProductImage({ uuidMatch }: ProductImageProps) {
   const inputRef = useRef<HTMLInputElement | null>(null)
-  const { showImgError } = useUIStore()
+  const { showImgError } = useProductStore()
   const [showValidityError, setShowValidityError] = useState(false)
   const showError = showImgError || showValidityError ? "border-red" : "border-content"
 
