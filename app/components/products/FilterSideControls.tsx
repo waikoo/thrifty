@@ -2,7 +2,8 @@
 import Link from "next/link";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
-import { useFilterTitleStore, useUIStore } from "@/state/uiState";
+import { useUIStore } from "@/state/uiState";
+import { useFilterTitleStore } from "@/state/client/filterState";
 import { Category, Locales } from "@/types/home";
 import { IconReset } from "@/app/components/products/icons";
 
@@ -12,9 +13,7 @@ type FilterSideControlsProps = {
 }
 
 export default function FilterSideControls({ gender, lang }: FilterSideControlsProps) {
-  const expandAllFilters = useFilterTitleStore((state) => state.expandAllComponents)
-  const collapseAllFilters = useFilterTitleStore((state) => state.collapseAllComponents)
-  const areAllExpanded = useFilterTitleStore((state => state.areAllExpanded))
+  const { areAllExpanded, collapseAllFilters, expandAllFilters } = useFilterTitleStore()
   const { hideFilters } = useUIStore()
 
   return !hideFilters && (

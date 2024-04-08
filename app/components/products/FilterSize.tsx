@@ -3,7 +3,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { FilterSearch, FilterTitle } from "."
 import { useFilterSearch } from "../hooks"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
-import { useFilterTitleStore } from "@/state/uiState"
+import { useFilterTitleStore } from "@/state/client/filterState"
 
 type FilterSizeProps = {
   type: 'SIZE'
@@ -11,7 +11,7 @@ type FilterSizeProps = {
 }
 
 export default function FilterSize({ type, sizes }: FilterSizeProps) {
-  const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
+  const isExpanded = useFilterTitleStore((state) => state.expandedFilters.includes(type))
   const { setSearchValue, filteredItems } = useFilterSearch(sizes)
   const [pathname, router, searchParamos] = [usePathname(), useRouter(), useSearchParams()]
 

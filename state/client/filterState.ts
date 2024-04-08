@@ -155,3 +155,47 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
     }
   }
 }))
+
+type TFilterTitleState = {
+  allFilters: string[],
+  expandedFilters: string[]
+  areAllExpanded: boolean
+  setAllFilters: (componentId: string) => void
+  setExpandedFilter: (componentId: string) => void
+  unsetExpandedFilter: (componentId: string) => void
+  expandAllFilters: () => void
+  collapseAllFilters: () => void
+}
+
+export const useFilterTitleStore = create<TFilterTitleState>((set) => ({
+  allFilters: ['CATEGORY', 'SHOP BY', 'PRODUCT TYPE', 'COLOR', 'BRAND', 'CONDITION', 'MATERIAL', 'SIZE', 'DATE ADDED'],
+  expandedFilters: [],
+  areAllExpanded: false,
+  setAllFilters: (componentId) => set((state) => ({
+    allFilters: [...state.allFilters, componentId],
+  })),
+  setExpandedFilter: (componentId) => set((state) => {
+    const expandedFilters = [...state.expandedFilters, componentId]
+    const areAllExpanded = state.allFilters.every(id => expandedFilters.includes(id))
+    return {
+      expandedFilters,
+      areAllExpanded
+    }
+  }),
+  unsetExpandedFilter: (componentId) => set((state) => {
+    const expandedFilters = state.expandedFilters.filter(id => id !== componentId)
+    const areAllExpanded = state.allFilters.every(id => expandedFilters.includes(id))
+    return {
+      expandedFilters,
+      areAllExpanded
+    }
+  }),
+  expandAllFilters: () => set((state) => ({
+    expandedFilters: state.allFilters,
+    areAllExpanded: true
+  })),
+  collapseAllFilters: () => set({
+    expandedFilters: [],
+    areAllExpanded: false
+  }),
+}));

@@ -1,5 +1,5 @@
 "use client"
-import { useFilterTitleStore } from "@/state/uiState"
+import { useFilterTitleStore } from "@/state/client/filterState"
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 type FilterTitleProps = {
@@ -9,9 +9,9 @@ type FilterTitleProps = {
 export default function FilterTitle({
   type,
 }: FilterTitleProps) {
-  const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
-  const setIsExpanded = useFilterTitleStore((state) => state.setExpandedComponent)
-  const unsetIsExpanded = useFilterTitleStore((state) => state.unsetExpandedComponent)
+  const isExpanded = useFilterTitleStore((state) => state.expandedFilters.includes(type))
+  const setIsExpanded = useFilterTitleStore((state) => state.setExpandedFilter)
+  const unsetIsExpanded = useFilterTitleStore((state) => state.unsetExpandedFilter)
 
   const handleToggle = () => {
     isExpanded ? unsetIsExpanded(type) : setIsExpanded(type)

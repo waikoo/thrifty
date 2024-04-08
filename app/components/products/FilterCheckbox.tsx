@@ -3,17 +3,16 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
 import { FilterSearch, FilterTitle } from "@/app/components/products"
 import { useFilterSearch, useQueryParams } from "@/app/components/hooks"
-import { useFilterTitleStore } from "@/state/uiState"
+import { useFilterTitleStore } from "@/state/client/filterState"
 
 type FilterCheckboxProps = {
   type: string
-  // elements: any
   elements: string[]
   search?: boolean
 }
 
 export default function FilterCheckbox({ type, elements, search }: FilterCheckboxProps) {
-  const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
+  const isExpanded = useFilterTitleStore((state) => state.expandedFilters.includes(type))
   const { setSearchValue, filteredItems } = useFilterSearch(elements)
   const [searchParamos, pathname, router] = [useSearchParams(), usePathname(), useRouter()]
   const { checkbox, onCheckboxChange, updateQueryParams } = useQueryParams(type, elements, searchParamos, router, pathname)

@@ -1,5 +1,5 @@
 "use client"
-import { useFilterTitleStore } from "@/state/uiState"
+import { useFilterTitleStore } from "@/state/client/filterState"
 import { FilterTitle } from "."
 import { useEffect, useState } from "react"
 import { useDbMinMaxValues, useFilterSlider } from "../hooks"
@@ -13,7 +13,7 @@ type FilterSliderProps = {
 }
 
 export default function FilterSlider({ type, start, end }: FilterSliderProps) {
-  const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
+  const isExpanded = useFilterTitleStore((state) => state.expandedFilters.includes(type))
   const [left, setLeft] = useState(start);
   const [right, setRight] = useState(end);
   useDbMinMaxValues(type, setLeft, setRight, left, right) // load initial min & max values from database for price & discount filters

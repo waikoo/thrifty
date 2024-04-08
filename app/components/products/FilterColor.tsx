@@ -1,7 +1,7 @@
 "use client"
 import { FilterSearch, FilterTitle } from "."
 import { useFilterSearch } from "../hooks"
-import { useFilterTitleStore } from "@/state/uiState"
+import { useFilterTitleStore } from "@/state/client/filterState"
 import FilterColorItem from "./FilterColorItem"
 
 type FilterColorProps = {
@@ -10,7 +10,7 @@ type FilterColorProps = {
 }
 
 export default function FilterColor({ type, colors }: FilterColorProps) {
-  const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
+  const isExpanded = useFilterTitleStore((state) => state.expandedFilters.includes(type))
   const { setSearchValue, filteredItems } = useFilterSearch(colors)
 
   return (

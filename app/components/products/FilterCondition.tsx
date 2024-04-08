@@ -1,7 +1,8 @@
 "use client"
-import FilterTitle from "./FilterTitle"
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"
-import { useFilterTitleStore } from "@/state/uiState"
+
+import FilterTitle from "@/app/components/products/FilterTitle"
+import { useFilterTitleStore } from "@/state/client/filterState"
 
 type FilterConditionProps = {
   type: string
@@ -9,7 +10,7 @@ type FilterConditionProps = {
 }
 
 export default function FilterCondition({ type, condition }: FilterConditionProps) {
-  const isExpanded = useFilterTitleStore((state) => state.expandedComponents.includes(type))
+  const isExpanded = useFilterTitleStore((state) => state.expandedFilters.includes(type))
 
   const renderStars = (rating: number) => {
     const starRow = []
