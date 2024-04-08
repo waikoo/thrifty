@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 
 import CartPaymentMethods from "@/app/components/cart/CartPaymentMethods";
-import { useCartStore } from "@/state/uiState";
 import { ProductItemType } from "@/types/productItem";
 import SummaryFreeDelivery from "@/app/components/cart/SummaryFreeDelivery";
 import SummaryShippingSelect from "@/app/components/cart/SummaryShippingSelect";
@@ -10,6 +9,7 @@ import SummarySubmit from "@/app/components/checkout/SummarySubmit";
 import { EURO, FREE_HOME_DELIVERY_PRICE } from "@/app/components/data/orderSummary";
 import { borderRadius } from "@/app/components/data/universalStyles";
 import { useOrderStore, useOrderSummaryStore } from "@/state/client/orderState";
+import { useCartStore } from "@/state/client/cartState";
 
 type CartOrderSummaryProps = {
   isCheckout?: boolean

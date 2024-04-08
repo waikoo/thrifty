@@ -2,7 +2,7 @@
 import { useEffect } from "react"
 import { twMerge as tm } from "tailwind-merge"
 
-import { useCartStore } from "@/state/uiState"
+import { useCartStore } from "@/state/client/cartState"
 
 type ProductAddToCartProps = {
   uuid: string

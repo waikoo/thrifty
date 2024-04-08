@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { useCartStore } from "@/state/uiState"
 import { IconFavorite, IconShoppingBag } from '@/app/components/navigation/icons/'
 import Number from "@/app/components/navigation/Number"
 import Account from "@/app/components/navigation/Account"
@@ -14,6 +13,7 @@ import MiniCartButtons from "@/app/components/navigation/MiniCartButtons"
 import useUserSession from "@/app/components/hooks/useUserSession"
 import { useNavigationStore } from "@/state/client/navigationState"
 import { useFavoriteStore } from "@/state/client/favoriteState"
+import { useCartStore } from "@/state/client/cartState"
 
 type NavIconsProps = {
   className?: string

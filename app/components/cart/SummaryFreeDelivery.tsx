@@ -1,5 +1,5 @@
-import { useCartStore } from "@/state/uiState"
 import { EURO, FREE_HOME_DELIVERY_PRICE } from "@/app/components/data/orderSummary";
+import { useCartStore } from "@/state/client/cartState";
 import { useOrderStore } from "@/state/client/orderState";
 
 export default function SummaryFreeDelivery() {

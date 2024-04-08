@@ -1,8 +1,9 @@
 import Image from 'next/image'
+
 import { capitalize } from "@/utils/capitalize";
 import { EURO } from "@/app/components/data/orderSummary";
 import { ProductItemType } from "@/types/productItem";
-import { useCartStore } from "@/state/uiState";
+import { useCartStore } from '@/state/client/cartState';
 
 type MiniCartItemProps = {
   item: ProductItemType

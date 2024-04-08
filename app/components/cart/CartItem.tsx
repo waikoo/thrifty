@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image"
 
-import { useCartStore, useSelectedCartStore } from "@/state/uiState"
 import { ProductItemType } from "@/types/productItem"
 import { capitalize } from "@/utils/capitalize"
 import IconClock from "@/app/components/cart/icons/IconClock"
@@ -10,6 +9,7 @@ import IconDelete from "@/app/components/cart/icons/IconDelete"
 import IconHeart from "@/app/components/cart/icons/IconHeart"
 import { EURO } from "@/app/components/data/orderSummary"
 import { useFavoriteStore } from "@/state/client/favoriteState"
+import { useCartStore, useSelectedCartStore } from "@/state/client/cartState"
 
 type CartItemType = {
   product: ProductItemType

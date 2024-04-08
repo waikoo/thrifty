@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-import { useCartStore, useSelectedCartStore } from "@/state/uiState"
+import { useCartStore, useSelectedCartStore } from "@/state/client/cartState"
 import IconShare from "@/app/components/cart/icons/IconShare"
 import IconDelete from "@/app/components/cart/icons/IconDelete"
 import IconHeart from "@/app/components/cart/icons/IconHeart"

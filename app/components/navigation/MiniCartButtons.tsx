@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { useCartStore } from "@/state/uiState";
 import getLangAndGender from "@/utils/getLangAndGender";
+import { useCartStore } from "@/state/client/cartState";
 
 export default function MiniCartButtons() {
   const { lang, gender } = getLangAndGender(usePathname())
