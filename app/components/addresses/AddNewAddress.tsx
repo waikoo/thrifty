@@ -1,5 +1,5 @@
 "use client"
-import { useAddressStore } from "@/state/uiState";
+import { useAddressStore } from "@/state/client/addressState";
 import { GoPlus } from "react-icons/go";
 
 export default function AddNewAddress() {

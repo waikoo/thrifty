@@ -2,7 +2,8 @@
 import AddNewAddressForm from "@/app/components/addresses/AddNewAddressForm"
 import NoSavedAddress from "@/app/components/addresses/NoSavedAddress"
 import SavedAddresses from "@/app/components/addresses/SavedAddresses"
-import { useAddressStore, TAddress } from "@/state/uiState"
+import { useAddressStore } from "@/state/client/addressState"
+import { TAddress } from "@/types/shippingAddress"
 
 type ConditionalAddressProps = {
   dbAddresses: TAddress[]

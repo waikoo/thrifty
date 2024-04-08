@@ -1,9 +1,10 @@
 "use client"
-import { TAddress, useAddressStore } from '@/state/uiState'
 import { borderRadius } from '@/app/components/data/universalStyles'
 import { supabase } from '@/app/supabase'
 import { useEffect, useState } from 'react'
 import AddNewAddressForm from '@/app/components/addresses/AddNewAddressForm'
+import { TAddress } from '@/types/shippingAddress'
+import { useAddressStore } from '@/state/client/addressState'
 
 type SavedAddressProps = {
   dbAddresses: TAddress[]

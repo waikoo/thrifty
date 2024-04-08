@@ -1,9 +1,10 @@
 "use client"
 import AnimatedInput from '@/app/components/AnimatedInput'
 import { IoCloseOutline } from 'react-icons/io5'
-import { TAddress, useAddressStore } from '@/state/uiState'
 import { useEffect, useRef } from 'react'
 import { supabase } from '@/app/supabase'
+import { TAddress } from '@/types/shippingAddress'
+import { useAddressStore } from '@/state/client/addressState'
 
 type AddNewAddressFormProps = {
   addressBeingEdited?: string
