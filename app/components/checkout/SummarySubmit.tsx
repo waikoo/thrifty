@@ -2,8 +2,9 @@
 import { usePathname, useRouter } from "next/navigation";
 
 import { borderRadius } from "@/app/components/data/universalStyles";
-import { useCheckoutStore, useOrderSummaryStore } from "@/state/uiState";
+import { useOrderSummaryStore } from "@/state/uiState";
 import { EURO } from "../data/orderSummary";
+import { useCheckoutStore } from "@/state/client/checkoutState";
 
 type Endpoint = 'cart' | 'checkout' | 'summary'
 

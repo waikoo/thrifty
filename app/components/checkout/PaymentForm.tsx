@@ -5,7 +5,7 @@ import CheckoutRadio from "@/app/components/checkout/CheckoutRadio";
 import CheckoutContactTitle from "@/app/components/checkout/CheckoutContactTitle";
 import CartPaymentMethods from "@/app/components/cart/CartPaymentMethods";
 import { borderRadius, opacityHalf, opacityFull } from "@/app/components/data/universalStyles";
-import { useCheckoutStore } from "@/state/uiState";
+import { useCheckoutStore } from "@/state/client/checkoutState";
 
 export default function PaymentForm() {
   const { isPaymentOpen, setIsShippingHidden, setIsContactHidden, isPaymentHidden, setIsPaymentHidden } = useCheckoutStore()

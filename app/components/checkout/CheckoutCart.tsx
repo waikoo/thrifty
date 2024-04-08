@@ -1,8 +1,9 @@
 "use client"
-import CheckoutCartItems from "@/app/components/checkout/CheckoutCartItems";
-import { useCheckoutStore } from "@/state/uiState";
 import { FaPlus, FaMinus } from "react-icons/fa6";
+
+import CheckoutCartItems from "@/app/components/checkout/CheckoutCartItems";
 import { borderBottomRadius } from "@/app/components/data/universalStyles";
+import { useCheckoutStore } from "@/state/client/checkoutState";
 
 export default function CheckoutCart() {
   const { isCartOpen, setIsCartOpen } = useCheckoutStore()

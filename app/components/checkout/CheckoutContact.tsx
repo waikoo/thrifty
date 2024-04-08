@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-import { useCheckoutStore } from "@/state/uiState"
+import { useCheckoutStore } from "@/state/client/checkoutState"
 
 type CheckoutContactProps = {
   type: string

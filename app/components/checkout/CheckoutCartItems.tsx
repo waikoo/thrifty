@@ -2,10 +2,11 @@
 import { useEffect, useState } from "react"
 
 import { supabase } from "@/app/supabase"
-import { useCartStore, useCheckoutStore } from "@/state/uiState"
+import { useCartStore } from "@/state/uiState"
 import { ProductItemType } from "@/types/productItem"
 import CheckoutCartItem from "@/app/components/checkout/CheckoutCartItem"
 import { borderBottomRadius } from "@/app/components/data/universalStyles"
+import { useCheckoutStore } from "@/state/client/checkoutState"
 
 export default function CheckoutCartItems() {
   const { isCartOpen } = useCheckoutStore()

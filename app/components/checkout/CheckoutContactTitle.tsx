@@ -1,8 +1,8 @@
 "use client"
-import { useCheckoutStore } from "@/state/uiState";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 
 import CheckMark from "@/app/components/checkout/CheckMark";
+import { useCheckoutStore } from "@/state/client/checkoutState";
 
 type CheckoutContactTitleProps = {
   number: string

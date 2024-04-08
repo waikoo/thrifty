@@ -3,12 +3,12 @@ import { useEffect, useRef, useState } from "react";
 
 import CheckoutContactTitle from "@/app/components/checkout/CheckoutContactTitle";
 import CheckoutContact from "@/app/components/checkout/CheckoutContact";
-import { useCheckoutStore } from "@/state/uiState";
 import { borderRadius, opacityFull, opacityHalf } from "@/app/components/data/universalStyles";
 import { AddressesType } from "@/app/components/checkout/CheckoutForm";
 import useUserSession from "@/app/components/hooks/useUserSession";
 import Portal from "@/app/components/admin/Portal";
 import CheckoutDifferentAddressPopup from "@/app/components/checkout/CheckoutDifferentAddressPopup";
+import { useCheckoutStore } from "@/state/client/checkoutState";
 
 type ContactFormProps = {
   addresses: AddressesType[]
