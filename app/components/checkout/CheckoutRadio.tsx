@@ -1,5 +1,5 @@
 import { useCheckoutStore } from "@/state/client/checkoutState"
-import { useOrderStore } from "@/state/uiState"
+import { useOrderStore } from "@/state/client/orderState";
 
 type CheckoutRadioProps = {
   text: string

@@ -2,9 +2,9 @@
 import { usePathname, useRouter } from "next/navigation";
 
 import { borderRadius } from "@/app/components/data/universalStyles";
-import { useOrderSummaryStore } from "@/state/uiState";
-import { EURO } from "../data/orderSummary";
+import { EURO } from "@/app/components/data/orderSummary";
 import { useCheckoutStore } from "@/state/client/checkoutState";
+import { useOrderSummaryStore } from "@/state/client/orderState";
 
 type Endpoint = 'cart' | 'checkout' | 'summary'
 
@@ -34,8 +34,6 @@ export default function SummarySubmit() {
       router.push(`/${lang}/checkout/success`)
     }
   }
-
-
 
   const getButtonText = (endpoint: Endpoint) => {
     const text = {

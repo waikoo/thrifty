@@ -5,9 +5,9 @@ import CheckoutContactTitle from "@/app/components/checkout/CheckoutContactTitle
 import CheckoutRadio from "@/app/components/checkout/CheckoutRadio";
 import CheckoutContact from "@/app/components/checkout/CheckoutContact";
 import { borderRadius, opacityHalf, opacityFull } from "@/app/components/data/universalStyles";
-import { useOrderStore } from "@/state/uiState";
 import { AddressesType } from "@/app/components/checkout/CheckoutForm";
 import { useCheckoutStore } from "@/state/client/checkoutState";
+import { useOrderStore } from "@/state/client/orderState";
 
 type ShippingFormProps = {
   defaultAddress: AddressesType

@@ -1,5 +1,6 @@
-import { useCartStore, useOrderStore } from "@/state/uiState"
+import { useCartStore } from "@/state/uiState"
 import { EURO, FREE_HOME_DELIVERY_PRICE } from "@/app/components/data/orderSummary";
+import { useOrderStore } from "@/state/client/orderState";
 
 export default function SummaryFreeDelivery() {
   const { isFreeDelivery } = useOrderStore()

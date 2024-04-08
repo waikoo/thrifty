@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { DELIVERY, EURO } from '@/app/components/data/orderSummary'
-import { useCartStore, useOrderStore, useOrderSummaryStore } from '@/state/uiState'
+import { useCartStore } from '@/state/uiState'
+import { useOrderStore, useOrderSummaryStore } from '@/state/client/orderState'
 
 export default function SummaryShippingSelect() {
   const selectRef = useRef<HTMLSelectElement | null>(null)
