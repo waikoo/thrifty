@@ -1,9 +1,10 @@
 "use client"
-import { useFilterTitleStore } from "@/state/client/filterState"
-import { FilterTitle } from "."
 import { useEffect, useState } from "react"
-import { useDbMinMaxValues, useFilterSlider } from "../hooks"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+
+import { useFilterTitleStore } from "@/state/client/filterState"
+import { FilterTitle } from "@/app/components/products"
+import { useDbMinMaxValues, useFilterSlider } from "@/app/components/hooks"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
 
 type FilterSliderProps = {
