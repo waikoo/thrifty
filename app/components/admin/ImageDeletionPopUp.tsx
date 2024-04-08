@@ -1,4 +1,4 @@
-import { useUIStore } from "@/state"
+import { useProductStore } from "@/state/admin/uploadNewProductToDb"
 
 type PopUpProps = {
   function: () => void
@@ -10,7 +10,7 @@ type PopUpProps = {
 }
 
 export default function ImageDeletionPopUp({ function: deleteImage, prompt, options: { option1, option2 } }: PopUpProps) {
-  const { setShowEditOptions, showPopUp } = useUIStore()
+  const { setShowEditOptions, showPopUp } = useProductStore()
   const closePopUp = () => showPopUp(false)
 
   return (

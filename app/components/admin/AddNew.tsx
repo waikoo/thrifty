@@ -1,5 +1,5 @@
-import { useUIStore } from "@/state"
-import { AddOptionPopUp, IconPlus, Portal } from "."
+import { AddOptionPopUp, IconPlus, Portal } from "@/app/components/admin"
+import { useProductStore } from "@/state/admin/uploadNewProductToDb"
 
 type AddNewProps = {
   name: string
@@ -7,7 +7,7 @@ type AddNewProps = {
 }
 
 export default function AddNew({ name, handleAddItem }: AddNewProps) {
-  const { addMaterial, showAddMaterial, addBrand, showAddBrand } = useUIStore()
+  const { addMaterial, showAddMaterial, addBrand, showAddBrand } = useProductStore()
 
   const onClickHandler = () => {
     if (name === 'BRAND') {

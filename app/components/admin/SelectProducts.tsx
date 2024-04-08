@@ -9,7 +9,7 @@ import { useDraftStore, useEditedStore } from "@/state/admin/adminSelectState"
 import { useUIStore } from "@/state/uiState"
 
 export default function SelectProducts() {
-  const { toggleSelected, setToggleSelected, draftLength, editedLength } = useUIStore()
+  const { toggleSelected, setToggleSelected } = useUIStore()
   const { selectedItems: selectedDraft } = useDraftStore()
   const { selectedItems: selectedEdited } = useEditedStore()
   const [showPopup, setShowPopup] = useState(false)

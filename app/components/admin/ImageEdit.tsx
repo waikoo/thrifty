@@ -1,6 +1,5 @@
 "use client"
-import { useUIStore } from "@/state"
-import { ImageDeletionPopUp, Portal } from "."
+import { ImageDeletionPopUp, Portal } from "@/app/components/admin"
 import { useProductStore } from "@/state/admin/uploadNewProductToDb"
 
 type ImageEditProps = {
@@ -8,8 +7,7 @@ type ImageEditProps = {
 }
 
 export default function ImageEdit({ src }: ImageEditProps) {
-  const { img_url, setImgUrl } = useProductStore()
-  const { setShowEditOptions, popUp, showPopUp } = useUIStore()
+  const { img_url, setImgUrl, setShowEditOptions, popUp, showPopUp } = useProductStore()
 
   const onClickHandler = () => {
     showPopUp(true)

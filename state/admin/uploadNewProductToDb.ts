@@ -40,6 +40,12 @@ type State = {
   isSaved: boolean
   hasNoImage: boolean
   showImgError: boolean
+  showEditOptions: boolean
+  popUp: boolean
+  addBrand: boolean
+  addMaterial: boolean
+  addOption: boolean
+  dynamicCategory: string
 }
 
 type Action = {
@@ -69,6 +75,12 @@ type Action = {
   setIsSaved: (value: boolean | (boolean)) => void
   setHasNoImage: (value: boolean | (boolean)) => void
   setShowImgError: (value: boolean | (boolean)) => void
+  setShowEditOptions: (value: boolean | (boolean)) => void
+  showPopUp: (value: boolean | (boolean)) => void
+  showAddBrand: (value: boolean | (boolean)) => void
+  showAddOption: (value: boolean | (boolean)) => void
+  showAddMaterial: (value: boolean | (boolean)) => void
+  setDynamicCategory: (value: string) => void
 }
 
 export const useProductStore = create<State & Action>((set, get) => ({
@@ -219,9 +231,21 @@ export const useProductStore = create<State & Action>((set, get) => ({
     })
   },
   isSaved: false,
-  hasNoImage: true,
-  showImgError: false,
   setIsSaved: (value) => set({ isSaved: value }),
+  hasNoImage: true,
   setHasNoImage: (value) => set({ hasNoImage: value }),
+  showImgError: false,
   setShowImgError: (value) => set({ showImgError: value }),
+  showEditOptions: false,
+  setShowEditOptions: (value) => set({ showEditOptions: value }),
+  popUp: false,
+  showPopUp: (value) => set((state) => ({ ...state, popUp: value })),
+  addBrand: false,
+  showAddBrand: (value) => set({ addBrand: value }),
+  addOption: false,
+  showAddOption: (value) => set({ addOption: value }),
+  addMaterial: false,
+  showAddMaterial: (value) => set({ addMaterial: value }),
+  dynamicCategory: '',
+  setDynamicCategory: (value) => set({ dynamicCategory: value }),
 }))

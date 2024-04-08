@@ -1,6 +1,7 @@
 "use client"
-import { useUIStore } from "@/state";
 import { useRef } from "react";
+
+import { useProductStore } from "@/state/admin/uploadNewProductToDb";
 
 type AddOptionPopUpProps = {
   name: string
@@ -9,7 +10,7 @@ type AddOptionPopUpProps = {
 
 export default function AddOptionPopUp({ name, handleAddItem }: AddOptionPopUpProps) {
   const inputRef = useRef<null | HTMLInputElement>(null)
-  const { addMaterial, showAddMaterial, addBrand, showAddBrand } = useUIStore()
+  const { addMaterial, showAddMaterial, addBrand, showAddBrand } = useProductStore()
   const outerDiv = useRef<null | HTMLDivElement>(null)
   const buttonRef = useRef<null | HTMLButtonElement>(null)
   const xDiv = useRef<null | HTMLDivElement>(null)

@@ -4,7 +4,6 @@ import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 
 import { ImageEdit } from '@/app/components/admin/'
-import { useUIStore } from '@/state'
 import { ProductItemType } from '@/types/productItem'
 import { useProductStore } from '@/state/admin/uploadNewProductToDb'
 
@@ -13,8 +12,7 @@ type ImagesDisplayProps = {
 }
 
 export default function ImagesDisplay({ uuidMatch }: ImagesDisplayProps) {
-  const { img_url, setImgUrl } = useProductStore()
-  const { showEditOptions, setShowEditOptions } = useUIStore()
+  const { img_url, setImgUrl, showEditOptions, setShowEditOptions } = useProductStore()
   const imageContainerRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLImageElement | null>(null)
   const params = useSearchParams()
