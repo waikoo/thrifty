@@ -123,13 +123,3 @@ export const useUIStore = create<UIState>((set) => ({
   setRight: (value) => set({ right: value }),
   setHideFilters: (value) => set({ hideFilters: value }),
 }))
-
-type HeroCarouselState = {
-  selectedCircle: number
-  setSelectedCircle: (value: number) => void
-}
-
-export const useHeroCarouselStore = create<HeroCarouselState>((set) => ({
-  selectedCircle: 0,
-  setSelectedCircle: (value) => set({ selectedCircle: value }),
-}))

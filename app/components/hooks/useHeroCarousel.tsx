@@ -1,8 +1,8 @@
-import { useHeroCarouselStore } from "@/state/uiState"
-import { HeroCarouselTitlesTuple } from "../data/home"
+import { HeroCarouselTitlesTuple } from "@/app/components/data/home"
+import { useHeroCarouselStore } from "@/state/client/heroCarouselState"
 
 export default function useHeroCarousel(titles?: HeroCarouselTitlesTuple) {
-  const selectedCircle = useHeroCarouselStore((state) => state.selectedCircle)
+  const { selectedCircle } = useHeroCarouselStore()
 
   return {
     selectedCircle: selectedCircle,
