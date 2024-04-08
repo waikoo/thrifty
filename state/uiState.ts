@@ -16,12 +16,8 @@ type UIState = {
   addBrand: boolean
   addMaterial: boolean
   addOption: boolean
-  statusBar: boolean
   dynamicCategory: string
   toggleSelected: boolean
-  draftLength: number
-  editedLength: number
-  productsLength: number
   showOptions: boolean
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
@@ -36,12 +32,8 @@ type UIState = {
   showAddBrand: (value: boolean | (boolean)) => void
   showAddOption: (value: boolean | (boolean)) => void
   showAddMaterial: (value: boolean | (boolean)) => void
-  raiseStatusBar: (value: boolean | (boolean)) => void
   setDynamicCategory: (value: string) => void
   setToggleSelected: (value: boolean | (boolean)) => void
-  setDraftLength: (value: number) => void
-  setEditedLength: (value: number) => void
-  setProductsLength: (value: number) => void
   setShowOptions: (value: boolean | (boolean)) => void
 }
 
@@ -59,12 +51,8 @@ export const useUIStore = create<UIState>((set) => ({
   addBrand: false,
   addOption: false,
   addMaterial: false,
-  statusBar: false,
   dynamicCategory: '',
   toggleSelected: false,
-  draftLength: 0,
-  editedLength: 0,
-  productsLength: 0,
   showOptions: false,
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
@@ -79,11 +67,7 @@ export const useUIStore = create<UIState>((set) => ({
   showAddBrand: (value) => set({ addBrand: value }),
   showAddOption: (value) => set({ addBrand: value }),
   showAddMaterial: (value) => set({ addMaterial: value }),
-  raiseStatusBar: (value) => set({ statusBar: value }),
   setDynamicCategory: (value) => set({ dynamicCategory: value }),
   setToggleSelected: (value) => set({ toggleSelected: value }),
-  setDraftLength: (value) => set({ draftLength: value }),
-  setEditedLength: (value) => set({ editedLength: value }),
-  setProductsLength: (value) => set({ editedLength: value }),
   setShowOptions: (value) => set({ showOptions: value }),
 }))

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/app/supabase';
 import { ProductItemType } from '@/types/productItem';
-import { useUIStore } from '@/state';
+import { useStatusBarStore } from '@/state/admin/statusBarState';
 
 export default function useRealtime(table: 'draft' | 'edited' | 'products') {
   const [tableState, setTableState] = useState<ProductItemType[]>([])
-  const { setDraftLength, setEditedLength, setProductsLength } = useUIStore()
+  const { setDraftLength, setEditedLength, setProductsLength } = useStatusBarStore()
 
   const fetchEdited = async () => {
     let { data: edited, error } = await supabase

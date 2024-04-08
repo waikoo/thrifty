@@ -1,14 +1,15 @@
 'use client'
-import { useUIStore } from "@/state/uiState"
 import { twMerge as tm } from 'tailwind-merge'
-import { PublishChanges } from "."
+
+import { PublishChanges } from "@/app/components/admin"
+import { useStatusBarStore } from "@/state/admin/statusBarState"
 
 type StatusBarProps = {
   children: React.ReactNode
 }
 
 export default function StatusBar({ children }: StatusBarProps) {
-  const { raiseStatusBar, statusBar, editedLength, draftLength } = useUIStore()
+  const { raiseStatusBar, statusBar, editedLength, draftLength } = useStatusBarStore()
   let height = !statusBar ? 'h-0' : 'h-[48vh]'
 
   return (
