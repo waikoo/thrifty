@@ -31,7 +31,6 @@ type UIState = {
   showImgError: boolean
   left: number
   right: number
-  hideFilters: boolean
   setCategory: (value: Category['category']) => void
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
@@ -60,7 +59,6 @@ type UIState = {
   setShowImgError: (value: boolean | (boolean)) => void
   setLeft: (value: number) => void
   setRight: (value: number) => void
-  setHideFilters: (value: boolean | (boolean)) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -92,7 +90,6 @@ export const useUIStore = create<UIState>((set) => ({
   showImgError: false,
   left: 0,
   right: 999,
-  hideFilters: false,
   setCategory: (value) => set({ category: value }),
   setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
@@ -121,5 +118,4 @@ export const useUIStore = create<UIState>((set) => ({
   setShowImgError: (value) => set({ showImgError: value }),
   setLeft: (value) => set({ left: value }),
   setRight: (value) => set({ right: value }),
-  setHideFilters: (value) => set({ hideFilters: value }),
 }))

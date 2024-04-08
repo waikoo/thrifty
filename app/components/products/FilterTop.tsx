@@ -3,7 +3,6 @@ import { Category, Locales } from "@/types/home";
 import { IconHideFilters, IconSavedFilters } from "@/app/components/products/icons";
 import FilterSideControls from "@/app/components/products/FilterSideControls";
 import { FilterDropdown } from "@/app/components/products";
-import { useUIStore } from "@/state";
 import Portal from "@/app/components/admin/Portal";
 import SavedFilters from "@/app/components/products/SavedFilters";
 import { useFilterStore } from "@/state/client/filterState";
@@ -14,8 +13,7 @@ type FilterTopProps = {
 }
 
 export default function FilterTop({ gender, lang }: FilterTopProps) {
-  const { hideFilters, setHideFilters } = useUIStore()
-  const { showSavedFiltersPopup, setShowSavedFiltersPopup } = useFilterStore()
+  const { showSavedFiltersPopup, setShowSavedFiltersPopup, hideFilters, setHideFilters } = useFilterStore()
   const hideOrShowFiltersText = !hideFilters ? 'Hide Filters' : 'Show Filters'
 
   const filterVisibilityHandler = () => {

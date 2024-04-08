@@ -1,5 +1,4 @@
 "use client"
-import { useUIStore } from "@/state";
 import { FilterCheckbox, FilterColor, FilterCondition, FilterSize, FilterSlider } from "@/app/components/products";
 import { brandNamesArray } from "@/app/components/data/brandsData";
 import { filter } from "@/app/components/data";
@@ -15,8 +14,7 @@ type FilterSideProps = {
 }
 
 export default function FilterSide({ lang, gender, searchParams }: FilterSideProps) {
-  const { hideFilters } = useUIStore()
-  const { showNewFilterPopup, setShowNewFilterPopup } = useFilterStore()
+  const { showNewFilterPopup, setShowNewFilterPopup, hideFilters } = useFilterStore()
 
   const getType = (searchParams: { [key: string]: string | string[] | undefined }) => {
     const genderArray = searchParams['gender']?.toString().split(',')

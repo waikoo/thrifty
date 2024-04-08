@@ -19,6 +19,8 @@ type FilterStore = {
   editingFilterId: string
   updateFilterInDb: (filter: TSavedFilters, client_id: string) => void
   getFilterFromDb: (client_id: string, filterId: string) => Promise<TSavedFilters>
+  hideFilters: boolean
+  setHideFilters: (value: boolean | (boolean)) => void
 }
 
 export const useFilterStore = create<FilterStore>((set, get) => ({
@@ -153,7 +155,9 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
     } else {
       throw new Error('No filter found')
     }
-  }
+  },
+  hideFilters: false,
+  setHideFilters: (value) => set({ hideFilters: value }),
 }))
 
 type TFilterTitleState = {
