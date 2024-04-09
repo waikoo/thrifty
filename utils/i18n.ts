@@ -20,7 +20,6 @@ export function getLocaleFromHeaders(request: NextRequest): Locale {
   return userLocale ?? 'en';
 }
 
-// Helper to get locale from path 
 export function getLocaleFromPath(path: string) {
   return (
     supportedLocales.find(locale => path.startsWith(`/${locale}/`)) || 'en'
