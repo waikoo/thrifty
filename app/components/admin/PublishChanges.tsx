@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 
 import { twMerge as tm } from "tailwind-merge"
 
-import { saveDraftToProducts } from "@/utils/saveDraftToProducts"
+import { saveDraftToProducts } from "@/db/saveDraftToProducts"
 import { saveSomeToProducts } from "@/utils/saveSomeToProducts"
 import Portal from "@/app/components/admin/Portal"
 import { Popup } from "@/app/components/generic"
