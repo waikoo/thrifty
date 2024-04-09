@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 
 import { useUIStore } from "@/state/client/uiState";
-import { handleRecoverPassword } from "@/utils/supabase";
+import { handleRecoverPassword } from "@/db/handleRecoverPassword";
 import { Input, SubmitButton } from "@/app/components/generic";
 import { useUserStore } from "@/state/client/userState";
 
