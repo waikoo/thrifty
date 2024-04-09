@@ -2,7 +2,7 @@ import { useSupabaseServer } from "@/app/components/hooks/serverIndex"
 import { FilterSide, FilterTop } from "@/app/components/products"
 import { ProductList } from "@/app/components/products/serverIndex"
 import { Category, Locales } from "@/types/home"
-import { fetchProductsByFilters } from "@/utils/fetchProductsByFilters"
+import { fetchProductsByFilters } from "@/db/fetchProductsByFilters"
 
 type PageProps = {
   params: {
@@ -25,7 +25,6 @@ export default async function Page({ params: { lang, gender }, searchParams }: P
           <ProductList {...{ lang, gender, searchParams }} products={products.data} />
         )}
       </div>
-
     </main>
   )
 }
