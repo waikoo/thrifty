@@ -2,7 +2,7 @@
 import { usePathname, useRouter } from "next/navigation";
 
 import { ProductItemType } from "@/types/productItem";
-import { queryByUUID } from "@/utils/serverQueryByUUID";
+import { queryByUUID } from "@/db/serverQueryByUUID";
 import { useProductStore } from "@/state/admin/uploadNewProductToDb";
 
 type ButtonProps = {

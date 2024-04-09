@@ -1,5 +1,5 @@
 import { Button, ProductImage, ProductState } from "@/app/components/admin"
-import serverQueryByUUID from "@/utils/serverQueryByUUID"
+import serverQueryByUUID from "@/db/serverQueryByUUID"
 
 type ManageProps = {
   uuid: string

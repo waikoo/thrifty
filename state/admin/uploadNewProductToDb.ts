@@ -1,7 +1,8 @@
+import { create } from 'zustand'
+
 import { supabase } from "@/app/supabase"
 import { ProductItemType } from "@/types/productItem"
-import { queryByUUID } from "@/utils/serverQueryByUUID"
-import { create } from 'zustand'
+import { queryByUUID } from "@/db/serverQueryByUUID"
 
 type CounterState = {
   created?: number,
