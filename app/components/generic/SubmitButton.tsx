@@ -1,6 +1,7 @@
-import { TMouseOnButton } from '@/state/userState';
 import { twMerge as tm } from 'tailwind-merge';
-import { Spinner } from '.';
+
+import { TMouseOnButton } from '@/state/client/userState';
+import { Spinner } from '@/app/components/generic';
 
 type ButtonProps = {
   children: React.ReactNode | JSX.Element;

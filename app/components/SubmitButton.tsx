@@ -1,4 +1,4 @@
-import { TMouseOnButton } from '@/state/userState';
+import { TMouseOnButton } from '@/state/client/userState';
 import { twMerge as tm } from 'tailwind-merge';
 import { Spinner } from '.';
 
