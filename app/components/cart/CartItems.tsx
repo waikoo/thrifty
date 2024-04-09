@@ -6,7 +6,7 @@ import { ProductItemType } from "@/types/productItem"
 import CartItem from "@/app/components/cart/CartItem"
 import CartControls from "@/app/components/cart/CartControls"
 import CartOrderSummary from "@/app/components/cart/CartOrderSummary"
-import { fetchProductsByUuids } from "@/utils/fetchProductsByUuids"
+import { fetchProductsByUuids } from "@/db/fetchProductsByUuids"
 import { getFromLocalStorage } from "@/utils/getFromLocalStorage"
 import { useCartStore } from "@/state/client/cartState"
 
