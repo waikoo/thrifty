@@ -1,6 +1,6 @@
 import { ProductItemType } from "@/types/productItem"
 import ProductRecommendationsControls from "@/app/components/products/ProductRecommendationsControls"
-import serverQueryTable from "@/utils/serverQueryTable"
+import serverQueryTable from "@/db/serverQueryTable"
 
 type ProductRecommendationsProps = {
   matchedProduct: ProductItemType

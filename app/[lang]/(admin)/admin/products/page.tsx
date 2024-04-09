@@ -1,7 +1,6 @@
 import { AdminFooter, AdminNav } from "@/app/components/admin";
 import { ProductsContent } from "@/app/components/admin/indexServer";
-import { useSupabaseServer } from "@/app/components/hooks/serverIndex";
-import serverQueryTable from "@/utils/serverQueryTable";
+import serverQueryTable from "@/db/serverQueryTable";
 
 type PageParams = {
   params: { [key: string]: string | string[] | undefined }
