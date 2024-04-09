@@ -1,6 +1,7 @@
 import { fetchAllFromTable } from "@/db/fetchAllFromTable";
 import { ProductItemType } from "@/types/productItem";
 
+// unused
 export async function fetchProductsByCategory(supabase: any, searchParams: { [key: string]: string | string[] | undefined }) {
   const categoryArr = searchParams.category?.toString().split(',')
 
