@@ -1,6 +1,6 @@
 "use client"
-import { useCheckoutStore } from "@/state/uiState";
-import CheckoutSummaryItem from "./CheckoutSummaryItem";
+import CheckoutSummaryItem from "@/app/components/checkout/CheckoutSummaryItem";
+import { useCheckoutStore } from "@/state/client/checkoutState";
 
 
 export default function CheckoutSummaryItems() {

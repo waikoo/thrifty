@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import ProductItem from "@/app/components/products/ProductItem"
 import IconHeart from "@/app/components/products/icons/IconHeart"
 import { ProductItemType } from "@/types/productItem";
-import { useFavoriteStore } from "@/state/uiState";
 import updateLocalStorage from "@/utils/updateLocalStorage";
+import { useFavoriteStore } from "@/state/client/favoriteState";
 
 type ProductRecommendationsGridProps = {
   products: ProductItemType[]

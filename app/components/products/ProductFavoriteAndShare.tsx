@@ -1,11 +1,11 @@
 "use client"
-import { BsShareFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import { BsShareFill } from "react-icons/bs";
 
 import IconHeart from "@/app/components/products/icons/IconHeart"
-import { useFavoriteStore } from "@/state/uiState";
 import { ProductItemType } from "@/types/productItem";
 import updateLocalStorage from "@/utils/updateLocalStorage";
+import { useFavoriteStore } from "@/state/client/favoriteState";
 
 type ProductFavoriteAndShareProps = {
   matchedProduct: ProductItemType

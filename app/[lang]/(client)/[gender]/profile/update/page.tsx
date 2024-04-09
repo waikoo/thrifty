@@ -2,7 +2,7 @@
 import { SubmitButton } from "@/app/components";
 import Input from "@/app/components/generic/Input";
 import { supabase } from "@/app/supabase";
-import { useUserStore } from "@/state";
+import { useUserStore } from "@/state/client/userState";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
