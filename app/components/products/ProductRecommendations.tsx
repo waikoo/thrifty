@@ -1,15 +1,13 @@
-
 import { ProductItemType } from "@/types/productItem"
-import { fetchAllProducts } from "@/utils/fetchAllProducts"
 import ProductRecommendationsControls from "@/app/components/products/ProductRecommendationsControls"
-import useSupabaseServer from "@/app/components/hooks/useSupabaseServer"
+import serverQueryTable from "@/utils/serverQueryTable"
 
 type ProductRecommendationsProps = {
   matchedProduct: ProductItemType
 }
 
 export default async function ProductRecommendations({ matchedProduct }: ProductRecommendationsProps) {
-  const products = await fetchAllProducts(useSupabaseServer(), 'products')
+  const products = await serverQueryTable('products')
   const eightProducts = products?.filter(product => product.category === matchedProduct.category).slice(0, 8)
 
   return (
