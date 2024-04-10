@@ -1,5 +1,6 @@
-import { AddOptionPopUp, IconPlus, Portal } from "@/app/components/admin"
+import { AddOptionPopUp, IconPlus } from "@/app/components/admin"
 import { useProductStore } from "@/state/admin/uploadNewProductToDb"
+import Portal from "@/app/components/generic/Portal"
 
 type AddNewProps = {
   name: string

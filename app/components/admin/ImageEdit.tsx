@@ -1,6 +1,7 @@
 "use client"
-import { ImageDeletionPopUp, Portal } from "@/app/components/admin"
+import { ImageDeletionPopUp } from "@/app/components/admin"
 import { useProductStore } from "@/state/admin/uploadNewProductToDb"
+import Portal from "@/app/components/generic/Portal"
 
 type ImageEditProps = {
   src: string

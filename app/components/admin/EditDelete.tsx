@@ -8,7 +8,7 @@ import { FaPlusCircle } from "react-icons/fa";
 import { supabase } from "@/app/supabase";
 import { useUIStore } from '@/state/admin/uiState';
 import { Popup } from "@/app/components/generic"
-import Portal from "@/app/components/admin/Portal";
+import Portal from "@/app/components/generic/Portal";
 
 type EditDeleteProps = {
   uuid: string

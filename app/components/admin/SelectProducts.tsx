@@ -2,7 +2,7 @@
 import { useState } from "react"
 
 import { supabase } from "@/app/supabase"
-import Portal from "@/app/components/admin/Portal"
+import Portal from "@/app/components/generic/Portal"
 import { Popup } from "@/app/components/generic"
 import { useRealtime } from "@/app/components/hooks"
 import { useDraftStore, useEditedStore } from "@/state/admin/adminSelectState"

@@ -4,7 +4,7 @@ import { brandNamesArray } from "@/app/components/data/brandsData";
 import { filter } from "@/app/components/data";
 import SetNewFilter from "@/app/components/products/SetNewFilter";
 import { Category, Locales } from "@/types/home";
-import Portal from "@/app/components/admin/Portal";
+import Portal from "@/app/components/generic/Portal";
 import { useFilterStore } from "@/state/client/filterState";
 
 type FilterSideProps = {
