@@ -1,20 +1,18 @@
 "use client"
 import { useRef } from "react"
+
 import { useUIStore } from "@/state/client/uiState"
-import CategoryKids from "./CategoryKids"
-import CategoryMen from "./CategoryMen"
-import CategoryWomen from "./CategoryWomen"
-import CategoryImage from "./CategoryImage"
+import CategoryImage from "@/app/components/navigation/CategoryImage"
 import women_01 from "@/public/nav/women_01.jpg"
 import women_02 from "@/public/nav/women_02.jpg"
+import CategoryMember from "@/app/components/navigation/CategoryMember"
 
 export default function CategoryMenu() {
   const { category: hoveredCategory, setShowCategoryMenu } = useUIStore()
   const divRef = useRef<HTMLDivElement | null>(null)
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    // makes popup disappear on the bottom
-    if (e.target === divRef.current) {
+    if (e.target === divRef.current) { // makes popup disappear on the bottom
       setShowCategoryMenu(false)
     }
   }
@@ -27,9 +25,8 @@ export default function CategoryMenu() {
         onMouseEnter={() => setShowCategoryMenu(true)}
         ref={divRef}
       >
-        {hoveredCategory === 'men' && <CategoryMen />}
-        {hoveredCategory === 'women' && <CategoryWomen />}
-        {hoveredCategory === 'kids' && <CategoryKids />}
+
+        {hoveredCategory && <CategoryMember hoveredCategory={hoveredCategory} />}
 
         <div className="my-auto flex flex-col gap-10">
           <CategoryImage img={women_01}>NEW IN</CategoryImage>

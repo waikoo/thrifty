@@ -13,6 +13,8 @@ type PageProps = {
 }
 export default async function Page({ params: { lang, gender }, searchParams }: PageProps) {
   const products = await fetchProductsByFilters(useSupabaseServer(), searchParams)
+  console.log('-------------------------------------------------------')
+  console.log(products)
 
   return (
     <main className="bg-bkg text-content mx-auto px-20 lg:max-w-[1500px]">
