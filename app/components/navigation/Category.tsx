@@ -21,9 +21,9 @@ const Category = () => {
 
   return (
     <nav className="relative w-full">
-      <div className="mx-auto w-5/12 pt-2">
+      <div className="mx-auto w-[500px] pt-2">
 
-        <ul className="grid w-full cursor-pointer grid-cols-3 justify-items-center"
+        <ul className="grid w-full cursor-pointer grid-cols-3 justify-items-center gap-36"
         >
           {categories.map((category: Category['category']) => (
             <li
