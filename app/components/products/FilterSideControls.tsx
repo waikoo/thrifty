@@ -16,7 +16,7 @@ export default function FilterSideControls({ gender, lang }: FilterSideControlsP
   const { hideFilters } = useFilterStore()
 
   return !hideFilters && (
-    <div className="bg-bkg z-20 flex items-center gap-5 text-[0.813rem] font-normal">
+    <div className="bg-bkg flex items-center gap-5 text-[0.813rem] font-normal">
       <div className="flex items-center gap-1">
         <span
           className="cursor-pointer"

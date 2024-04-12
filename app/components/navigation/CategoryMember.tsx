@@ -9,7 +9,7 @@ type CategoryMemberProps = {
 export default function CategoryMember({ hoveredGender }: CategoryMemberProps) {
 
   return (
-    <>
+    <div className="z-50 flex justify-between gap-20">
       <CategoryGroup
         title="CLOTHING"
         hoveredGender={hoveredGender}
@@ -38,7 +38,7 @@ export default function CategoryMember({ hoveredGender }: CategoryMemberProps) {
         brands
       />
 
-    </>
+    </div>
   )
 }
 
