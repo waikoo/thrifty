@@ -25,7 +25,6 @@ const NavBar = ({ params }: NavBarProps) => {
 
   const handleScroll = () => {
     if (pathname.split('/').length < 4) { // is homepage
-      console.warn('if case')
       setPosition(window.scrollY > 5 ? 'fixed' : 'static')
     } else {
       return
