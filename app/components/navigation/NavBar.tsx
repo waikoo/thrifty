@@ -21,11 +21,14 @@ const NavBar = ({ params }: NavBarProps) => {
   const { setShowCategoryMenu } = useUIStore()
   const [position, setPosition] = useState('static')
   const noBorderOnScroll = position === 'static' ? 'border-content border-b-2' : ''
-  const endpoint = usePathname().split('/')[3]
+  const pathname = usePathname()
 
   const handleScroll = () => {
-    if (endpoint !== 'products') {
+    if (pathname.split('/').length < 4) { // is homepage
+      console.warn('if case')
       setPosition(window.scrollY > 5 ? 'fixed' : 'static')
+    } else {
+      return
     }
   }
 
