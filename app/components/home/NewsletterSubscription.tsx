@@ -1,5 +1,5 @@
 import { createTranslation } from "@/i18n/server"
-import { Locales } from "@/types/home"
+import { Locales } from "@/types/link"
 
 type NewsletterSubscriptionProps = {
   lang: Locales
