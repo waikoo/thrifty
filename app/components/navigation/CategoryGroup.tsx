@@ -1,23 +1,36 @@
-import { useUIStore } from "@/state/client/uiState"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
+import getLangAndGender from "@/utils/getLangAndGender"
+import { Category } from "@/types/home"
+import { buildUrl } from "@/utils/buildUrl"
 
 type CategoryGroupProps = {
   title: string,
+  hoveredGender: Category['category'] | null
   items: string[]
   brands?: boolean
 }
 
-export default function CategoryGroup({ title, items, brands }: CategoryGroupProps) {
-  const { showCategoryMenu, setShowCategoryMenu } = useUIStore()
+export default function CategoryGroup({ title, hoveredGender, items, brands }: CategoryGroupProps) {
+  const { lang } = getLangAndGender(usePathname())
+  const pre = `/${lang}/${hoveredGender}/products?gender=${hoveredGender}`
 
   return (
-    <div
-      className=""
-    >
+    <div>
       <h3 className="text-content text-[1.2rem] font-bold">{title}</h3>
       <ul className="flex cursor-pointer flex-col  gap-4 pt-8">
-        {items.map((item: string, i: number) =>
-          <li key={`${item}-${i}`}>{item}</li>)}
+
+        {items.map((item: string, i: number) => {
+          const url = buildUrl(pre, title, item, brands)
+
+          return (
+            <Link href={url} key={`${item}-${i}`}>
+              <li>{item}</li>
+            </Link>
+          );
+        })}
+
       </ul>
       <span className="mt-4 block underline underline-offset-4">{brands && 'See More'}</span>
     </div>

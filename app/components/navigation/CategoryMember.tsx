@@ -1,34 +1,39 @@
 import CategoryGroup from "@/app/components/navigation/CategoryGroup";
 import { filter } from "@/app/components/data/filterArrays";
 import { brandNamesArray } from "@/app/components/data/brandsData";
+import { Category } from "@/types/home"
 
 type CategoryMemberProps = {
-  hoveredCategory: string | null
+  hoveredGender: Category['category'] | null
 }
-export default function CategoryMember({ hoveredCategory }: CategoryMemberProps) {
+export default function CategoryMember({ hoveredGender }: CategoryMemberProps) {
 
   return (
     <>
       <CategoryGroup
         title="CLOTHING"
-        items={hoveredCategory ? filter.type[hoveredCategory].clothing : ['']}
+        hoveredGender={hoveredGender}
+        items={hoveredGender ? filter.type[hoveredGender].clothing : ['']}
       />
 
       <CategoryGroup
         title="SHOES"
-        items={hoveredCategory ? filter.type[hoveredCategory].shoes : ['']}
+        hoveredGender={hoveredGender}
+        items={hoveredGender ? filter.type[hoveredGender].shoes : ['']}
       />
 
-      {hoveredCategory !== 'kids' && (
+      {hoveredGender !== 'kids' && (
         <CategoryGroup
           title="ACCESSORIES"
-          items={hoveredCategory ? filter.type[hoveredCategory].accessories : ['']}
+          hoveredGender={hoveredGender}
+          items={hoveredGender ? filter.type[hoveredGender].accessories : ['']}
         />
       )
       }
 
       <CategoryGroup
         title="BRANDS"
+        hoveredGender={hoveredGender}
         items={brandNamesArray.slice(0, 8)}
         brands
       />

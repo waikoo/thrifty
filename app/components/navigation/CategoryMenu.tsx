@@ -8,7 +8,7 @@ import women_02 from "@/public/nav/women_02.jpg"
 import CategoryMember from "@/app/components/navigation/CategoryMember"
 
 export default function CategoryMenu() {
-  const { category: hoveredCategory, setShowCategoryMenu } = useUIStore()
+  const { category: hoveredGender, setShowCategoryMenu } = useUIStore()
   const divRef = useRef<HTMLDivElement | null>(null)
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -16,6 +16,7 @@ export default function CategoryMenu() {
       setShowCategoryMenu(false)
     }
   }
+
   return (
     <section className="absolute inset-0 top-10 h-screen bg-black bg-opacity-50 backdrop-blur-sm">
       <div className="border-darkgrey absolute inset-x-0 left-[-15rem] z-50 w-screen border-t-[0.05rem]"></div>
@@ -26,7 +27,7 @@ export default function CategoryMenu() {
         ref={divRef}
       >
 
-        {hoveredCategory && <CategoryMember hoveredCategory={hoveredCategory} />}
+        {hoveredGender && <CategoryMember hoveredGender={hoveredGender} />}
 
         <div className="my-auto flex flex-col gap-10">
           <CategoryImage img={women_01}>NEW IN</CategoryImage>
