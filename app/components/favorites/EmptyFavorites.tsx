@@ -1,5 +1,3 @@
-import { Category, Locales } from "@/types/home"
-
 export default function EmptyFavorites() {
 
   return (
