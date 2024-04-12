@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 import { useTranslation } from '@/i18n/client';
 
-import { useUIStore } from '@/state/client/uiState';
 import { Gender, Locales } from '@/types/link';
 import GenderMenu from '@/app/components/navigation/GenderMenu';
+import { useGenderStore } from '@/state/client/genderState';
 
 export default function Gender() {
   const [_, lang, gender] = usePathname().split('/')
@@ -16,8 +16,8 @@ export default function Gender() {
     t('category.women') as Gender,
     t('category.kids') as Gender,
   ]
-  const [, currentLocale, currentCategory,] = usePathname().split('/');
-  const { showCategoryMenu, setCategory, setShowCategoryMenu } = useUIStore()
+  const [, currentLocale, currentGender,] = usePathname().split('/');
+  const { showGenderMenu, setGender, setShowGenderMenu } = useGenderStore()
 
   return (
     <nav className="relative w-full">
@@ -25,25 +25,25 @@ export default function Gender() {
 
         <ul className="grid w-full cursor-pointer grid-cols-3 justify-items-center gap-36"
         >
-          {categories.map((category: Gender) => (
+          {categories.map((gender: Gender) => (
             <li
-              key={category}
-              className={`text-${currentCategory === category ? 'content font-extrabold' : 'faded'}`}
+              key={gender}
+              className={`text-${currentGender === gender ? 'content font-extrabold' : 'faded'}`}
             >
               <Link
-                href={`/${currentLocale}/${category.toLowerCase()}`}
+                href={`/${currentLocale}/${gender.toLowerCase()}`}
                 onMouseOver={() => {
-                  setShowCategoryMenu(true)
-                  setCategory(category.toLowerCase() as Gender)
+                  setShowGenderMenu(true)
+                  setGender(gender.toLowerCase() as Gender)
                 }}
               >
-                {category.toUpperCase()}
+                {gender.toUpperCase()}
               </Link>
             </li>
           ))}
         </ul>
       </div>
-      {showCategoryMenu && <GenderMenu />}
+      {showGenderMenu && <GenderMenu />}
     </nav>
   );
 };

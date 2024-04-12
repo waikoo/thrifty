@@ -1,41 +1,41 @@
 import { create } from 'zustand'
 
-import { Gender } from '@/types/link'
-
 type UIState = {
   showSignIn: boolean
-  showMyAccount: boolean
-  showRecovery: boolean
-  showBanner: boolean
-  showBackToTop: boolean
-  isSecondColorPage: boolean
-  showCategoryMenu: boolean
-  category: Gender | null
-  setCategory: (value: Gender) => void
   setShowSignIn: (value: boolean | (boolean)) => void
+
+  showMyAccount: boolean
   setShowMyAccount: (value: boolean | (boolean)) => void
+
+  showRecovery: boolean
   setShowRecovery: (value: boolean | (boolean)) => void
+
+  showBanner: boolean
   setShowBanner: (value: boolean | (boolean)) => void
+
+  showBackToTop: boolean
   setShowBackToTop: (value: boolean | (boolean)) => void
+
+  isSecondColorPage: boolean
   setIsSecondColorPage: (value: boolean | (boolean)) => void
-  setShowCategoryMenu: (value: boolean | (boolean)) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
   showSignIn: false,
-  showMyAccount: false,
-  showRecovery: false,
-  showBanner: true,
-  showBackToTop: false,
-  isSecondColorPage: false,
-  showCategoryMenu: false,
-  category: null,
-  setCategory: (value) => set({ category: value }),
-  setShowMyAccount: (value) => set({ showMyAccount: value }),
   setShowSignIn: (value) => set({ showSignIn: value }),
+
+  showMyAccount: false,
+  setShowMyAccount: (value) => set({ showMyAccount: value }),
+
+  showRecovery: false,
   setShowRecovery: (value) => set({ showRecovery: value }),
+
+  showBanner: true,
   setShowBanner: (value) => set({ showBanner: value }),
+
+  showBackToTop: false,
   setShowBackToTop: (value) => set({ showBackToTop: value }),
+
+  isSecondColorPage: false,
   setIsSecondColorPage: (value) => set({ isSecondColorPage: value }),
-  setShowCategoryMenu: (value) => set({ showCategoryMenu: value }),
 }))

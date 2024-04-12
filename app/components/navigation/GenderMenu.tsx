@@ -1,19 +1,19 @@
 "use client"
 import { useRef } from "react"
 
-import { useUIStore } from "@/state/client/uiState"
 import GenderImage from "@/app/components/navigation/GenderImage"
 import women_01 from "@/public/nav/women_01.jpg"
 import women_02 from "@/public/nav/women_02.jpg"
 import GenderMember from "@/app/components/navigation/GenderMember"
+import { useGenderStore } from "@/state/client/genderState"
 
 export default function GenderMenu() {
-  const { category: hoveredGender, setShowCategoryMenu } = useUIStore()
+  const { gender: hoveredGender, setShowGenderMenu } = useGenderStore()
   const divRef = useRef<HTMLDivElement | null>(null)
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (e.target === divRef.current) { // makes popup disappear on the bottom
-      setShowCategoryMenu(false)
+      setShowGenderMenu(false)
     }
   }
 
@@ -23,7 +23,7 @@ export default function GenderMenu() {
       <div
         className="bg-bkg min-w-screen absolute inset-x-0 z-40 mx-auto flex gap-32 overflow-y-hidden px-12 py-12"
         onMouseLeave={(e) => handleMouseLeave(e as React.MouseEvent<HTMLDivElement, MouseEvent>)}
-        onMouseEnter={() => setShowCategoryMenu(true)}
+        onMouseEnter={() => setShowGenderMenu(true)}
         ref={divRef}
       >
 
