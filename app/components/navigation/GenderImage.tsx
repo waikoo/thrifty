@@ -5,7 +5,7 @@ type CategoryImageProps = {
   img: StaticImageData
 }
 
-export default function CategoryImage({ children, img }: CategoryImageProps) {
+export default function GenderImage({ children, img }: CategoryImageProps) {
   return (
     <div className="w-max-full relative grid cursor-pointer place-items-center">
       <span className="textShadow absolute text-xl">{children}</span>

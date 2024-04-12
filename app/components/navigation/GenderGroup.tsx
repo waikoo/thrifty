@@ -12,7 +12,7 @@ type CategoryGroupProps = {
   brands?: boolean
 }
 
-export default function CategoryGroup({ title, hoveredGender, items, brands }: CategoryGroupProps) {
+export default function GenderGroup({ title, hoveredGender, items, brands }: CategoryGroupProps) {
   const { lang } = getLangAndGender(usePathname())
   const pre = `/${lang}/${hoveredGender}/products?gender=${hoveredGender}`
 

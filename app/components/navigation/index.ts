@@ -2,7 +2,6 @@ export { default as Logo } from "./Logo";
 export { default as Banner } from "./Banner";
 export { default as BackToTop } from "./BackToTop";
 export { default as SearchBar } from "./SearchBar";
-export { default as Category } from "./Category";
 export { default as NavBar } from "./NavBar";
 export { default as RecoverPassword } from "./RecoverPassword";
 export { default as CenterContainer } from "./CenterContainer";

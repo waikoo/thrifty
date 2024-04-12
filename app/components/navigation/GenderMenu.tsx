@@ -2,12 +2,12 @@
 import { useRef } from "react"
 
 import { useUIStore } from "@/state/client/uiState"
-import CategoryImage from "@/app/components/navigation/CategoryImage"
+import GenderImage from "@/app/components/navigation/GenderImage"
 import women_01 from "@/public/nav/women_01.jpg"
 import women_02 from "@/public/nav/women_02.jpg"
-import CategoryMember from "@/app/components/navigation/CategoryMember"
+import GenderMember from "@/app/components/navigation/GenderMember"
 
-export default function CategoryMenu() {
+export default function GenderMenu() {
   const { category: hoveredGender, setShowCategoryMenu } = useUIStore()
   const divRef = useRef<HTMLDivElement | null>(null)
 
@@ -27,11 +27,11 @@ export default function CategoryMenu() {
         ref={divRef}
       >
 
-        {hoveredGender && <CategoryMember hoveredGender={hoveredGender} />}
+        {hoveredGender && <GenderMember hoveredGender={hoveredGender} />}
 
         <div className="my-auto flex flex-col gap-10">
-          <CategoryImage img={women_01}>NEW IN</CategoryImage>
-          <CategoryImage img={women_02}>PROMOS</CategoryImage>
+          <GenderImage img={women_01}>NEW IN</GenderImage>
+          <GenderImage img={women_02}>PROMOS</GenderImage>
         </div>
       </div >
     </section>

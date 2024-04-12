@@ -6,10 +6,10 @@ import { useTranslation } from '@/i18n/client';
 
 import { useUIStore } from '@/state/client/uiState';
 import { Gender, Locales } from '@/types/link';
-import CategoryMenu from '@/app/components/navigation/CategoryMenu';
+import GenderMenu from '@/app/components/navigation/GenderMenu';
 
-const Category = () => {
-  const [_, lang, category] = usePathname().split('/')
+export default function Gender() {
+  const [_, lang, gender] = usePathname().split('/')
   const { t } = useTranslation(lang as Locales, 'layout')
   const categories = [
     t('category.men') as Gender,
@@ -43,10 +43,7 @@ const Category = () => {
           ))}
         </ul>
       </div>
-      {showCategoryMenu && <CategoryMenu />}
+      {showCategoryMenu && <GenderMenu />}
     </nav>
   );
 };
-
-export default Category;
-

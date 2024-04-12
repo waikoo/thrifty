@@ -1,9 +1,10 @@
 "use client"
 import { usePathname } from "next/navigation";
 
-import { BackToTop, Banner, Category, NavBar } from "@/app/components/navigation";
+import { BackToTop, Banner, NavBar } from "@/app/components/navigation";
 import SimpleHeader from "@/app/components/navigation/SimpleHeader";
 import AccountMenuBar from "@/app/components/navigation/AccountMenuBar";
+import Gender from "@/app/components/navigation/Gender";
 
 export default function Header() {
   const pathname = usePathname()
@@ -15,7 +16,7 @@ export default function Header() {
       <Banner />
       <section className="bg-bkg text-content mx-auto flex flex-col items-center px-20 lg:max-w-[1500px]">
         <NavBar />
-        <Category />
+        <Gender />
         {isAccountMenuBarItem && <AccountMenuBar />}
 
         <BackToTop />

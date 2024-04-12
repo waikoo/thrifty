@@ -1,29 +1,29 @@
-import CategoryGroup from "@/app/components/navigation/CategoryGroup";
+import GenderGroup from "@/app/components/navigation/GenderGroup";
 import { filter } from "@/app/components/data/filterArrays";
 import { brandNamesArray } from "@/app/components/data/brandsData";
 import { Gender } from "@/types/link";
 
-type CategoryMemberProps = {
+type GenderMemberProps = {
   hoveredGender: Gender | null
 }
-export default function CategoryMember({ hoveredGender }: CategoryMemberProps) {
+export default function GenderMember({ hoveredGender }: GenderMemberProps) {
 
   return (
     <div className="z-50 flex justify-between gap-20">
-      <CategoryGroup
+      <GenderGroup
         title="CLOTHING"
         hoveredGender={hoveredGender}
         items={hoveredGender ? filter.type[hoveredGender].clothing : ['']}
       />
 
-      <CategoryGroup
+      <GenderGroup
         title="SHOES"
         hoveredGender={hoveredGender}
         items={hoveredGender ? filter.type[hoveredGender].shoes : ['']}
       />
 
       {hoveredGender !== 'kids' && (
-        <CategoryGroup
+        <GenderGroup
           title="ACCESSORIES"
           hoveredGender={hoveredGender}
           items={hoveredGender ? filter.type[hoveredGender].accessories : ['']}
@@ -31,7 +31,7 @@ export default function CategoryMember({ hoveredGender }: CategoryMemberProps) {
       )
       }
 
-      <CategoryGroup
+      <GenderGroup
         title="BRANDS"
         hoveredGender={hoveredGender}
         items={brandNamesArray.slice(0, 8)}
