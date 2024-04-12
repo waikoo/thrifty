@@ -1,7 +1,7 @@
 import { images } from '../data/apparelImagesSrc'
 import ApparelGridImage from './ApparelGridImage';
 import { createTranslation } from '@/i18n/server'
-import { Locales } from '@/types/home'
+import { Locales } from '@/types/link'
 
 type ApparelGridProps = {
   lang: Locales
