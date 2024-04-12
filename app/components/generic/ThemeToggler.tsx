@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { twMerge as tm } from 'tailwind-merge'
 
 import { useTranslation } from "@/i18n/client";
-import { Locales } from "@/types/home";
+import { Locales } from "@/types/link";
 import { useDarkMode, useTogglerStyles } from "@/app/components/hooks/";
 
 type ThemeTogglerProps = {
