@@ -25,8 +25,10 @@ export default function WithHome({ className, children }: withHomeProps) {
     }
 
     const getGenderPreference = async () => {
+      const isSession = await supabase.auth.getSession()
+      if (!isSession.data.session) return
+
       const userId = await getUserId()
-      if (!userId) return
 
       const { data, error } = await supabase
         .from('clients')

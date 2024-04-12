@@ -35,6 +35,9 @@ export default function CheckoutForm({ className }: CheckoutFormProps) {
       return user?.id
     }
     const getAddresses = async () => {
+      const isSession = await supabase.auth.getSession()
+      if (!isSession.data.session) return
+
       const { data: addresses, error } = await supabase
         .from('clients')
         .select('addresses')

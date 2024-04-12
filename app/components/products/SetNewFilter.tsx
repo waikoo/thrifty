@@ -69,7 +69,11 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
     }
 
     const getFilters = async () => {
+      const isSession = await supabase.auth.getSession()
+      if (!isSession.data.session) return
+
       try {
+
         const userId = await getUserId();
 
         const { data, error } = await supabase

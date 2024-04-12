@@ -21,6 +21,9 @@ export default function Toggle({ type, thumbColor, toggleBgColor, thumbBorder, t
         return user?.id
       }
 
+      const isSession = await supabase.auth.getSession()
+      if (!isSession.data.session) return
+
       const { data, error } = await supabase
         .from('clients')
         .select(`${type}`)
@@ -41,10 +44,15 @@ export default function Toggle({ type, thumbColor, toggleBgColor, thumbBorder, t
         return user?.id
       }
 
+      const userId = await getUserId()
+
+      if (!userId) {
+        return
+      }
       await supabase
         .from('clients')
         .update({ [type]: toggleRef?.current?.checked })
-        .eq('client_id', await getUserId());
+        .eq('client_id', userId);
     }
 
     if (checked !== undefined) {
