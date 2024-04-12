@@ -1,4 +1,4 @@
-import { Category, Locales } from '@/types/home'
+import { Gender, Locales } from '@/types/link'
 import Image from 'next/image'
 import { createTranslation } from '@/i18n/server'
 import { brandImages } from "../data/"
@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 type PopularBrandsProps = {
   lang: Locales
-  gender: Category['category']
+  gender: Gender
 }
 export default async function PopularBrands({ lang, gender }: PopularBrandsProps) {
   const { t } = await createTranslation(lang, 'home')

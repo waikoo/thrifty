@@ -5,16 +5,16 @@ import Link from 'next/link';
 import { useTranslation } from '@/i18n/client';
 
 import { useUIStore } from '@/state/client/uiState';
-import { Category, Locales } from '@/types/home';
+import { Gender, Locales } from '@/types/link';
 import CategoryMenu from '@/app/components/navigation/CategoryMenu';
 
 const Category = () => {
   const [_, lang, category] = usePathname().split('/')
   const { t } = useTranslation(lang as Locales, 'layout')
   const categories = [
-    t('category.men') as Category['category'],
-    t('category.women') as Category['category'],
-    t('category.kids') as Category['category'],
+    t('category.men') as Gender,
+    t('category.women') as Gender,
+    t('category.kids') as Gender,
   ]
   const [, currentLocale, currentCategory,] = usePathname().split('/');
   const { showCategoryMenu, setCategory, setShowCategoryMenu } = useUIStore()
@@ -25,7 +25,7 @@ const Category = () => {
 
         <ul className="grid w-full cursor-pointer grid-cols-3 justify-items-center gap-36"
         >
-          {categories.map((category: Category['category']) => (
+          {categories.map((category: Gender) => (
             <li
               key={category}
               className={`text-${currentCategory === category ? 'content font-extrabold' : 'faded'}`}
@@ -34,7 +34,7 @@ const Category = () => {
                 href={`/${currentLocale}/${category.toLowerCase()}`}
                 onMouseOver={() => {
                   setShowCategoryMenu(true)
-                  setCategory(category.toLowerCase() as Category['category'])
+                  setCategory(category.toLowerCase() as Gender)
                 }}
               >
                 {category.toUpperCase()}

@@ -1,6 +1,6 @@
 import { useSupabaseServer } from "@/app/components/hooks/serverIndex"
 import ProductBreadcrumb from "@/app/components/products/ProductBreadcrumb"
-import { Category, Locales } from "@/types/home"
+import { Gender, Locales } from "@/types/link"
 import { ProductItemType } from "@/types/productItem"
 import ProductImages from "@/app/components/products/ProductImages"
 import { ProductInfo } from "@/app/components/products/ProductInfo"
@@ -11,7 +11,7 @@ type PageProps = {
   params: {
     productId: string
     lang: Locales,
-    gender: Category['category']
+    gender: Gender
   }
   searchParams: URLSearchParams
 }

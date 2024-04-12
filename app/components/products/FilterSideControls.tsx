@@ -3,11 +3,11 @@ import Link from "next/link";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 import { useFilterStore, useFilterTitleStore } from "@/state/client/filterState";
-import { Category, Locales } from "@/types/home";
+import { Gender, Locales } from "@/types/link";
 import { IconReset } from "@/app/components/products/icons";
 
 type FilterSideControlsProps = {
-  gender: Category['category']
+  gender: Gender
   lang: Locales
 }
 

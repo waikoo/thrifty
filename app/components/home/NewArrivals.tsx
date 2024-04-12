@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { createTranslation } from '@/i18n/server'
 import { useSupabaseServer } from '@/app/components/hooks/serverIndex';
 import { NewArrivalsControls } from '@/app/components/home';
-import { Category, Locales } from '@/types/home'
 import { ProductItemType } from '@/types/productItem';
+import { Gender, Locales } from '@/types/link';
 
 type NewArrivalsProps = {
   lang: Locales
-  gender: Category['category']
+  gender: Gender
   notHome?: boolean
 }
 

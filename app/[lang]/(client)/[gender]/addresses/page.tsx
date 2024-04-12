@@ -1,12 +1,12 @@
 import AddNewAddress from "@/app/components/addresses/AddNewAddress"
 import ConditionalAddress from "@/app/components/addresses/ConditionalAddress"
 import useSupabaseServer from "@/app/components/hooks/useSupabaseServer"
-import { Category, Locales } from "@/types/home"
+import { Gender, Locales } from "@/types/link"
 
 type PageProps = {
   params: {
     lang: Locales,
-    gender: Category['category']
+    gender: Gender
   }
   searchParams: { [key: string]: string | string[] | undefined }
 }

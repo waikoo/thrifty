@@ -1,11 +1,11 @@
 import { ApparelGrid, HeroCarousel, PopularBrands, ColorCarousel, NewsletterSubscription } from "@/app/components/home"
 import { NewArrivals } from "@/app/components/home/serverIndex"
-import { Category, Locales } from "@/types/home"
+import { Gender, Locales } from "@/types/link"
 
 type PageProps = {
   params: {
     lang: Locales,
-    gender: Category['category']
+    gender: Gender
   }
   searchParams: { [key: string]: string | string[] | undefined }
 }

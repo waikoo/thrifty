@@ -1,13 +1,14 @@
 "use client"
 import { useEffect, useRef } from "react";
 
-import { Category, TColor } from "@/types/home";
 import { ColorCarouselElement } from "@/app/components/home";
 import { colors } from '@/app/components/data/colorCarouselData'
 import { useColorCarouselRef } from "@/state/client/colorCarouselState";
+import { TColor } from "@/types/home";
+import { Gender } from "@/types/link";
 
 type ColorCarouselImagesProps = {
-  gender: Category['category']
+  gender: Gender
 }
 
 export default function ColorCarouselImages({ gender }: ColorCarouselImagesProps) {

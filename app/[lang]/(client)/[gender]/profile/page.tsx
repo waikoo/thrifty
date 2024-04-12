@@ -2,7 +2,7 @@
 import { useState } from "react"
 
 import ProfileSettings from "@/app/components/profile/ProfileSettings"
-import { Category, Locales } from "@/types/home"
+import { Gender, Locales } from "@/types/link"
 import ProfilePopup from "@/app/components/profile/ProfilePopup"
 import { useProfile } from "@/state/client/profileState"
 import { useUserSession } from "@/app/components/hooks"
@@ -10,7 +10,7 @@ import { useUserSession } from "@/app/components/hooks"
 type PageProps = {
   params: {
     lang: Locales,
-    gender: Category['category']
+    gender: Gender
   }
   searchParams: { [key: string]: string | string[] | undefined }
 }

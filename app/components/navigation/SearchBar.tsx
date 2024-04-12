@@ -3,8 +3,8 @@ import { useParams, useRouter } from 'next/navigation';
 
 import { useTranslation } from '@/i18n/client';
 import { IconSearch } from '@/app/components/navigation/icons';
-import { Category, Locales } from '@/types/home';
 import getLinkWithSearchParams from '@/utils/getLinkWithSearchParams';
+import { Gender, Locales } from '@/types/link';
 
 type SearchBarProps = {
   className?: string
@@ -12,7 +12,7 @@ type SearchBarProps = {
 
 export default function SearchBar({ className }: SearchBarProps) {
   let lang = useParams()?.lang as Locales
-  let gender = useParams()?.gender as Category['category']
+  let gender = useParams()?.gender as Gender
   const { t } = useTranslation(lang, 'layout')
   const router = useRouter()
 

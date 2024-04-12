@@ -1,5 +1,5 @@
 "use client"
-import { Category, Locales } from "@/types/home"
+import { Gender, Locales } from "@/types/link"
 import { useTranslation } from '../../../i18n/client'
 import SubmitButton from "../SubmitButton"
 import useHeroCarousel from "../hooks/useHeroCarousel"
@@ -7,7 +7,7 @@ import Link from "next/link"
 
 type HeroCarouselArticleProps = {
   lang: Locales
-  gender: Category['category']
+  gender: Gender
 }
 
 export default function HeroCarouselArticle({ lang, gender }: HeroCarouselArticleProps) {

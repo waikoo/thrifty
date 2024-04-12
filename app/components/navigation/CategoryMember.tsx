@@ -1,10 +1,10 @@
 import CategoryGroup from "@/app/components/navigation/CategoryGroup";
 import { filter } from "@/app/components/data/filterArrays";
 import { brandNamesArray } from "@/app/components/data/brandsData";
-import { Category } from "@/types/home"
+import { Gender } from "@/types/link";
 
 type CategoryMemberProps = {
-  hoveredGender: Category['category'] | null
+  hoveredGender: Gender | null
 }
 export default function CategoryMember({ hoveredGender }: CategoryMemberProps) {
 

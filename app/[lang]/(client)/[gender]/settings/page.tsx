@@ -1,11 +1,11 @@
 import Notifications from "@/app/components/settings/Notifications"
 import Preferences from "@/app/components/settings/Preferences"
-import { Category, Locales } from "@/types/home"
+import { Gender, Locales } from "@/types/link"
 
 type PageProps = {
   params: {
     lang: Locales,
-    gender: Category['category']
+    gender: Gender
   }
   searchParams: { [key: string]: string | string[] | undefined }
 }

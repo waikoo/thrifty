@@ -1,9 +1,9 @@
-import { Category } from "@/types/home";
 import { IconArrow } from "../generic/";
 import { ColorCarouselImages } from "./";
+import { Gender } from "@/types/link";
 
 type ColorCarouselGridProps = {
-  gender: Category['category'];
+  gender: Gender
 };
 
 export default async function ColorCarouselGrid({ gender }: ColorCarouselGridProps) {

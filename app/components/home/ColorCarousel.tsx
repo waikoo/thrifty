@@ -1,9 +1,9 @@
 import { createTranslation } from '@/i18n/server'
-import { Category, Locales } from '@/types/home'
-import ColorCarouselGrid from './ColorCarouselGrid'
+import { Gender, Locales } from '@/types/link'
+import ColorCarouselGrid from '@/app/components/home/ColorCarouselGrid'
 
 type ColorCarouselProps = {
-  gender: Category['category']
+  gender: Gender,
   lang: Locales
 }
 

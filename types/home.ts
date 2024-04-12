@@ -1,5 +1,7 @@
 import { StaticImageData } from "next/image"
 
+import { Gender } from "@/types/link"
+
 export type TColorCarouselData = {
   women: TColor[],
   men: TColor[],
@@ -8,22 +10,16 @@ export type TColorCarouselData = {
 
 export type TColor = {
   id: number,
-  // gender: Category['category'],
+  // gender: Gender,
   color: string,
   imgUrl: string,
   alt: string
 }
 
-export type Locales = 'en' | 'de'
-
-export type Category = {
-  category: 'men' | 'women' | 'kids'
-}
-
 export type PageProps = {
   params: {
     lang: string,
-    category: Category['category']
+    category: Gender
   },
   searchParams: { [key: string]: string | string[] | undefined }
 }

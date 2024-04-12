@@ -2,12 +2,12 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import getLangAndGender from "@/utils/getLangAndGender"
-import { Category } from "@/types/home"
 import { buildUrl } from "@/utils/buildUrl"
+import { Gender } from "@/types/link"
 
 type CategoryGroupProps = {
   title: string,
-  hoveredGender: Category['category'] | null
+  hoveredGender: Gender | null
   items: string[]
   brands?: boolean
 }

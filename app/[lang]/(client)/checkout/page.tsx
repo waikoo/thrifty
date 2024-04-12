@@ -3,12 +3,12 @@ import CheckoutCart from "@/app/components/checkout/CheckoutCart"
 import CheckoutForm from "@/app/components/checkout/CheckoutForm"
 import { borderBottomRadius } from "@/app/components/data/universalStyles"
 import { useSupabaseServer } from "@/app/components/hooks/serverIndex"
-import { Category, Locales } from "@/types/home"
+import { Gender, Locales } from "@/types/link"
 
 type PageProps = {
   params: {
     lang: Locales,
-    gender: Category['category']
+    gender: Gender
   }
   searchParams: { [key: string]: string | string[] | undefined }
 }

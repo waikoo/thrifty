@@ -1,12 +1,12 @@
 import FavoritesOrCart from "@/app/components/FavoritesOrCart"
 import CartContent from "@/app/components/cart/CartContent"
 import NewArrivals from "@/app/components/home/NewArrivals"
-import { Category, Locales } from "@/types/home"
+import { Gender, Locales } from "@/types/link"
 
 type PageProps = {
   params: {
     lang: Locales,
-    gender: Category['category']
+    gender: Gender
   }
   searchParams: { [key: string]: string | string[] | undefined }
 }

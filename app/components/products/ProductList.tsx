@@ -1,11 +1,11 @@
-import { Category, Locales } from "@/types/home"
+import { Gender, Locales } from "@/types/link"
 import { ProductItemType } from "@/types/productItem"
 import { ProductItem, FilterNotFound, ProductPagination } from "@/app/components/products"
 import { NewArrivals } from "@/app/components/home/serverIndex"
 
 type ProductListProps = {
   lang: Locales
-  gender: Category['category']
+  gender: Gender
   searchParams: { [key: string]: string | string[] | undefined }
   products: ProductItemType[]
 }

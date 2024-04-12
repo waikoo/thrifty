@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 
-import { Category, Locales } from "@/types/home";
+import { Gender, Locales } from "@/types/link";
 import { IconHideFilters, IconSavedFilters } from "@/app/components/products/icons";
 import FilterSideControls from "@/app/components/products/FilterSideControls";
 import { FilterDropdown } from "@/app/components/products";
@@ -10,7 +10,7 @@ import SavedFilters from "@/app/components/products/SavedFilters";
 import { useFilterStore } from "@/state/client/filterState";
 
 type FilterTopProps = {
-  gender: Category['category']
+  gender: Gender
   lang: Locales
 }
 

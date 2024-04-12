@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import Category from '@/app/components/navigation/Category'
+import { Gender } from '@/types/link'
 
 type UIState = {
   showSignIn: boolean
@@ -10,8 +10,8 @@ type UIState = {
   showBackToTop: boolean
   isSecondColorPage: boolean
   showCategoryMenu: boolean
-  category: Category['category'] | null
-  setCategory: (value: Category['category']) => void
+  category: Gender | null
+  setCategory: (value: Gender) => void
   setShowSignIn: (value: boolean | (boolean)) => void
   setShowMyAccount: (value: boolean | (boolean)) => void
   setShowRecovery: (value: boolean | (boolean)) => void

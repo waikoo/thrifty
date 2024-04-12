@@ -1,8 +1,8 @@
-import { Category, Locales } from '@/types/home';
+import { Gender, Locales } from '@/types/link';
 import { HeroCarouselArticle, HeroCarouselImages, HeroCarouselNavigator } from '@/app/components/home';
 
 type HeroCarouselProps = {
-  gender: Category['category']
+  gender: Gender
   lang: Locales
 }
 

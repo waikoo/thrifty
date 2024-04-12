@@ -5,16 +5,16 @@ import { twMerge as tm } from 'tailwind-merge'
 
 import { capitalize } from '@/utils/capitalize'
 import { ProductItemType } from "@/types/productItem"
-import { Category, Locales } from "@/types/home"
+import { Gender, Locales } from "@/types/link"
 import ProductAddToCart from '@/app/components/products/ProductAddToCart'
 import ProductToggleFavorite from '@/app/components/products/ProductToggleFavorite'
 import { EURO } from '@/app/components/data/orderSummary'
 
 type ProductItemProps = {
   product: ProductItemType
-  index: number,
+  index: number
   lang?: Locales
-  gender?: Category['category']
+  gender?: Gender
   className?: string
   searchParams?: { [key: string]: string | string[] | undefined }
 }

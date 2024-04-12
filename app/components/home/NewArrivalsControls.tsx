@@ -4,11 +4,11 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import { ProductItemType } from "@/types/productItem"
 import { NewArrivalsGrid } from '@/app/components/home'
-import { Category } from "@/types/home";
+import { Gender } from "@/types/link";
 
 type NewArrivalsControlsProps = {
   products: ProductItemType[]
-  gender: Category['category']
+  gender: Gender
 }
 
 export default function NewArrivalsControls({ products, gender }: NewArrivalsControlsProps) {

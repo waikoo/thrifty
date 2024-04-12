@@ -4,10 +4,10 @@ import { HeroCarouselLargeImage } from '.';
 import { images } from '../data/home';
 import useHeroCarousel from '../hooks/useHeroCarousel';
 import HeroCarouselSmallImage from './HeroCarouselSmallImage';
-import { Category } from '@/types/home';
+import { Gender } from '@/types/link';
 
 type HeroCarouselImagesProps = {
-  gender: Category['category']
+  gender: Gender
 }
 
 export default function HeroCarouselImages({ gender }: HeroCarouselImagesProps) {
