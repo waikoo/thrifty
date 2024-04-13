@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -26,21 +26,37 @@ export default function NavIcons({ className }: NavIconsProps) {
   const { showMiniCartView, setShowMiniCartView } = useNavigationStore()
   const { session, error } = useUserSession()
   const linkRef = useRef(null)
+  const [lastMousePosition, setLastMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     initCart(getFromLocalStorage('cart') || [])
     initFavorites(getFromLocalStorage('favorites') || [])
   }, [])
 
-  const onMouseLeave = (e: React.MouseEvent) => {
-    if (e.currentTarget === linkRef.current) {
-      if (e.clientY <= 55 || e.clientX <= 1650 || e.clientX >= 1682) {
-        setShowMiniCartView(false)
-        return
-      }
-      setShowMiniCartView(true)
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setLastMousePosition({
+      x: e.clientX,
+      y: e.clientY,
+    });
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent) => {
+    const direction = getDirection(lastMousePosition, { x: e.clientX, y: e.clientY });
+
+    if (direction === 'up' || direction === 'right' || direction === 'left') {
+      setShowMiniCartView(false);
+      return
     }
-  }
+    setShowMiniCartView(true);
+  };
+
+  const getDirection = (from: { x: number, y: number }, to: { x: number, y: number }) => {
+    if (to.y < from.y) return 'up';
+    if (to.y > from.y) return 'down';
+    if (to.x < from.x) return 'left';
+    if (to.x > from.x) return 'right';
+  };
 
   return (
     <nav className={`relative flex items-center gap-6 pt-2 ${className}`}>
@@ -54,7 +70,8 @@ export default function NavIcons({ className }: NavIconsProps) {
       <Link href={`/${lang}/${gender}/cart`}
         className="relative"
         onMouseEnter={() => setShowMiniCartView(true)}
-        onMouseLeave={onMouseLeave}
+        onMouseLeave={handleMouseLeave}
+        onMouseMove={handleMouseMove}
         title="Cart"
         ref={linkRef}
       >
