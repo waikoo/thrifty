@@ -47,7 +47,7 @@ export default function MiniCartView() {
       <div className="relative h-[15rem]">
         <div className="bg-bkg flex h-[14rem] w-full flex-col gap-6">
 
-          {cartItems.map((item) => (
+          {cartItems.length > 0 && cartItems.map((item) => (
             <div key={item.uuid} className="max-w-content">
               <div className="flex w-full items-baseline justify-center gap-2">
                 <IconCheckMark />
@@ -57,6 +57,11 @@ export default function MiniCartView() {
               <MiniCartItem item={item} />
             </div>
           ))}
+
+          {cart.length > 0 && cartItems.length === 0 && (
+            <span className="mt-20 text-center">Something went wrong</span>
+          )}
+
           <br />
         </div>
       </div>
