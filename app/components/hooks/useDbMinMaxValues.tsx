@@ -32,8 +32,10 @@ export default function useDbMinMaxValues(
     }
 
     getData(type.toLowerCase()).then(data => {
-      if (Array.isArray(data)) {
+      if (Array.isArray(data) && data.length > 0) {
         handleData(type.toLowerCase(), data)
+      } else {
+        return
       }
     })
 
