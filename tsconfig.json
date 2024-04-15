@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "types": [
-      "node"
+      "node",
+      "jest"
     ],
     "target": "esnext",
     "lib": [
@@ -37,7 +38,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "./jest-setup.ts"
+    "./vitest-setup.ts"
   ],
   "exclude": [
     "node_modules"
