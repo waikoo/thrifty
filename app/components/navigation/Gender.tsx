@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { useTranslation } from '@/i18n/client';
 
-import { Gender, Locales } from '@/types/link';
+import { type Gender, Locales } from '@/types/link';
 import GenderMenu from '@/app/components/navigation/GenderMenu';
 import { useGenderStore } from '@/state/client/genderState';
 
