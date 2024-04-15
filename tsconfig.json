@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "types": [
-      "node",
-      "jest"
+      "node"
     ],
     "target": "esnext",
     "lib": [
