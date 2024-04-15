@@ -53,7 +53,7 @@ export default function AddOptionPopUp({ name, handleAddItem }: AddOptionPopUpPr
         <label htmlFor="add-option" className="text-bold grid place-items-center gap-6">
           Add new {name.toLowerCase()}:
         </label>
-        <input ref={inputRef} type="text" className="text-bkg border-bkg w-[80%] border-[0.1rem] p-[0.5rem]" name="add-option" id="add-option" />
+        <input ref={inputRef} type="text" className="text-content border-bkg w-[80%] border-[0.1rem] p-[0.5rem]" name="add-option" id="add-option" />
 
         <button
           onClick={onClick}
