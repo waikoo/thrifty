@@ -47,6 +47,7 @@ type State = {
   addMaterial: boolean
   addOption: boolean
   dynamicCategory: string
+  isProductInDbError: boolean
 }
 
 type Action = {
@@ -82,6 +83,8 @@ type Action = {
   showAddOption: (value: boolean | (boolean)) => void
   showAddMaterial: (value: boolean | (boolean)) => void
   setDynamicCategory: (value: string) => void
+  isProductInDb: () => Promise<boolean>
+  setIsProductInDbError: (value: boolean) => void
 }
 
 export const useProductStore = create<State & Action>((set, get) => ({
@@ -231,6 +234,31 @@ export const useProductStore = create<State & Action>((set, get) => ({
       img_url: [],
     })
   },
+  isProductInDb: async () => {
+    const currentProduct = get().getValues();
+
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('gender', currentProduct.gender)
+      .eq('category', currentProduct.category)
+      .eq('type', currentProduct.type)
+      .eq('price', currentProduct.price)
+      .eq('discount', currentProduct.discount)
+      .eq('size', currentProduct.size)
+      .eq('color', currentProduct.color)
+      .eq('brand', currentProduct.brand)
+      .eq('condition', currentProduct.condition)
+      .eq('material', currentProduct.material);
+
+    if (error) {
+      throw new Error("Couldn't fetch products because " + error.message);
+    }
+
+    return data && data.length > 0;
+  },
+  isProductInDbError: false,
+  setIsProductInDbError: (value) => set({ isProductInDbError: value }),
   isSaved: false,
   setIsSaved: (value) => set({ isSaved: value }),
   hasNoImage: true,
