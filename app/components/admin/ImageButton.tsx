@@ -17,25 +17,16 @@ export default function ImageButton(props: ImageButtonProps) {
 
   const handleNewImage = () => {
     if (inputRef.current?.value === '') {
-      setShowValidityError(false)
       setShowImgError(true)
       return
-    } else {
-      setShowImgError(false)
-      if (!inputRef.current?.checkValidity()) {
-        setShowValidityError(true)
-        return
-      } else {
-        setShowValidityError(false)
-        setShowImgError(false)
-        if (img_url.length === 0) {
-          setShowValidityError(true)
-          return
-        } else {
-          setShowValidityError(false)
-        }
-      }
     }
+    setShowImgError(false)
+
+    if (!inputRef.current?.checkValidity()) {
+      setShowValidityError(true)
+      return
+    }
+    setShowValidityError(false)
 
     if (inputRef && inputRef.current) {
       setHasNoImage(false)
