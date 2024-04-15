@@ -11,7 +11,7 @@ import { Popup } from "@/app/components/generic"
 import { updateProductsWithEdited } from "@/db/updateProductsWithEdited"
 import { useDraftStore, useEditedStore } from "@/state/admin/adminSelectState"
 import { useUIStore } from "@/state/admin/uiState"
-import { useStatusBarStore } from "@/state/admin/statusBarState"
+import useRealtime from "@/app/components/hooks/useRealtime"
 
 type PublishChangesProps = {
   className?: string
@@ -21,17 +21,18 @@ type PublishChangesProps = {
 export default function PublishChanges({ className, publishSome }: PublishChangesProps) {
   const { selectedItems: selectedDraftItems } = useDraftStore()
   const { selectedItems: selectedEditedItems } = useEditedStore()
-  const { draftLength, editedLength } = useStatusBarStore()
+  const realDraftLength = useRealtime('draft').length
+  const realEditedLength = useRealtime('edited').length
   const { toggleSelected } = useUIStore()
   const [showPopup, setShowPopup] = useState(false)
   const router = useRouter()
 
-  const mainStyle = draftLength + editedLength === 0
+  const tableTotal = realDraftLength + realEditedLength
+  const mainStyle = tableTotal === 0
     ? 'text-grey border-grey cursor-not-allowed border-2'
     : 'hover:bg-content hover:text-bkg text-content border-content cursor-pointer border-2'
 
   const selectedTotal = selectedDraftItems.length + selectedEditedItems.length
-  const tableTotal = draftLength + editedLength
 
   const publishSelectedText = `Do you want to publish ${selectedTotal} item${selectedTotal > 1 ? 's' : ''}`
 
@@ -44,7 +45,7 @@ export default function PublishChanges({ className, publishSome }: PublishChange
       await updateProductsWithEdited()
       return
     }
-    if (draftLength === 0) return
+    if (realDraftLength === 0) return
     await saveSomeToProducts('draft', selectedDraftItems)
     await saveSomeToProducts('edited', selectedEditedItems)
     setShowPopup(false)
@@ -52,7 +53,7 @@ export default function PublishChanges({ className, publishSome }: PublishChange
   }
 
   const popUpHandler = () => {
-    if ((draftLength + editedLength) === 0) return
+    if ((realDraftLength + realEditedLength) === 0) return
     setShowPopup(true)
   }
 
@@ -74,8 +75,7 @@ export default function PublishChanges({ className, publishSome }: PublishChange
             {!toggleSelected ? publishAllText : publishSelectedText}
             ?</Popup>
         </Portal>
-      )
-      }
+      )}
     </>
   )
 }

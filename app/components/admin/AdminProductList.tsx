@@ -5,10 +5,11 @@ import { usePathname, useRouter } from "next/navigation"
 
 import { FaCheckSquare } from "react-icons/fa";
 
-import { AdminProductSummary } from "@/app/components/admin"
-import { useRealtime, useSummaryPopup } from "@/app/components/hooks"
-import { useUIStore } from "@/state/admin/uiState";
 import { useDraftStore } from "@/state/admin/adminSelectState";
+import AdminProductSummary from "@/app/components/admin/AdminProductSummary";
+import useRealtime from "@/app/components/hooks/useRealtime";
+import useSummaryPopup from "@/app/components/hooks/useSummaryPopup";
+import { useUIStore } from "@/state/admin/uiState";
 
 export default function AdminProductList() {
   const draft = useRealtime('draft')
