@@ -1,7 +1,8 @@
 "use client"
-import Link from "next/link"
-import { IconPlus } from "."
 import { useState } from "react"
+import Link from "next/link"
+
+import { IconPlus } from "@/app/components/admin"
 
 type LayoutAddNewParams = {
   params?: { [key: string]: string | string[] | undefined }
@@ -12,7 +13,7 @@ export default function LayoutAddNew({ params }: LayoutAddNewParams) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <div 
+    <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="text-content bg-bkg hover:text-bkg hover:bg-content flex w-21 cursor-pointer items-baseline justify-start gap-2 self-baseline px-2"

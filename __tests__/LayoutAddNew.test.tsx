@@ -1,11 +1,10 @@
-import { it, expect, describe } from 'vitest'
+import LayoutAddNew from "@/app/components/admin/LayoutAddNew"
 import { render, screen } from "@testing-library/react"
-import LayoutAddNew from '../LayoutAddNew'
 
 describe('Admin: LayoutAddNew', () => {
 
   it('contains ADD NEW button', () => {
-    render(<LayoutAddNew params={{ lang: 'en' }} />)
+    render(<LayoutAddNew />)
 
     const button = screen.getByText(/add new/i)
 
