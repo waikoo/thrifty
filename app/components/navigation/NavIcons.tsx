@@ -59,7 +59,7 @@ export default function NavIcons({ className }: NavIconsProps) {
   };
 
   return (
-    <nav className={`relative flex items-center gap-6 pt-2 ${className}`}>
+    <nav className={`relative flex items-center gap-6 pt-2 px-4 ${className}`}>
       <Account />
 
       <Link href={`/${lang}/${gender}/favorites`} className="relative" title="Favorites">

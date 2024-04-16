@@ -1,10 +1,5 @@
-"use client";
-import { useParams } from "next/navigation";
-
 import { twMerge as tm } from 'tailwind-merge'
 
-import { useTranslation } from "@/i18n/client";
-import { Locales } from "@/types/link";
 import { useDarkMode, useTogglerStyles } from "@/app/components/hooks/";
 
 type ThemeTogglerProps = {
@@ -22,10 +17,8 @@ const ThemeToggler = ({ className }: ThemeTogglerProps) => {
       ? useDarkMode(document?.documentElement.dataset)
       : fallbackDarkMode
 
-  const { getStyleForElement, bgColor, circleColor, xPos } = useTogglerStyles(isDark)
+  const { bgColor, circleColor, xPos } = useTogglerStyles(isDark)
 
-  let lang = useParams()?.lang as Locales
-  const { t } = useTranslation(lang, 'layout')
 
   return (
     <button
@@ -36,7 +29,7 @@ const ThemeToggler = ({ className }: ThemeTogglerProps) => {
       <div className={`relative grid h-[1.4rem] w-[2.5rem] items-center rounded-full 
         ${bgColor}`}>
 
-        <div className={`absolute h-[0.8rem] w-[0.8rem] rounded-full transition-all 
+        <div className={`absolute h-[0.8rem] w-[0.8rem] rounded-full transition-all t_shadow
           ${circleColor} ${xPos}`}>
         </div>
 

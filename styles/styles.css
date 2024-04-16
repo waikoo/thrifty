@@ -14,21 +14,19 @@
     --clr-content: 210deg 15% 10%;
     --clr-grey: 0deg 0% 85%;
     --clr-faded: 0deg 0% 69%;
-    --clr-pink: 315deg 70% 67%;
-    --clr-black: 0deg 0% 0%;
-    --clr-blue: 215deg 53% 40%;
-    --clr-white: 0deg 2% 98%;
-    --clr-darkgrey: 220deg 1% 28%;
-    --clr-yellow: 50deg 82% 45%;
-    --clr-red: 348deg 86% 45%;
-    --clr-green: 160deg 48% 24%;
-    --clr-green-right: 104deg 92% 31%;
-    --clr-purple: 283deg 60% 32%;
-    --clr-beige: 60deg 56% 91%;
-    --clr-brown: 0deg 51% 33%;
-    --clr-orange: 39deg 100% 50%;
-    --clr-gold: 51deg 100% 50%;
-    --clr-silver: 234deg 67% 94%;
+
+    --clr-t_black: 0 0 5;
+    /*#0D0D0D*/
+    --clr-t_grey: 0 0 38;
+    /*#616161*/
+    --clr-t_cream: 0 0 95;
+    /*#F2F2F2*/
+    --clr-t_white: 0 0 98;
+    /*#F9F9F9*/
+    --clr-t_mustard: 61 67 51;
+    /*#D2D62E*/
+    --clr-t_black1: 0 0 24;
+    /*toggle bg*/
   }
 
   @media (prefers-color-scheme: dark) {
@@ -49,11 +47,12 @@
 }
 
 .separator::before {
-  content: "|";
-  color: var(--clr-content);
+  content: "l";
+  color: var(--clr-t_cream);
   position: absolute;
-  top: 3px;
-  left: 32px;
+  top: 4px;
+  left: 34px;
+  height: 3px;
 }
 
 html[data-theme="dark"] .placeholda::placeholder {
@@ -179,4 +178,8 @@ html[data-theme="light"] .placeholda::placeholder {
 
 .slider>input:first-of-type {
   background-color: dodgerblue;
+}
+
+.t_shadow {
+  box-shadow: 0px 0px 2.5px 2.5px rgba(150, 150, 150, 0.726);
 }

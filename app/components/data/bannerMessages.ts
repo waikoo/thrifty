@@ -1,6 +1,5 @@
+import { EURO } from "@/app/components/data/orderSummary";
+
 export const bannerMessages = [
-  "Shipping Info",
-  "Read All About It",
-  "Another One Bites The Dust",
-  "Temperature Rising",
+  `Free shipping above ${EURO}15`,
 ];

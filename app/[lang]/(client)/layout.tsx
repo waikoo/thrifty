@@ -23,16 +23,16 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   return (
     <html
       data-theme={themeSettings.DEFAULT_THEME}
-      className={`${inter.className} max-w-screen min-h-screen overflow-x-hidden`}
+      className={`${inter.className}`}
       lang={lang}
     >
       <head />
-      <body className={`bg-bkg min-h-screen w-full ${inter.className}`}>
-        <Header />
+      <body className={`dark:bg-t_black bg-t_white min-h-screen w-full ${inter.className}`}>
+        <Header />  {/* only above 1512px */}
 
         {children}
 
-        <Footer />
+        {/* <Footer /> */}
 
       </body>
     </html>

@@ -12,13 +12,13 @@ export default function Banner() {
   const textColor = showBanner ? 'text-black' : 'text-content'
   const viewportWidth = useViewport()
   const hideElement = viewportWidth > 768
-  const grid = hideElement ? 'grid-cols-[auto_1fr_auto]' : 'grid-cols-1 py-1'
+  const gridCols = hideElement ? 'grid-cols-[auto_1fr_auto]' : 'grid-cols-1 py-1'
 
   return (
     <>
       {showBanner ? (
         <section className={`bg-t_black dark:bg-t_white text-t_white dark:text-t_black z-20 w-screen ${textColor}`}>
-          <div className={`mx-auto grid ${grid} grid-rows-1 items-center gap-4 xl:max-w-[1280px] `}>
+          <div className={`mx-auto grid ${gridCols} grid-rows-1 items-center gap-4 xl:max-w-[1280px] `}>
 
             {hideElement && <LanguagePicker isTop />}
 

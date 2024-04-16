@@ -21,6 +21,11 @@ const useDarkMode = (htmlDataset: DOMStringMap) => {
     const newTheme = htmlDataset.theme === 'dark' ? 'light' : 'dark'
 
     htmlDataset.theme = newTheme
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
     updateTheme(newTheme)
     localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (newTheme === 'dark').toString())
   }

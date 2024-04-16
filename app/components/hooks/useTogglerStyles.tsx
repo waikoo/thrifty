@@ -12,18 +12,9 @@ export default function useTogglerStyles(isDark: boolean) {
     }
   }, [isDark]);
 
-  const getStyleForElement = (element: string) => {
-    if (element === 'light') {
-      return isDark ? 'text-gray-500 opacity-70' : 'text-black'
-    } else if (element === 'dark') {
-      return isDark ? 'text-black' : 'text-gray-500 opacity-70'
-    }
-
-  }
   return {
-    getStyleForElement,
-    bgColor: isDark ? 'bg-white' : 'bg-black',
-    circleColor: isDark ? 'bg-black' : 'bg-white',
+    bgColor: !isDark ? 'bg-t_cream' : 'bg-t_black1',
+    circleColor: isDark ? 'bg-t_black' : 'bg-t_white',
     xPos: xPos
   };
 }

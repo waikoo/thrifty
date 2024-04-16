@@ -8,7 +8,7 @@ type LanguageElementProps = {
 
 export default function LanguageElement({ locale }: LanguageElementProps) {
   const [, lang, category] = usePathname().split('/')
-  const selectedLocale = lang !== locale ? "font-extralight" : "font-extrabold"
+  const selectedLocale = lang !== locale ? "text-t_grey font-medium" : "font-extrabold"
   const increaseSpace = lang === 'de' ? 'pl-1/2' : ''
   const uppercaseLocale = locale.toUpperCase()
 

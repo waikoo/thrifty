@@ -4,8 +4,6 @@ import { usePathname } from "next/navigation";
 import { twMerge as tm } from 'tailwind-merge'
 
 import { LanguageElement } from "@/app/components/navigation";
-import { useThemeStore } from "@/state/themeState";
-import { getSvgColor } from "@/utils/theme";
 
 export type LanguagePickerParams = {
   isTop?: boolean
@@ -13,14 +11,14 @@ export type LanguagePickerParams = {
 
 const LanguagePicker = ({ isTop }: LanguagePickerParams) => {
   const locales = ['en', 'de'];
+
   const [_, lang, category] = usePathname()
-  const border = isTop ? '' : 'border-content border-[0.1rem]'
-  const themeColor = useThemeStore((state) => getSvgColor(state.theme))
-  const color = isTop ? 'text-black' : themeColor
+  const border = isTop ? 'border-t_black' : 'border-[0.1rem]'
+  const color = isTop ? 'dark:text-t_black' : 'text:t_white'
 
   return (
     <nav lang={lang}
-      className={tm(`flex items-center p-2 justify-center bg-bkg gap-3 bg-transparent hover:cursor-pointer py-1 z-50 relative justify-self-start text-content ${border} ${color}`)}>
+      className={tm(`flex items-center p-2 justify-center gap-3 bg-transparent hover:cursor-pointer py-1 z-50 relative justify-self-start dark:text-t_dark text-t_white ${border} ${color}`)}>
 
       {locales.map((locale: string) => {
         const className = `${locale === 'en' ? 'separator' : ''}`

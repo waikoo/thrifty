@@ -13,10 +13,11 @@ export default function Header() {
 
   return (
     !isCheckout ? <>
-      <Banner />
-      <section className="bg-bkg text-content mx-auto flex flex-col items-center px-20 lg:max-w-[1500px]">
+      <section className="dark:bg-t_black bg-t_white text-content flex flex-col items-center ">
+        <Banner />
         <NavBar />
         <Gender />
+
         {isAccountMenuBarItem && <AccountMenuBar />}
 
         <BackToTop />
