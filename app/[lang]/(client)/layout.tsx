@@ -1,12 +1,10 @@
-import { Inter } from 'next/font/google';
-
 import "@/styles/styles.css";
 
 import { themeSettings } from "@/app/components/data/theme";
 import { Footer } from "@/app/components/footer";
 import Header from '@/app/components/navigation/Header';
+import { allenoire, alokary, futura } from '@/utils/fonts';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' })
 export const metadata = {
   title: 'Thrifty',
   description: 'An e-commerce store for second-hand clothing',
@@ -23,11 +21,11 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   return (
     <html
       data-theme={themeSettings.DEFAULT_THEME}
-      className={`${inter.className}`}
+      className={`${allenoire.variable} ${futura.variable} ${alokary.variable}`}
       lang={lang}
     >
       <head />
-      <body className={`dark:bg-t_black bg-t_white min-h-screen w-full ${inter.className}`}>
+      <body className={`dark:bg-t_black bg-t_white min-h-screen w-full`}>
         <Header />  {/* only above 1512px */}
 
         {children}
