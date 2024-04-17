@@ -3,7 +3,7 @@ import "@/styles/styles.css";
 import { themeSettings } from "@/app/components/data/theme";
 import { Footer } from "@/app/components/footer";
 import Header from '@/app/components/navigation/Header';
-import { allenoire, alokary, futura } from '@/utils/fonts';
+import { allenoire, alokary, futura, noir_pro, avant_garde } from '@/utils/fonts';
 
 export const metadata = {
   title: 'Thrifty',
@@ -21,7 +21,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   return (
     <html
       data-theme={themeSettings.DEFAULT_THEME}
-      className={`${allenoire.variable} ${futura.variable} ${alokary.variable}`}
+      className={`${allenoire.variable} ${futura.variable} ${alokary.variable} ${noir_pro.variable} ${avant_garde.variable}`}
       lang={lang}
     >
       <head />

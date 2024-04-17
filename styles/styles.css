@@ -30,6 +30,7 @@
     --clr-t_yellow: 61 100 50;
     --clr-t_purple: 256 100 80;
     --clr-t_red: 0 100 50;
+    --clr-t_green: 87 100 72;
   }
 
   @media (prefers-color-scheme: dark) {

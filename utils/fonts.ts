@@ -37,3 +37,23 @@ export const alokary = localFont({
   variable: '--font-alokary'
 })
 
+export const avant_garde = localFont({
+  src: [
+    {
+      path: '../public/fonts/itc_avant_garde/itc_avant_garde.woff2',
+      weight: '400',
+    }
+  ],
+  variable: '--font-avant_garde'
+})
+
+
+export const noir_pro = localFont({
+  src: [
+    {
+      path: '../public/fonts/noir_pro_heavy/noir_pro_heavy.woff2',
+      weight: '700',
+    }
+  ],
+  variable: '--font-noir_pro'
+})
