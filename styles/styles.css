@@ -51,8 +51,7 @@
   color: var(--clr-t_cream);
   position: absolute;
   top: 4px;
-  left: 34px;
-  height: 3px;
+  left: 26px;
 }
 
 html[data-theme="dark"] .placeholda::placeholder {

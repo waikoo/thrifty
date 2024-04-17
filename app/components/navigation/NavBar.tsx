@@ -7,51 +7,46 @@ import { Logo, SearchBar, WithHome } from '@/app/components/navigation/'
 import NavIcons from "@/app/components/navigation/NavIcons"
 import Gender from "@/app/components/navigation/Gender"
 import { useGenderStore } from "@/state/client/genderState"
+import useViewport from "@/app/components/hooks/useViewport"
+import IconHamburger from "@/app/components/navigation/icons/IconHamburger"
+import { tablet } from "../data/universalStyles"
+import usePosition from "../hooks/usePosition"
 
 type NavBarProps = {
-  params?: { [key: string]: string | string[] | undefined }
+  className: string
 }
 
-const NavBar = ({ params }: NavBarProps) => {
+const NavBar = ({ className }: NavBarProps) => {
 
   const htmlDataset = typeof document !== 'undefined' ? document.documentElement.dataset : undefined
   if (htmlDataset) {
     useDarkMode(htmlDataset)
   }
-
+  const position = usePosition(usePathname())
   const { setShowGenderMenu } = useGenderStore()
-  const [position, setPosition] = useState('static')
   const noBorderOnScroll = position === 'static' ? 'border-content border-b-2' : ''
-  const pathname = usePathname()
-
-  const handleScroll = () => {
-    if (pathname.split('/').length < 4) { // is homepage
-      setPosition(window.scrollY > 5 ? 'fixed' : 'static')
-    } else {
-      return
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const viewport = useViewport()
+  const show = viewport < tablet
 
   return (
-    <section className={`bg-bkg ${position} top-0 z-50 w-screen`}>
-      <div className={`${noBorderOnScroll} relative mx-auto grid w-full max-w-[1440px] grid-cols-3 pb-2 pt-4`}
+    <section className={`bg-t_white dark:bg-t_black ${position} top-0 z-50 w-screen ${className}`}>
+      <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[auto_1fr_1fr_1fr] md:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] xl:max-w-[1280px]`}
         onMouseEnter={() => setShowGenderMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
+        {show &&
+          <div className="w-5 h-5 mr-5">
+            <IconHamburger />
+          </div>
+        }
+
         <SearchBar className="self-end" />
 
-        {position === 'static' ?
-          (
-            <WithHome> <Logo className="self-end" /> </WithHome>
-          ) : (
-            <Gender />
-          )
-        }
+        {position === 'static' ? (
+          <WithHome> <Logo className="self-end" /> </WithHome>
+        ) : (
+          <Gender />
+        )}
+
         {/* on scroll Category shows up instead of Thriftstudio logo */}
         <NavIcons className="self-end justify-self-end" />
       </div>

@@ -13,9 +13,9 @@ export default function Header() {
 
   return (
     !isCheckout ? <>
-      <section className="dark:bg-t_black bg-t_white text-content flex flex-col items-center ">
+      <section className="dark:bg-t_black bg-t_white text-content flex flex-col items-center">
         <Banner />
-        <NavBar />
+        <NavBar className="hidden sm:block" />
         <Gender />
 
         {isAccountMenuBarItem && <AccountMenuBar />}

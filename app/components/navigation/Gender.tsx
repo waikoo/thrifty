@@ -9,21 +9,21 @@ import GenderMenu from '@/app/components/navigation/GenderMenu';
 import { useGenderStore } from '@/state/client/genderState';
 
 export default function Gender() {
-  const [_, lang, gender] = usePathname().split('/')
-  const { t } = useTranslation(lang as Locales, 'layout')
+  const [, currentLocale, currentGender,] = usePathname().split('/');
+  const { showGenderMenu, setGender, setShowGenderMenu } = useGenderStore()
+
+  const { t } = useTranslation(currentLocale as Locales, 'layout')
   const categories = [
     t('category.men') as Gender,
     t('category.women') as Gender,
     t('category.kids') as Gender,
   ]
-  const [, currentLocale, currentGender,] = usePathname().split('/');
-  const { showGenderMenu, setGender, setShowGenderMenu } = useGenderStore()
 
   return (
-    <nav className="relative w-full">
-      <div className="mx-auto w-[500px] pt-2">
+    <nav className="w-screen">
+      <div className="mx-auto w-[300px] pt-2">
 
-        <ul className="grid w-full cursor-pointer grid-cols-3 justify-items-center gap-36"
+        <ul className="grid cursor-pointer grid-cols-3 justify-items-center dark:text-t_white text-t_black"
         >
           {categories.map((gender: Gender) => (
             <li

@@ -5,6 +5,8 @@ import { useTranslation } from '@/i18n/client';
 import { IconSearch } from '@/app/components/navigation/icons';
 import getLinkWithSearchParams from '@/utils/getLinkWithSearchParams';
 import { Gender, Locales } from '@/types/link';
+import useViewport from '@/app/components/hooks/useViewport';
+import { tablet } from '@/app/components/data/universalStyles';
 
 type SearchBarProps = {
   className?: string
@@ -15,6 +17,8 @@ export default function SearchBar({ className }: SearchBarProps) {
   let gender = useParams()?.gender as Gender
   const { t } = useTranslation(lang, 'layout')
   const router = useRouter()
+  const viewport = useViewport()
+  const hide = viewport < tablet
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -40,8 +44,8 @@ export default function SearchBar({ className }: SearchBarProps) {
       <input
         type="search"
         name="search"
-        placeholder={t('search')}
-        className={`text-content placeholda w-full appearance-none self-end border-none bg-transparent p-0 outline-0 ring-0 placeholder:text-[0.8rem] placeholder:font-semibold focus:outline-none focus:ring-0`}
+        placeholder={hide ? '' : t('search')}
+        className={`text-t_black dark:text-t_white placeholda w-full appearance-none self-end border-none bg-transparent p-0 outline-0 ring-0 placeholder:text-[0.8rem] placeholder:font-semibold focus:outline-none focus:ring-0`}
         style={{ WebkitAppearance: 'none' }}
       />
     </form>

@@ -18,7 +18,7 @@ const LanguagePicker = ({ isTop }: LanguagePickerParams) => {
 
   return (
     <nav lang={lang}
-      className={tm(`flex items-center p-2 justify-center gap-3 bg-transparent hover:cursor-pointer py-1 z-50 relative justify-self-start dark:text-t_dark text-t_white ${border} ${color}`)}>
+      className={tm(`flex items-center px-0 justify-center gap-3 bg-transparent hover:cursor-pointer py-1 z-50 relative justify-self-start dark:text-t_dark text-t_white ${border} ${color}`)}>
 
       {locales.map((locale: string) => {
         const className = `${locale === 'en' ? 'separator' : ''}`
