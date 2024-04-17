@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useRef } from "react";
 
 type EventListenerOptions = boolean | { capture?: boolean; passive?: boolean };

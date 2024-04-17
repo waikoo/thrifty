@@ -1,3 +1,5 @@
+"use client"
+
 import { ProductItemType } from "@/types/productItem";
 import { useState } from "react";
 

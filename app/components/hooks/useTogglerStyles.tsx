@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+"use client"
 
+import { useEffect, useState } from "react";
 
 export default function useTogglerStyles(isDark: boolean) {
   const [xPos, setXPos] = useState('translate-x-[0.3rem]');

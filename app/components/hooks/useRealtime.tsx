@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from 'react';
 import { supabase } from '@/app/supabase';
 import { ProductItemType } from '@/types/productItem';

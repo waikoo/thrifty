@@ -1,3 +1,4 @@
+"use client"
 import { supabase } from "@/app/supabase"
 import { useEffect } from "react"
 
