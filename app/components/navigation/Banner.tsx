@@ -23,7 +23,7 @@ export default function Banner() {
 
             {hideElement && <LanguagePicker isTop />}
 
-            <span className="justify-self-center mx-auto">
+            <span className="justify-self-center mx-auto py-3 whitespace-nowrap">
               {bannerMessages[idx]}
             </span>
 
