@@ -13,7 +13,7 @@ type withHomeProps = {
 }
 
 export default function WithHome({ className, children }: withHomeProps) {
-  let [, locale, category] = usePathname().split('/')
+  const [, locale, category] = usePathname().split('/')
   const [genderPreference, setGenderPreference] = useState('women')
 
   useEffect(() => {

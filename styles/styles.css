@@ -27,6 +27,9 @@
     /*#D2D62E*/
     --clr-t_black1: 0 0 24;
     /*toggle bg*/
+    --clr-t_yellow: 61 100 50;
+    --clr-t_purple: 256 100 80;
+    --clr-t_red: 0 100 50;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -181,4 +184,8 @@ html[data-theme="light"] .placeholda::placeholder {
 
 .t_shadow {
   box-shadow: 0px 0px 2.5px 2.5px rgba(150, 150, 150, 0.726);
+}
+
+.hero_shadow {
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 1);
 }
