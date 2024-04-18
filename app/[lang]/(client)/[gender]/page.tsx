@@ -2,6 +2,7 @@ import { ApparelGrid, HeroCarousel, PopularBrands, ColorCarousel, NewsletterSubs
 import { NewArrivals } from "@/app/components/home/serverIndex"
 import Hero from "@/app/components/home/Hero"
 import { Gender, Locales } from "@/types/link"
+import HeroBarSwitch from "@/app/components/home/HeroBarSwitch"
 
 type PageProps = {
   params: {
@@ -13,8 +14,9 @@ type PageProps = {
 export default async function Page({ params: { lang, gender }, searchParams, }: PageProps) {
 
   return (
-    <main className="bg-bkg text-content mx-auto mt-2 flex w-full flex-col items-center xl:max-w-[1280px] max-w-[90vw]">
+    <main className="bg-bkg text-content mx-auto mt-2 flex w-full flex-col overflow-x-hidden overflow-y-hidden items-center xl:max-w-[1280px] max-w-[90vw]">
       <Hero />
+      <HeroBarSwitch />
 
       {/* <HeroCarousel {... { lang, gender }} /> */}
       {/* <ColorCarousel {... { lang, gender }} /> */}

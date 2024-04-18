@@ -3,15 +3,12 @@ import Link from 'next/link';
 
 import getLangAndGender from '@/utils/getLangAndGender';
 import { albert } from '@/utils/fonts';
-import { HeroState } from '@/types/home';
+import { useHomeStore } from '@/state/client/homeState';
 
-type HeroButtonProps = {
-  state: HeroState
-}
-
-export default function HeroButton({ state }: HeroButtonProps) {
+export default function HeroButton() {
+  const { heroState } = useHomeStore()
   const { lang, gender } = getLangAndGender(usePathname())
-  const param = state === 'new_in' ? 'new+in' : 'promos'
+  const param = heroState === 'new_in' ? 'new+in' : 'promos'
 
   return (
     <Link href={`/${lang}/${gender}/products/?gender=${gender}&shop-by=${param}&sort-by=newfirst&page=1`}>

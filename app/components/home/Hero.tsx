@@ -1,6 +1,4 @@
 "use client"
-import { useState } from 'react';
-
 import WithHome from '@/app/components/navigation/WithHome'
 import Logo from '@/app/components/navigation/Logo'
 import useViewport from '@/app/components/hooks/useViewport';
@@ -9,32 +7,21 @@ import HeroSticker from '@/app/components/home/HeroSticker';
 import HeroTextNewIn from '@/app/components/home/HeroTextNewIn';
 import HeroTextSale from '@/app/components/home/HeroTextSale';
 import HeroButton from '@/app/components/home/HeroButton';
-import HeroBarSwitch from '@/app/components/home/HeroBarSwitch';
-import { HeroState } from '@/types/home';
 import { usePathname } from 'next/navigation';
 import getLangAndGender from '@/utils/getLangAndGender';
+import { useHomeStore } from '@/state/client/homeState';
 
 export default function Hero() {
-  const [state, setState] = useState<HeroState>('new_in')
   const { gender } = getLangAndGender(usePathname())
   const viewportWidth = useViewport()
-  const logoColor = state === 'sale' && gender === 'kids' ? 'black' : 'white'
-
-  const handleStateChange = (e: React.MouseEvent) => {
-    const target = e.target as HTMLDivElement
-
-    if (target.dataset.state === state) {
-      return
-    }
-
-    setState(state === 'new_in' ? 'sale' : 'new_in')
-  }
+  const { heroState } = useHomeStore()
+  const logoColor = heroState === 'sale' && gender === 'kids' ? 'black' : 'white'
 
   return (
     <section className="w-full relative">
-      <HeroImage state={state} />
+      <HeroImage />
 
-      <HeroSticker state={state} />
+      <HeroSticker />
 
       {viewportWidth < 1024 && (
         <div className="absolute top-6 left-0 right-0">
@@ -42,11 +29,10 @@ export default function Hero() {
         </div>
       )}
 
-      {state === 'new_in' ? (<HeroTextNewIn />) : (<HeroTextSale />)}
+      {heroState === 'new_in' ? (<HeroTextNewIn />) : (<HeroTextSale />)}
 
-      <HeroButton state={state} />
+      <HeroButton />
 
-      <HeroBarSwitch handleStateChange={handleStateChange} state={state} />
     </section>
   )
 }
