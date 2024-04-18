@@ -13,9 +13,10 @@ const useDarkMode = (containsDark: boolean) => {
     const newTheme = prefersDarkMode ? 'dark' : 'light'
 
     updateTheme(newTheme)
-    if (!document.documentElement.classList.contains('dark')) {
+    if (newTheme === 'dark') {
       document.documentElement.classList.add('dark')
     }
+
     localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (newTheme === 'dark').toString())
   }, [prefersDarkMode, updateTheme])
 
