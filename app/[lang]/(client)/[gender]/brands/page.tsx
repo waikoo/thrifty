@@ -12,7 +12,7 @@ export default function Page() {
       <section className="mx-auto max-w-[40rem]">
         {alphabet.map((letter) => (
           brands[letter] ? (
-            <BrandsLetter brandsArray={brands[letter]}>{letter}</BrandsLetter>
+            <BrandsLetter brandsArray={brands[letter]} key={letter}>{letter}</BrandsLetter>
           ) : null
         ))}
       </section>
