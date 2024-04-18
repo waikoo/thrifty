@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch --verbose"
   },
   "dependencies": {
     "@next/env": "^14.2.1",
@@ -31,7 +31,7 @@
     "i18next-browser-languagedetector": "^7.1.0",
     "i18next-resources-to-backend": "^1.1.4",
     "negotiator": "^0.6.3",
-    "next": "14.1.0",
+    "next": "^14.2.2",
     "next-intl": "^2.20.0",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
