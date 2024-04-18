@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { twMerge as tm } from "tailwind-merge"
 
 import { supabase } from "@/app/supabase";
+import getLangAndGender from "@/utils/getLangAndGender";
 
 type withHomeProps = {
   children: React.ReactNode
@@ -13,7 +14,8 @@ type withHomeProps = {
 }
 
 export default function WithHome({ className, children }: withHomeProps) {
-  const [, locale, category] = usePathname().split('/')
+
+  const { lang } = getLangAndGender(usePathname())
   const [genderPreference, setGenderPreference] = useState('women')
 
   useEffect(() => {
@@ -59,7 +61,7 @@ export default function WithHome({ className, children }: withHomeProps) {
 
   return (
     <Link
-      href={`/${locale}/${genderPreference}`}
+      href={`/${lang}/${genderPreference}`}
       className={tm(`flex justify-center ${className}`)}
     >
       {children}
