@@ -7,18 +7,10 @@ type ThemeTogglerProps = {
 }
 
 const ThemeToggler = ({ className }: ThemeTogglerProps) => {
-  const fallbackDarkMode = {
-    isDark: false,
-    handleToggleTheme: () => { }
-  }
-
-  const { isDark, handleToggleTheme } =
-    typeof document !== 'undefined'
-      ? useDarkMode(document?.documentElement.dataset)
-      : fallbackDarkMode
+  const containsDark = document.documentElement.classList.contains('dark')
+  const { isDark, handleToggleTheme } = useDarkMode(containsDark)
 
   const { bgColor, circleColor, xPos } = useTogglerStyles(isDark)
-
 
   return (
     <button

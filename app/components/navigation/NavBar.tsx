@@ -1,8 +1,6 @@
 "use client"
-import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 
-import { useDarkMode } from "@/app/components/hooks"
 import { Logo, SearchBar, WithHome } from '@/app/components/navigation/'
 import NavIcons from "@/app/components/navigation/NavIcons"
 import Gender from "@/app/components/navigation/Gender"
@@ -17,11 +15,6 @@ type NavBarProps = {
 }
 
 const NavBar = ({ className }: NavBarProps) => {
-
-  const htmlDataset = typeof document !== 'undefined' ? document.documentElement.dataset : undefined
-  if (htmlDataset) {
-    useDarkMode(htmlDataset)
-  }
   const position = usePosition(usePathname())
   const { setShowGenderMenu } = useGenderStore()
   const noBorderOnScroll = position === 'static' ? 'border-content border-b-2' : ''

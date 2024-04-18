@@ -5,7 +5,7 @@ import { useThemeStore } from "@/state/themeState";
 import useMediaQuery from "@/app/components/hooks/useMediaQuery"
 import { themeSettings } from "@/app/components/data/theme"
 
-const useDarkMode = (htmlDataset: DOMStringMap) => {
+const useDarkMode = (containsDark: boolean) => {
   const { theme, updateTheme } = useThemeStore()
   const prefersDarkMode = useMediaQuery(['(prefers-color-scheme: dark)'], [true], false)
 
@@ -13,14 +13,15 @@ const useDarkMode = (htmlDataset: DOMStringMap) => {
     const newTheme = prefersDarkMode ? 'dark' : 'light'
 
     updateTheme(newTheme)
-    htmlDataset.theme = newTheme
+    if (!document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.add('dark')
+    }
     localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (newTheme === 'dark').toString())
-  }, [prefersDarkMode])
+  }, [prefersDarkMode, updateTheme])
 
   const handleToggleTheme = () => {
-    const newTheme = htmlDataset.theme === 'dark' ? 'light' : 'dark'
+    const newTheme = containsDark ? 'light' : 'dark'
 
-    htmlDataset.theme = newTheme
     if (newTheme === 'dark') {
       document.documentElement.classList.add('dark')
     } else {
