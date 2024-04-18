@@ -2,6 +2,7 @@
 
 import { createPortal } from 'react-dom';
 import { ReactNode, useEffect, useState } from 'react';
+import React from 'react';
 
 type PortalProps = {
   children: ReactNode;
@@ -20,5 +21,6 @@ export default function Portal({ children }: PortalProps) {
     return null;
   }
 
-  return createPortal(children, modalElem);
+  // return createPortal(children, modalElem);
+  return createPortal(React.createElement('div', null, children), modalElem)
 }
