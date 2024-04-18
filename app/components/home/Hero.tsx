@@ -10,9 +10,10 @@ import HeroTextNewIn from '@/app/components/home/HeroTextNewIn';
 import HeroTextSale from '@/app/components/home/HeroTextSale';
 import HeroButton from '@/app/components/home/HeroButton';
 import HeroBarSwitch from '@/app/components/home/HeroBarSwitch';
+import { HeroState } from '@/types/home';
 
 export default function Hero() {
-  const [state, setState] = useState<'new_in' | 'sale'>('new_in')
+  const [state, setState] = useState<HeroState>('new_in')
   const viewportWidth = useViewport()
 
   const handleStateChange = (e: React.MouseEvent) => {
