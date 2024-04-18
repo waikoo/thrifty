@@ -3,7 +3,7 @@ import { zen_tokyo_zoo } from '@/utils/fonts';
 export default function HeroTextSale() {
 
   return (
-    <div className="absolute top-[7rem] left-0 right-0 sm:top-[8rem] md:top-[6rem] lg:-right-[40rem] xl:-right-[53rem] lg:top-[11rem]">
+    <div className="absolute top-[7rem] left-0 right-0 sm:top-[8rem] md:top-[6rem] lg:-right-[40rem] xl:-right-[53rem] lg:top-[9rem]">
       <div className="relative text-center">
         <span className={`block ${zen_tokyo_zoo.className} text-[1.5625rem] -mb-12 text-t_green text-shadow-ne shadow-black sm:text-[3.75rem] lg:text-[2.1875rem]`}>UP TO</span>
 
