@@ -2,6 +2,8 @@ import { StaticImageData } from "next/image"
 
 import { Gender } from "@/types/link"
 
+export type HeroState = 'new_in' | 'sale'
+
 export type TColorCarouselData = {
   women: TColor[],
   men: TColor[],
