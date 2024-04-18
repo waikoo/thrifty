@@ -1,13 +1,16 @@
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
-import getLangAndGender from '@/utils/getLangAndGender';
 import { albert } from '@/utils/fonts';
 import { useHomeStore } from '@/state/client/homeState';
+import { Gender, Locales } from '@/types/link';
 
-export default function HeroButton() {
+type HeroButtonProps = {
+  gender: Gender
+  lang: Locales
+}
+
+export default function HeroButton({ gender, lang }: HeroButtonProps) {
   const { heroState } = useHomeStore()
-  const { lang, gender } = getLangAndGender(usePathname())
   const param = heroState === 'new_in' ? 'new+in' : 'promos'
 
   return (
