@@ -33,7 +33,7 @@ export default function Hero() {
       <HeroSticker state={state} />
 
       {viewportWidth < 1024 && (
-        <div className="absolute top-10 left-0 right-0">
+        <div className="absolute top-6 left-0 right-0">
           <WithHome><Logo logoColor="white" onHero={true} /> </WithHome>
         </div>
       )}

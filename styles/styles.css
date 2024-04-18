@@ -190,3 +190,7 @@ html[data-theme="light"] .placeholda::placeholder {
 .hero_shadow {
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 1);
 }
+
+.objectPosition {
+  object-position: 67% 0%;
+}

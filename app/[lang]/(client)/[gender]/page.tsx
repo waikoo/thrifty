@@ -13,7 +13,7 @@ type PageProps = {
 export default async function Page({ params: { lang, gender }, searchParams, }: PageProps) {
 
   return (
-    <main className="bg-bkg text-content mx-auto mt-6 flex w-full flex-col items-center xl:max-w-[1280px] max-w-[90vw]">
+    <main className="bg-bkg text-content mx-auto mt-2 flex w-full flex-col items-center xl:max-w-[1280px] max-w-[90vw]">
       <Hero />
 
       {/* <HeroCarousel {... { lang, gender }} /> */}
