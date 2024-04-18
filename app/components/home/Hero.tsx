@@ -10,9 +10,10 @@ import HeroButton from '@/app/components/home/HeroButton';
 import { usePathname } from 'next/navigation';
 import getLangAndGender from '@/utils/getLangAndGender';
 import { useHomeStore } from '@/state/client/homeState';
+import { Gender, Locales } from '@/types/link';
 
 export default function Hero() {
-  const { gender } = getLangAndGender(usePathname())
+  const { lang, gender } = getLangAndGender(usePathname())
   const viewportWidth = useViewport()
   const { heroState } = useHomeStore()
   const logoColor = heroState === 'sale' && gender === 'kids' ? 'black' : 'white'
@@ -31,7 +32,7 @@ export default function Hero() {
 
       {heroState === 'new_in' ? (<HeroTextNewIn />) : (<HeroTextSale />)}
 
-      <HeroButton />
+      <HeroButton lang={lang as Locales} gender={gender as Gender} />
 
     </section>
   )
