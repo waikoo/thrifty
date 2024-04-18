@@ -11,10 +11,14 @@ import HeroTextSale from '@/app/components/home/HeroTextSale';
 import HeroButton from '@/app/components/home/HeroButton';
 import HeroBarSwitch from '@/app/components/home/HeroBarSwitch';
 import { HeroState } from '@/types/home';
+import { usePathname } from 'next/navigation';
+import getLangAndGender from '@/utils/getLangAndGender';
 
 export default function Hero() {
   const [state, setState] = useState<HeroState>('new_in')
+  const { gender } = getLangAndGender(usePathname())
   const viewportWidth = useViewport()
+  const logoColor = state === 'sale' && gender === 'kids' ? 'black' : 'white'
 
   const handleStateChange = (e: React.MouseEvent) => {
     const target = e.target as HTMLDivElement
@@ -34,7 +38,7 @@ export default function Hero() {
 
       {viewportWidth < 1024 && (
         <div className="absolute top-6 left-0 right-0">
-          <WithHome><Logo logoColor="white" onHero={true} /> </WithHome>
+          <WithHome><Logo logoColor={logoColor} /> </WithHome>
         </div>
       )}
 

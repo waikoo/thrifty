@@ -6,17 +6,14 @@ import { twMerge as tm } from "tailwind-merge";
 type LogoProps = {
   className?: string
   logoColor?: string
-  onHero?: boolean
 };
 
-const Logo = ({ className, logoColor, onHero }: LogoProps) => {
+const Logo = ({ className, logoColor }: LogoProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      // width={onHero ? 150 : 132}
-      // height={onHero ? 40 : 21}
       width={132}
       height={21}
       fill="none"

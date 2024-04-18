@@ -9,17 +9,17 @@ type HeroImageProps = {
 export default function HeroImage({ state }: HeroImageProps) {
   const { gender } = getLangAndGender(usePathname())
   const blackOnSale = state === 'sale' ? 'bg-t_black' : ''
-  const newInHeight = state === 'new_in' ? 'h-[25rem]' : ''
-  const kidsPosition = state === 'new_in' && gender === 'kids' ? 'objectPosition' : 'object-center'
+  const kidsNewInPosition = state === 'new_in' && gender === 'kids' ? 'objectPosition' : 'object-center'
+  const kidsSalePosition = state === 'sale' && gender === 'kids' ? 'objectPosition2' : 'object-center'
 
   return (
-    <div className={`w-full flex lg:p-3 ${blackOnSale} rounded-[1.8rem] bg-red-300 ${newInHeight}`}>
+    <div className={`w-full flex lg:p-3 ${blackOnSale} rounded-[1.8rem] bg-red-300 h-[25rem]`}>
       <img
         src={`/images/hero/${state}_${gender}.jpg`}
         alt="a short haired man looking away from the camera into nature"
         width={100}
         height={100}
-        className={`w-full h-full object-cover ${kidsPosition} rounded-[1.8rem] ${state === 'sale' ? 'lg:h-[46rem]' : ''}`}
+        className={`w-full h-full object-cover ${kidsNewInPosition} ${kidsSalePosition} rounded-[1.8rem] ${state === 'sale' ? 'lg:h-[46rem]' : ''}`}
       />
       {state === 'sale' &&
         <div className="w-[50%]">

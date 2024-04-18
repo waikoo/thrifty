@@ -194,3 +194,8 @@ html[data-theme="light"] .placeholda::placeholder {
 .objectPosition {
   object-position: 67% 0%;
 }
+
+.objectPosition2 {
+  object-position: 50% -20%;
+  /* transform: scale(1.67); */
+}
