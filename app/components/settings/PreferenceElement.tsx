@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation"
 import { useThemeStore } from "@/state/themeState"
 import { themeSettings } from "@/app/components/data/theme"
 import { supabase } from "@/app/supabase"
+import { Gender } from "@/types/link"
 
 type PreferenceElementProps = {
   radioValues: string[]
   title: 'SHOPPING' | 'LANGUAGE' | 'THEME'
   defaultChecked: string
-  gender?: 'men' | 'women' | 'kids'
+  gender?: Gender
 }
 
 export default function PreferenceElement({ radioValues, title, defaultChecked, gender }: PreferenceElementProps) {

@@ -1,6 +1,6 @@
 import { Gender, Locales } from "@/types/link"
 
-export default function getLangAndGender(pathname: string) {
+export default function getLangAndGender(pathname: string): { lang: Locales, gender: Gender } {
   let pathnameArr
   if (pathname) {
     pathnameArr = pathname.split('/')
