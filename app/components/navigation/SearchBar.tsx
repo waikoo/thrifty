@@ -18,7 +18,7 @@ export default function SearchBar({ className }: SearchBarProps) {
   const { t } = useTranslation(lang, 'layout')
   const router = useRouter()
   const currentViewport = useViewport()
-  const hide = currentViewport < viewport.md
+  const hide = currentViewport < viewport.lg
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
