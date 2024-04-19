@@ -1,4 +1,4 @@
-import { ApparelGrid, HeroCarousel, PopularBrands, ColorCarousel, NewsletterSubscription } from "@/app/components/home"
+import { ApparelGrid, PopularBrands, ColorCarousel, NewsletterSubscription } from "@/app/components/home"
 import { NewArrivals } from "@/app/components/home/serverIndex"
 import Hero from "@/app/components/home/Hero"
 import { Gender, Locales } from "@/types/link"
@@ -18,8 +18,6 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
       <Hero />
       <HeroBarSwitch />
 
-      {/* <HeroCarousel {... { lang, gender }} /> */}
-      {/* <ColorCarousel {... { lang, gender }} /> */}
       {/* <NewArrivals {... { lang, gender }} /> */}
       {/* <ApparelGrid {...{ lang }} /> */}
       {/* <PopularBrands {... { lang, gender }} /> */}
