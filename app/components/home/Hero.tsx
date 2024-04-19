@@ -20,7 +20,6 @@ export default function Hero() {
   const logoColor = heroState === 'sale' && gender === 'kids' ? 'black' : 'white'
   const { touchStartHandler, touchEndHandler } = useHeroSwipe()
 
-
   return (
     <section
       className="w-full relative"
