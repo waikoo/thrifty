@@ -6,7 +6,7 @@ import { IconSearch } from '@/app/components/navigation/icons';
 import getLinkWithSearchParams from '@/utils/getLinkWithSearchParams';
 import { Gender, Locales } from '@/types/link';
 import useViewport from '@/app/components/hooks/useViewport';
-import { tablet } from '@/app/components/data/universalStyles';
+import { viewport } from '@/app/components/data/universalStyles';
 
 type SearchBarProps = {
   className?: string
@@ -17,8 +17,8 @@ export default function SearchBar({ className }: SearchBarProps) {
   let gender = useParams()?.gender as Gender
   const { t } = useTranslation(lang, 'layout')
   const router = useRouter()
-  const viewport = useViewport()
-  const hide = viewport < tablet
+  const currentViewport = useViewport()
+  const hide = currentViewport < viewport.md
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

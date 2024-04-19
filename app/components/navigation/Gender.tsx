@@ -20,7 +20,7 @@ export default function Gender() {
   ]
 
   return (
-    <nav className="w-screen">
+    <nav className="w-screen md:w-full">
       <div className="mx-auto w-[300px] pt-2">
 
         <ul className="grid cursor-pointer grid-cols-3 justify-items-center dark:text-t_white text-t_black"

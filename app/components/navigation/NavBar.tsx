@@ -7,7 +7,7 @@ import Gender from "@/app/components/navigation/Gender"
 import { useGenderStore } from "@/state/client/genderState"
 import useViewport from "@/app/components/hooks/useViewport"
 import IconHamburger from "@/app/components/navigation/icons/IconHamburger"
-import { tablet } from "../data/universalStyles"
+import { viewport } from "../data/universalStyles"
 import usePosition from "../hooks/usePosition"
 
 type NavBarProps = {
@@ -17,13 +17,13 @@ type NavBarProps = {
 const NavBar = ({ className }: NavBarProps) => {
   const position = usePosition(usePathname())
   const { setShowGenderMenu } = useGenderStore()
-  const noBorderOnScroll = position === 'static' ? 'border-content border-b-2' : ''
-  const viewport = useViewport()
-  const show = viewport < tablet
+  const noBorderOnScroll = position === 'static' ? 'border-t_black border-b-2' : ''
+  const currentViewport = useViewport()
+  const show = currentViewport < viewport.lg
 
   return (
     <section className={`bg-t_white dark:bg-t_black ${position} top-0 z-50 w-screen ${className}`}>
-      <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[auto_1fr_1fr_1fr] md:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] xl:max-w-[1280px]`}
+      <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[auto_1fr_1fr_1fr] lg:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] xl:max-w-[1280px]`}
         onMouseEnter={() => setShowGenderMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
         {show &&

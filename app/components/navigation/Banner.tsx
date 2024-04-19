@@ -5,14 +5,14 @@ import { ThemeToggler } from '@/app/components/generic';
 import useMessageDisplay from '@/app/components/hooks/useMessageDisplay';
 import LanguagePicker from '@/app/components/navigation/LanguagePicker';
 import useViewport from '@/app/components/hooks/useViewport';
-import { tablet } from '@/app/components/data/universalStyles';
+import { viewport } from '@/app/components/data/universalStyles';
 
 export default function Banner() {
   const { showBanner } = useUIStore()
   const idx = useMessageDisplay(bannerMessages, 5000);
   const textColor = showBanner ? 'text-black' : 'text-content'
-  const viewportWidth = useViewport()
-  const hideElement = viewportWidth > tablet
+  const currentViewport = useViewport()
+  const hideElement = currentViewport > viewport.md
   const gridCols = hideElement ? 'grid-cols-[auto_1fr_auto]' : 'grid-cols-1 py-1'
 
   return (
