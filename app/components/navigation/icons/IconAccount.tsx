@@ -1,10 +1,8 @@
 "use client"
 import { useThemeStore } from "@/state/themeState";
 import { getSvgColor } from "@/utils/theme"
-import useUserSession from "@/app/components/hooks/useUserSession"
 
 const IconAccount = () => {
-  // const { session } = useUserSession()
   const color = useThemeStore((state) => getSvgColor(state.theme))
 
   return (
@@ -13,7 +11,7 @@ const IconAccount = () => {
       width={15}
       height={16}
       viewBox="0 0 18 17"
-      // fill={session ? color : "none"}
+      fill='none'
       className="cursor-pointer"
     >
       <path
