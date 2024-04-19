@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Gender } from "@/types/link"
 
 type ColorCarouselImagesProps = {
