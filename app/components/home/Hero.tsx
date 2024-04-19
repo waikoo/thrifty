@@ -16,7 +16,7 @@ import useHeroSwipe from '@/app/components/hooks/useHeroSwipe';
 export default function Hero() {
   const { lang, gender } = getLangAndGender(usePathname())
   const viewportWidth = useViewport()
-  const { heroState, setHeroState } = useHomeStore()
+  const { heroState } = useHomeStore()
   const logoColor = heroState === 'sale' && gender === 'kids' ? 'black' : 'white'
   const { touchStartHandler, touchEndHandler } = useHeroSwipe()
 
@@ -25,7 +25,7 @@ export default function Hero() {
       className="w-full relative"
       onTouchStart={(e: React.TouchEvent) => touchStartHandler(e)}
       onTouchEnd={(e: React.TouchEvent) => touchEndHandler(e)}>
-      <HeroImage />
+      <HeroImage gender={gender} state={heroState} />
 
       <HeroSticker />
 
