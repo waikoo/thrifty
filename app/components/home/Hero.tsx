@@ -11,15 +11,21 @@ import { usePathname } from 'next/navigation';
 import getLangAndGender from '@/utils/getLangAndGender';
 import { useHomeStore } from '@/state/client/homeState';
 import { Gender, Locales } from '@/types/link';
+import useHeroSwipe from '@/app/components/hooks/useHeroSwipe';
 
 export default function Hero() {
   const { lang, gender } = getLangAndGender(usePathname())
   const viewportWidth = useViewport()
-  const { heroState } = useHomeStore()
+  const { heroState, setHeroState } = useHomeStore()
   const logoColor = heroState === 'sale' && gender === 'kids' ? 'black' : 'white'
+  const { touchStartHandler, touchEndHandler } = useHeroSwipe()
+
 
   return (
-    <section className="w-full relative">
+    <section
+      className="w-full relative"
+      onTouchStart={(e: React.TouchEvent) => touchStartHandler(e)}
+      onTouchEnd={(e: React.TouchEvent) => touchEndHandler(e)}>
       <HeroImage />
 
       <HeroSticker />
@@ -37,4 +43,3 @@ export default function Hero() {
     </section>
   )
 }
-
