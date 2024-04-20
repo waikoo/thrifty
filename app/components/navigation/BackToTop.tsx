@@ -1,18 +1,22 @@
 "use client"
 import { useUIStore } from "@/state/client/uiState";
-import { useEventListener } from "@/app/components/hooks";
+import { useEffect } from "react";
 
 export default function BackToTop() {
   const { showBackToTop, setShowBackToTop } = useUIStore();
 
-  useEventListener({
-    eventType: "scroll",
-    listener: () => {
-      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-      setShowBackToTop(scrollTop !== 0)
-    },
-    target: window
-  })
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      setShowBackToTop(scrollTop !== 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [showBackToTop, setShowBackToTop]);
 
   return (
     <>
