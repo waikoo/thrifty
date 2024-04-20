@@ -7,10 +7,13 @@ import { useTranslation } from '@/i18n/client';
 import { type Gender, Locales } from '@/types/link';
 import GenderMenu from '@/app/components/navigation/GenderMenu';
 import { useGenderStore } from '@/state/client/genderState';
+import useViewport from '@/app/components/hooks/useViewport';
+import { viewport } from '@/app/components/data/universalStyles';
 
 export default function Gender() {
   const [, currentLocale, currentGender,] = usePathname().split('/');
   const { showGenderMenu, setGender, setShowGenderMenu } = useGenderStore()
+  const viewportWidth = useViewport()
 
   const { t } = useTranslation(currentLocale as Locales, 'layout')
   const categories = [
@@ -43,7 +46,7 @@ export default function Gender() {
           ))}
         </ul>
       </div>
-      {showGenderMenu && <GenderMenu />}
+      {viewportWidth > viewport.lg && showGenderMenu && <GenderMenu />}
     </nav>
   );
 };

@@ -18,7 +18,7 @@ export default function GenderMenu() {
   }
 
   return (
-    <section className="absolute inset-0 top-10 h-screen bg-black bg-opacity-50 backdrop-blur-sm">
+    <section className="absolute inset-0 top-28 h-screen bg-black bg-opacity-50 backdrop-blur-sm z-50">
       <div className="border-darkgrey absolute inset-x-0 left-[-15rem] z-50 w-screen border-t-[0.05rem]"></div>
       <div
         className="bg-bkg min-w-screen absolute inset-x-0 z-40 mx-auto flex gap-32 overflow-y-hidden px-12 py-12"
