@@ -6,18 +6,21 @@ import { twMerge as tm } from "tailwind-merge";
 type LogoProps = {
   className?: string
   logoColor?: string
+  width?: string
 };
 
-const Logo = ({ className, logoColor }: LogoProps) => {
+const Logo = ({ className, logoColor, width }: LogoProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={132}
-      height={21}
+      viewBox="0 0 132 21"
+      width={width}
+      height={'100%'}
+      preserveAspectRatio='xMidYMid meet'
       fill="none"
-      className={tm(className)}
+      className={tm(`${className}`)}
     >
       <path
         fill={logoColor || color}
