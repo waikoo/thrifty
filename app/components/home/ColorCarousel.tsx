@@ -1,8 +1,9 @@
-import { Gender } from '@/types/link';
 import path from 'path'
 import fs from 'fs/promises'
+
 import ColorCarouselImages from '@/app/components/home/ColorCarouselImages';
-import ColorCarouselTitle from './ColorCarouselTitle';
+import ColorCarouselTitle from '@/app/components/home/ColorCarouselTitle';
+import { Gender } from '@/types/link';
 
 type ColorCarouselProps = {
   gender: Gender

@@ -1,6 +1,9 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  /* @import "tailwind/base";
+  @import "tailwind/components";
+  @import "tailwind/utilities"; */
 
 *,
 *::before,
@@ -8,9 +11,9 @@
   box-sizing: border-box;
 }
 
-@layer base {
-  :root {
-    --clr-bkg: 0deg 0% 100%;
+  @layer base {
+    :root {
+      --clr-bkg: 0deg 0% 100%;
     --clr-content: 210deg 15% 10%;
     --clr-grey: 0deg 0% 85%;
     --clr-faded: 0deg 0% 69%;
@@ -31,26 +34,78 @@
     --clr-t_purple: 256 100 80;
     --clr-t_red: 0 100 50;
     --clr-t_green: 87 100 72;
-  }
+      --background: 0 0% 100%;
+      --foreground: 0 0% 3.9%;
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --clr-bkg: 0deg 0% 100%;
-      --clr-content: 210deg 15% 10%;
-      --clr-grey: 0deg 0% 45%;
-      --clr-faded: 0deg 0% 69%;
+      --card: 0 0% 100%;
+      --card-foreground: 0 0% 3.9%;
+
+      --popover: 0 0% 100%;
+      --popover-foreground: 0 0% 3.9%;
+
+      --primary: 0 0% 9%;
+      --primary-foreground: 0 0% 98%;
+
+      --secondary: 0 0% 96.1%;
+      --secondary-foreground: 0 0% 9%;
+
+      --muted: 0 0% 96.1%;
+      --muted-foreground: 0 0% 45.1%;
+
+      --accent: 0 0% 96.1%;
+      --accent-foreground: 0 0% 9%;
+
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 0 0% 98%;
+
+      --border: 0 0% 89.8%;
+      --input: 0 0% 89.8%;
+      --ring: 0 0% 3.9%;
+
+      --radius: 0.5rem;
     }
 
-    :root[data-theme="dark"] {
-      --clr-bkg: 210deg 15% 10%;
-      --clr-content: 0deg 0% 100%;
-      --clr-grey: 0deg 0% 45%;
-      --clr-faded: 0deg 0% 69%;
+    .dark {
+      --background: 0 0% 3.9%;
+      --foreground: 0 0% 98%;
+
+      --card: 0 0% 3.9%;
+      --card-foreground: 0 0% 98%;
+
+      --popover: 0 0% 3.9%;
+      --popover-foreground: 0 0% 98%;
+
+      --primary: 0 0% 98%;
+      --primary-foreground: 0 0% 9%;
+
+      --secondary: 0 0% 14.9%;
+      --secondary-foreground: 0 0% 98%;
+
+      --muted: 0 0% 14.9%;
+      --muted-foreground: 0 0% 63.9%;
+
+      --accent: 0 0% 14.9%;
+      --accent-foreground: 0 0% 98%;
+
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 0 0% 98%;
+
+      --border: 0 0% 14.9%;
+      --input: 0 0% 14.9%;
+      --ring: 0 0% 83.1%;
     }
   }
-}
 
-.separator::before {
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }
+
+  .separator::before {
   content: "l";
   color: var(--clr-t_cream);
   position: absolute;
