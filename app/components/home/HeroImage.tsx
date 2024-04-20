@@ -19,12 +19,12 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
   const kidsSalePosition = state === 'sale' && gender === 'kids' && currentViewport < viewport.lg ? 'objectPosition2' : 'object-center'
   const salePadding = state === 'sale' ? 'lg:p-2' : ''
   const inverse = theme === 'dark' ? 'from-white' : 'from-black'
-
+  const showOverlayOnDesktop = state === 'new_in' && currentViewport > viewport.lg ? '' : 'hidden'
 
   return (
     <div className={`w-full flex ${salePadding} ${blackOnSale} rounded-[1.8rem] h-[25rem] sm:h-[43rem] md:h-[60rem] lg:h-[36rem] relative`}>
       {state === 'new_in' &&
-        <div className={`w-[50%] h-[97%] bg-gradient-to-l ${inverse} absolute right-0 opacity-80 rounded-[1.8rem]`}></div>
+        <div className={`w-[50%] h-[97%] bg-gradient-to-l ${inverse} ${showOverlayOnDesktop} absolute right-0 opacity-80 rounded-[1.8rem]`}></div>
       }
       <img
         src={`/images/hero/${state}_${gender}.jpg`}
