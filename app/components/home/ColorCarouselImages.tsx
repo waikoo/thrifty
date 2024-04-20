@@ -19,7 +19,7 @@ type ColorCarouselImagesProps = {
 export default function ColorCarouselImages({ images, gender }: ColorCarouselImagesProps) {
 
   return (
-    <Carousel className="mx-auto w-full sm:w-[90%]">
+    <Carousel className="mx-auto w-full sm:w-[90%] mt-[1.5625rem]">
       <CarouselContent className="mx-auto">
 
         {images.map((filename) => (
