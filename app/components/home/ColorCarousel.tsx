@@ -14,7 +14,7 @@ export default async function ColorCarousel({ gender }: ColorCarouselProps) {
   const imageFilenames = await fs.readdir(imageDirectory);
 
   return (
-    <section>
+    <section className="mt-[3.125rem]">
 
       <ColorCarouselTitle />
 
