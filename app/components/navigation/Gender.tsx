@@ -21,9 +21,9 @@ export default function Gender() {
 
   return (
     <nav className="w-screen md:w-full">
-      <div className="mx-auto w-[300px] pt-2">
+      <div className="mx-auto w-[65%] pt-2">
 
-        <ul className="grid cursor-pointer grid-cols-3 justify-items-center dark:text-t_white text-t_black"
+        <ul className="grid cursor-pointer grid-cols-3 text-[0.75rem] justify-items-center dark:text-t_white text-t_black"
         >
           {categories.map((gender: Gender) => (
             <li
