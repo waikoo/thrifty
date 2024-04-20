@@ -3,6 +3,7 @@ import Hero from "@/app/components/home/Hero"
 import { Gender, Locales } from "@/types/link"
 import HeroBarSwitch from "@/app/components/home/HeroBarSwitch"
 import ColorCarousel from "@/app/components/home/ColorCarousel"
+import NavBarMobile from "@/app/components/navigation/NavBarMobile"
 
 type PageProps = {
   params: {
@@ -14,10 +15,11 @@ type PageProps = {
 export default async function Page({ params: { lang, gender }, searchParams, }: PageProps) {
 
   return (
-    <main className="mx-auto mt-2 w-full overflow-hidden max-w-[90vw] xl:max-w-[1280px]">
+    <main className="relative mx-auto mt-2 w-full overflow-hidden max-w-[90vw] xl:max-w-[1280px]">
       <Hero />
       <HeroBarSwitch />
 
+      <NavBarMobile />
       <ColorCarousel gender={gender} />
 
       {/* <ApparelGrid {...{ lang }} /> */}
