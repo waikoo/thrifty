@@ -1,4 +1,4 @@
-import { ApparelGrid, PopularBrands, NewsletterSubscription } from "@/app/components/home"
+import { NewsletterSubscription } from "@/app/components/home"
 import Hero from "@/app/components/home/Hero"
 import { Gender, Locales } from "@/types/link"
 import HeroBarSwitch from "@/app/components/home/HeroBarSwitch"
@@ -22,8 +22,6 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
       <NavBarMobile />
       <ColorCarousel gender={gender} />
 
-      {/* <ApparelGrid {...{ lang }} /> */}
-      {/* <PopularBrands {... { lang, gender }} /> */}
       {/* <NewsletterSubscription {... { lang }} /> */}
     </main>
   )
