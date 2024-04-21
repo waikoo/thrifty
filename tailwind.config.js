@@ -34,6 +34,16 @@ module.exports = {
         t_purple: "hsl(var(--clr-t_purple) / <alpha-value>)",
         t_red: "hsl(var(--clr-t_red) / <alpha-value>)",
         t_green: "hsl(var(--clr-t_green) / <alpha-value>)",
+
+        t_yellow_cc: "hsl(var(--clr-t_yellow_cc) / <alpha-value>)",
+        t_red_cc: "hsl(var(--clr-t_red_cc) / <alpha-value>)",
+        t_green_cc: "hsl(var(--clr-t_green_cc) / <alpha-value>)",
+        t_purple_cc: "hsl(var(--clr-t_purple_cc) / <alpha-value>)",
+        t_white_cc: "hsl(var(--clr-t_white_cc) / <alpha-value>)",
+        t_black_cc: "hsl(var(--clr-t_black_cc) / <alpha-value>)",
+        t_blue_cc: "hsl(var(--clr-t_blue_cc) / <alpha-value>)",
+        t_pink_cc: "hsl(var(--clr-t_pink_cc) / <alpha-value>)",
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
