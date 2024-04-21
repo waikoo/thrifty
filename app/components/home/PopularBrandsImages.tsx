@@ -26,8 +26,8 @@ export default function PopularBrandsImages() {
           alt="a woman wearing a green striped adidas jacket"
           className={`w-full h-full object-cover ${borderRadius}`}
         />
-        <div className={`absolute inset-0 z-40 ${borderRadius} ${bgColor}`}></div>
-        <AdidasSVG className="absolute inset-0 z-50 mx-auto" textColor={textColor} />
+        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
+        <AdidasSVG className="absolute inset-0 z-30 mx-auto" textColor={textColor} />
       </div>
 
       {/*Calvin Klein*/}
@@ -37,8 +37,8 @@ export default function PopularBrandsImages() {
           alt="calvin klein jeans from the back"
           className={`w-full h-full ${borderRadius}`}
         />
-        <div className={`absolute inset-0 z-40 ${borderRadius} ${bgColor}`}></div>
-        <CalvinKleinSVG className={`absolute inset-0 z-50 mx-auto ${borderRadius}`} textColor={textColor} />
+        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
+        <CalvinKleinSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
       </div>
 
       {/*Vans*/}
@@ -48,8 +48,8 @@ export default function PopularBrandsImages() {
           alt="two black vans shoes on two pairs of feet"
           className={`w-full h-full object-cover ${borderRadius}`}
         />
-        <div className={`absolute inset-0 z-40 ${borderRadius} ${bgColor}`}></div>
-        <VansSVG className={`absolute inset-0 z-50 mx-auto ${borderRadius}`} textColor={textColor} />
+        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
+        <VansSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
       </div>
 
       {/*Nike*/}
@@ -59,8 +59,8 @@ export default function PopularBrandsImages() {
           alt="a white nike shoe hanging from its shoelaces reflected in blue tiles"
           className={`w-full h-full object-cover ${borderRadius}`}
         />
-        <div className={`absolute inset-0 z-40 ${borderRadius} ${bgColor}`}></div>
-        <NikeSVG className={`absolute inset-0 z-50 mx-auto ${borderRadius}`} textColor={textColor} />
+        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
+        <NikeSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
       </div>
 
       {/*Mango*/}
@@ -70,8 +70,8 @@ export default function PopularBrandsImages() {
           alt="a man wearing a green long sleeve shirt and a woman in an orange top in a rocky backdrop"
           className={`w-full h-full object-cover ${borderRadius}`}
         />
-        <div className={`absolute inset-0 z-40 ${borderRadius} ${bgColor}`}></div>
-        <MangoSVG className={`absolute inset-0 z-50 mx-auto ${borderRadius}`} textColor={textColor} />
+        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
+        <MangoSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
       </div>
 
       {/*H&M*/}
@@ -81,8 +81,8 @@ export default function PopularBrandsImages() {
           alt="a woman facing away but turning back her head toward the camera in a khaki trench coat"
           className={`w-full h-full object-cover ${borderRadius}`}
         />
-        <div className={`absolute inset-0 z-40 ${borderRadius} ${bgColor}`}></div>
-        <HMSVG className={`absolute inset-0 z-50 mx-auto ${borderRadius}`} textColor={textColor} />
+        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
+        <HMSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
       </div>
 
       {/*Zara*/}
@@ -92,8 +92,8 @@ export default function PopularBrandsImages() {
           alt="a pair of black boots on a white background"
           className={`w-full h-full object-cover ${borderRadius}`}
         />
-        <div className={`absolute inset-0 z-40 ${borderRadius} ${bgColor}`}></div>
-        <ZaraSVG className={`absolute inset-0 z-50 mx-auto ${borderRadius}`} textColor={textColor} />
+        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
+        <ZaraSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
       </div>
 
       {/*Lacoste*/}
@@ -103,8 +103,8 @@ export default function PopularBrandsImages() {
           alt="a man and a woman looking at the camera in baby blue lacoste jackets"
           className={`w-full h-full object-cover ${borderRadius}`}
         />
-        <div className={`absolute inset-0 z-40 ${borderRadius} ${bgColor}`}></div>
-        <LacosteSVG className={`absolute inset-0 z-50 mx-auto ${borderRadius}`} textColor={textColor} />
+        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
+        <LacosteSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
       </div>
 
       {/*Converse*/}
@@ -114,8 +114,8 @@ export default function PopularBrandsImages() {
           alt="two pairs of feet in the classic low-top black and white converse shoes"
           className={`w-full h-full object-cover ${borderRadius}`}
         />
-        <div className={`absolute inset-0 z-40 ${borderRadius} ${bgColor}`}></div>
-        <ConverseSVG className={`absolute inset-0 z-50 mx-auto ${borderRadius}`} textColor={textColor} />
+        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
+        <ConverseSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
       </div>
 
     </div>
