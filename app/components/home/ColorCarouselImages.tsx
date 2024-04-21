@@ -18,13 +18,13 @@ type ColorCarouselImagesProps = {
 export default function ColorCarouselImages({ images, gender }: ColorCarouselImagesProps) {
 
   return (
-    <Carousel className="mx-auto w-full sm:w-[90%] mt-[1.5625rem]">
-      <CarouselContent className="mx-auto">
+    <Carousel className="mx-auto w-full sm:w-[94%] mt-[1.5625rem]">
+      <CarouselContent className="mx-auto -ml-3">
 
         {images.map((filename, i) => (
           <CarouselItem
             key={filename}
-            className="basis-1/2 sm:basis-1/3 lg:basis-1/4 xl:basis-1/5 2xl:basis-1/6"
+            className="basis-1/2 sm:basis-1/3 lg:basis-1/4"
           >
 
             <ColorCarouselImage
