@@ -28,6 +28,15 @@ export const futura = localFont({
   variable: '--font-futura'
 })
 
+export const futura_bold = localFont({
+  src: [
+    {
+      path: '../public/fonts/futura/futura_bold.woff2',
+      weight: '700',
+    }
+  ],
+  variable: '--font-futura_bold'
+})
 export const alokary = localFont({
   src: [
     {

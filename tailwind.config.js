@@ -82,6 +82,7 @@ module.exports = {
         allenoire: ["var(--font-allenoire)"],
         alokary: ["var(--font-alokary)"],
         futura: ["var(--font-futura)"],
+        futura_bold: ["var(--font-futura_bold)"],
         avant_garde: ["var(--font-avant_garde)"],
         noir_pro: ["var(--font-noir_pro)"],
       },
@@ -92,6 +93,15 @@ module.exports = {
         pr: "1px 4px 1px var(--tw-shadow-color)",
         ne: "1px 2px 28px var(--tw-shadow-color)",
         nm: "5px 5px 3px var(--tw-shadow-color)",
+      },
+      letterSpacing: {
+        tightest: '-.075em',
+        tighter: '-.05em',
+        tight: '-.025em',
+        normal: '0',
+        wide: '.025em',
+        wider: '.05em',
+        widest: '.1em',
       },
       borderRadius: {
         lg: "var(--radius)",
