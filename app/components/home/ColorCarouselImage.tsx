@@ -22,7 +22,7 @@ export default function ColorCarouselImage({ index, filename, gender }: ColorCar
   return (
     <Link
       href={`/${lang}/${gender}/products/?gender=${gender}&color=${colorNames[index].toLowerCase()}&page=1`}
-      className="flex flex-col items-center"
+      className="flex flex-col items-center pt-3"
     >
       <div
         onMouseEnter={() => setShowOverlay(false)}
@@ -32,7 +32,7 @@ export default function ColorCarouselImage({ index, filename, gender }: ColorCar
         <img
           src={`/images/color_carousel/${gender}/${filename}`}
           alt={`a ${pluralToSingular(gender)} in ${removeExtension(filename)} clothes`}
-          className="rounded-[10rem] w-[10rem] mx-auto"
+          className="rounded-[10rem] w-[10rem] mx-auto hover:scale-110 object-center"
         />
         {showOverlay && (
           <div className={`absolute h-full w-full sm:w-[10rem] ${colorCarouselColors[index]} top-0 z-50 rounded-[10rem]`}
