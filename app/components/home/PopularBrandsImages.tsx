@@ -20,9 +20,10 @@ export default function PopularBrandsImages() {
   const bgColor = theme === 'light' ? 'bg-t_white/40' : 'bg-t_black/40'
   const borderRadius = 'rounded-[2.5rem]'
   const grid = viewportWidth < viewport.lg ? 'grid-cols-[5vw_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_1fr_auto]' : 'grid-cols-[5vw_auto_auto_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_auto]'
+  const gap = viewportWidth > viewport.md ? 'gap-[0.3125rem]' : 'gap-[0.1875rem]'
 
   return (
-    <div className={`grid ${grid} justify-items-center *:rounded-[2.5rem] gap-[0.1875rem] md:text-[0.3125rem]`}>
+    <div className={`grid ${grid} justify-items-center *:rounded-[2.5rem] ${gap} md:text-[0.3125rem]`}>
 
       {/*Adidas*/}
       <div className={`relative row-start-2 col-start-2 col-end-3 ${bgColor}`}>
