@@ -18,8 +18,8 @@ export default function PopularBrandsImages() {
   const { theme } = useThemeStore()
   const textColor = theme === 'light' ? 'black' : 'white'
   const bgColor = theme === 'light' ? 'bg-t_white/40' : 'bg-t_black/40'
-  const borderRadius = 'rounded-[2.5rem]'
-  const grid = viewportWidth < viewport.lg ? 'grid-cols-[5vw_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_1fr_auto]' : 'grid-cols-[5vw_auto_auto_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_auto]'
+  const borderRadius = 'rounded-[15px] sm:rounded-[30px] lg:rounded-[40px]'
+  const grid = viewportWidth < viewport.xl ? 'grid-cols-[5vw_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_1fr_auto]' : 'grid-cols-[5vw_auto_auto_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_auto]'
   const gap = viewportWidth > viewport.md ? 'gap-[0.3125rem]' : 'gap-[0.1875rem]'
 
   return (
@@ -59,7 +59,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*Nike*/}
-      <div className="relative row-start-3 col-start-2 col-end-3 lg:col-start-5 lg:col-end-6 lg:row-start-2">
+      <div className="relative row-start-3 col-start-2 col-end-3 xl:col-start-5 xl:col-end-6 xl:row-start-2">
         <img
           src={`/images/brands/nike.jpg`}
           alt="a white nike shoe hanging from its shoelaces reflected in blue tiles"
@@ -70,7 +70,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*Mango*/}
-      <div className="relative row-start-3 col-start-3 col-end-4 lg:row-start-2 lg:col-start-6 lg:col-end-7">
+      <div className="relative row-start-3 col-start-3 col-end-4 xl:row-start-2 xl:col-start-6 xl:col-end-7">
         <img
           src={`/images/brands/mango.jpg`}
           alt="a man wearing a green long sleeve shirt and a woman in an orange top in a rocky backdrop"
@@ -81,7 +81,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*H&M*/}
-      <div className="relative row-start-3 col-start-4 col-end-5 lg:row-start-3 lg:col-start-2 lg:col-end-3">
+      <div className="relative row-start-3 col-start-4 col-end-5 xl:row-start-3 xl:col-start-2 xl:col-end-3">
         <img
           src={`/images/brands/h&m.jpg`}
           alt="a woman facing away but turning back her head toward the camera in a khaki trench coat"
@@ -92,7 +92,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*Zara*/}
-      <div className="relative row-start-4 col-start-2 col-end-3 lg:row-start-3 lg:col-start-3 lg:col-end-4">
+      <div className="relative row-start-4 col-start-2 col-end-3 xl:row-start-3 xl:col-start-3 xl:col-end-4">
         <img
           src={`/images/brands/zara.jpg`}
           alt="a pair of black boots on a white background"
@@ -103,7 +103,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*Lacoste*/}
-      <div className="relative row-start-4 col-start-3 col-end-4 lg:row-start-3 lg:col-start-4 lg:col-end-5">
+      <div className="relative row-start-4 col-start-3 col-end-4 xl:row-start-3 xl:col-start-4 xl:col-end-5">
         <img
           src={`/images/brands/lacoste.jpg`}
           alt="a man and a woman looking at the camera in baby blue lacoste jackets"
@@ -114,7 +114,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*Converse*/}
-      <div className="relative row-start-4 col-start-4 col-end-5 lg:row-start-3 lg:col-start-5 lg:col-end-6">
+      <div className="relative row-start-4 col-start-4 col-end-5 xl:row-start-3 xl:col-start-5 xl:col-end-6">
         <img
           src={`/images/brands/converse.jpg`}
           alt="two pairs of feet in the classic low-top black and white converse shoes"
@@ -125,8 +125,8 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*GAP*/}
-      {viewportWidth > viewport.lg &&
-        <div className="relative lg:row-start-3 lg:col-start-6 lg:col-end-7">
+      {viewportWidth > viewport.xl &&
+        <div className="relative xl:row-start-3 xl:col-start-6 xl:col-end-7">
           <img
             src={`/images/brands/converse.jpg`}
             alt="two pairs of feet in the classic low-top black and white converse shoes"
