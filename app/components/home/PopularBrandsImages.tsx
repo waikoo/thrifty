@@ -9,15 +9,20 @@ import HMSVG from '@/app/components/home/icons/HMSVG'
 import ZaraSVG from '@/app/components/home/icons/ZaraSVG'
 import LacosteSVG from '@/app/components/home/icons/LacosteSVG'
 import ConverseSVG from '@/app/components/home/icons/ConverseSVG'
+import { viewport } from '@/app/components/data/universalStyles'
+import useViewport from '@/app/components/hooks/useViewport'
+import GapSVG from '@/app/components/home/icons/GapSVG'
 
 export default function PopularBrandsImages() {
+  const viewportWidth = useViewport()
   const { theme } = useThemeStore()
   const textColor = theme === 'light' ? 'black' : 'white'
   const bgColor = theme === 'light' ? 'bg-t_white/40' : 'bg-t_black/40'
   const borderRadius = 'rounded-[2.5rem]'
+  const grid = viewportWidth < viewport.lg ? 'grid-cols-[5vw_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_1fr_auto]' : 'grid-cols-[5vw_auto_auto_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_auto]'
 
   return (
-    <div className="grid grid-cols-[5vw_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_1fr_auto] justify-items-center *:rounded-[2.5rem] gap-[0.1875rem] md:text-[0.3125rem]">
+    <div className={`grid ${grid} justify-items-center *:rounded-[2.5rem] gap-[0.1875rem] md:text-[0.3125rem]`}>
 
       {/*Adidas*/}
       <div className={`relative row-start-2 col-start-2 col-end-3 ${bgColor}`}>
@@ -53,7 +58,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*Nike*/}
-      <div className="relative row-start-3 col-start-2 col-end-3">
+      <div className="relative row-start-3 col-start-2 col-end-3 lg:col-start-5 lg:col-end-6 lg:row-start-2">
         <img
           src={`/images/brands/nike.jpg`}
           alt="a white nike shoe hanging from its shoelaces reflected in blue tiles"
@@ -64,7 +69,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*Mango*/}
-      <div className="relative row-start-3 col-start-3 col-end-4">
+      <div className="relative row-start-3 col-start-3 col-end-4 lg:row-start-2 lg:col-start-6 lg:col-end-7">
         <img
           src={`/images/brands/mango.jpg`}
           alt="a man wearing a green long sleeve shirt and a woman in an orange top in a rocky backdrop"
@@ -75,7 +80,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*H&M*/}
-      <div className="relative row-start-3 col-start-4 col-end-5">
+      <div className="relative row-start-3 col-start-4 col-end-5 lg:row-start-3 lg:col-start-2 lg:col-end-3">
         <img
           src={`/images/brands/h&m.jpg`}
           alt="a woman facing away but turning back her head toward the camera in a khaki trench coat"
@@ -86,7 +91,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*Zara*/}
-      <div className="relative row-start-4 col-start-2 col-end-3">
+      <div className="relative row-start-4 col-start-2 col-end-3 lg:row-start-3 lg:col-start-3 lg:col-end-4">
         <img
           src={`/images/brands/zara.jpg`}
           alt="a pair of black boots on a white background"
@@ -97,7 +102,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*Lacoste*/}
-      <div className="relative row-start-4 col-start-3 col-end-4">
+      <div className="relative row-start-4 col-start-3 col-end-4 lg:row-start-3 lg:col-start-4 lg:col-end-5">
         <img
           src={`/images/brands/lacoste.jpg`}
           alt="a man and a woman looking at the camera in baby blue lacoste jackets"
@@ -108,7 +113,7 @@ export default function PopularBrandsImages() {
       </div>
 
       {/*Converse*/}
-      <div className="relative row-start-4 col-start-4 col-end-5">
+      <div className="relative row-start-4 col-start-4 col-end-5 lg:row-start-3 lg:col-start-5 lg:col-end-6">
         <img
           src={`/images/brands/converse.jpg`}
           alt="two pairs of feet in the classic low-top black and white converse shoes"
@@ -118,6 +123,18 @@ export default function PopularBrandsImages() {
         <ConverseSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
       </div>
 
+      {/*GAP*/}
+      {viewportWidth > viewport.lg &&
+        <div className="relative lg:row-start-3 lg:col-start-6 lg:col-end-7">
+          <img
+            src={`/images/brands/converse.jpg`}
+            alt="two pairs of feet in the classic low-top black and white converse shoes"
+            className={`w-full h-full object-cover ${borderRadius}`}
+          />
+          <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
+          <GapSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
+        </div>
+      }
     </div>
   )
 }
