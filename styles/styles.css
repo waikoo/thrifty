@@ -126,14 +126,6 @@
     left: 26px;
   }
 
-  html[data-theme="dark"] .placeholda::placeholder {
-    color: white;
-  }
-
-  html[data-theme="light"] .placeholda::placeholder {
-    color: black;
-  }
-
   .height-half {
     height: calc(50% - 2rem);
   }

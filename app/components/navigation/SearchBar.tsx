@@ -46,7 +46,7 @@ export default function SearchBar({ className }: SearchBarProps) {
         type="search"
         name="search"
         placeholder={hide ? '' : t('search')}
-        className={`text-t_black dark:text-t_white placeholda w-full appearance-none self-end border-none bg-transparent p-0 outline-0 ring-0 placeholder:text-[0.8rem] placeholder:font-semibold focus:outline-none focus:ring-0`}
+        className={`text-t_black dark:text-t_white w-full appearance-none self-end border-none bg-transparent p-0 outline-0 ring-0 placeholder:text-[0.8rem] placeholder:text-t_black placeholder:dark:text-t_white placeholder:font-semibold focus:outline-none focus:ring-0`}
         style={{ WebkitAppearance: 'none' }}
       />
     </form>
