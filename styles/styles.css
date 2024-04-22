@@ -34,6 +34,7 @@
       --clr-t_purple: 256 100 80;
       --clr-t_red: 0 100 50;
       --clr-t_green: 87 100 72;
+      --clr-t_green_ll: 87 100 36;
 
       /*Color Carousel Colors*/
       --clr-t_yellow_cc: 54 100 50;
@@ -266,3 +267,14 @@
     object-position: 50% -20%;
     /* transform: scale(1.67); */
   }
+
+@keyframes bouncy {
+  0%, 100% {
+    transform: translateY(-12%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}

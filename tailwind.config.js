@@ -34,6 +34,7 @@ module.exports = {
         t_purple: "hsl(var(--clr-t_purple) / <alpha-value>)",
         t_red: "hsl(var(--clr-t_red) / <alpha-value>)",
         t_green: "hsl(var(--clr-t_green) / <alpha-value>)",
+        t_green_ll: "hsl(var(--clr-t_green_ll) / <alpha-value>)",
 
         t_yellow_cc: "hsl(var(--clr-t_yellow_cc) / <alpha-value>)",
         t_red_cc: "hsl(var(--clr-t_red_cc) / <alpha-value>)",
@@ -89,10 +90,11 @@ module.exports = {
       textShadow: {
         sm: "0 1px 2px var(--tw-shadow-color)",
         DEFAULT: "0 8px 6px var(--tw-shadow-color)",
-        lg: "0 0px 36px var(--tw-shadow-color)",
+        lg: "0 0px 100px var(--tw-shadow-color)",
         pr: "1px 4px 1px var(--tw-shadow-color)",
-        ne: "1px 2px 28px var(--tw-shadow-color)",
-        nm: "5px 5px 3px var(--tw-shadow-color)",
+        ne: "6px 5px 0px var(--tw-shadow-color)",
+        nm: "0px 0px 20px var(--tw-shadow-color)",
+        off: "3px 3px 10px var(--tw-shadow-color)",
       },
       letterSpacing: {
         tightest: '-.075em',
@@ -121,6 +123,7 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'bouncy': 'bouncy 1s infinite'
       },
     },
   },
