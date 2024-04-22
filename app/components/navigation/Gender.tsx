@@ -9,6 +9,7 @@ import GenderMenu from '@/app/components/navigation/GenderMenu';
 import { useGenderStore } from '@/state/client/genderState';
 import useViewport from '@/app/components/hooks/useViewport';
 import { viewport } from '@/app/components/data/universalStyles';
+import { albert, albert_700 } from '@/utils/fonts';
 
 export default function Gender() {
   const [, currentLocale, currentGender,] = usePathname().split('/');
@@ -24,26 +25,30 @@ export default function Gender() {
 
   return (
     <nav className="w-screen md:w-full">
-      <div className="mx-auto w-[70%] pt-2">
+      <div className="mx-auto max-w-[13rem] sm:max-w-[17rem] xl:max-w-[20rem] pt-2">
 
-        <ul className="grid cursor-pointer grid-cols-3 text-[0.75rem] justify-items-center dark:text-t_white text-t_black"
+        <ul className="grid cursor-pointer grid-cols-3 text-[0.75rem] md:text-[0.9375rem] justify-items-center dark:text-t_white text-t_black"
         >
-          {categories.map((gender: Gender) => (
-            <li
-              key={gender}
-              className={`text-${currentGender === gender ? 'content font-extrabold' : 'faded'}`}
-            >
-              <Link
-                href={`/${currentLocale}/${gender.toLowerCase()}`}
-                onMouseOver={() => {
-                  setShowGenderMenu(true)
-                  setGender(gender.toLowerCase() as Gender)
-                }}
+          {categories.map((gender: Gender) => {
+            const lowerCaseGender = gender.toLowerCase()
+            const text = currentGender === lowerCaseGender ? `${albert_700.className}` : `text-t_grey ${albert.className}`
+            return (
+              <li
+                key={gender}
+                className={text}
               >
-                {gender.toUpperCase()}
-              </Link>
-            </li>
-          ))}
+                <Link
+                  href={`/${currentLocale}/${lowerCaseGender}`}
+                  onMouseOver={() => {
+                    setShowGenderMenu(true)
+                    setGender(lowerCaseGender as Gender)
+                  }}
+                >
+                  {gender.toUpperCase()}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
       </div>
       {viewportWidth > viewport.lg && showGenderMenu && <GenderMenu />}

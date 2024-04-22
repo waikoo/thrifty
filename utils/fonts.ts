@@ -4,6 +4,7 @@ import { Rock_Salt } from 'next/font/google';
 import localFont from 'next/font/local';
 
 export const albert = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '400' })
+export const albert_700 = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '700' })
 export const albert_800 = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '800' })
 export const zen_tokyo_zoo = Zen_Tokyo_Zoo({ subsets: ['latin'], display: 'swap', weight: '400' })
 export const rock_salt = Rock_Salt({ subsets: ['latin'], display: 'swap', weight: '400' })
