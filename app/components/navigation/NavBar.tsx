@@ -17,7 +17,7 @@ type NavBarProps = {
 const NavBar = ({ className }: NavBarProps) => {
   const position = usePosition(usePathname())
   const { setShowGenderMenu } = useGenderStore()
-  const noBorderOnScroll = position === 'static' ? 'border-t_black border-b-2' : ''
+  const noBorderOnScroll = position === 'static' ? 'xl:border-t_black xl:border-b-2' : ''
   const currentViewport = useViewport()
   const show = currentViewport < viewport.lg
   const logoWidth = currentViewport < viewport['2xl'] ? '11.6875rem' : '8.1875rem'
