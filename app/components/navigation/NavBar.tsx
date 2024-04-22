@@ -33,7 +33,7 @@ const NavBar = ({ className }: NavBarProps) => {
           </div>
         }
 
-        <SearchBar className="self-end col-start-2 col-end-3" />
+        <SearchBar className="self-end ml-4 col-start-2 col-end-3" />
 
         {position === 'static' ? (
           <WithHome> <Logo className="self-end " width={logoWidth} /> </WithHome>
