@@ -20,7 +20,7 @@ export const getColor = (state: string, theme: string) => {
   if (theme === 'light') {
     return state === 'new_in' ? 'bg-t_black' : 'bg-gray-300'
   } else {
-    return state === 'new_in' ? 'bg-t_white' : 'bg-gray-600'
+    return state === 'new_in' ? 'bg-t_white' : 'bg-gray-300'
   }
 }
 
@@ -28,6 +28,6 @@ export const getColor2 = (state: string, theme: string) => {
   if (theme === 'light') {
     return state === 'sale' ? 'bg-t_black' : 'bg-gray-300'
   } else {
-    return state === 'sale' ? 'bg-t_white' : 'bg-gray-600'
+    return state === 'sale' ? 'bg-t_white' : 'bg-gray-300'
   }
 }

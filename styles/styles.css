@@ -24,6 +24,12 @@
       /*#616161*/
       --clr-t_cream: 0 0 95;
       /*#F2F2F2*/
+      --clr-t_grey_300: 0 0 89;
+      /*#e3e3e3*/
+      --clr-t_grey_400: 0 0 38;
+      /*#616161*/
+      --clr-t_grey_500: 0 0 28;
+      /*#484848*/
       --clr-t_white: 0 0 98;
       /*#F9F9F9*/
       --clr-t_mustard: 61 67 51;
@@ -260,13 +266,16 @@
     /* transform: scale(1.67); */
   }
 
-@keyframes bouncy {
-  0%, 100% {
-    transform: translateY(-12%);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  @keyframes bouncy {
+
+    0%,
+    100% {
+      transform: translateY(-12%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
   }
-  50% {
-    transform: translateY(0);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
-}
