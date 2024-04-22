@@ -24,25 +24,25 @@ const NavBar = ({ className }: NavBarProps) => {
 
   return (
     <section className={`bg-t_white dark:bg-t_black ${position} top-0 z-50 w-screen ${className}`}>
-      <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[auto_1fr_1fr_1fr] lg:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] xl:max-w-[1280px]`}
+      <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[2rem_4rem_1fr_auto_auto] lg:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] xl:max-w-[1280px]`}
         onMouseEnter={() => setShowGenderMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
         {show &&
-          <div className="w-5 h-5 mr-5 self-end">
+          <div className="w-5 h-5 mr-5 self-end col-start-1 col-end-2">
             <IconHamburger />
           </div>
         }
 
-        <SearchBar className="self-end" />
+        <SearchBar className="self-end col-start-2 col-end-3" />
 
         {position === 'static' ? (
-          <WithHome> <Logo className="self-end" width={logoWidth} /> </WithHome>
+          <WithHome> <Logo className="self-end " width={logoWidth} /> </WithHome>
         ) : (
           <Gender />
         )}
 
         {/* on scroll Category shows up instead of Thriftstudio logo */}
-        <NavIcons className="flex items-center gap-6 pt-2 self-end justify-self-end" />
+        <NavIcons className="flex items-center gap-6 pt-2 self-end justify-self-end col-start-5 col-end-6" />
       </div>
     </section>
   )
