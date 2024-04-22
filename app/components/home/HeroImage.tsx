@@ -21,10 +21,11 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
   const inverse = theme === 'dark' ? 'from-white' : 'from-black'
   const showOverlayOnDesktop = state === 'new_in' && currentViewport > viewport.xl ? '' : 'hidden'
   const borderRadius = 'rounded-[1.25rem] md:rounded-[2.5rem]'
-  const height = state === 'new_in' ? 'xl:h-[39.42rem]' : 'xl:-h-[39.375]'
+  const borderColor = state === 'sale' ? 'border-t_green' : 'border-t_purple'
+  const height = state === 'new_in' ? 'xl:h-[39rem]' : 'xl:h-[39.375]'
 
   return (
-    <div className={`w-full flex ${salePadding} ${blackOnSale} ${borderRadius} h-[27.3125rem] sm:h-[43rem] md:h-[60rem] xl:h-[39.375rem] relative`}>
+    <div className={`w-full flex ${salePadding} ${blackOnSale} ${borderRadius} h-[27.3125rem] sm:h-[43rem] md:h-[60rem] xl:h-[39.375rem] relative border-[0.125rem] ${borderColor}`}>
       {state === 'new_in' &&
         <div className={`w-[50%] h-full bg-gradient-to-l ${inverse} ${showOverlayOnDesktop} absolute right-0 opacity-80 rounded-[1.8rem]`}></div>
       }
