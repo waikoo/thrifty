@@ -33,7 +33,7 @@ const NavBar = ({ className }: NavBarProps) => {
           </div>
         }
 
-        <SearchBar className="self-end ml-4 col-start-2 col-end-3" />
+        <SearchBar className="self-end ml-4 col-start-2 col-end-3 lg:col-start-1 lg:col-end-2" />
 
         {position === 'static' ? (
           <WithHome> <Logo className="self-end " width={logoWidth} /> </WithHome>
@@ -42,7 +42,7 @@ const NavBar = ({ className }: NavBarProps) => {
         )}
 
         {/* on scroll Category shows up instead of Thriftstudio logo */}
-        <NavIcons className="flex items-center gap-6 pt-2 self-end justify-self-end col-start-5 col-end-6" />
+        <NavIcons className="flex items-center gap-6 pt-2 self-end justify-self-end col-start-5 col-end-6 lg:col-start-3 lg:col-end-4" />
       </div>
     </section>
   )
