@@ -12,7 +12,7 @@ export default function Banner() {
   const idx = useMessageDisplay(bannerMessages, 5000);
   const textColor = showBanner ? 'text-black' : 'text-content'
   const currentViewport = useViewport()
-  const hideElement = currentViewport > viewport.md
+  const hideElement = currentViewport > viewport.xl
   const gridCols = hideElement ? 'grid-cols-[auto_1fr_auto]' : 'grid-cols-1 py-1'
 
   return (
@@ -23,7 +23,7 @@ export default function Banner() {
 
             {hideElement && <LanguagePicker isTop />}
 
-            <span className="justify-self-center mx-auto h-[35px] text-[0.75rem] whitespace-nowrap flex justify-center items-center">
+            <span className="justify-self-center mx-auto h-[35px] text-[0.75rem] md:text-[0.9375rem] xl:text-[0.875rem] whitespace-nowrap flex justify-center items-center">
               {bannerMessages[idx]}
             </span>
 
