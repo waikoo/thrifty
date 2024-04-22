@@ -37,7 +37,8 @@ export default function SearchBar({ className }: SearchBarProps) {
       onSubmit={(e: React.FormEvent) => handleSubmit(e)}
     >
 
-      <div onClick={() => console.log('icon clicked')} className="cursor-pointer">
+      <div
+        className="cursor-pointer">
         <IconSearch className="self-end" />
       </div>
 
