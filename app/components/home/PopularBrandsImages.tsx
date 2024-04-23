@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
 import AdidasSVG from '@/app/components/home/icons/AdidasSVG'
 import CalvinKleinSVG from '@/app/components/home/icons/CalvinKleinSVG'
-import { useThemeStore } from '@/state/themeState'
 import VansSVG from '@/app/components/home/icons/VansSVG'
 import NikeSVG from '@/app/components/home/icons/NikeSVG'
 import MangoSVG from '@/app/components/home/icons/MangoSVG'
@@ -9,13 +11,17 @@ import HMSVG from '@/app/components/home/icons/HMSVG'
 import ZaraSVG from '@/app/components/home/icons/ZaraSVG'
 import LacosteSVG from '@/app/components/home/icons/LacosteSVG'
 import ConverseSVG from '@/app/components/home/icons/ConverseSVG'
+import GapSVG from '@/app/components/home/icons/GapSVG'
+
+import { useThemeStore } from '@/state/themeState'
 import { viewport } from '@/app/components/data/universalStyles'
 import useViewport from '@/app/components/hooks/useViewport'
-import GapSVG from '@/app/components/home/icons/GapSVG'
+import getLangAndGender from '@/utils/getLangAndGender'
 
 export default function PopularBrandsImages() {
   const viewportWidth = useViewport()
   const { theme } = useThemeStore()
+  const { lang, gender } = getLangAndGender(usePathname())
   const textColor = theme === 'light' ? 'black' : 'white'
   const bgColor = theme === 'light' ? 'bg-t_white/40' : 'bg-t_black/40'
   const borderRadius = 'rounded-[15px] sm:rounded-[30px] lg:rounded-[40px]'
@@ -26,7 +32,10 @@ export default function PopularBrandsImages() {
     <div className={`grid ${grid} justify-items-center *:rounded-[2.5rem] ${gap} md:text-[0.3125rem]`}>
 
       {/*Adidas*/}
-      <div className={`relative row-start-2 col-start-2 col-end-3 ${bgColor}`}>
+      <Link
+        href={`/${lang}/${gender}/products/?gender=${gender}&brand=adidas&shop-by=new+in&sort-by=newfirst&page=1`}
+        scroll={true}
+        className={`relative row-start-2 col-start-2 col-end-3 ${bgColor}`}>
         <img
           src={`/images/brands/adidas.jpg`}
           alt="a woman wearing a green striped adidas jacket"
@@ -34,10 +43,13 @@ export default function PopularBrandsImages() {
         />
         <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
         <AdidasSVG className="absolute inset-0 z-30 mx-auto" textColor={textColor} />
-      </div>
+      </Link>
 
       {/*Calvin Klein*/}
-      <div className="relative row-start-2 col-start-3 col-end-4">
+      <Link
+        href={`/${lang}/${gender}/products/?gender=${gender}&brand=calvin+klein&shop-by=new+in&sort-by=newfirst&page=1`}
+        scroll={true}
+        className="relative row-start-2 col-start-3 col-end-4">
         <img
           src={`/images/brands/calvin-klein.jpg`}
           alt="calvin klein jeans from the back"
@@ -45,10 +57,13 @@ export default function PopularBrandsImages() {
         />
         <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
         <CalvinKleinSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </div>
+      </Link>
 
       {/*Vans*/}
-      <div className="relative row-start-2 col-start-4 col-end-5">
+      <Link
+        href={`/${lang}/${gender}/products/?gender=${gender}&brand=vans&shop-by=new+in&sort-by=newfirst&page=1`}
+        scroll={true}
+        className="relative row-start-2 col-start-4 col-end-5">
         <img
           src={`/images/brands/vans.jpg`}
           alt="two black vans shoes on two pairs of feet"
@@ -56,10 +71,13 @@ export default function PopularBrandsImages() {
         />
         <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
         <VansSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </div>
+      </Link>
 
       {/*Nike*/}
-      <div className="relative row-start-3 col-start-2 col-end-3 xl:col-start-5 xl:col-end-6 xl:row-start-2">
+      <Link
+        href={`/${lang}/${gender}/products/?gender=${gender}&brand=nike&shop-by=new+in&sort-by=newfirst&page=1`}
+        scroll={true}
+        className="relative row-start-3 col-start-2 col-end-3 xl:col-start-5 xl:col-end-6 xl:row-start-2">
         <img
           src={`/images/brands/nike.jpg`}
           alt="a white nike shoe hanging from its shoelaces reflected in blue tiles"
@@ -67,10 +85,13 @@ export default function PopularBrandsImages() {
         />
         <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
         <NikeSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </div>
+      </Link>
 
       {/*Mango*/}
-      <div className="relative row-start-3 col-start-3 col-end-4 xl:row-start-2 xl:col-start-6 xl:col-end-7">
+      <Link
+        href={`/${lang}/${gender}/products/?gender=${gender}&brand=mango&shop-by=new+in&sort-by=newfirst&page=1`}
+        scroll={true}
+        className="relative row-start-3 col-start-3 col-end-4 xl:row-start-2 xl:col-start-6 xl:col-end-7">
         <img
           src={`/images/brands/mango.jpg`}
           alt="a man wearing a green long sleeve shirt and a woman in an orange top in a rocky backdrop"
@@ -78,10 +99,13 @@ export default function PopularBrandsImages() {
         />
         <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
         <MangoSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </div>
+      </Link>
 
       {/*H&M*/}
-      <div className="relative row-start-3 col-start-4 col-end-5 xl:row-start-3 xl:col-start-2 xl:col-end-3">
+      <Link
+        href={`/${lang}/${gender}/products/?gender=${gender}&brand=h&m&shop-by=new+in&sort-by=newfirst&page=1`}
+        scroll={true}
+        className="relative row-start-3 col-start-4 col-end-5 xl:row-start-3 xl:col-start-2 xl:col-end-3">
         <img
           src={`/images/brands/h&m.jpg`}
           alt="a woman facing away but turning back her head toward the camera in a khaki trench coat"
@@ -89,10 +113,13 @@ export default function PopularBrandsImages() {
         />
         <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
         <HMSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </div>
+      </Link>
 
       {/*Zara*/}
-      <div className="relative row-start-4 col-start-2 col-end-3 xl:row-start-3 xl:col-start-3 xl:col-end-4">
+      <Link
+        href={`/${lang}/${gender}/products/?gender=${gender}&brand=zara&shop-by=new+in&sort-by=newfirst&page=1`}
+        scroll={true}
+        className="relative row-start-4 col-start-2 col-end-3 xl:row-start-3 xl:col-start-3 xl:col-end-4">
         <img
           src={`/images/brands/zara.jpg`}
           alt="a pair of black boots on a white background"
@@ -100,10 +127,13 @@ export default function PopularBrandsImages() {
         />
         <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
         <ZaraSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </div>
+      </Link>
 
       {/*Lacoste*/}
-      <div className="relative row-start-4 col-start-3 col-end-4 xl:row-start-3 xl:col-start-4 xl:col-end-5">
+      <Link
+        href={`/${lang}/${gender}/products/?gender=${gender}&brand=lacoste&shop-by=new+in&sort-by=newfirst&page=1`}
+        scroll={true}
+        className="relative row-start-4 col-start-3 col-end-4 xl:row-start-3 xl:col-start-4 xl:col-end-5">
         <img
           src={`/images/brands/lacoste.jpg`}
           alt="a man and a woman looking at the camera in baby blue lacoste jackets"
@@ -111,10 +141,13 @@ export default function PopularBrandsImages() {
         />
         <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
         <LacosteSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </div>
+      </Link>
 
       {/*Converse*/}
-      <div className="relative row-start-4 col-start-4 col-end-5 xl:row-start-3 xl:col-start-5 xl:col-end-6">
+      <Link
+        href={`/${lang}/${gender}/products/?gender=${gender}&brand=converse&shop-by=new+in&sort-by=newfirst&page=1`}
+        scroll={true}
+        className="relative row-start-4 col-start-4 col-end-5 xl:row-start-3 xl:col-start-5 xl:col-end-6">
         <img
           src={`/images/brands/converse.jpg`}
           alt="two pairs of feet in the classic low-top black and white converse shoes"
@@ -122,11 +155,14 @@ export default function PopularBrandsImages() {
         />
         <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
         <ConverseSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </div>
+      </Link>
 
       {/*GAP*/}
       {viewportWidth > viewport.xl &&
-        <div className="relative xl:row-start-3 xl:col-start-6 xl:col-end-7">
+        <Link
+          href={`/${lang}/${gender}/products/?gender=${gender}&brand=gap&shop-by=new+in&sort-by=newfirst&page=1`}
+          scroll={true}
+          className="relative xl:row-start-3 xl:col-start-6 xl:col-end-7">
           <img
             src={`/images/brands/converse.jpg`}
             alt="two pairs of feet in the classic low-top black and white converse shoes"
@@ -134,7 +170,7 @@ export default function PopularBrandsImages() {
           />
           <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
           <GapSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-        </div>
+        </Link>
       }
     </div>
   )
