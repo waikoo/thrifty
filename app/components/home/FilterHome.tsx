@@ -1,12 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link'
+
 import { Gender, Locales } from '@/types/link'
 import { albert, albert_500, rock_salt } from '@/utils/fonts'
 
 type FilterHomeProps = {
   gender: Gender
+  lang: Locales
 }
 
-export default function FilterHome({ gender }: FilterHomeProps) {
+export default function FilterHome({ gender, lang }: FilterHomeProps) {
 
   return (
     <section className={`bg-[url('/images/filters/water.jpg')] object-cover object-top h-[900px] w-full bg-fixed ${rock_salt.className}`}>
@@ -35,7 +38,11 @@ export default function FilterHome({ gender }: FilterHomeProps) {
             <p className="text-[1.4375rem] text-center">CUSTOMIZE <span className={`${albert.className} block text-[0.75rem]`}>YOUR SEARCHES</span></p>
             <p className="mt-2 text-[1.4375rem] text-center">SHOP FASTER<span className={`${albert.className} block text-[0.75rem]`}>THAN EVER BEFORE</span></p>
 
-            <button className={`${albert_500.className} py-[0.5rem] px-[1.5rem] bg-t_black text-t_white rounded-full text-[0.8125rem] mt-[8rem] cursor-pointer`}>GO TO FILTERS</button>
+            <Link href={`/${lang}/${gender}/products?gender=${gender}&sort-by=newfirst&page=1`}
+              className={`${albert_500.className} py-[0.5rem] px-[1.5rem] bg-t_black text-t_white rounded-full text-[0.8125rem] mt-[8rem] cursor-pointer`}
+            >
+              GO TO FILTERS
+            </Link>
           </div>
         </div>
 
