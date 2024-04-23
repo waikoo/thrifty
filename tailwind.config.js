@@ -99,6 +99,10 @@ module.exports = {
         ne: "6px 5px 0px var(--tw-shadow-color)",
         nm: "0px 0px 20px var(--tw-shadow-color)",
         off: "3px 3px 10px var(--tw-shadow-color)",
+        fil: "0px 3px 6px var(--tw-shadow-color)",
+      },
+      boxShadow: {
+        card: '0px 15px 10px #000',
       },
       letterSpacing: {
         tightest: '-.075em',

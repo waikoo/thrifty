@@ -279,3 +279,7 @@
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
     }
   }
+
+  .cardShadow {
+    box-shadow: 0px 4px 10px 5px #1343577e;
+  }
