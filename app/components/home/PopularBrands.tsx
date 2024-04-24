@@ -1,8 +1,14 @@
 "use client"
 import { useThemeStore } from '@/state/themeState'
 import PopularBrandsImages from '@/app/components/home/PopularBrandsImages'
+import { Gender, Locales } from '@/types/link'
 
-export default function PopularBrands() {
+type PopularBrandsProps = {
+  lang: Locales
+  gender: Gender
+}
+
+export default function PopularBrands({ lang, gender }: PopularBrandsProps) {
   const { theme } = useThemeStore()
   const textColor = theme === 'dark' ? 'text-t_black' : 'text-t_white'
   const bgColor = theme === 'dark' ? 'bg-t_black' : 'bg-t_white'
@@ -14,7 +20,7 @@ export default function PopularBrands() {
         POPULAR
       </span>
 
-      <PopularBrandsImages />
+      <PopularBrandsImages lang={lang} gender={gender} />
 
       <span className="text-[15.5vw] lg:text-[8.5vw] lg:ml-[4rem] lg:tracking-[5rem] font-alokary block text-center -mt-1">
         BRANDS

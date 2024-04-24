@@ -26,7 +26,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
       </div>
       <ColorCarousel gender={gender} />
 
-      <PopularBrands />
+      <PopularBrands gender={gender} lang={lang} />
 
       <FilterHome gender={gender} lang={lang} />
 

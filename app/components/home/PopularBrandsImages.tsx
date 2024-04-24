@@ -17,17 +17,22 @@ import { useThemeStore } from '@/state/themeState'
 import { viewport } from '@/app/components/data/universalStyles'
 import useViewport from '@/app/components/hooks/useViewport'
 import getLangAndGender from '@/utils/getLangAndGender'
+import { Gender, Locales } from '@/types/link'
 
-export default function PopularBrandsImages() {
+type PopularBrandsImagesProps = {
+  lang: Locales
+  gender: Gender
+}
+
+export default function PopularBrandsImages({ lang, gender }: PopularBrandsImagesProps) {
   const viewportWidth = useViewport()
   const { theme } = useThemeStore()
-  const { lang, gender } = getLangAndGender(usePathname())
   const textColor = theme === 'light' ? 'black' : 'white'
   const bgColor = theme === 'light' ? 'bg-t_white/40' : 'bg-t_black/40'
   const borderRadius = 'rounded-[15px] sm:rounded-[30px] lg:rounded-[40px]'
   const grid = viewportWidth < viewport.xl ? 'grid-cols-[5vw_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_1fr_auto]' : 'grid-cols-[5vw_auto_auto_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_auto]'
   const gap = viewportWidth > viewport.md ? 'gap-[0.3125rem]' : 'gap-[0.1875rem]'
-  console.log(textColor)
+
   return (
     <div className={`grid ${grid} justify-items-center *:rounded-[2.5rem] ${gap} md:text-[0.3125rem]`}>
 
@@ -35,6 +40,7 @@ export default function PopularBrandsImages() {
       <Link
         href={`/${lang}/${gender}/products/?gender=${gender}&brand=adidas&shop-by=new+in&sort-by=newfirst&page=1`}
         scroll={true}
+        data-brand="adidas"
         className={`relative row-start-2 col-start-2 col-end-3 ${bgColor}`}>
         <img
           src={`/images/brands/adidas.jpg`}
@@ -49,6 +55,7 @@ export default function PopularBrandsImages() {
       <Link
         href={`/${lang}/${gender}/products/?gender=${gender}&brand=calvin+klein&shop-by=new+in&sort-by=newfirst&page=1`}
         scroll={true}
+        data-brand="calvin+klein"
         className="relative row-start-2 col-start-3 col-end-4">
         <img
           src={`/images/brands/calvin-klein.jpg`}
@@ -63,6 +70,7 @@ export default function PopularBrandsImages() {
       <Link
         href={`/${lang}/${gender}/products/?gender=${gender}&brand=vans&shop-by=new+in&sort-by=newfirst&page=1`}
         scroll={true}
+        data-brand="vans"
         className="relative row-start-2 col-start-4 col-end-5">
         <img
           src={`/images/brands/vans.jpg`}
@@ -77,6 +85,7 @@ export default function PopularBrandsImages() {
       <Link
         href={`/${lang}/${gender}/products/?gender=${gender}&brand=nike&shop-by=new+in&sort-by=newfirst&page=1`}
         scroll={true}
+        data-brand="nike"
         className="relative row-start-3 col-start-2 col-end-3 xl:col-start-5 xl:col-end-6 xl:row-start-2">
         <img
           src={`/images/brands/nike.jpg`}
@@ -91,6 +100,7 @@ export default function PopularBrandsImages() {
       <Link
         href={`/${lang}/${gender}/products/?gender=${gender}&brand=mango&shop-by=new+in&sort-by=newfirst&page=1`}
         scroll={true}
+        data-brand="mango"
         className="relative row-start-3 col-start-3 col-end-4 xl:row-start-2 xl:col-start-6 xl:col-end-7">
         <img
           src={`/images/brands/mango.jpg`}
@@ -105,6 +115,7 @@ export default function PopularBrandsImages() {
       <Link
         href={`/${lang}/${gender}/products/?gender=${gender}&brand=h&m&shop-by=new+in&sort-by=newfirst&page=1`}
         scroll={true}
+        data-brand="h&m"
         className="relative row-start-3 col-start-4 col-end-5 xl:row-start-3 xl:col-start-2 xl:col-end-3">
         <img
           src={`/images/brands/h&m.jpg`}
@@ -119,6 +130,7 @@ export default function PopularBrandsImages() {
       <Link
         href={`/${lang}/${gender}/products/?gender=${gender}&brand=zara&shop-by=new+in&sort-by=newfirst&page=1`}
         scroll={true}
+        data-brand="zara"
         className="relative row-start-4 col-start-2 col-end-3 xl:row-start-3 xl:col-start-3 xl:col-end-4">
         <img
           src={`/images/brands/zara.jpg`}
@@ -133,6 +145,7 @@ export default function PopularBrandsImages() {
       <Link
         href={`/${lang}/${gender}/products/?gender=${gender}&brand=lacoste&shop-by=new+in&sort-by=newfirst&page=1`}
         scroll={true}
+        data-brand="lacoste"
         className="relative row-start-4 col-start-3 col-end-4 xl:row-start-3 xl:col-start-4 xl:col-end-5">
         <img
           src={`/images/brands/lacoste.jpg`}
@@ -147,6 +160,7 @@ export default function PopularBrandsImages() {
       <Link
         href={`/${lang}/${gender}/products/?gender=${gender}&brand=converse&shop-by=new+in&sort-by=newfirst&page=1`}
         scroll={true}
+        data-brand="converse"
         className="relative row-start-4 col-start-4 col-end-5 xl:row-start-3 xl:col-start-5 xl:col-end-6">
         <img
           src={`/images/brands/converse.jpg`}
@@ -162,7 +176,9 @@ export default function PopularBrandsImages() {
         <Link
           href={`/${lang}/${gender}/products/?gender=${gender}&brand=gap&shop-by=new+in&sort-by=newfirst&page=1`}
           scroll={true}
-          className="relative xl:row-start-3 xl:col-start-6 xl:col-end-7">
+          className="relative xl:row-start-3 xl:col-start-6 xl:col-end-7"
+          data-brand="gap"
+        >
           <img
             src={`/images/brands/gap.jpg`}
             alt="two pairs of feet in the classic low-top black and white converse shoes"
