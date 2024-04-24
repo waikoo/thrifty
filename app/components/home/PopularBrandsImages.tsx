@@ -1,7 +1,5 @@
+"use client"
 /* eslint-disable @next/next/no-img-element */
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-
 import AdidasSVG from '@/app/components/home/icons/AdidasSVG'
 import CalvinKleinSVG from '@/app/components/home/icons/CalvinKleinSVG'
 import VansSVG from '@/app/components/home/icons/VansSVG'
@@ -16,8 +14,8 @@ import GapSVG from '@/app/components/home/icons/GapSVG'
 import { useThemeStore } from '@/state/themeState'
 import { viewport } from '@/app/components/data/universalStyles'
 import useViewport from '@/app/components/hooks/useViewport'
-import getLangAndGender from '@/utils/getLangAndGender'
 import { Gender, Locales } from '@/types/link'
+import PopularBrandItem from './PopularBrandItem'
 
 type PopularBrandsImagesProps = {
   lang: Locales
@@ -27,166 +25,110 @@ type PopularBrandsImagesProps = {
 export default function PopularBrandsImages({ lang, gender }: PopularBrandsImagesProps) {
   const viewportWidth = useViewport()
   const { theme } = useThemeStore()
-  const textColor = theme === 'light' ? 'black' : 'white'
-  const bgColor = theme === 'light' ? 'bg-t_white/40' : 'bg-t_black/40'
-  const borderRadius = 'rounded-[15px] sm:rounded-[30px] lg:rounded-[40px]'
   const grid = viewportWidth < viewport.xl ? 'grid-cols-[5vw_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_1fr_auto]' : 'grid-cols-[5vw_auto_auto_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_auto]'
   const gap = viewportWidth > viewport.md ? 'gap-[0.3125rem]' : 'gap-[0.1875rem]'
 
   return (
     <div className={`grid ${grid} justify-items-center *:rounded-[2.5rem] ${gap} md:text-[0.3125rem]`}>
 
-      {/*Adidas*/}
-      <Link
-        href={`/${lang}/${gender}/products/?gender=${gender}&brand=adidas&shop-by=new+in&sort-by=newfirst&page=1`}
-        scroll={true}
-        data-brand="adidas"
-        className={`relative row-start-2 col-start-2 col-end-3 ${bgColor}`}>
-        <img
-          src={`/images/brands/adidas.jpg`}
-          alt="a woman wearing a green striped adidas jacket"
-          className={`w-full h-full object-cover ${borderRadius}`}
-        />
-        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
-        <AdidasSVG className="absolute inset-0 z-30 mx-auto" textColor={textColor} />
-      </Link>
+      <PopularBrandItem
+        brand="adidas"
+        lang={lang}
+        gender={gender}
+        theme={theme}
+        className="row-start-2 col-start-2 col-end-3"
+        alt="a woman wearing a green striped adidas jacket"
+        SVG={AdidasSVG}
+      />
 
-      {/*Calvin Klein*/}
-      <Link
-        href={`/${lang}/${gender}/products/?gender=${gender}&brand=calvin+klein&shop-by=new+in&sort-by=newfirst&page=1`}
-        scroll={true}
-        data-brand="calvin+klein"
-        className="relative row-start-2 col-start-3 col-end-4">
-        <img
-          src={`/images/brands/calvin-klein.jpg`}
-          alt="calvin klein jeans from the back"
-          className={`w-full h-full ${borderRadius}`}
-        />
-        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
-        <CalvinKleinSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </Link>
+      <PopularBrandItem
+        brand="calvin+klein"
+        lang={lang}
+        gender={gender}
+        theme={theme}
+        className="row-start-2 col-start-3 col-end-4"
+        alt="calvin klein jeans from the back"
+        SVG={CalvinKleinSVG}
+      />
 
-      {/*Vans*/}
-      <Link
-        href={`/${lang}/${gender}/products/?gender=${gender}&brand=vans&shop-by=new+in&sort-by=newfirst&page=1`}
-        scroll={true}
-        data-brand="vans"
-        className="relative row-start-2 col-start-4 col-end-5">
-        <img
-          src={`/images/brands/vans.jpg`}
-          alt="two black vans shoes on two pairs of feet"
-          className={`w-full h-full object-cover ${borderRadius}`}
-        />
-        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
-        <VansSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </Link>
+      <PopularBrandItem
+        brand="vans"
+        lang={lang}
+        gender={gender}
+        theme={theme}
+        className="row-start-2 col-start-4 col-end-5"
+        alt="two black vans shoes on two pairs of feet"
+        SVG={VansSVG}
+      />
 
-      {/*Nike*/}
-      <Link
-        href={`/${lang}/${gender}/products/?gender=${gender}&brand=nike&shop-by=new+in&sort-by=newfirst&page=1`}
-        scroll={true}
-        data-brand="nike"
-        className="relative row-start-3 col-start-2 col-end-3 xl:col-start-5 xl:col-end-6 xl:row-start-2">
-        <img
-          src={`/images/brands/nike.jpg`}
-          alt="a white nike shoe hanging from its shoelaces reflected in blue tiles"
-          className={`w-full h-full object-cover ${borderRadius}`}
-        />
-        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
-        <NikeSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </Link>
+      <PopularBrandItem
+        brand="nike"
+        lang={lang}
+        gender={gender}
+        theme={theme}
+        className="row-start-3 col-start-2 col-end-3 xl:col-start-5 xl:col-end-6 xl:row-start-2"
+        alt="a white Nike shoe hanging from its shoelaces reflected in blue tiles"
+        SVG={NikeSVG}
+      />
 
-      {/*Mango*/}
-      <Link
-        href={`/${lang}/${gender}/products/?gender=${gender}&brand=mango&shop-by=new+in&sort-by=newfirst&page=1`}
-        scroll={true}
-        data-brand="mango"
-        className="relative row-start-3 col-start-3 col-end-4 xl:row-start-2 xl:col-start-6 xl:col-end-7">
-        <img
-          src={`/images/brands/mango.jpg`}
-          alt="a man wearing a green long sleeve shirt and a woman in an orange top in a rocky backdrop"
-          className={`w-full h-full object-cover ${borderRadius}`}
-        />
-        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
-        <MangoSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </Link>
+      <PopularBrandItem
+        brand="mango"
+        lang={lang}
+        gender={gender}
+        theme={theme}
+        className="row-start-3 col-start-3 col-end-4 xl:row-start-2 xl:col-start-6 xl:col-end-7"
+        alt="a man wearing a green long sleeve shirt and a woman in an orange top in a rocky backdrop"
+        SVG={MangoSVG}
+      />
+      <PopularBrandItem
+        brand="h&m"
+        lang={lang}
+        gender={gender}
+        theme={theme}
+        className="row-start-3 col-start-4 col-end-5 xl:row-start-3 xl:col-start-2 xl:col-end-3"
+        alt="a woman facing away but turning back her head toward the camera in a khaki trench coat"
+        SVG={HMSVG}
+      />
 
-      {/*H&M*/}
-      <Link
-        href={`/${lang}/${gender}/products/?gender=${gender}&brand=h&m&shop-by=new+in&sort-by=newfirst&page=1`}
-        scroll={true}
-        data-brand="h&m"
-        className="relative row-start-3 col-start-4 col-end-5 xl:row-start-3 xl:col-start-2 xl:col-end-3">
-        <img
-          src={`/images/brands/h&m.jpg`}
-          alt="a woman facing away but turning back her head toward the camera in a khaki trench coat"
-          className={`w-full h-full object-cover ${borderRadius}`}
-        />
-        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
-        <HMSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </Link>
+      <PopularBrandItem
+        brand="zara"
+        lang={lang}
+        gender={gender}
+        theme={theme}
+        className="row-start-4 col-start-2 col-end-3 xl:row-start-3 xl:col-start-3 xl:col-end-4"
+        alt="a pair of black boots on a white background"
+        SVG={ZaraSVG}
+      />
 
-      {/*Zara*/}
-      <Link
-        href={`/${lang}/${gender}/products/?gender=${gender}&brand=zara&shop-by=new+in&sort-by=newfirst&page=1`}
-        scroll={true}
-        data-brand="zara"
-        className="relative row-start-4 col-start-2 col-end-3 xl:row-start-3 xl:col-start-3 xl:col-end-4">
-        <img
-          src={`/images/brands/zara.jpg`}
-          alt="a pair of black boots on a white background"
-          className={`w-full h-full object-cover ${borderRadius}`}
-        />
-        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
-        <ZaraSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </Link>
+      <PopularBrandItem
+        brand="lacoste"
+        lang={lang}
+        gender={gender}
+        theme={theme}
+        className="row-start-4 col-start-3 col-end-4 xl:row-start-3 xl:col-start-4 xl:col-end-5"
+        alt="a man and a woman looking at the camera in baby blue lacoste jackets"
+        SVG={LacosteSVG}
+      />
+      <PopularBrandItem
+        brand="converse"
+        lang={lang}
+        gender={gender}
+        theme={theme}
+        className="relative row-start-4 col-start-4 col-end-5 xl:row-start-3 xl:col-start-5 xl:col-end-6"
+        alt="two pairs of feet in the classic low-top black and white converse shoes"
+        SVG={ConverseSVG}
+      />
 
-      {/*Lacoste*/}
-      <Link
-        href={`/${lang}/${gender}/products/?gender=${gender}&brand=lacoste&shop-by=new+in&sort-by=newfirst&page=1`}
-        scroll={true}
-        data-brand="lacoste"
-        className="relative row-start-4 col-start-3 col-end-4 xl:row-start-3 xl:col-start-4 xl:col-end-5">
-        <img
-          src={`/images/brands/lacoste.jpg`}
-          alt="a man and a woman looking at the camera in baby blue lacoste jackets"
-          className={`w-full h-full object-cover ${borderRadius}`}
-        />
-        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
-        <LacosteSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </Link>
-
-      {/*Converse*/}
-      <Link
-        href={`/${lang}/${gender}/products/?gender=${gender}&brand=converse&shop-by=new+in&sort-by=newfirst&page=1`}
-        scroll={true}
-        data-brand="converse"
-        className="relative row-start-4 col-start-4 col-end-5 xl:row-start-3 xl:col-start-5 xl:col-end-6">
-        <img
-          src={`/images/brands/converse.jpg`}
-          alt="two pairs of feet in the classic low-top black and white converse shoes"
-          className={`w-full h-full object-cover ${borderRadius}`}
-        />
-        <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
-        <ConverseSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-      </Link>
-
-      {/*GAP*/}
       {viewportWidth >= viewport.xl &&
-        <Link
-          href={`/${lang}/${gender}/products/?gender=${gender}&brand=gap&shop-by=new+in&sort-by=newfirst&page=1`}
-          scroll={true}
-          className="relative xl:row-start-3 xl:col-start-6 xl:col-end-7"
-          data-brand="gap"
-        >
-          <img
-            src={`/images/brands/gap.jpg`}
-            alt="two pairs of feet in the classic low-top black and white converse shoes"
-            className={`w-full h-full object-cover ${borderRadius}`}
-          />
-          <div className={`absolute inset-0 z-20 ${borderRadius} ${bgColor}`}></div>
-          <GapSVG className={`absolute inset-0 z-30 mx-auto ${borderRadius}`} textColor={textColor} />
-        </Link>
+        <PopularBrandItem
+          brand="gap"
+          lang={lang}
+          gender={gender}
+          theme={theme}
+          className="xl:row-start-3 xl:col-start-6 xl:col-end-7"
+          alt="a woman and a man standing back to back in white t-shirts"
+          SVG={GapSVG}
+        />
       }
     </div>
   )
