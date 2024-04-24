@@ -27,7 +27,7 @@ export default function PopularBrandsImages() {
   const borderRadius = 'rounded-[15px] sm:rounded-[30px] lg:rounded-[40px]'
   const grid = viewportWidth < viewport.xl ? 'grid-cols-[5vw_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_1fr_auto]' : 'grid-cols-[5vw_auto_auto_auto_auto_auto_5vw] grid-rows-[auto_1fr_1fr_auto]'
   const gap = viewportWidth > viewport.md ? 'gap-[0.3125rem]' : 'gap-[0.1875rem]'
-
+  console.log(textColor)
   return (
     <div className={`grid ${grid} justify-items-center *:rounded-[2.5rem] ${gap} md:text-[0.3125rem]`}>
 
@@ -158,13 +158,13 @@ export default function PopularBrandsImages() {
       </Link>
 
       {/*GAP*/}
-      {viewportWidth > viewport.xl &&
+      {viewportWidth >= viewport.xl &&
         <Link
           href={`/${lang}/${gender}/products/?gender=${gender}&brand=gap&shop-by=new+in&sort-by=newfirst&page=1`}
           scroll={true}
           className="relative xl:row-start-3 xl:col-start-6 xl:col-end-7">
           <img
-            src={`/images/brands/converse.jpg`}
+            src={`/images/brands/gap.jpg`}
             alt="two pairs of feet in the classic low-top black and white converse shoes"
             className={`w-full h-full object-cover ${borderRadius}`}
           />
