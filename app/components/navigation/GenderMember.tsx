@@ -9,7 +9,7 @@ type GenderMemberProps = {
 export default function GenderMember({ hoveredGender }: GenderMemberProps) {
 
   return (
-    <div className="z-50 flex justify-between gap-20">
+    <>
       <GenderGroup
         title="CLOTHING"
         hoveredGender={hoveredGender}
@@ -37,8 +37,7 @@ export default function GenderMember({ hoveredGender }: GenderMemberProps) {
         items={brandNamesArray.slice(0, 8)}
         brands
       />
-
-    </div>
+    </>
   )
 }
 
