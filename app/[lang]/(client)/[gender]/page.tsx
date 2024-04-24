@@ -18,7 +18,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
 
   return (
     <main className="relative mx-auto mt-2 w-full overflow-hidden">
-      <div className="max-w-[90vw] xl:max-w-[1290px] mx-auto">
+      <div className="max-w-[90vw] xl:max-w-[1200px] mx-auto">
         <Hero />
         <HeroBarSwitch />
 

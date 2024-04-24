@@ -19,12 +19,12 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
   const kidsSalePosition = state === 'sale' && gender === 'kids' && currentViewport < viewport.lg ? 'objectPosition2' : 'object-center'
   const salePadding = state === 'sale' ? 'xl:p-2' : ''
   const showOverlayOnDesktop = state === 'new_in' && currentViewport > viewport.xl ? '' : 'hidden'
-  const borderRadius = 'rounded-[1.25rem] md:rounded-[2.5rem]'
+  const borderRadius = 'rounded-[1.25rem] md:rounded-[2.5rem] xl:rounded-[1.8rem]'
   const borderColor = state === 'sale' && theme === 'dark' ? 'border-t_green' : state === 'new_in' && theme === 'dark' ? 'border-t_purple' : ''
   const height = state === 'new_in' ? 'xl:h-[39rem]' : 'xl:h-[39.375]'
 
   return (
-    <div className={`w-full flex ${salePadding} ${blackOnSale} ${borderRadius} h-[27.3125rem] sm:h-[43rem] md:h-[60rem] xl:h-[39.375rem] relative border-[0.125rem] ${borderColor}`}>
+    <div className={`w-full flex ${salePadding} ${blackOnSale} ${borderRadius} h-[27.3125rem] sm:h-[43rem] md:h-[60rem] xl:h-[39.375rem] rounded-[1.8rem] relative border-[0.125rem] ${borderColor}`}>
       {state === 'new_in' &&
         <div className={`w-[50%] h-full bg-gradient-to-l from-black ${showOverlayOnDesktop} absolute right-0 opacity-80 rounded-[1.8rem]`}></div>
       }
@@ -35,7 +35,7 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
         height={100}
         className={`w-full h-full object-cover ${kidsNewInPosition} ${kidsSalePosition} ${borderRadius} ${height}`}
       />
-      {state === 'sale' && currentViewport > viewport.xl &&
+      {state === 'sale' && currentViewport >= viewport.xl &&
         <div className="w-[50%]">
           <img src="/images/hero/starry.jpg" alt="starry sky" className="w-full h-full object-cover object-center rounded-[1.8rem]" />
         </div>

@@ -19,7 +19,7 @@ export default function Banner() {
     <>
       {showBanner ? (
         <section className={`bg-t_black dark:bg-t_white text-t_white dark:text-t_black z-20 w-screen ${textColor}`}>
-          <div className={`mx-auto grid ${gridCols} grid-rows-1 items-center gap-4 max-w-[90vw] xl:max-w-[1280px] `}>
+          <div className={`mx-auto grid ${gridCols} grid-rows-1 items-center gap-4 max-w-[90vw] xl:max-w-[1200px] `}>
 
             {hideElement && <LanguagePicker isTop />}
 
