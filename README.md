@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 1. Clone this project using your favorite method.
-2. Run either one of these commands:
+2. `cd thrifty` and run either one of these commands:
 ```bash
 npm i
 yarn add
