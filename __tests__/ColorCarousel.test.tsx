@@ -1,7 +1,6 @@
 import ColorCarousel from "@/app/components/home/ColorCarousel"
 import ColorCarouselImage from "@/app/components/home/ColorCarouselImage"
 import ColorCarouselImages from "@/app/components/home/ColorCarouselImages"
-import { Carousel, CarouselContent, CarouselItem } from "@/app/components/ui/carousel"
 import { render, screen } from "@testing-library/react"
 
 Object.defineProperty(window, 'IntersectionObserver', {
@@ -70,7 +69,6 @@ describe('Client: ColorCarousel', () => {
       render(<ColorCarouselImage index={0} filename='black.jpg' gender='kids' />)
       const image = screen.getByRole('img')
       expect(image).toHaveAttribute('alt', 'a kid in black clothes')
-      expect
     })
   })
 })
