@@ -12,8 +12,9 @@ type FilterHomeProps = {
 export default function FilterHome({ gender, lang }: FilterHomeProps) {
 
   return (
-    <section className={`bg-[url('/images/filters/water.jpg')] object-cover object-top h-[270vw] sm:h-[80vw] xl:h-[61vw] w-full bg-fixed bg-no-repeat ${rock_salt.className}`}>
+    <section className={`relative bg-[url('/images/filters/water.jpg')] pt-32 object-cover object-top h-[280vw] sm:h-[80vw] xl:h-[61vw] w-full bg-fixed bg-no-repeat ${rock_salt.className}`}>
 
+      <div className="absolute top-0 left-0 right-0 w-full bg-gradient-to-b from-t_white dark:from-t_black h-[18rem]"></div>
       <div className="flex flex-col sm:flex-row sm:gap-[1rem] sm:w-[90%] sm:mx-auto">
 
         <FilterHomeCard src={`/images/filters/${gender}1.jpg`} alt={`a ${gender}`} className="gap-[2rem]">
