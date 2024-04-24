@@ -28,7 +28,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
 
       <PopularBrands />
 
-      <FilterHome gender={gender} />
+      <FilterHome gender={gender} lang={lang} />
 
       {/* <NewsletterSubscription {... { lang }} /> */}
     </main>
