@@ -18,7 +18,6 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
   const kidsNewInPosition = state === 'new_in' && gender === 'kids' ? 'objectPosition' : 'object-center'
   const kidsSalePosition = state === 'sale' && gender === 'kids' && currentViewport < viewport.lg ? 'objectPosition2' : 'object-center'
   const salePadding = state === 'sale' ? 'xl:p-2' : ''
-  const inverse = theme === 'dark' ? 'from-white' : 'from-black'
   const showOverlayOnDesktop = state === 'new_in' && currentViewport > viewport.xl ? '' : 'hidden'
   const borderRadius = 'rounded-[1.25rem] md:rounded-[2.5rem]'
   const borderColor = state === 'sale' && theme === 'dark' ? 'border-t_green' : state === 'new_in' && theme === 'dark' ? 'border-t_purple' : ''
@@ -27,7 +26,7 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
   return (
     <div className={`w-full flex ${salePadding} ${blackOnSale} ${borderRadius} h-[27.3125rem] sm:h-[43rem] md:h-[60rem] xl:h-[39.375rem] relative border-[0.125rem] ${borderColor}`}>
       {state === 'new_in' &&
-        <div className={`w-[50%] h-full bg-gradient-to-l ${inverse} ${showOverlayOnDesktop} absolute right-0 opacity-80 rounded-[1.8rem]`}></div>
+        <div className={`w-[50%] h-full bg-gradient-to-l from-black ${showOverlayOnDesktop} absolute right-0 opacity-80 rounded-[1.8rem]`}></div>
       }
       <img
         src={`/images/hero/${state}_${gender}.jpg`}
