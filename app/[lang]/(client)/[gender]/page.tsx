@@ -30,7 +30,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
 
       <FilterHome gender={gender} lang={lang} />
 
-      {/* <NewsletterSubscription {... { lang }} /> */}
+      <NewsletterSubscription {... { lang }} />
     </main>
   )
 }
