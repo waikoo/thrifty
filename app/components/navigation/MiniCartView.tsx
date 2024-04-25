@@ -12,7 +12,7 @@ export default function MiniCartView() {
   const { cart } = useCartStore()
   const [cartItems, setCartItems] = useState<ProductItemType[]>([])
   const miniCartViewRef = useRef<HTMLDivElement>(null)
-  const { setShowMiniCartView } = useNavigationStore()
+  const { showMiniCartView, setShowMiniCartView } = useNavigationStore()
 
   useEffect(() => {
     const getCartProducts = async () => {
@@ -38,7 +38,7 @@ export default function MiniCartView() {
   }
 
   return (
-    <div className="bg-bkg text-content scrollbar scrollbar-thumb-darkgrey scrollbar-thumb-rounded absolute right-0 top-8 z-50 flex min-w-[16rem] flex-col justify-center gap-5 overflow-y-scroll p-4"
+    <div className="absolute bg-t_white dark:bg-t_black text-t_black dark:text-t_white scrollbar scrollbar-thumb-darkgrey scrollbar-thumb-rounded right-0 top-8 z-50 flex min-w-[16rem] flex-col justify-center gap-5 overflow-y-scroll p-4"
       ref={miniCartViewRef}
       onMouseLeave={onMouseLeave}
       onMouseEnter={() => setShowMiniCartView(true)}
