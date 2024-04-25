@@ -19,11 +19,18 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
   return (
     <>
       <div className="w-full bg-t_white h-[8rem]"></div>
-      <section className={`relative w-full bg-cover py-3 ${bgColor}`}>
-        <p className="flex flex-col xl:flex-row xl:items-center xl:justify-between xl:max-w-[90%] gap-0 xl:gap-5 font-futura_bold tracking-tighter text-t_white/50 text-stroke text-blurry text-center md:text-[5rem] max-w-[700px] mx-auto text-shadow shadow-black/15">
-          <span className="text-[9vw] xl:text-[4.375rem] whitespace-nowrap">SHOP FASTER</span>
-          <span className="-mt-5 xl:mt-0 text-[9vw] xl:text-[4.375rem] whitespace-nowrap">THAN EVER</span>
-          <span className="-mt-5 xl:mt-0 text-[9vw] xl:text-[4.375rem]">BEFORE</span>
+      <section className={`relative w-full bg-cover py-3 pb-12 overflow-hidden ${bgColor}`}>
+        <p className="flex flex-col xl:flex-row xl:items-center gap-0 font-futura_bold tracking-tighter text-t_white/90 text-stroke text-blurry text-center md:text-[5rem] mx-auto text-shadow shadow-black/[2%]">
+          {viewportWidth < viewport.xl ? (
+            <>
+              <span className="text-[9vw] xl:text-[4.375rem] whitespace-nowrap">SHOP FASTER</span>
+              <span className="-mt-5 xl:mt-0 xl:ml-4 text-[9vw] xl:text-[4.375rem] whitespace-nowrap">THAN EVER</span>
+              <span className="-mt-5 xl:mt-0 xl:ml-4 text-[9vw] xl:text-[4.375rem]">BEFORE</span>
+            </>
+          ) : (
+            <p className="mx-auto">SHOP FASTER THAN EVER BEFORE</p>
+          )
+          }
         </p>
         {/* <div className="absolute top-0 left-0 right-0 w-full bg-gradient-to-b from-t_white dark:from-t_black h-[18rem]"></div> */}
         <div className="flex flex-col ">
@@ -36,35 +43,36 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
             ) : (
               <img src={`/images/filters/${gender}_tiled.png`}
                 alt=""
-                className="w-[140vw] -ml-44 object-cover object-center object mr-10"
+                className="w-[140vw] -ml-[15rem] object-cover object-center object mr-10"
               />
             )}
 
             <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 flex flex-col gap-4">
-              <div className="xl:ml-20">
-                <span className="font-futura_bold text-[8vw] xl:text-[3.125rem] tracking-tight text-t_white/50 text-stroke text-blurry text-shadow shadow-black/15">SET</span>
-                <span className={`text-t_white ml-2 text-[5vw] xl:text-[1.1875rem] whitespace-nowrap ${albert_800.className}`}>YOUR FILTERS</span>
+              <div className="xl:ml-20 flex items-center">
+                <span className="font-futura_bold text-[8vw] xl:text-[3.125rem] tracking-tight text-t_white text-stroke text-blurry text-shadow shadow-black/15">SET</span>
+                <span className={`text-t_white ml-2 xl:ml-5 xl:-mb-2 text-[5vw] xl:text-[1.1875rem] whitespace-nowrap ${albert_800.className}`}>YOUR FILTERS</span>
               </div>
-              <div className="xl:ml-20">
-                <span className="font-futura_bold text-[8vw] xl:text-[3.125rem] tracking-tight text-t_white/50 text-stroke text-blurry text-shadow shadow-black/15">SAVE</span>
-                <span className={`text-t_white ml-2 text-[5vw] xl:text-[1.1875rem] whitespace-nowrap ${albert_800.className}`}>YOUR FILTERS</span>
+              <div className="xl:ml-20 flex items-center">
+                <span className="font-futura_bold text-[8vw] xl:text-[3.125rem] tracking-tight text-t_white text-stroke text-blurry text-shadow shadow-black/15">SAVE</span>
+                <span className={`text-t_white ml-2 xl:ml-5 xl:-mb-2 text-[5vw] xl:text-[1.1875rem] whitespace-nowrap ${albert_800.className}`}>YOUR FILTERS</span>
               </div>
-              <div className="xl:ml-20">
-                <span className="font-futura_bold text-[8vw] xl:text-[3.125rem] tracking-tighter text-t_white/50 text-stroke text-blurry text-shadow shadow-black/15">RECEIVE</span>
-                <span className={`text-t_white ml-2 text-[5vw] xl:text-[1.1875rem] whitespace-nowrap ${albert_800.className}`}>NOTIFICATIONS</span>
+              <div className="xl:ml-20 flex items-center">
+                <span className="font-futura_bold text-[8vw] xl:text-[3.125rem] tracking-tighter text-t_white text-stroke text-blurry text-shadow shadow-black/15">RECEIVE</span>
+                <span className={`text-t_white ml-2 xl:ml-5 xl:-mb-2 text-[5vw] xl:text-[1.1875rem] whitespace-nowrap ${albert_800.className}`}>NOTIFICATIONS</span>
               </div>
             </div>
 
           </div>
 
           <Link href={`/${lang}/${gender}/products?gender=${gender}&sort-by=newfirst&page=1`}
-            className={`${albert_900.className} text-t_black bg-t_white/20 xl:bg-t_white text-[3vw] xl:text-[1.0625rem] whitespace-nowrap cursor-pointer py-3 pb-2 md:py-4 md:px-16 md:pb-3 px-8 xl:px-[2.5rem] border-[0.1rem] border-t_white rounded-full mx-auto mt-6 drop-shadow-2xl grid place-items-center cardShadow`}
+            className={`${albert_900.className} text-t_black bg-t_white/20 xl:bg-t_white text-[3vw] xl:text-[1.0625rem] whitespace-nowrap cursor-pointer py-3 pb-2 md:py-4 md:px-16 md:pb-3 px-8 xl:px-[2.5rem] border-[0.1rem] border-t_white rounded-full mx-auto drop-shadow-2xl grid place-items-center buttonShadow -mt-[7rem] tracking-wide`}
           >
             GO TO FILTERS
           </Link>
 
         </div>
       </section>
+      <div className="w-full bg-t_fil_kids h-[8rem]"></div>
     </>
   )
 }

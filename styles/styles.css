@@ -317,10 +317,14 @@
   }
 
   .text-blurry {
-    color: #ffffff25;
-    text-shadow: 0 0 5px #ffffff4d, 0 0 10px #ffffff3a, 0 0 15prgba(255, 255, 255, 0.295)ff, 0 0 20px #ffffff63;
+    color: #ffffff91;
+    text-shadow: 0 0 5px #ffffff6e, 0 0 10px #ffffff67, 0 0 15prgba(255, 255, 255, 0.295)ff, 0 0 20px #ffffff79;
   }
 
   .filter-position {
     object-position: 50% 0%;
+  }
+
+    .buttonShadow {
+    box-shadow: 0px 3px 4px 3px #1343573a;
   }
