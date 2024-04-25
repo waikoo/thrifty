@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     !isCheckout ? <>
-      <section className="dark:bg-t_black bg-t_white text-content flex flex-col items-center">
+      <section className="dark:bg-t_black bg-t_white dark:text-t_white text-t_black flex flex-col items-center">
         <Banner />
         <NavBar className="hidden sm:block" />
         <Gender />

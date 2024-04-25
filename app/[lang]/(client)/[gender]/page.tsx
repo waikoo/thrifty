@@ -17,7 +17,7 @@ type PageProps = {
 export default async function Page({ params: { lang, gender }, searchParams, }: PageProps) {
 
   return (
-    <main className="relative mx-auto mt-2 w-full overflow-hidden">
+    <main className="relative bg-t_white dark:bg-t_black text-t_black dark:text-t_white mx-auto mt-2 w-full overflow-hidden">
       <div className="max-w-[90vw] xl:max-w-[1200px] mx-auto">
         <Hero />
         <HeroBarSwitch />
