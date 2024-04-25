@@ -54,6 +54,10 @@
       --clr-t_blue_cc: 220 100 50;
       --clr-t_pink_cc: 320 100 50;
 
+      --clr-t_fil_men: 198 50 45;
+      --clr-t_fil_women: 240 84 68;
+      --clr-t_fil_kids: 206 48 80;
+
       --background: 0 0% 100%;
       --foreground: 0 0% 3.9%;
 
@@ -304,5 +308,19 @@
   }
 
   .cardShadow {
-    box-shadow: 0px 4px 10px 5px #13435779;
+    box-shadow: 0px 3px 4px 3px #13435779;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.664);
+    text-stroke: 2px rgba(255, 255, 255, 0.699);
+  }
+
+  .text-blurry {
+    color: #ffffff25;
+    text-shadow: 0 0 5px #ffffff4d, 0 0 10px #ffffff3a, 0 0 15prgba(255, 255, 255, 0.295)ff, 0 0 20px #ffffff63;
+  }
+
+  .filter-position {
+    object-position: 50% 0%;
   }

@@ -51,6 +51,10 @@ module.exports = {
         t_blue_cc: "hsl(var(--clr-t_blue_cc) / <alpha-value>)",
         t_pink_cc: "hsl(var(--clr-t_pink_cc) / <alpha-value>)",
 
+        t_fil_men: "hsl(var(--clr-t_fil_men) / <alpha-value>)",
+        t_fil_women: "hsl(var(--clr-t_fil_women) / <alpha-value>)",
+        t_fil_kids: "hsl(var(--clr-t_fil_kids) / <alpha-value>)",
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -103,6 +107,7 @@ module.exports = {
         nm: "0px 0px 20px var(--tw-shadow-color)",
         off: "3px 3px 10px var(--tw-shadow-color)",
         fil: "0px 3px 6px var(--tw-shadow-color)",
+        tra: "0px 0px 10px var(--tw-shadow-color)",
       },
       boxShadow: {
         card: '0px 15px 10px #000',
@@ -134,7 +139,8 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        'bouncy': 'bouncy 1s infinite'
+        'bouncy': 'bouncy 1s infinite',
+        'mutate': 'mutate 1s infinite',
       },
     },
   },

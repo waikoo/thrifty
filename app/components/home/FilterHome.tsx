@@ -1,8 +1,11 @@
+"use client"
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 
 import { Gender, Locales } from '@/types/link'
-import { albert, albert_500, rock_salt } from '@/utils/fonts'
-import FilterHomeCard from './FilterHomeCard'
+import { albert_800, albert_900 } from '@/utils/fonts'
+import { viewport } from '@/app/components/data/universalStyles'
+import useViewport from '@/app/components/hooks/useViewport'
 
 type FilterHomeProps = {
   gender: Gender
@@ -10,32 +13,59 @@ type FilterHomeProps = {
 }
 
 export default function FilterHome({ gender, lang }: FilterHomeProps) {
+  const bgColor = gender === 'women' ? `bg-t_fil_women` : gender === 'men' ? 'bg-t_fil_men' : 'bg-t_fil_kids'
+  const viewportWidth = useViewport()
 
   return (
-    <section className={`relative bg-[url('/images/filters/water.jpg')] py-16 object-cover object-top h-[300vw] sm:h-[80vw] xl:h-[61vw] w-full bg-fixed bg-no-repeat ${rock_salt.className}`}>
+    <>
+      <div className="w-full bg-t_white h-[8rem]"></div>
+      <section className={`relative w-full bg-cover py-3 ${bgColor}`}>
+        <p className="flex flex-col xl:flex-row xl:items-center xl:justify-between xl:max-w-[90%] gap-0 xl:gap-5 font-futura_bold tracking-tighter text-t_white/50 text-stroke text-blurry text-center md:text-[5rem] max-w-[700px] mx-auto text-shadow shadow-black/15">
+          <span className="text-[9vw] xl:text-[4.375rem] whitespace-nowrap">SHOP FASTER</span>
+          <span className="-mt-5 xl:mt-0 text-[9vw] xl:text-[4.375rem] whitespace-nowrap">THAN EVER</span>
+          <span className="-mt-5 xl:mt-0 text-[9vw] xl:text-[4.375rem]">BEFORE</span>
+        </p>
+        {/* <div className="absolute top-0 left-0 right-0 w-full bg-gradient-to-b from-t_white dark:from-t_black h-[18rem]"></div> */}
+        <div className="flex flex-col ">
 
-      <div className="absolute top-0 left-0 right-0 w-full bg-gradient-to-b from-t_white dark:from-t_black h-[18rem]"></div>
-      <div className="flex flex-col sm:flex-row sm:gap-[1rem] sm:w-[90%] sm:mx-auto">
+          <div className="w-[95%] xl:w-[120%] mx-auto relative">
+            {viewportWidth < viewport.xl ? (
+              <img src={`/images/filters/${gender}.png`}
+                alt=""
+                className="block w-full drop-shadow-[0_15px_20px_rgba(0,0,0,0.5)]" />
+            ) : (
+              <img src={`/images/filters/${gender}_tiled.png`}
+                alt=""
+                className="w-[140vw] -ml-44 object-cover object-center object mr-10"
+              />
+            )}
 
-        <FilterHomeCard src={`/images/filters/${gender}1.jpg`} alt={`a ${gender}`} className="gap-[2rem]">
-          <p className="text-center">SET YOUR <span className="block">FILTERS</span></p>
-          <p className="text-center">SAVE YOUR <span className="block">FILTERS</span></p>
-          <p className="text-center">RECEIVE <span className="block">NOTIFICATIONS</span></p>
-        </FilterHomeCard>
+            <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 flex flex-col gap-4">
+              <div className="xl:ml-20">
+                <span className="font-futura_bold text-[8vw] xl:text-[3.125rem] tracking-tight text-t_white/50 text-stroke text-blurry text-shadow shadow-black/15">SET</span>
+                <span className={`text-t_white ml-2 text-[5vw] xl:text-[1.1875rem] whitespace-nowrap ${albert_800.className}`}>YOUR FILTERS</span>
+              </div>
+              <div className="xl:ml-20">
+                <span className="font-futura_bold text-[8vw] xl:text-[3.125rem] tracking-tight text-t_white/50 text-stroke text-blurry text-shadow shadow-black/15">SAVE</span>
+                <span className={`text-t_white ml-2 text-[5vw] xl:text-[1.1875rem] whitespace-nowrap ${albert_800.className}`}>YOUR FILTERS</span>
+              </div>
+              <div className="xl:ml-20">
+                <span className="font-futura_bold text-[8vw] xl:text-[3.125rem] tracking-tighter text-t_white/50 text-stroke text-blurry text-shadow shadow-black/15">RECEIVE</span>
+                <span className={`text-t_white ml-2 text-[5vw] xl:text-[1.1875rem] whitespace-nowrap ${albert_800.className}`}>NOTIFICATIONS</span>
+              </div>
+            </div>
 
-        <FilterHomeCard src={`/images/filters/${gender}2.jpg`} alt={`a ${gender}`} className="top-[1.3rem] gap-0">
-          <p className="text-[1.4375rem] text-center">CUSTOMIZE <span className={`${albert.className} block text-[0.75rem]`}>YOUR SEARCHES</span></p>
-          <p className="mt-2 text-[1.4375rem] text-center">SHOP FASTER<span className={`${albert.className} block text-[0.75rem]`}>THAN EVER BEFORE</span></p>
+          </div>
 
           <Link href={`/${lang}/${gender}/products?gender=${gender}&sort-by=newfirst&page=1`}
-            className={`${albert_500.className} py-[0.5rem] px-[1.5rem] bg-t_black text-t_white rounded-full text-[0.8125rem] mt-[8rem] cursor-pointer`}
+            className={`${albert_900.className} text-t_black bg-t_white/20 xl:bg-t_white text-[3vw] xl:text-[1.0625rem] whitespace-nowrap cursor-pointer py-3 pb-2 md:py-4 md:px-16 md:pb-3 px-8 xl:px-[2.5rem] border-[0.1rem] border-t_white rounded-full mx-auto mt-6 drop-shadow-2xl grid place-items-center cardShadow`}
           >
             GO TO FILTERS
           </Link>
-        </FilterHomeCard>
 
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   )
 }
 
