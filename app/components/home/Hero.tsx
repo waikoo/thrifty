@@ -12,11 +12,9 @@ import getLangAndGender from '@/utils/getLangAndGender';
 import { useHomeStore } from '@/state/client/homeState';
 import { Gender, Locales } from '@/types/link';
 import useHeroSwipe from '@/app/components/hooks/useHeroSwipe';
-import { viewport } from '@/app/components/data/universalStyles';
 
 export default function Hero() {
   const { lang, gender } = getLangAndGender(usePathname())
-  const viewportWidth = useViewport()
   const { heroState } = useHomeStore()
   const logoColor = heroState === 'sale' && gender === 'kids' ? 'black' : 'white'
   const { touchStartHandler, touchEndHandler } = useHeroSwipe()
@@ -30,11 +28,9 @@ export default function Hero() {
 
       <HeroSticker />
 
-      {viewportWidth < viewport.sm && (
-        <div className="absolute top-6 left-0 right-0 h-9 mx-auto">
-          <WithHome><Logo logoColor={logoColor} width="9.75rem" /> </WithHome>
-        </div>
-      )}
+      <div className="sm:hidden absolute top-6 left-0 right-0 h-9 mx-auto">
+        <WithHome><Logo logoColor={logoColor} width="9.75rem" /> </WithHome>
+      </div>
 
       {heroState === 'new_in' ? (<HeroTextNewIn />) : (<HeroTextSale />)}
 
