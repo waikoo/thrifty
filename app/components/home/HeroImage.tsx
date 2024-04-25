@@ -19,7 +19,7 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
   const kidsSalePosition = state === 'sale' && gender === 'kids' && currentViewport < viewport.lg ? 'objectPosition2' : 'object-center'
   const salePadding = state === 'sale' ? 'xl:p-2' : ''
   const showOverlayOnDesktop = state === 'new_in' && currentViewport > viewport.xl ? '' : 'hidden'
-  const borderRadius = 'rounded-[1.25rem] md:rounded-[2.5rem] xl:rounded-[1.8rem]'
+  const borderRadius = 'rounded-[1.5rem] md:rounded-[2.5rem] xl:rounded-[1.8rem]'
   const borderColor = state === 'sale' && theme === 'dark' ? 'border-t_green' : state === 'new_in' && theme === 'dark' ? 'border-t_purple' : ''
   const height = state === 'new_in' ? 'xl:h-[39rem]' : 'xl:h-[39.375]'
 
