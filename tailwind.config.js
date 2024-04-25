@@ -3,7 +3,7 @@ const plugin = require('tailwindcss/plugin')
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   gridFractionUnits: true,
-  darkMode: ["class", '[data-mode="dark"]'],
+  darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
