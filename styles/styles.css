@@ -41,6 +41,8 @@
       --clr-t_red: 0 100 50;
       --clr-t_green: 87 100 72;
       --clr-t_green_ll: 87 100 36;
+      --clr-t_green_hh: 79 100 80;
+      --clr-t_green_blr: 87 100 72;
 
       /*Color Carousel Colors*/
       --clr-t_yellow_cc: 54 100 50;
@@ -81,6 +83,27 @@
       --ring: 0 0% 3.9%;
 
       --radius: 0.5rem;
+    }
+
+    :root.dark {
+      --clr-bkg: 210deg 15% 10%;
+      --clr-content: 0deg 0% 100%;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --clr-bkg: 0deg 0% 100%;
+        --clr-content: 210deg 15% 10%;
+        --clr-grey: 0deg 0% 45%;
+        --clr-faded: 0deg 0% 69%;
+      }
+
+      :root[data-theme="dark"] {
+        --clr-bkg: 210deg 15% 10%;
+        --clr-content: 0deg 0% 100%;
+        --clr-grey: 0deg 0% 45%;
+        --clr-faded: 0deg 0% 69%;
+      }
     }
 
     .dark {
@@ -281,5 +304,5 @@
   }
 
   .cardShadow {
-    box-shadow: 0px 4px 10px 5px #1343577e;
+    box-shadow: 0px 4px 10px 5px #13435779;
   }

@@ -10,8 +10,9 @@ export default function HeroTextSale() {
         <span className={`block ${zen_tokyo_zoo.className} relative text-[1.5625rem] top-[2.3rem] sm:top-[6rem] xl:top-[3rem] text-t_green text-shadow-ne shadow-black sm:text-[3.75rem] xl:text-[2.1875rem]`}>UP TO</span>
 
         <div className="relative">
-          <HeroTextSaleOffPercent className="text-shadow-lg animate-bouncy">{upToPercentOff}</HeroTextSaleOffPercent>
-          <HeroTextSaleOffPercent className="text-shadow-ne animate-bouncy">{upToPercentOff}</HeroTextSaleOffPercent>
+          <HeroTextSaleOffPercent className="text-shadow-lg animate-bouncy shadow-t_green_blr">{upToPercentOff}</HeroTextSaleOffPercent>
+          <HeroTextSaleOffPercent className="text-shadow-lg2 animate-bouncy shadow-t_green_blr">{upToPercentOff}</HeroTextSaleOffPercent>
+          <HeroTextSaleOffPercent className="text-shadow-ne animate-bouncy shadow-t_green_hh">{upToPercentOff}</HeroTextSaleOffPercent>
         </div>
 
         <span className="absolute -bottom-[9rem] left-0 right-0 mx-auto text-[2.5rem] font-noir_pro text-t_green text-shadow-pr shadow-black sm:text-[6.875rem] xl:text-[3.75rem] sm:-bottom-[26rem] xl:-bottom-[15rem]">%</span>

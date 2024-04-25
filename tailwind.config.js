@@ -3,7 +3,7 @@ const plugin = require('tailwindcss/plugin')
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   gridFractionUnits: true,
-  darkMode: ["class"],
+  darkMode: ["class", '[data-mode="dark"]'],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -39,6 +39,8 @@ module.exports = {
         t_red: "hsl(var(--clr-t_red) / <alpha-value>)",
         t_green: "hsl(var(--clr-t_green) / <alpha-value>)",
         t_green_ll: "hsl(var(--clr-t_green_ll) / <alpha-value>)",
+        t_green_hh: "hsl(var(--clr-t_green_hh) / <alpha-value>)",
+        t_green_blr: "hsl(var(--clr-t_green_blr) / <alpha-value>)",
 
         t_yellow_cc: "hsl(var(--clr-t_yellow_cc) / <alpha-value>)",
         t_red_cc: "hsl(var(--clr-t_red_cc) / <alpha-value>)",
@@ -95,6 +97,7 @@ module.exports = {
         sm: "0 1px 2px var(--tw-shadow-color)",
         DEFAULT: "0 8px 6px var(--tw-shadow-color)",
         lg: "0 0px 100px var(--tw-shadow-color)",
+        lg2: "0 0px 50px var(--tw-shadow-color)",
         pr: "1px 4px 1px var(--tw-shadow-color)",
         ne: "6px 5px 0px var(--tw-shadow-color)",
         nm: "0px 0px 20px var(--tw-shadow-color)",
