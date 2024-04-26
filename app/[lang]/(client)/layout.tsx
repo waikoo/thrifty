@@ -4,6 +4,7 @@ import { themeSettings } from "@/app/components/data/theme";
 import { Footer } from "@/app/components/footer";
 import Header from '@/app/components/navigation/Header';
 import { allenoire, alokary, futura, noir_pro, avant_garde, futura_bold } from '@/utils/fonts';
+import { Gender, Locales } from "@/types/link";
 
 export const metadata = {
   title: 'Thrifty',
@@ -17,6 +18,7 @@ export type RootLayoutProps = {
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
   const lang = typeof params?.lang === 'string' ? params.lang : ''
+  const gender = typeof params?.gender === 'string' ? params.gender : ''
 
   return (
     <html
@@ -26,11 +28,11 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
     >
       <head />
       <body className={`dark:bg-t_black bg-t_white min-h-screen w-full`}>
-        <Header />  {/* only above 1512px */}
+        <Header />
 
         {children}
 
-        {/* <Footer /> */}
+        <Footer lang={lang as Locales} gender={gender as Gender} />
 
       </body>
     </html>
