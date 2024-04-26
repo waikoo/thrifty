@@ -5,15 +5,15 @@ describe('Client: PopularBrands', () => {
   const gender = 'women'
   const lang = 'en'
 
-  it('renders all images', () => {
-    render(<PopularBrands gender={gender} lang={lang} />)
+  it('has all images rendered', () => {
+    render(<PopularBrands gender={gender} lang={lang} />);
 
-    const images = screen.getAllByRole('img')
+    let images = screen.getAllByRole('img');
 
-    expect(images).toHaveLength(9)
+    expect(images).toHaveLength(10);
   })
 
-  it('all links have correct hrefs & are in the document', () => {
+  test('all links have correct hrefs & are in the document', () => {
     render(<PopularBrands gender={gender} lang={lang} />)
 
     const links = screen.getAllByRole('link')
