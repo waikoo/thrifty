@@ -28,7 +28,7 @@ export default function BackToTop() {
   return (
     <>
       {showBackToTop && (
-        <div className="fixed bottom-5 right-5 z-50"
+        <div className="fixed bottom-5 right-5 z-50 hidden sm:block"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <div className={`relative rounded-full border-content border-2 p-4 h-6 w-6 mx-auto flex items-center justify-center ${bgColor}`}>
