@@ -18,7 +18,7 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
 
   return (
     <>
-      <div className="w-full bg-t_white h-[3rem] xl:h-[8rem]"></div>
+      <div className="w-full bg-t_white dark:bg-t_black h-[0.2rem] xl:h-[8rem]"></div>
       <section className={`relative w-full bg-cover pb-[4rem] overflow-hidden ${bgColor}`}>
         <p className="flex flex-col xl:flex-row xl:items-center py-[3rem] gap-0 font-futura_bold tracking-tighter text-t_white/90 text-stroke text-blurry text-center md:text-[5rem] mx-auto text-shadow shadow-black/[2%]">
           {viewportWidth < viewport.xl ? (
@@ -72,8 +72,7 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
 
         </div>
       </section>
-      <div className="w-full bg-t_white h-[3rem] xl:h-[8rem]"></div>
-      {/* <div className={`w-full ${bgColor} h-[6rem] xl:h-[8rem]`}></div> */}
+      <div className="w-full bg-t_white dark:bg-t_black h-[0.9rem] xl:h-[8rem]"></div>
     </>
   )
 }
