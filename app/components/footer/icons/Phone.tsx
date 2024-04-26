@@ -2,8 +2,12 @@
 import { useThemeStore } from "@/state/themeState";
 import { getSvgColor } from "@/utils/theme";
 
-function Phone() {
-  const color = useThemeStore((state) => getSvgColor(state.theme));
+type PhoneProps = {
+  invert?: boolean
+}
+
+function Phone({ invert }: PhoneProps) {
+  const color = useThemeStore((state) => getSvgColor(state.theme, invert));
 
   return (
     <svg

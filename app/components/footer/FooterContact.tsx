@@ -1,37 +1,30 @@
-import { Email, Phone, Facebook, Instagram } from ".";
+import FooterPhoneAndEmail from "@/app/components/footer/FooterPhoneAndEmail";
+import FooterSocials from "@/app/components/footer/FooterSocials";
+import useViewport from "@/app/components/hooks/useViewport";
+import { viewport } from "@/app/components/data/universalStyles";
+import { useThemeStore } from "@/state/themeState";
+import { Logo, WithHome } from "@/app/components/navigation";
 
-type FooterContactProps = {
-  noTitle?: boolean
-}
+export default function FooterContact() {
+  const viewportWidth = useViewport()
+  const { theme } = useThemeStore()
 
-export default function FooterContact({ noTitle = false }: FooterContactProps) {
+  const isDark = document.documentElement.classList.contains('dark')
 
   return (
-    <div className="footerText flex flex-col gap-7">
-      {noTitle ? null :
-        <h3 className={`footerTitles`}>CONTACT</h3>
-      }
+    <div className="flex flex-col gap-7">
 
-      <div className="flex flex-col gap-2">
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2">
-            <Phone />
-            <span>123456789</span>
-          </div>
+      {viewportWidth > viewport.xl && (
+        <WithHome className="" >
+          <Logo
+            logoColor={isDark ? 'white' : 'black'}
+            width="100%"
+            invert={false}
+          />
+        </WithHome>)}
 
-          <div className="flex items-center gap-2">
-            <Email />
-            <a href="mailto:thriftshop@shop.com">thriftshop@shop.com</a>
-          </div>
-
-          <div className="flex items-center gap-6 pt-4">
-            <Facebook />
-            <Instagram />
-          </div>
-        </div>
-      </div>
-
+      <FooterPhoneAndEmail invert={false} />
+      <FooterSocials theme={theme} className="flex gap-4" socialSize={25} />
     </div>
   )
 }
-// TODO: Add images & socials

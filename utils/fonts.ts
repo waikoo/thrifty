@@ -5,6 +5,7 @@ import localFont from 'next/font/local';
 
 export const albert = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '400' })
 export const albert_500 = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '500' })
+export const albert_600 = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '600' })
 export const albert_700 = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '700' })
 export const albert_800 = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '800' })
 export const albert_900 = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '900' })

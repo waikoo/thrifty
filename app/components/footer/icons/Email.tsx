@@ -2,8 +2,12 @@
 import { useThemeStore } from "@/state/themeState";
 import { getSvgColor } from "@/utils/theme";
 
-function Email() {
-  const color = useThemeStore((state) => getSvgColor(state.theme));
+type EmailProps = {
+  invert?: boolean
+}
+
+function Email({ invert }: EmailProps) {
+  const color = useThemeStore((state) => getSvgColor(state.theme, invert));
 
   return (
     <svg

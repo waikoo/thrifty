@@ -1,26 +1,38 @@
 "use client"
-import getLangAndGender from "@/utils/getLangAndGender";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+
+import getLangAndGender from "@/utils/getLangAndGender";
 import { useUserSession } from "@/app/components/hooks"
 import { useUIStore } from "@/state/client/uiState";
+import FooterTitle from "@/app/components/footer/FooterTitle";
 
-export default function FooterAccount() {
+type FooterAccountProps = {
+  textColor: string
+  textSize: string
+  tracking: string
+}
+
+export default function FooterAccount({ textColor, textSize, tracking }: FooterAccountProps) {
   const { gender, lang } = getLangAndGender(usePathname())
-  const { showMyAccount, setShowMyAccount, showSignIn, setShowSignIn } = useUIStore()
+  const { showSignIn, setShowSignIn } = useUIStore()
   const { session, error } = useUserSession()
+  const router = useRouter()
 
   return (
-    <div className="footerText flex flex-col gap-7">
-      <h3 className="footerTitles">ACCOUNT</h3>
-      <div className="flex flex-col gap-2">
-        <span className="cursor-pointer"
+    <div className={`footerText flex flex-col gap-7 ${textSize}`}>
+      <FooterTitle>ACCOUNT</FooterTitle>
+
+      <div className={`flex flex-col gap-2 ${textColor} ${tracking}`}>
+        <span className={`cursor-pointer`}
           onClick={() => !session
             ? setShowSignIn(showSignIn ? false : true)
-            : setShowMyAccount(showMyAccount ? false : true)}
-        >Sign In/Up</span>
+            : router.push(`/${lang}/${gender}/profile`)}
+        >Profile
+        </span>
 
-        <Link href={`/${lang}/${gender}/profile`}>My Profile</Link>
+        <Link href={`${lang}/${gender}/orders`}>Orders</Link>
+        <Link href={`${lang}/${gender}/returns`}>Returns</Link>
         <Link href={`/${lang}/${gender}/settings`}>Settings</Link>
       </div>
     </div>

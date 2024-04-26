@@ -1,29 +1,21 @@
-import { FooterAccount, FooterHelp, FooterShop, FooterContact } from ".";
-import { ThemeToggler } from "../generic";
-import { Logo, WithHome } from "../navigation";
-import OpeningHours from "./OpeningHours";
+"use client"
+import { viewport } from "@/app/components/data/universalStyles"
+import useViewport from "@/app/components/hooks/useViewport"
+import FooterSmall from "@/app/components/footer/FooterSmall"
+import FooterWide from "@/app/components/footer/FooterWide"
+import { Gender, Locales } from "@/types/link"
 
-export default function Footer() {
+type FooterProps = {
+  lang: Locales
+  gender: Gender
+}
+
+export default function Footer({ lang, gender }: FooterProps) {
+  const viewportWidth = useViewport()
 
   return (
-    <footer className="bg-bkg text-content relative flex w-full justify-evenly gap-5 bg-green-300 py-12">
-      <div className="flex flex-col gap-7">
-
-        <WithHome className="justify-start" > <Logo /> </WithHome>
-        <OpeningHours />
-        <ThemeToggler />
-
-      </div>
-
-      <FooterShop />
-      <FooterAccount />
-      <FooterHelp />
-      <FooterContact />
-
-      <div className="absolute bottom-12 text-[0.875rem]">
-        <span className="font-bold">SITEMAP</span><span> | </span><span>2023 Triftstudio.</span>
-      </div>
-    </footer>
-
+    <>
+      {viewportWidth < viewport.sm ? <FooterSmall lang={lang} gender={gender} /> : <FooterWide />}
+    </>
   )
 }
