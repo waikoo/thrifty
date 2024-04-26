@@ -17,6 +17,7 @@
     "@supabase/ssr": "^0.1.0",
     "@supabase/supabase-js": "latest",
     "@tailwindcss/forms": "^0.5.7",
+    "@types/css-mediaquery": "^0.1.4",
     "@types/negotiator": "^0.6.1",
     "@types/node": "^20.10.5",
     "@types/react": "latest",
