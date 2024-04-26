@@ -1,3 +1,4 @@
+"use client"
 import { twMerge as tm } from 'tailwind-merge'
 
 import { useDarkMode, useTogglerStyles } from "@/app/components/hooks/";
@@ -7,7 +8,7 @@ type ThemeTogglerProps = {
 }
 
 const ThemeToggler = ({ className }: ThemeTogglerProps) => {
-  const containsDark = document.documentElement.classList.contains('dark')
+  let containsDark = typeof document !== 'undefined' && document.documentElement.classList.contains('dark');
   const { isDark, handleToggleTheme } = useDarkMode(containsDark)
 
   const { bgColor, circleColor, xPos } = useTogglerStyles(isDark)
