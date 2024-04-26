@@ -7,10 +7,11 @@ type LogoProps = {
   className?: string
   logoColor?: string
   width?: string
+  invert?: boolean
 };
 
-const Logo = ({ className, logoColor, width }: LogoProps) => {
-  const color = useThemeStore((state) => getSvgColor(state.theme))
+const Logo = ({ className, logoColor, width, invert }: LogoProps) => {
+  const color = useThemeStore((state) => getSvgColor(state.theme, invert))
 
   return (
     <svg
