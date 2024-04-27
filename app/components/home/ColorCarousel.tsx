@@ -14,7 +14,7 @@ export default async function ColorCarousel({ gender }: ColorCarouselProps) {
   const imageFilenames = await fs.readdir(imageDirectory);
 
   return (
-    <section className="mt-[3.125rem] max-w-[90vw] xl:max-w-[1200px] mx-auto">
+    <section className="mt-[3.125rem] max-w-[90vw] 3xl:max-w-[1900px] mx-auto">
 
       <ColorCarouselTitle />
 

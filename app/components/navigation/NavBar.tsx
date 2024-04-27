@@ -30,7 +30,7 @@ const NavBar = ({ className }: NavBarProps) => {
 
   return (
     <section className={`bg-t_white dark:bg-t_black ${position} top-0 z-50 w-screen ${className}`}>
-      <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[2rem_4rem_1fr_auto_auto] lg:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] xl:max-w-[1200px]`}
+      <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[2rem_4rem_1fr_auto_auto] lg:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] 3xl:max-w-[1800px]`}
         onMouseEnter={() => setShowGenderMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
         {show &&

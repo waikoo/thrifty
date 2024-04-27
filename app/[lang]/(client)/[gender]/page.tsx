@@ -18,12 +18,11 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
 
   return (
     <main className="relative bg-t_white dark:bg-t_black text-t_black dark:text-t_white mx-auto mt-2 w-full overflow-hidden">
-      <div className="max-w-[90vw] xl:max-w-[1200px] mx-auto">
+      <div className="max-w-[90vw] 3xl:max-w-[1800px] mx-auto">
         <Hero />
         <HeroBarSwitch />
-
-        {/* <NavBarMobile /> */}
       </div>
+
       <ColorCarousel gender={gender} />
 
       <PopularBrands gender={gender} lang={lang} />
@@ -31,6 +30,8 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
       <FilterHome gender={gender} lang={lang} />
 
       <NewsletterSubscription />
+
+      <NavBarMobile />
     </main>
   )
 }

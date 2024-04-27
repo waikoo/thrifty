@@ -27,7 +27,7 @@ export default function GenderMenu() {
         ref={divRef}
       >
 
-        <div className="grid justify-content-center grid-cols-5 max-w-[1600px] mx-auto">
+        <div className="grid justify-content-center grid-cols-[auto_auto_auto_auto_500px] max-w-[1600px] mx-auto">
           {hoveredGender && <GenderMember hoveredGender={hoveredGender} />}
 
           <div className="my-auto flex flex-col gap-10 col-start-5 col-end-6">
