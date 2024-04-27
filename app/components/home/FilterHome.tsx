@@ -28,7 +28,7 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
               <span className="-mt-5 xl:mt-0 xl:ml-4 text-[9vw] xl:text-[4.375rem]">BEFORE</span>
             </>
           ) : (
-            <p className="mx-auto">SHOP FASTER THAN EVER BEFORE</p>
+            <span className="mx-auto">SHOP FASTER THAN EVER BEFORE</span>
           )
           }
         </p>
