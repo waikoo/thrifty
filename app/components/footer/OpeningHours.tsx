@@ -1,7 +1,7 @@
 type OpeningHoursProps = {
-  textSize: string
-  tracking: string
-  theme: string
+  textSize?: string
+  tracking?: string
+  theme?: string
 }
 
 export default function OpeningHours({ textSize, tracking, theme }: OpeningHoursProps) {

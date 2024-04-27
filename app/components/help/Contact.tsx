@@ -13,7 +13,7 @@ export default function Contact({ children }: ContactProps) {
       <HelpTitle>{children}</HelpTitle>
       <OpeningHours />
       <br />
-      <FooterContact noTitle={true} />
+      <FooterContact />
     </>
   )
 }
