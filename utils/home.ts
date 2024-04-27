@@ -41,12 +41,13 @@ function isString(value: any): value is string {
 export const completeWord = (searchTerm: string, data: ProductItemType[], columns: string[]) => {
   for (const entry of data) {
     for (const column of columns) {
-      if (isString(entry[column])) {
-        if (searchTerm.toLowerCase().slice(0, 2) === entry[column].toLowerCase().slice(0, 2)) {
-          return entry[column]
+      const value = entry[column];
+      if (isString(value)) {
+        if (searchTerm.toLowerCase().slice(0, 2) === value.toLowerCase().slice(0, 2)) {
+          return value;
         }
       }
     }
   }
-  return null
-}
+  return null;
+};
