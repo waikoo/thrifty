@@ -23,7 +23,13 @@ export default function FooterWide() {
         <FooterAccount textColor={textColor} textSize={textSize} tracking={tracking} />
         <FooterHelp textColor={textColor} textSize={textSize} tracking={tracking} />
 
-        {viewportWidth > viewport.xl && <OpeningHours />}
+        {viewportWidth > viewport.xl && (
+          <OpeningHours
+            textSize={textSize}
+            tracking={tracking}
+            theme={theme}
+          />
+        )}
 
         <div className="absolute bottom-10 text-[0.875rem]">
           <span>2024 Triftstudio.</span>
