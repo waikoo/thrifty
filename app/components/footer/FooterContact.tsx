@@ -24,7 +24,7 @@ export default function FooterContact() {
         </WithHome>)}
 
       <FooterPhoneAndEmail invert={false} />
-      <FooterSocials theme={theme} className="flex gap-4" socialSize={25} />
+      <FooterSocials theme={theme} className="flex gap-4 items-center" fbSize={28} instaSize={35} />
     </div>
   )
 }
