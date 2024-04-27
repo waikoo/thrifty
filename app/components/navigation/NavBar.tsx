@@ -27,6 +27,7 @@ const NavBar = ({ className }: NavBarProps) => {
   const currentViewport = useViewport()
   const show = currentViewport < viewport.lg
   const logoWidth = currentViewport < viewport['2xl'] ? '11.6875rem' : '8.1875rem'
+  const hamburgerDistance = show ? 'ml-4' : ''
 
   return (
     <section className={`bg-t_white dark:bg-t_black ${position} top-0 z-50 w-screen ${className}`}>
@@ -39,7 +40,7 @@ const NavBar = ({ className }: NavBarProps) => {
           </div>
         }
 
-        <SearchBar className="self-end ml-4 col-start-2 col-end-3 lg:col-start-1 lg:col-end-2" />
+        <SearchBar className={`self-end ${hamburgerDistance} col-start-2 col-end-3 lg:col-start-1 lg:col-end-2`} />
 
         {position === 'static' ? (
           <WithHome> <Logo className="self-end " width={logoWidth} /> </WithHome>
