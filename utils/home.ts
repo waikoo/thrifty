@@ -1,3 +1,5 @@
+import { ProductItemType } from "@/types/productItem"
+
 export const getText = (text: string) => {
   let currentText = text
   if (text.includes('_')) {
@@ -30,4 +32,21 @@ export const getColor2 = (state: string, theme: string) => {
   } else {
     return state === 'sale' ? 'bg-t_white' : 'bg-gray-300'
   }
+}
+
+function isString(value: any): value is string {
+  return typeof value === 'string';
+}
+
+export const completeWord = (searchTerm: string, data: ProductItemType[], columns: string[]) => {
+  for (const entry of data) {
+    for (const column of columns) {
+      if (isString(entry[column])) {
+        if (searchTerm.toLowerCase().slice(0, 2) === entry[column].toLowerCase().slice(0, 2)) {
+          return entry[column]
+        }
+      }
+    }
+  }
+  return null
 }

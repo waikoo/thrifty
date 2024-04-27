@@ -12,4 +12,5 @@ export type ProductItemType = {
   condition: string
   color: string
   brand: string
+  [key: string]: string | number | string[]
 }
