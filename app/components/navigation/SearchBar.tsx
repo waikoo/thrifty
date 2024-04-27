@@ -86,6 +86,7 @@ export default function SearchBar({ className }: SearchBarProps) {
     const formData = new FormData(e.currentTarget as HTMLFormElement)
     const searchTerm = formData.get('search')
 
+    setShowResults(false)
     if (searchTerm) {
       router.push(
         getLinkWithSearchParams(searchTerm.toString(), lang, gender)
