@@ -2,8 +2,8 @@
 import { useRef } from "react"
 
 import GenderImage from "@/app/components/navigation/GenderImage"
-import women_01 from "@/public/nav/women_01.jpg"
-import women_02 from "@/public/nav/women_02.jpg"
+// import women_01 from "@/public/nav/women_01.jpg"
+// import women_02 from "@/public/nav/women_02.jpg"
 import GenderMember from "@/app/components/navigation/GenderMember"
 import { useGenderStore } from "@/state/client/genderState"
 
@@ -31,8 +31,17 @@ export default function GenderMenu() {
           {hoveredGender && <GenderMember hoveredGender={hoveredGender} />}
 
           <div className="my-auto flex flex-col gap-10 col-start-5 col-end-6">
-            <GenderImage img={women_01} className="col-start-5 col-end-6 row-start-1 w-full">NEW IN</GenderImage>
-            <GenderImage img={women_02} className="col-start-5 col-end-6 row-start-2 w-full">PROMOS</GenderImage>
+            <GenderImage
+              src={`/images/gender_hover/${hoveredGender}1.jpg`}
+              className="col-start-5 col-end-6 row-start-1 w-full">
+              NEW IN
+            </GenderImage>
+
+            <GenderImage
+              src={`/images/gender_hover/${hoveredGender}2.jpg`}
+              className="col-start-5 col-end-6 row-start-2 w-full">
+              SALE
+            </GenderImage>
           </div>
         </div>
       </div >
