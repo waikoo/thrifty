@@ -32,10 +32,10 @@ export const filter: TFilter = {
       accessories: ["Hats", "Sunglasses", "Watches", "Belts", "Bags"],
     },
     women: {
-      all: ["Jackets", "Coats", "Dresses", "Tops", "T-Shirts", "Jeans", "Pants", "Skirts", "Dresses", "Boots", "Heels", "Flats", "Sandals", "Slippers", "Bags", "Sunglasses", "Jewellery", "Watches", "Hats", "Belts", "Sneakers", "Joggers", "Hoodies", "Tops"],
+      all: ["Jackets", "Coats", "Dresses", "Tops", "T-Shirts", "Jeans", "Pants", "Skirts", "Dresses", "Boots", "Heels", "Flats", "Sandals", "Slippers", "Bags", "Sunglasses", "Jewellery", "Watches", "Hats", "Belts", "Sneakers", "Joggers", "Hoodies"],
       accessories: ["Hats", "Jewellery", "Sunglasses", "Watches", "Belts", "Bags"],
       shoes: ["Sneakers", "Boots", "Heels", "Flats", "Sandals", "Slippers"],
-      clothing: ["Coats", "Dresses", "Tops", "T-Shirts", "Sweaters", "Jeans", "Pants", "Skirts", "Hoodies", "Tops"],
+      clothing: ["Coats", "Dresses", "Tops", "T-Shirts", "Sweaters", "Jeans", "Pants", "Skirts", "Hoodies"],
     },
     kids: {
       all: ["Coats", "Jackets", "Tops", "T-Shirts", "Sweaters", "Jeans", "Pants", "Skirts", "Dresses", "Boots", "Flats", "Sandals", "Slippers", "Sneakers", "Joggers", "Hoodies", "Tops"],
