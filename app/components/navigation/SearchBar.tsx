@@ -134,7 +134,7 @@ export default function SearchBar({ className }: SearchBarProps) {
                 getLinkWithSearchParams(`${item.brand} ${item.type}`, lang, gender)
               )
             }} className="cursor-pointer">
-              <span> {completedWord} </span>
+              <span>{completedWord === item.brand ? '' : completedWord}</span>
               <span>{item.brand}</span>
               <span className="ml-2">{item.type}</span>
             </div>
