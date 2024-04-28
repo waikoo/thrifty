@@ -38,7 +38,7 @@ export default function MiniCartView() {
   }
 
   return (
-    <div className="absolute bg-t_white dark:bg-t_black text-t_black dark:text-t_white scrollbar scrollbar-thumb-darkgrey scrollbar-thumb-rounded right-0 top-8 z-50 flex min-w-[16rem] flex-col justify-center gap-5 overflow-y-scroll p-4"
+    <div className="absolute bg-t_white dark:bg-t_black text-t_black dark:text-t_white scrollbar scrollbar-thumb-darkgrey scrollbar-thumb-rounded right-0 top-[5.4rem] z-50 flex min-w-[16rem] flex-col justify-center gap-5 overflow-y-scroll p-4"
       ref={miniCartViewRef}
       onMouseLeave={onMouseLeave}
       onMouseEnter={() => setShowMiniCartView(true)}

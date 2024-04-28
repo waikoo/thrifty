@@ -9,7 +9,7 @@ export default function MiniCartButtons() {
   const { cart } = useCartStore()
 
   return (
-    <div className="bg-bkg absolute -bottom-[17.5rem] right-6 z-50 flex justify-between gap-2 px-[0.55rem] pb-[0.55rem]">
+    <div className="bg-bkg absolute -bottom-[15rem] right-6 z-50 flex justify-between gap-2 px-[0.55rem] pb-[0.55rem]">
 
       <Link href={`/${lang}/${gender}/cart`}>
         <button className="bg-bkg text-content border-content whitespace-nowrap border-[0.1rem] px-4 py-2 text-[10px] font-semibold">

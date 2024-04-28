@@ -6,10 +6,8 @@ import { usePathname } from "next/navigation"
 import { IconFavorite, IconShoppingBag } from '@/app/components/navigation/icons/'
 import Number from "@/app/components/navigation/Number"
 import Account from "@/app/components/navigation/Account"
-import MiniCartView from "@/app/components/navigation/MiniCartView"
 import getLangAndGender from "@/utils/getLangAndGender"
 import { getFromLocalStorage } from "@/utils/getFromLocalStorage"
-import MiniCartButtons from "@/app/components/navigation/MiniCartButtons"
 import useUserSession from "@/app/components/hooks/useUserSession"
 import { useNavigationStore } from "@/state/client/navigationState"
 import { useFavoriteStore } from "@/state/client/favoriteState"
@@ -78,13 +76,6 @@ export default function NavIcons({ className }: NavIconsProps) {
         <IconShoppingBag />
         {session && <Number itemLength={cartLength} />}
       </Link>
-
-      {session && showMiniCartView && (
-        <>
-          <MiniCartView />
-          <MiniCartButtons />
-        </>
-      )}
     </nav>
   )
 }
