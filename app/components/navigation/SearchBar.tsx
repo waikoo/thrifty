@@ -14,13 +14,16 @@ import { useNavigationStore } from "@/state/client/navigationState";
 import { RxCross2 } from "react-icons/rx";
 import { albert } from '@/utils/fonts';
 import useSearchSuggestions from '../hooks/useSearchSuggestions';
+import useFiltersInSearchBar from '../hooks/useFiltersInSearchBar';
+import { TSavedFilters } from '@/types/filters';
 
 type SearchBarProps = {
   className?: string
 }
 
 export default function SearchBar({ className }: SearchBarProps) {
-  const { lang, gender } = getLangAndGender(usePathname())
+  const pathname = usePathname()
+  const { lang, gender } = getLangAndGender(pathname)
   const { t } = useTranslation(lang, 'layout')
   const router = useRouter()
   const currentViewport = useViewport()
@@ -35,6 +38,9 @@ export default function SearchBar({ className }: SearchBarProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const showClearIcon = searchTerm !== '' && showMobileSearch
   const { suggestions } = useSearchSuggestions(showSuggestions, debouncedSearchTerm, setCompletedWord)
+  const { savedFilters } = useFiltersInSearchBar()
+
+  console.log(savedFilters)
 
   useEffect(() => {
     if (showMobileSearch) {
@@ -74,6 +80,15 @@ export default function SearchBar({ className }: SearchBarProps) {
     )
   }
 
+  const handleFilterClick = (item: TSavedFilters) => {
+    const newParams = new URLSearchParams(item.filters) // create new searchParams from saved filters
+    newParams.set('sort-by', 'newfirst') // reset default sorting params
+    newParams.set('shop-by', 'new in')
+    newParams.set('page', '1')
+
+    router.push(`${pathname}/products?${newParams}`);
+  }
+
   return (
     <div>
       <form className={`text-bkg relative flex items-end gap-2 ${className} w-full`}
@@ -106,6 +121,18 @@ export default function SearchBar({ className }: SearchBarProps) {
       </form>
       <br />
       <div className="h-[0.1rem] bg-t_black dark:bg-t_white w-screen -ml-[1.7rem]" />
+
+      {savedFilters.length > 0 && (
+        <div className="w-full absolute bg-t_white dark:bg-t_black top-[5rem] flex flex-col gap-4 p-4">
+
+          {savedFilters.map((item) => (
+            <div key={item.filterId} onClick={() => handleFilterClick(item)}>
+              <span>{item.name}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
       {showSuggestions && (
         <div className="w-full absolute bg-t_white dark:bg-t_black top-[5rem] flex flex-col gap-4 p-4">
 
