@@ -119,10 +119,14 @@ export default function SearchBar({ className }: SearchBarProps) {
           ref={inputRef}
         />
       </form>
-      <br />
-      <div className="h-[0.1rem] bg-t_black dark:bg-t_white w-screen -ml-[1.7rem]" />
+      {viewportWidth < viewport.xl && showMobileSearch && (
+        <>
+          <br />
+          <div className="h-[0.1rem] bg-t_black dark:bg-t_white w-screen -ml-[1.7rem]" />
+        </>
+      )}
 
-      {savedFilters.length > 0 && (
+      {showMobileSearch && savedFilters.length > 0 && (
         <div className="w-full absolute bg-t_white dark:bg-t_black top-[5rem] flex flex-col gap-4 p-4">
 
           {savedFilters.map((item) => (
