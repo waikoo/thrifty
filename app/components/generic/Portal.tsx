@@ -21,6 +21,5 @@ export default function Portal({ children }: PortalProps) {
     return null;
   }
 
-  // return createPortal(children, modalElem);
-  return createPortal(React.createElement('div', null, children), modalElem)
+  return createPortal(<>children</>, modalElem)
 }
