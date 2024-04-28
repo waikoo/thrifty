@@ -13,6 +13,8 @@ import { ProductItemType } from '@/types/productItem';
 import { supabase } from '@/app/supabase';
 import { completeWord } from '@/utils/home';
 import useDebounce from '@/app/components/hooks/useDebounce';
+import { useNavigationStore } from "@/state/client/navigationState";
+import { RxCross2 } from "react-icons/rx";
 
 type SearchBarProps = {
   className?: string
@@ -30,6 +32,7 @@ export default function SearchBar({ className }: SearchBarProps) {
   const [results, setResults] = useState<ProductItemType[] | []>([])
   const [completedWord, setCompletedWord] = useState('')
   const debouncedSearchTerm = useDebounce(searchTerm, 500)
+  const { showMobileSearch, setShowMobileSearch } = useNavigationStore()
 
   useEffect(() => {
     const getResults = async (): Promise<ProductItemType[] | []> => {
@@ -86,6 +89,7 @@ export default function SearchBar({ className }: SearchBarProps) {
     const formData = new FormData(e.currentTarget as HTMLFormElement)
     const searchTerm = formData.get('search')
 
+    setShowMobileSearch(false)
     setShowResults(false)
     if (searchTerm) {
       router.push(
@@ -98,7 +102,8 @@ export default function SearchBar({ className }: SearchBarProps) {
     setSearchTerm(e.target.value)
   }
 
-  function handleSearch() {
+  function handleSearchByIcon() {
+    setShowMobileSearch(false)
     router.push(
       getLinkWithSearchParams(searchTerm, lang, gender)
     )
@@ -108,10 +113,13 @@ export default function SearchBar({ className }: SearchBarProps) {
     <form className={`text-bkg relative flex items-end gap-2 ${className} w-full`}
       onSubmit={(e: React.FormEvent) => handleSubmit(e)}
     >
+      {/* <div onClick={() => setSearchTerm("")}> */}
+      {/*   <RxCross2 className="absolute -right-2 top-2" /> */}
+      {/* </div> */}
 
       <div
         className="cursor-pointer"
-        onClick={handleSearch}
+        onClick={handleSearchByIcon}
       >
         <IconSearch className="self-end" />
       </div>

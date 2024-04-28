@@ -3,17 +3,26 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { useThemeStore } from "@/state/themeState";
-import SearchBar from "@/app/components/navigation/SearchBar";
+import { IconSearch } from '@/app/components/navigation/icons';
 import IconHamburger from "@/app/components/navigation/icons/IconHamburger";
 import Account from "@/app/components/navigation/Account";
 import getLangAndGender from "@/utils/getLangAndGender";
 import IconFavorite from "@/app/components/navigation/icons/IconFavorite";
 import IconShoppingBag from "@/app/components/navigation/icons/IconShoppingBag";
+import { useNavigationStore } from "@/state/client/navigationState";
+import Portal from "@/app/components/generic/Portal";
+import MobileSearch from "@/app/components/navigation/MobileSearch";
 
 export default function NavBarMobile() {
   const { theme } = useThemeStore()
   const bgColor = theme === 'dark' ? 'bg-t_black/40' : 'bg-t_white/40'
   const { lang, gender } = getLangAndGender(usePathname())
+  const { showMobileSearch, setShowMobileSearch } = useNavigationStore()
+
+  const handleSearch = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    setShowMobileSearch(!showMobileSearch)
+  }
 
   return (
     <section
@@ -21,7 +30,11 @@ export default function NavBarMobile() {
 
     >
       <IconHamburger />
-      <SearchBar className="" />
+
+      <div className="" onClick={handleSearch}>
+        <IconSearch className="self-end" />
+      </div>
+
       <Account />
 
       <Link href={`/${lang}/${gender}/favorites`} className="relative" title="Favorites">
@@ -33,6 +46,13 @@ export default function NavBarMobile() {
       >
         <IconShoppingBag />
       </Link>
+
+      {showMobileSearch && (
+        <Portal>
+          <MobileSearch />
+        </Portal>
+      )}
+
     </section>
   )
 }

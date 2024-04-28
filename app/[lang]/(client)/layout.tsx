@@ -28,6 +28,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
     >
       <head />
       <body className={`dark:bg-t_black bg-t_white min-h-screen w-full`}>
+        <div id="popup-root"></div>
         <Header />
 
         {children}
