@@ -40,8 +40,6 @@ export default function SearchBar({ className }: SearchBarProps) {
   const { suggestions } = useSearchSuggestions(showSuggestions, debouncedSearchTerm, setCompletedWord)
   const { savedFilters } = useFiltersInSearchBar()
 
-  console.log(savedFilters)
-
   useEffect(() => {
     if (showMobileSearch) {
       inputRef.current?.focus()

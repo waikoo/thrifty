@@ -65,8 +65,6 @@ export default function SavedFilters() {
   }
 
   async function handleRunFilter(e: React.MouseEvent<HTMLDivElement>, filterId: string) {
-    console.log(e.target)
-    console.log(e.currentTarget)
     setShowSavedFiltersPopup(false)
     const filterFromDb = await getFilterFromDb(client_id, filterId)
 
