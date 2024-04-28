@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client"
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
 import { useTranslation } from '@/i18n/client';
@@ -15,6 +15,7 @@ import { completeWord } from '@/utils/home';
 import useDebounce from '@/app/components/hooks/useDebounce';
 import { useNavigationStore } from "@/state/client/navigationState";
 import { RxCross2 } from "react-icons/rx";
+import { albert } from '@/utils/fonts';
 
 type SearchBarProps = {
   className?: string
@@ -33,6 +34,15 @@ export default function SearchBar({ className }: SearchBarProps) {
   const [completedWord, setCompletedWord] = useState('')
   const debouncedSearchTerm = useDebounce(searchTerm, 500)
   const { showMobileSearch, setShowMobileSearch } = useNavigationStore()
+  const viewportWidth = useViewport()
+  const inputRef = useRef<HTMLInputElement>(null)
+  const showClearIcon = searchTerm !== '' && showMobileSearch
+
+  useEffect(() => {
+    if (showMobileSearch) {
+      inputRef.current?.focus()
+    }
+  }, [])
 
   useEffect(() => {
     const getResults = async (): Promise<ProductItemType[] | []> => {
@@ -108,48 +118,56 @@ export default function SearchBar({ className }: SearchBarProps) {
   }
 
   return (
-    <form className={`text-bkg relative flex items-end gap-2 ${className} w-full`}
-      onSubmit={(e: React.FormEvent) => handleSubmit(e)}
-    >
-      <div onClick={() => setSearchTerm("")}>
-        <RxCross2 className="absolute -right-2 top-1" size={20} />
-      </div>
-
-      <div
-        className="cursor-pointer"
-        onClick={handleSearchByIcon}
+    <div>
+      <form className={`text-bkg relative flex items-end gap-2 ${className} w-full`}
+        onSubmit={(e: React.FormEvent) => handleSubmit(e)}
       >
-        <IconSearch className="self-end" />
-      </div>
+        {showClearIcon && (
+          <div onClick={() => setSearchTerm("")}>
+            <RxCross2 className="absolute right-8 top-1" size={20} />
+          </div>
+        )}
 
-      <input
-        type="search"
-        name="search"
-        value={searchTerm}
-        placeholder={hide ? '' : t('search')}
-        className={`text-t_black dark:text-t_white w-full appearance-none self-end border-none bg-transparent p-0 outline-0 ring-0 placeholder:text-[0.8rem] placeholder:text-t_black placeholder:dark:text-t_white placeholder:font-semibold focus:outline-none focus:ring-0`}
-        style={{ WebkitAppearance: 'none' }}
-        spellCheck="false"
-        onChange={handleOnChange}
-      />
+        <div
+          className="cursor-pointer"
+          onClick={handleSearchByIcon}
+        >
+          <IconSearch className="self-end" />
+        </div>
+
+        <input
+          type="search"
+          name="search-bar"
+          value={searchTerm}
+          placeholder={hide ? '' : t('search')}
+          className={`text-t_black dark:text-t_white w-full appearance-none border-none self-end bg-transparent p-0 outline-0 ring-0 placeholder:text-[0.8rem] placeholder:text-t_black placeholder:dark:text-t_white placeholder:font-semibold focus:outline-none focus:ring-0 ${albert.className} text-[1.0625rem]`}
+          style={{ WebkitAppearance: 'none' }}
+          spellCheck="false"
+          onChange={handleOnChange}
+          ref={inputRef}
+        />
+      </form>
+      <br />
+      <div className="h-[0.1rem] bg-t_black dark:bg-t_white w-screen -ml-[1.7rem]" />
       {showResults && (
-        <div className="w-full absolute bg-t_white dark:bg-t_black top-[2rem] flex flex-col gap-4 p-4">
+        <div className="w-full absolute bg-t_white dark:bg-t_black top-[5rem] flex flex-col gap-4 p-4">
 
           {results.map((item) => (
             <div key={item.uuid} onClick={() => {
               setShowResults(false)
               router.push(
-                getLinkWithSearchParams(`${item.brand} ${item.type}`, lang, gender)
+                getLinkWithSearchParams(`${item.brand} ${item.type} ${item.gender}`, lang, gender)
               )
             }} className="cursor-pointer">
               <span>{completedWord === item.brand ? '' : completedWord}</span>
               <span>{item.brand}</span>
               <span className="ml-2">{item.type}</span>
+              <span className="ml-2">{item.gender}</span>
             </div>
           ))}
         </div>
-      )
-      }
-    </form>
+      )}
+
+    </div>
   );
 }

@@ -2,10 +2,12 @@ import { useRef } from "react";
 
 import SearchBar from "@/app/components/navigation/SearchBar";
 import { useNavigationStore } from "@/state/client/navigationState";
+import useViewport from "../hooks/useViewport";
 
 export default function MobileSearch() {
   const { setShowMobileSearch } = useNavigationStore()
   const sectionRef = useRef(null)
+  const viewportWidth = useViewport()
 
   const handleClickOut = (e: React.MouseEvent) => {
     if (e.target === sectionRef.current) {
@@ -19,7 +21,7 @@ export default function MobileSearch() {
       ref={sectionRef}
       onClick={handleClickOut}
     >
-      <div className="bg-t_white dark:bg-t_black w-min-content p-7 opacity-100 h-1/2">
+      <div className="relative bg-t_white dark:bg-t_black w-min-content p-7 opacity-100 h-1/2 sm:top-[6.8rem]">
         <SearchBar />
       </div>
     </section>
