@@ -86,8 +86,6 @@ export default function SearchBar({ className }: SearchBarProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const formData = new FormData(e.currentTarget as HTMLFormElement)
-    const searchTerm = formData.get('search')
 
     setShowMobileSearch(false)
     setShowResults(false)
@@ -113,9 +111,9 @@ export default function SearchBar({ className }: SearchBarProps) {
     <form className={`text-bkg relative flex items-end gap-2 ${className} w-full`}
       onSubmit={(e: React.FormEvent) => handleSubmit(e)}
     >
-      {/* <div onClick={() => setSearchTerm("")}> */}
-      {/*   <RxCross2 className="absolute -right-2 top-2" /> */}
-      {/* </div> */}
+      <div onClick={() => setSearchTerm("")}>
+        <RxCross2 className="absolute -right-2 top-1" size={20} />
+      </div>
 
       <div
         className="cursor-pointer"
@@ -127,6 +125,7 @@ export default function SearchBar({ className }: SearchBarProps) {
       <input
         type="search"
         name="search"
+        value={searchTerm}
         placeholder={hide ? '' : t('search')}
         className={`text-t_black dark:text-t_white w-full appearance-none self-end border-none bg-transparent p-0 outline-0 ring-0 placeholder:text-[0.8rem] placeholder:text-t_black placeholder:dark:text-t_white placeholder:font-semibold focus:outline-none focus:ring-0`}
         style={{ WebkitAppearance: 'none' }}
