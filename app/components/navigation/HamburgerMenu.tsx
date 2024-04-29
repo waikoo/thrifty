@@ -1,14 +1,21 @@
 "use client"
 import { useRef, useState } from "react";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation"
+
 import { useNavigationStore } from "@/state/client/navigationState";
 import HamburgerAccountBar from "@/app/components/navigation/HamburgerAccountBar";
 import HamburgerGender from "@/app/components/navigation/HamburgerGender";
+import getLangAndGender from "@/utils/getLangAndGender"
+import HamburgerDropdownCategories from "./HamburgerDropdownCategories";
+import { albert_900 } from "@/utils/fonts";
 
 export default function HamburgerMenu() {
   const [selectedGender, setSelectedGender] = useState('')
   const { setShowHamburgerMenu } = useNavigationStore()
   const bgRef = useRef(null)
+  const { lang, gender } = getLangAndGender(usePathname())
 
   const handleCloseHamburgerMenu = (e: React.MouseEvent) => {
     if (e.target === bgRef.current) {
@@ -21,14 +28,36 @@ export default function HamburgerMenu() {
       ref={bgRef}
       onClick={handleCloseHamburgerMenu}
     >
-      <div className="p-4 w-[80%] bg-t_white dark:bg-t_black">
+      <div className="w-[80%] ">
 
-        <HamburgerAccountBar />
+        <div className="bg-t_white dark:bg-t_black w-full p-4 ">
+          <HamburgerAccountBar />
 
-        <HamburgerGender
-          selectedGender={selectedGender}
-          setSelectedGender={setSelectedGender} />
+          <HamburgerGender
+            selectedGender={selectedGender}
+            setSelectedGender={setSelectedGender}
+            gender={gender}
+          />
+        </div>
 
+
+        <div className="bg-t_mustard p-4">
+
+          <HamburgerDropdownCategories selectedGender={selectedGender} />
+
+          <Link href={`${lang}/${gender}/products?gender=${gender}/&shop-by=new+in&sort-by=newfirst&page=1`}
+            className={`${albert_900.className} text-[0.875rem] block`}
+          >
+            NEW IN
+          </Link>
+
+          <Link href={`${lang}/${gender}/products?gender=${gender}/&shop-by=promos&sort-by=newfirst&page=1`}
+            className={`${albert_900.className} text-[0.875rem]`}
+          >
+            SALE
+          </Link>
+
+        </div>
       </div>
     </section>
   )

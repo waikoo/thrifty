@@ -12,7 +12,7 @@ export default function HamburgerGenderItem({ selected, gender, onClick }: Hambu
   return (
     <div data-gender={gender} onClick={onClick}>
       {
-        selected === upGender
+        selected === gender
           ? <span className={`${albert_900.className}`}>{upGender}</span>
           : <span>{upGender}</span>
       }

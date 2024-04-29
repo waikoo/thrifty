@@ -1,27 +1,26 @@
-import { useEffect, useState } from "react"
-import { usePathname } from "next/navigation"
+import { useEffect } from "react"
 
-import getLangAndGender from "@/utils/getLangAndGender"
 import HamburgerGenderItem from "@/app/components/navigation/HamburgerGenderItem"
+import { Gender } from "@/types/link"
 
 type HamburgerGenderProps = {
   setSelectedGender: React.Dispatch<React.SetStateAction<string>>
   selectedGender: string
+  gender: Gender
 }
 
-export default function HamburgerGender({ selectedGender, setSelectedGender }: HamburgerGenderProps) {
-  const { gender } = getLangAndGender(usePathname())
+export default function HamburgerGender({ selectedGender, setSelectedGender, gender }: HamburgerGenderProps) {
   const genderArr = ['men', 'women', 'kids']
 
   useEffect(() => {
-    setSelectedGender(gender.toUpperCase())
+    setSelectedGender(gender)
   }, [gender])
 
   const selectGender = (e: React.MouseEvent<HTMLDivElement>) => {
     const div = e.currentTarget as HTMLDivElement
 
     if (div.dataset.gender) {
-      setSelectedGender(div.dataset.gender.toUpperCase())
+      setSelectedGender(div.dataset.gender)
     }
   }
 
