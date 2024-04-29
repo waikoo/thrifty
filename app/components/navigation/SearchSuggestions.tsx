@@ -1,5 +1,6 @@
 import { Gender, Locales } from '@/types/link'
 import { ProductItemType } from '@/types/productItem'
+import getLinkWithSearchParams from '@/utils/getLinkWithSearchParams'
 import { useRouter } from 'next/navigation'
 
 type SearchSuggestionsProps = {
