@@ -12,6 +12,8 @@ import usePosition from "@/app/components/hooks/usePosition"
 import { useThemeStore } from "@/state/themeState"
 import IconSearch from "@/app/components/navigation/icons/IconSearch"
 import { useNavigationStore } from "@/state/client/navigationState";
+import HamburgerMenu from "@/app/components/navigation/HamburgerMenu"
+import Portal from "@/app/components/generic/Portal"
 
 type NavBarProps = {
   className: string
@@ -27,11 +29,11 @@ const NavBar = ({ className }: NavBarProps) => {
   }
   const noBorderOnScroll = position === 'static' ? `${borderColor[theme]} xl:border-b-2` : ''
   const currentViewport = useViewport()
-  const showHamburger = currentViewport < viewport.xl
+  const showHamburgerIcon = currentViewport < viewport.xl
   const logoWidth = currentViewport < viewport['2xl'] ? '11.6875rem' : '8.1875rem'
-  const hamburgerDistance = showHamburger ? 'ml-4' : ''
+  const hamburgerDistance = showHamburgerIcon ? 'ml-4' : ''
   const isTablet = currentViewport >= viewport.sm && currentViewport < viewport.xl
-  const { showMobileSearch, setShowMobileSearch } = useNavigationStore()
+  const { showMobileSearch, setShowMobileSearch, showHamburgerMenu, setShowHamburgerMenu } = useNavigationStore()
 
   const handleShowSearch = (e: React.MouseEvent) => {
     setShowMobileSearch(true)
@@ -42,14 +44,16 @@ const NavBar = ({ className }: NavBarProps) => {
       <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[2rem_4rem_1fr_auto_auto] xl:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] 3xl:max-w-[1800px]`}
         onMouseEnter={() => setShowGenderMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
-        {showHamburger &&
-          <div className="w-5 h-5 mr-5 self-end col-start-1 col-end-2 row-start-1">
+        {showHamburgerIcon &&
+          <div className="w-5 h-5 mr-5 self-end col-start-1 col-end-2 row-start-1"
+            onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}>
             <IconHamburger />
           </div>
         }
 
         {isTablet ? (
-          <div className="self-end ${hamburgerDistance} col-start-2 col-end-3 xl:col-start-1 xl:col-end-2 row-start-1" onClick={handleShowSearch}>
+          <div className="self-end ${hamburgerDistance} col-start-2 col-end-3 xl:col-start-1 xl:col-end-2 row-start-1"
+            onClick={handleShowSearch}>
             <IconSearch />
           </div>
         ) : (
@@ -65,6 +69,8 @@ const NavBar = ({ className }: NavBarProps) => {
         {/* on scroll Category shows up instead of Thriftstudio logo */}
         <NavIcons className="flex items-center gap-6 pt-2 self-end justify-self-end col-start-5 col-end-6 xl:col-start-3 xl:col-end-4 row-start-1" />
       </div>
+
+      {showHamburgerMenu && <Portal><HamburgerMenu /></Portal>}
     </nav>
   )
 }

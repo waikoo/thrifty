@@ -12,12 +12,13 @@ import IconShoppingBag from "@/app/components/navigation/icons/IconShoppingBag";
 import { useNavigationStore } from "@/state/client/navigationState";
 import Portal from "@/app/components/generic/Portal";
 import MobileSearch from "@/app/components/navigation/MobileSearch";
+import HamburgerMenu from "@/app/components/navigation/HamburgerMenu"
 
 export default function NavBarMobile() {
   const { theme } = useThemeStore()
   const bgColor = theme === 'dark' ? 'bg-t_black/40' : 'bg-t_white/40'
   const { lang, gender } = getLangAndGender(usePathname())
-  const { showMobileSearch, setShowMobileSearch } = useNavigationStore()
+  const { showMobileSearch, setShowMobileSearch, showHamburgerMenu, setShowHamburgerMenu } = useNavigationStore()
 
   const handleSearch = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -29,7 +30,9 @@ export default function NavBarMobile() {
       className={`sm:hidden fixed bottom-[0.3125rem] max-w-[90vw] ${bgColor} rounded-full mt-3 left-0 right-0 mx-auto`}
     >
       <div className="grid grid-cols-5 justify-items-center gap-[3.3rem] z-50 backdrop-blur-md bg-opacity-40 drop-shadow-md px-6 py-2 items-center">
-        <IconHamburger />
+        <div onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}>
+          <IconHamburger />
+        </div>
 
         <div className="" onClick={handleSearch}>
           <IconSearch className="self-end" />
@@ -53,6 +56,7 @@ export default function NavBarMobile() {
           </Portal>
         )}
 
+        {showHamburgerMenu && <Portal><HamburgerMenu /></Portal>}
       </div>
     </section>
   )

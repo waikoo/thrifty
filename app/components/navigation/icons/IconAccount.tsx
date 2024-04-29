@@ -2,14 +2,18 @@
 import { useThemeStore } from "@/state/themeState";
 import { getSvgColor } from "@/utils/theme"
 
-const IconAccount = () => {
+type IconAccount = {
+  width?: string
+}
+
+const IconAccount = ({ width }: IconAccount) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={15}
-      height={16}
+      width={width || 15}
+      height={width ? "100%" : 16}
       viewBox="0 0 18 17"
       fill='none'
       className="cursor-pointer"
