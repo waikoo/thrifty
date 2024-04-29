@@ -9,7 +9,6 @@ import getLinkWithSearchParams from '@/utils/getLinkWithSearchParams';
 import useViewport from '@/app/components/hooks/useViewport';
 import { viewport } from '@/app/components/data/universalStyles';
 import getLangAndGender from '@/utils/getLangAndGender';
-import useDebounce from '@/app/components/hooks/useDebounce';
 import { useNavigationStore } from "@/state/client/navigationState";
 import { RxCross2 } from "react-icons/rx";
 import { albert, albert_800 } from '@/utils/fonts';
@@ -32,12 +31,11 @@ export default function SearchBar({ className }: SearchBarProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [completedWord, setCompletedWord] = useState('')
-  const debouncedSearchTerm = useDebounce(searchTerm, 500)
   const { showMobileSearch, setShowMobileSearch } = useNavigationStore()
   const viewportWidth = useViewport()
   const inputRef = useRef<HTMLInputElement>(null)
   const showClearIcon = searchTerm !== '' && showMobileSearch
-  const { suggestions } = useSearchSuggestions(showSuggestions, debouncedSearchTerm, setCompletedWord)
+  const { suggestions } = useSearchSuggestions(showSuggestions, searchTerm, setCompletedWord)
   const { savedFilters } = useFiltersInSearchBar()
 
   useEffect(() => {

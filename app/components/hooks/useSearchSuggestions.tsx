@@ -4,12 +4,12 @@ import { supabase } from "@/app/supabase"
 import { ProductItemType } from "@/types/productItem"
 import { completeWord } from "@/utils/home"
 
-export default function useSearchSuggestions(showSuggestions: boolean, debouncedSearchTerm: string, setCompletedWord: React.Dispatch<React.SetStateAction<string>>) {
+export default function useSearchSuggestions(showSuggestions: boolean, searchTerm: string, setCompletedWord: React.Dispatch<React.SetStateAction<string>>) {
   const [suggestions, setSuggestions] = useState<ProductItemType[] | []>([])
 
   useEffect(() => {
     const getResults = async (): Promise<ProductItemType[] | []> => {
-      if (!debouncedSearchTerm) {
+      if (!searchTerm) {
         return []
       }
       const columns = ['gender', 'type', 'category', 'brand']
@@ -19,7 +19,7 @@ export default function useSearchSuggestions(showSuggestions: boolean, debounced
         const { data, error } = await supabase
           .from('products')
           .select('*')
-          .ilike(column, `%${debouncedSearchTerm}%`)
+          .ilike(column, `%${searchTerm}%`)
           .order('created_at', { ascending: false })
           .limit(5)
 
@@ -29,7 +29,7 @@ export default function useSearchSuggestions(showSuggestions: boolean, debounced
 
         if (data) {
           results = [...results, ...data]
-          setCompletedWord(completeWord(debouncedSearchTerm, data, columns) as string)
+          setCompletedWord(completeWord(searchTerm, data, columns) as string)
         }
       }
       const uniqueResults = Array.from(
@@ -46,7 +46,7 @@ export default function useSearchSuggestions(showSuggestions: boolean, debounced
       }
     })
 
-  }, [showSuggestions, debouncedSearchTerm])
+  }, [showSuggestions, searchTerm])
 
   return { suggestions }
 }
