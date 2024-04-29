@@ -21,10 +21,10 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
   const showOverlayOnDesktop = state === 'new_in' && currentViewport > viewport.xl ? '' : 'hidden'
   const borderRadius = 'rounded-[1.5rem] md:rounded-[2.5rem] xl:rounded-[1.8rem]'
   const borderColor = state === 'sale' && theme === 'dark' ? 'border-t_green' : state === 'new_in' && theme === 'dark' ? 'border-t_purple' : ''
-  const height = state === 'new_in' ? 'xl:h-[39rem] 2xl:h-[48rem] 3xl:h-[55rem]' : 'xl:h-[39.375]'
+  const height = state === 'new_in' ? 'xl:h-[35rem] 2xl:h-[48rem] 3xl:h-[55rem]' : 'xl:h-[39.375]'
 
   return (
-    <div className={`w-full flex ${salePadding} ${blackOnSale} ${borderRadius} h-[27.3125rem] sm:h-[43rem] md:h-[60rem] xl:h-[39.375rem] 2xl:h-[48.2rem] 3xl:h-[55.2rem] rounded-[1.8rem] relative border-[0.125rem] ${borderColor}`}>
+    <div className={`w-full flex ${salePadding} ${blackOnSale} ${borderRadius} h-[27.3125rem] sm:h-[43rem] md:h-[60rem] xl:h-[35.375rem] 2xl:h-[48.2rem] 3xl:h-[55.2rem] rounded-[1.8rem] relative border-[0.125rem] ${borderColor}`}>
       {state === 'new_in' &&
         <div className={`w-[50%] h-full bg-gradient-to-l from-black ${showOverlayOnDesktop} absolute right-0 opacity-80 rounded-[1.8rem]`}></div>
       }
