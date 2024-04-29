@@ -122,7 +122,7 @@ export default function SearchBar({ className }: SearchBarProps) {
         </>
       )}
 
-      {showMobileSearch && searchTerm === '' && savedFilters.length > 0 && (
+      {showMobileSearch && searchTerm === '' && savedFilters?.length > 0 && (
         <div className="w-full absolute bg-t_white dark:bg-t_black top-[5rem] flex flex-col gap-4 px-4 pb-4 pt-0">
           <span className={`bg-t_black text-t_white dark:bg-t_white dark:text-t_black p-2 w-screen -ml-[2.7rem] text-center text-[1.0625rem] ${albert_800.className}`}>SAVED FILTERS</span>
           {savedFilters.map((item) => (
