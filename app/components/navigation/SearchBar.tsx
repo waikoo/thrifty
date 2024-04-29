@@ -15,6 +15,8 @@ import { albert, albert_800 } from '@/utils/fonts';
 import useSearchSuggestions from '../hooks/useSearchSuggestions';
 import useFiltersInSearchBar from '../hooks/useFiltersInSearchBar';
 import { TSavedFilters } from '@/types/filters';
+import SearchSuggestions from './SearchSuggestions';
+import SavedFiltersInSearchBar from './SavedFiltersInSearchBar';
 
 type SearchBarProps = {
   className?: string
@@ -76,15 +78,6 @@ export default function SearchBar({ className }: SearchBarProps) {
     )
   }
 
-  const handleFilterClick = (item: TSavedFilters) => {
-    const newParams = new URLSearchParams(item.filters) // create new searchParams from saved filters
-    newParams.set('sort-by', 'newfirst') // reset default sorting params
-    newParams.set('shop-by', 'new in')
-    newParams.set('page', '1')
-
-    router.push(`${pathname}/products?${newParams}`);
-  }
-
   return (
     <div>
       <form className={`text-bkg relative flex items-end gap-2 ${className} w-full`}
@@ -115,6 +108,7 @@ export default function SearchBar({ className }: SearchBarProps) {
           ref={inputRef}
         />
       </form>
+
       {viewportWidth < viewport.xl && searchTerm !== '' && showMobileSearch && (
         <>
           <br />
@@ -123,35 +117,18 @@ export default function SearchBar({ className }: SearchBarProps) {
       )}
 
       {showMobileSearch && searchTerm === '' && savedFilters?.length > 0 && (
-        <div className="w-full absolute bg-t_white dark:bg-t_black top-[5rem] flex flex-col gap-4 px-4 pb-4 pt-0">
-          <span className={`bg-t_black text-t_white dark:bg-t_white dark:text-t_black p-2 w-screen -ml-[2.7rem] text-center text-[1.0625rem] ${albert_800.className}`}>SAVED FILTERS</span>
-          {savedFilters.map((item) => (
-            <div key={item.filterId} onClick={() => handleFilterClick(item)}>
-              <span>{item.name}</span>
-            </div>
-          ))}
-        </div>
+        <SavedFiltersInSearchBar savedFilters={savedFilters} />
       )}
 
       {showSuggestions && (
-        <div className="w-full absolute bg-t_white dark:bg-t_black top-[5rem] flex flex-col gap-4 p-4">
-
-          {suggestions.map((item) => (
-            <div key={item.uuid} onClick={() => {
-              setShowSuggestions(false)
-              router.push(
-                getLinkWithSearchParams(`${item.brand} ${item.type} ${item.gender}`, lang, gender)
-              )
-            }} className="cursor-pointer">
-              <span>{completedWord === item.brand ? '' : completedWord}</span>
-              <span>{item.brand}</span>
-              <span className="ml-2">{item.type}</span>
-              <span className="ml-2">{item.gender}</span>
-            </div>
-          ))}
-        </div>
+        <SearchSuggestions
+          suggestions={suggestions}
+          setShowSuggestions={setShowSuggestions}
+          completedWord={completedWord}
+          lang={lang}
+          gender={gender}
+        />
       )}
-
     </div>
   );
 }
