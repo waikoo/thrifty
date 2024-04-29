@@ -10,9 +10,10 @@ import HamburgerGender from "@/app/components/navigation/HamburgerGender";
 import getLangAndGender from "@/utils/getLangAndGender"
 import HamburgerDropdownCategories from "./HamburgerDropdownCategories";
 import { albert_900 } from "@/utils/fonts";
+import { Gender } from "@/types/link";
 
 export default function HamburgerMenu() {
-  const [selectedGender, setSelectedGender] = useState('')
+  const [selectedGender, setSelectedGender] = useState<Gender | ''>('')
   const { setShowHamburgerMenu } = useNavigationStore()
   const bgRef = useRef(null)
   const { lang, gender } = getLangAndGender(usePathname())
@@ -36,7 +37,7 @@ export default function HamburgerMenu() {
           <HamburgerGender
             selectedGender={selectedGender}
             setSelectedGender={setSelectedGender}
-            gender={gender}
+            pathnameGender={gender}
           />
         </div>
 

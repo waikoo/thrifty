@@ -1,8 +1,8 @@
-import { Gender } from "@/types/link"
+import { GenderT } from "@/types/link"
 
 
 type HamburgerDropdownCategoriesProps = {
-  selectedGender: Gender
+  selectedGender: GenderT
 }
 
 export default function HamburgerDropdownCategories({ selectedGender }: HamburgerDropdownCategoriesProps) {

@@ -4,23 +4,23 @@ import HamburgerGenderItem from "@/app/components/navigation/HamburgerGenderItem
 import { Gender } from "@/types/link"
 
 type HamburgerGenderProps = {
-  setSelectedGender: React.Dispatch<React.SetStateAction<string>>
+  setSelectedGender: React.Dispatch<React.SetStateAction<Gender | ''>>
   selectedGender: string
-  gender: Gender
+  pathnameGender: Gender
 }
 
-export default function HamburgerGender({ selectedGender, setSelectedGender, gender }: HamburgerGenderProps) {
-  const genderArr = ['men', 'women', 'kids']
+export default function HamburgerGender({ selectedGender, setSelectedGender, pathnameGender }: HamburgerGenderProps) {
+  const genderArr: Gender[] = ['men', 'women', 'kids']
 
   useEffect(() => {
-    setSelectedGender(gender)
-  }, [gender])
+    setSelectedGender(pathnameGender)
+  }, [pathnameGender])
 
   const selectGender = (e: React.MouseEvent<HTMLDivElement>) => {
     const div = e.currentTarget as HTMLDivElement
 
     if (div.dataset.gender) {
-      setSelectedGender(div.dataset.gender)
+      setSelectedGender(div.dataset.gender as Gender)
     }
   }
 
