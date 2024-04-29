@@ -11,7 +11,7 @@ import { viewport } from '@/app/components/data/universalStyles';
 import getLangAndGender from '@/utils/getLangAndGender';
 import { useNavigationStore } from "@/state/client/navigationState";
 import { RxCross2 } from "react-icons/rx";
-import { albert, albert_800 } from '@/utils/fonts';
+import { albert, albert_700, albert_800 } from '@/utils/fonts';
 import useSearchSuggestions from '../hooks/useSearchSuggestions';
 import useFiltersInSearchBar from '../hooks/useFiltersInSearchBar';
 import { TSavedFilters } from '@/types/filters';
@@ -84,9 +84,16 @@ export default function SearchBar({ className }: SearchBarProps) {
         onSubmit={(e: React.FormEvent) => handleSubmit(e)}
       >
         {showClearIcon && (
-          <div onClick={() => setSearchTerm("")}>
-            <RxCross2 className="absolute right-8 top-1" size={20} />
+          <div onClick={() => setSearchTerm("")} className="absolute right-[6rem] md:right-[7rem] top-1">
+            <RxCross2 className="" size={20} />
           </div>
+        )}
+
+        {viewportWidth < viewport.xl && showMobileSearch && (
+          <span className={`${albert_700.className} absolute right-[1rem] md:right-[0.6rem] top-[0.05rem] text-[1.0625rem]`}
+            onClick={() => setShowMobileSearch(false)}>
+            CLOSE
+          </span>
         )}
 
         <div
@@ -112,7 +119,7 @@ export default function SearchBar({ className }: SearchBarProps) {
       {viewportWidth < viewport.xl && searchTerm !== '' && showMobileSearch && (
         <>
           <br />
-          <div className="h-[0.1rem] bg-t_black dark:bg-t_white w-screen -ml-[1.7rem]" />
+          <div className="h-[0.1rem] bg-t_black dark:bg-t_white w-full " />
         </>
       )}
 
