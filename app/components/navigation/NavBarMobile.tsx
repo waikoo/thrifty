@@ -26,33 +26,34 @@ export default function NavBarMobile() {
 
   return (
     <section
-      className={`sm:hidden fixed bottom-[0.3125rem] max-w-[90vw] ${bgColor} rounded-full px-6 py-2 items-center drop-shadow-md mt-3 grid grid-cols-5 justify-items-center gap-[3.3rem] z-50 backdrop-blur-md bg-opacity-40`}
-
+      className={`sm:hidden fixed bottom-[0.3125rem] max-w-[90vw] ${bgColor} rounded-full mt-3 left-0 right-0 mx-auto`}
     >
-      <IconHamburger />
+      <div className="grid grid-cols-5 justify-items-center gap-[3.3rem] z-50 backdrop-blur-md bg-opacity-40 drop-shadow-md px-6 py-2 items-center">
+        <IconHamburger />
 
-      <div className="" onClick={handleSearch}>
-        <IconSearch className="self-end" />
+        <div className="" onClick={handleSearch}>
+          <IconSearch className="self-end" />
+        </div>
+
+        <Account />
+
+        <Link href={`/${lang}/${gender}/favorites`} className="relative" title="Favorites">
+          <IconFavorite />
+        </Link>
+
+        <Link href={`/${lang}/${gender}/cart`}
+          className="relative"
+        >
+          <IconShoppingBag />
+        </Link>
+
+        {showMobileSearch && (
+          <Portal>
+            <MobileSearch />
+          </Portal>
+        )}
+
       </div>
-
-      <Account />
-
-      <Link href={`/${lang}/${gender}/favorites`} className="relative" title="Favorites">
-        <IconFavorite />
-      </Link>
-
-      <Link href={`/${lang}/${gender}/cart`}
-        className="relative"
-      >
-        <IconShoppingBag />
-      </Link>
-
-      {showMobileSearch && (
-        <Portal>
-          <MobileSearch />
-        </Portal>
-      )}
-
     </section>
   )
 }
