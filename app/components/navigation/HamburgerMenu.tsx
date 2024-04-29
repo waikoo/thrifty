@@ -25,7 +25,7 @@ export default function HamburgerMenu() {
   }
 
   return (
-    <section className="absolute inset-0 z-[60] h-screen w-screen bg-[rgba(0,0,0,0.5)]"
+    <section className="absolute inset-0 z-[60] min-h-screen w-screen bg-[rgba(0,0,0,0.5)]"
       ref={bgRef}
       onClick={handleCloseHamburgerMenu}
     >
@@ -42,9 +42,13 @@ export default function HamburgerMenu() {
         </div>
 
 
-        <div className="bg-t_mustard p-4">
+        <div className="bg-t_mustard p-4 pl-[2.8rem] grid grid-cols-1 grid-rows-[auto_auto_auto] gap-3">
 
-          <HamburgerDropdownCategories selectedGender={selectedGender} />
+          <HamburgerDropdownCategories
+            selectedGender={selectedGender}
+            lang={lang}
+            gender={gender}
+          />
 
           <Link href={`${lang}/${gender}/products?gender=${gender}/&shop-by=new+in&sort-by=newfirst&page=1`}
             className={`${albert_900.className} text-[0.875rem] block`}
