@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
+import { RxCross2 } from "react-icons/rx";
+
 import { useTranslation } from '@/i18n/client';
 import { IconSearch } from '@/app/components/navigation/icons';
 import getLinkWithSearchParams from '@/utils/getLinkWithSearchParams';
@@ -10,13 +12,11 @@ import useViewport from '@/app/components/hooks/useViewport';
 import { viewport } from '@/app/components/data/universalStyles';
 import getLangAndGender from '@/utils/getLangAndGender';
 import { useNavigationStore } from "@/state/client/navigationState";
-import { RxCross2 } from "react-icons/rx";
-import { albert, albert_700, albert_800 } from '@/utils/fonts';
-import useSearchSuggestions from '../hooks/useSearchSuggestions';
-import useFiltersInSearchBar from '../hooks/useFiltersInSearchBar';
-import { TSavedFilters } from '@/types/filters';
-import SearchSuggestions from './SearchSuggestions';
-import SavedFiltersInSearchBar from './SavedFiltersInSearchBar';
+import { albert, albert_700 } from '@/utils/fonts';
+import useSearchSuggestions from '@/app/components/hooks/useSearchSuggestions';
+import useFiltersInSearchBar from '@/app/components/hooks/useFiltersInSearchBar';
+import SearchSuggestions from '@/app/components/navigation/SearchSuggestions';
+import SavedFiltersInSearchBar from '@/app/components/navigation/SavedFiltersInSearchBar';
 
 type SearchBarProps = {
   className?: string
@@ -29,7 +29,6 @@ export default function SearchBar({ className }: SearchBarProps) {
   const router = useRouter()
   const currentViewport = useViewport()
   const hide = currentViewport < viewport.lg
-
   const [searchTerm, setSearchTerm] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [completedWord, setCompletedWord] = useState('')

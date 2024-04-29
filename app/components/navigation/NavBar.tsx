@@ -39,31 +39,31 @@ const NavBar = ({ className }: NavBarProps) => {
 
   return (
     <nav className={`bg-t_white dark:bg-t_black ${position} top-0 z-50 w-screen ${className}`}>
-      <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[2rem_4rem_1fr_auto_auto] lg:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] 3xl:max-w-[1800px]`}
+      <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[2rem_4rem_1fr_auto_auto] xl:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] 3xl:max-w-[1800px]`}
         onMouseEnter={() => setShowGenderMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
         {showHamburger &&
-          <div className="w-5 h-5 mr-5 self-end col-start-1 col-end-2">
+          <div className="w-5 h-5 mr-5 self-end col-start-1 col-end-2 row-start-1">
             <IconHamburger />
           </div>
         }
 
         {isTablet ? (
-          <div className={`self-end ${hamburgerDistance} col-start-2 col-end-3 lg:col-start-1 lg:col-end-2`} onClick={handleShowSearch}>
+          <div className="self-end ${hamburgerDistance} col-start-2 col-end-3 xl:col-start-1 xl:col-end-2 row-start-1" onClick={handleShowSearch}>
             <IconSearch />
           </div>
         ) : (
-          <SearchBar className={`self-end ${hamburgerDistance} col-start-2 col-end-3 lg:col-start-1 lg:col-end-2`} />
+          <SearchBar className={`self-end ${hamburgerDistance} col-start-2 col-end-3 xl:col-start-1 xl:col-end-2 row-start-1`} />
         )}
 
         {position === 'static' ? (
-          <WithHome> <Logo className="self-end " width={logoWidth} /> </WithHome>
+          <WithHome className="row-start-1 xl:col-start-2 xl:col-end-2"> <Logo className="self-end " width={logoWidth} /> </WithHome>
         ) : (
           <Gender />
         )}
 
         {/* on scroll Category shows up instead of Thriftstudio logo */}
-        <NavIcons className="flex items-center gap-6 pt-2 self-end justify-self-end col-start-5 col-end-6 lg:col-start-3 lg:col-end-4" />
+        <NavIcons className="flex items-center gap-6 pt-2 self-end justify-self-end col-start-5 col-end-6 xl:col-start-3 xl:col-end-4 row-start-1" />
       </div>
     </nav>
   )
