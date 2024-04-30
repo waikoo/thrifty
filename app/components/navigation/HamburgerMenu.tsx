@@ -18,6 +18,18 @@ export default function HamburgerMenu() {
   const bgRef = useRef(null)
   const { lang, gender } = getLangAndGender(usePathname())
 
+  useEffect(() => {
+    if (showHamburgerMenu) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    }
+  }, [showHamburgerMenu])
+
   const handleCloseHamburgerMenu = (e: React.MouseEvent) => {
     if (e.target === bgRef.current) {
       setShowHamburgerMenu(false)
@@ -29,7 +41,7 @@ export default function HamburgerMenu() {
       ref={bgRef}
       onClick={handleCloseHamburgerMenu}
     >
-      <div className="w-[80%] sm:max-w-[26.0625rem] text-t_black dark:text-t_black h-screen overflow-scroll">
+      <div className="w-[80%] sm:max-w-[26.0625rem] text-t_black dark:text-t_black h-screen overflow-y-scroll">
 
         <div className="bg-t_white dark:bg-t_black w-full p-4 pb-0">
           <HamburgerAccountBar />
