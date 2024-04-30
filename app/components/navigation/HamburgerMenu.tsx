@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { usePathname } from "next/navigation"
 
@@ -10,16 +10,25 @@ import getLangAndGender from "@/utils/getLangAndGender"
 import { Gender } from "@/types/link";
 import HamburgerAccountAndHelp from "@/app/components/navigation/HamburgerAccountAndHelp";
 import HamburgerDropdownsAndQuickLinks from "./HamburgerDropdownsAndQuickLinks";
-import { albert_900 } from "@/utils/fonts";
-import LanguagePicker from "./LanguagePicker";
-import ThemeToggler from "../generic/ThemeToggler";
 import HamburgerLanguageAndTheme from "./HamburgerLanguageAndTheme";
 
 export default function HamburgerMenu() {
   const [selectedGender, setSelectedGender] = useState<Gender | ''>('')
-  const { setShowHamburgerMenu } = useNavigationStore()
+  const { showHamburgerMenu, setShowHamburgerMenu } = useNavigationStore()
   const bgRef = useRef(null)
   const { lang, gender } = getLangAndGender(usePathname())
+
+  useEffect(() => {
+    if (showHamburgerMenu) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    }
+  }, [showHamburgerMenu])
 
   const handleCloseHamburgerMenu = (e: React.MouseEvent) => {
     if (e.target === bgRef.current) {
@@ -34,7 +43,7 @@ export default function HamburgerMenu() {
     >
       <div className="w-[80%] text-t_black dark:text-t_black">
 
-        <div className="bg-t_white dark:bg-t_black w-full p-4 ">
+        <div className="bg-t_white dark:bg-t_black w-full p-4 pb-0">
           <HamburgerAccountBar />
 
           <HamburgerGender
