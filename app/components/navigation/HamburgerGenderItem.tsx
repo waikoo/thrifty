@@ -1,4 +1,4 @@
-import { albert_900 } from "@/utils/fonts"
+import { albert_500, albert_900 } from "@/utils/fonts"
 
 type HamburgerGenderItemProps = {
   selected: string
@@ -13,8 +13,8 @@ export default function HamburgerGenderItem({ selected, gender, onClick }: Hambu
     <div data-gender={gender} onClick={onClick}>
       {
         selected === gender
-          ? <span className={`${albert_900.className}`}>{upGender}</span>
-          : <span>{upGender}</span>
+          ? <span className={`${albert_900.className} dark:text-t_white text-t_black`}>{upGender}</span>
+          : <span className={`${albert_500.className} text-[#616161]`}>{upGender}</span>
       }
     </div>
   )

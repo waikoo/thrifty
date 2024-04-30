@@ -18,7 +18,7 @@ export default function HamburgerLanguageAndTheme({ lang, gender }: HamburgerLan
         <span className={`${albert_900.className} text-[0.75rem]`}>LANGUAGE</span>
         <div className="justify-self-end flex items-center gap-2">
           {languages.map((language) => {
-            const style = language === lang ? `${albert_900.className} bg-t_white text-t_black p-1 px-2` : 'text-t_black'
+            const style = language === lang ? `${albert_900.className} bg-t_white text-t_black dark:bg-t_black dark:text-t_white p-1 px-2` : 'text-t_black'
 
             return (
               <Link

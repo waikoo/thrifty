@@ -30,13 +30,13 @@ export default function HamburgerDropdownCategory({ category, selectedGender, ge
 
       <div className="grid grid-cols-[auto_1fr_auto] items-center bg-t_mustard py-3 px-2">
         <div onClick={() => setCategory('')}>
-          <MdKeyboardArrowLeft />
+          <MdKeyboardArrowLeft className="dark:text-t_black" />
         </div>
-        <span className={`text-center text-[0.875rem] ${albert.className}`}>CLOTHING</span>
-        <div className="justify-self-end"> <RxCross2 /> </div>
+        <span className={`text-center text-[0.875rem] text:t_black dark:text-t_black ${albert.className}`}>{category.toUpperCase()}</span>
+        <div className="justify-self-end"> <RxCross2 className="dark:text-t_black" /> </div>
       </div>
 
-      <div className="flex flex-col gap-4 bg-t_white min-h-screen px-8 py-6"
+      <div className="flex flex-col gap-4 bg-t_white dark:bg-t_black min-h-screen px-8 py-6"
         onClick={hideHamburger}>
         {category !== 'brands' && filter.type[selectedGender][category].map((item, index) => {
           const link = `/${lang}/${gender}/products?gender=${gender}&category=${category}&type=${item.toLowerCase()}&shop-by=new+in&sort-by=newfirst&page=1`
@@ -45,7 +45,7 @@ export default function HamburgerDropdownCategory({ category, selectedGender, ge
             <Link
               href={link}
               key={index}
-              className={`${albert_500.className} tracking-wider text-[0.8125rem]`}
+              className={`${albert_500.className} tracking-wider text-[0.8125rem] text-t_black dark:text-t_white`}
             >
               {item}
             </Link>

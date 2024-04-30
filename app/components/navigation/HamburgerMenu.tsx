@@ -32,7 +32,7 @@ export default function HamburgerMenu() {
       ref={bgRef}
       onClick={handleCloseHamburgerMenu}
     >
-      <div className="w-[80%] ">
+      <div className="w-[80%] text-t_black dark:text-t_black">
 
         <div className="bg-t_white dark:bg-t_black w-full p-4 ">
           <HamburgerAccountBar />

@@ -17,7 +17,7 @@ export default function HamburgerAccountAndHelp({ lang, gender }: HamburgerAccou
   }
 
   return (
-    <div className="bg-t_white flex flex-col gap-6 p-6 pl-[2.8rem]">
+    <div className="bg-t_white dark:bg-t_black dark:text-t_white flex flex-col gap-6 p-6 pl-[2.8rem]">
       <div className="grid gap-3">
         <span className={`block ${albert_900.className} text-[0.75rem] tracking-wider`}>ACCOUNT</span>
         <div className={`*:text-[0.8125rem] grid gap-3 *:${albert_500.className}`}>
