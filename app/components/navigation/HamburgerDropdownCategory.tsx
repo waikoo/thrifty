@@ -53,7 +53,9 @@ export default function HamburgerDropdownCategory({ category, selectedGender, ge
         })}
 
         {category === 'brands' && brandNamesArray.map((brand, index) => (
-          <Link href={`/${lang}/${gender}/products?gender=${gender}&brand=${brand}&shop-by=new+in&sort-by=newfirst&page=1`} key={index} className={`${albert_500.className} tracking-wider text-[0.8125rem]`}
+          <Link href={`/${lang}/${gender}/products?gender=${gender}&brand=${brand.toLowerCase()}&shop-by=new+in&sort-by=newfirst&page=1`}
+            key={index}
+            className={`${albert_500.className} tracking-wider text-[0.8125rem]`}
           >
             {brand}
           </Link>
