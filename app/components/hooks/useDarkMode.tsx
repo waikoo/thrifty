@@ -15,6 +15,7 @@ const useDarkMode = (containsDark: boolean) => {
     updateTheme(newTheme)
     if (newTheme === 'dark') {
       document.documentElement.classList.add('dark')
+      document.documentElement.dataset.theme = 'dark'
     }
 
     localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (newTheme === 'dark').toString())
@@ -25,8 +26,10 @@ const useDarkMode = (containsDark: boolean) => {
 
     if (newTheme === 'dark') {
       document.documentElement.classList.add('dark')
+      document.documentElement.dataset.theme = 'dark'
     } else {
       document.documentElement.classList.remove('dark')
+      document.documentElement.dataset.theme = 'light'
     }
     updateTheme(newTheme)
     localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (newTheme === 'dark').toString())

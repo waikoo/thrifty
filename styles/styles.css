@@ -13,8 +13,8 @@
 
   @layer base {
     :root {
-      --clr-bkg: 0deg 0% 100%;
-      --clr-content: 210deg 15% 10%;
+      --clr-bkg: 0 0 100;
+      --clr-content: 210 15 10;
       --clr-grey: 0deg 0% 85%;
       --clr-faded: 0deg 0% 69%;
 
@@ -89,24 +89,25 @@
       --radius: 0.5rem;
     }
 
+      :root[data-theme="dark"] {
+        --clr-bkg: 210 15 10;
+        --clr-content: 0 0 100;
+      }
+
     :root.dark {
       --clr-bkg: 210deg 15% 10%;
       --clr-content: 0deg 0% 100%;
     }
 
     @media (prefers-color-scheme: dark) {
-      :root {
-        --clr-bkg: 0deg 0% 100%;
-        --clr-content: 210deg 15% 10%;
-        --clr-grey: 0deg 0% 45%;
-        --clr-faded: 0deg 0% 69%;
+      :root[data-theme="light"] {
+        --clr-bkg: 0 0 100;
+        --clr-content: 210 15 10;
       }
 
       :root[data-theme="dark"] {
-        --clr-bkg: 210deg 15% 10%;
-        --clr-content: 0deg 0% 100%;
-        --clr-grey: 0deg 0% 45%;
-        --clr-faded: 0deg 0% 69%;
+        --clr-bkg: 210 15 10;
+        --clr-content: 0d 0 100;
       }
     }
 

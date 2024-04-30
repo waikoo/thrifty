@@ -3,7 +3,7 @@ const plugin = require('tailwindcss/plugin')
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   gridFractionUnits: true,
-  darkMode: ["class"],
+  darkMode: ["class", '[data-theme="dark"]'],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -24,6 +24,9 @@ module.exports = {
         '17': '17deg',
       },
       colors: {
+        bkg: "hsl(var(--clr-bkg) / <alpha-value>)",
+        content: "hsl(var(--clr-content) / <alpha-value>)",
+
         t_black: "hsl(var(--clr-t_black) / <alpha-value>)",
         t_black1: "hsl(var(--clr-t_black1) / <alpha-value>)",
         t_grey: "hsl(var(--clr-t_grey) / <alpha-value>)",
