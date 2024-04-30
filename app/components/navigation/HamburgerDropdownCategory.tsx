@@ -38,9 +38,19 @@ export default function HamburgerDropdownCategory({ category, selectedGender, ge
 
       <div className="flex flex-col gap-4 bg-t_white min-h-screen px-8 py-6"
         onClick={hideHamburger}>
-        {category !== 'brands' && filter.type[selectedGender][category].map((item, index) => (
-          <Link href={`/${lang}/${gender}/products?gender=${gender}&shop-by=new+in&sort-by=newfirst&page=1`} key={index} className={`${albert_500.className} tracking-wider text-[0.8125rem]`}>{item}</Link>
-        ))}
+        {category !== 'brands' && filter.type[selectedGender][category].map((item, index) => {
+          const link = `/${lang}/${gender}/products?gender=${gender}&category=${category}&type=${item.toLowerCase()}&shop-by=new+in&sort-by=newfirst&page=1`
+
+          return (
+            <Link
+              href={link}
+              key={index}
+              className={`${albert_500.className} tracking-wider text-[0.8125rem]`}
+            >
+              {item}
+            </Link>
+          )
+        })}
 
         {category === 'brands' && brandNamesArray.map((brand, index) => (
           <Link href={`/${lang}/${gender}/products?gender=${gender}&brand=${brand}&shop-by=new+in&sort-by=newfirst&page=1`} key={index} className={`${albert_500.className} tracking-wider text-[0.8125rem]`}
