@@ -1,17 +1,18 @@
 "use client"
-import React from "react"
+import { twMerge as tm } from "tailwind-merge"
+
 import { useThemeStore } from "@/state/themeState"
 import { getSvgColor } from "@/utils/theme"
-import { twMerge as tm } from "tailwind-merge"
 
 type IconSearchProps = {
   isHovered?: boolean
   isClicked?: boolean
   home?: boolean
   className?: string
+  width?: string
 }
 
-const IconSearch = ({ isHovered, isClicked, className }: IconSearchProps) => {
+const IconSearch = ({ isHovered, isClicked, className, width }: IconSearchProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
   const hoveredColor = useThemeStore((state) => getSvgColor(
     state.theme === 'dark' ? 'light' : 'dark'
@@ -20,11 +21,14 @@ const IconSearch = ({ isHovered, isClicked, className }: IconSearchProps) => {
   const finalColor = isHovered && !isClicked ? hoveredColor : color
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="none"
+    <svg xmlns="http://www.w3.org/2000/svg"
+      width={width ? width : 19}
+      height={width ? '100%' : 19}
+      fill="none"
       className={tm(`self-center ${className}`)}>
       <path
         stroke={finalColor}
-        strokeWidth={2.5}
+        strokeWidth={2}
         d="M7.515 14.03a6.515 6.515 0 100-13.03 6.515 6.515 0 000 13.03z" />
 
       <path

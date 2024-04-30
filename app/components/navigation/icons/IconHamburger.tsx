@@ -2,14 +2,18 @@
 import { useThemeStore } from "@/state/themeState";
 import { getSvgColor } from "@/utils/theme";
 
-function IconHamburger() {
+type IconHamburgerProps = {
+  width?: string
+}
+
+function IconHamburger({ width }: IconHamburgerProps) {
   const color = useThemeStore((state) => getSvgColor(state.theme));
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="27"
-      height="20"
+      width={width ? width : "27"}
+      height={width ? '100%' : "20"}
       fill="none"
       viewBox="0 0 27 20"
     >

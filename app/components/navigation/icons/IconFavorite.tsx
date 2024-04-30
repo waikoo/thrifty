@@ -3,9 +3,10 @@ import { getSvgColor } from "@/utils/theme"
 
 type IconFavoriteProps = {
   stroke?: string
+  width?: string
 }
 
-const IconFavorite = ({ stroke }: IconFavoriteProps) => {
+const IconFavorite = ({ stroke, width }: IconFavoriteProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
 
   return (
@@ -14,8 +15,8 @@ const IconFavorite = ({ stroke }: IconFavoriteProps) => {
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={19}
-        height={16}
+        width={width || 19}
+        height={width ? '100%' : 18}
         viewBox="0 0 22 19"
         fill="none"
       >
