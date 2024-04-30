@@ -7,6 +7,7 @@ import { filter } from "../data/filterArrays"
 import { albert, albert_500 } from "@/utils/fonts";
 import { Gender, Locales } from "@/types/link";
 import { brandNamesArray } from '@/app/components/data/brandsData'
+import { useNavigationStore } from "@/state/client/navigationState";
 
 type HamburgerDropdownCategoryProps = {
   category: 'clothing' | 'shoes' | 'accessories' | 'brands'
@@ -17,6 +18,12 @@ type HamburgerDropdownCategoryProps = {
 }
 
 export default function HamburgerDropdownCategory({ category, selectedGender, gender, lang, setCategory }: HamburgerDropdownCategoryProps) {
+
+  const { setShowHamburgerMenu } = useNavigationStore()
+
+  const hideHamburger = () => {
+    setShowHamburgerMenu(false)
+  }
 
   return (
     <section className="absolute z-[70] w-[80%]">
@@ -29,12 +36,18 @@ export default function HamburgerDropdownCategory({ category, selectedGender, ge
         <div className="justify-self-end"> <RxCross2 /> </div>
       </div>
 
-      <div className="flex flex-col gap-4 bg-t_white min-h-screen px-8 py-6">
+      <div className="flex flex-col gap-4 bg-t_white min-h-screen px-8 py-6"
+        onClick={hideHamburger}>
         {category !== 'brands' && filter.type[selectedGender][category].map((item, index) => (
           <Link href={`/${lang}/${gender}/products?gender=${gender}&shop-by=new+in&sort-by=newfirst&page=1`} key={index} className={`${albert_500.className} tracking-wider text-[0.8125rem]`}>{item}</Link>
         ))}
+
         {category === 'brands' && brandNamesArray.map((brand, index) => (
-          <Link href={`/${lang}/${gender}/products?gender=${gender}&brand=${brand}&shop-by=new+in&sort-by=newfirst&page=1`} key={index} className={`${albert_500.className} tracking-wider text-[0.8125rem]`}>{brand}</Link>
+          <Link href={`/${lang}/${gender}/products?gender=${gender}&brand=${brand}&shop-by=new+in&sort-by=newfirst&page=1`} key={index} className={`${albert_500.className} tracking-wider text-[0.8125rem]`}
+          >
+            {brand}
+          </Link>
+
         ))}
       </div>
     </section>
