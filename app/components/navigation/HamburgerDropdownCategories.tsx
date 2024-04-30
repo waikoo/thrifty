@@ -16,14 +16,12 @@ export default function HamburgerDropdownCategories({ selectedGender, lang, gend
 
   return (
     <>
-      <div className="bg-t_mustard flex flex-col gap-3">
-        <span className="tracking-wide" onClick={() => setCategory('clothing')}>CLOTHING</span>
-        <span className="tracking-wide" onClick={() => setCategory('shoes')}>SHOES</span>
-        {selectedGender !== 'kids' && (
-          <span className="tracking-wide" onClick={() => setCategory('accessories')}>ACCESSORIES</span>
-        )}
-        <span className="tracking-wide" onClick={() => setCategory('brands')}>BRANDS</span>
-      </div>
+      <span className="tracking-wide" onClick={() => setCategory('clothing')}>CLOTHING</span>
+      <span className="tracking-wide" onClick={() => setCategory('shoes')}>SHOES</span>
+      {selectedGender !== 'kids' && (
+        <span className="tracking-wide" onClick={() => setCategory('accessories')}>ACCESSORIES</span>
+      )}
+      <span className="tracking-wide" onClick={() => setCategory('brands')}>BRANDS</span>
 
       <Portal>
         {category === 'clothing' && (

@@ -42,7 +42,7 @@ export default function HamburgerMenu() {
         </div>
 
 
-        <div className="bg-t_mustard p-4 pl-[2.8rem] grid grid-cols-1 grid-rows-[auto_auto_auto] gap-3">
+        <div className="bg-t_mustard p-4 pl-[2.8rem] grid grid-cols-1 grid-rows-6 gap-3">
 
           <HamburgerDropdownCategories
             selectedGender={selectedGender}
