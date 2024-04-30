@@ -13,7 +13,7 @@ export default function HamburgerLanguageAndTheme({ lang, gender }: HamburgerLan
   const languages = ['en', 'de']
 
   return (
-    <div className="bg-t_mustard p-4 px-5 grid gap-6">
+    <div className="bg-t_mustard p-4 px-5 grid gap-6 overflow-hidden">
       <div className="grid grid-cols-2 items-center">
         <span className={`${albert_900.className} text-[0.75rem] sm:text-[1rem]`}>LANGUAGE</span>
         <div className="justify-self-end flex items-center gap-2">
@@ -39,6 +39,7 @@ export default function HamburgerLanguageAndTheme({ lang, gender }: HamburgerLan
         <ThemeToggler />
       </div>
 
+      <div className="h-svh overflow-hidden"></div>
     </div>
   )
 }
