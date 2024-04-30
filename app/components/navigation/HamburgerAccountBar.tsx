@@ -21,7 +21,7 @@ export default function HamburgerAccountBar() {
 
     getUser().then(user => {
       if (user && user.email) {
-        setText(getLocalPartOfEmail(user.email))
+        setText(`Hi, ${getLocalPartOfEmail(user.email)}!`)
         return
       }
       setText('Sign In')
@@ -33,7 +33,7 @@ export default function HamburgerAccountBar() {
     <div className="grid grid-cols-2 w-full text-t_black dark:text-t_white">
       <div className="flex gap-2 items-center">
         <IconAccount width="15px" />
-        <span className={`${albert_600.className} text-[0.75rem] sm:text-[1rem]`}>Hi, {text}!</span>
+        <span className={`${albert_600.className} text-[0.75rem] sm:text-[1rem] py-2`}>{text}</span>
       </div>
       <div
         onClick={() => setShowHamburgerMenu(false)}
