@@ -37,11 +37,11 @@ export default function HamburgerMenu() {
   }
 
   return (
-    <section className="absolute inset-0 z-[60] min-h-screen w-screen bg-[rgba(0,0,0,0.5)]"
+    <section className="absolute inset-0 z-[60] h-screen w-screen bg-[rgba(0,0,0,0.5)]"
       ref={bgRef}
       onClick={handleCloseHamburgerMenu}
     >
-      <div className="w-[80%] sm:max-w-[26.0625rem] text-t_black dark:text-t_black min-h-screen overflow-scroll">
+      <div className="w-[80%] sm:max-w-[26.0625rem] text-t_black dark:text-t_black h-screen overflow-scroll">
 
         <div className="bg-t_white dark:bg-t_black w-full p-4 pb-0">
           <HamburgerAccountBar />
