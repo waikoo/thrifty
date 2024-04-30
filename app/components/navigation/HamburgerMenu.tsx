@@ -10,6 +10,10 @@ import getLangAndGender from "@/utils/getLangAndGender"
 import { Gender } from "@/types/link";
 import HamburgerAccountAndHelp from "@/app/components/navigation/HamburgerAccountAndHelp";
 import HamburgerDropdownsAndQuickLinks from "./HamburgerDropdownsAndQuickLinks";
+import { albert_900 } from "@/utils/fonts";
+import LanguagePicker from "./LanguagePicker";
+import ThemeToggler from "../generic/ThemeToggler";
+import HamburgerLanguageAndTheme from "./HamburgerLanguageAndTheme";
 
 export default function HamburgerMenu() {
   const [selectedGender, setSelectedGender] = useState<Gender | ''>('')
@@ -47,6 +51,8 @@ export default function HamburgerMenu() {
         />
 
         <HamburgerAccountAndHelp lang={lang} gender={gender} />
+
+        <HamburgerLanguageAndTheme lang={lang} gender={gender} />
       </div>
     </section>
   )
