@@ -16,12 +16,12 @@ export default function HamburgerDropdownCategories({ selectedGender, lang, gend
 
   return (
     <>
-      <span className="tracking-wide" onClick={() => setCategory('clothing')}>CLOTHING</span>
-      <span className="tracking-wide" onClick={() => setCategory('shoes')}>SHOES</span>
+      <span onClick={() => setCategory('clothing')}>CLOTHING</span>
+      <span onClick={() => setCategory('shoes')}>SHOES</span>
       {selectedGender !== 'kids' && (
-        <span className="tracking-wide" onClick={() => setCategory('accessories')}>ACCESSORIES</span>
+        <span onClick={() => setCategory('accessories')}>ACCESSORIES</span>
       )}
-      <span className="tracking-wide" onClick={() => setCategory('brands')}>BRANDS</span>
+      <span onClick={() => setCategory('brands')}>BRANDS</span>
 
       <Portal>
         {category === 'clothing' && (
