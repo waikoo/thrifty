@@ -25,7 +25,7 @@ export default function HamburgerGender({ selectedGender, setSelectedGender, pat
   }
 
   return (
-    <div className="grid grid-cols-3 w-full p-2 justify-items-center mt-2 text-[0.75rem]">
+    <div className="grid grid-cols-3 w-full p-2 justify-items-center mt-2 text-[0.75rem] sm:text-[1rem]">
 
       {genderArr.map(gender => (
         <HamburgerGenderItem

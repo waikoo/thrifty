@@ -19,7 +19,7 @@ export default function HamburgerDropdownsAndQuickLinks({ lang, gender, selected
   }
 
   return (
-    <div className={`bg-t_mustard p-6 pl-[2.8rem] grid grid-cols-1 grid-rows-6 gap-3 tracking-wide ${albert.className} *:text-[0.875rem] `}>
+    <div className={`bg-t_mustard p-6 pl-[2.8rem] grid grid-cols-1 grid-rows-6 gap-3 tracking-wide ${albert.className} *:text-[0.875rem] sm:*:text-[1.125rem]`}>
 
       <HamburgerDropdownCategories
         selectedGender={selectedGender}

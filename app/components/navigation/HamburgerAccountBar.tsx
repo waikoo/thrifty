@@ -32,8 +32,8 @@ export default function HamburgerAccountBar() {
   return (
     <div className="grid grid-cols-2 w-full text-t_black dark:text-t_white">
       <div className="flex gap-2 items-center">
-        <IconAccount width="15%" />
-        <span className={`${albert_600.className} text-[0.75rem]`}>Hi, {text}!</span>
+        <IconAccount width="15px" />
+        <span className={`${albert_600.className} text-[0.75rem] sm:text-[1rem]`}>Hi, {text}!</span>
       </div>
       <div
         onClick={() => setShowHamburgerMenu(false)}
