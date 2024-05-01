@@ -17,6 +17,7 @@ import useSearchSuggestions from '@/app/components/hooks/useSearchSuggestions';
 import useFiltersInSearchBar from '@/app/components/hooks/useFiltersInSearchBar';
 import SearchSuggestions from '@/app/components/navigation/SearchSuggestions';
 import SavedFiltersInSearchBar from '@/app/components/navigation/SavedFiltersInSearchBar';
+import { useThemeStore } from '@/state/themeState';
 
 type SearchBarProps = {
   className?: string
@@ -38,6 +39,7 @@ export default function SearchBar({ className }: SearchBarProps) {
   const showClearIcon = searchTerm !== '' && showMobileSearch
   const { suggestions } = useSearchSuggestions(showSuggestions, searchTerm, setCompletedWord)
   const { savedFilters } = useFiltersInSearchBar()
+  const { theme } = useThemeStore()
 
   useEffect(() => {
     if (showMobileSearch) {
@@ -84,12 +86,12 @@ export default function SearchBar({ className }: SearchBarProps) {
       >
         {showClearIcon && (
           <div onClick={() => setSearchTerm("")} className="absolute right-[6rem] md:right-[7rem] top-1">
-            <RxCross2 className="" size={20} />
+            <RxCross2 className="" size={20} color={theme === 'light' ? "t_black" : "t_white"} />
           </div>
         )}
 
         {viewportWidth < viewport.xl && showMobileSearch && (
-          <span className={`${albert_700.className} absolute right-[1rem] md:right-[0.6rem] top-[0.05rem] text-[1.0625rem]`}
+          <span className={`${albert_700.className} absolute right-[1rem] md:right-[0.6rem] top-[0.05rem] text-[1.0625rem] text-t_black dark:text-t_white`}
             onClick={() => setShowMobileSearch(false)}>
             CLOSE
           </span>
