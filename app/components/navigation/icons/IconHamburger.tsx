@@ -17,6 +17,7 @@ function IconHamburger({ width }: IconHamburgerProps) {
       fill="none"
       viewBox="0 0 27 20"
     >
+      <title>Hamburger Menu</title>
       <path fill={color} d="M0 0H27V3H0z"></path>
       <path fill={color} d="M0 8.235H21.316V11.235H0z"></path>
       <path fill={color} d="M0 16.471H15.632V19.471H0z"></path>

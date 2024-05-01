@@ -40,6 +40,7 @@ export default function HamburgerMenu() {
     <section className="absolute inset-0 z-[60] h-screen w-screen bg-[rgba(0,0,0,0.5)]"
       ref={bgRef}
       onClick={handleCloseHamburgerMenu}
+      data-testid="hamburger-menu"
     >
       <div className="w-[80%] sm:max-w-[26.0625rem] text-t_black dark:text-t_black h-screen overflow-y-scroll">
 
