@@ -13,8 +13,8 @@ export default function Account() {
       <div
         title={session?.user.role ? "Account" : "Sign In"}
         onClick={() => !session
-          ? setShowSignIn(showSignIn ? false : true)
-          : setShowMyAccount(showMyAccount ? false : true)}
+          ? setShowSignIn(!showSignIn)
+          : setShowMyAccount(!showMyAccount)}
       >
         <IconAccount />
       </div>
