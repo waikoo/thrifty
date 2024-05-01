@@ -32,7 +32,7 @@ export default function HamburgerDropdownCategory({ category, selectedGender, ge
         <div onClick={() => setCategory('')}>
           <MdKeyboardArrowLeft className="dark:text-t_black" />
         </div>
-        <span className={`text-center text-[0.875rem] text:t_black dark:text-t_black ${albert.className}`}>{category.toUpperCase()}</span>
+        <span className={`text-center text-[0.875rem] sm:text-[1.125rem] text:t_black dark:text-t_black ${albert.className}`}>{category.toUpperCase()}</span>
         <div className="justify-self-end"> <RxCross2 className="dark:text-t_black" /> </div>
       </div>
 
@@ -45,7 +45,7 @@ export default function HamburgerDropdownCategory({ category, selectedGender, ge
             <Link
               href={link}
               key={index}
-              className={`${albert_500.className} tracking-wider text-[0.8125rem] text-t_black dark:text-t_white`}
+              className={`${albert_500.className} tracking-wider text-[0.8125rem] sm:text-[1.0625rem] text-t_black dark:text-t_white`}
             >
               {item}
             </Link>
