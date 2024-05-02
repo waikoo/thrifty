@@ -1,23 +1,22 @@
-import { StateButton } from ".";
+import StateButton from "@/app/components/generic/StateButton";
 import { Auth, StateButtonContainerProps } from "@/types/auth"
 
-
 export default function StateButtonContainer({ selected, setSelected }: StateButtonContainerProps) {
-  return (
 
-    <div className="flex w-4/5 mx-auto pt-8">
+  return (
+    <div className="flex w-full pt-2">
 
       <StateButton
         selected={selected === 'log in'}
         authValue={Auth.LOGIN}
         setSelected={setSelected}
-      >Log In</StateButton>
+      >LOG IN</StateButton>
 
       <StateButton
         selected={selected === 'sign up'}
         authValue={Auth.SIGNUP}
         setSelected={setSelected}
-      >Sign Up</StateButton>
+      >SIGN UP</StateButton>
     </div>
   )
 }
