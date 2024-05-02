@@ -35,3 +35,8 @@ next-env.d.ts
 
 /.vscode
 /.git
+/test-results/
+/tests-examples/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
