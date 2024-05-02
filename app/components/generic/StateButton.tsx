@@ -13,7 +13,7 @@ export default function StateButton({ children, className, selected, authValue, 
 
   return (
     <button
-      className={tm(`bg-t_white text-[0.875rem] text-[#484848] block w-full border-t_mustard border-b-[0.2rem] p-1 ${className} ${isSelected} ${albert_500.className}`)}
+      className={tm(`bg-t_white text-[#484848] block w-full border-t_mustard border-b-[0.2rem] p-1 ${className} ${isSelected} ${albert_500.className}`)}
       onClick={handleSelected}
     >{children}
     </button>

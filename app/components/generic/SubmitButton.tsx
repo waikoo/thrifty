@@ -18,7 +18,7 @@ const SubmitButton = ({ children, className, inverse, loading, onClick }: Submit
 
   return (
     <button className={
-      tm("bg-content text-bkg block w-full p-2 rounded-full mt-4",
+      tm("bg-content text-bkg block w-full p-3 sm:p-2 rounded-full mt-4",
         className,
         inverse && "bg-bkg text-content border-content",
         loading && "bg-bkg"

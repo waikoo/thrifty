@@ -30,7 +30,7 @@ export default function NavBarMobile() {
       className={`sm:hidden fixed bottom-[0.3125rem] max-w-[90vw] ${bgColor} rounded-full mt-3 left-0 right-0 mx-auto`}
     >
       <div className="grid grid-cols-5 justify-items-center gap-[3.3rem] z-50 backdrop-blur-md bg-opacity-40 drop-shadow-md px-6 py-2 items-center rounded-full">
-        <div onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}>
+        <div onClick={() => setShowHamburgerMenu(!showHamburgerMenu)} data-testid="hamburger-menu-button">
           <IconHamburger />
         </div>
 

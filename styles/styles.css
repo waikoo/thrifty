@@ -335,3 +335,19 @@
  -webkit-appearance: none;
  appearance: none;
 }
+
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+}
+.custom-checkbox:checked::before {
+   display: block;
+   width: 20px;
+   height: 20px;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-color: black;
+ }

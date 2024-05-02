@@ -16,16 +16,11 @@ export default function CenterContainer() {
   }
 
   return (
-    <dialog className="fixed inset-0 z-40 grid h-screen w-full place-items-center bg-black bg-opacity-50"
+    <dialog className="fixed inset-0 z-40 grid sm:h-screen w-full sm:place-items-center bg-black bg-opacity-50"
       onClick={handleOutsideClick}
       ref={dialogRef}
     >
-      <section className="bg-bkg relative p-8">
-
-        {showRecovery ? <RecoverPassword /> : <SignInOrUp />}
-
-      </section>
-
+      {showRecovery ? <RecoverPassword /> : <SignInOrUp />}
     </dialog>
   )
 }
