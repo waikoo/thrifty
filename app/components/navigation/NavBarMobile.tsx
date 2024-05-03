@@ -57,8 +57,6 @@ export default function NavBarMobile() {
             <MobileSearch />
           </Portal>
         )}
-
-        {showHamburgerMenu && <Portal key="hamburger"><HamburgerMenu /></Portal>}
       </div>
     </section>
   )

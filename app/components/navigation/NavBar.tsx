@@ -69,8 +69,6 @@ const NavBar = ({ className }: NavBarProps) => {
         {/* on scroll Category shows up instead of Thriftstudio logo */}
         <NavIcons className="flex items-center gap-6 pt-2 self-end justify-self-end col-start-5 col-end-6 xl:col-start-3 xl:col-end-4 row-start-1" />
       </div>
-
-      {showHamburgerMenu && <Portal><HamburgerMenu /></Portal>}
     </nav>
   )
 }
