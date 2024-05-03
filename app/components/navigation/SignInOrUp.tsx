@@ -87,11 +87,13 @@ const SignInOrUp = () => {
         )}
 
         <span className={`block mx-auto mt-8 ${albert.className}`}>
-          Don't have an account?
+          {selected === Auth.LOGIN ? "Don't have an account?" : "Already a member?"}
           <span className={`underline underline-offset-2 cursor-pointer ml-2 ${albert_600.className}`}
-            onClick={() => setSelected(Auth.SIGNUP)}
+            onClick={() => setSelected(
+              selected === Auth.LOGIN ? Auth.SIGNUP : Auth.LOGIN
+            )}
           >
-            Sign Up
+            {selected === Auth.LOGIN ? "Sign Up" : "Log In"}
           </span>
         </span>
 
