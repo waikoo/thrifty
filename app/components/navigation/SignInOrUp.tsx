@@ -13,8 +13,6 @@ import { useUserStore } from '@/state/client/userState'
 import { useThemeStore } from '@/state/themeState'
 import { albert, albert_500, albert_600 } from '@/utils/fonts';
 import AnimatedInput from '@/app/components/AnimatedInput';
-import Portal from '../generic/Portal';
-import RecoverPassword from './RecoverPassword';
 
 const SignInOrUp = () => {
   const [selected, setSelected] = useState<AuthModes>(Auth.LOGIN)
@@ -88,7 +86,9 @@ const SignInOrUp = () => {
 
         <span className={`block mx-auto mt-8 ${albert.className}`}>
           Don't have an account?
-          <span className={`underline underline-offset-2 cursor-pointer ml-2 ${albert_600.className}`}>
+          <span className={`underline underline-offset-2 cursor-pointer ml-2 ${albert_600.className}`}
+            onClick={() => setSelected(Auth.SIGNUP)}
+          >
             Sign Up
           </span>
         </span>
