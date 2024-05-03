@@ -78,11 +78,13 @@ const SignInOrUp = () => {
 
         </form>
 
-        <span className={`underline underline-offset-2 mx-auto mt-2 cursor-pointer ${albert_600.className}`}
-          onClick={handleShowForgotPassword}
-        >
-          Forgot password?
-        </span>
+        {selected === Auth.LOGIN && (
+          <span className={`underline underline-offset-2 mx-auto mt-2 cursor-pointer ${albert_600.className}`}
+            onClick={handleShowForgotPassword}
+          >
+            Forgot password?
+          </span>
+        )}
 
         <span className={`block mx-auto mt-8 ${albert.className}`}>
           Don't have an account?
