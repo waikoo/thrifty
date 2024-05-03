@@ -12,6 +12,7 @@ import useUserSession from "@/app/components/hooks/useUserSession"
 import { useNavigationStore } from "@/state/client/navigationState"
 import { useFavoriteStore } from "@/state/client/favoriteState"
 import { useCartStore } from "@/state/client/cartState"
+import useMouseLeave from "../hooks/useMouseLeave"
 
 type NavIconsProps = {
   className?: string
@@ -24,20 +25,12 @@ export default function NavIcons({ className }: NavIconsProps) {
   const { showMiniCartView, setShowMiniCartView } = useNavigationStore()
   const { session, error } = useUserSession()
   const linkRef = useRef(null)
-  const [lastMousePosition, setLastMousePosition] = useState({ x: 0, y: 0 });
+  const { handleMouseMove, getDirection, lastMousePosition } = useMouseLeave()
 
   useEffect(() => {
     initCart(getFromLocalStorage('cart') || [])
     initFavorites(getFromLocalStorage('favorites') || [])
   }, [])
-
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setLastMousePosition({
-      x: e.clientX,
-      y: e.clientY,
-    });
-  };
 
   const handleMouseLeave = (e: React.MouseEvent) => {
     const direction = getDirection(lastMousePosition, { x: e.clientX, y: e.clientY });
@@ -47,13 +40,6 @@ export default function NavIcons({ className }: NavIconsProps) {
       return
     }
     setShowMiniCartView(true);
-  };
-
-  const getDirection = (from: { x: number, y: number }, to: { x: number, y: number }) => {
-    if (to.y < from.y) return 'up';
-    if (to.y > from.y) return 'down';
-    if (to.x < from.x) return 'left';
-    if (to.x > from.x) return 'right';
   };
 
   return (
