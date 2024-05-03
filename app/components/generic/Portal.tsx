@@ -2,7 +2,6 @@
 
 import { createPortal } from 'react-dom';
 import { ReactNode, useEffect, useState } from 'react';
-import React from 'react';
 
 type PortalProps = {
   children: ReactNode;
