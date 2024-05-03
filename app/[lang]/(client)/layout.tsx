@@ -8,7 +8,7 @@ import { Gender, Locales } from "@/types/link";
 import HamburgerMenu from "@/app/components/navigation/HamburgerMenu";
 
 export const metadata = {
-  title: 'Thrifty',
+  title: 'Thriftstudio',
   description: 'An e-commerce store for second-hand clothing',
 }
 
