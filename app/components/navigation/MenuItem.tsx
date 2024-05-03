@@ -6,6 +6,7 @@ import useEventListener from '@/app/components/hooks/useEventListener';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import getLangAndGender from '@/utils/getLangAndGender';
+import { albert_900 } from '@/utils/fonts';
 
 type MenuItemProps = {
   className?: string;
@@ -13,10 +14,9 @@ type MenuItemProps = {
   children: React.ReactNode;
   loading?: boolean;
   href: string
-  Img?: React.ComponentType<{ isHovered: boolean }>;
 };
 
-export default function MenuItem({ children, className, onClick, Img, loading, href }: MenuItemProps) {
+export default function MenuItem({ children, className, onClick, loading, href }: MenuItemProps) {
   const menuItemContainer = useRef<HTMLAnchorElement | null>(null);
   const [isHovered, setIsHovered] = useState(false);
   const { lang, gender } = getLangAndGender(usePathname())
@@ -39,15 +39,13 @@ export default function MenuItem({ children, className, onClick, Img, loading, h
       className={tm("flex items-center", className)}
       ref={menuItemContainer}
     >
-      {Img ? (<Img
-        isHovered={isHovered}
-      />) : null}
-
 
       <li className={tm(
-        `whitespace-no-wrap w-max p-5 ${children === 'Log Out' ? 'px-1' : ''}`,
-        loading && "bg-bkg"
-      )} onClick={onClick}>
+        `whitespace-no-wrap p-2 ${children === 'Log Out' ? 'px-1' : ''}`,
+        loading && "bg-bkg",
+        isHovered && albert_900.className
+      )} onClick={onClick}
+      >
         {children}
       </li>
     </Link>
