@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { useUIStore } from "@/state/client/uiState";
 import { handleRecoverPassword } from "@/db/handleRecoverPassword";
-import { Input, SubmitButton } from "@/app/components/generic";
+import { SubmitButton } from "@/app/components/generic";
 import { useUserStore } from "@/state/client/userState";
 import { RxCross2 } from "react-icons/rx";
 import { useThemeStore } from "@/state/themeState";
@@ -13,7 +13,7 @@ import AnimatedInput from "../AnimatedInput";
 
 export default function RecoverPassword() {
   const { email, setEmail } = useUserStore()
-  const { setShowRecovery, setShowSignIn } = useUIStore()
+  const { setShowRecovery, setShowSignIn, setShowPasswordConfirmation } = useUIStore()
   const router = useRouter()
   const dialogRef = useRef(null)
   const { theme } = useThemeStore()
@@ -27,9 +27,9 @@ export default function RecoverPassword() {
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault()
     handleRecoverPassword(e, email, setShowRecovery, setShowSignIn)
-    // TODO: We've sent you the recovery link -> settimeout
     setShowRecovery(false)
-    // router.push('/en/women');
+    setShowPasswordConfirmation(true)
+    setTimeout(() => setShowPasswordConfirmation(false), 3000)
   }
 
   return (
@@ -38,7 +38,7 @@ export default function RecoverPassword() {
       ref={dialogRef}
     >
       <form
-        className="relative px-8 py-14 sm:w-[500px] xl:w-auto flex flex-col gap-10 bg-t_white dark:bg-t_black z-[60] h-screen sm:h-auto sm:rounded-[2.1875rem] border-[0.625rem] border-t_mustard text-[0.875rem] sm:text-[1.0625rem] xl:text-[0.875rem]"
+        className="relative px-8 py-14 sm:w-[500px] xl:w-auto flex flex-col justify-center gap-10 bg-t_white dark:bg-t_black z-[60] h-screen sm:h-auto sm:rounded-[2.1875rem] border-[0.625rem] border-t_mustard text-[0.875rem] sm:text-[1.0625rem] xl:text-[0.875rem] xl:min-w-[400px]"
         onSubmit={onSubmitHandler}>
         <span className="absolute right-6 top-3 cursor-pointer"
           onClick={() => setShowRecovery(false)}>

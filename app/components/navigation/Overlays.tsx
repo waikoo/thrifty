@@ -7,11 +7,13 @@ import useUserSession from "../hooks/useUserSession"
 import AccountMenu from "./AccountMenu"
 import RecoverPassword from "./RecoverPassword"
 import Portal from "../generic/Portal"
+import RecoverPasswordConfirmation from "./RecoverPasswordConfirmation"
+import SignUpConfirmation from "./SignUpConfirmation"
 
 
 export default function Overlays() {
-  const { session, isAdmin, error } = useUserSession()
-  const { showMyAccount, setShowMyAccount, showSignIn, setShowSignIn, showRecovery } = useUIStore()
+  const { session } = useUserSession()
+  const { showMyAccount, showSignIn, showRecovery, showPasswordConfirmation, showSignUpConfirmation } = useUIStore()
   const viewportWidth = useViewport()
 
   return (
@@ -35,6 +37,9 @@ export default function Overlays() {
           </div>
         </Portal>
       )}
+
+      {showPasswordConfirmation && <RecoverPasswordConfirmation />}
+      {showSignUpConfirmation && <SignUpConfirmation />}
     </div>
   )
 }

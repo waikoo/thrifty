@@ -18,6 +18,12 @@ type UIState = {
 
   isSecondColorPage: boolean
   setIsSecondColorPage: (value: boolean | (boolean)) => void
+
+  showPasswordConfirmation: boolean
+  setShowPasswordConfirmation: (value: boolean) => void
+
+  showSignUpConfirmation: boolean
+  setShowSignUpConfirmation: (value: boolean) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -38,4 +44,10 @@ export const useUIStore = create<UIState>((set) => ({
 
   isSecondColorPage: false,
   setIsSecondColorPage: (value) => set({ isSecondColorPage: value }),
+
+  showPasswordConfirmation: false,
+  setShowPasswordConfirmation: (value) => set({ showPasswordConfirmation: value }),
+
+  showSignUpConfirmation: false,
+  setShowSignUpConfirmation: (value) => set({ showSignUpConfirmation: value })
 }))
