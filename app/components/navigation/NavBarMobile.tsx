@@ -12,7 +12,6 @@ import IconShoppingBag from "@/app/components/navigation/icons/IconShoppingBag";
 import { useNavigationStore } from "@/state/client/navigationState";
 import Portal from "@/app/components/generic/Portal";
 import MobileSearch from "@/app/components/navigation/MobileSearch";
-import HamburgerMenu from "@/app/components/navigation/HamburgerMenu"
 
 export default function NavBarMobile() {
   const { theme } = useThemeStore()
@@ -40,7 +39,7 @@ export default function NavBarMobile() {
           <IconSearch className="self-end" />
         </div>
 
-        <Account />
+        <Account testid="mobile-account" />
 
         <Link href={`/${lang}/${gender}/favorites`} className="relative" title="Favorites">
           <IconFavorite />

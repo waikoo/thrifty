@@ -33,7 +33,7 @@ export default function RecoverPassword() {
   }
 
   return (
-    <dialog className="fixed inset-0 z-40 grid sm:h-screen w-full sm:place-items-center bg-black bg-opacity-50"
+    <dialog className="fixed inset-0 z-[60] grid sm:h-screen w-full sm:place-items-center bg-black bg-opacity-50"
       onClick={handleOutsideClick}
       ref={dialogRef}
     >

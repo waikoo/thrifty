@@ -44,7 +44,7 @@ export default function NavIcons({ className }: NavIconsProps) {
 
   return (
     <nav className={`relative ${className}`}>
-      <Account />
+      <Account testid="desktop-account" />
 
       <Link href={`/${lang}/${gender}/favorites`} className="relative" title="Favorites">
         <IconFavorite />

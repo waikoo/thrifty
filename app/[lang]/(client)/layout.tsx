@@ -6,6 +6,7 @@ import Header from '@/app/components/navigation/Header';
 import { allenoire, alokary, futura, noir_pro, avant_garde, futura_bold } from '@/utils/fonts';
 import { Gender, Locales } from "@/types/link";
 import HamburgerMenu from "@/app/components/navigation/HamburgerMenu";
+import Overlays from "@/app/components/navigation/Overlays";
 
 export const metadata = {
   title: 'Thriftstudio',
@@ -30,6 +31,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
       <head />
       <body className={`dark:bg-t_black bg-t_white min-h-screen w-full`}>
         <div id="popup-root"></div>
+        <Overlays />
         <HamburgerMenu />
         <Header />
 
