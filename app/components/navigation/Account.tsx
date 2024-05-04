@@ -38,6 +38,7 @@ export default function Account() {
         onMouseOver={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
+        data-testid="desktop-account"
       >
         <IconAccount />
       </div>

@@ -25,6 +25,7 @@ const SubmitButton = ({ children, className, inverse, loading, onClick }: Submit
       )}
 
       onClick={onClick}
+      data-testid="account-submit"
     > {loading ? <Spinner /> : children?.toString().toUpperCase()}
     </button >
   )
