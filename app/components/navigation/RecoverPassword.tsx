@@ -46,7 +46,7 @@ export default function RecoverPassword() {
             size={20} />
         </span>
 
-        <span className={`text-content text-center ${albert_900.className}`}>
+        <span className={`text-[1.0625rem] sm:text-[1.3125rem] xl:text-[1.125rem] text-center ${albert_900.className}`}>
           FORGOT PASSWORD?
         </span>
         <p className={`sm:max-w-[500px] xl:max-w-[300px] tracking-wider text-center mx-auto ${albert.className}`}>Please enter your email address. We will send you a link to reset your password.</p>
