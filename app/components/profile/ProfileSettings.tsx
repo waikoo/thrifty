@@ -1,5 +1,6 @@
 "use client"
 import useUserSession from "@/app/components/hooks/useUserSession"
+import { albert_500, albert_900 } from "@/utils/fonts"
 
 type ProfileSettings = {
   children: React.ReactNode
@@ -10,13 +11,14 @@ export default function ProfileSettings({ children, showPopup }: ProfileSettings
   const { session } = useUserSession()
 
   return (
-    <div className="bg-faded relative w-[50%] rounded-full px-12 py-5 text-black">
-      <p className="text-[0.875rem] font-bold">{children}</p>
-      <span className="text-[0.75rem] font-medium">{children === 'Email' ? session?.user.email : '**********'}</span>
+    <div className="relative w-[50%] text-[0.875rem] rounded-full px-12 py-5 text-black border-[0.2rem] border-t_mustard hover:bg-t_mustard cursor-pointer"
+      onClick={() => showPopup(true)}
+    >
+      <p className={`${albert_900.className}`}>{children}</p>
+      <span className={`${albert_500.className}`}>{children === 'Email' ? session?.user.email : '**********'}</span>
 
       <span
-        className="absolute bottom-8 right-10 cursor-pointer text-[0.75rem] font-semibold"
-        onClick={() => showPopup(true)}
+        className={`absolute bottom-8 right-10 text-[0.75rem] ${albert_900.className}`}
       >
         EDIT
       </span>

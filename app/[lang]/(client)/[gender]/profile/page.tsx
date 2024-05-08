@@ -6,6 +6,7 @@ import { Gender, Locales } from "@/types/link"
 import ProfilePopup from "@/app/components/profile/ProfilePopup"
 import { useProfile } from "@/state/client/profileState"
 import { useUserSession } from "@/app/components/hooks"
+import { albert_500, albert_900 } from "@/utils/fonts"
 
 type PageProps = {
   params: {
@@ -20,18 +21,30 @@ export default function Page({ params }: PageProps) {
   const [showPasswordPopup, setShowPasswordPopup] = useState(false)
   const { currentEmail, setCurrentEmail, newEmail, setNewEmail, newPassword, setNewPassword, updateEmail, updatePassword } = useProfile()
   const { session } = useUserSession()
+  const [isHovered1, setIsHovered1] = useState(false)
+  const [isHovered2, setIsHovered2] = useState(false)
+  const hoveredStyles1 = isHovered1 ? `${albert_900.className}` : ''
+  const hoveredStyles2 = isHovered2 ? `${albert_900.className}` : ''
 
   return (
     <main className="text-bkg ">
       <div className="mx-auto w-[800px]">
         <div className="mt-8 flex justify-between gap-8">
           <ProfileSettings showPopup={setShowEmailPopup}>Email</ProfileSettings>
-          <ProfileSettings showPopup={setShowPasswordPopup}>Change Password</ProfileSettings>
+          <ProfileSettings showPopup={setShowPasswordPopup}>Password</ProfileSettings>
         </div>
 
-        <div className="*:cursor-pointer *:font-semibold *:text-content *:text-[0.75rem] ml-12 mt-10 flex flex-col gap-5">
-          <span>DELETE ACCOUNT</span>
-          <span>LOG OUT</span>
+        <div className={`*:cursor-pointer ${albert_500.className} *:text-content *:text-[0.75rem] ml-12 mt-10 flex flex-col gap-5`}>
+          <span
+            onMouseEnter={() => setIsHovered1(true)}
+            onMouseLeave={() => setIsHovered1(false)}
+            className={`${hoveredStyles1}`}
+          >DELETE ACCOUNT</span>
+          <span
+            onMouseEnter={() => setIsHovered2(true)}
+            onMouseLeave={() => setIsHovered2(false)}
+            className={`${hoveredStyles2}`}
+          >LOG OUT</span>
         </div>
 
         {showEmailPopup && (
