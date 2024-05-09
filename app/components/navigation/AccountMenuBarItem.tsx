@@ -23,7 +23,7 @@ export default function AccountMenuBarItem({ children }: AccountMenuBarItemProps
     <div className="flex items-center gap-2">
       <Link
         href={`/${lang}/${gender}/${lowercaseChildren}`}
-        className={`p-4 sm:text-[1rem] xl:text-[0.875rem] ${albert_600.className} ${selectedStyles} ${hoveredStyles}`}
+        className={`p-4 text-[0.8125rem] sm:text-[1rem] xl:text-[0.875rem] ${albert_600.className} ${selectedStyles} ${hoveredStyles}`}
         onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}
       >

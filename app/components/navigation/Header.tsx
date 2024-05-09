@@ -1,16 +1,20 @@
 "use client"
 import { usePathname } from "next/navigation";
 
-import { BackToTop, Banner, NavBar } from "@/app/components/navigation";
+import { BackToTop, Banner, Logo, NavBar, WithHome } from "@/app/components/navigation";
 import SimpleHeader from "@/app/components/navigation/SimpleHeader";
 import AccountMenuBar from "@/app/components/navigation/AccountMenuBar";
 import Gender from "@/app/components/navigation/Gender";
 import MiniCart from "@/app/components/navigation/MiniCart";
+import NavBarMobile from "@/app/components/navigation/NavBarMobile"
+import { viewport } from "@/app/components/data/universalStyles";
+import useViewport from "@/app/components/hooks/useViewport";
 
 export default function Header() {
   const pathname = usePathname()
   const isCheckout = pathname.split('/')[2] === 'checkout'
   const isAccountMenuBarItem = ['profile', 'addresses', 'orders', 'returns', 'settings', 'help'].includes(pathname.split('/')[3])
+  const viewportWidth = useViewport()
 
   return (
     !isCheckout ? <section className="relative">
@@ -18,11 +22,17 @@ export default function Header() {
       <header className="dark:bg-t_black bg-t_white dark:text-t_white text-t_black flex flex-col items-center overflow-hidden">
         <Banner />
         <NavBar className="hidden sm:block" />
-        <Gender />
+        <Gender className="hidden sm:block" />
+        <WithHome className="sm:hidden">
+          <Logo logoColor="black" width="7rem" className="py-4" />
+        </WithHome>
 
         {isAccountMenuBarItem && <AccountMenuBar />}
 
+        {viewportWidth < viewport.sm && <NavBarMobile />}
+
         <BackToTop />
+
       </header>
     </section> : <SimpleHeader />
   )

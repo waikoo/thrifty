@@ -27,14 +27,14 @@ export default function Page({ params }: PageProps) {
   const hoveredStyles2 = isHovered2 ? `${albert_900.className}` : ''
 
   return (
-    <main className="text-bkg ">
+    <main className="text-bkg">
       <div className="mx-auto max-w-[800px]">
         <div className="mt-8 flex flex-col justify-between xl:flex-row gap-8 items-center">
           <ProfileSettings showPopup={setShowEmailPopup}>Email</ProfileSettings>
           <ProfileSettings showPopup={setShowPasswordPopup}>Password</ProfileSettings>
         </div>
 
-        <div className={`*:cursor-pointer ${albert_500.className} text-t_black xl:*:text-[0.75rem] sm:*:text-[1rem] mt-10 flex flex-col gap-5 text-center xl:text-left`}>
+        <div className={`*:cursor-pointer ${albert_500.className} text-t_black *:text-[0.8125rem] sm:*:text-[1rem] xl:*:text-[0.75rem] mt-10 flex flex-col gap-5 text-center xl:text-left`}>
           <span
             onMouseEnter={() => setIsHovered1(true)}
             onMouseLeave={() => setIsHovered1(false)}

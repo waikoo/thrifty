@@ -2,7 +2,6 @@ import { NewsletterSubscription } from "@/app/components/home"
 import Hero from "@/app/components/home/Hero"
 import HeroBarSwitch from "@/app/components/home/HeroBarSwitch"
 import ColorCarousel from "@/app/components/home/ColorCarousel"
-import NavBarMobile from "@/app/components/navigation/NavBarMobile"
 import PopularBrands from "@/app/components/home/PopularBrands"
 import { Gender, Locales } from "@/types/link"
 import FilterHome from "@/app/components/home/FilterHome"
@@ -31,7 +30,6 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
 
       <NewsletterSubscription />
 
-      <NavBarMobile />
     </main>
   )
 }

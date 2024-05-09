@@ -11,7 +11,11 @@ import useViewport from '@/app/components/hooks/useViewport';
 import { viewport } from '@/app/components/data/universalStyles';
 import { albert, albert_700 } from '@/utils/fonts';
 
-export default function Gender() {
+type GenderProps = {
+  className?: string
+}
+
+export default function Gender({ className }: GenderProps) {
   const [, currentLocale, currentGender,] = usePathname().split('/');
   const { showGenderMenu, setGender, setShowGenderMenu } = useGenderStore()
   const viewportWidth = useViewport()
@@ -24,7 +28,7 @@ export default function Gender() {
   ]
 
   return (
-    <nav className="w-screen md:w-full">
+    <nav className={`w-screen md:w-full ${className}`}>
       <div className="mx-auto max-w-[13rem] sm:max-w-[17rem] xl:max-w-[20rem] pt-2">
 
         <ul className="grid cursor-pointer grid-cols-3 text-[0.75rem] md:text-[0.9375rem] justify-items-center dark:text-t_white text-t_black"
