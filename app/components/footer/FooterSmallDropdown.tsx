@@ -3,9 +3,6 @@
 import { albert, albert_800 } from "@/utils/fonts";
 import { useState } from "react"
 
-import { FaPlus } from "react-icons/fa";
-import { FaMinus } from "react-icons/fa";
-
 type FooterSmallDropdownProps = {
   theme: 'light' | 'dark'
   children: React.ReactNode
@@ -14,16 +11,19 @@ type FooterSmallDropdownProps = {
 
 export default function FooterSmallDropdown({ theme, children, title }: FooterSmallDropdownProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const iconColor = theme === 'light' ? 'black' : 'yellow'
+  const iconColor = theme === 'light' ? 'bg-t_black' : 'bg-yellow-500'
+  const horizontalStyle = isDropdownOpen ? 'hidden' : ''
+  const verticalStyle = isDropdownOpen ? 'rotate-90' : ''
 
   return (
     <>
-      <div className={`grid grid-cols-2 w-[90%] mx-auto mt-3`}
+      <div className={`grid grid-cols-2 w-[90%] items-center mx-auto mt-3`}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
         <span className={` ${albert_800.className}`}>{title}</span>
-        <div className="justify-self-end" >
-          {!isDropdownOpen ? <FaPlus color={iconColor} /> : <FaMinus color={iconColor} />}
+        <div className="justify-self-end relative" >
+          <div className={`absolute ${iconColor} h-[2px] w-3 -left-[5px] transition-transform duration-500 ease-in-out ${horizontalStyle}`}></div>
+          <div className={`absolute ${iconColor} h-3 w-[2px] -top-[5px] transition-transform duration-500 ease-in-out ${verticalStyle}`}></div>
         </div>
       </div>
 
