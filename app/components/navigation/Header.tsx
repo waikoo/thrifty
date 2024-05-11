@@ -15,6 +15,7 @@ export default function Header() {
   const isCheckout = pathname.split('/')[2] === 'checkout'
   const isAccountMenuBarItem = ['profile', 'addresses', 'orders', 'returns', 'settings', 'help'].includes(pathname.split('/')[3])
   const viewportWidth = useViewport()
+  const isHomePage = pathname.split('/').length < 4 && !isCheckout
 
   return (
     !isCheckout ? <section className="relative">
@@ -23,9 +24,12 @@ export default function Header() {
         <Banner />
         <NavBar className="hidden sm:block" />
         <Gender className="hidden sm:block" />
-        <WithHome className="sm:hidden">
-          <Logo logoColor="black" width="7rem" className="py-4" />
-        </WithHome>
+
+        {!isHomePage && (
+          <WithHome className="sm:hidden">
+            <Logo logoColor="black" width="7rem" className="py-4" />
+          </WithHome>
+        )}
 
         {isAccountMenuBarItem && <AccountMenuBar />}
 
