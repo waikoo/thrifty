@@ -1,7 +1,6 @@
 "use client"
 import WithHome from '@/app/components/navigation/WithHome'
 import Logo from '@/app/components/navigation/Logo'
-import useViewport from '@/app/components/hooks/useViewport';
 import HeroImage from '@/app/components/home/HeroImage';
 import HeroSticker from '@/app/components/home/HeroSticker';
 import HeroTextNewIn from '@/app/components/home/HeroTextNewIn';

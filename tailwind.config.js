@@ -144,6 +144,8 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         'bouncy': 'bouncy 1s infinite',
         'mutate': 'mutate 1s infinite',
+        'slide-out': 'slide-out 0.5s ease-out',
+        'slide-in': 'slide-in 0.5s ease-in',
       },
     },
   },

@@ -351,3 +351,12 @@
    background-position: center;
    background-color: black;
  }
+
+ @keyframes slide-out {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+ @keyframes slide-in {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(0); }
+    }

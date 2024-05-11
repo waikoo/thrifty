@@ -18,7 +18,7 @@ export default function useHeroSwipe() {
   function handleSwipeDirection() {
     const swipeDistance = endX - startX
 
-    if (Math.abs(swipeDistance) > 50) {
+    if (Math.abs(swipeDistance) > 20) {
       if (swipeDistance > 0) {
         if (heroState === 'sale') {
           return

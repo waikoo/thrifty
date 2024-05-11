@@ -23,18 +23,44 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
   const borderColor = state === 'sale' && theme === 'dark' ? 'border-t_green' : state === 'new_in' && theme === 'dark' ? 'border-t_purple' : ''
   const height = state === 'new_in' ? 'xl:h-[35rem] 2xl:h-[48rem] 3xl:h-[55rem]' : 'xl:h-[39.375]'
 
+  const otherState = state === 'new_in' ? 'sale' : 'new_in'
+
+  const getSrc = (img: 'first' | 'second') => {
+    const prefix = `/images/hero/`
+    let name: string = ''
+
+    if (state === 'new_in') {
+      name = img === 'first' ? 'new_in' : 'sale'
+    } else if (state === 'sale') {
+      name = img === 'first' ? 'sale' : 'new_in'
+    }
+
+    return `${prefix}${name}_${gender}.jpg`
+  }
+
   return (
-    <div className={`w-full flex ${salePadding} ${blackOnSale} ${borderRadius} h-[27.3125rem] sm:h-[43rem] md:h-[60rem] xl:h-[35.375rem] 2xl:h-[48.2rem] 3xl:h-[55.2rem] rounded-[1.8rem] relative border-[0.125rem] ${borderColor}`}>
+    <div className={`w-full transition flex ${salePadding} ${blackOnSale} ${borderRadius} h-[27.3125rem] sm:h-[43rem] md:h-[60rem] xl:h-[35.375rem] 2xl:h-[48.2rem] 3xl:h-[55.2rem] rounded-[1.8rem] relative border-[0.125rem] ${borderColor}`}>
       {state === 'new_in' &&
         <div className={`w-[50%] h-full bg-gradient-to-l from-black ${showOverlayOnDesktop} absolute right-0 opacity-80 rounded-[1.8rem]`}></div>
       }
-      <img
-        src={`/images/hero/${state}_${gender}.jpg`}
-        alt={heroAlt[state][gender]}
-        width={100}
-        height={100}
-        className={`w-full h-full object-cover ${kidsNewInPosition} ${kidsSalePosition} ${borderRadius} ${height}`}
-      />
+
+      <div className="flex overflow-hidden transition snap snap-center w-[200%]">
+        <img
+          src={getSrc('first')}
+          alt={heroAlt[state][gender]}
+          width={100}
+          height={100}
+          className={`w-full h-full object-cover animate-slide ${kidsNewInPosition} ${kidsSalePosition} ${borderRadius} ${height}`}
+        />
+        <img
+          src={getSrc('second')}
+          alt={heroAlt[otherState][gender]}
+          width={100}
+          height={100}
+          className={`w-full h-full object-cover animate-slide ${kidsNewInPosition} ${kidsSalePosition} ${borderRadius} ${height}`}
+        />
+      </div>
+
       {state === 'sale' && currentViewport >= viewport.xl &&
         <div className="w-[50%]">
           <img src="/images/hero/starry.jpg" alt="starry sky" className="w-full h-full object-cover object-center rounded-[1.8rem]" />
