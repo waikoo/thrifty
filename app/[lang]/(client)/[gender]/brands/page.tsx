@@ -31,7 +31,6 @@ export default function Page({ params: { lang, gender } }: PageProps) {
         ))}
       </section>
 
-      <div className="bg-t_mustard w-screen h-[3rem] mt-16"></div>
     </main>
   )
 }

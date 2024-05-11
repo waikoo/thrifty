@@ -20,6 +20,7 @@ export default function FooterSmall({ lang, gender }: FooterSmallProps) {
 
   return (
     <footer className="py-16 pt-10 w-full">
+      <div className="bg-t_mustard w-screen h-[10px] mb-10"></div>
       <WithHome className=""><Logo logoColor={logoColor} /></WithHome>
 
       <div className={`flex flex-col gap-3 text-[0.8125rem] mt-10 ${albert_600.className}`}>

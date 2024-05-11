@@ -15,6 +15,7 @@ export default function FooterWide() {
 
   return (
     <footer className="dark:bg-t_black bg-t_white relative w-full py-[4rem] pb-[8rem]">
+      <div className="bg-t_mustard w-screen sm:h-[30px] xl:h-[39px] mb-5"></div>
       {viewportWidth < viewport.xl && <WithHome className="w-[90%] mx-auto"> <Logo logoColor={logoColor} /> </WithHome>}
       <div className="flex justify-evenly gap-5 sm:mt-16">
 
