@@ -35,6 +35,8 @@ export default function useSignIn() {
 
     if (data?.role === 'authenticated' && isAdmin) {
       router.push('/en/admin')
+    } else {
+      setTimeout(() => window.location.reload(), 900)
     }
   }
 
