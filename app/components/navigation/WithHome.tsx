@@ -43,7 +43,7 @@ export default function WithHome({ className, children }: withHomeProps) {
 
     getGenderPreference().then(genderPref => {
       if (genderPref) {
-        setGenderPreference(genderPref[0].gender_preference)
+        setGenderPreference(genderPref[0]?.gender_preference || 'women')
       }
     })
   }, [])
