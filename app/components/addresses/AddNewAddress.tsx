@@ -8,7 +8,7 @@ export default function AddNewAddress() {
 
   return (
     <div className="flex flex-col items-center gap-4 border-b-[0.1rem] border-[#c2c2c2] pb-6">
-      <div className="mt-10 w-[60px] h-[60px] bg-t_mustard flex items-center justify-center cursor-pointer border-b-[0.1rem] py-[2rem] rounded-full" onClick={() => setShowAddAddress(true)}>
+      <div className="mt-10 w-[66px] h-[60px] bg-t_mustard flex items-center justify-center cursor-pointer border-b-[0.1rem] py-[2rem] rounded-full" onClick={() => setShowAddAddress(true)}>
         <GoPlus size={38} />
       </div>
       <span className={`text-[0.8125rem] ${albert_900.className}`}>ADD NEW ADDRESS</span>
