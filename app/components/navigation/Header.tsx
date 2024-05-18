@@ -19,7 +19,7 @@ export default function Header() {
   const genderVisibility = isAccountMenuBarItem ? 'hidden' : 'block'
 
   return (
-    !isCheckout ? <section className="relative">
+    !isCheckout ? <section className="relative overflow-hidden">
       <MiniCart />
       <header className="dark:bg-t_black bg-t_white dark:text-t_white text-t_black flex flex-col items-center overflow-hidden">
         <Banner />
