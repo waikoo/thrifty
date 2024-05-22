@@ -15,7 +15,7 @@ export default function FooterHelp({ textColor, textSize, tracking }: FooterHelp
   const { gender, lang } = getLangAndGender(usePathname())
 
   return (
-    <div className={`footerText flex flex-col gap-7 ${textSize}`}>
+    <div className={`footerText flex flex-col gap-7 text-[#f2f2f2] ${textSize}`}>
       <FooterTitle>HELP</FooterTitle>
 
       <div className={`flex flex-col gap-2 whitespace-nowrap ${textColor} ${tracking}`}>

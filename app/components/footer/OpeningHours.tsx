@@ -5,12 +5,12 @@ type OpeningHoursProps = {
 }
 
 export default function OpeningHours({ textSize, tracking, theme }: OpeningHoursProps) {
-  const weekdaysColor = theme === 'light' ? "text-t_black" : "text-t_white"
-  const textColor = theme === 'light' ? "text-[#484848]" : "text-[#c2c2c2]"
+  const weekdaysColor = "text-t_white"
+  const textColor = "text-[#c2c2c2]"
 
   return (
     <div className={`footerText flex flex-col gap-7 ${textSize}`}>
-      <h5 className={`text-[0.875rem] font-bold`}>Store Opening Hours</h5>
+      <h5 className={`text-[0.875rem] font-bold ${weekdaysColor}`}>Store Opening Hours</h5>
 
       <div className={`flex flex-col gap-2 whitespace-nowrap ${tracking}`}>
         <span className={weekdaysColor}>MO-FRI: <span className={textColor}>08:00 - 18:00</span></span>

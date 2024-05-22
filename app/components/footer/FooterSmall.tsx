@@ -8,6 +8,7 @@ import { albert_500, albert_600 } from "@/utils/fonts";
 import FooterSmallDropdown from "@/app/components/footer/FooterSmallDropdown";
 import FooterSocials from "@/app/components/footer/FooterSocials";
 import { Gender, Locales } from "@/types/link";
+import { usePathname } from "next/navigation";
 
 type FooterSmallProps = {
   lang: Locales
@@ -16,12 +17,14 @@ type FooterSmallProps = {
 
 export default function FooterSmall({ lang, gender }: FooterSmallProps) {
   const { theme } = useThemeStore()
-  const logoColor = theme === 'dark' ? "#3e3e3e" : "#e3e3e3"
+  const isHome = usePathname().split('/').length < 4
+  console.log(isHome)
 
   return (
-    <footer className="py-16 pt-10 w-full">
-      <div className="bg-t_mustard w-screen h-[10px] mb-10"></div>
-      <WithHome className=""><Logo logoColor={logoColor} /></WithHome>
+    <footer className="py-16 pt-10 w-full bg-[#0d0d0d] text-t_white">
+      {!isHome && <div className="bg-t_mustard w-screen h-[10px] mb-10"></div>}
+
+      <WithHome className=""><Logo logoColor="#1b1b1b" /></WithHome>
 
       <div className={`flex flex-col gap-3 text-[0.8125rem] mt-10 ${albert_600.className}`}>
         <FooterSmallDropdown theme={theme} title="ACCOUNT">

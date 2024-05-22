@@ -11,7 +11,7 @@ type FooterSmallDropdownProps = {
 
 export default function FooterSmallDropdown({ theme, children, title }: FooterSmallDropdownProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const iconColor = theme === 'light' ? 'bg-t_black' : 'bg-yellow-500'
+  const iconColor = 'bg-yellow-500'
   const horizontalStyle = isDropdownOpen ? 'hidden' : ''
   const verticalStyle = isDropdownOpen ? 'rotate-90' : ''
 
@@ -29,7 +29,7 @@ export default function FooterSmallDropdown({ theme, children, title }: FooterSm
 
       {isDropdownOpen && (
         <div className={`bg-[#e3e3e3] dark:bg-[#1b1b1b]`}>
-          <div className={`flex flex-col mx-auto w-[90%] gap-6 py-5 tracking-wider ${albert.className}`}>
+          <div className={`flex flex-col mx-auto w-[90%] gap-6 py-5 tracking-wider text-t_black dark:text-t_white ${albert.className}`}>
             {children}
           </div>
         </div>

@@ -1,21 +1,25 @@
 import { FooterAccount, FooterHelp, FooterShop, FooterContact } from "@/app/components/footer";
 import { Logo, WithHome } from "@/app/components/navigation";
 import OpeningHours from "@/app/components/footer/OpeningHours";
-import useViewport from "../hooks/useViewport";
-import { viewport } from "../data/universalStyles";
+import useViewport from "@/app/components/hooks/useViewport";
+import { viewport } from "@/app/components/data/universalStyles";
 import { useThemeStore } from "@/state/themeState";
+import { usePathname } from "next/navigation";
 
 export default function FooterWide() {
   const viewportWidth = useViewport()
   const { theme } = useThemeStore()
-  const logoColor = theme === 'dark' ? "#3e3e3e" : "#e3e3e3"
-  const textColor = theme === 'light' ? "*:text-[#484848]" : "*:text-[#c2c2c2]"
+  const logoColor = "#1b1b1b"
+  const textColor = "*:text-[#c2c2c2]"
   const textSize = '*:text-[1rem]'
   const tracking = '*:tracking-wider'
+  const isHome = usePathname().split('/').length < 4
 
   return (
-    <footer className="dark:bg-t_black bg-t_white relative w-full py-[4rem] pb-[8rem]">
-      <div className="bg-t_mustard w-screen sm:h-[30px] xl:h-[39px] mb-5"></div>
+    <footer className="bg-t_black relative w-full py-[4rem]">
+      {!isHome &&
+        <div className="bg-t_mustard w-screen sm:h-[30px] xl:h-[39px] mb-5"></div>
+      }
       {viewportWidth < viewport.xl && <WithHome className="w-[90%] mx-auto"> <Logo logoColor={logoColor} /> </WithHome>}
       <div className="flex justify-evenly gap-5 sm:mt-16">
 
@@ -33,7 +37,7 @@ export default function FooterWide() {
         )}
 
         <div className="absolute bottom-10 text-[0.875rem]">
-          <span>2024 Triftstudio.</span>
+          <span>2024 Thriftstudio.</span>
         </div>
       </div>
     </footer>

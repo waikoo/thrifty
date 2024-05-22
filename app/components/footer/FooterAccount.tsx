@@ -20,7 +20,7 @@ export default function FooterAccount({ textColor, textSize, tracking }: FooterA
   const router = useRouter()
 
   return (
-    <div className={`footerText flex flex-col gap-7 ${textSize}`}>
+    <div className={`footerText flex flex-col gap-7 text-[#f2f2f2] ${textSize}`}>
       <FooterTitle>ACCOUNT</FooterTitle>
 
       <div className={`flex flex-col gap-2 ${textColor} ${tracking}`}>

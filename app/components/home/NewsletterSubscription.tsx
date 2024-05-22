@@ -4,7 +4,7 @@ import { albert, albert_500 } from "@/utils/fonts"
 export default function NewsletterSubscription() {
 
   return (
-    <section className={`text-t_black bg-t_mustard text-bkg grid w-screen place-items-center gap-4 py-[3rem] text-[2rem] pt-[4rem]`}>
+    <section className={`text-t_black bg-t_mustard grid w-screen place-items-center gap-4 py-[4rem] text-[2rem]`}>
       <h3 className="font-allenoire max-w-[300px] text-center text-[1.5rem] md:text-[2.1875rem] xl:text-[3.125rem] whitespace-nowrap flex flex-col items-center">subscribe to our <span className="-mt-2">newsletter</span></h3>
 
       <form className="flex flex-col gap-7 w-[80%] max-w-[400px] xl:max-w-[350px]">

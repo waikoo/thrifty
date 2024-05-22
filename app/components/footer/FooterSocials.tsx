@@ -9,7 +9,7 @@ type FooterSocialsProps = {
 }
 
 export default function FooterSocials({ className, theme, instaSize, fbSize }: FooterSocialsProps) {
-  const socialColor = theme === 'light' ? 't_black' : 't_white'
+  const socialColor = 'white'
 
   return (
     <div className={className}>
