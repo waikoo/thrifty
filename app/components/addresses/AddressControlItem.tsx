@@ -1,6 +1,8 @@
 "use client"
-import { albert_600, albert_900 } from "@/utils/fonts"
 import { useState } from "react"
+
+import { albert_600, albert_900 } from "@/utils/fonts"
+import { underline } from "@/app/components/data/universalStyles"
 
 type AddressControlItemProps = {
   children: React.ReactNode
@@ -10,7 +12,7 @@ type AddressControlItemProps = {
 
 export default function AddressControlItem({ children, onClick, className }: AddressControlItemProps) {
   const [isHovered, setIsHovered] = useState(false)
-  const boldOnHover = isHovered ? albert_900.className : ''
+  const boldOnHover = isHovered ? `${albert_900.className} ${underline}` : ''
 
   return (
     <span

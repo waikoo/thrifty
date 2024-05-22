@@ -7,10 +7,10 @@ import ProfilePopup from "@/app/components/profile/ProfilePopup"
 import { useProfile } from "@/state/client/profileState"
 import { useUserSession } from "@/app/components/hooks"
 import { albert_500, albert_900 } from "@/utils/fonts"
-import WithCloseButton from "@/app/components/navigation/WithCloseButton"
 import AccountDeletionPopup from "@/app/components/navigation/AccountDeletionPopup"
 import { supabase } from "@/app/supabase"
 import { useRouter } from "next/navigation"
+import { underline } from "@/app/components/data/universalStyles"
 
 type PageProps = {
   params: {
@@ -27,8 +27,8 @@ export default function Page({ params }: PageProps) {
   const { session } = useUserSession()
   const [isHovered1, setIsHovered1] = useState(false)
   const [isHovered2, setIsHovered2] = useState(false)
-  const hoveredStyles1 = isHovered1 ? `${albert_900.className}` : ''
-  const hoveredStyles2 = isHovered2 ? `${albert_900.className}` : ''
+  const hoveredStyles1 = isHovered1 ? `${albert_900.className} ${underline}` : ''
+  const hoveredStyles2 = isHovered2 ? `${albert_900.className} ${underline}` : ''
   const [showAccountDeletionPopup, setShowAccountDeletionPopup] = useState(false)
   const router = useRouter()
 
