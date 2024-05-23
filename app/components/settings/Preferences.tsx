@@ -4,10 +4,11 @@ import { usePathname } from "next/navigation"
 import PreferenceElement from "@/app/components/settings/PreferenceElement"
 import getLangAndGender from "@/utils/getLangAndGender"
 import useMediaQuery from "@/app/components/hooks/useMediaQuery"
+import { albert_800 } from "@/utils/fonts"
 
 export default function Preferences() {
   const genders = ['Men', 'Women', 'Kids']
-  const languages = ['English', 'Deutsch']
+  const languages = ['English', 'German']
   const themes = ['Light', 'Dark']
 
   const { lang, gender } = getLangAndGender(usePathname())
@@ -15,13 +16,13 @@ export default function Preferences() {
   const theme = prefersDarkMode ? 'dark' : 'light'
 
   return (
-    <section className="">
-      <h1 className="text-content mt-8 flex-1 text-center text-[0.75rem] font-extrabold">PREFERENCES</h1>
+    <section className="mx-auto w-full xl:w-[500px]">
+      <h1 className={`text-t_black mt-6 text-center text-[13px] sm:text-[17px] xl:text-[15px] ${albert_800.className}`}>PREFERENCES</h1>
 
-      <div className="mt-5">
-        <PreferenceElement title={'SHOPPING'} radioValues={genders} defaultChecked={'women'} />
-        <PreferenceElement title={'LANGUAGE'} radioValues={languages} defaultChecked={lang} gender={gender} />
-        <PreferenceElement title={'THEME'} radioValues={themes} defaultChecked={theme} />
+      <div className="mt-5 bg-[#f2f2f2] rounded-[40px] xl:w-[450px] py-6">
+        <PreferenceElement title={'Shopping'} radioValues={genders} defaultChecked={'women'} />
+        <PreferenceElement title={'Language'} radioValues={languages} defaultChecked={lang} gender={gender} />
+        <PreferenceElement title={'Theme'} radioValues={themes} defaultChecked={theme} />
       </div>
 
     </section>

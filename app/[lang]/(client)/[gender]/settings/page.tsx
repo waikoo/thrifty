@@ -13,7 +13,7 @@ type PageProps = {
 export default function Page({ params }: PageProps) {
 
   return (
-    <div className="text-content mx-auto flex w-[1500px] justify-center gap-20">
+    <div className="text-content mx-auto flex min-w-[300px] max-w-[360px] sm:w-[80%] sm:max-w-[600px] xl:w-[1000px] flex-col xl:flex-row justify-center xl:gap-10 mb-[120px] px-6">
       <Preferences />
       <Notifications />
     </div>

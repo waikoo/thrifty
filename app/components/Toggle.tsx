@@ -8,9 +8,11 @@ type ToggleProps = {
   toggleBgColor?: string
   thumbBorder?: string
   toggleBorder?: string
+  checkedBgColor?: string
+  thumbColorUnchecked?: string
 }
 
-export default function Toggle({ type, thumbColor, toggleBgColor, thumbBorder, toggleBorder }: ToggleProps) {
+export default function Toggle({ type, thumbColor, toggleBgColor, thumbBorder, toggleBorder, checkedBgColor, thumbColorUnchecked }: ToggleProps) {
   const toggleRef = useRef<HTMLInputElement | null>(null)
   const [checked, setChecked] = useState<boolean | undefined>(undefined);
 
@@ -68,7 +70,7 @@ export default function Toggle({ type, thumbColor, toggleBgColor, thumbBorder, t
       {checked !== undefined &&
         <input type="checkbox" value="" className="peer sr-only justify-self-center" ref={toggleRef} onChange={handleOnChange} checked={checked} />
       }
-      <div className={`peer relative h-5 w-9 rounded-full ${toggleBorder} ${toggleBgColor} after:absolute after:start-[0.8px] after:top-[1.2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-gray-500 after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full ${thumbBorder} ${thumbColor} peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800`}></div>
+      <div className={`peer relative h-5 w-9 rounded-full ${toggleBorder} ${toggleBgColor} after:absolute after:start-[2px] after:top-[1.4px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 ${thumbColorUnchecked} after:transition-all after:content-[''] ${checkedBgColor} peer-checked:after:translate-x-full ${thumbBorder} ${thumbColor} peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800`}></div>
     </label>
   );
 }

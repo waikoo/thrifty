@@ -6,10 +6,11 @@ import { useThemeStore } from "@/state/themeState"
 import { themeSettings } from "@/app/components/data/theme"
 import { supabase } from "@/app/supabase"
 import { Gender } from "@/types/link"
+import { albert, albert_600 } from "@/utils/fonts"
 
 type PreferenceElementProps = {
   radioValues: string[]
-  title: 'SHOPPING' | 'LANGUAGE' | 'THEME'
+  title: 'Shopping' | 'Language' | 'Theme'
   defaultChecked: string
   gender?: Gender
 }
@@ -56,11 +57,7 @@ export default function PreferenceElement({ radioValues, title, defaultChecked, 
   }, [checked])
 
   const getValue = (value: string) => {
-    const lowercase = value.toLowerCase()
-
-    return title === 'LANGUAGE'
-      ? lowercase.slice(0, 2) === checked
-      : lowercase === checked
+    return value.toLowerCase() === checked
   }
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,15 +65,23 @@ export default function PreferenceElement({ radioValues, title, defaultChecked, 
   }
 
   return (
-    <div className="bg-faded *:text-black mb-2 grid grid-cols-4 gap-6 rounded-full px-10 py-8">
-      <h2 className={`justify-self-end text-[0.75rem] font-extrabold`}>{title}</h2>
+    <div className="*:text-black mb-2 grid grid-cols-3 sm:grid-cols-4 gap-3 xl:gap-6 items-center rounded-full mx-4 xl:mx-0 sm:px-3 py-3 *:text-[13px] *:sm:text-[17px] *:xl:text-[14px]">
+      <h2 className={`sm:justify-self-end col-span-full col-start-1 col-end-2 row-start-1 row-end-2 justify-self-start text-[13px] sm:text-[17px] xl:text-[14px] ${albert_600.className}`}>{title}</h2>
 
-      {radioValues.map((value) => (
-        <label key={value} className="flex items-center gap-2 text-[0.8125rem] font-normal">
-          <input type="radio" name={title} value={value} checked={getValue(value)} onChange={onChange} className="checked:bg-black" />
-          {value}
-        </label>
-      ))}
+      <div className="row-start-2 sm:row-start-1 flex gap-3">
+        {radioValues.map((value) => {
+          const lowerCase = value.toLowerCase()
+          const checkedBg = checked === lowerCase || checked === lowerCase.slice(0, 2) ? `bg-[#d2d62e] rounded-full py-1 px-3 w-min-content xl:text-[14px] ${albert_600.className}` : 'bg-none'
+
+          return (
+            <label key={value} className={`flex items-center gap-2 font-normal text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
+              <input type="radio" name={title} value={value} checked={getValue(value)} onChange={onChange} className="checked:bg-t_black" />
+              <span className={`${checkedBg}`}> {value} </span>
+            </label>
+          )
+        })}
+      </div>
+
     </div>
   )
 }

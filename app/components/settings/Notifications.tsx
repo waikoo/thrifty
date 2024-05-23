@@ -1,12 +1,13 @@
 import NotificationElement from "@/app/components/settings/NotificationElement";
+import { albert_500, albert_800 } from "@/utils/fonts";
 
 export default function Notifications() {
 
   return (
-    <section className="">
-      <h1 className="text-content mt-8 text-center text-[0.75rem] font-extrabold">NOTIFICATIONS</h1>
+    <section className="mx-auto w-full xl:w-[450px]">
+      <h1 className={`text-content mt-6 text-center text-[13px] sm:text-[17px] xl:text-[15px] ${albert_800.className}`}>NOTIFICATIONS</h1>
 
-      <div className="mt-5 flex flex-col gap-2">
+      <div className={`mt-5 flex flex-col bg-[#f2f2f2] rounded-[40px] text-[13px] sm:text-[17px] xl:text-[14px] xl:w-[450px] py-6 ${albert_500.className}`}>
 
         <NotificationElement type="newsletter">
           Subscribe to our newsletter and be the first to know about new arrivals and exclusive offers

@@ -18,7 +18,6 @@ type FooterSmallProps = {
 export default function FooterSmall({ lang, gender }: FooterSmallProps) {
   const { theme } = useThemeStore()
   const isHome = usePathname().split('/').length < 4
-  console.log(isHome)
 
   return (
     <footer className="py-16 pt-10 w-full bg-[#0d0d0d] text-t_white">

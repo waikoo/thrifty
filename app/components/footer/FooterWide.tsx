@@ -13,11 +13,13 @@ export default function FooterWide() {
   const textColor = "*:text-[#c2c2c2]"
   const textSize = '*:text-[1rem]'
   const tracking = '*:tracking-wider'
-  const isHome = usePathname().split('/').length < 4
+  const pathname = usePathname()
+  const isHome = pathname.split('/').length < 4
+  const isAccountMenuBarItem = ['profile', 'addresses', 'orders', 'returns', 'settings', 'help'].includes(pathname.split('/')[3])
 
   return (
     <footer className="bg-t_black relative w-full py-[4rem]">
-      {!isHome &&
+      {!isHome && !isAccountMenuBarItem &&
         <div className="bg-t_mustard w-screen sm:h-[30px] xl:h-[39px] mb-5"></div>
       }
       {viewportWidth < viewport.xl && <WithHome className="w-[90%] mx-auto"> <Logo logoColor={logoColor} /> </WithHome>}
