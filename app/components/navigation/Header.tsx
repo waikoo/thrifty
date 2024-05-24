@@ -16,7 +16,6 @@ export default function Header() {
   const isAccountMenuBarItem = ['profile', 'addresses', 'orders', 'returns', 'settings', 'help'].includes(pathname.split('/')[3])
   const viewportWidth = useViewport()
   const isHomePage = pathname.split('/').length < 4 && !isCheckout
-  const genderVisibility = isAccountMenuBarItem ? 'hidden' : 'block'
 
   return (
     !isCheckout ? <section className="relative overflow-hidden">
@@ -24,7 +23,7 @@ export default function Header() {
       <header className="dark:bg-t_black bg-t_white dark:text-t_white text-t_black flex flex-col items-center overflow-hidden">
         <Banner />
         <NavBar className="hidden sm:block" />
-        <Gender className={genderVisibility} />
+        <Gender className="hidden sm:block" />
 
         {!isHomePage && (
           <WithHome className="sm:hidden">
