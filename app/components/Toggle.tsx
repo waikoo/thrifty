@@ -65,6 +65,7 @@ export default function Toggle({ type, thumbColor, toggleBgColor, thumbBorder, t
   function handleOnChange(): void {
     setChecked((prevChecked) => !prevChecked);
   }
+
   return (
     <label className={`inline-flex h-auto cursor-pointer items-center self-center`}> {/* mb-5*/}
       {checked !== undefined &&

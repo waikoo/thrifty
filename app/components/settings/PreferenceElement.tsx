@@ -75,7 +75,7 @@ export default function PreferenceElement({ radioValues, title, defaultChecked, 
 
           return (
             <label key={value} className={`flex items-center gap-2 font-normal text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
-              <input type="radio" name={title} value={value} checked={getValue(value)} onChange={onChange} className="checked:bg-t_black" />
+              <input type="radio" name={title} value={value} checked={getValue(value)} onChange={onChange} className="checked:hover:bg-[#d2d62e] checked:bg-t_black hover:bg-[#e3e3e3] bg-[#F9F9F9]" />
               <span className={`${checkedBg}`}> {value} </span>
             </label>
           )

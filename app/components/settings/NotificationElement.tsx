@@ -11,11 +11,12 @@ export default function NotificationElement({ children, type }: NotificationElem
   return (
     <div className="bg-faded w-50 flex items-center gap-10 rounded-full py-2 px-12 text-black">
       <Toggle type={type}
-        toggleBgColor="bg-gray-300"
+        toggleBgColor="bg-[#c2c2c2] hover:bg-[#9d9d9d]"
         toggleBorder={""}
         thumbColor="peer-checked:after:bg-black"
         thumbColorUnchecked="after:bg-white"
-        checkedBgColor="peer-checked:bg-[#d2d62e]" />
+        checkedBgColor="peer-checked:bg-[#d2d62e] hover:peer-checked:border-black hover:peer-checked:border-[0.1rem]"
+      />
 
       <p className={`${albert_500.className} xl:text-[14px]`}>
         {children}
