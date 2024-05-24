@@ -8,7 +8,6 @@ import { albert_500, albert_600 } from "@/utils/fonts";
 import FooterSmallDropdown from "@/app/components/footer/FooterSmallDropdown";
 import FooterSocials from "@/app/components/footer/FooterSocials";
 import { Gender, Locales } from "@/types/link";
-import { usePathname } from "next/navigation";
 
 type FooterSmallProps = {
   lang: Locales
@@ -17,11 +16,9 @@ type FooterSmallProps = {
 
 export default function FooterSmall({ lang, gender }: FooterSmallProps) {
   const { theme } = useThemeStore()
-  const isHome = usePathname().split('/').length < 4
 
   return (
     <footer className="py-16 pt-10 w-full bg-[#0d0d0d] text-t_white">
-      {!isHome && <div className="bg-t_mustard w-screen h-[10px] mb-10"></div>}
 
       <WithHome className=""><Logo logoColor="#1b1b1b" /></WithHome>
 
