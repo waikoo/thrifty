@@ -9,7 +9,7 @@ export default function AccountMenuBar() {
   const accountMenuBarItems = ['profile', 'addresses', 'orders', 'returns', 'settings', 'help']
 
   return (
-    <section className="*:text-t_black bg-t_mustard w-screen justify-center gap-16">
+    <section className="*:text-t_black bg-t_mustard w-screen justify-center gap-16 mt-2">
       <div className="">
 
         <Carousel>
