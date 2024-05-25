@@ -1,17 +1,17 @@
-export const HELP_TITLES = ['ABOUT', 'SHIPPING & DELIVERY', 'RETURNS', 'FAQ', 'CONTACT'
+export const HELP_TITLES = ['ABOUT US', 'DELIVERY & RETURN INFO', 'FAQ', 'CONTACT'
 ]
 
 export const HELP_QUESTIONS = [
-  "What items are available on your webshop?",
-  "How often do you update your inventory?",
-  "Is shopping online as sustainable as in-store shopping?",
-  "What sizes are available for clothing and shoes?",
-  "How can I be sure of the quality of the items I purchase?",
-  "Do you offer returns or exchanges?",
-  "What payment methods do you accept?",
-  "Can I track my order?",
-  "Do you ship internationally?",
-  "How can I contact customer support?"
+  "WHAT ITEMS ARE AVAILABLE ON YOUR WEBSHOP?",
+  "HOW OFTEN DO YOU UPDATE YOUR INVENTORY?",
+  "IS SHOPPING ONLINE AS SUSTAINABLE AS IN-STORE SHOPPING?",
+  "WHAT SIZES ARE AVAILABLE FOR CLOTHING AND SHOES?",
+  "HOW CAN I BE SURE OF THE QUALITY OF THE ITEMS I PURCHASE?",
+  "DO YOU OFFER RETURNS OR EXCHANGES?",
+  "WHAT PAYMENT METHODS DO YOU ACCEPT?",
+  "CAN I TRACK MY ORDER?",
+  "DO YOU SHIP INTERNATIONALLY?",
+  "HOW CAN I CONTACT CUSTOMER SUPPORT?"
 ]
 
 export const HELP_ANSWERS = [

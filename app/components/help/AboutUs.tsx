@@ -1,15 +1,21 @@
-import HelpTitle from "@/app/components/help/HelpTitle"
+import { albert_500 } from "@/utils/fonts";
 
-type AboutUsProps = {
-  children: React.ReactNode
-}
-
-export default function AboutUs({ children }: AboutUsProps) {
+/* eslint-disable jsx-a11y/alt-text */
+export default function AboutUs() {
 
   return (
-    <>
-      <HelpTitle>{children}</HelpTitle>
-      <p className="w-2/6 text-[0.8125rem] font-semibold leading-5">Five years ago, we embarked on a journey to redefine thrifting with a touch of elegance. Here at THRIFTSTUDIO, we curate a timeless collection of men's, women's, and kids' shoes, clothing, and accessories. Our space is a reflection of our passion for sustainable fashion and unique finds. As a local treasure trove, we take pride in offering carefully selected items that tell a story of quality and individuality.</p>
-    </>
+    <div className="relative grid place-items-center">
+      <p className={`max-w-[620px] mx-auto z-50 backdrop-blur-md absolute text-t_white p-4 text-center text-[15px] ${albert_500.className}`}>
+        FIVE YEARS AGO, WE EMBARKED ON A JOURNEY TO REDEFINE THRIFTING WITH A TOUCH OF ELEGANCE. HERE AT THRIFTSTUDIO, WE CURATE A TIMELESS COLLECTION OF MEN'S, WOMEN'S, AND KIDS' SHOES, CLOTHING, AND ACCESSORIES. OUR SPACE IS A REFLECTION OF OUR PASSION FOR SUSTAINABLE FASHION AND UNIQUE FINDS. AS A LOCAL TREASURE TROVE, WE TAKE PRIDE IN OFFERING CAREFULLY SELECTED ITEMS THAT TELL A STORY OF QUALITY AND INDIVIDUALITY.
+      </p>
+
+      <div className="">
+        <img
+          src="/images/help/about_us.jpg"
+          alt="a half black half rose colored elegant women's coat and another in green that's longer on two mannequins in an environment with green leaves"
+          className="z-10 object-cover"
+        />
+      </div>
+    </div>
   )
 }
