@@ -7,6 +7,7 @@ import FAQ from "@/app/components/help/FAQ"
 import Returns from "@/app/components/help/Returns"
 import Delivery from "@/app/components/help/Delivery"
 import { HELP_TITLES } from "@/app/components/data/helpData"
+import HelpItem from "@/app/components/help/HelpItem"
 
 type PageType = {
   searchParams: {
@@ -26,29 +27,31 @@ export default function Page({ searchParams }: PageType) {
   }, [searchParams?.section])
 
   return (
-    <div className="flex">
+    <div className="xl:flex">
 
       <aside className="bg-t_mustard">
-        <ul className="*:text-nowrap mt-5 py-20 text-right">
+        <ul className="mt-5 py-20 text-center xl:text-right">
 
-          {HELP_TITLES.map((text, index) => {
-            return <li className={`${selected === index ? 'bg-bkg text-content' : ''} cursor-pointer px-5 py-4 pl-48 text-[0.75rem] font-extrabold`}
-              onClick={() => setSelected(index)}
-              key={`${text}-${index}`}
-            >
-              {text}
-            </li>
+          {HELP_TITLES.map(({ name, component }, index) => {
+            return (
+              <HelpItem
+                key={index + name}
+                index={index}
+                Component={component}
+                selected={selected}
+                setSelected={setSelected}
+              >{name}</HelpItem>
+            )
           })}
 
         </ul>
       </aside>
 
-      <div className="text-content bg-bkg">
+      <div className="hidden xl:block text-content bg-bkg">
         {selected === 0 && <AboutUs />}
         {selected === 1 && <Delivery />}
-        {/* {selected === 2 && <Returns>{HELP_TITLES[2]}</Returns>} */}
-        {selected === 2 && <FAQ>{HELP_TITLES[3]}</FAQ>}
-        {selected === 3 && <Contact>{HELP_TITLES[4]}</Contact>}
+        {selected === 2 && <FAQ>{HELP_TITLES[2].name}</FAQ>}
+        {selected === 3 && <Contact>{HELP_TITLES[3].name}</Contact>}
       </div>
     </div>
   )

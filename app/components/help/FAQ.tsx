@@ -4,21 +4,22 @@ import { HELP_QUESTIONS } from "@/app/components/data/helpData"
 
 type FAQProps = {
   children: React.ReactNode
+  className?: string
 }
 
-export default function FAQ({ children }: FAQProps) {
+export default function FAQ({ children, className }: FAQProps) {
 
   return (
-    <>
+    <div className={`${className}`}>
       <HelpTitle>{children}</HelpTitle>
 
-      <ol className="max-w-3xl text-[0.8125rem]">
+      <ol className={`max-w-3xl text-[0.8125rem]`}>
 
         {HELP_QUESTIONS.map((_, index) => {
           return <FAQItem key={`faq-${index}`} index={index} />
         })}
 
       </ol>
-    </>
+    </div>
   )
 }

@@ -4,16 +4,17 @@ import FooterContact from "@/app/components/footer/FooterContact"
 
 type ContactProps = {
   children: React.ReactNode
+  className?: string
 }
 
-export default function Contact({ children }: ContactProps) {
+export default function Contact({ children, className }: ContactProps) {
 
   return (
-    <>
+    <div className={`${className}`}>
       <HelpTitle>{children}</HelpTitle>
       <OpeningHours />
       <br />
       <FooterContact />
-    </>
+    </div>
   )
 }

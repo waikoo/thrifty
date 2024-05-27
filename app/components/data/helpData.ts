@@ -1,4 +1,25 @@
-export const HELP_TITLES = ['ABOUT US', 'DELIVERY & RETURN INFO', 'FAQ', 'CONTACT'
+import AboutUs from "../help/AboutUs"
+import Contact from "../help/Contact"
+import Delivery from "../help/Delivery"
+import FAQ from "../help/FAQ"
+
+export const HELP_TITLES = [
+  {
+    name: 'ABOUT US',
+    component: AboutUs as React.ComponentType<{ className?: string }>
+  },
+  {
+    name: 'DELIVERY & RETURN INFO',
+    component: Delivery as React.ComponentType<{ className?: string }>
+  },
+  {
+    name: 'FAQ',
+    component: FAQ as React.ComponentType<{ className?: string }>
+  },
+  {
+    name: 'CONTACT',
+    component: Contact as React.ComponentType<{ className?: string }>
+  }
 ]
 
 export const HELP_QUESTIONS = [
