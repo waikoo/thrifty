@@ -29,13 +29,15 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
       lang={lang}
     >
       <head />
-      <body className={`dark:bg-t_black bg-t_white min-h-screen w-full`}>
+      <body className={`dark:bg-t_black bg-t_white min-h-screen w-full flex flex-col`}>
         <div id="popup-root"></div>
         <Overlays />
         <HamburgerMenu />
         <Header />
 
-        {children}
+        <main className="flex-grow">
+          {children}
+        </main>
 
         <Footer lang={lang as Locales} gender={gender as Gender} />
 
