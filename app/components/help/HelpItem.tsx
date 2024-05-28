@@ -13,7 +13,7 @@ export default function HelpItem({ children, index, Component, selected, setSele
     <li className={`${selectedStyle} cursor-pointer px-5 py-4 xl:pl-48 text-[0.75rem] font-extrabold`}
       onClick={() => setSelected(index)}
     >
-      <span>{children}</span>
+      <span className="whitespace-nowrap">{children}</span>
       {selected === index && <Component className="xl:hidden" />}
     </li>
   )

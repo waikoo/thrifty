@@ -27,7 +27,7 @@ export default function Page({ searchParams }: PageType) {
   }, [searchParams?.section])
 
   return (
-    <div className="xl:flex">
+    <div className="xl:flex xl:min-h-dvh">
 
       <aside className="bg-t_mustard">
         <ul className="mt-5 py-20 text-center xl:text-right">
@@ -47,7 +47,7 @@ export default function Page({ searchParams }: PageType) {
         </ul>
       </aside>
 
-      <div className="hidden xl:block text-content bg-bkg">
+      <div className="hidden xl:block text-content bg-t_white w-full">
         {selected === 0 && <AboutUs />}
         {selected === 1 && <Delivery />}
         {selected === 2 && <FAQ>{HELP_TITLES[2].name}</FAQ>}
