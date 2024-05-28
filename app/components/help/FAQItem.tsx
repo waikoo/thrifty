@@ -10,8 +10,11 @@ export default function FAQItem({ index }: FAQItem) {
 
   return (
     <>
-      <Question>{HELP_QUESTIONS[index]}</Question>
-      <Answer>{HELP_ANSWERS[index]}</Answer>
+      <details>
+        <Question index={index}>{HELP_QUESTIONS[index]}</Question>
+        <Answer>{HELP_ANSWERS[index]}</Answer>
+      </details>
+      <br />
     </>
   )
 }
