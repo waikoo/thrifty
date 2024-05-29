@@ -6,10 +6,11 @@ type FooterSocialsProps = {
   theme: 'light' | 'dark'
   instaSize: number
   fbSize: number
+  invert?: boolean
 }
 
-export default function FooterSocials({ className, theme, instaSize, fbSize }: FooterSocialsProps) {
-  const socialColor = 'white'
+export default function FooterSocials({ className, theme, instaSize, fbSize, invert }: FooterSocialsProps) {
+  const socialColor = invert ? 'black' : 'white'
 
   return (
     <div className={className}>

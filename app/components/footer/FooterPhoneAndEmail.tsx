@@ -6,8 +6,10 @@ type FooterPhoneAndEmailProps = {
 }
 
 export default function FooterPhoneAndEmail({ invert }: FooterPhoneAndEmailProps) {
+  const invertedStyle = invert ? 'text-t_white' : 'text-t_black'
+
   return (
-    <div className="flex flex-col gap-3 text-t_white">
+    <div className={`flex flex-col gap-3 ${invertedStyle}`}>
       <div className="flex items-center gap-2 underline underline-offset-2">
         <Phone invert={invert} />
         <span>1234567890</span>
