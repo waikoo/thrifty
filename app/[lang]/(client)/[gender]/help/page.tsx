@@ -30,7 +30,7 @@ export default function Page({ searchParams }: PageType) {
     <div className="xl:flex xl:min-h-dvh">
 
       <aside className="bg-t_mustard">
-        <ul className="mt-5 py-20 text-center xl:text-right">
+        <ul className="text-center xl:text-right">
 
           {HELP_TITLES.map(({ name, component }, index) => {
             return (

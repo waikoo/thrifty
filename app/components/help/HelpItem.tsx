@@ -10,7 +10,7 @@ export default function HelpItem({ children, index, Component, selected, setSele
   const selectedStyle = selected === index ? 'bg-t_white text-text-t_black' : ''
 
   return (
-    <li className={`${selectedStyle} cursor-pointer px-5 py-4 xl:pl-48 text-[0.75rem] font-extrabold`}
+    <li className={`${selectedStyle} cursor-pointer px-5 py-4 xl:pl-48 text-[0.75rem] font-extrabold border-b-[0.1rem] border-t_white`}
       onClick={() => setSelected(index)}
     >
       <span className="whitespace-nowrap">{children}</span>
