@@ -12,7 +12,7 @@ type ContactProps = {
 export default function Contact({ children, className }: ContactProps) {
 
   return (
-    <div className={`${className} flex`}>
+    <div className={`${className} flex flex-col xl:flex-row`}>
       <div className={`p-4`}>
         <HelpTitle>{children}</HelpTitle>
         <OpeningHours invert={true} />
