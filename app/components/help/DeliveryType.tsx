@@ -10,8 +10,8 @@ export type DeliveryTypeProps = {
 export default function DeliveryType({ children, cost, duration, details }: DeliveryTypeProps) {
 
   return (
-    <div className="">
-      <span className={`${albert_800.className} xl:text-[15px]`}>{children}</span>
+    <div className="w-full">
+      <p className={`${albert_800.className} text-left w-full xl:text-[15px]`}>{children}</p>
 
       <div className="bg-[#f2f2f2] rounded-[40px] p-6">
 

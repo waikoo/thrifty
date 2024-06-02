@@ -11,13 +11,13 @@ export default function HelpReturns() {
 
       <span className={`${albert_800.className} xl:text-[15px] block`}>HOW TO RETURN AN ITEM</span>
 
-      <div className="flex gap-4">
-        <div className="rounded-[40px] bg-[#f2f2f2] p-6 max-w-[350px] flex gap-2">
+      <div className="flex flex-col xl:flex-row gap-4">
+        <div className="rounded-[40px] bg-[#f2f2f2] p-6 xl:max-w-[350px] flex gap-2">
           <span className={`${albert_600.className} xl:text-[14px]`}>Online: </span>
           <p className={`${albert.className} xl:text-[14px]`}>Log in to your account and go to the 'Orders' section. Select the order you wish to return and follow the instructions to generate a return. Pack the items you want to return with all tags attached. A courier will pick them up from the address you specified within 2-4 business days.</p>
         </div>
 
-        <div className="rounded-[40px] bg-[#f2f2f2] p-6 max-w-[350px] flex gap-2">
+        <div className="rounded-[40px] bg-[#f2f2f2] p-6 xl:max-w-[350px] flex gap-2">
           <span className={`${albert_600.className} xl:text-[14px] whitespace-nowrap`}>In-store: </span>
           <p className={`${albert.className} xl:text-[14px]`}>Bring the items with all tags attached to our store along with the receipt or order confirmation email. Our staff will assist you with the return process.</p>
         </div>
