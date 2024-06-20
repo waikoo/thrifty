@@ -8,7 +8,7 @@ type DeliveryProps = {
 export default function Delivery({ className }: DeliveryProps) {
 
   return (
-    <div className={`p-10 ${className}`}>
+    <div className={`p-[48px] ${className}`}>
       <HelpDelivery />
       <HelpReturns />
     </div>

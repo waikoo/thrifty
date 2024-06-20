@@ -10,7 +10,7 @@ type FAQProps = {
 export default function FAQ({ children, className }: FAQProps) {
 
   return (
-    <div className={`${className} p-4 px-6`}>
+    <div className={`${className} p-[48px]`}>
       <HelpTitle>{children}</HelpTitle>
 
       <ol className={`max-w-3xl text-[0.8125rem]`}>

@@ -13,7 +13,7 @@ export default function Contact({ children, className }: ContactProps) {
 
   return (
     <div className={`${className} flex flex-col xl:flex-row`}>
-      <div className={`p-4`}>
+      <div className={`p-[48px]`}>
         <HelpTitle>{children}</HelpTitle>
         <OpeningHours invert={true} />
         <br />
