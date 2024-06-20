@@ -1,4 +1,4 @@
-import { albert_900 } from "@/utils/fonts"
+import { albert_500, albert_800, albert_900 } from "@/utils/fonts"
 
 type OpeningHoursProps = {
   textSize?: string
@@ -13,25 +13,25 @@ export default function OpeningHours({ textSize, tracking, theme, invert }: Open
 
   return (
     <div className={`footerText flex flex-col gap-7 ${textSize}`}>
-      <span className={` text-[14px] ${albert_900.className} ${weekdaysColor}`}>STORE OPENING HOURS</span>
+      <span className={`text-[13px] sm:text-[17px] xl:text-[16px] whitespace-nowrap ${albert_800.className} ${weekdaysColor}`}>STORE OPENING HOURS</span>
 
       <div className={`flex flex-col gap-2 whitespace-nowrap ${tracking}`}>
         <span>
-          <span className={`text-[14px] ${albert_900.className} ${weekdaysColor}`}>MO-FRI: </span>
-          <span className={textColor}>08:00 - 18:00</span>
+          <span className={`text-[13px] sm:text-[17px] xl:text-[14px] ${albert_800.className} ${weekdaysColor}`}>MO-FRI: </span>
+          <span className={`${textColor} text-[13px] sm:text-[17px] xl:text-[16px] ${albert_500.className}`}>08:00 - 18:00</span>
         </span>
 
         <span>
-          <span className={`text-[14px] ${albert_900.className} ${weekdaysColor}`}>SAT: </span>
-          <span className={textColor}>09:00 - 14:00</span>
+          <span className={`text-[13px] sm:text-[17px] xl:text-[14px] ${albert_800.className} ${weekdaysColor}`}>SAT: </span>
+          <span className={`${textColor} text-[13px] sm:text-[17px] xl:text-[16px] ${albert_500.className}`}>09:00 - 14:00</span>
         </span>
 
         <span>
-          <span className={`text-[14px] ${albert_900.className} ${weekdaysColor}`}>SUN: </span>
-          <span className={textColor}>Closed</span>
+          <span className={`text-[13px] sm:text-[17px] xl:text-[14px] ${albert_800.className} ${weekdaysColor}`}>SUN: </span>
+          <span className={`${textColor} text-[13px] sm:text-[17px] xl:text-[16px] ${albert_500.className}`}>Closed</span>
         </span>
 
-        <span className={`whitespace-nowrap pt-4 ${textColor}`}>Lemon Road 23, Lime Town</span>
+        <span className={`whitespace-nowrap pt-4 ${textColor} ${albert_500.className} text-[13px] sm:text-[17px] xl:text-[16px]`}>Lemon Road 23, Lime Town</span>
 
       </div>
     </div>

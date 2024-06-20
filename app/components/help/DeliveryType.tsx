@@ -1,4 +1,4 @@
-import { albert_500, albert_600, albert_800 } from "@/utils/fonts"
+import { albert, albert_600, albert_800 } from "@/utils/fonts"
 
 export type DeliveryTypeProps = {
   children: React.ReactNode
@@ -11,24 +11,24 @@ export default function DeliveryType({ children, cost, duration, details }: Deli
 
   return (
     <div className="w-full">
-      <p className={`${albert_800.className} text-left w-full xl:text-[15px]`}>{children}</p>
+      <p className={`${albert_800.className} text-left w-full text-[13px] sm:text-[17px] xl:text-[15px]`}>{children}</p>
 
       <div className="bg-[#f2f2f2] rounded-[40px] p-6">
 
-        <div className="xl:text-[14px]">
+        <div className="text-[13px] sm:text-[17px] xl:text-[14px]">
           <span className={`${albert_600.className} text-right`}>Cost: </span>
-          <span className={`${albert_500.className}`}>{cost}</span>
+          <span className={`${albert.className}`}>{cost}</span>
         </div>
 
-        <div className="xl:text-[14px]">
+        <div className="text-[13px] sm:text-[17px] xl:text-[14px]">
           <span className={`${albert_600.className}`}>Duration: </span>
-          <span className={`${albert_500.className}`}>{duration} business days</span>
+          <span className={`${albert.className}`}>{duration} business days</span>
         </div>
 
 
-        <div className="flex gap-1 xl:text-[14px]">
+        <div className="flex gap-1 text-[13px] sm:text-[17px] xl:text-[14px]">
           <span className={`${albert_600.className}`}>Details:</span>
-          <p className={`${albert_500.className}`}>{details}</p>
+          <p className={`${albert.className}`}>{details}</p>
         </div>
 
       </div>

@@ -5,7 +5,7 @@ import DeliveryType from "@/app/components/help/DeliveryType"
 export default function HelpDelivery() {
 
   return (
-    <div>
+    <div className="text-left">
       <HelpTitle>DELIVERY</HelpTitle>
 
       <div className="xl:flex sm:gap-4 xl:gap-2">

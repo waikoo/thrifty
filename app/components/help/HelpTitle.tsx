@@ -1,9 +1,11 @@
+import { albert_900 } from "@/utils/fonts"
+
 type HelpTitleProps = {
   children: React.ReactNode
 }
 
 export default function HelpTitle({ children }: HelpTitleProps) {
   return (
-    <div className="text-[3.125rem] font-semibold">{children}</div>
+    <span className={`text-[24px] sm:text-[45px] xl:text-[35px] ${albert_900.className}`}>{children}</span>
   )
 }
