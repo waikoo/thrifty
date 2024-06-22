@@ -16,20 +16,22 @@ export default function Contact({ children, className }: ContactProps) {
       <div className={`p-[48px] text-left`}>
         <HelpTitle>{children}</HelpTitle>
 
-        <span className={`${albert_900.className} text-[24px] sm:text-[45px]`}>CONTACT</span>
         <OpeningHours invert={true} />
         <br />
 
-        <span className={`text-[13px] xl:text-[16px] ${albert_800.className} text-t_black mb-10`}>CUSTOMER SUPPORT</span>
+        <p className={`text-[13px] sm:text-[17px] xl:text-[16px] ${albert_800.className} text-t_black pb-6 mt-5`}>CUSTOMER SUPPORT</p>
 
-        <FooterContact hideLogo={true}
+        <FooterContact
+          hideLogo={true}
           invertSocials={false}
+          className="text-[13px] sm:text-[17px] xl:text-[16px] "
         />
+
       </div>
 
       <div className="flex-grow h-dvh">
         <img src="/images/help/contact.jpg"
-          className="object-cover h-full"
+          className="w-full"
           alt="a lit up storefront from the outside street full with colorful clothes"
         />
       </div>

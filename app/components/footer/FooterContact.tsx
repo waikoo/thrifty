@@ -8,14 +8,15 @@ import { Logo, WithHome } from "@/app/components/navigation";
 type FooterContactProps = {
   hideLogo?: boolean
   invertSocials?: boolean
+  className: string
 }
 
-export default function FooterContact({ hideLogo = false, invertSocials = false }: FooterContactProps) {
+export default function FooterContact({ className, hideLogo = false, invertSocials = false }: FooterContactProps) {
   const viewportWidth = useViewport()
   const { theme } = useThemeStore()
 
   return (
-    <div className="flex flex-col gap-7">
+    <div className={`flex flex-col gap-7 ${className}`}>
 
       {viewportWidth > viewport.xl && !hideLogo && (
         <WithHome className="" >
@@ -31,7 +32,7 @@ export default function FooterContact({ hideLogo = false, invertSocials = false 
         className="flex gap-4 items-center"
         fbSize={28}
         instaSize={35}
-        invert={true}
+        invert={!invertSocials}
       />
     </div>
   )

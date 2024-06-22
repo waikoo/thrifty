@@ -1,10 +1,11 @@
+import { usePathname } from "next/navigation";
+
 import { FooterAccount, FooterHelp, FooterShop, FooterContact } from "@/app/components/footer";
 import { Logo, WithHome } from "@/app/components/navigation";
 import OpeningHours from "@/app/components/footer/OpeningHours";
 import useViewport from "@/app/components/hooks/useViewport";
 import { viewport } from "@/app/components/data/universalStyles";
 import { useThemeStore } from "@/state/themeState";
-import { usePathname } from "next/navigation";
 
 export default function FooterWide() {
   const viewportWidth = useViewport()
@@ -25,7 +26,7 @@ export default function FooterWide() {
       {viewportWidth < viewport.xl && <WithHome className="w-[90%] mx-auto"> <Logo logoColor={logoColor} /> </WithHome>}
       <div className="flex justify-evenly gap-5 sm:mt-16">
 
-        <FooterContact />
+        <FooterContact hideLogo={false} invertSocials={true} className="" />
         <FooterShop textColor={textColor} textSize={textSize} tracking={tracking} />
         <FooterAccount textColor={textColor} textSize={textSize} tracking={tracking} />
         <FooterHelp textColor={textColor} textSize={textSize} tracking={tracking} />
