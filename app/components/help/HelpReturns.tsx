@@ -32,7 +32,7 @@ export default function HelpReturns() {
         <span className={`${albert_800.className} text-[13px] sm:text-[17px] xl:text-[15px]`}>CONDITIONS</span>
         <p className={`${albert_600.className} text-[13px] sm:text-[17px] xl:text-[14px]`}>Items must be returned in their original condition, unworn, and with all tags attached.</p>
         <p className={`${albert_600.className} text-[13px] sm:text-[17px] xl:text-[14px]`}>
-          For further assistance,"+please contact our Customer Service team at
+          For further assistance, please contact our Customer Service team at
           <a href="mailto:thriftstudio@shop.com">thriftstudio@shop.com</a>
           or call
           <a href="tel:1234567890">1234567890</a>
