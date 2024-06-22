@@ -8,7 +8,7 @@ type WithCloseButtonProps = {
   onClose: () => void
   children: React.ReactNode
   className?: string
-  gap: string
+  gap?: string
 }
 
 export default function WithCloseButton({ onClose, children, className, gap }: WithCloseButtonProps) {
