@@ -2,7 +2,7 @@
 import HelpTitle from "@/app/components/help/HelpTitle"
 import OpeningHours from "@/app/components/footer/OpeningHours"
 import FooterContact from "@/app/components/footer/FooterContact"
-import { albert_800, albert_900 } from "@/utils/fonts"
+import { albert_600, albert_800, albert_900 } from "@/utils/fonts"
 
 type ContactProps = {
   children: React.ReactNode
@@ -24,7 +24,7 @@ export default function Contact({ children, className }: ContactProps) {
         <FooterContact
           hideLogo={true}
           invertSocials={false}
-          className="text-[13px] sm:text-[17px] xl:text-[16px] "
+          className={`${albert_600.className} text-[13px] sm:text-[17px] xl:text-[14px] `}
         />
 
       </div>
