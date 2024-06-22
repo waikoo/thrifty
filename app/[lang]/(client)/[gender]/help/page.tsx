@@ -26,7 +26,7 @@ export default function Page({ searchParams }: PageType) {
   }, [searchParams?.section])
 
   return (
-    <div className="xl:flex xl:min-h-dvh">
+    <div className="xl:flex">
 
       <aside className="bg-t_mustard">
         <ul className="text-center xl:text-right">

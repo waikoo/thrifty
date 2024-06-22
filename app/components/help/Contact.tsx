@@ -29,7 +29,7 @@ export default function Contact({ children, className }: ContactProps) {
 
       </div>
 
-      <div className="flex-grow h-dvh">
+      <div className="flex-grow">
         <img src="/images/help/contact.jpg"
           className="w-full"
           alt="a lit up storefront from the outside street full with colorful clothes"
