@@ -10,7 +10,7 @@ export default function FAQItem({ index }: FAQItem) {
 
   return (
     <>
-      <details className="text-left">
+      <details className="text-left cursor-pointer">
         <Question>{HELP_QUESTIONS[index]}</Question>
         <Answer>{HELP_ANSWERS[index]}</Answer>
       </details>

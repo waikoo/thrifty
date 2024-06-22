@@ -49,7 +49,7 @@ export default function Page({ searchParams }: PageType) {
       <div className="hidden xl:block text-content bg-t_white w-full">
         {selected === 0 && <AboutUs />}
         {selected === 1 && <Delivery />}
-        {selected === 2 && <FAQ>{HELP_TITLES[2].name}</FAQ>}
+        {selected === 2 && <FAQ>FREQUENTLY ASKED QUESTIONS</FAQ>}
         {selected === 3 && <Contact>{HELP_TITLES[3].name}</Contact>}
       </div>
     </div>

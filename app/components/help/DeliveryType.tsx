@@ -11,25 +11,18 @@ export default function DeliveryType({ children, cost, duration, details }: Deli
 
   return (
     <div className="w-full">
-      <p className={`${albert_800.className} text-left w-full text-[13px] sm:text-[17px] xl:text-[15px]`}>{children}</p>
+      <p className={`${albert_800.className} mt-8 xl:mt-0 text-left w-full text-[13px] sm:text-[17px] xl:text-[15px]`}>{children}</p>
 
-      <div className="bg-[#f2f2f2] rounded-[40px] p-6">
+      <div className="mt-3 bg-[#f2f2f2] grid grid-cols-[auto_auto] gap-2 rounded-[40px] p-6 text-[13px] sm:text-[17px] xl:text-[14px]">
 
-        <div className="text-[13px] sm:text-[17px] xl:text-[14px]">
-          <span className={`${albert_600.className} text-right`}>Cost: </span>
-          <span className={`${albert.className}`}>{cost}</span>
-        </div>
+        <span className={`${albert_600.className} text-right`}>Cost: </span>
+        <span className={`${albert.className}`}>{cost}</span>
 
-        <div className="text-[13px] sm:text-[17px] xl:text-[14px]">
-          <span className={`${albert_600.className}`}>Duration: </span>
-          <span className={`${albert.className}`}>{duration} business days</span>
-        </div>
+        <span className={`${albert_600.className}`}>Duration: </span>
+        <span className={`${albert.className}`}>{duration} business days</span>
 
-
-        <div className="flex gap-1 text-[13px] sm:text-[17px] xl:text-[14px]">
-          <span className={`${albert_600.className}`}>Details:</span>
-          <p className={`${albert.className}`}>{details}</p>
-        </div>
+        <span className={`${albert_600.className} text-right`}>Details:</span>
+        <p className={`${albert.className}`}>{details}</p>
 
       </div>
     </div>

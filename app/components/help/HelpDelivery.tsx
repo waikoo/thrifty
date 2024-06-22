@@ -8,7 +8,7 @@ export default function HelpDelivery() {
     <div className="text-left">
       <HelpTitle>DELIVERY</HelpTitle>
 
-      <div className="xl:flex sm:gap-4 xl:gap-2">
+      <div className="mt-10 sm:gap-4 xl:flex xl:gap-2">
         <DeliveryType
           cost={`${EURO}15`}
           duration="2-4"

@@ -14,15 +14,13 @@ export default function FAQ({ children, className }: FAQProps) {
     <div className={`${className} p-[48px] text-left`}>
       <HelpTitle>{children}</HelpTitle>
 
-      <span className={`${albert_900.className} text-[24px] sm:text-[45px]`}>FREQUENTLY ASKED QUESTIONS</span>
-
-      <ol className={`max-w-3xl`}>
+      <ul className={`mt-10 max-w-3xl`}>
 
         {HELP_QUESTIONS.map((_, index) => {
           return <FAQItem key={`faq-${index}`} index={index} />
         })}
 
-      </ol>
+      </ul>
     </div>
   )
 }
