@@ -1,10 +1,10 @@
 "use client"
 import Link from 'next/link'
+import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 import getLangAndGender from '@/utils/getLangAndGender'
-import { usePathname } from 'next/navigation'
 import { albert_600, albert_900 } from '@/utils/fonts'
-import { useState } from 'react'
 
 type AccountMenuBarItemProps = {
   children: React.ReactNode
@@ -23,7 +23,7 @@ export default function AccountMenuBarItem({ children }: AccountMenuBarItemProps
     <div className="flex items-center gap-2">
       <Link
         href={`/${lang}/${gender}/${lowercaseChildren}`}
-        className={`p-3 text-[0.8125rem] sm:text-[1rem] xl:text-[0.875rem] ${albert_600.className} ${selectedStyles} ${hoveredStyles}`}
+        className={`p-3 px-5 text-[0.8125rem] sm:text-[1rem] xl:text-[0.875rem] ${albert_600.className} ${selectedStyles} ${hoveredStyles}`}
         onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}
       >
