@@ -16,6 +16,10 @@ export default async function Page({ params: { lang, gender }, searchParams }: P
 
   return (
     <main className="bg-t_white text-content mx-auto px-20 lg:max-w-[1500px]">
+      <img src="/images/products/crossing.png"
+        alt="the feet of four women crossing the street"
+        className="my-3 w-full"
+      />
       <FilterTop {...{ gender, lang }} />
       <div id="popup-root"></div>
       <div className="flex gap-16">
