@@ -24,7 +24,7 @@ export default async function NewArrivals({ lang, gender = 'women', notHome = fa
     .limit(12)
 
   return (
-    <section className={`${notHome ? 'bg-bkg w-full' : 'bg-content w-screen px-24 pb-10'} flex flex-col`}>
+    <section className={`${notHome ? 'bg-t_white w-full' : 'bg-content w-screen px-24 pb-10'} flex flex-col`}>
       <div className={`${notHome ? '' : 'mx-auto w-[80%]'}`}>
         <h3 className={`text-bkg py-10 text-2xl font-bold 
         ${notHome ? 'text-content text-center text-[1rem]' : ''}`}

@@ -31,7 +31,7 @@ export default function ProductAddToCart({ uuid, className, children }: ProductA
   }, []);
 
   return (
-    <button className={tm(`bg-bkg text-content border-content w-full cursor-pointer rounded-full border-[0.1rem] py-2 text-center text-[0.6875rem] font-medium ${className}`)} onClick={addItemToCart}>
+    <button className={tm(`bg-t_white text-t_black border-t_black w-full cursor-pointer rounded-full border-[0.1rem] py-2 text-center text-[0.6875rem] font-medium ${className}`)} onClick={addItemToCart}>
       <span className="select-none">{children}</span>
     </button>
   )

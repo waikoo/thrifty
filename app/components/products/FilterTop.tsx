@@ -38,7 +38,7 @@ export default function FilterTop({ gender, lang }: FilterTopProps) {
   }
 
   return (
-    <section className={`bg-bkg ${position} left-[1vw] right-[1vw] top-0 z-auto`}>
+    <section className={`bg-t_white ${position} left-[1vw] right-[1vw] top-0 z-auto`}>
       <div className={`flex items-baseline ${position === 'static' ? 'justify-between' : 'justify-around'} `}>
         <FilterSideControls gender={gender} lang={lang} />
 
