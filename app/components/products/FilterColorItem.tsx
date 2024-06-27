@@ -1,3 +1,4 @@
+import { albert_500 } from "@/utils/fonts"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
@@ -36,25 +37,25 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
   }
 
   const colorClasses: { [key: string]: string } = {
-    Beige: 'bg-beige',
-    Brown: 'bg-brown',
-    White: 'bg-white',
-    Grey: 'bg-grey',
-    Blue: 'bg-blue',
-    Purple: 'bg-purple',
+    Beige: 'bg-yellow-100 border-gray-300 border-[0.1rem]',
+    Brown: 'bg-orange-700',
+    White: 'bg-white-100 border-gray-300 border-[0.1rem]',
+    Grey: 'bg-gray-400',
+    Blue: 'bg-blue-500',
+    Purple: 'bg-purple-400',
     Multicolor: 'bg-multicolor',
-    Pink: 'bg-pink',
-    Red: 'bg-red',
-    Green: 'bg-green',
-    Yellow: 'bg-yellow',
-    Orange: 'bg-orange',
-    Gold: 'bg-gold',
-    Silver: 'bg-silver',
+    Pink: 'bg-pink-300',
+    Red: 'bg-red-500',
+    Green: 'bg-green-500',
+    Yellow: 'bg-yellow-300',
+    Orange: 'bg-orange-500',
+    Gold: 'bg-yellow-400',
+    Silver: 'bg-gray-200',
     Black: 'bg-black',
   };
 
   return (
-    <div className={`flex items-center gap-2 cursor-pointer`}
+    <div className={`flex items-center gap-2 cursor-pointer ${albert_500.className} text-[14px]`}
       onClick={handleOnChange}
       data-color={color.toLowerCase()}
     >
@@ -63,6 +64,7 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
           {Array(9).fill(' ').map((_, i) => {
             const colors = Object.values(colorClasses)
             const randomColor = colors[Math.floor(Math.random() * colors.length)]
+
             return (
               <div
                 key={`multicolor-${i}`}
@@ -72,7 +74,7 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
           })}
         </div>
       ) : (
-        <div className={`h-8 w-8 ${colorClasses[color]}`}></div>
+        <div className={`h-8 w-8 rounded-full ${colorClasses[color]}`}></div>
       )}
       <span>{color}</span>
     </div >

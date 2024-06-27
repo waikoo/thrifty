@@ -23,6 +23,7 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
           <FilterSearch setSearchValue={setSearchValue} />
 
           <div className="grid cursor-pointer select-none grid-cols-2 gap-4 pt-4">
+
             {filteredItems.map((color, i) => (
               <FilterColorItem
                 key={`filterColor-${i}`}
@@ -30,6 +31,7 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
                 type={type}
               />
             ))}
+
           </div>
         </div>
       )}

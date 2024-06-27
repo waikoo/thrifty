@@ -29,7 +29,7 @@ export default function ProductList({ lang, gender, searchParams, products }: Pr
       {products.length > 0 ? (
         <>
           <div className="relative grid gap-10 sm:grid-cols-3 lg:grid-cols-4">
-            <span className={`absolute -top-7 ${albert_500.className} text-[14px]`}>{products.length} Results</span>
+            <span className={`absolute -top-[2.6rem] ${albert_500.className} text-[14px]`}>{products.length} Results</span>
 
             {products.map((product: ProductItemType, i: number) => {
               return (

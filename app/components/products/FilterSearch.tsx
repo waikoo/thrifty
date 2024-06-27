@@ -10,12 +10,12 @@ export default function FilterSearch({ setSearchValue }: FilterSearchProps) {
   }
 
   return (
-    <div className="relative flex">
+    <div className="relative flex mt-2">
       <FiSearch className="text-grey absolute left-1 top-1/2 -translate-y-1/2" />
       <input
         type="search"
         placeholder="Search Size"
-        className="bg-bkg border-b-[0.1rem] pl-7 outline-none"
+        className="bg-t_white dark:bg-t_black border-t-0 border-x-0 border-b-[0.1rem] pl-7 outline-none"
         onChange={onChangeHandler}
       />
     </div>

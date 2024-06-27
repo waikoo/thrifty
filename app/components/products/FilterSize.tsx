@@ -1,9 +1,11 @@
 "use client"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+
 import { FilterSearch, FilterTitle } from "."
 import { useFilterSearch } from "../hooks"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
 import { useFilterTitleStore } from "@/state/client/filterState"
+import { albert_500 } from "@/utils/fonts"
 
 type FilterSizeProps = {
   type: 'SIZE'
@@ -50,8 +52,9 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
           <FilterSearch setSearchValue={setSearchValue} />
 
           <fieldset
-            className="grid w-full select-none grid-cols-4 gap-2 pt-4"
+            className="grid w-full select-none grid-cols-4 gap-1 pt-4 h-[200px] overflow-y-scroll scrollbar-thin"
             onClick={handleOnChange}>
+
             {filteredItems.map((size, i) => {
               const colorOnClick =
                 !searchParamos.get('size')
@@ -64,11 +67,12 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
                 <div
                   key={`sizes-${i}`}
                   data-value={size}
-                  className={`grid cursor-pointer place-items-center border-[0.1rem] p-1 px-4 text-[0.813rem] ${colorOnClick}`}
+                  className={`grid cursor-pointer place-items-center border-[0.1rem] p-3 text-[13px] ${albert_500.className} ${colorOnClick}`}
                 >
                   {size}</div>
               )
             })}
+
           </fieldset>
         </div>
       )}

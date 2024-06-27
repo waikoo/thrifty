@@ -6,6 +6,7 @@ import { useFilterTitleStore } from "@/state/client/filterState"
 import { FilterTitle } from "@/app/components/products"
 import { useDbMinMaxValues, useFilterSlider } from "@/app/components/hooks"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
+import { albert_500 } from "@/utils/fonts"
 
 type FilterSliderProps = {
   type: "DISCOUNT" | "PRICE"
@@ -62,7 +63,7 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
               data-direction="right"
               value={right}
               onChange={(e) => handleRightChange(e)}
-              className="range_slider pointer-events-none absolute right-0 top-8 z-20 h-[0.12rem] w-full cursor-pointer appearance-none rounded " />
+              className="range_slider pointer-events-none absolute right-0 top-8 z-20 h-[0.12rem] w-full cursor-pointer appearance-none rounded" />
             <input
               type="range"
               min={start}
@@ -71,22 +72,24 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
               data-direction="left"
               value={left}
               onChange={(e) => handleLeftChange(e)}
-              className="range_slider pointer-events-none absolute left-0 top-8 z-20 h-[0.12rem] w-full cursor-pointer appearance-none rounded" />
+              className="range_slider pointer-events-none absolute left-0 top-8 z-20 h-[0.12rem] w-full cursor-pointer appearance-none rounded bg-t_black dark:bg-t_white" />
           </div>
 
-          <div className="flex justify-between">
+          <div className={`flex justify-between ${albert_500.className} text-[14px]`}>
             <input
               type="text"
               name="left"
               value={`${type === 'DISCOUNT' ? '%' : '€'} ${left}`}
-              className="text-bkg mt-12 h-8 w-20"
+              className="text-[#1b1b1b] dark:t_white mt-12 h-10 w-20 bg-t_white border-[0.2rem] border-[#e3e3e3] rounded-full text-center"
               onChange={handleInputChange} />
-            <span className="text-content mt-12">-</span>
+
+            <span className="text-[#c2c2c2] dark:t_white mt-12">_</span>
+
             <input
               type="text"
               name="right"
               value={`${type === 'DISCOUNT' ? '%' : '€'} ${right}`}
-              className="text-bkg mt-12 h-8 w-20"
+              className="text-[#1b1b1b] dark:t_white mt-12 h-10 w-20 bg-t_white border-[0.2rem] border-[#e3e3e3] rounded-full text-center"
               onChange={handleInputChange} />
           </div>
         </div>

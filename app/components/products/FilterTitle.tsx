@@ -1,5 +1,6 @@
 "use client"
 import { useFilterTitleStore } from "@/state/client/filterState"
+import { albert_700 } from "@/utils/fonts";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 type FilterTitleProps = {
@@ -21,7 +22,7 @@ export default function FilterTitle({
     <div className="">
 
       <h3
-        className="flex w-full cursor-pointer select-none justify-between gap-4 text-[0.875rem] font-bold"
+        className={`flex w-full cursor-pointer select-none justify-between gap-4 text-[0.875rem] ${albert_700.className}`}
         onClick={handleToggle}>
         {type}
         {isExpanded ? (<AiOutlineMinus />) : (<AiOutlinePlus />)}

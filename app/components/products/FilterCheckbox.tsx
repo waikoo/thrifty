@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { FilterSearch, FilterTitle } from "@/app/components/products"
 import { useFilterSearch, useQueryParams } from "@/app/components/hooks"
 import { useFilterTitleStore } from "@/state/client/filterState"
+import { albert_500 } from "@/utils/fonts"
 
 type FilterCheckboxProps = {
   type: string
@@ -26,16 +27,16 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
 
           {search && <FilterSearch setSearchValue={setSearchValue} />}
 
-          <fieldset onChange={updateQueryParams} className="flex flex-col">
+          <fieldset onChange={updateQueryParams} className="flex flex-col max-h-[200px] overflow-y-scroll scrollbar-thin">
+
             {filteredItems.map((element, i) => {
               const lowerCaseName = type.toLowerCase()
               const lowerCaseElement = element.toLowerCase()
 
-              // console.log(lowerCaseElement)
               return (
                 <label
                   htmlFor={`${lowerCaseName}-${i}`}
-                  className="flex select-none gap-2 text-[0.75rem]"
+                  className={`flex select-none gap-2 text-[14px] ${albert_500.className} mt-[0.375rem]`}
                   key={`${lowerCaseName}-${i}`}>
                   <input
                     type="checkbox"
@@ -49,6 +50,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
                 </label>
               )
             })}
+
           </fieldset>
         </div>
       )}

@@ -5,6 +5,7 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { useFilterStore, useFilterTitleStore } from "@/state/client/filterState";
 import { Gender, Locales } from "@/types/link";
 import { IconReset } from "@/app/components/products/icons";
+import { albert_500 } from "@/utils/fonts";
 
 type FilterSideControlsProps = {
   gender: Gender
@@ -16,7 +17,7 @@ export default function FilterSideControls({ gender, lang }: FilterSideControlsP
   const { hideFilters } = useFilterStore()
 
   return !hideFilters && (
-    <div className="bg-bkg flex items-center gap-5 text-[0.813rem] font-normal">
+    <div className={`flex items-center gap-5 ${albert_500.className} text-[14px] font-normal`}>
       <div className="flex items-center gap-1">
         <span
           className="cursor-pointer"

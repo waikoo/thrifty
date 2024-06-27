@@ -1,4 +1,5 @@
 "use client"
+import { albert_500, albert_600 } from "@/utils/fonts";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
 export default function FilterDropdown() {
@@ -16,12 +17,12 @@ export default function FilterDropdown() {
 
   return (
     <div className="flex cursor-pointer items-center justify-center gap-2">
-      <span className="self-center text-[0.875rem] font-medium">Sort By</span>
+      <span className="self-center text-[14px]">Sort By</span>
       <div className="flex justify-center gap-2">
         <select
-          className="text-content bg-t_white w-44 cursor-pointer border-0 p-2 ring-0"
+          className={`text-t_black bg-t_white dark:text-t_white dark:bg-t_black ${albert_500.className} w-44 cursor-pointer border-0 p-2 ring-0`}
           onChange={handleOnChange}>
-          <option value="newfirst">Newest to Oldest</option>
+          <option value={`newfirst `}>Newest to Oldest</option>
           <option value="cheapfirst">Price: Low to High</option>
           <option value="expensivefirst">Price: High to Low</option>
         </select>

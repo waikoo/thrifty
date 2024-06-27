@@ -6,6 +6,7 @@ import SetNewFilter from "@/app/components/products/SetNewFilter";
 import { Gender, Locales } from "@/types/link";
 import Portal from "@/app/components/generic/Portal";
 import { useFilterStore } from "@/state/client/filterState";
+import { albert_500 } from "@/utils/fonts";
 
 type FilterSideProps = {
   lang: Locales
@@ -56,9 +57,9 @@ export default function FilterSide({ lang, gender, searchParams }: FilterSidePro
   return (!hideFilters && (
     (
 
-      <aside className="top-24 flex w-[300px] flex-col gap-6 self-start pb-10 overflow-y-scroll h-[82vh] scroll">
+      <aside className="top-24 flex w-[500px] flex-col gap-6 self-start pb-10">
 
-        <button className="bg-faded mx-auto w-full whitespace-nowrap py-2 text-[0.813rem] font-semibold text-black"
+        <button className={`bg-t_mustard rounded-full tracking-wider mx-auto w-full whitespace-nowrap py-2 text-[14px] ${albert_500.className} text-black`}
           onClick={() => setShowNewFilterPopup(true)}
         >
           SAVE FILTER
