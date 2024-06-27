@@ -352,6 +352,10 @@
    background-color: black;
  }
 
+ .productItemPosition {
+  object-position: 85% 90%;
+ }
+
  @keyframes slide-out {
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }

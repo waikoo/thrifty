@@ -1,4 +1,4 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
 
 import { twMerge as tm } from 'tailwind-merge'
@@ -28,13 +28,12 @@ export default function ProductItem({ product, index, lang, gender, className, s
 
       <div className={tm(`${className}`)}>
         <Link href={`/${lang}/${gender}/products/${uuid}`}>
-          <Image
+          <img
             src={img_url[0]}
             alt={'product-image'}
             width={100}
             height={100}
-            className="block h-full w-full object-cover"
-            priority={index + 1 < 9}
+            className="block h-full w-full object-cover productItemPosition"
           />
         </Link>
       </div>
