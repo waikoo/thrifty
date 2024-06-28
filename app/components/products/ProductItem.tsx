@@ -24,7 +24,7 @@ export default function ProductItem({ product, index, lang, gender, className, s
   const { size, price, img_url, discount, brand, uuid } = product
 
   return (
-    <div className={`flex-grow-0`}>
+    <div className={`flex-grow-0 relative`}>
       <ProductToggleFavorite uuid={uuid} />
 
       <div className={tm(`${className}`)}>
