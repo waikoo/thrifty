@@ -9,6 +9,7 @@ import { Gender, Locales } from "@/types/link"
 import ProductAddToCart from '@/app/components/products/ProductAddToCart'
 import ProductToggleFavorite from '@/app/components/products/ProductToggleFavorite'
 import { EURO } from '@/app/components/data/orderSummary'
+import { albert_500, albert_600 } from "@/utils/fonts"
 
 type ProductItemProps = {
   product: ProductItemType
@@ -38,14 +39,14 @@ export default function ProductItem({ product, index, lang, gender, className, s
         </Link>
       </div>
 
-      <div className="text-content my-2 text-[0.75rem] font-semibold">
+      <div className={`my-2 text-[14px] text-[#1b1b1b] ${albert_600.className}`}>
         <div className="flex justify-between">
           <span>{capitalize(brand)}</span>
           <span className={`${discount > 0 ? 'line-through' : ''}`}>{EURO}{price}</span> {/* original price */}
         </div>
 
         <div className="flex justify-between">
-          <span>{size}</span>
+          <span className={`text-[12px] ${albert_500.className}`}>{size}</span>
           {discount > 0 && (
             <div className="flex">
               <span className="bg-red px-[0.10rem] text-white">-{discount}%</span>

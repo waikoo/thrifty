@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { twMerge as tm } from "tailwind-merge"
 
 import { useCartStore } from "@/state/client/cartState"
+import { albert_700 } from "@/utils/fonts"
 
 type ProductAddToCartProps = {
   uuid: string
@@ -31,7 +32,8 @@ export default function ProductAddToCart({ uuid, className, children }: ProductA
   }, []);
 
   return (
-    <button className={tm(`bg-t_white text-t_black border-t_black w-full cursor-pointer rounded-full border-[0.1rem] py-2 text-center text-[0.6875rem] font-medium ${className}`)} onClick={addItemToCart}>
+    <button className={tm(`bg-t_white text-[#3e3e3e] border-[#3e3e3e] w-full cursor-pointer rounded-full border-[0.1rem] py-2 text-center text-[12px] ${albert_700.className} ${className}`)}
+      onClick={addItemToCart}>
       <span className="select-none">{children}</span>
     </button>
   )
