@@ -22,7 +22,7 @@ export default function ProductToggleFavorite({ uuid }: ProductToggleFavoriteTyp
   }
 
   return (
-    <div className="absolute top-4 right-4 grid place-items-center h-[25px] w-[25px]">
+    <div className="absolute top-[14px] right-[14px] grid place-items-center h-[25px] w-[25px]">
       <div className="cursor-pointer"
         onClick={() => handleToggleFavorite(uuid, favorites)}
         onMouseOver={() => setIsHovered(true)}
