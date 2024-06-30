@@ -44,7 +44,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
                     checked={checkbox[lowerCaseElement] === true}
                     onChange={onCheckboxChange}
                     value={lowerCaseElement}
-                    className="form-checkbox border-grey checked:bg-darkgrey checked:border-darkgrey h-4 w-4 cursor-pointer appearance-none border bg-white outline-[0.1rem] outline-white ring-2 ring-white checked:border-[0.1rem] checked:outline-[0.2rem] checked:outline-white"
+                    className="form-checkbox h-4 w-4 cursor-pointer appearance-none border bg-white outline-[0.1rem] outline-white ring-2 ring-white checked:border-[0.1rem] checked:outline-[0.2rem] checked:outline-white checked:bg-t_mustard hover:bg-[#e3e3e3] text-black"
                   />
                   {element}
                 </label>
