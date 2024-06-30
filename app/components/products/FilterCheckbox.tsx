@@ -27,7 +27,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
 
           {search && <FilterSearch setSearchValue={setSearchValue} type={type} />}
 
-          <fieldset onChange={updateQueryParams} className="flex flex-col max-h-[200px] overflow-y-scroll scrollbar-thin">
+          <fieldset onChange={updateQueryParams} className="flex flex-col max-h-[200px] overflow-y-scroll scrollbar-thin scrollbar-thumb-black scrollbar-track-t_white">
 
             {filteredItems.map((element, i) => {
               const lowerCaseName = type.toLowerCase()
