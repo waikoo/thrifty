@@ -57,7 +57,7 @@ export default function FilterSide({ lang, gender, searchParams }: FilterSidePro
   return (!hideFilters && (
     (
 
-      <aside className="top-24 flex w-[500px] flex-col gap-6 self-start pb-10">
+      <aside className="top-24 flex w-[300px] flex-col gap-6 self-start pb-10">
 
         <button className={`bg-t_mustard rounded-full tracking-wider mx-auto w-full whitespace-nowrap py-2 text-[14px] ${albert_500.className} text-black`}
           onClick={() => setShowNewFilterPopup(true)}

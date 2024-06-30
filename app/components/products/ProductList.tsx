@@ -1,7 +1,6 @@
 import { Gender, Locales } from "@/types/link"
 import { ProductItemType } from "@/types/productItem"
 import { ProductItem, FilterNotFound, ProductPagination } from "@/app/components/products"
-import { NewArrivals } from "@/app/components/home/serverIndex"
 import { albert_500 } from "@/utils/fonts"
 
 type ProductListProps = {
@@ -50,7 +49,6 @@ export default function ProductList({ lang, gender, searchParams, products }: Pr
       ) : (
         <>
           <FilterNotFound />
-          <NewArrivals {...{ lang, gender }} notHome />
         </>
       )}
     </div>

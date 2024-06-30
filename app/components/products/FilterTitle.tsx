@@ -22,7 +22,7 @@ export default function FilterTitle({
     <div className="">
 
       <h3
-        className={`flex w-full cursor-pointer select-none justify-between gap-4 text-[0.875rem] ${albert_700.className}`}
+        className={`flex cursor-pointer select-none justify-between gap-4 text-[0.875rem] whitespace-nowrap w-[300px] ${albert_700.className}`}
         onClick={handleToggle}>
         {type}
         {isExpanded ? (<AiOutlineMinus />) : (<AiOutlinePlus />)}
