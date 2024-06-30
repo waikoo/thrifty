@@ -12,6 +12,7 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
   const pathname = usePathname()
   const searchParamos = useSearchParams()
   const router = useRouter()
+  const lowercaseColor = color.toLowerCase()
 
   const handleOnChange = (e: React.MouseEvent<HTMLDivElement>) => {
     const newParams = new URLSearchParams(searchParamos);
@@ -39,7 +40,7 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
   const colorClasses: { [key: string]: string } = {
     Beige: 'bg-yellow-100 border-gray-300 border-[0.1rem]',
     Brown: 'bg-orange-700',
-    White: 'bg-white-100 border-gray-300 border-[0.1rem]',
+    White: 'bg-white border-gray-300 border-[0.1rem]',
     Grey: 'bg-gray-400',
     Blue: 'bg-blue-500',
     Purple: 'bg-purple-400',
@@ -54,10 +55,15 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
     Black: 'bg-black',
   };
 
+  const colorOnClick =
+    searchParamos.get('color') === lowercaseColor || searchParamos.get('color')?.split(',').includes(lowercaseColor)
+      ? 'bg-t_mustard'
+      : 'bg-t_white'
+
   return (
-    <div className={`flex items-center gap-2 cursor-pointer ${albert_500.className} text-[14px]`}
+    <div className={`flex items-center gap-2 cursor-pointer ${albert_500.className} text-[14px] text-t_black hover:bg-[#e3e3e3] hover:text-t_black focus:bg-t_mustard rounded-full p-[0.35rem] ${colorOnClick}`}
       onClick={handleOnChange}
-      data-color={color.toLowerCase()}
+      data-color={lowercaseColor}
     >
       {color === 'Multicolor' ? (
         <div className="flex h-8 w-9 flex-wrap gap-0">
