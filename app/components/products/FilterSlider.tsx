@@ -33,7 +33,7 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
     }
   }, [])
 
-  function onMouseUpHandler(): void {
+  function onMouseOrKeyUpHandler(e: React.MouseEvent | React.KeyboardEvent): void {
     const newParams = new URLSearchParams(searchParams)
     const queryParamCategory = lowerCaseSpaceToDash(type)
 
@@ -53,7 +53,7 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
       {isExpanded && (
         <div className="w-full">
           <div className="slider relative flex"
-            onMouseUp={onMouseUpHandler}
+            onMouseUp={onMouseOrKeyUpHandler}
           >
             <input
               type="range"
@@ -75,22 +75,30 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
               className="range_slider pointer-events-none absolute left-0 top-8 z-20 h-[0.12rem] w-full cursor-pointer appearance-none rounded bg-t_black dark:bg-t_white" />
           </div>
 
-          <div className={`flex justify-between ${albert_500.className} text-[14px]`}>
-            <input
-              type="text"
-              name="left"
-              value={`${type === 'DISCOUNT' ? '%' : '€'} ${left}`}
-              className="text-[#1b1b1b] dark:t_white hover:bg-[#e3e3e3] focus:bg-t_mustard mt-12 h-10 w-20 bg-t_white border-[0.2rem] border-[#e3e3e3] rounded-full text-center"
-              onChange={handleInputChange} />
+          <div className={`flex justify-between ${albert_500.className} text-[14px]`}
+            onKeyUp={onMouseOrKeyUpHandler}
+          >
+            <div>
+              <span>{type === 'DISCOUNT' ? '%' : '€'} </span>
+              <input
+                type="text"
+                name="left"
+                value={left}
+                className="text-[#1b1b1b] dark:t_white hover:bg-[#e3e3e3] focus:bg-t_mustard mt-12 h-10 w-20 bg-t_white border-[0.2rem] border-[#e3e3e3] rounded-full text-center"
+                onChange={handleInputChange} />
+            </div>
 
             <span className="text-[#c2c2c2] dark:t_white mt-12">_</span>
 
-            <input
-              type="text"
-              name="right"
-              value={`${type === 'DISCOUNT' ? '%' : '€'} ${right}`}
-              className="text-[#1b1b1b] dark:t_white hover:bg-[#e3e3e3] focus:bg-t_mustard mt-12 h-10 w-20 bg-t_white border-[0.2rem] border-[#e3e3e3] rounded-full text-center"
-              onChange={handleInputChange} />
+            <div>
+              <span>{type === 'DISCOUNT' ? '%' : '€'} </span>
+              <input
+                type="text"
+                name="right"
+                value={right}
+                className="text-[#1b1b1b] dark:t_white hover:bg-[#e3e3e3] focus:bg-t_mustard mt-12 h-10 w-20 bg-t_white border-[0.2rem] border-[#e3e3e3] rounded-full text-center"
+                onChange={handleInputChange} />
+            </div>
           </div>
         </div>
       )}

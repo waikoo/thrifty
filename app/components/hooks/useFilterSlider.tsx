@@ -20,6 +20,9 @@ export default function useFilterSlider(
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement
     const value = Number(target.value)
+
+    if (Number.isNaN(value)) return
+
     if (target.name === 'left') {
       setLeft(value)
     } else if (target.name === 'right') {
