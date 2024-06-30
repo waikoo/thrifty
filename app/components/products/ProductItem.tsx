@@ -34,7 +34,7 @@ export default function ProductItem({ product, index, lang, gender, className, s
             alt={'product-image'}
             width={100}
             height={100}
-            className="block h-full w-full object-cover productItemPosition"
+            className="block h-full w-full object-cover productItemPosition rounded-[10px]"
           />
         </Link>
       </div>
