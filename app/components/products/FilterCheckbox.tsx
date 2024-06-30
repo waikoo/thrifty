@@ -23,7 +23,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
       <FilterTitle type={type} />
 
       {isExpanded && (
-        <div className="flex flex-col gap-2 pl-8 pt-4">
+        <div className="flex flex-col gap-2 pt-4">
 
           {search && <FilterSearch setSearchValue={setSearchValue} type={type} />}
 

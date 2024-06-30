@@ -47,7 +47,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
       />
 
       {isExpanded && (
-        <div className="px-8">
+        <div className="">
 
           <FilterSearch setSearchValue={setSearchValue} type={type} />
 

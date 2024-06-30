@@ -18,7 +18,7 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
       <FilterTitle type={type} />
 
       {isExpanded && (
-        <div className="px-8">
+        <div className="">
 
           <FilterSearch setSearchValue={setSearchValue} type={type} />
 
