@@ -79,7 +79,7 @@ export default function useQueryParams(type: string, elements: string[], searchP
       }
     }
 
-    router.push(`${pathname}?${newParams.toString()}`);
+    router.push(`${pathname}?${newParams.toString()}`, { scroll: false });
   }
 
   return {

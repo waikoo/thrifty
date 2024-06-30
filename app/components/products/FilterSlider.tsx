@@ -43,7 +43,7 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
       newParams.set(queryParamCategory, `${left},${right}`)
     }
 
-    router.push(`${pathname}?${newParams.toString()}`)
+    router.push(`${pathname}?${newParams.toString()}`, { scroll: false })
   }
 
   return (

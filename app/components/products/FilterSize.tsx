@@ -37,7 +37,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
       }
     }
 
-    router.push(`${pathname}?${newParams.toString()}`);
+    router.push(`${pathname}?${newParams.toString()}`, { scroll: false });
   }
 
   return (

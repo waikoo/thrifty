@@ -34,7 +34,7 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
       }
     }
 
-    router.push(`${pathname}?${newParams.toString()}`);
+    router.push(`${pathname}?${newParams.toString()}`, { scroll: false });
   }
 
   const colorClasses: { [key: string]: string } = {
