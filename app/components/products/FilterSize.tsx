@@ -57,17 +57,15 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
 
             {filteredItems.map((size, i) => {
               const colorOnClick =
-                !searchParamos.get('size')
-                  ? 'text-content bg-bkg'
-                  : (searchParamos.get('size') && searchParamos.get('size') === size)
-                    ? 'text-bkg bg-content'
-                    : 'bg-bkg text-content';
+                searchParamos.get('size') === size || searchParamos.get('size')?.split(',').includes(size)
+                  ? 'bg-t_mustard text-t_black'
+                  : 'text-t_black bg-t_white'
 
               return (
                 <div
                   key={`sizes-${i}`}
                   data-value={size}
-                  className={`grid cursor-pointer place-items-center border-[0.1rem] p-3 text-[13px] ${albert_500.className} ${colorOnClick}`}
+                  className={`grid cursor-pointer place-items-center border-[0.1rem] p-3 text-[13px] hover:bg-[#e3e3e3] hover:text-t_black focus:bg-t_mustard ${albert_500.className} ${colorOnClick}`}
                 >
                   {size}</div>
               )
