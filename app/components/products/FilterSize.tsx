@@ -49,7 +49,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
       {isExpanded && (
         <div className="px-8">
 
-          <FilterSearch setSearchValue={setSearchValue} />
+          <FilterSearch setSearchValue={setSearchValue} type={type} />
 
           <fieldset
             className="grid w-full select-none grid-cols-4 gap-1 pt-4 h-[200px] overflow-y-scroll scrollbar-thin"

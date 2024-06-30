@@ -25,7 +25,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
       {isExpanded && (
         <div className="flex flex-col gap-2 pl-8 pt-4">
 
-          {search && <FilterSearch setSearchValue={setSearchValue} />}
+          {search && <FilterSearch setSearchValue={setSearchValue} type={type} />}
 
           <fieldset onChange={updateQueryParams} className="flex flex-col max-h-[200px] overflow-y-scroll scrollbar-thin">
 

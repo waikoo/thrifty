@@ -20,7 +20,7 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
       {isExpanded && (
         <div className="px-8">
 
-          <FilterSearch setSearchValue={setSearchValue} />
+          <FilterSearch setSearchValue={setSearchValue} type={type} />
 
           <div className="grid cursor-pointer select-none grid-cols-2 gap-4 pt-4">
 
