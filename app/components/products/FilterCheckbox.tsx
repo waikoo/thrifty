@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { FilterSearch, FilterTitle } from "@/app/components/products"
 import { useFilterSearch, useQueryParams } from "@/app/components/hooks"
 import { useFilterTitleStore } from "@/state/client/filterState"
-import { albert_500 } from "@/utils/fonts"
+import { albert_500, albert_600 } from "@/utils/fonts"
 
 type FilterCheckboxProps = {
   type: string
@@ -32,11 +32,12 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
             {filteredItems.map((element, i) => {
               const lowerCaseName = type.toLowerCase()
               const lowerCaseElement = element.toLowerCase()
+              const boldStyle = checkbox[lowerCaseElement] ? `${albert_600.className}` : `${albert_500.className}`
 
               return (
                 <label
                   htmlFor={`${lowerCaseName}-${i}`}
-                  className={`flex select-none gap-2 text-[14px] ${albert_500.className} mt-[0.375rem]`}
+                  className={`flex select-none gap-2 text-[14px] mt-[0.375rem] ${boldStyle}`}
                   key={`${lowerCaseName}-${i}`}>
                   <input
                     type="checkbox"
@@ -44,7 +45,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
                     checked={checkbox[lowerCaseElement] === true}
                     onChange={onCheckboxChange}
                     value={lowerCaseElement}
-                    className="form-checkbox h-4 w-4 cursor-pointer appearance-none border bg-white outline-[0.1rem] outline-white ring-2 ring-white checked:border-[0.1rem] checked:outline-[0.2rem] checked:outline-white checked:bg-t_mustard hover:bg-[#e3e3e3] text-black"
+                    className="form-checkbox h-4 w-4 cursor-pointer appearance-none border bg-white outline-[0.1rem] outline-white ring-2 ring-white checked:border-[0.1rem] checked:outline-[0.2rem] checked:outline-white checked:bg-t_black hover:bg-[#e3e3e3] text-t_black"
                   />
                   {element}
                 </label>
