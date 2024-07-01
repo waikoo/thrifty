@@ -19,10 +19,11 @@ export default function FilterTop({ gender, lang }: FilterTopProps) {
   const { showSavedFiltersPopup, setShowSavedFiltersPopup, hideFilters, setHideFilters } = useFilterStore()
   const hideOrShowFiltersText = !hideFilters ? 'Hide Filters' : 'Show Filters'
   const [position, setPosition] = useState('static')
+  const positionBasedStyles = position === 'static' ? 'justify-between' : 'justify-around px-20 py-2 '
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 5) {
+      if (window.scrollY > 350) {
         setPosition('fixed')
       } else {
         setPosition('static')
@@ -39,8 +40,8 @@ export default function FilterTop({ gender, lang }: FilterTopProps) {
   }
 
   return (
-    <section className={`bg-t_white dark:bg-t_black ${position} left-[1vw] right-[1vw] top-0 z-auto`}>
-      <div className={`flex items-baseline ${position === 'static' ? 'justify-between' : 'justify-around'} `}>
+    <section className={`bg-t_white dark:bg-t_black ${position} left-[1vw] right-[1vw] top-0 z-50`}>
+      <div className={`flex items-baseline ${positionBasedStyles}`}>
         <FilterSideControls gender={gender} lang={lang} />
 
         <div className={`ml-auto flex items-center gap-4 ${albert_500.className} text-[14px]`}>
