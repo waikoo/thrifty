@@ -45,12 +45,12 @@ export default function ProductItem({ product, index, lang, gender, className, s
           <span className={`${discount > 0 ? 'line-through' : ''}`}>{EURO}{price}</span> {/* original price */}
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <span className={`text-[12px] ${albert_500.className}`}>{size}</span>
           {discount > 0 && (
-            <div className="flex">
-              <span className="bg-red px-[0.10rem] text-white">-{discount}%</span>
-              <span className="text-red ml-1">{EURO}{price * (100 - discount) / 100}</span> {/* discount price */}
+            <div className={`flex items-center ${albert_600.className}`}>
+              <span className="rounded-[5px] p-1 px-[0.4rem] bg-red-500 text-white">-{discount}%</span>
+              <span className="text-red-500 ml-1">{EURO}{price * (100 - discount) / 100}</span> {/* discount price */}
             </div>
           )}
         </div>
