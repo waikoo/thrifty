@@ -8,9 +8,10 @@ type ProductListProps = {
   gender: Gender
   searchParams: { [key: string]: string | string[] | undefined }
   products: ProductItemType[]
+  filteredMatchesTotal: number
 }
 
-export default function ProductList({ lang, gender, searchParams, products }: ProductListProps) {
+export default function ProductList({ lang, gender, searchParams, products, filteredMatchesTotal }: ProductListProps) {
   const sortByValue = searchParams['sort-by']
 
   if (sortByValue === 'cheapfirst') {
@@ -28,7 +29,7 @@ export default function ProductList({ lang, gender, searchParams, products }: Pr
       {products.length > 0 ? (
         <>
           <div className="relative grid gap-10 sm:grid-cols-3 lg:grid-cols-4">
-            <span className={`absolute -top-[2.6rem] ${albert_500.className} text-[14px]`}>{products.length} Results</span>
+            <span className={`absolute -top-[2.6rem] ${albert_500.className} text-[14px]`}>{filteredMatchesTotal} Results</span>
 
             {products.map((product: ProductItemType, i: number) => {
               return (
@@ -44,7 +45,8 @@ export default function ProductList({ lang, gender, searchParams, products }: Pr
               )
             })}
           </div>
-          <ProductPagination productsLength={products.length} />
+
+          <ProductPagination productsLength={filteredMatchesTotal} />
         </>
       ) : (
         <>

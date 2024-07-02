@@ -16,9 +16,6 @@ export async function fetchProductsByFilters(
   const byPriceParams = searchParams.price?.toString().split(",");
   const byDiscountParams = searchParams.discount?.toString().split(",");
 
-  let itemsPerPage = 20;
-  const { lowerBound, upperBound } = getPaginationBounds(Number(searchParams.page), itemsPerPage);
-
   let query = supabase
     .from("products")
     .select("*")
@@ -33,7 +30,6 @@ export async function fetchProductsByFilters(
     .lte("discount", byDiscountParams?.[1] || 100)
     .gte("price", byPriceParams?.[0] || 0)
     .lte("price", byPriceParams?.[1] || 500)
-    .range(lowerBound, upperBound);
 
   if (searchParams["shop-by"] === "new in") {
     query = query.order("created_at", { ascending: false });
@@ -43,5 +39,15 @@ export async function fetchProductsByFilters(
     query = query.gt("discount", 0);
   }
 
-  return await query;
+  const { data, status } = await query
+
+  let itemsPerPage = 20;
+  const { lowerBound, upperBound } = getPaginationBounds(Number(searchParams.page), itemsPerPage);
+  const { data: paginatedResults } = await query.range(lowerBound, upperBound);
+
+  return {
+    status,
+    filteredMatchesTotal: data.length,
+    paginatedResults
+  };
 }

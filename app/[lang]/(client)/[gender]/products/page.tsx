@@ -12,7 +12,7 @@ type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 export default async function Page({ params: { lang, gender }, searchParams }: PageProps) {
-  const products = await fetchProductsByFilters(useSupabaseServer(), searchParams)
+  const { status, filteredMatchesTotal, paginatedResults } = await fetchProductsByFilters(useSupabaseServer(), searchParams)
 
   return (
     <main className="bg-t_white dark:bg-t_black text-content mx-auto px-20 lg:max-w-[1500px]">
@@ -25,8 +25,8 @@ export default async function Page({ params: { lang, gender }, searchParams }: P
       <div className="flex gap-16 mt-3">
         <FilterSide {...{ lang, gender, searchParams }} />
 
-        {products.status === 400 ? <p>No products found</p> : (
-          <ProductList {...{ lang, gender, searchParams }} products={products.data} />
+        {status === 400 ? <p>No products found</p> : (
+          <ProductList {...{ lang, gender, searchParams, filteredMatchesTotal }} products={paginatedResults} />
         )}
       </div>
     </main>
