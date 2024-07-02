@@ -44,7 +44,7 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
     Grey: 'bg-gray-400',
     Blue: 'bg-blue-500',
     Purple: 'bg-purple-400',
-    Multicolor: 'bg-multicolor',
+    Multicolor: 'bg-gradient-to-b from-[#ff00b8] from-6% via-[#135db5] via-46% to-[#c6ff4d]',
     Pink: 'bg-pink-300',
     Red: 'bg-red-500',
     Green: 'bg-green-500',
@@ -65,23 +65,7 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
       onClick={handleOnChange}
       data-color={lowercaseColor}
     >
-      {color === 'Multicolor' ? (
-        <div className="flex h-8 w-9 flex-wrap gap-0">
-          {Array(9).fill(' ').map((_, i) => {
-            const colors = Object.values(colorClasses)
-            const randomColor = colors[Math.floor(Math.random() * colors.length)]
-
-            return (
-              <div
-                key={`multicolor-${i}`}
-                className={`h-2 w-2 ${randomColor}`}
-              ></div>
-            )
-          })}
-        </div>
-      ) : (
-        <div className={`h-8 w-8 rounded-full ${colorClasses[color]}`}></div>
-      )}
+      <div className={`h-8 w-8 rounded-full ${colorClasses[color]}`}></div>
       <span>{color}</span>
     </div >
   )
