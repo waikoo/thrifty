@@ -12,10 +12,14 @@ export default function ProductPagination({ productsLength }: ProductPaginationP
   const pages = Math.ceil(productsLength / 20);
   const disabledStylePrev = queryParamPageValue === 1 ? 'text-[#9d9d9d] cursor-not-allowed' : 'text-t_black'
   const disabledStyleNext = queryParamPageValue === pages ? 'text-[#9d9d9d] cursor-not-allowed' : 'text-t_black'
+  const hideOnNoPagination = productsLength < 20 ? 'invisible' : ''
 
   return (
     <div className="text-content flex justify-between py-10 pt-20">
-      <Link href={getPath('prev', queryParamPageValue, pages)} scroll={false}>
+      <Link href={getPath('prev', queryParamPageValue, pages)}
+        scroll={false}
+        className={hideOnNoPagination}
+      >
         <span className={`underline underline-offset-4 ${disabledStylePrev}`}>PREVIOUS</span>
       </Link>
 
@@ -43,7 +47,9 @@ export default function ProductPagination({ productsLength }: ProductPaginationP
         <span>of {pages}</span>
       </div>
 
-      <Link href={getPath('next', queryParamPageValue, pages)}>
+      <Link href={getPath('next', queryParamPageValue, pages)}
+        className={hideOnNoPagination}
+      >
         <span className={`underline underline-offset-4 ${disabledStyleNext}`}>NEXT</span>
       </Link>
     </div>
