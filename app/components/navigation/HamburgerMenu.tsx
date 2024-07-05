@@ -9,9 +9,9 @@ import HamburgerGender from "@/app/components/navigation/HamburgerGender";
 import getLangAndGender from "@/utils/getLangAndGender"
 import { Gender } from "@/types/link";
 import HamburgerAccountAndHelp from "@/app/components/navigation/HamburgerAccountAndHelp";
-import HamburgerDropdownsAndQuickLinks from "./HamburgerDropdownsAndQuickLinks";
-import HamburgerLanguageAndTheme from "./HamburgerLanguageAndTheme";
-import Portal from "../generic/Portal";
+import HamburgerDropdownsAndQuickLinks from "@/app/components/navigation/HamburgerDropdownsAndQuickLinks";
+import HamburgerLanguageAndTheme from "@/app/components/navigation/HamburgerLanguageAndTheme";
+import Portal from "@/app/components/generic/Portal";
 
 export default function HamburgerMenu() {
   const [selectedGender, setSelectedGender] = useState<Gender | ''>('')

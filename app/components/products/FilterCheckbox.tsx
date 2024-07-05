@@ -37,7 +37,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
               return (
                 <label
                   htmlFor={`${lowerCaseName}-${i}`}
-                  className={`flex select-none gap-2 text-[14px] mt-[0.375rem] ${boldStyle}`}
+                  className={`flex select-none gap-2 sm:text-[17px] xl:text-[14px] mt-[0.375rem] ${boldStyle}`}
                   key={`${lowerCaseName}-${i}`}>
                   <input
                     type="checkbox"

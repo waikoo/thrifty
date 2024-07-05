@@ -17,22 +17,28 @@ export default function FilterSideControls({ gender, lang }: FilterSideControlsP
   const { hideFilters } = useFilterStore()
 
   return !hideFilters && (
-    <div className={`flex items-center gap-5 ${albert_500.className} text-[14px] font-normal`}>
-      <div className="flex items-center gap-1">
+    <div className={`flex items-center gap-5 ${albert_500.className} sm:text-[17px] xl:text-[14px] font-normal`}>
+
+      <div className="flex items-center sm:gap-2 xl:gap-1 sm:mr-7">
         <span
           className="cursor-pointer"
           onClick={() => areAllExpanded ? collapseAllFilters() : expandAllFilters()}
         >{areAllExpanded ? 'Collapse All' : 'Expand All'}
         </span>
-        <span>{areAllExpanded ? (<AiOutlineMinus />) : (<AiOutlinePlus />)}</span>
+
+        <span className="sm:mb-1 xl:mb-0">{areAllExpanded ? (<AiOutlineMinus />) : (<AiOutlinePlus />)}</span>
       </div>
 
       <Link
         href={`/${lang}/${gender}/products?gender=${gender}&page=1`}
-        className="flex items-center gap-1">
-        <span className="">Reset All</span>
-        <IconReset />
+        className="flex items-center xl:gap-1 sm:gap-2">
+        <span className="">Clear All</span>
+
+        <div className="sm:mb-1 xl:mb-0">
+          <IconReset />
+        </div>
       </Link>
+
     </div>
   )
 }

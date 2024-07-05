@@ -43,11 +43,11 @@ export async function fetchProductsByFilters(
 
   let itemsPerPage = 20;
   const { lowerBound, upperBound } = getPaginationBounds(Number(searchParams.page), itemsPerPage);
-  const { data: paginatedResults } = await query.range(lowerBound, upperBound);
+  const { data: paginatedMatches } = await query.range(lowerBound, upperBound);
 
   return {
     status,
     filteredMatchesTotal: data.length,
-    paginatedResults
+    paginatedMatches
   };
 }

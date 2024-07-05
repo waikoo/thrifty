@@ -13,9 +13,10 @@ import { albert_500 } from "@/utils/fonts";
 type FilterTopProps = {
   gender: Gender
   lang: Locales
+  className: string
 }
 
-export default function FilterTop({ gender, lang }: FilterTopProps) {
+export default function FilterTop({ gender, lang, className }: FilterTopProps) {
   const { showSavedFiltersPopup, setShowSavedFiltersPopup, hideFilters, setHideFilters } = useFilterStore()
   const hideOrShowFiltersText = !hideFilters ? 'Hide Filters' : 'Show Filters'
   const [position, setPosition] = useState('static')
@@ -40,7 +41,7 @@ export default function FilterTop({ gender, lang }: FilterTopProps) {
   }
 
   return (
-    <section className={`bg-t_white dark:bg-t_black ${position} left-[1vw] right-[1vw] top-0 z-50`}>
+    <section className={`bg-t_white dark:bg-t_black ${position} left-[1vw] right-[1vw] top-0 z-50 ${className}`}>
       <div className={`flex items-baseline ${positionBasedStyles}`}>
         <FilterSideControls gender={gender} lang={lang} />
 
@@ -65,6 +66,6 @@ export default function FilterTop({ gender, lang }: FilterTopProps) {
           </Portal>
         )}
       </div>
-    </section >
+    </section>
   )
 }

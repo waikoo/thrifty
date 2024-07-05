@@ -65,7 +65,7 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
       onClick={handleOnChange}
       data-color={lowercaseColor}
     >
-      <div className={`h-8 w-8 rounded-full ${colorClasses[color]}`}></div>
+      <div className={`sm:h-5 sm:w-5 xl:h-8 xl:w-8 rounded-full ${colorClasses[color]}`}></div>
       <span>{color}</span>
     </div >
   )

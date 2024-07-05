@@ -21,6 +21,8 @@ type FilterStore = {
   getFilterFromDb: (client_id: string, filterId: string) => Promise<TSavedFilters>
   hideFilters: boolean
   setHideFilters: (value: boolean | (boolean)) => void
+  showMiniFilters: boolean
+  setShowMiniFilters: (value: boolean) => void
 }
 
 export const useFilterStore = create<FilterStore>((set, get) => ({
@@ -158,6 +160,8 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
   },
   hideFilters: false,
   setHideFilters: (value) => set({ hideFilters: value }),
+  showMiniFilters: false,
+  setShowMiniFilters: (value: boolean) => set({ showMiniFilters: value }),
 }))
 
 type TFilterTitleState = {

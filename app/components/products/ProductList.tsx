@@ -1,7 +1,7 @@
 import { Gender, Locales } from "@/types/link"
 import { ProductItemType } from "@/types/productItem"
 import { ProductItem, FilterNotFound, ProductPagination } from "@/app/components/products"
-import { albert_500 } from "@/utils/fonts"
+import FilteredResults from "@/app/components/products/FilteredResults"
 
 type ProductListProps = {
   lang: Locales
@@ -29,7 +29,9 @@ export default function ProductList({ lang, gender, searchParams, products, filt
       {products.length > 0 ? (
         <>
           <div className="relative grid gap-10 sm:grid-cols-3 lg:grid-cols-4">
-            <span className={`absolute -top-[2.6rem] ${albert_500.className} text-[14px]`}>{filteredMatchesTotal} Results</span>
+            <FilteredResults className="hidden xl:block absolute -top-[2.6rem]">
+              {filteredMatchesTotal}
+            </FilteredResults>
 
             {products.map((product: ProductItemType, i: number) => {
               return (

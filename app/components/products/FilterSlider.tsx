@@ -75,7 +75,7 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
               className="range_slider pointer-events-none absolute left-0 top-8 z-20 h-[0.12rem] w-full cursor-pointer appearance-none rounded bg-t_black dark:bg-t_white" />
           </div>
 
-          <div className={`flex justify-between ${albert_500.className} text-[14px]`}
+          <div className={`flex justify-between ${albert_500.className} sm:text-[17px] xl:text-[14px]`}
             onKeyUp={onMouseOrKeyUpHandler}
           >
             <div>
