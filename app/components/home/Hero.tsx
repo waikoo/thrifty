@@ -16,13 +16,14 @@ export default function Hero() {
   const { lang, gender } = getLangAndGender(usePathname())
   const { heroState } = useHomeStore()
   const logoColor = heroState === 'sale' && gender === 'kids' ? 'black' : 'white'
-  const { touchStartHandler, touchEndHandler } = useHeroSwipe()
+  const { touchStartHandler, touchEndHandler, handleSwipeDirection } = useHeroSwipe()
 
   return (
     <section
       className="w-full relative"
       onTouchStart={(e: React.TouchEvent) => touchStartHandler(e)}
-      onTouchEnd={(e: React.TouchEvent) => touchEndHandler(e)}>
+      onTouchEnd={(e: React.TouchEvent) => touchEndHandler(e)}
+      onTouchMove={handleSwipeDirection}>
       <HeroImage gender={gender} state={heroState} />
 
       <HeroSticker />

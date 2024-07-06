@@ -12,7 +12,6 @@ export default function useHeroSwipe() {
 
   function touchEndHandler(e: React.TouchEvent): void {
     setEndX(e.changedTouches[0].clientX);
-    handleSwipeDirection();
   }
 
   function handleSwipeDirection() {
@@ -35,5 +34,6 @@ export default function useHeroSwipe() {
   return {
     touchStartHandler,
     touchEndHandler,
+    handleSwipeDirection
   };
 }
