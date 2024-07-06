@@ -94,7 +94,7 @@ export default function SavedFilters() {
           <p className="w-[90%]">Get notified about any changes regarding your saved filters</p>
         </div>
 
-        {savedFilters.map((filter, index) => (
+        {savedFilters ? savedFilters.map((filter, index) => (
           <div key={filter.name} onClick={(e) => handleRunFilter(e, filter.filterId)} className="cursor-pointer" title="Select filter">
             <div className="flex justify-between">
               <p key={index} className="py-0">{filter.name}</p>
@@ -116,11 +116,11 @@ export default function SavedFilters() {
             </div>
             <hr />
           </div>
-        ))}
-
-        {savedFilters.length === 0 && (
+        )) : (
           <p className="text-content text-center text-[1rem] font-extrabold">No saved filters</p>
         )}
+
+
       </div>
 
     </section>
