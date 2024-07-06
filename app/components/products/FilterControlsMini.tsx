@@ -9,6 +9,7 @@ import FilterControls from "@/app/components/products/FilterControls";
 import { albert_800 } from "@/utils/fonts";
 import { useEffect } from "react";
 import SaveFilterButton from "./SaveFilterButton";
+import MiniCross from "./MiniCross";
 
 type FilterControlsMiniProps = {
   lang: Locales
@@ -50,36 +51,30 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
           <div className="flex gap-2">
             <FilterSideControls {...{ gender, lang }} />
 
-            <div className="grid place-items-center ml-8 bg-t_black h-10 w-10 rounded-full">
-              <RxCross2
-                color="white"
-                size={20}
-                onClick={closeFilters}
-              />
-            </div>
+            <MiniCross onClose={closeFilters} />
           </div>
-
         </div>
 
-        <div className="p-10 overflow-y-scroll">
-          <FilterControls {...{ searchParams }}
-            className="flex w-full"
-            hideSaveFilter={true}
-          />
-        </div>
+      </div>
 
-        <div className="bg-t_mustard p-5 px-10 absolute w-full bottom-0">
-          <div className="max-w-[800px] mx-auto flex justify-between gap-6">
-            <SaveFilterButton className="w-1/2 border-t_black border-[0.1rem]" />
-            <button className="bg-t_black text-t_white rounded-full w-1/2"
-              onClick={closeFilters}
-            >
-              VIEW {filteredMatchesTotal} RESULTS
-            </button>
-          </div>
+      <div className="p-10 overflow-y-scroll">
+        <FilterControls {...{ searchParams }}
+          className="flex w-full"
+          hideSaveFilter={true}
+        />
+      </div>
+
+      <div className="bg-t_mustard p-5 px-10 absolute w-full bottom-0">
+        <div className="max-w-[800px] mx-auto flex justify-between gap-6">
+          <SaveFilterButton className="w-1/2 border-t_black border-[0.1rem]" />
+          <button className="bg-t_black text-t_white rounded-full w-1/2"
+            onClick={closeFilters}
+          >
+            VIEW {filteredMatchesTotal} RESULTS
+          </button>
         </div>
       </div>
-    </Portal>
+    </Portal >
   )
 }
 
