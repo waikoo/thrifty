@@ -8,6 +8,8 @@ import { albert_500 } from "@/utils/fonts";
 import { Gender, Locales } from "@/types/link";
 import FilterControlsMini from "@/app/components/products/FilterControlsMini";
 import IconSavedFilters2 from "./icons/IconSavedFilters2";
+import { supabase } from "@/app/supabase";
+import { useUIStore } from "@/state/client/uiState"
 
 type FilterTopMiniProps = {
   filteredMatchesTotal: number
@@ -18,6 +20,18 @@ type FilterTopMiniProps = {
 
 export default function FilterTopMini({ filteredMatchesTotal, gender, lang, searchParams }: FilterTopMiniProps) {
   const { showMiniFilters, setShowMiniFilters, setShowSavedFiltersPopup } = useFilterStore()
+  const { showSignIn, setShowSignIn } = useUIStore()
+
+  async function openSavedFilters() {
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
+      setShowSignIn(!showSignIn)
+      return
+    }
+
+    setShowSavedFiltersPopup(true)
+  }
 
   return (
     <div className="py-5 xl:hidden w-full">
@@ -34,7 +48,7 @@ export default function FilterTopMini({ filteredMatchesTotal, gender, lang, sear
         </div>
 
         <div className="bg-t_mustard p-3 px-10 cursor-pointer"
-          onClick={() => setShowSavedFiltersPopup(true)}>
+          onClick={openSavedFilters}>
           <div className="mx-auto flex justify-center items-center gap-2">
             <span className="whitespace-nowrap">Saved Filters</span>
             <IconSavedFilters2 />
