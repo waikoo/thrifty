@@ -13,7 +13,7 @@ type FilterStore = {
   setCurrentFilters: (value: {}) => void
   removeFilter: (objectKey: string, objectValue: string) => void
   saveFilterToDb: (filter: {}, client_id: string, client_email: string) => void
-  changeNotification: (filterName: string, client_id: string) => void
+  changeNotification: (client_id: string) => void
   deleteFilter: (filterName: string, client_id: string) => void
   setEditingFilterId: (value: string) => void
   editingFilterId: string
@@ -74,26 +74,22 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
       else console.log('updated successfully')
     }
   },
-  changeNotification: async (filterId, client_id) => {
+  changeNotification: async (client_id) => {
     const { data, error } = await supabase
       .from('clients')
-      .select('saved_filters')
+      .select('filters')
       .eq('client_id', client_id)
 
     if (error) console.error(error)
-    const savedFiltersInDb = data?.[0].saved_filters
 
-    if (savedFiltersInDb) {
-      const index = savedFiltersInDb.findIndex((filter: TSavedFilters) => filter.filterId === filterId)
-      savedFiltersInDb[index].wantsNotification = !savedFiltersInDb[index].wantsNotification
+    const savedNotificationSetting = data?.[0].filters // stored value in db
 
-      const { data: updateData, error: updateError } = await supabase
-        .from('clients')
-        .update({ saved_filters: savedFiltersInDb })
-        .eq('client_id', client_id)
-      if (updateError) console.error(updateError);
-      else console.log('notification setting updated successfully')
-    }
+    const { data: updateData, error: updateError } = await supabase
+      .from('clients')
+      .update({ filters: !savedNotificationSetting }) // flip the value
+      .eq('client_id', client_id)
+    if (updateError) console.error(updateError);
+    else console.log('notification setting updated successfully')
   },
   deleteFilter: async (filterId, client_id) => {
     const { data, error } = await supabase
