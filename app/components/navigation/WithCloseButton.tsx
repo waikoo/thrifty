@@ -28,7 +28,7 @@ export default function WithCloseButton({ onClose, children, className, gap, pad
       onClick={handleOutsideClick}
       ref={dialogRef}
     >
-      <div className={tm(`${className} ${gap} ${padding} flex flex-col justify-center relative bg-t_white dark:bg-t_black z-[60] h-screen sm:h-auto sm:rounded-[2.1875rem] border-[0.625rem] border-t_mustard`)}>
+      <div className={tm(`${className} ${gap} ${padding} flex flex-col relative bg-t_white dark:bg-t_black z-[60] h-screen sm:h-auto sm:rounded-[2.1875rem] border-[0.625rem] border-t_mustard`)}>
         <span className="absolute right-3 top-3 cursor-pointer"
           onClick={onClose}>
 

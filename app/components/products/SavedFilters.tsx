@@ -16,6 +16,7 @@ export default function SavedFilters() {
     <WithCloseButton
       onClose={() => setShowSavedFiltersPopup(false)}
       padding="p-8"
+      className="xl:h-[500px] w-[450px]"
     >
       <SavedFiltersTitle className="mb-3" />
 

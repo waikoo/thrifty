@@ -43,7 +43,7 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
 
   return (
     <Portal>
-      <div className="inset-0 min-h-dvh relative"
+      <div className="inset-0 relative"
       >
         <div className="p-10 bg-t_mustard text-t_black py-3 flex justify-between items-center">
           <span className={`${albert_800.className} text-[19px]`}>FILTERS</span>
@@ -57,16 +57,17 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
 
       </div>
 
-      <div className="p-10 overflow-y-scroll">
+      <div className="p-10 ">
         <FilterControls {...{ searchParams }}
-          className="flex w-full"
+          className="flex w-full overflow-y-scroll"
           hideSaveFilter={true}
         />
       </div>
 
-      <div className="bg-t_mustard p-5 px-10 absolute w-full bottom-0">
+      <div className="bg-t_mustard p-5 px-10 absolute w-full z-[90]">
         <div className="max-w-[800px] mx-auto flex justify-between gap-6">
           <SaveFilterButton className="w-1/2 border-t_black border-[0.1rem]" />
+
           <button className="bg-t_black text-t_white rounded-full w-1/2"
             onClick={closeFilters}
           >

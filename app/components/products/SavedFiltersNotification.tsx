@@ -1,10 +1,11 @@
+"use client"
 import { albert_500 } from "@/utils/fonts";
 import Toggle from "@/app/components/Toggle";
 
 export default function SavedFiltersNotification() {
 
   return (
-    <div className="flex items-center gap-4 rounded-full bg-[#f2f2f2] sm:p-10 xl:p-5 text-t_black sm:w-[90%] sm:mx-auto sm:mt-8">
+    <div className="flex items-center gap-4 rounded-full bg-[#f2f2f2] sm:p-10 xl:p-5 text-t_black xl:w-full sm:mx-auto sm:mt-4">
       <Toggle
         type="filters"
         thumbColor="peer-checked:after:bg-t_black after:bg-t_white"
