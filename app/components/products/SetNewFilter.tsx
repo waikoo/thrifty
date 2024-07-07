@@ -10,6 +10,8 @@ import { useFilterStore } from "@/state/client/filterState";
 import useUserSession from "@/app/components/hooks/useUserSession";
 import { supabase } from "@/app/supabase";
 import { TSavedFilters } from "@/types/filters";
+import WithCloseButton from "../navigation/WithCloseButton";
+import { albert, albert_500, albert_800 } from "@/utils/fonts";
 
 type SetNewFilterProps = {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -105,25 +107,40 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
   }, []);
 
   return (
-    <section className="text-bkg absolute inset-0 z-[60] grid h-screen w-screen place-items-center bg-[rgba(0,0,0,0.5)]">
-      <div className="bg-bkg w-min-content flex flex-col gap-6 p-7 opacity-100">
-        <div onClick={() => setShowNewFilterPopup(false)}>
-          <IconDelete size={"16"} className="ml-auto cursor-pointer" />
-        </div>
-        <h1 className="text-content text-center text-[1rem] font-extrabold">SET NEW FILTER</h1>
+    <WithCloseButton onClose={() => setShowNewFilterPopup(false)}>
 
-        <AnimatedInput type="text" id="filterName" placeholder="Filter Name" value={filterName} onChange={handleOnChange} className="border-content border-b-[0.1rem] border-l-0 border-r-0 border-t-0" font="text-[0.8125rem] font-normal" />
-        {showNoFilterNameError && <span className="text-red text-[0.8125rem] font-normal">Please enter a filter name</span>}
+      <h1 className={`mb-10 text-t_black dark:text-t_white text-center text-[17px] ${albert_800.className}`}>
+        SET NEW FILTER
+      </h1>
 
-        <FilterItems renderedFilters={Object.keys(matchedFilter).length > 0 ? matchedFilter : searchParams} />
+      <AnimatedInput
+        type="text"
+        id="filterName"
+        placeholder="Jackets in black and brown"
+        value={filterName}
+        onChange={handleOnChange}
+        className="border-t_black border-b-[0.1rem] border-l-0 border-r-0 border-t-0"
+        font={`xl:text-[16px] ${albert_500.className} text-t_black dark:text-t_white`}
+      />
 
-        <label className="flex items-center gap-2">
-          <input type="checkbox" checked={filterNotification} onChange={() => setFilterNotification(!filterNotification)} />
-          <span className="text-content text-[0.8125rem] font-semibold">I would like to get notifications for this filter</span>
-        </label>
+      {showNoFilterNameError && (
+        <span className={`text-red text-[0.8125rem] ${albert.className}`}>Please enter a filter name</span>
+      )}
 
-        <button className="text-bkg bg-content mx-auto w-min rounded-full px-24 py-3" onClick={handleSubmit}>SAVE</button>
+      <div className="mt-5">
+        <FilterItems
+          renderedFilters={Object.keys(matchedFilter).length > 0 ? matchedFilter : searchParams}
+          className="mt-1"
+        />
       </div>
-    </section>
+
+      <label className="flex items-center gap-2 my-8">
+        <input type="checkbox" checked={filterNotification} onChange={() => setFilterNotification(!filterNotification)} />
+        <span className={`text-content text-[17px] ${albert.className}`}>I would like to get notifications for this filter</span>
+      </label>
+
+      <button className="text-t_white dark:text-t_black bg-t_black dark:bg-t_white mx-auto w-min rounded-full px-24 py-2" onClick={handleSubmit}>SAVE</button>
+
+    </WithCloseButton>
   )
 }

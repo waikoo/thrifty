@@ -4,12 +4,14 @@ import FilterItem from "@/app/components/products/FilterItem";
 import { useFilterStore } from "@/state/client/filterState";
 import { capitalize } from "@/utils/capitalize";
 import { TSavedFilters } from "@/types/filters";
+import { albert_800 } from "@/utils/fonts";
 
 type FilterItemsProps = {
   renderedFilters: { [key: string]: string | string[] | undefined } | TSavedFilters["filters"]
+  className?: string
 }
 
-export default function FilterItems({ renderedFilters }: FilterItemsProps) {
+export default function FilterItems({ renderedFilters, className }: FilterItemsProps) {
   const { currentFilters, setCurrentFilters } = useFilterStore()
 
   useEffect(() => { // remove sorting and pagination params
@@ -25,8 +27,8 @@ export default function FilterItems({ renderedFilters }: FilterItemsProps) {
         if (['page', 'sort-by'].includes(key)) return null
 
         return (
-          <div key={key}>
-            <span className="text-content">{key.toUpperCase()}</span>
+          <div key={key} className={className}>
+            <span className={`text-t_black xl:text-[16px] ${albert_800.className}`}>{key.toUpperCase()}</span>
 
             {typeof value === 'string' && value.split(',').length > 1
               ? value.split(',').map((item) => <FilterItem key={item} objectKey={key}>{capitalize(item)}</FilterItem>)
