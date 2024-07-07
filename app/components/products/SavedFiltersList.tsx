@@ -81,7 +81,7 @@ export default function SavedFiltersList({ }: SavedFiltersListProps) {
   return savedFilters ? savedFilters.map((filter, index) => (
     <div key={filter.name} onClick={(e) => handleRunFilter(e, filter.filterId)} className="cursor-pointer" title="Select filter">
       <div className="flex justify-between">
-        <p key={index} className={`py-0 text-[14px] ${albert_500.className}`}>{filter.name}</p>
+        <p key={index} className={`py-0 sm:text-[17px] xl:text-[14px] ${albert_500.className}`}>{filter.name}</p>
         <div className="flex gap-2" >
           <div ref={optionsRef} >
             <BsThreeDotsVertical color={color} onClick={(e: React.MouseEvent<SVGElement>) => handleShowOptions(e)} className="cursor-pointer" />
@@ -101,7 +101,7 @@ export default function SavedFiltersList({ }: SavedFiltersListProps) {
       <hr />
     </div>
   )) : (
-    <p className={`mt-3 text-content text-center text-[14px] ${albert.className}`}>No saved filters</p>
+    <p className={`mt-3 text-content text-center sm:text-[17px] xl:text-[14px] ${albert.className}`}>No saved filters</p>
   )
 }
 

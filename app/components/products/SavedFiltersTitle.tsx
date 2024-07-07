@@ -1,8 +1,12 @@
 import { albert_800 } from "@/utils/fonts";
 
-export default function SavedFiltersTitle() {
+type SavedFiltersTitle = {
+  className?: string
+}
+
+export default function SavedFiltersTitle({ className }: SavedFiltersTitle) {
   return (
-    <h1 className={`mb-3 text-t_black xl:text-center text-[14px] ${albert_800.className}`}>
+    <h1 className={`${className} text-t_black xl:text-center sm:text-[19px] xl:text-[14px] ${albert_800.className}`}>
       SAVED FILTERS
     </h1>
   )
