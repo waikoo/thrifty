@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { FaRegBell } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
 import { IoMdNotifications } from "react-icons/io";
@@ -51,16 +52,26 @@ export default function SavedFiltersListOptions({ filter, client_id, color }: Sa
         />
       </div>
 
-      <IoMdNotifications
-        color={color}
+      <div
         className="cursor-pointer"
-        onClick={(e: React.MouseEvent<SVGElement>) => {
+        onClick={(e: React.MouseEvent<HTMLDivElement>) => {
           e.stopPropagation()
           setIsToggleClicked(true)
           changeNotification(client_id)
         }}
-        title="Send Notification"
-      />
+      >
+        {toastStatus === 'activated' ? (
+          <IoMdNotifications
+            color={color}
+            title="Send Notification"
+          />
+        ) : (
+          <FaRegBell
+            color={color}
+            title="No Notification"
+          />
+        )}
+      </div>
 
       <RxCross1
         color={color}
