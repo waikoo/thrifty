@@ -11,7 +11,7 @@ type AnimatedInputProps = {
 }
 
 export default function AnimatedInput({ type, id, placeholder, value, onChange, className, font }: AnimatedInputProps) {
-  const isSetNewFilter = placeholder !== 'Jackets in black and brown'
+  const isSetNewFilter = placeholder !== 'Filter Name'
   const placeholderStyle = isSetNewFilter ? 'placeholder-transparent' : ''
 
   return (
