@@ -3,7 +3,7 @@
 import Link from 'next/link'
 
 import { Gender, Locales } from '@/types/link'
-import { albert_500, albert_800, albert_900 } from '@/utils/fonts'
+import { albert_800, albert_900 } from '@/utils/fonts'
 import { viewport } from '@/app/components/data/universalStyles'
 import useViewport from '@/app/components/hooks/useViewport'
 
@@ -32,7 +32,6 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
           )
           }
         </p>
-        {/* <div className="absolute top-0 left-0 right-0 w-full bg-gradient-to-b from-t_white dark:from-t_black h-[18rem]"></div> */}
         <div className="flex flex-col ">
 
           <div className="w-[95%] xl:w-[120%] mx-auto relative">
@@ -65,7 +64,7 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
           </div>
 
           <Link href={`/${lang}/${gender}/products?gender=${gender}&sort-by=newfirst&page=1`}
-            className={`${albert_500.className} text-[#F9F9F9] bg-t_black xl:bg-t_white text-[3vw] xl:text-[1.0625rem] whitespace-nowrap cursor-pointer py-3 pb-2 px-6 md:py-4 md:px-16 md:pb-3 xl:px-[2.5rem] rounded-full mx-auto drop-shadow-2xl grid place-items-center buttonShadow mt-[3rem] xl:-mt-[7rem] tracking-wide`}
+            className={`${albert_900.className} bg-[#F9F9F9] text-t_black text-[3vw] xl:text-[1.0625rem] whitespace-nowrap cursor-pointer py-3 pb-2 px-6 md:py-4 md:px-16 md:pb-3 xl:px-[2.5rem] rounded-full mx-auto drop-shadow-2xl grid place-items-center buttonShadow mt-[3rem] xl:-mt-[7rem] tracking-wide`}
           >
             GO TO FILTERS
           </Link>
