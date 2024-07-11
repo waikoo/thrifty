@@ -9,6 +9,8 @@ import { supabase } from "@/app/supabase";
 import { TSavedFilters } from "@/types/filters"
 import { useFilterStore } from "@/state/client/filterState";
 import ToastNotification from "@/app/components/generic/ToastNotification";
+import WithCloseButton from "@/app/components/navigation/WithCloseButton";
+import { albert_500 } from "@/utils/fonts";
 
 type SavedFiltersListOptionsProps = {
   filter: TSavedFilters
@@ -20,13 +22,13 @@ export default function SavedFiltersListOptions({ filter, client_id, color }: Sa
   const { changeNotification, deleteFilter, setEditingFilterId, setShowSavedFiltersPopup, setShowNewFilterPopup } = useFilterStore()
   const [isToggleClicked, setIsToggleClicked] = useState(false)
   const [toastStatus, setToastStatus] = useState<'activated' | 'deactivated' | null>(null)
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 
   const channels = supabase.channel('custom-update-channel')
     .on(
       'postgres_changes',
       { event: 'UPDATE', schema: 'public', table: 'clients' },
       (payload) => {
-        console.log(payload.new.filters)
         setToastStatus(payload.new.filters ? 'activated' : 'deactivated')
 
         setTimeout(() => {
@@ -40,6 +42,17 @@ export default function SavedFiltersListOptions({ filter, client_id, color }: Sa
     setShowSavedFiltersPopup(false)
     setShowNewFilterPopup(true)
     setEditingFilterId(filterId)
+  }
+
+  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLDivElement
+    e.stopPropagation()
+
+    if (target.textContent === 'DELETE') {
+      deleteFilter(filter.filterId, client_id)
+    }
+
+    setShowConfirmDelete(false)
   }
 
   return (
@@ -76,9 +89,31 @@ export default function SavedFiltersListOptions({ filter, client_id, color }: Sa
       <RxCross1
         color={color}
         className="cursor-pointer"
-        onClick={() => deleteFilter(filter.filterId, client_id)}
+        onClick={(e) => {
+          e.stopPropagation()
+          setShowConfirmDelete(true)
+        }}
         title="Delete Filter"
       />
+
+      {showConfirmDelete && (
+        <WithCloseButton onClose={() => setShowConfirmDelete(false)} padding="p-6 px-8">
+          <p className={`w-[80%] xl:w-[75%] text-center mx-auto sm:text-[18px] xl:text-[14px] ${albert_500.className}`}>
+            Are you sure you want to delete this filter?
+          </p>
+          <div className="flex justify-between xl:gap-4 mt-4">
+            <button className="p-2 px-11 rounded-full sm:text-[17px] xl:text-[14px] text-t_black bg-t_white border-[0.1rem] border-t_black"
+              onClick={handleDelete}>
+              CANCEL
+            </button>
+
+            <button className="p-2 px-11 rounded-full sm:text-[17px] xl:text-[14px] text-t_white bg-t_black border-[0.1rem] border-t_black"
+              onClick={handleDelete}>
+              DELETE
+            </button>
+          </div>
+        </WithCloseButton>
+      )}
 
       {isToggleClicked && (
         <ToastNotification>Notifications successfully {toastStatus}.</ToastNotification>
