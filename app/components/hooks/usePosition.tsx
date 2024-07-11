@@ -4,8 +4,12 @@ export default function usePosition(pathname: string) {
   const [position, setPosition] = useState('static')
 
   const handleScroll = () => {
-    if (pathname.split('/').length < 4) { // is homepage
-      setPosition(window.scrollY > 5 ? 'fixed' : 'static')
+    const isHomePage = pathname.split('/').length < 4
+    const isProductsPage = pathname.split('/')[3] === 'products'
+
+    if (isHomePage || isProductsPage) {
+      const amount = isHomePage ? 5 : 300
+      setPosition(window.scrollY > amount ? 'fixed' : 'static')
     } else {
       return
     }
