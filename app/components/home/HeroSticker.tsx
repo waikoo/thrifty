@@ -11,7 +11,7 @@ export default function HeroSticker() {
   }
 
   return (
-    <div className={`absolute top-[4.6rem] left-6 ${newInOrSale.bg} ${newInOrSale.text} w-[86px] h-[86px] grid place-items-center rounded-full md:left-[3rem] sm:w-[200px] sm:h-[200px] sm:top-[3.5rem] xl:w-[180px] xl:h-[180px] xl:top-10 xl:left-10 2xl:w-[250px] 2xl:h-[250px]`}>
+    <div className={`absolute top-[4.6rem] left-6 ${newInOrSale.bg} ${newInOrSale.text} w-[86px] h-[86px] grid place-items-center rounded-full md:left-[3rem] sm:w-[200px] sm:h-[200px] sm:top-[3.5rem] xl:w-[180px] xl:h-[180px] xl:top-16 xl:left-16 2xl:w-[220px] 2xl:h-[220px]`}>
       <span className="text-[1.3rem] sm:text-[3.9rem] font-bold font-futura tracking-tight lg:text-[3.4375rem] 2xl:text-[4rem]">{getText(heroState)}</span>
     </div>
   )
