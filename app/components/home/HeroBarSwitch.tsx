@@ -19,8 +19,21 @@ export default function HeroBarSwitch() {
 
   return (
     <div className="mx-auto mt-5 3xl:mt-12 grid place-items-center grid-cols-2 justify-center w-[100px]">
-      <div className={`w-10 h-1 ${getColor(heroState, theme)} cursor-pointer`} data-state="new_in" onClick={handleStateChange}></div>
-      <div className={`w-10 h-1 ${getColor2(heroState, theme)} cursor-pointer`} data-state="sale" onClick={handleStateChange}></div>
+      <div
+        className={`w-14 h-4 cursor-pointer flex items-center justify-center p-2`}
+        data-state="new_in"
+        onClick={handleStateChange}>
+        <div className={`w-10 h-1 ${getColor(heroState, theme)}`}></div>
+      </div>
+
+      <div
+        className={`w-14 h-4 cursor-pointer flex items-center justify-center p-2`}
+        data-state="sale"
+        onClick={handleStateChange}>
+        <div
+          className={`w-10 h-1 ${getColor2(heroState, theme)}`}
+        ></div>
+      </div>
     </div>
   )
 }

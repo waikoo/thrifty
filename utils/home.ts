@@ -20,17 +20,17 @@ export const pluralToSingular = (text: string) => {
 
 export const getColor = (state: string, theme: string) => {
   if (theme === 'light') {
-    return state === 'new_in' ? 'bg-t_black' : 'bg-gray-300'
+    return state === 'new_in' ? 'bg-t_black' : 'border-[0.1rem] border-t_black'
   } else {
-    return state === 'new_in' ? 'bg-t_white' : 'bg-gray-300'
+    return state === 'new_in' ? 'bg-t_white' : 'border-[0.1rem] border-t_black'
   }
 }
 
 export const getColor2 = (state: string, theme: string) => {
   if (theme === 'light') {
-    return state === 'sale' ? 'bg-t_black' : 'bg-gray-300'
+    return state === 'sale' ? 'bg-t_black' : 'border-[0.1rem] border-t_black'
   } else {
-    return state === 'sale' ? 'bg-t_white' : 'bg-gray-300'
+    return state === 'sale' ? 'bg-t_white' : 'border-[0.1rem] border-t_black'
   }
 }
 
