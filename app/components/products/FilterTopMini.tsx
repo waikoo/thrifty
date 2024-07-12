@@ -38,7 +38,7 @@ export default function FilterTopMini({ filteredMatchesTotal, gender, lang, sear
   }
 
   return (
-    <div className={`xl:hidden ${position} top-0 left-0 right-0 z-[90] bg-t_white`}>
+    <div className={`py-5 xl:hidden ${position} top-0 left-0 right-0 z-[90] bg-t_white`}>
 
       <div className={`${innerDivStyles}`}>
         <div className={`grid grid-cols-3 justify-items gap-1 text-[18px] w-full ${albert_500.className}`}>
@@ -69,7 +69,7 @@ export default function FilterTopMini({ filteredMatchesTotal, gender, lang, sear
 
         </div>
 
-        <div className="mt-5 hidden xl:block"
+        <div className={`mt-10 hidden ${position === 'fixed' ? 'hidden' : 'sm:block'}`}
         >
           <FilteredResults>{filteredMatchesTotal}</FilteredResults>
         </div>

@@ -21,7 +21,7 @@ export default async function Page({ params: { lang, gender }, searchParams }: P
     <>
       <img src="/images/products/crossing_wider.png"
         alt="four women crossing the street, each in a different outfit, cropped from waist down"
-        className="xl:hidden w-screen my-3"
+        className="xl:hidden w-screen mt-3"
       />
       <main className="bg-t_white dark:bg-t_black text-content mx-auto px-20 lg:max-w-[1500px]">
         <img src="/images/products/crossing.png"
