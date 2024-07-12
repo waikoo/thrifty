@@ -17,7 +17,13 @@ const nextConfig = {
         hostname: 'picsum.photos',
       }],
   },
+  async redirects() {
+    return [{
+      source: '/',
+      destination: '/en/women',
+      permanent: true,
+    }]
+  }
 };
 
-// module.exports = nextConfig;
 export default nextConfig;
