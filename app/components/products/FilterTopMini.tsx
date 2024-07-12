@@ -49,7 +49,7 @@ export default function FilterTopMini({ filteredMatchesTotal, gender, lang, sear
       <div className={`${innerDivStyles}`}>
         <div className={`grid grid-cols-3 justify-items-center sm:justify-items-stretch gap-1 text-[18px] mx-auto sm:w-full ${albert_500.className}`}>
 
-          <div className="bg-t_mustard p-3 sm:p-3 sm:px-10 rounded-full sm:rounded-l-full sm:rounded-r-none cursor-pointer justify-self-end"
+          <div className="bg-t_mustard p-3 sm:p-3 sm:px-10 rounded-full sm:rounded-l-full sm:rounded-r-none cursor-pointer justify-self-end sm:justify-self-auto"
             onClick={() => setShowMiniFilters(true)}
           >
             <div className="mx-auto flex justify-center gap-2 items-center">
@@ -66,7 +66,7 @@ export default function FilterTopMini({ filteredMatchesTotal, gender, lang, sear
             </div>
           </div>
 
-          <div className="bg-t_mustard p-3 sm:p-3 sm:px-10 rounded-full sm:rounded-r-full sm:rounded-l-none cursor-pointer justify-self-start">
+          <div className="bg-t_mustard p-3 sm:p-3 sm:px-10 rounded-full sm:rounded-r-full sm:rounded-l-none cursor-pointer justify-self-start sm:justify-self-auto">
             <div className="mx-auto flex items-center justify-center gap-2">
               <span className="whitespace-nowrap hidden sm:block">Sort By</span>
               <HiOutlineArrowsUpDown size={iconSize} className="min-w-4" />

@@ -35,7 +35,7 @@ export default function ProductAddToCart({ uuid, className, children }: ProductA
   }, []);
 
   return (
-    <button className={tm(`bg-t_white text-[#3e3e3e] border-[#3e3e3e] hover:border-none hover:bg-[#e3e3e3] hover:text-black w-full cursor-pointer rounded-full border-[0.1rem] py-2 text-center text-[11px] sm:text-[15px] xl:text-[12px] ${inCartStyle} ${albert_700.className} ${className}`)}
+    <button className={tm(`bg-t_white text-[#3e3e3e] border-[#3e3e3e] hover:border-none hover:bg-[#e3e3e3] hover:text-black w-full cursor-pointer rounded-full border-[0.1rem] py-2 text-center text-[11px] sm:text-[15px] xl:text-[12px] text-nowrap ${inCartStyle} ${albert_700.className} ${className}`)}
       onClick={addItemToCart}
     >
       <span className="select-none">{!isInCart ? children : 'ADDED TO CART'}</span>
