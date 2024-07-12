@@ -11,7 +11,7 @@ import useViewport from "@/app/components/hooks/useViewport";
 type FilterSideControlsProps = {
   gender: Gender
   lang: Locales
-  className: string
+  className?: string
 }
 
 export default function FilterSideControls({ gender, lang, className }: FilterSideControlsProps) {
