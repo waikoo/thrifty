@@ -39,14 +39,14 @@ export default function ProductItem({ product, index, lang, gender, className, s
         </Link>
       </div>
 
-      <div className={`my-2 text-[14px] text-[#1b1b1b] ${albert_600.className}`}>
-        <div className="flex justify-between">
+      <div className={`my-2 text-[13px] sm:text-[17px] xl:text-[14px] text-[#1b1b1b] ${albert_600.className}`}>
+        <div className="flex gap-[10px] justify-between">
           <span>{capitalize(brand)}</span>
           <span className={`${discount > 0 ? 'line-through' : ''}`}>{EURO}{price}</span> {/* original price */}
         </div>
 
         <div className="flex justify-between items-center">
-          <span className={`text-[12px] ${albert_500.className}`}>{size}</span>
+          <span className={`text-[11px] sm:text-[15px] xl:text-[12px] ${albert_500.className}`}>{size}</span>
           {discount > 0 && (
             <div className={`flex items-center ${albert_600.className}`}>
               <span className="rounded-[5px] p-1 px-[0.4rem] bg-red-500 text-white">-{discount}%</span>
