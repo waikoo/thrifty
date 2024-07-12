@@ -62,8 +62,8 @@ export default function FilterTopMini({ filteredMatchesTotal, gender, lang, sear
 
           <div className="bg-t_mustard p-3 px-10 rounded-r-full cursor-pointer">
             <div className="mx-auto flex items-center justify-center gap-2">
-              <span>Sort By</span>
-              <HiOutlineArrowsUpDown size={18} />
+              <span className="whitespace-nowrap">Sort By</span>
+              <HiOutlineArrowsUpDown size={18} className="min-w-4" />
             </div>
           </div>
 

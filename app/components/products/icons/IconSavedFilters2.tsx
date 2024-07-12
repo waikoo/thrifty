@@ -11,6 +11,7 @@ export default function IconSavedFilters2() {
       height="18"
       fill="none"
       viewBox="0 0 20 18"
+      className="min-w-4"
     >
       <path
         stroke={color}
