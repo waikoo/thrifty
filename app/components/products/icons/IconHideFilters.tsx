@@ -11,8 +11,7 @@ function IconHideFilters() {
       height="10"
       fill="none"
       viewBox="0 0 15 10"
-      transform="translate(0, 7)"
-
+      className="mt-1 sm:mt-0"
     >
       <path
         fill={color}
