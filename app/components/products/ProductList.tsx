@@ -28,7 +28,7 @@ export default function ProductList({ lang, gender, searchParams, products, filt
     <div className="w-full">
       {products.length > 0 ? (
         <>
-          <div className="relative grid gap-10 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="relative grid gap-10 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
             <FilteredResults className="hidden xl:block absolute -top-[2.6rem]">
               {filteredMatchesTotal}
             </FilteredResults>
