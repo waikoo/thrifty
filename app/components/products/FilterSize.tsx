@@ -52,7 +52,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
           <FilterSearch setSearchValue={setSearchValue} type={type} />
 
           <fieldset
-            className="sm:flex xl:grid w-full select-none sm:flex-wrap xl:grid-cols-4 gap-1 pt-4 h-[200px] overflow-y-scroll scrollbar-thin"
+            className="grid w-full select-none grid-cols-5 sm:grid-cols-12 xl:grid-cols-4 gap-1 pt-4 h-[200px] overflow-y-scroll scrollbar-thin"
             onClick={handleOnChange}>
 
             {filteredItems.map((size, i) => {
@@ -65,7 +65,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
                 <div
                   key={`sizes-${i}`}
                   data-value={size}
-                  className={`grid cursor-pointer place-items-center border-[0.1rem] p-3 sm:text-[16px] xl:text-[13px] hover:bg-[#e3e3e3] hover:text-t_black focus:bg-t_mustard ${albert_500.className} ${colorOnClick}`}
+                  className={`grid cursor-pointer place-items-center border-[0.1rem] p-3 text-[13px] sm:text-[16px] xl:text-[13px] hover:bg-[#e3e3e3] hover:text-t_black focus:bg-t_mustard ${albert_500.className} ${colorOnClick}`}
                 >
                   {size}</div>
               )

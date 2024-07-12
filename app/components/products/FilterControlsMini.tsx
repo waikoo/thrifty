@@ -1,13 +1,10 @@
 "use client"
-import { RxCross2 } from "react-icons/rx";
-
 import FilterSideControls from "@/app/components/products/FilterSideControls";
 import Portal from "@/app/components/generic/Portal";
 import { Gender, Locales } from "@/types/link";
 import { useFilterStore } from "@/state/client/filterState";
 import FilterControls from "@/app/components/products/FilterControls";
 import { albert_800 } from "@/utils/fonts";
-import { useEffect } from "react";
 import SaveFilterButton from "./SaveFilterButton";
 import MiniCross from "./MiniCross";
 
@@ -21,22 +18,6 @@ type FilterControlsMiniProps = {
 export default function FilterControlsMini({ lang, gender, searchParams, filteredMatchesTotal }: FilterControlsMiniProps) {
   const { showMiniFilters, setShowMiniFilters } = useFilterStore()
 
-  // useEffect(() => {
-  //   const handleTouchMove = (e: TouchEvent) => {
-  //     if (showMiniFilters) {
-  //       e.preventDefault();
-  //     }
-  //   };
-  //
-  //   if (showMiniFilters) {
-  //     document.addEventListener('touchmove', handleTouchMove, { passive: false });
-  //   }
-  //
-  //   return () => {
-  //     document.removeEventListener('touchmove', handleTouchMove);
-  //   };
-  // }, [showMiniFilters]);
-
   function closeFilters() {
     setShowMiniFilters(false)
   }
@@ -45,11 +26,13 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
     <Portal>
       <div className="inset-0 relative"
       >
-        <div className="p-10 bg-t_mustard text-t_black py-3 flex justify-between items-center">
-          <span className={`${albert_800.className} text-[19px]`}>FILTERS</span>
+        <div className="p-5 sm:p-10 bg-t_mustard text-t_black py-1 sm:py-3 flex justify-between items-center">
+          <span className={`${albert_800.className} text-[13px] sm:text-[19px]`}>FILTERS</span>
 
           <div className="flex gap-2">
-            <FilterSideControls {...{ gender, lang }} />
+            <FilterSideControls {...{ gender, lang }}
+              className="hidden sm:flex"
+            />
 
             <MiniCross onClose={closeFilters} />
           </div>
@@ -57,7 +40,13 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
 
       </div>
 
-      <div className="p-10 ">
+      <div className="ml-auto">
+        <FilterSideControls {...{ gender, lang }}
+          className="flex sm:hidden justify-end mr-5 mt-5"
+        />
+      </div>
+
+      <div className="p-5 sm:pt-10">
         <FilterControls {...{ searchParams }}
           className="flex w-full overflow-y-scroll"
           hideSaveFilter={true}

@@ -61,11 +61,11 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
       : 'bg-t_white'
 
   return (
-    <div className={`flex items-center gap-2 cursor-pointer ${albert_500.className} text-[14px] text-t_black hover:bg-[#e3e3e3] hover:text-t_black focus:bg-t_mustard rounded-full p-[0.35rem] ${colorOnClick}`}
+    <div className={`flex items-center gap-2 cursor-pointer ${albert_500.className} text-[13px] sm:text-[17px] xl:text-[14px] text-t_black hover:bg-[#e3e3e3] hover:text-t_black focus:bg-t_mustard rounded-full p-[0.35rem] ${colorOnClick}`}
       onClick={handleOnChange}
       data-color={lowercaseColor}
     >
-      <div className={`sm:h-5 sm:w-5 xl:h-8 xl:w-8 rounded-full ${colorClasses[color]}`}></div>
+      <div className={`h-5 w-5 xl:h-8 xl:w-8 rounded-full ${colorClasses[color]}`}></div>
       <span>{color}</span>
     </div >
   )

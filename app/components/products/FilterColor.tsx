@@ -20,7 +20,7 @@ export default function FilterColor({ type, colors }: FilterColorProps) {
       {isExpanded && (
         <div className="">
 
-          <div className="sm:flex sm:flex-wrap xl:grid xl:grid-cols-2 cursor-pointer select-none gap-4 pt-4">
+          <div className="flex flex-wrap xl:grid xl:grid-cols-2 cursor-pointer select-none gap-4 pt-4">
 
             {filteredItems.map((color, i) => (
               <FilterColorItem

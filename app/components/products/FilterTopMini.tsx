@@ -4,12 +4,10 @@ import { IoFilterSharp } from "react-icons/io5";
 import { LiaFilterSolid } from "react-icons/lia";
 
 import FilteredResults from "@/app/components/products/FilteredResults"
-import { IconHideFilters } from "@/app/components/products/icons";
 import { useFilterStore } from "@/state/client/filterState";
 import { albert_500 } from "@/utils/fonts";
 import { Gender, Locales } from "@/types/link";
 import FilterControlsMini from "@/app/components/products/FilterControlsMini";
-import IconSavedFilters2 from "./icons/IconSavedFilters2";
 import { supabase } from "@/app/supabase";
 import { useUIStore } from "@/state/client/uiState"
 import { usePathname } from "next/navigation";

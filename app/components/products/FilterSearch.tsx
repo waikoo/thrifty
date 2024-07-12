@@ -16,7 +16,7 @@ export default function FilterSearch({ setSearchValue, type }: FilterSearchProps
       <input
         type="search"
         placeholder={`Search by ${type.toLowerCase()}`}
-        className="bg-t_white dark:bg-t_black sm:w-full border-t-0 border-x-0 border-b-[0.1rem] pl-7 outline-none"
+        className="bg-t_white dark:bg-t_black sm:w-full border-t-0 border-x-0 border-b-[0.1rem] pl-7 outline-none placeholder:text-[13px] placeholder:sm:text-[17px] placeholder:xl:text-[14px]"
         onChange={onChangeHandler}
       />
     </div>

@@ -14,6 +14,7 @@ type PageProps = {
   }
   searchParams: { [key: string]: string | string[] | undefined }
 }
+
 export default async function Page({ params: { lang, gender }, searchParams }: PageProps) {
   const { status, filteredMatchesTotal, paginatedMatches } = await fetchProductsByFilters(useSupabaseServer(), searchParams)
 
