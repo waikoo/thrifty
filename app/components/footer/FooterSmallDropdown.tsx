@@ -11,7 +11,7 @@ type FooterSmallDropdownProps = {
 
 export default function FooterSmallDropdown({ theme, children, title }: FooterSmallDropdownProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const iconColor = 'bg-yellow-500'
+  const iconColor = 'bg-t_mustard'
   const horizontalStyle = isDropdownOpen ? 'hidden' : ''
   const verticalStyle = isDropdownOpen ? 'rotate-90' : ''
 
