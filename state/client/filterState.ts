@@ -172,7 +172,7 @@ type TFilterTitleState = {
 }
 
 export const useFilterTitleStore = create<TFilterTitleState>((set) => ({
-  allFilters: ['CATEGORY', 'SHOP BY', 'PRODUCT TYPE', 'COLOR', 'BRAND', 'CONDITION', 'MATERIAL', 'SIZE', 'DATE ADDED'],
+  allFilters: ['GENDER', 'CATEGORY', 'SHOP BY', 'TYPE', 'PRICE', 'DISCOUNT', 'COLOR', 'BRAND', 'CONDITION', 'MATERIAL', 'SIZE', 'DATE ADDED'],
   expandedFilters: [],
   areAllExpanded: false,
   setAllFilters: (componentId) => set((state) => ({
