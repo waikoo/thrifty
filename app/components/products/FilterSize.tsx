@@ -63,7 +63,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
                 <div
                   key={`sizes-${i}`}
                   data-value={size}
-                  className={`grid cursor-pointer place-items-center border-[0.1rem] p-3 text-[13px] sm:text-[16px] xl:text-[13px] hover:bg-[#e3e3e3] hover:text-t_black focus:bg-t_mustard ${albert_500.className} ${colorOnClick}`}
+                  className={`grid cursor-pointer place-items-center border-[0.1rem] p-3 text-[13px] sm:text-[16px] xl:text-[13px] hover:bg-[#e3e3e3] hover:text-t_black focus:bg-t_mustard rounded-[5px] ${albert_500.className} ${colorOnClick}`}
                 >
                   {size}</div>
               )
