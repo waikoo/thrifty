@@ -56,7 +56,7 @@ export default function FilterControls({ searchParams, className, hideSaveFilter
   return (!hideFilters && (
     (
 
-      <aside className={`top-24 flex-col gap-6 self-start pb-10 ${className}`}>
+      <aside className={`top-24 flex-col gap-6 self-start pb-14 sm:pb-10 ${className}`}>
 
         {!hideSaveFilter && <SaveFilterButton className="w-full" />}
 

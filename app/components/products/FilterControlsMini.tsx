@@ -4,7 +4,7 @@ import Portal from "@/app/components/generic/Portal";
 import { Gender, Locales } from "@/types/link";
 import { useFilterStore } from "@/state/client/filterState";
 import FilterControls from "@/app/components/products/FilterControls";
-import { albert_800 } from "@/utils/fonts";
+import { albert_500, albert_800 } from "@/utils/fonts";
 import SaveFilterButton from "./SaveFilterButton";
 import MiniCross from "./MiniCross";
 
@@ -26,7 +26,7 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
     <Portal>
       <section className="fixed left-0 right-0 z-[100] overflow-y-scroll h-[calc(100dvh)]">
 
-        <div className="p-5 sm:p-10 bg-t_mustard text-t_black py-1 sm:py-3 flex justify-between items-center">
+        <div className="fixed top-0 left-0 right-0 p-5 sm:p-10 bg-t_mustard text-t_black py-1 sm:py-3 flex justify-between items-center">
           <span className={`${albert_800.className} text-[13px] sm:text-[19px]`}>FILTERS</span>
 
           <div className="flex gap-2">
@@ -41,7 +41,7 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
 
         <div className="ml-auto bg-t_white">
           <FilterSideControls {...{ gender, lang }}
-            className="flex sm:hidden justify-end mr-5 pt-5"
+            className="flex sm:hidden justify-end mr-5 pt-14"
           />
         </div>
 
@@ -52,9 +52,11 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
           />
         </div>
 
-        <div className="bg-t_mustard p-5 px-10 absolute w-full z-[90]">
+        <div className={`bg-t_mustard p-[0.6rem] sm:p-5 px-5 sm:px-10 fixed w-full z-[90] bottom-0 text-[13px] ${albert_500.className}`}>
           <div className="max-w-[800px] mx-auto flex justify-between gap-6">
-            <SaveFilterButton className="w-1/2 border-t_black border-[0.1rem]" />
+            <SaveFilterButton className="w-1/2 border-t_black border-[0.1rem]"
+              font={`${albert_500.className} text-[13px]`}
+            />
 
             <button className="bg-t_black text-t_white rounded-full w-1/2"
               onClick={closeFilters}
