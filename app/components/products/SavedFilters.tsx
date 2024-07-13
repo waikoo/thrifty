@@ -31,9 +31,11 @@ export default function SavedFilters() {
       Title={SavedFiltersTitle}
       onClose={() => setShowSavedFiltersPopup(false)}>
 
-      <SavedFiltersNotification />
+      <div className="p-5 sm:p-10">
+        <SavedFiltersNotification />
 
-      <SavedFiltersList />
+        <SavedFiltersList />
+      </div>
 
     </MiniWithCloseButton>
   )

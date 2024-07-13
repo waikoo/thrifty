@@ -10,7 +10,7 @@ export default function MiniWithCloseButton({ children, Title, onClose }: MiniWi
 
   return (
     <div className="inset-0 min-h-dvh">
-      <div className="p-10 bg-t_mustard text-t_black py-3 flex justify-between items-center">
+      <div className="p-5 sm:p-10 bg-t_mustard text-t_black py-2 sm:py-3 flex justify-between items-center">
         <Title />
         <MiniCross onClose={onClose} />
 

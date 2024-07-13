@@ -72,11 +72,11 @@ export default function SavedFiltersList({ }: SavedFiltersListProps) {
   return savedFilters ? savedFilters.map((filter, index) => (
     <div key={filter.name}
       onClick={(e) => handleRunFilter(e, filter.filterId)}
-      className="px-10 xl:p-0 mt-5 cursor-pointer"
+      className="mt-5 cursor-pointer"
       title="Select Filter"
     >
       <div className="flex justify-between">
-        <p key={index} className={`py-0 sm:text-[17px] xl:text-[14px] ${albert_500.className}`}>
+        <p key={index} className={`py-0 text-[13px] sm:text-[17px] xl:text-[14px] ${albert_500.className}`}>
           {filter.name}
         </p>
 
@@ -99,10 +99,9 @@ export default function SavedFiltersList({ }: SavedFiltersListProps) {
           )}
         </div>
       </div>
-      <hr />
     </div>
   )) : (
-    <p className={`mt-3 text-content text-center sm:text-[17px] xl:text-[14px] ${albert.className}`}>No saved filters</p>
+    <p className={`mt-3 text-t_black dark:text-t_white text-center text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}></p>
   )
 }
 
