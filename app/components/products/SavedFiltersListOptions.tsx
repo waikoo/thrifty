@@ -98,16 +98,16 @@ export default function SavedFiltersListOptions({ filter, client_id, color }: Sa
 
       {showConfirmDelete && (
         <WithCloseButton onClose={() => setShowConfirmDelete(false)} padding="p-6 px-8">
-          <p className={`w-[80%] xl:w-[75%] text-center mx-auto sm:text-[18px] xl:text-[14px] ${albert_500.className}`}>
+          <p className={`w-[80%] xl:w-[75%] text-center mx-auto text-[13px] sm:text-[18px] xl:text-[14px] ${albert_500.className}`}>
             Are you sure you want to delete this filter?
           </p>
           <div className="flex justify-between xl:gap-4 mt-4">
-            <button className="p-2 px-11 rounded-full sm:text-[17px] xl:text-[14px] text-t_black bg-t_white border-[0.1rem] border-t_black"
+            <button className="p-2 px-11 rounded-full text-[13px] sm:text-[17px] xl:text-[14px] text-t_black bg-t_white border-[0.1rem] border-t_black"
               onClick={handleDelete}>
               CANCEL
             </button>
 
-            <button className="p-2 px-11 rounded-full sm:text-[17px] xl:text-[14px] text-t_white bg-t_black border-[0.1rem] border-t_black"
+            <button className="p-2 px-11 rounded-full text-[13px] sm:text-[17px] xl:text-[14px] text-t_white bg-t_black border-[0.1rem] border-t_black"
               onClick={handleDelete}>
               DELETE
             </button>
