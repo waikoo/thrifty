@@ -24,7 +24,6 @@ export default function ProductPagination({ productsLength }: ProductPaginationP
       </Link>
 
       <div className="flex items-center gap-2">
-        <span>Page:</span>
         <select name="pagination"
           id="pagination"
           className="text-t_black dark:text-t_white"
