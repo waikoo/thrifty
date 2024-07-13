@@ -1,4 +1,6 @@
 "use client"
+import { usePathname } from "next/navigation";
+
 import { HiOutlineArrowsUpDown } from "react-icons/hi2";
 import { IoFilterSharp } from "react-icons/io5";
 import { LiaFilterSolid } from "react-icons/lia";
@@ -10,10 +12,9 @@ import { Gender, Locales } from "@/types/link";
 import FilterControlsMini from "@/app/components/products/FilterControlsMini";
 import { supabase } from "@/app/supabase";
 import { useUIStore } from "@/state/client/uiState"
-import { usePathname } from "next/navigation";
-import usePosition from "../hooks/usePosition";
-import useViewport from "../hooks/useViewport";
-import { viewport } from "../data/universalStyles";
+import usePosition from "@/app/components/hooks/usePosition";
+import useViewport from "@/app/components/hooks/useViewport";
+import { viewport } from "@/app/components/data/universalStyles";
 
 type FilterTopMiniProps = {
   filteredMatchesTotal: number
@@ -29,6 +30,7 @@ export default function FilterTopMini({ filteredMatchesTotal, gender, lang, sear
   const innerDivStyles = position === 'static' ? 'w-full py-5' : 'w-auto py-[11px] px-20'
   const currentViewport = useViewport()
   const iconSize = currentViewport < viewport.sm ? 22 : 18
+  const useFixedOnTabletOnly = currentViewport > viewport.sm ? position : 'static'
 
   async function openSavedFilters() {
     const { data: { user } } = await supabase.auth.getUser()
@@ -42,7 +44,7 @@ export default function FilterTopMini({ filteredMatchesTotal, gender, lang, sear
   }
 
   return (
-    <div className={`py-2 sm:py-5 xl:hidden ${position} top-0 left-0 right-0 z-[90] bg-t_white`}>
+    <div className={`py-2 sm:py-5 xl:hidden ${useFixedOnTabletOnly} top-0 left-0 right-0 z-[90] bg-t_white`}>
 
       <div className={`${innerDivStyles}`}>
         <div className={`grid grid-cols-3 justify-items-center sm:justify-items-stretch gap-1 text-[18px] mx-auto sm:w-full ${albert_500.className}`}>
