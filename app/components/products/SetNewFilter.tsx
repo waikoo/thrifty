@@ -107,7 +107,10 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
   }, []);
 
   return (
-    <WithCloseButton onClose={() => setShowNewFilterPopup(false)}>
+    <WithCloseButton onClose={() => setShowNewFilterPopup(false)}
+      padding="p-6 sm:p-12"
+      noBorder={true}
+    >
 
       <h1 className={`mb-10 text-t_black dark:text-t_white text-center text-[13px] sm:text-[17px] xl:text-[14px] ${albert_800.className}`}>
         SET NEW FILTER
