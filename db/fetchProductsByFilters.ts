@@ -15,6 +15,7 @@ export async function fetchProductsByFilters(
   const byBrandParams = searchParams.brand?.toString().split(",");
   const byPriceParams = searchParams.price?.toString().split(",");
   const byDiscountParams = searchParams.discount?.toString().split(",");
+  const byConditionParams = searchParams.condition?.toString().split(",");
 
   let query = supabase
     .from("products")
@@ -26,6 +27,7 @@ export async function fetchProductsByFilters(
     .in("size", bySizeParams || filter.size.map(fil => fil.toLowerCase()))
     .in("color", byColorParams || filter.color.map(fil => fil.toLowerCase()))
     .in("brand", byBrandParams || brandNamesArray.map(fil => fil.toLowerCase()))
+    .in("condition", byConditionParams || filter.condition.map(fil => fil.toLowerCase()))
     .gte("discount", byDiscountParams?.[0] || 0)
     .lte("discount", byDiscountParams?.[1] || 100)
     .gte("price", byPriceParams?.[0] || 0)

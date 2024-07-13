@@ -12,6 +12,7 @@ const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]
   const shopBy = searchParamos.getAll('shop-by')?.[0]?.split(',')
   const brandParam = searchParamos.getAll('brand')?.[0]?.split(',')
   const typeParam = searchParamos.getAll('type')?.[0]?.split(',')
+  const conditionParam = searchParamos.getAll('condition')?.[0]?.split(',')
 
   const others = {
     men: gend?.includes('men'),
@@ -22,6 +23,9 @@ const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]
     accessories: cat?.includes('accessories'),
     promos: shopBy?.includes('promos'),
     ['new in']: shopBy?.includes('new in'),
+    ['new with tag']: conditionParam?.includes('new with tag'),
+    ['new without tag']: conditionParam?.includes('new without tag'),
+    ['second hand']: conditionParam?.includes('second hand'),
   } as { [key: string]: boolean }
 
   const brands: { [key: string]: boolean } = {};
@@ -46,9 +50,9 @@ const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]
 export default function useQueryParams(type: string, elements: string[], searchParamos: ReadonlyURLSearchParams, router: AppRouterInstance, pathname: string) {
 
   const [checkbox, setCheckbox] = useState(getParams(searchParamos, elements))
-
   useEffect(() => {
     setCheckbox(getParams(searchParamos, elements))
+    console.log(checkbox)
   }, [searchParamos])
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -107,9 +107,9 @@ export default function FilterControls({ searchParams, className, hideSaveFilter
           search
         />
 
-        <FilterCondition
+        <FilterCheckbox
           type={"CONDITION"}
-          condition={filter.condition}
+          elements={filter.condition}
         />
 
         <FilterCheckbox
