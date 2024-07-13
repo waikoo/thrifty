@@ -28,7 +28,7 @@ export default function FilterItems({ renderedFilters, className }: FilterItemsP
 
         return (
           <div key={key} className={className}>
-            <span className={`text-t_black sm:text-[16px] xl:text-[13px] ${albert_800.className}`}>{key.toUpperCase()}</span>
+            <span className={`text-t_black text-[13px] sm:text-[16px] xl:text-[13px] ${albert_800.className}`}>{key.toUpperCase()}</span>
 
             {typeof value === 'string' && value.split(',').length > 1
               ? value.split(',').map((item) => <FilterItem key={item} objectKey={key}>{capitalize(item)}</FilterItem>)

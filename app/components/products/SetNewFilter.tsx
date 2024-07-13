@@ -109,7 +109,7 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
   return (
     <WithCloseButton onClose={() => setShowNewFilterPopup(false)}>
 
-      <h1 className={`mb-10 text-t_black dark:text-t_white text-center sm:text-[17px] xl:text-[14px] ${albert_800.className}`}>
+      <h1 className={`mb-10 text-t_black dark:text-t_white text-center text-[13px] sm:text-[17px] xl:text-[14px] ${albert_800.className}`}>
         SET NEW FILTER
       </h1>
 
@@ -120,11 +120,11 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
         value={filterName}
         onChange={handleOnChange}
         className="border-t_black border-b-[0.1rem] border-l-0 border-r-0 border-t-0"
-        font={`sm:text-[16px] xl:text-[13px] ${albert_500.className} text-t_black dark:text-t_white`}
+        font={`text-[13px] sm:text-[16px] xl:text-[13px] ${albert_500.className} text-t_black dark:text-t_white`}
       />
 
       {showNoFilterNameError && (
-        <span className={`text-red text-[0.8125rem] ${albert.className}`}>Please enter a filter name</span>
+        <span className={`text-red-300 text-[0.8125rem] ${albert.className}`}>Please enter a filter name</span>
       )}
 
       <div className="mt-5">
@@ -136,10 +136,14 @@ export default function SetNewFilter({ searchParams }: SetNewFilterProps) {
 
       <label className="flex items-center gap-2 my-8">
         <input type="checkbox" checked={filterNotification} onChange={() => setFilterNotification(!filterNotification)} />
-        <span className={`text-content sm:text-[17px] xl:text-[14px] ${albert.className}`}>I would like to get notifications for this filter</span>
+        <span className={`text-content text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
+          I would like to get notifications for this filter
+        </span>
       </label>
 
-      <button className="text-t_white dark:text-t_black bg-t_black dark:bg-t_white mx-auto sm:text-[17px] xl:text-[14px] w-min rounded-full px-24 py-2" onClick={handleSubmit}>SAVE</button>
+      <button className="text-t_white dark:text-t_black bg-t_black dark:bg-t_white mx-auto text-[13px] sm:text-[17px] xl:text-[14px] w-min rounded-full px-24 py-2" onClick={handleSubmit}>
+        SAVE
+      </button>
 
     </WithCloseButton>
   )
