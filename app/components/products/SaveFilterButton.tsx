@@ -7,11 +7,14 @@ type SaveFilterButtonProps = {
 }
 
 export default function SaveFilterButton({ className, font = `${albert_500.className} text-[14px]` }: SaveFilterButtonProps) {
-  const { setShowNewFilterPopup } = useFilterStore()
+  const { setShowNewFilterPopup, setShowMiniFilters } = useFilterStore()
 
   return (
     <button className={`bg-t_mustard rounded-full tracking-wider mx-auto whitespace-nowrap py-2 text-black ${font} ${className}`}
-      onClick={() => setShowNewFilterPopup(true)}
+      onClick={() => {
+        setShowMiniFilters(false)
+        setShowNewFilterPopup(true)
+      }}
     >
       SAVE FILTER
     </button>
