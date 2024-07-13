@@ -1,8 +1,8 @@
 "use client"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
-import { FilterSearch, FilterTitle } from "."
-import { useFilterSearch } from "../hooks"
+import { FilterTitle } from "@/app/components/products"
+import { useFilterSearch } from "@/app/components/hooks"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
 import { useFilterTitleStore } from "@/state/client/filterState"
 import { albert_500 } from "@/utils/fonts"
@@ -14,7 +14,7 @@ type FilterSizeProps = {
 
 export default function FilterSize({ type, sizes }: FilterSizeProps) {
   const isExpanded = useFilterTitleStore((state) => state.expandedFilters.includes(type))
-  const { setSearchValue, filteredItems } = useFilterSearch(sizes)
+  const { filteredItems } = useFilterSearch(sizes)
   const [pathname, router, searchParamos] = [usePathname(), useRouter(), useSearchParams()]
 
   const handleOnChange = (e: React.ChangeEvent<HTMLFieldSetElement> | React.MouseEvent<HTMLFieldSetElement>) => {
@@ -48,8 +48,6 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
 
       {isExpanded && (
         <div className="">
-
-          <FilterSearch setSearchValue={setSearchValue} type={type} />
 
           <fieldset
             className="grid w-full select-none grid-cols-5 sm:grid-cols-12 xl:grid-cols-4 gap-1 pt-4 h-[200px] overflow-y-scroll scrollbar-thin"
