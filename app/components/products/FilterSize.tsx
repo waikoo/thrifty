@@ -50,7 +50,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
         <div className="">
 
           <fieldset
-            className="grid w-full select-none grid-cols-5 sm:grid-cols-12 xl:grid-cols-4 gap-1 pt-4 h-[200px] overflow-y-scroll scrollbar-thin"
+            className="grid w-full select-none grid-cols-5 sm:grid-cols-12 xl:grid-cols-4 gap-1 pt-4 h-[200px] overflow-y-scroll scrollbar-thin scrollbar-thumb-black scrollbar-track-t_white"
             onClick={handleOnChange}>
 
             {filteredItems.map((size, i) => {
