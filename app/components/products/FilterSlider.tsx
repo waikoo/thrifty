@@ -84,7 +84,7 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
                 type="text"
                 name="left"
                 value={left}
-                className="text-[#1b1b1b] dark:t_white hover:bg-[#e3e3e3] focus:bg-t_mustard mt-12 h-10 w-20 bg-t_white border-[0.2rem] border-[#e3e3e3] rounded-full text-center"
+                className="text-[#1b1b1b] dark:t_white hover:bg-[#e3e3e3] focus:bg-t_mustard mt-12 h-[35px] sm:h-10 w-20 bg-t_white border-[0.2rem] border-[#e3e3e3] rounded-full text-center"
                 onChange={handleInputChange} />
             </div>
 
@@ -96,7 +96,7 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
                 type="text"
                 name="right"
                 value={right}
-                className="text-[#1b1b1b] dark:t_white hover:bg-[#e3e3e3] focus:bg-t_mustard mt-12 h-10 w-20 bg-t_white border-[0.2rem] border-[#e3e3e3] rounded-full text-center"
+                className="text-[#1b1b1b] dark:t_white hover:bg-[#e3e3e3] focus:bg-t_mustard mt-12 h-[35px] sm:h-10 w-20 bg-t_white border-[0.2rem] border-[#e3e3e3] rounded-full text-center"
                 onChange={handleInputChange} />
             </div>
           </div>
