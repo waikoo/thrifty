@@ -41,7 +41,7 @@ export default function SortByMini({ searchParams }: SortByMiniProps) {
         <div key={`sort-by-element-${i}`} >
 
           <div
-            className="whitespace-nowrap text-t_white p-2 px-10 relative"
+            className="whitespace-nowrap text-t_white p-2 sm:py-3 px-10 relative"
             data-value={el.dataValue}
             onClick={handleOnClick}
           >
