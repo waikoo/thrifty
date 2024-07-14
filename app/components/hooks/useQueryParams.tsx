@@ -52,7 +52,6 @@ export default function useQueryParams(type: string, elements: string[], searchP
   const [checkbox, setCheckbox] = useState(getParams(searchParamos, elements))
   useEffect(() => {
     setCheckbox(getParams(searchParamos, elements))
-    console.log(checkbox)
   }, [searchParamos])
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
