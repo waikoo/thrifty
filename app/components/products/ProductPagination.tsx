@@ -20,7 +20,7 @@ export default function ProductPagination({ productsLength }: ProductPaginationP
         scroll={false}
         className={hideOnNoPagination}
       >
-        <span className={`underline underline-offset-4 ${disabledStylePrev}`}>PREVIOUS</span>
+        <span className={`underline underline-offset-4 text-[11px] sm:text-[17px] xl:text-[14px] ${disabledStylePrev}`}>PREVIOUS</span>
       </Link>
 
       <div className="flex items-center gap-2">
@@ -49,7 +49,7 @@ export default function ProductPagination({ productsLength }: ProductPaginationP
       <Link href={getPath('next', queryParamPageValue, pages)}
         className={hideOnNoPagination}
       >
-        <span className={`underline underline-offset-4 ${disabledStyleNext}`}>NEXT</span>
+        <span className={`underline underline-offset-4 text-[11px] sm:text-[17px] xl:text-[14px] ${disabledStyleNext}`}>NEXT</span>
       </Link>
     </div>
   );
