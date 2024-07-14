@@ -12,13 +12,13 @@ type ProductAddToCartProps = {
 }
 
 export default function ProductAddToCart({ uuid, className, children }: ProductAddToCartProps) {
-  const { addToCart, cart, initCart } = useCartStore()
+  const { addToCart, removeFromCart, cart, initCart } = useCartStore()
 
   const isInCart = cart.includes(uuid)
   const inCartStyle = isInCart ? 'bg-t_black text-t_white hover:text-black' : 'bg-t_white text-t_black'
 
-  function addItemToCart(): void {
-    addToCart(uuid)
+  function addRemoveItemFromCart(): void {
+    isInCart ? removeFromCart(uuid) : addToCart(uuid)
   }
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function ProductAddToCart({ uuid, className, children }: ProductA
 
   return (
     <button className={tm(`bg-t_white text-[#3e3e3e] border-[#3e3e3e] hover:border-none hover:bg-[#e3e3e3] hover:text-black w-full cursor-pointer rounded-full border-[0.1rem] py-2 text-center text-[11px] sm:text-[15px] xl:text-[12px] text-nowrap ${inCartStyle} ${albert_700.className} ${className}`)}
-      onClick={addItemToCart}
+      onClick={addRemoveItemFromCart}
     >
       <span className="select-none">{!isInCart ? children : 'ADDED TO CART'}</span>
     </button>
