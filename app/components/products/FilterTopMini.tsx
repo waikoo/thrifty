@@ -1,4 +1,5 @@
 "use client"
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { HiOutlineArrowsUpDown } from "react-icons/hi2";
@@ -15,6 +16,7 @@ import { useUIStore } from "@/state/client/uiState"
 import usePosition from "@/app/components/hooks/usePosition";
 import useViewport from "@/app/components/hooks/useViewport";
 import { viewport } from "@/app/components/data/universalStyles";
+import SortByMini from "./SortByMini";
 
 type FilterTopMiniProps = {
   filteredMatchesTotal: number
@@ -31,6 +33,7 @@ export default function FilterTopMini({ filteredMatchesTotal, gender, lang, sear
   const currentViewport = useViewport()
   const iconSize = currentViewport < viewport.sm ? 22 : 18
   const useFixedOnTabletOnly = currentViewport > viewport.sm ? position : 'static'
+  const [showSortBy, setShowSortBy] = useState(false)
 
   async function openSavedFilters() {
     const { data: { user } } = await supabase.auth.getUser()
@@ -66,11 +69,14 @@ export default function FilterTopMini({ filteredMatchesTotal, gender, lang, sear
             </div>
           </div>
 
-          <div className="bg-t_mustard p-3 sm:p-3 sm:px-10 rounded-full sm:rounded-r-full sm:rounded-l-none cursor-pointer justify-self-start sm:justify-self-auto">
+          <div className="relative bg-t_mustard p-3 sm:p-3 sm:px-10 rounded-full sm:rounded-r-full sm:rounded-l-none cursor-pointer justify-self-start sm:justify-self-auto"
+            onClick={() => setShowSortBy(!showSortBy)}
+          >
             <div className="mx-auto flex items-center justify-center gap-2">
               <span className="whitespace-nowrap hidden sm:block">Sort By</span>
               <HiOutlineArrowsUpDown size={iconSize} className="min-w-4" />
             </div>
+            {showSortBy && <SortByMini {...{ searchParams }} />}
           </div>
 
         </div>
@@ -81,6 +87,7 @@ export default function FilterTopMini({ filteredMatchesTotal, gender, lang, sear
         </div>
 
         {showMiniFilters && <FilterControlsMini {... { gender, lang, searchParams, filteredMatchesTotal }} />}
+
       </div>
     </div>
   )
