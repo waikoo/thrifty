@@ -19,16 +19,15 @@ type FilterControlsMiniProps = {
 }
 
 export default function FilterControlsMini({ lang, gender, searchParams, filteredMatchesTotal }: FilterControlsMiniProps) {
-  const { showMiniFilters, setShowMiniFilters } = useFilterStore()
-  const [loadingProducts, setLoadingProducts] = useState(false)
+  const { showMiniFilters, setShowMiniFilters, isFilteringProducts, setIsFilteringProducts } = useFilterStore()
 
   function closeFilters() {
     setShowMiniFilters(false)
   }
 
   useEffect(() => {
-    setLoadingProducts(false)
-  }, [searchParams])
+    setIsFilteringProducts(false)
+  }, [searchParams, setIsFilteringProducts])
 
   return (
     <Portal>
@@ -53,9 +52,7 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
           />
         </div>
 
-        <div className="p-5 sm:pt-10 bg-t_white"
-          onClick={() => setLoadingProducts(true)}
-        >
+        <div className="p-5 sm:pt-10 bg-t_white" >
           <FilterControls {...{ searchParams }}
             className="flex w-full overflow-y-scroll"
             hideSaveFilter={true}
@@ -73,7 +70,9 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
             <button className="bg-t_black text-t_white sm:py-4 rounded-full w-1/2"
               onClick={closeFilters}
             >
-              {loadingProducts ? <Spinner size={20} /> : `VIEW ${filteredMatchesTotal} RESULTS`}
+              {isFilteringProducts
+                ? <Spinner size={20} />
+                : `VIEW ${filteredMatchesTotal} RESULTS`}
             </button>
           </div>
         </div>

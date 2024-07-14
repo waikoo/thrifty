@@ -3,7 +3,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
 import { FilterSearch, FilterTitle } from "@/app/components/products"
 import { useFilterSearch, useQueryParams } from "@/app/components/hooks"
-import { useFilterTitleStore } from "@/state/client/filterState"
+import { useFilterStore, useFilterTitleStore } from "@/state/client/filterState"
 import { albert_500, albert_600 } from "@/utils/fonts"
 
 type FilterCheckboxProps = {
@@ -17,6 +17,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
   const { setSearchValue, filteredItems } = useFilterSearch(elements)
   const [searchParamos, pathname, router] = [useSearchParams(), usePathname(), useRouter()]
   const { checkbox, onCheckboxChange, updateQueryParams } = useQueryParams(type, elements, searchParamos, router, pathname)
+  const { setIsFilteringProducts } = useFilterStore()
 
   return (
     <div>
@@ -27,7 +28,10 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
 
           {search && <FilterSearch setSearchValue={setSearchValue} type={type} />}
 
-          <fieldset onChange={updateQueryParams} className="flex flex-col max-h-[300px] xl:max-h-[200px] overflow-y-scroll scrollbar-thin scrollbar-thumb-black scrollbar-track-t_white">
+          <fieldset
+            onChange={updateQueryParams}
+            className="flex flex-col max-h-[300px] xl:max-h-[200px] overflow-y-scroll scrollbar-thin scrollbar-thumb-black scrollbar-track-t_white"
+          >
 
             {filteredItems.map((element, i) => {
               const lowerCaseName = type.toLowerCase()
@@ -38,6 +42,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
                 <label
                   htmlFor={`${lowerCaseName}-${i}`}
                   className={`flex select-none gap-2 text-[13px] sm:text-[17px] xl:text-[14px] mt-[0.375rem] ${boldStyle}`}
+                  onClick={() => setIsFilteringProducts(true)}
                   key={`${lowerCaseName}-${i}`}>
                   <input
                     type="checkbox"

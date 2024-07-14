@@ -1,6 +1,7 @@
 import { albert_500 } from "@/utils/fonts"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useFilterStore } from "@/state/client/filterState"
 
 type FilterColorItemProps = {
   color: string
@@ -8,6 +9,7 @@ type FilterColorItemProps = {
 }
 
 export default function FilterColorItem({ color, type }: FilterColorItemProps) {
+  const { setIsFilteringProducts } = useFilterStore()
 
   const pathname = usePathname()
   const searchParamos = useSearchParams()
@@ -15,6 +17,7 @@ export default function FilterColorItem({ color, type }: FilterColorItemProps) {
   const lowercaseColor = color.toLowerCase()
 
   const handleOnChange = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsFilteringProducts(true)
     const newParams = new URLSearchParams(searchParamos);
     const value = (e.currentTarget as HTMLDivElement).dataset.color!;
     const queryParamCategory = lowerCaseSpaceToDash(type)

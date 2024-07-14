@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { FilterTitle } from "@/app/components/products"
 import { useFilterSearch } from "@/app/components/hooks"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
-import { useFilterTitleStore } from "@/state/client/filterState"
+import { useFilterTitleStore, useFilterStore } from "@/state/client/filterState"
 import { albert_500 } from "@/utils/fonts"
 
 type FilterSizeProps = {
@@ -16,6 +16,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
   const isExpanded = useFilterTitleStore((state) => state.expandedFilters.includes(type))
   const { filteredItems } = useFilterSearch(sizes)
   const [pathname, router, searchParamos] = [usePathname(), useRouter(), useSearchParams()]
+  const { setIsFilteringProducts } = useFilterStore()
 
   const handleOnChange = (e: React.ChangeEvent<HTMLFieldSetElement> | React.MouseEvent<HTMLFieldSetElement>) => {
     const newParams = new URLSearchParams(searchParamos);
@@ -63,6 +64,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
                 <div
                   key={`sizes-${i}`}
                   data-value={size}
+                  onClick={() => setIsFilteringProducts(true)}
                   className={`grid cursor-pointer place-items-center border-[0.1rem] p-3 text-[13px] sm:text-[16px] xl:text-[13px] focus:bg-t_mustard rounded-[5px] ${albert_500.className} ${colorOnClick}`}
                 >
                   {size}</div>

@@ -23,6 +23,8 @@ type FilterStore = {
   setHideFilters: (value: boolean | (boolean)) => void
   showMiniFilters: boolean
   setShowMiniFilters: (value: boolean) => void
+  isFilteringProducts: boolean
+  setIsFilteringProducts: (value: boolean) => void
 }
 
 export const useFilterStore = create<FilterStore>((set, get) => ({
@@ -158,6 +160,8 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
   setHideFilters: (value) => set({ hideFilters: value }),
   showMiniFilters: false,
   setShowMiniFilters: (value: boolean) => set({ showMiniFilters: value }),
+  isFilteringProducts: false,
+  setIsFilteringProducts: (value: boolean) => set({ isFilteringProducts: value }),
 }))
 
 type TFilterTitleState = {

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
-import { useFilterTitleStore } from "@/state/client/filterState"
+import { useFilterTitleStore, useFilterStore } from "@/state/client/filterState"
 import { FilterTitle } from "@/app/components/products"
 import { useDbMinMaxValues, useFilterSlider } from "@/app/components/hooks"
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
@@ -21,6 +21,7 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
   useDbMinMaxValues(type, setLeft, setRight, left, right) // load initial min & max values from database for price & discount filters
   const { handleLeftChange, handleRightChange, handleInputChange } = useFilterSlider(setLeft, setRight, left, right)
   const [pathname, router, searchParams] = [usePathname(), useRouter(), useSearchParams()]
+  const { setIsFilteringProducts } = useFilterStore()
 
   useEffect(() => { // set default values from URL
     const existingParams = new URLSearchParams(searchParams)
@@ -31,6 +32,7 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
       setLeft(Number(existingValues[0]))
       setRight(Number(existingValues[1]))
     }
+    setIsFilteringProducts(true)
   }, [])
 
   function onMouseOrKeyUpHandler(e: React.MouseEvent | React.KeyboardEvent): void {
