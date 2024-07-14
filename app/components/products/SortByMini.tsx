@@ -38,9 +38,9 @@ export default function SortByMini({ searchParams }: SortByMiniProps) {
     <div className="absolute right-0 top-14 z-[100] bg-t_black/85 rounded-[10px] text-[13px] sm:text-[17px] sm:w-[275px]">
 
       {sortByElements.map((el, i) => (
-        <>
+        <div key={`sort-by-element-${i}`} >
+
           <div
-            key={`sort-by-element-${i}`}
             className="whitespace-nowrap text-t_white p-2 px-10 relative"
             data-value={el.dataValue}
             onClick={handleOnClick}
@@ -50,8 +50,10 @@ export default function SortByMini({ searchParams }: SortByMiniProps) {
             )}
             {el.textContent}
           </div>
+
           <div className="bg-[#f2f2f2]/20 h-[0.5px] w-full" />
-        </>
+
+        </div>
       ))}
     </div>
   )
