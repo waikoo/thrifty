@@ -1,4 +1,6 @@
 "use client"
+import { useEffect, useState } from "react";
+
 import FilterSideControls from "@/app/components/products/FilterSideControls";
 import Portal from "@/app/components/generic/Portal";
 import { Gender, Locales } from "@/types/link";
@@ -7,8 +9,7 @@ import FilterControls from "@/app/components/products/FilterControls";
 import { albert_500, albert_800 } from "@/utils/fonts";
 import SaveFilterButton from "@/app/components/products/SaveFilterButton";
 import MiniCross from "@/app/components/products/MiniCross";
-import Spinner from "../generic/Spinner";
-import { useEffect, useState } from "react";
+import Spinner from "@/app/components/generic/Spinner";
 
 type FilterControlsMiniProps = {
   lang: Locales
@@ -72,7 +73,7 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
             <button className="bg-t_black text-t_white sm:py-4 rounded-full w-1/2"
               onClick={closeFilters}
             >
-              {loadingProducts ? <Spinner /> : `VIEW ${filteredMatchesTotal} RESULTS`}
+              {loadingProducts ? <Spinner size={20} /> : `VIEW ${filteredMatchesTotal} RESULTS`}
             </button>
           </div>
         </div>

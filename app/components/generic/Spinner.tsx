@@ -1,4 +1,8 @@
-function Spinner() {
+type SpinnerProps = {
+  size?: number
+}
+
+function Spinner({ size = 50 }: SpinnerProps) {
 
   return (
     <svg
@@ -9,8 +13,8 @@ function Spinner() {
         // DarkreaderInlineBgimage: "initial",
         // DarkreaderInlineBgcolor: "#0f1314",
       }}
-      width="50"
-      height="50"
+      width={size}
+      height={size}
       display="block"
       preserveAspectRatio="xMidYMid"
       viewBox="0 0 100 100"
