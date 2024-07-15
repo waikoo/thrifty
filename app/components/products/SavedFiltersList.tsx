@@ -17,7 +17,7 @@ type SavedFiltersListProps = {
 
 export default function SavedFiltersList({ }: SavedFiltersListProps) {
   const [savedFilters, setSavedFilters] = useState<TSavedFilters[]>([] as TSavedFilters[])
-  const [showOptions, setShowOptions] = useState(false)
+  const [showOptions, setShowOptions] = useState<{ [key: string]: boolean }>({})
   const { setShowSavedFiltersPopup, getFilterFromDb } = useFilterStore()
   const { session } = useUserSession()
   const [router, pathname] = [useRouter(), usePathname()]
@@ -53,9 +53,12 @@ export default function SavedFiltersList({ }: SavedFiltersListProps) {
     })
   }, [])
 
-  const handleShowOptions = (e: React.MouseEvent<SVGElement>) => {
+  const handleShowOptions = (e: React.MouseEvent<SVGElement>, filterId: string) => {
     e.stopPropagation()
-    setShowOptions(!showOptions)
+    setShowOptions(prev => ({
+      ...prev,
+      [filterId]: !prev[filterId]
+    }))
   }
 
   async function handleRunFilter(e: React.MouseEvent<HTMLDivElement>, filterId: string) {
@@ -69,38 +72,41 @@ export default function SavedFiltersList({ }: SavedFiltersListProps) {
     router.push(`${pathname}?${newParams}`);
   }
 
-  return savedFilters ? savedFilters.map((filter, index) => (
-    <div key={filter.name}
-      onClick={(e) => handleRunFilter(e, filter.filterId)}
-      className="mt-5 cursor-pointer"
-      title="Select Filter"
-    >
-      <div className="flex justify-between">
-        <p key={index} className={`py-0 text-[13px] sm:text-[17px] xl:text-[14px] ${albert_500.className}`}>
-          {filter.name}
-        </p>
+  return savedFilters ? savedFilters.map((filter, index) => {
 
-        <div className="flex gap-2" >
-          <div ref={optionsRef} >
-            <BsThreeDotsVertical
-              color={color}
-              onClick={(e: React.MouseEvent<SVGElement>) => handleShowOptions(e)}
-              className="cursor-pointer"
-              title={showOptions ? "Collapse" : "Expand"}
-            />
+    return (
+      <div key={filter.name}
+        onClick={(e) => handleRunFilter(e, filter.filterId)}
+        className="mt-5 cursor-pointer"
+        title="Select Filter"
+      >
+        <div className="flex justify-between">
+          <p key={index} className={`py-0 text-[13px] sm:text-[17px] xl:text-[14px] ${albert_500.className}`}>
+            {filter.name}
+          </p>
+
+          <div className="flex gap-2" >
+            <div ref={optionsRef} >
+              <BsThreeDotsVertical
+                color={color}
+                onClick={(e: React.MouseEvent<SVGElement>) => handleShowOptions(e, filter.filterId)}
+                className="cursor-pointer"
+                title={showOptions[filter.filterId] ? "Collapse" : "Expand"}
+              />
+            </div>
+
+            {showOptions[filter.filterId] && (
+              <SavedFiltersListOptions
+                filter={filter}
+                color={color}
+                client_id={client_id}
+              />
+            )}
           </div>
-
-          {showOptions && (
-            <SavedFiltersListOptions
-              filter={filter}
-              color={color}
-              client_id={client_id}
-            />
-          )}
         </div>
       </div>
-    </div>
-  )) : (
+    )
+  }) : (
     <p className={`mt-3 text-t_black dark:text-t_white text-center text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}></p>
   )
 }
