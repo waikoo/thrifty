@@ -9,6 +9,8 @@ import Portal from "@/app/components/generic/Portal";
 import SavedFilters from "@/app/components/products/SavedFilters";
 import { useFilterStore } from "@/state/client/filterState";
 import { albert_500 } from "@/utils/fonts";
+import { supabase } from "@/app/supabase";
+import { useUIStore } from "@/state/client/uiState"
 
 type FilterTopProps = {
   gender: Gender
@@ -21,6 +23,7 @@ export default function FilterTop({ gender, lang, className }: FilterTopProps) {
   const hideOrShowFiltersText = !hideFilters ? 'Hide Filters' : 'Show Filters'
   const [position, setPosition] = useState('static')
   const positionBasedStyles = position === 'static' ? 'justify-between' : 'justify-around px-20 py-2 '
+  const { showSignIn, setShowSignIn } = useUIStore()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +43,16 @@ export default function FilterTop({ gender, lang, className }: FilterTopProps) {
     setHideFilters(!hideFilters)
   }
 
+  const handleSavedFilters = async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
+      setShowSignIn(true)
+      return
+    }
+    setShowSavedFiltersPopup(true)
+  }
+
   return (
     <section className={`bg-t_white dark:bg-t_black ${position} left-[1vw] right-[1vw] top-0 z-50 ${className}`}>
       <div className={`flex items-baseline ${positionBasedStyles}`}>
@@ -52,7 +65,8 @@ export default function FilterTop({ gender, lang, className }: FilterTopProps) {
             <IconHideFilters />
           </div>
 
-          <div className="flex cursor-pointer justify-center gap-2" onClick={() => setShowSavedFiltersPopup(true)}>
+          <div className="flex cursor-pointer justify-center gap-2"
+            onClick={handleSavedFilters}>
             <span className="">Saved Filters</span>
             <IconSavedFilters />
           </div>
