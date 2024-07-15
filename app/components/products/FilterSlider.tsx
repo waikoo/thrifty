@@ -35,7 +35,7 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
     setIsFilteringProducts(true)
   }, [])
 
-  function onMouseOrKeyUpHandler(e: React.MouseEvent | React.KeyboardEvent): void {
+  function onMouseOrKeyUpHandler(): void {
     const newParams = new URLSearchParams(searchParams)
     const queryParamCategory = lowerCaseSpaceToDash(type)
 
@@ -56,6 +56,7 @@ export default function FilterSlider({ type, start, end }: FilterSliderProps) {
         <div className="w-full">
           <div className="slider relative flex"
             onMouseUp={onMouseOrKeyUpHandler}
+            onTouchEnd={onMouseOrKeyUpHandler}
           >
             <input
               type="range"
