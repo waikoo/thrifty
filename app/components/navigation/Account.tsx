@@ -1,8 +1,13 @@
 "use client"
+import { usePathname, useRouter } from "next/navigation"
+
 import { useUserSession } from "@/app/components/hooks"
 import { useUIStore } from "@/state/client/uiState"
 import { IconAccount } from '@/app/components/navigation/icons/'
-import useMouseLeave from "../hooks/useMouseLeave"
+import useMouseLeave from "@/app/components/hooks/useMouseLeave"
+import getLangAndGender from "@/utils/getLangAndGender"
+import { viewport } from "../data/universalStyles"
+import useViewport from "../hooks/useViewport"
 
 type AccountProps = {
   testid: 'mobile-account' | 'desktop-account'
@@ -12,8 +17,20 @@ export default function Account({ testid }: AccountProps) {
   const { session, isAdmin, error } = useUserSession()
   const { showMyAccount, setShowMyAccount, showSignIn, setShowSignIn, showRecovery } = useUIStore()
   const { handleMouseMove, getDirection, lastMousePosition } = useMouseLeave()
+  const [pathname, router] = [usePathname(), useRouter()]
+  const { lang, gender } = getLangAndGender(pathname)
+  const currentViewport = useViewport()
+
+  const handleClick = () => {
+    if (session) {
+      router.push(`/${lang}/${gender}/profile`)
+    } else {
+      setShowSignIn(true)
+    }
+  }
 
   const handleMouseEnter = () => {
+    if (currentViewport < viewport.xl) return
     if (session) setShowMyAccount(true)
   }
 
@@ -38,9 +55,7 @@ export default function Account({ testid }: AccountProps) {
     <div className="relative">
       <div
         title={getTitle(testid)}
-        onClick={() => !session
-          ? setShowSignIn(!showSignIn)
-          : setShowMyAccount(!showMyAccount)}
+        onClick={handleClick}
         onMouseOver={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
