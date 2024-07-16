@@ -26,18 +26,15 @@ export default async function Page({ params: { lang, gender, productId }, search
   const matchedProduct: ProductItemType = matched
 
   return (
-    <>
-      <ProductBreadcrumb {...{ matchedProduct }} />
-      <main className="bg-bkg text-content mx-auto px-20 pt-10 lg:max-w-[1500px]">
-        <section className="flex gap-10">
-          <ProductImages matchedProduct={matchedProduct} />
-          <ProductInfo matchedProduct={matchedProduct} />
-          <ProductFavoriteAndShare matchedProduct={matchedProduct} />
+    <main className="bg-t_white dark:bg-t_black text-t_black dark:text-t_white mx-auto pt-2">
+      <section className="flex gap-10">
+        <ProductImages matchedProduct={matchedProduct} />
+        <ProductInfo matchedProduct={matchedProduct} />
+        {/* <ProductFavoriteAndShare matchedProduct={matchedProduct} /> */}
 
-        </section>
-        <ProductRecommendations matchedProduct={matchedProduct} />
-      </main>
-    </>
+      </section>
+      <ProductRecommendations matchedProduct={matchedProduct} />
+    </main>
   )
 }
 
