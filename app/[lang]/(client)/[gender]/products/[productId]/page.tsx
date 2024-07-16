@@ -6,6 +6,7 @@ import ProductImages from "@/app/components/products/ProductImages"
 import { ProductInfo } from "@/app/components/products/ProductInfo"
 import ProductRecommendations from "@/app/components/products/ProductRecommendations"
 import ProductFavoriteAndShare from "@/app/components/products/ProductFavoriteAndShare"
+import ProductImagesMini from "@/app/components/products/ProductImagesMini"
 
 type PageProps = {
   params: {
@@ -27,13 +28,19 @@ export default async function Page({ params: { lang, gender, productId }, search
 
   return (
     <main className="bg-t_white dark:bg-t_black text-t_black dark:text-t_white mx-auto pt-2">
+      <ProductImagesMini
+        matchedProduct={matchedProduct}
+        className="xl:hidden" />
       <section className="flex gap-10">
-        <ProductImages matchedProduct={matchedProduct} />
+        <ProductImages
+          matchedProduct={matchedProduct}
+          className="hidden xl:grid" />
+
         <ProductInfo matchedProduct={matchedProduct} />
         {/* <ProductFavoriteAndShare matchedProduct={matchedProduct} /> */}
 
       </section>
-      <ProductRecommendations matchedProduct={matchedProduct} />
+      {/* <ProductRecommendations matchedProduct={matchedProduct} /> */}
     </main>
   )
 }

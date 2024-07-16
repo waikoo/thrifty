@@ -7,9 +7,10 @@ import ProductImagesCarousel from "@/app/components/products/ProductImagesCarous
 
 type ProductImagesProps = {
   matchedProduct: ProductItemType
+  className: string
 }
 
-export default function ProductImages({ matchedProduct }: ProductImagesProps) {
+export default function ProductImages({ matchedProduct, className }: ProductImagesProps) {
   const [showCarousel, setShowCarousel] = useState(false)
   const [startIndex, setStartIndex] = useState(0)
 
@@ -20,7 +21,7 @@ export default function ProductImages({ matchedProduct }: ProductImagesProps) {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-[3px] w-[75%]">
+    <div className={`${className} grid-cols-2 gap-[3px] w-[75%]`}>
 
       {matchedProduct.img_url.map((img: string, index: number) => (
         <div

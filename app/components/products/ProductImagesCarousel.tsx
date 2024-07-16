@@ -1,9 +1,9 @@
 "use client"
-
-import { ProductItemType } from "@/types/productItem"
-import Portal from "../generic/Portal"
-import { RxCross2 } from "react-icons/rx"
 import { useEffect, useState } from "react"
+import Image from 'next/image'
+
+import { RxCross2 } from "react-icons/rx"
+
 import {
   Carousel,
   CarouselContent,
@@ -12,7 +12,9 @@ import {
   CarouselPrevious,
 } from "@/app/components/ui/carousel"
 
-import Image from 'next/image'
+import { ProductItemType } from "@/types/productItem"
+import Portal from "@/app/components/generic/Portal"
+
 
 type ProductImagesCarouselProps = {
   matchedProduct: ProductItemType
