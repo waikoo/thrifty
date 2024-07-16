@@ -3,7 +3,7 @@
 import { ProductItemType } from "@/types/productItem"
 import Portal from "../generic/Portal"
 import { RxCross2 } from "react-icons/rx"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import {
   Carousel,
   CarouselContent,
@@ -21,6 +21,9 @@ type ProductImagesCarouselProps = {
 }
 
 export default function ProductImagesCarousel({ matchedProduct, setShowCarousel, startIndex }: ProductImagesCarouselProps) {
+  const [isZoomedIn, setIsZoomedIn] = useState(false)
+  const cursor = isZoomedIn ? 'cursor-zoom-out' : 'cursor-zoom-in'
+  const zoom = isZoomedIn ? 'transform scale-150' : 'transform scale-100'
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -47,7 +50,7 @@ export default function ProductImagesCarousel({ matchedProduct, setShowCarousel,
             {matchedProduct.img_url.map((img_src, i) => (
               <CarouselItem
                 key={`single-product-img-${img_src}`}
-                className=""
+                className={`${zoom}`}
               >
                 <div className="w-full mx-auto">
                   <Image
@@ -55,7 +58,8 @@ export default function ProductImagesCarousel({ matchedProduct, setShowCarousel,
                     alt={`${matchedProduct.color} ${matchedProduct.brand} ${matchedProduct.type}`}
                     width={100}
                     height={100}
-                    className="h-screen w-auto block mx-auto"
+                    className={`h-screen w-auto block mx-auto ${cursor}`}
+                    onClick={() => setIsZoomedIn(!isZoomedIn)}
                   />
                 </div>
 
