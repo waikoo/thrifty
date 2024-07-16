@@ -41,7 +41,7 @@ const SignInOrUp = () => {
       onClick={handleOutsideClick}
       ref={dialogRef}
     >
-      <section className="h-screen sm:h-auto sm:w-[500px] xl:w-auto bg-t_white dark:bg-t_dark relative flex flex-col justify-center gap-2 pt-10 pb-6 rounded-0 sm:rounded-[2.1875rem] border-[0.625rem] border-t_mustard text-[0.8125rem] sm:text-[1.0625rem] xl:*:text-[0.875rem] z-[60]">
+      <section className="h-screen sm:h-auto sm:w-[500px] xl:w-auto bg-t_white dark:bg-t_dark relative flex flex-col justify-start gap-2 pt-10 pb-6 rounded-0 sm:rounded-[2.1875rem] border-[0.625rem] border-t_mustard text-[0.8125rem] sm:text-[1.0625rem] xl:*:text-[0.875rem] z-[60]">
         <span className="absolute right-6 top-3  cursor-pointer"
           onClick={() => setShowSignIn(false)}>
           <RxCross2 color={theme === 'light' ? "black" : 'white'}
