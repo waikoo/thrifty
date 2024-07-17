@@ -1,11 +1,9 @@
 import { useSupabaseServer } from "@/app/components/hooks/serverIndex"
-import ProductBreadcrumb from "@/app/components/products/ProductBreadcrumb"
 import { Gender, Locales } from "@/types/link"
 import { ProductItemType } from "@/types/productItem"
 import ProductImages from "@/app/components/products/ProductImages"
 import { ProductInfo } from "@/app/components/products/ProductInfo"
 import ProductRecommendations from "@/app/components/products/ProductRecommendations"
-import ProductFavoriteAndShare from "@/app/components/products/ProductFavoriteAndShare"
 import ProductImagesMini from "@/app/components/products/ProductImagesMini"
 
 type PageProps = {
@@ -31,13 +29,12 @@ export default async function Page({ params: { lang, gender, productId }, search
       <ProductImagesMini
         matchedProduct={matchedProduct}
         className="xl:hidden" />
-      <section className="flex gap-10">
+      <section className="flex gap-5">
         <ProductImages
           matchedProduct={matchedProduct}
           className="hidden xl:grid" />
 
         <ProductInfo matchedProduct={matchedProduct} />
-        {/* <ProductFavoriteAndShare matchedProduct={matchedProduct} /> */}
 
       </section>
       {/* <ProductRecommendations matchedProduct={matchedProduct} /> */}

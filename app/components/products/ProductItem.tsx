@@ -56,7 +56,13 @@ export default function ProductItem({ product, index, lang, gender, className, s
         </div>
       </div>
 
-      <ProductAddToCart uuid={uuid}>ADD TO CART</ProductAddToCart>
+      <ProductAddToCart
+        uuid={uuid}
+        className="border-[#3e3e3e] xl:hover:border-none xl:hover:bg-[#e3e3e3] xl:hover:text-black"
+        bgColor="bg-t_white"
+        textColor="text-[#3e3e3e]"
+      >ADD TO CART
+      </ProductAddToCart>
     </div>
   )
 }

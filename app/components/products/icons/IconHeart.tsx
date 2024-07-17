@@ -4,7 +4,7 @@ type IconHeartProps = {
 }
 
 function IconHeart({ className, isFavorited }: IconHeartProps) {
-  const color = isFavorited ? 'red' : '#fff'
+  const color = isFavorited ? 'black' : 't_mustard'
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
-import { BsShareFill } from "react-icons/bs";
+import { FiShare2 } from "react-icons/fi";
 
 import IconHeart from "@/app/components/products/icons/IconHeart"
 import { ProductItemType } from "@/types/productItem";
@@ -39,13 +39,13 @@ export default function ProductFavoriteAndShare({ matchedProduct }: ProductFavor
   }, [favorites])
 
   return (
-    <div className="flex gap-6 self-start pl-20">
-      <div className="bg-content border-grey cursor-pointer p-2" onClick={handleFavorite}>
+    <div className="flex gap-2 self-start">
+      <div className="bg-t_mustard hover:bg-[#C9CC2C] border-none cursor-pointer rounded-full p-2" onClick={handleFavorite}>
         <IconHeart isFavorited={isFavorited} />
       </div>
 
-      <div className="bg-content border-grey p-2">
-        <BsShareFill className="" color="black" />
+      <div className="bg-t_mustard hover:bg-[#C9CC2C] cursor-pointer border-grey p-2 rounded-full">
+        <FiShare2 color="black" />
       </div>
     </div>
   )

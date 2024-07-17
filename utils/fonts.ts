@@ -3,6 +3,7 @@ import { Zen_Tokyo_Zoo } from 'next/font/google';
 import { Rock_Salt } from 'next/font/google';
 import localFont from 'next/font/local';
 
+export const albert_300 = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '300' })
 export const albert = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '400' })
 export const albert_500 = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '500' })
 export const albert_600 = Albert_Sans({ subsets: ['latin'], display: 'swap', weight: '600' })
