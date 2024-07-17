@@ -27,14 +27,13 @@ export default function ProductImages({ matchedProduct, className }: ProductImag
         <div
           className="cursor-pointer focus:outline-rose-50"
           key={`productImages-${index}`}>
-          <Image
+          <img
             className="block aspect-square w-full h-full object-cover object-bottom"
             src={img}
             alt={`${matchedProduct.color} ${matchedProduct.brand} ${matchedProduct.type}`} width={100}
-            height={100}
             onClick={onClickHandler}
             data-index={index}
-            priority={true} />
+          />
         </div>
       ))}
 
