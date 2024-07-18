@@ -20,7 +20,7 @@ export default function ProductImagesMini({ className, matchedProduct }: Product
   return (
     <div className={`${className} w-screen`}>
 
-      <Carousel className="mx-auto w-[80%] sm:w-[90%]"
+      <Carousel className="mx-auto w-full overflow-hidden"
         opts={{ loop: true }}
       >
         <CarouselContent className="">
@@ -28,7 +28,7 @@ export default function ProductImagesMini({ className, matchedProduct }: Product
           {matchedProduct.img_url.map((img_src, i) => (
             <CarouselItem
               key={`single-product-img-${img_src}`}
-              className={``}
+              className={`mx-auto`}
             >
               <div className="w-full mx-auto">
                 <img

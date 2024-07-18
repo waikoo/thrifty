@@ -15,11 +15,11 @@ export const ProductInfoItem = ({ category, children, className, inverse = false
 
   return (
     <div className={`flex items-baseline gap-2 ${className}`}>
-      <span className={`${inverse1} xl:text-[15px] ${albert_500.className} ${categoryColor}`}>
+      <span className={`${inverse1} text-[13px] sm:text-[17px] xl:text-[15px] ${albert_500.className} ${categoryColor}`}>
         {category}:
       </span>
 
-      <span className={`${inverse2} xl:text-[15px] ${valueWeight}`}>
+      <span className={`${inverse2} text-[13px] sm:text-[17px] xl:text-[15px] ${valueWeight}`}>
         {children}
       </span>
     </div>

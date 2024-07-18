@@ -1,11 +1,16 @@
 "use client"
-import { albert, albert_500, albert_600, albert_700 } from "@/utils/fonts"
-import getLangAndGender from "@/utils/getLangAndGender"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { useState } from "react"
 
-export default function ProductShippingReturnsInfo() {
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { albert, albert_500, albert_600, albert_700 } from "@/utils/fonts"
+import getLangAndGender from "@/utils/getLangAndGender"
+
+type ProductShippingReturnsInfoProps = {
+  className: string
+}
+
+export default function ProductShippingReturnsInfo({ className }: ProductShippingReturnsInfoProps) {
   const pathname = usePathname()
   const { lang, gender } = getLangAndGender(pathname)
   const [info, setInfo] = useState('shipping')
@@ -15,13 +20,13 @@ export default function ProductShippingReturnsInfo() {
   const returnsStyle = info === 'returns' ? selectedStyles : unselectedStyles
 
   return (
-    <div className="pt-8">
-      <div className="flex w-full justify-between">
-        <span className={`cursor-pointer xl:text-[14px] ${shippingStyle}`} onClick={() => setInfo('shipping')}>SHIPPING INFO</span>
-        <span className={`cursor-pointer xl:text-[14px] ${returnsStyle}`} onClick={() => setInfo('returns')}>RETURNS INFO</span>
+    <div className={`${className} pt-8 w-full whitespace-nowrap min-w-[280px] sm:min-w-[330px]`}>
+      <div className={`flex w-full gap-3 justify-between`}>
+        <span className={`cursor-pointer text-[13px] sm:text-[17px] xl:text-[14px] ${shippingStyle}`} onClick={() => setInfo('shipping')}>SHIPPING INFO</span>
+        <span className={`cursor-pointer text-[13px] sm:text-[17px] xl:text-[14px] ${returnsStyle}`} onClick={() => setInfo('returns')}>RETURNS INFO</span>
       </div>
 
-      <div className="bg-[#f2f2f2] xl:text-[12px] text-t_black dark:text-t_white mt-2 h-[7.8rem] p-5 relative">
+      <div className="bg-[#f2f2f2] text-[12px] sm:text-[16px] xl:text-[12px] text-t_black dark:text-t_white mt-2 p-5 relative min-w-[280px] sm:min-w-[330px]">
         {info === 'shipping' ? (
           <div className="flex flex-col gap-3">
             <p className="flex gap-1">
@@ -46,10 +51,12 @@ export default function ProductShippingReturnsInfo() {
           </p>
         )}
 
-        <Link href={`/${lang}/${gender}/help?section=1`}
-          className={`${albert_500.className} absolute cursor-pointer text-right underline underline-offset-4 bottom-3 right-3`}>
-          More Info
-        </Link>
+        <p className="text-right">
+          <Link href={`/${lang}/${gender}/help?section=1`}
+            className={`${albert_500.className} m-0 cursor-pointer ml-auto underline underline-offset-4`}>
+            More Info
+          </Link>
+        </p>
       </div>
 
     </div>

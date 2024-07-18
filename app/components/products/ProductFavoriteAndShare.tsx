@@ -40,11 +40,11 @@ export default function ProductFavoriteAndShare({ matchedProduct }: ProductFavor
 
   return (
     <div className="flex gap-2 self-start">
-      <div className="bg-t_mustard hover:bg-[#C9CC2C] border-none cursor-pointer rounded-full p-2" onClick={handleFavorite}>
+      <div className="bg-t_mustard hover:bg-[#C9CC2C] border-none cursor-pointer rounded-full sm:p-3 p-2 h-auto w-auto" onClick={handleFavorite}>
         <IconHeart isFavorited={isFavorited} />
       </div>
 
-      <div className="bg-t_mustard hover:bg-[#C9CC2C] cursor-pointer border-grey p-2 rounded-full">
+      <div className="bg-t_mustard hover:bg-[#C9CC2C] cursor-pointer border-grey sm:p-3 p-2 rounded-full">
         <FiShare2 color="black" />
       </div>
     </div>

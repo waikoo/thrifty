@@ -29,7 +29,7 @@ export default async function Page({ params: { lang, gender, productId }, search
       <ProductImagesMini
         matchedProduct={matchedProduct}
         className="xl:hidden" />
-      <section className="flex gap-5">
+      <section className="flex gap-16">
         <ProductImages
           matchedProduct={matchedProduct}
           className="hidden xl:grid" />
