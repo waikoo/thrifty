@@ -55,11 +55,9 @@ export default function ProductImagesCarousel({ matchedProduct, setShowCarousel,
                 className={`${zoom}`}
               >
                 <div className="w-full mx-auto">
-                  <Image
+                  <img
                     src={img_src}
                     alt={`${matchedProduct.color} ${matchedProduct.brand} ${matchedProduct.type}`}
-                    width={100}
-                    height={100}
                     className={`h-screen w-auto block mx-auto ${cursor}`}
                     onClick={() => setIsZoomedIn(!isZoomedIn)}
                   />
