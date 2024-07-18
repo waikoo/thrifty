@@ -21,9 +21,13 @@ export default function WithHome({ className, children }: withHomeProps) {
   useEffect(() => {
 
     const getUserId = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
+      const { error, data } = await supabase.auth.getUser()
 
-      return user?.id
+      if (error) {
+        console.log(error)
+      } else {
+        return data.user?.id
+      }
     }
 
     const getGenderPreference = async () => {
