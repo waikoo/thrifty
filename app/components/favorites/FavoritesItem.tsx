@@ -62,7 +62,14 @@ export default function FavoritesItem({ product }: CartItemType) {
       </div>
 
       <div className="row col-start-4 col-end-7 row-start-4 row-end-5 flex items-center gap-2 justify-self-center">
-        <ProductAddToCart uuid={product.uuid} className="p-4">{text}</ProductAddToCart>
+        <ProductAddToCart
+          uuid={product.uuid}
+          className="p-4"
+          bgColor="xl:hover:bg-[#e2e2e2]"
+          textColor="text-t_black"
+        >
+          {text}
+        </ProductAddToCart>
       </div>
     </div>
   )
