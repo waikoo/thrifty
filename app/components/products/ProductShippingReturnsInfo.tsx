@@ -30,7 +30,7 @@ export default function ProductShippingReturnsInfo({ className }: ProductShippin
         {info === 'shipping' ? (
           <div className="flex flex-col gap-3">
             <p className="flex gap-1">
-              <strong className={`${albert_700.className}`}>€5</strong>
+              <strong className={`${albert_700.className}`}>€15</strong>
               <span className={`${albert.className}`}>STANDARD DELIVERY (2-4 DAYS)</span>
             </p>
 
