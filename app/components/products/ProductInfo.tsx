@@ -28,7 +28,7 @@ export const ProductInfo = ({ matchedProduct }: ProductInfoProps) => {
             </span>
           </div>
 
-          <span className={`mb-4 pt-2 pb-6 text-[20px] sm:text-[36px] xl:text-[22px] ${albert_900.className}`}>
+          <span className={`pb-8 text-[20px] sm:text-[36px] xl:text-[22px] ${albert_900.className}`}>
             {EURO}{matchedProduct.price}
           </span>
 
@@ -40,27 +40,30 @@ export const ProductInfo = ({ matchedProduct }: ProductInfoProps) => {
           </div>
         </div>
 
-        <ProductShippingReturnsInfo className="min-w-full mt-0 pr-0 sm:mt-12 sm:pr-10" />
       </div>
 
-      <ProductInfoItem
-        category="Estimated Delivery"
-        inverse={true}
-        className="pt-8">
-        {getDeliveryDate(new Date())}
-      </ProductInfoItem>
+      <div className="xl:w-[70%]">
+        <ProductShippingReturnsInfo className="min-w-full mt-0 pr-0" />
 
-      <div className="flex items-center gap-2 mt-5 min-w-full">
-        <ProductAddToCart
-          uuid={matchedProduct.uuid}
-          className="xl:hover:bg-[#C9CC2C] border-none sm:w-screen xl:w-[275px]"
-          bgColor="bg-t_mustard"
-          textColor="text-[#3e3e3e]"
-        >
-          ADD TO CART
-        </ProductAddToCart>
+        <ProductInfoItem
+          category="Estimated Delivery"
+          inverse={true}
+          className="pt-8">
+          {getDeliveryDate(new Date())}
+        </ProductInfoItem>
 
-        <ProductFavoriteAndShare matchedProduct={matchedProduct} />
+        <div className="flex items-center gap-2 mt-5 w-full">
+          <ProductAddToCart
+            uuid={matchedProduct.uuid}
+            className="xl:hover:bg-[#C9CC2C] border-none sm:w-screen xl:w-[275px]"
+            bgColor="bg-t_mustard"
+            textColor="text-[#3e3e3e]"
+          >
+            ADD TO CART
+          </ProductAddToCart>
+
+          <ProductFavoriteAndShare matchedProduct={matchedProduct} />
+        </div>
       </div>
     </div>
   )
