@@ -16,21 +16,23 @@ export const ProductInfo = ({ matchedProduct }: ProductInfoProps) => {
 
   return (
     <div className="relative p-5 sm:p-10 xl:p-0 w-full xl:max-w-[500px]">
-      <div className="flex w-1/2 flex-col gap-0 sm:flex-row md:gap-10 lg:gap-32 xl:gap-0 xl:flex-col">
-        <div className="flex gap-2 flex-col">
-          <span className={`whitespace-nowrap text-[18px] sm:text-[30px] xl:text-[20px] ${albert_800.className}`}>
-            {matchedProduct.brand.toUpperCase()}
-          </span>
+      <div className="flex w-full flex-col gap-0 sm:flex-row md:gap-10 lg:gap-32 xl:gap-0 xl:flex-col">
+        <div className="flex gap-2 flex-col sm:flex-row sm:justify-between xl:flex-col w-full">
+          <div className="flex flex-col">
+            <span className={`whitespace-nowrap text-[18px] sm:text-[30px] xl:text-[20px] ${albert_800.className}`}>
+              {matchedProduct.brand.toUpperCase()}
+            </span>
 
-          <div>
-            <span className={`text-[14px] sm:text-[21px] xl:text-[15px] ${albert_500.className}`}>
-              {capitalize(matchedProduct.type)}
+            <div>
+              <span className={`text-[14px] sm:text-[21px] xl:text-[15px] ${albert_500.className}`}>
+                {capitalize(matchedProduct.type)}
+              </span>
+            </div>
+
+            <span className={`pb-8 text-[20px] sm:text-[36px] xl:text-[22px] ${albert_900.className}`}>
+              {EURO}{matchedProduct.price}
             </span>
           </div>
-
-          <span className={`pb-8 text-[20px] sm:text-[36px] xl:text-[22px] ${albert_900.className}`}>
-            {EURO}{matchedProduct.price}
-          </span>
 
           <div className="flex flex-col gap-2">
             <ProductInfoItem category="Size">{capitalize(matchedProduct.size)}</ProductInfoItem>
