@@ -31,8 +31,8 @@ export default function FooterAccount({ textColor, textSize, tracking }: FooterA
         >Profile
         </span>
 
-        <Link href={`${lang}/${gender}/orders`}>Orders</Link>
-        <Link href={`${lang}/${gender}/returns`}>Returns</Link>
+        <Link href={`/${lang}/${gender}/orders`}>Orders</Link>
+        <Link href={`/${lang}/${gender}/returns`}>Returns</Link>
         <Link href={`/${lang}/${gender}/settings`}>Settings</Link>
       </div>
     </div>

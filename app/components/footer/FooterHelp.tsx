@@ -23,7 +23,7 @@ export default function FooterHelp({ textColor, textSize, tracking }: FooterHelp
         <Link href={`/${lang}/${gender}/help?section=1`}>Shipping & Delivery</Link>
         <Link href={`/${lang}/${gender}/returns`}>Returns</Link>
         <Link href={`/${lang}/${gender}/help?section=3`}>FAQ</Link>
-        <Link href={`${lang}/${gender}/help?section=4`}>Contact</Link>
+        <Link href={`/${lang}/${gender}/help?section=4`}>Contact</Link>
       </div>
     </div>
   )
