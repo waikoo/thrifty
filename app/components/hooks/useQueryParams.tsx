@@ -14,8 +14,6 @@ const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]
   const brandParam = searchParamos.getAll('brand')?.[0]?.split(',')
   const typeParam = searchParamos.getAll('type')?.[0]?.split(',')
   const conditionParam = searchParamos.getAll('condition')?.[0]?.split(',')
-  console.log('-------------------------------------------')
-  console.log(gend)
 
   const others = {
     men: gend?.includes('men'),
