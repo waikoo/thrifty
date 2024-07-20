@@ -37,7 +37,7 @@ export default async function Page({ params: { lang, gender, productId }, search
         <ProductInfo matchedProduct={matchedProduct} />
 
       </section>
-      {/* <ProductRecommendations matchedProduct={matchedProduct} /> */}
+      <ProductRecommendations matchedProduct={matchedProduct} />
     </main>
   )
 }

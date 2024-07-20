@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 import { ReadonlyURLSearchParams } from "next/navigation"
+
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
 
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
@@ -13,6 +14,8 @@ const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]
   const brandParam = searchParamos.getAll('brand')?.[0]?.split(',')
   const typeParam = searchParamos.getAll('type')?.[0]?.split(',')
   const conditionParam = searchParamos.getAll('condition')?.[0]?.split(',')
+  console.log('-------------------------------------------')
+  console.log(gend)
 
   const others = {
     men: gend?.includes('men'),
@@ -43,6 +46,7 @@ const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]
   }
 
   const computedParamState = { ...others, ...brands, ...dynamicTypes }
+  console.log(computedParamState)
 
   return computedParamState
 }
