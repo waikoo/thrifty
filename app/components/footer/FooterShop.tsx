@@ -1,7 +1,8 @@
 "use client"
-import getLangAndGender from "@/utils/getLangAndGender"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+
+import getLangAndGender from "@/utils/getLangAndGender"
 import FooterTitle from "@/app/components/footer/FooterTitle"
 
 type FooterShopProps = {
@@ -11,16 +12,16 @@ type FooterShopProps = {
 }
 
 export default function FooterShop({ textColor, textSize, tracking }: FooterShopProps) {
-  const { gender, lang } = getLangAndGender(usePathname())
+  const { lang } = getLangAndGender(usePathname())
 
   return (
     <div className={`footerText flex flex-col gap-7 text-[#f2f2f2] ${textSize}`}>
       <FooterTitle>SHOP</FooterTitle>
 
       <div className={`flex flex-col gap-2 ${textColor} ${tracking}`}>
-        <Link href={`/${lang}/${gender}`}>Men</Link>
-        <Link href={`/${lang}/${gender}`}>Women</Link>
-        <Link href={`/${lang}/${gender}`}>Kids</Link>
+        <Link href={`/${lang}/men`}>Men</Link>
+        <Link href={`/${lang}/women`}>Women</Link>
+        <Link href={`/${lang}/kids`}>Kids</Link>
       </div>
     </div>
   )
