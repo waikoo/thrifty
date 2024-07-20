@@ -30,7 +30,7 @@ export default async function ProductRecommendations({ matchedProduct }: Product
   }
 
   return (
-    <section className="mb-20 mx-auto w-full">
+    <section className="mb-20 mx-auto w-full overflow-hidden">
       <h1 className="text-content block whitespace-nowrap py-20 text-center text-[1rem] font-semibold">NEW ARRIVALS IN THIS SIZE</h1>
 
 

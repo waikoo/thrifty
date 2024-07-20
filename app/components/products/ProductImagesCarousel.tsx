@@ -14,7 +14,6 @@ import {
 import { ProductItemType } from "@/types/productItem"
 import Portal from "@/app/components/generic/Portal"
 
-
 type ProductImagesCarouselProps = {
   matchedProduct: ProductItemType
   setShowCarousel: React.Dispatch<React.SetStateAction<boolean>>
@@ -37,13 +36,13 @@ export default function ProductImagesCarousel({ matchedProduct, setShowCarousel,
   return (
     <Portal>
       <div className="fixed h-screen w-screen z-[100] bg-t_white">
-        <div className="absolute right-5 top-5 cursor-pointer"
+        <div className="absolute right-5 top-5 cursor-pointer z-[101]"
           onClick={() => setShowCarousel(false)}>
           <RxCross2 color="black" size={30} />
         </div>
 
 
-        <Carousel className="mx-auto sm:w-[94%]"
+        <Carousel className="mx-auto"
           opts={{ startIndex: startIndex, loop: true }}
         >
           <CarouselContent className="">
@@ -57,8 +56,9 @@ export default function ProductImagesCarousel({ matchedProduct, setShowCarousel,
                   <img
                     src={img_src}
                     alt={`${matchedProduct.color} ${matchedProduct.brand} ${matchedProduct.type}`}
-                    className={`h-screen w-auto block mx-auto ${cursor}`}
+                    className={`h-screen w-screen sm:w-auto block mx-auto object-cover ${cursor}`}
                     onClick={() => setIsZoomedIn(!isZoomedIn)}
+
                   />
                 </div>
 
