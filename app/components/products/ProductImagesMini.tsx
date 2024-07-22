@@ -1,4 +1,6 @@
 "use client"
+import { useState } from "react"
+
 import {
   Carousel,
   CarouselContent,
@@ -8,9 +10,7 @@ import {
 } from "@/app/components/ui/carousel"
 
 import { ProductItemType } from "@/types/productItem"
-import ProductSingleImage from "@/app/components/products/ProductSingleImage"
-import { useState } from "react"
-import ProductImagesCarousel from "./ProductImagesCarousel"
+import ProductImagesCarousel from "@/app/components/products/ProductImagesCarousel"
 
 type ProductImagesMiniProps = {
   className: string
