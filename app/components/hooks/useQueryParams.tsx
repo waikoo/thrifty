@@ -44,7 +44,6 @@ const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]
   }
 
   const computedParamState = { ...others, ...brands, ...dynamicTypes }
-  console.log(computedParamState)
 
   return computedParamState
 }

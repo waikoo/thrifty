@@ -1,16 +1,16 @@
 import Link from 'next/link';
 
 import { albert } from '@/utils/fonts';
-import { useHomeStore } from '@/state/client/homeState';
 import { Gender, Locales } from '@/types/link';
+import { HeroState } from '@/types/home';
 
 type HeroButtonProps = {
   gender: Gender
   lang: Locales
+  heroState: HeroState
 }
 
-export default function HeroButton({ gender, lang }: HeroButtonProps) {
-  const { heroState } = useHomeStore()
+export default function HeroButton({ gender, lang, heroState }: HeroButtonProps) {
   const param = heroState === 'new_in' ? 'new+in' : 'promos'
 
   return (

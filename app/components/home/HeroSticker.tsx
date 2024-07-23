@@ -1,10 +1,12 @@
 "use client"
-import { useHomeStore } from '@/state/client/homeState';
+import { HeroState } from '@/types/home';
 import { getText } from '@/utils/home';
 
-export default function HeroSticker() {
-  const { heroState } = useHomeStore()
+type HeroStickerProps = {
+  heroState: HeroState
+}
 
+export default function HeroSticker({ heroState }: HeroStickerProps) {
   const newInOrSale = {
     bg: heroState === 'new_in' ? 'bg-t_yellow' : 'bg-t_red',
     text: heroState === 'new_in' ? 'text-t_black' : 'text-t_yellow',
