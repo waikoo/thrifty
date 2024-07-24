@@ -6,6 +6,7 @@ import IconHeart from "@/app/components/products/icons/IconHeart"
 import { ProductItemType } from "@/types/productItem";
 import updateLocalStorage from "@/utils/updateLocalStorage";
 import { useFavoriteStore } from "@/state/client/favoriteState";
+import BigMustardButton from "../generic/BigMustardButton";
 
 type ProductFavoriteAndShareProps = {
   matchedProduct: ProductItemType
@@ -40,13 +41,15 @@ export default function ProductFavoriteAndShare({ matchedProduct }: ProductFavor
 
   return (
     <div className="flex gap-2 self-start">
-      <div className="bg-t_mustard hover:bg-[#C9CC2C] border-none cursor-pointer rounded-full sm:p-3 p-2 h-auto w-auto" onClick={handleFavorite}>
-        <IconHeart isFavorited={isFavorited} />
+      <div onClick={handleFavorite}>
+        <BigMustardButton className="p-2 sm:p-3">
+          <IconHeart isFavorited={isFavorited} />
+        </BigMustardButton>
       </div>
 
-      <div className="bg-t_mustard hover:bg-[#C9CC2C] cursor-pointer border-grey sm:p-3 p-2 rounded-full">
+      <BigMustardButton className="p-2 sm:p-3">
         <FiShare2 color="black" />
-      </div>
+      </BigMustardButton>
     </div>
   )
 }
