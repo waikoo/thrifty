@@ -13,11 +13,12 @@ type PageProps = {
 export default function Page({ params: { lang, gender }, searchParams, }: PageProps) {
 
   return (
-    <main className="bg-bkg text-content mx-auto mt-6 flex w-full max-w-[1600px] flex-col items-center px-20 lg:max-w-[1500px] ">
+    <main className="bg-[#fff] text-t_black mx-auto mt-6 flex w-full max-w-[1600px] flex-col items-center lg:max-w-[1500px] rounded-[35px]">
 
       <FavoritesOrCart lang={lang} gender={gender} />
 
       <CartContent />
+
       <NewArrivals lang={lang} gender={gender} notHome={true} />
 
     </main>

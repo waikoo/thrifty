@@ -28,7 +28,7 @@ export default function CartItems() {
   }, [cart])
 
   return (
-    <section className="flex justify-between gap-32">
+    <section className="flex justify-between gap-32 px-20">
       <div className="flex flex-col gap-8">
 
         <CartControls />

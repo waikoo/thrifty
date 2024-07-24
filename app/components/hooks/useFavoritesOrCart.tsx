@@ -1,20 +1,40 @@
 "use client"
 import { usePathname } from 'next/navigation'
 
-export default function useFavoritesOrCart() {
-  const splitPath = usePathname().split('/')
+import { albert_500, albert_700 } from '@/utils/fonts'
 
-  const includesCart = splitPath.includes('cart')
-  const includesFavorites = splitPath.includes('favorites')
+export default function useFavoritesOrCart(theme: 'light' | 'dark') {
+  const isOnCartOrFavorites = usePathname().split('/').at(-1)
 
-  function getClassName(condition: boolean) {
-    return condition ? 'text-content border-content' : 'text-grey border-grey font-light'
+  const isOnCart = isOnCartOrFavorites === 'cart'
+  const isOnFavorites = isOnCartOrFavorites === 'favorites'
+
+  const inactiveColor = "#c2c2c2"
+  const hoverColor = "#9d9d9d"
+
+  function getColor(type: 'icon' | 'text' | 'border', isHovered: boolean, isOn: boolean) {
+    if (isHovered && isOn || isOn) {
+      if (type === 'icon') return theme === 'light' ? 'black' : 'white'
+      if (type === 'text') return `text-t_black ${albert_700.className}`
+      if (type === 'border') return 'border-t_black'
+    }
+
+    if (!isOn && isHovered) {
+      if (type === 'icon') return hoverColor
+      if (type === 'text') return `text-[${hoverColor}] ${albert_500.className}`
+      if (type === 'border') return `border-[${hoverColor}]`
+    }
+
+    if (!isOn) {
+      if (type === 'icon') return inactiveColor
+      if (type === 'text') return `text-[${inactiveColor}] ${albert_500.className}`
+      if (type === 'border') return `border-[${inactiveColor}]`
+    }
   }
 
   return {
-    includesCart,
-    includesFavorites,
-    isFavorites: getClassName(includesFavorites),
-    isCart: getClassName(includesCart)
+    isOnCart,
+    isOnFavorites,
+    getColor
   }
 }
