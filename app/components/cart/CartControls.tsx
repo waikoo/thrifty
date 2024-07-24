@@ -1,10 +1,11 @@
 import { useEffect } from "react"
 
 import { useCartStore, useSelectedCartStore } from "@/state/client/cartState"
-import IconShare from "@/app/components/cart/icons/IconShare"
-import IconDelete from "@/app/components/cart/icons/IconDelete"
-import IconHeart from "@/app/components/cart/icons/IconHeart"
 import { useFavoriteStore } from "@/state/client/favoriteState"
+import { FiShare2 } from "react-icons/fi"
+import { albert_500 } from "@/utils/fonts"
+import { RxCross1 } from "react-icons/rx"
+import { IoMdHeartEmpty } from "react-icons/io"
 
 export default function CartControls() {
   const { emptyCart, cart, removeSelectedFromCart } = useCartStore()
@@ -44,21 +45,21 @@ export default function CartControls() {
   }
 
   return (
-    <div className="mt-[40px] flex items-center gap-2">
+    <div className={`mt-[40px] flex items-center gap-4 xl:text-[14px] text-[#757575] ${albert_500.className}`}>
       <input type="checkbox" checked={areAllSelected} onChange={toggleAreAllSelected} />
 
-      <div className="flex items-center gap-2 underline underline-offset-2">
-        <IconShare />
+      <div className="flex cursor-pointer items-center gap-1">
+        <FiShare2 color="#757575" size={13} />
         <span className="text-[0.75rem] font-normal">Share</span>
       </div>
 
-      <div className="flex cursor-pointer items-center gap-2 underline underline-offset-2" onClick={saveSelectedToFavorites}>
-        <IconHeart />
+      <div className="flex cursor-pointer items-center gap-1" onClick={saveSelectedToFavorites}>
+        <IoMdHeartEmpty />
         <span className="text-[0.75rem] font-normal">Save</span>
       </div>
 
-      <div className="flex cursor-pointer items-center gap-2 underline underline-offset-2" onClick={deleteSelectedFromCart}>
-        <IconDelete />
+      <div className="flex cursor-pointer items-center gap-1" onClick={deleteSelectedFromCart}>
+        <RxCross1 />
         <span className="text-[0.75rem] font-normal">Delete</span>
       </div>
     </div>
