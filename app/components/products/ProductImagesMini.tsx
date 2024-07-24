@@ -48,7 +48,7 @@ export default function ProductImagesMini({ className, matchedProduct }: Product
                   data-index={i}
                   src={img_src}
                   alt={`${matchedProduct.color} ${matchedProduct.brand} ${matchedProduct.type}`}
-                  className={`h-auto w-screen block mx-auto aspect-square object-cover object-bottom`}
+                  className={`h-auto w-screen block mx-auto aspect-square object-cover object-bottom cursor-pointer`}
                 />
               </div>
 
