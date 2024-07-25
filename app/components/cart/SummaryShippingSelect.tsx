@@ -1,7 +1,9 @@
 import { useRef } from 'react'
+
 import { DELIVERY, EURO } from '@/app/components/data/orderSummary'
 import { useOrderStore, useOrderSummaryStore } from '@/state/client/orderState'
 import { useCartStore } from '@/state/client/cartState'
+import { albert_500 } from '@/utils/fonts'
 
 export default function SummaryShippingSelect() {
   const selectRef = useRef<HTMLSelectElement | null>(null)
@@ -19,9 +21,14 @@ export default function SummaryShippingSelect() {
   }
 
   return (
-    <select className="text-bkg bg-faded col-span-full text-[0.75rem] font-medium" name="shipping" id="shipping" ref={selectRef} onChange={selectOnChange}>
-      <option value="home" className="">Home Delivery 2-3 Days</option>
-      <option value="store" className="">Collect from store </option>
+    <select className={`text-t_black bg-[#fcfcfc] col-span-full text-[14px] ${albert_500.className} border-[#e3e3e3]`}
+      name="shipping"
+      id="shipping"
+      ref={selectRef}
+      onChange={selectOnChange}
+    >
+      <option value="home">Home Delivery 2-4 Days</option>
+      <option value="store">Collect from store </option>
     </select>
   )
 }

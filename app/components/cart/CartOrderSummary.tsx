@@ -10,6 +10,7 @@ import { EURO, FREE_HOME_DELIVERY_PRICE } from "@/app/components/data/orderSumma
 import { borderRadius } from "@/app/components/data/universalStyles";
 import { useOrderStore, useOrderSummaryStore } from "@/state/client/orderState";
 import { useCartStore } from "@/state/client/cartState";
+import { albert, albert_700, albert_900 } from "@/utils/fonts";
 
 type CartOrderSummaryProps = {
   isCheckout?: boolean
@@ -38,21 +39,34 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
   }, [cartTotalPrice])
 
   return (
-    <div className={`bg-bkg w-[350px] min-w-[350px] ${borderRadius}`}>
-      <h1 className={`${h1Style} text-center text-[0.875rem] font-semibold`}>ORDER SUMMARY</h1>
+    <div className={`w-[350px] min-w-[350px]`}>
+      <h1 className={`${h1Style} text-center text-[0.875rem] text-[18px] ${albert_900.className}`}>
+        ORDER SUMMARY
+      </h1>
 
-      <div className={`border-faded bg-bkg grid grid-cols-2 gap-3 p-6 ${className}`}>
+      <div className={`bg-[#f9f9f9] grid grid-cols-2 gap-3 p-6 ${className} rounded-[35px]`}>
         {!isCheckout && (< SummaryFreeDelivery />)}
 
-        <span className="text-[0.75rem] font-medium">{cartLength} {cartLength > 1 ? "items" : "item"}</span>
-        <span className="justify-self-end text-[0.75rem] font-normal">{EURO}{cartTotalPrice}</span>
-        <span className="whitespace-nowrap text-[0.75rem] font-medium">{isCheckout ? (shippingType === "home" ? "Home Delivery 2-3 days" : "Collect from store") : "Shipping"}</span>
-        <span className="justify-self-end text-[0.75rem] font-normal">{isFreeDelivery ? "FREE" : `${EURO}${shippingText}`}</span>
+        <span className={`text-[14px] ${albert.className}`}>
+          {cartLength} {cartLength > 1 ? "items" : "item"}
+        </span>
+
+        <span className={`justify-self-end text-[14px] ${albert.className}`}>
+          {EURO}{cartTotalPrice}
+        </span>
+
+        <span className={`whitespace-nowrap text-[14px] ${albert.className}`}>
+          {isCheckout ? (shippingType === "home" ? "Home Delivery 2-3 days" : "Collect from store") : "Shipping"}
+        </span>
+
+        <span className={`justify-self-end text-[14px] ${albert.className}`}>
+          {isFreeDelivery ? "FREE" : `${shippingText}`}
+        </span>
 
         {!isCheckout && <SummaryShippingSelect />}
 
-        <span className="my-4 whitespace-nowrap text-[0.875rem] font-semibold">TOTAL COST</span>
-        <span className="self-center justify-self-end text-[0.875rem] font-semibold">{EURO}{isFreeDelivery ? cartTotalPrice : totalWithShipping}</span>
+        <span className={`my-4 whitespace-nowrap text-[15px] ${albert_700.className}`}>TOTAL</span>
+        <span className={`self-center justify-self-end text-[15px] ${albert_700.className}`}>{EURO}{isFreeDelivery ? cartTotalPrice : totalWithShipping}</span>
 
         <SummarySubmit />
       </div>

@@ -37,7 +37,7 @@ export default function SummarySubmit() {
 
   const getButtonText = (endpoint: Endpoint) => {
     const text = {
-      cart: "CONFIRM ORDER",
+      cart: "CHECKOUT",
       checkout: "CHECKOUT",
       summary: `PAY ${EURO}${totalWithShipping}`
     }
@@ -48,7 +48,7 @@ export default function SummarySubmit() {
 
   return (
     <button
-      className={`bg-content text-bkg col-span-full p-3 text-[0.875rem] font-semibold ${borderRadius}`}
+      className={`bg-t_black text-t_white col-span-full p-3 text-[0.875rem] font-semibold ${borderRadius}`}
       onClick={checkout}>
       {textContent}
     </button>

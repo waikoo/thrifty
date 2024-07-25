@@ -39,7 +39,7 @@ export default function CartItems() {
         </div>
       </div>
 
-      <CartOrderSummary className="border-[0.1rem]" />
+      <CartOrderSummary />
 
     </section>
   )
