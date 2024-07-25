@@ -1,6 +1,6 @@
 import FavoritesOrCart from "@/app/components/FavoritesOrCart"
 import CartContent from "@/app/components/cart/CartContent"
-import NewArrivals from "@/app/components/home/NewArrivals"
+import FillForFreeShipping from "@/app/components/home/FillForFreeShipping"
 import { Gender, Locales } from "@/types/link"
 
 type PageProps = {
@@ -19,7 +19,7 @@ export default function Page({ params: { lang, gender }, searchParams, }: PagePr
 
       <CartContent />
 
-      <NewArrivals lang={lang} gender={gender} notHome={true} />
+      <FillForFreeShipping lang={lang} gender={gender} />
 
     </main>
   )

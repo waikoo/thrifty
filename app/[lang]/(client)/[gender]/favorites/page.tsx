@@ -1,5 +1,5 @@
 import { Gender, Locales } from "@/types/link"
-import NewArrivals from "@/app/components/home/NewArrivals"
+import FillForFreeShipping from "@/app/components/home/FillForFreeShipping"
 import FavoritesOrCart from "@/app/components/FavoritesOrCart"
 import FavoritesContent from "@/app/components/favorites/FavoritesContent"
 
@@ -18,7 +18,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
 
       <FavoritesContent />
 
-      <NewArrivals lang={lang} gender={gender} notHome={true} />
+      <FillForFreeShipping lang={lang} gender={gender} notHome={true} />
     </main>
   )
 }
