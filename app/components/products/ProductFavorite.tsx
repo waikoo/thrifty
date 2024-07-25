@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import IconHeart from "@/app/components/products/icons/IconHeart"
 import updateLocalStorage from "@/utils/updateLocalStorage";
 import { useFavoriteStore } from "@/state/client/favoriteState";
+import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 
 type ProductFavoriteProps = {
   product: ProductItemType
@@ -46,10 +47,11 @@ export default function ProductFavorite({ product, products }: ProductFavoritePr
   }, [])
   return (
     <div
-      className="bg-content absolute right-3 top-3 z-20 grid cursor-pointer place-items-center rounded-full p-2"
+      className="absolute right-3 top-3 z-20 grid cursor-pointer place-items-center rounded-full p-2"
       onClick={onClickHandler}
       data-uuid={product.uuid}>
-      <IconHeart className="" isFavorited={!!favoritedProducts[product.uuid]} />
+      {/* <IconHeart className="" isFavorited={!!favoritedProducts[product.uuid]} /> */}
+      {/* {!!favoritedProducts[product.uuid] ? <IoMdHeart /> : <IoMdHeartEmpty />} */}
     </div>
   )
 }

@@ -8,7 +8,6 @@ import {
 } from "@/app/components/ui/carousel"
 
 import ProductItem from "@/app/components/products/ProductItem"
-import ProductFavorite from "@/app/components/products/ProductFavorite"
 import { supabase } from "@/app/supabase"
 
 type ProductRecommendationsProps = {
@@ -54,7 +53,6 @@ export default async function ProductRecommendations({ matchedProduct }: Product
                     index={index}
                     className={"h-[20rem] w-[100%] select-none "}
                   />
-                  <ProductFavorite product={product} products={products} />
                 </div>
 
               </CarouselItem>
