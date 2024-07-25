@@ -1,9 +1,9 @@
-import { NewsletterSubscription } from "@/app/components/home"
 import ColorCarousel from "@/app/components/home/ColorCarousel"
 import PopularBrands from "@/app/components/home/PopularBrands"
 import { Gender, Locales } from "@/types/link"
 import FilterHome from "@/app/components/home/FilterHome"
 import HeroCarousel from "@/app/components/home/HeroCarousel"
+import NewsletterSubscription from "@/app/components/home/NewsletterSubscription"
 
 type PageProps = {
   params: {
