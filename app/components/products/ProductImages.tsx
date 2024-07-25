@@ -1,6 +1,5 @@
 "use client"
-import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import { ProductItemType } from "@/types/productItem"
 import ProductImagesCarousel from "@/app/components/products/ProductImagesCarousel"
@@ -13,6 +12,7 @@ type ProductImagesProps = {
 export default function ProductImages({ matchedProduct, className }: ProductImagesProps) {
   const [showCarousel, setShowCarousel] = useState(false)
   const [startIndex, setStartIndex] = useState(0)
+  const gridCols = matchedProduct.img_url.length > 1 ? "grid-cols-2" : "grid-cols-1"
 
   const onClickHandler = (e: React.MouseEvent) => {
     const target = e.target as HTMLDivElement
@@ -21,7 +21,7 @@ export default function ProductImages({ matchedProduct, className }: ProductImag
   }
 
   return (
-    <div className={`${className} grid-cols-2 gap-[3px] w-[75%]`}>
+    <div className={`${className} ${gridCols} gap-[3px] w-[75%]`}>
 
       {matchedProduct.img_url.map((img: string, index: number) => (
         <div
