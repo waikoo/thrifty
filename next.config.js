@@ -15,6 +15,9 @@ const nextConfig = {
       }, {
         protocol: 'https',
         hostname: 'picsum.photos',
+      }, {
+        protocol: 'https',
+        hostname: 'media.remix.eu',
       }],
   },
   async redirects() {
