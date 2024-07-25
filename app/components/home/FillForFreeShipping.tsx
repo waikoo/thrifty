@@ -57,7 +57,7 @@ export default function FillForFreeShipping({ lang, gender = 'women' }: NewArriv
     });
   }, [cart]);
 
-  return (
+  return cart.length === 0 ? null : (
     <section className={`bg-t_white w-full flex flex-col pb-10`}>
       <div className={`${'mx-auto w-[80%]'}`}>
         <h3 className={`text-bkg py-10 text-2xl font-bold text-content text-center text-[1rem]`}>
