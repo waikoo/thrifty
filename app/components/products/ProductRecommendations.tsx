@@ -29,10 +29,12 @@ export default async function ProductRecommendations({ matchedProduct }: Product
     return null;
   }
 
-  return (
-    <section className="mb-20 mx-auto w-full overflow-hidden">
-      <h1 className="text-content block whitespace-nowrap py-20 text-center text-[1rem] font-semibold">NEW ARRIVALS IN THIS SIZE</h1>
+  return products.length === 0 ? null : (
 
+    <section className="mb-20 mx-auto w-full overflow-hidden">
+      <h1 className="text-content block whitespace-nowrap py-20 text-center text-[1rem] font-semibold">
+        NEW ARRIVALS IN THIS SIZE
+      </h1>
 
       <Carousel className="mx-auto sm:w-[75%]"
         opts={{ loop: true }}
@@ -67,5 +69,5 @@ export default async function ProductRecommendations({ matchedProduct }: Product
       </Carousel>
 
     </section>
-  );
+  )
 }
