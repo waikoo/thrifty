@@ -21,7 +21,7 @@ export default function FavoritesOrCart({ lang, gender }: FavoritesOrCartProps) 
 
   return (
     (isOnCart || isOnFavorites) ? (
-      <div className={`text-content justify-content grid w-full cursor-pointer grid-cols-2 pt-6 text-[1.125rem] ${albert_700.className} tracking-wider`}>
+      <div className={`bg-[#fff] text-t_black rounded-[35px] justify-content grid w-full cursor-pointer grid-cols-2 pt-6 text-[1.125rem] ${albert_700.className} tracking-wider`}>
 
         <Link href={`/${lang}/${gender}/cart`}
           className={`${getColor('border', isCartHovered, isOnCart)} flex items-center justify-center gap-2 border-b-[3px] pb-3`}

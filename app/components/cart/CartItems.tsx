@@ -28,8 +28,8 @@ export default function CartItems() {
   }, [cart])
 
   return (
-    <section className="flex justify-between gap-32 px-20">
-      <div className="flex flex-col gap-8">
+    <section className="flex justify-between gap-32 px-20 rounded-b-[35px] bg-[#fff]">
+      <div className="flex flex-col gap-8 rounded-b-[35px]">
 
         <CartControls />
 
