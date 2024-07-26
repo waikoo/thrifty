@@ -18,6 +18,9 @@ const nextConfig = {
       }, {
         protocol: 'https',
         hostname: 'media.remix.eu',
+      }, {
+        protocol: 'https',
+        hostname: 'images.vestiairecollective.com'
       }],
   },
   async redirects() {
