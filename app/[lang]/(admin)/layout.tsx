@@ -1,5 +1,4 @@
 import { Inter } from 'next/font/google';
-import { Banner } from "@/app/components/navigation";
 import { themeSettings } from '@/app/components/data';
 import "@/styles/styles.css";
 
@@ -20,7 +19,6 @@ export default function RootLayout({ children, params }: RootLayoutProps) {
     <html data-theme={themeSettings.DEFAULT_THEME} className={inter.className}>
       <head className={inter.className} />
       <body className={`bg-bkg ${inter.className}`}>
-        <Banner />
         {children}
       </body>
     </html >
