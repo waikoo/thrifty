@@ -1,21 +1,22 @@
-"use client"
 import { ProductInput, ProductSelect } from "@/app/components/admin"
 import { top, bottom } from "@/app/components/data"
-import { useProductState } from "../hooks"
-import { findContentByName } from "@/utils/findContentByName"
 import { getDayMonthYear } from "@/utils/getDayMonthYear"
 import { ProductItemType } from "@/types/productItem"
+import { AdminData } from "@/types/admin"
 
 type ProductStateProps = {
   uuidMatch?: ProductItemType[]
 }
 
-export default function ProductState({ uuidMatch }: ProductStateProps) {
-  const { productArray: brands, addItem: addBrand } =
-    useProductState(findContentByName(bottom, 'BRAND'))
+export default async function ProductState({ uuidMatch }: ProductStateProps) {
+  const apiUrl = `${process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000'}/api/admin`;
 
-  const { productArray: materials, addItem: addMaterial } =
-    useProductState(findContentByName(bottom, 'MATERIAL'))
+  async function fetchMaterialsAndBrands(apiUrl: string) {
+    const res = await fetch(apiUrl)
+    return await res.json()
+  }
+
+  const adminData = await fetchMaterialsAndBrands(apiUrl)
 
   return (
     <section className="flex flex-col gap-4">
@@ -45,12 +46,8 @@ export default function ProductState({ uuidMatch }: ProductStateProps) {
         obj={bottom.find((item) => item.name === 'COLOR')!}
         value={uuidMatch?.[0]?.color} />
 
-      {brands && <ProductSelect
-        obj={{
-          name: 'BRAND',
-          content: brands,
-        }}
-        handleAddItem={addBrand}
+      {<ProductSelect
+        obj={(adminData as AdminData[]).find((item) => item.name === 'BRAND')!}
         value={uuidMatch?.[0]?.brand}
       />}
 
@@ -58,12 +55,8 @@ export default function ProductState({ uuidMatch }: ProductStateProps) {
         obj={bottom.find((item) => item.name === 'CONDITION')!}
         value={uuidMatch?.[0]?.condition} />
 
-      {materials && <ProductSelect
-        obj={{
-          name: 'MATERIAL',
-          content: materials,
-        }}
-        handleAddItem={addMaterial}
+      {<ProductSelect
+        obj={(adminData as AdminData[]).find((item) => item.name === 'MATERIAL')!}
         value={uuidMatch?.[0]?.material}
       />}
 

@@ -15,7 +15,6 @@ export { default as useEventListener } from "./useEventListener";
 export { default as useMediaQuery } from "./useMediaQuery";
 export { default as useUserSession } from "./useUserSession";
 export { default as useSignIn } from './useSignIn'
-export { default as useProductState } from './useProductState'
 export { default as useSignUp } from './useSignUp'
 export { default as useSignOut } from './useSignOut'
 export { default as useDynamicCategory } from './useDynamicCategory'

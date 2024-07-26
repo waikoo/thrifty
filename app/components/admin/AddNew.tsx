@@ -4,10 +4,9 @@ import Portal from "@/app/components/generic/Portal"
 
 type AddNewProps = {
   name: string
-  handleAddItem?: (value: string) => void
 }
 
-export default function AddNew({ name, handleAddItem }: AddNewProps) {
+export default function AddNew({ name }: AddNewProps) {
   const { addMaterial, showAddMaterial, addBrand, showAddBrand } = useProductStore()
 
   const onClickHandler = () => {
@@ -33,7 +32,7 @@ export default function AddNew({ name, handleAddItem }: AddNewProps) {
 
       {(name === 'BRAND' && addBrand) || (name === 'MATERIAL' && addMaterial) ? (
         <Portal>
-          <AddOptionPopUp {...{ name, handleAddItem }} />
+          <AddOptionPopUp {...{ name }} />
         </Portal>
       ) : null}
     </>

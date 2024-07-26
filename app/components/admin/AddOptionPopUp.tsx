@@ -2,13 +2,13 @@
 import { useRef } from "react";
 
 import { useProductStore } from "@/state/admin/uploadNewProductToDb";
+import { addItemToName } from "@/actions/actions";
 
 type AddOptionPopUpProps = {
   name: string
-  handleAddItem?: (value: string) => void
 }
 
-export default function AddOptionPopUp({ name, handleAddItem }: AddOptionPopUpProps) {
+export default function AddOptionPopUp({ name }: AddOptionPopUpProps) {
   const inputRef = useRef<null | HTMLInputElement>(null)
   const { addMaterial, showAddMaterial, addBrand, showAddBrand } = useProductStore()
 
@@ -24,8 +24,10 @@ export default function AddOptionPopUp({ name, handleAddItem }: AddOptionPopUpPr
     }
   }
 
-  const addItem = () => {
-    inputRef.current?.value && handleAddItem!(inputRef.current.value);
+  const addItem = async () => {
+    if (inputRef.current) {
+      await addItemToName(name, inputRef.current.value)
+    }
     inputRef.current!.value = ''
   }
 
@@ -56,7 +58,14 @@ export default function AddOptionPopUp({ name, handleAddItem }: AddOptionPopUpPr
         <label htmlFor="add-option" className="text-bold grid place-items-center gap-6">
           Add new {name.toLowerCase()}:
         </label>
-        <input ref={inputRef} type="text" className="text-content border-bkg w-[80%] border-[0.1rem] p-[0.5rem]" name="add-option" id="add-option" spellCheck="false" onKeyDown={onKeyDownHandler} />
+        <input
+          ref={inputRef}
+          type="text"
+          className="text-content border-bkg w-[80%] border-[0.1rem] p-[0.5rem]"
+          name="add-option"
+          id="add-option"
+          spellCheck="false"
+          onKeyDown={onKeyDownHandler} />
 
         <button
           onClick={submitNewItem}
