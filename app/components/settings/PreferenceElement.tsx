@@ -114,9 +114,6 @@ export default function PreferenceElement({ radioValues, title, defaultChecked, 
 
       <div className="row-start-2 sm:row-start-1 flex gap-3">
         {radioValues.map((value) => {
-          const lowerCase = value.toLowerCase()
-          const checkedBg = checked === lowerCase || checked === lowerCase.slice(0, 2) ? albert_600.className : ''
-
           return (
             <label key={value}
               className={`flex items-center gap-2 font-normal text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
@@ -126,16 +123,16 @@ export default function PreferenceElement({ radioValues, title, defaultChecked, 
                 value={value}
                 checked={getValue(value)}
                 onChange={onChange}
-                className="checked:hover:bg-[#d2d62e] checked:bg-t_black hover:bg-[#e3e3e3] bg-[#F9F9F9] peer" />
+                className="checked:hover:bg-t_mustard checked:bg-t_black hover:bg-[#e3e3e3] bg-[#F9F9F9] peer" />
 
-              <span className={`peer-checked:bg-t_mustard rounded-full py-1 px-3 xl:text-[14px] ${checkedBg}`}>
+              <span className={`peer-checked:bg-t_mustard rounded-full py-1 px-3 xl:text-[14px] ${albert_600.className}`}>
                 {value}
               </span>
+
             </label>
           )
         })}
       </div>
-
     </div>
   )
 }
