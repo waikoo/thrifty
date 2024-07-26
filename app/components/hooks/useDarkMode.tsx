@@ -1,44 +1,36 @@
-"use client"
-import { useEffect } from "react"
-
+import { useEffect, useState } from "react";
 import { useThemeStore } from "@/state/themeState";
-import useMediaQuery from "@/app/components/hooks/useMediaQuery"
-import { themeSettings } from "@/app/components/data/theme"
+import useMediaQuery from "@/app/components/hooks/useMediaQuery";
+import { themeSettings } from "@/app/components/data/theme";
+import { updateThemeInDb } from "@/utils/updateThemeInDb";
 
-const useDarkMode = (containsDark: boolean) => {
-  const { theme, updateTheme } = useThemeStore()
-  const prefersDarkMode = useMediaQuery(['(prefers-color-scheme: dark)'], [true], false)
+export default function useDarkMode(containsDark: boolean) {
+  const { theme, updateTheme } = useThemeStore();
+  const prefersDarkMode = useMediaQuery(['(prefers-color-scheme: dark)'], [true], false);
+  const [localTheme, setLocalTheme] = useState<'light' | 'dark'>(prefersDarkMode ? 'dark' : 'light');
 
   useEffect(() => {
-    const newTheme = prefersDarkMode ? 'dark' : 'light'
+    setLocalTheme(localTheme);
+    document.documentElement.classList.toggle('dark', localTheme === 'dark');
+    document.documentElement.dataset.theme = localTheme
+    localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (localTheme === 'dark').toString());
+    updateTheme(localTheme);
+    updateThemeInDb(localTheme)
+  }, [prefersDarkMode, localTheme]);
 
-    updateTheme(newTheme)
-    if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark')
-      document.documentElement.dataset.theme = 'dark'
-    }
-
-    localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (newTheme === 'dark').toString())
-  }, [prefersDarkMode, updateTheme])
-
-  const handleToggleTheme = () => {
-    const newTheme = containsDark ? 'light' : 'dark'
-
-    if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark')
-      document.documentElement.dataset.theme = 'dark'
-    } else {
-      document.documentElement.classList.remove('dark')
-      document.documentElement.dataset.theme = 'light'
-    }
-    updateTheme(newTheme)
-    localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (newTheme === 'dark').toString())
-  }
+  const handleToggleTheme = async () => {
+    const lightOrDark = containsDark ? 'light' : 'dark'
+    setLocalTheme(lightOrDark)
+    updateTheme(lightOrDark);
+    document.documentElement.classList.toggle('dark', containsDark);
+    document.documentElement.dataset.theme = lightOrDark;
+    localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, containsDark.toString());
+    updateThemeInDb(lightOrDark)
+  };
 
   return {
     isDark: theme === 'dark',
     handleToggleTheme,
-  }
-}
+  };
+};
 
-export default useDarkMode
