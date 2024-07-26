@@ -8,7 +8,7 @@ import { albert_800 } from "@/utils/fonts"
 
 export default function Preferences() {
   const genders = ['Men', 'Women', 'Kids']
-  const languages = ['English', 'German']
+  const languages = ['English', 'Deutsch']
   const themes = ['Light', 'Dark']
 
   const { lang, gender } = getLangAndGender(usePathname())
@@ -17,12 +17,30 @@ export default function Preferences() {
 
   return (
     <section className="mx-auto w-full xl:w-[500px]">
-      <h1 className={`text-t_black mt-6 text-center text-[13px] sm:text-[17px] xl:text-[15px] ${albert_800.className}`}>PREFERENCES</h1>
+      <h1 className={`text-t_black dark:text-t_white mt-6 text-center text-[13px] sm:text-[17px] xl:text-[15px] ${albert_800.className}`}>
+        PREFERENCES
+      </h1>
 
       <div className="mt-5 bg-[#f2f2f2] rounded-[40px] xl:w-[450px] py-6">
-        <PreferenceElement title={'Shopping'} radioValues={genders} defaultChecked={'women'} />
-        <PreferenceElement title={'Language'} radioValues={languages} defaultChecked={lang} gender={gender} />
-        <PreferenceElement title={'Theme'} radioValues={themes} defaultChecked={theme} />
+        <PreferenceElement
+          title={'Shopping'}
+          radioValues={genders}
+          defaultChecked={'women'}
+        />
+
+        <PreferenceElement
+          title={'Language'}
+          radioValues={languages}
+          defaultChecked={lang}
+          gender={gender}
+        />
+
+        <PreferenceElement
+          title={'Theme'}
+          radioValues={themes}
+          defaultChecked={theme}
+        />
+
       </div>
 
     </section>

@@ -21,11 +21,52 @@ export default function PreferenceElement({ radioValues, title, defaultChecked, 
   const router = useRouter()
 
   useEffect(() => {
+
+    const getSession = async () => {
+      return await supabase.auth.getSession()
+    }
     // theme
+    const getUserId = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      return user?.id
+    }
+    const getThemePreference = async (client_id: string) => {
+      const { data, error } = await supabase
+        .from('clients')
+        .select('*')
+        .eq('client_id', client_id)
+        .select('wants_dark')
+      if (error) console.error(error)
+      return data
+    }
+
+    const setThemeInDb = async (client_id: string, wants_dark: boolean) => {
+      const { error } = await supabase
+        .from('clients')
+        .update({ wants_dark })
+        .eq('client_id', client_id)
+      if (error) console.error(error)
+    }
+
     if (checked === 'light' || checked === 'dark') {
-      updateTheme(checked)
-      document.documentElement.dataset.theme = checked
-      localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (checked === 'dark').toString())
+      getSession().then(({ data: { session } }) => {
+        if (session) {
+          getUserId().then(id => {
+            if (id) {
+              getThemePreference(id).then(data => {
+                if (data) {
+                  console.log(data)
+                  const storedTheme = data[0].wants_dark === null ? checked : data[0].wants_dark ? 'dark' : 'light'
+                  updateTheme(storedTheme)
+                  document.documentElement.dataset.theme = storedTheme
+                  localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (storedTheme === 'dark').toString())
+                  setThemeInDb(id, checked === 'dark')
+                }
+              })
+            }
+          })
+        }
+      })
     }
 
     // language
@@ -43,10 +84,6 @@ export default function PreferenceElement({ radioValues, title, defaultChecked, 
       if (updateError) console.error(updateError)
     }
 
-    const getSession = async () => {
-      return await supabase.auth.getSession()
-    }
-
     if (checked === 'women' || checked === 'men' || checked === 'kids') {
       getSession().then(({ data: { session } }) => {
         if (session) {
@@ -57,10 +94,17 @@ export default function PreferenceElement({ radioValues, title, defaultChecked, 
   }, [checked])
 
   const getValue = (value: string) => {
-    return value.toLowerCase() === checked
+    const lowercaseValue = value.toLowerCase()
+
+    if (lowercaseValue === 'english' || lowercaseValue === 'deutsch') {
+      return lowercaseValue.slice(0, 2) === checked
+    }
+
+    return lowercaseValue === checked
   }
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value.toLowerCase())
     setChecked(e.target.value.toLowerCase())
   }
 
@@ -71,12 +115,22 @@ export default function PreferenceElement({ radioValues, title, defaultChecked, 
       <div className="row-start-2 sm:row-start-1 flex gap-3">
         {radioValues.map((value) => {
           const lowerCase = value.toLowerCase()
-          const checkedBg = checked === lowerCase || checked === lowerCase.slice(0, 2) ? `bg-[#d2d62e] rounded-full py-1 px-3 w-min-content xl:text-[14px] ${albert_600.className}` : 'bg-none'
+          const checkedBg = checked === lowerCase || checked === lowerCase.slice(0, 2) ? albert_600.className : ''
 
           return (
-            <label key={value} className={`flex items-center gap-2 font-normal text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
-              <input type="radio" name={title} value={value} checked={getValue(value)} onChange={onChange} className="checked:hover:bg-[#d2d62e] checked:bg-t_black hover:bg-[#e3e3e3] bg-[#F9F9F9]" />
-              <span className={`${checkedBg}`}> {value} </span>
+            <label key={value}
+              className={`flex items-center gap-2 font-normal text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
+              <input
+                type="radio"
+                name={title}
+                value={value}
+                checked={getValue(value)}
+                onChange={onChange}
+                className="checked:hover:bg-[#d2d62e] checked:bg-t_black hover:bg-[#e3e3e3] bg-[#F9F9F9] peer" />
+
+              <span className={`peer-checked:bg-t_mustard rounded-full py-1 px-3 xl:text-[14px] ${checkedBg}`}>
+                {value}
+              </span>
             </label>
           )
         })}
