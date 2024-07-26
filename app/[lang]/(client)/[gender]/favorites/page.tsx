@@ -18,7 +18,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
 
       <FavoritesContent />
 
-      <FillForFreeShipping lang={lang} gender={gender} notHome={true} />
+      <FillForFreeShipping lang={lang} gender={gender} />
     </main>
   )
 }
