@@ -14,7 +14,7 @@ import { useCartStore } from "@/state/client/cartState"
 import { useEffect, useState } from 'react';
 import { supabase } from '@/app/supabase';
 import ProductItem from '../products/ProductItem';
-import { useOrderStore } from "@/state/client/orderState";
+import { FREE_HOME_DELIVERY_PRICE } from "../data/orderSummary";
 
 type NewArrivalsProps = {
   lang: Locales
@@ -22,8 +22,8 @@ type NewArrivalsProps = {
 }
 
 export default function FillForFreeShipping({ lang, gender = 'women' }: NewArrivalsProps) {
-  const { cart } = useCartStore()
-  const { isFreeDelivery } = useOrderStore()
+  const { cart, cartTotalPrice } = useCartStore()
+  const isFreeShipping = FREE_HOME_DELIVERY_PRICE - cartTotalPrice <= 0;
 
   const [accessories, setAccessories] = useState<ProductItemType[] | null>([])
 
@@ -59,10 +59,10 @@ export default function FillForFreeShipping({ lang, gender = 'women' }: NewArriv
     });
   }, [cart]);
 
-  return cart.length === 0 || isFreeDelivery ? null : (
+  return cart.length === 0 || isFreeShipping ? null : (
     <section className={`bg-t_white w-full flex flex-col pb-10`}>
       <div className={`${'mx-auto w-[80%]'}`}>
-        <h3 className={`text-bkg py-10 text-2xl font-bold text-content text-center text-[1rem]`}>
+        <h3 className={`text-t_black py-10 text-2xl font-bold text-center text-[1rem]`}>
           FILL FOR FREE SHIPPING
         </h3>
 
