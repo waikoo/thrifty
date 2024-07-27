@@ -7,6 +7,8 @@ import { useFavoritesOrCart } from "@/app/components/hooks"
 import { IconFavorite, IconShoppingBag } from "@/app/components/navigation/icons"
 import { useThemeStore } from "@/state/themeState"
 import { albert_700 } from "@/utils/fonts"
+import { useCartStore } from "@/state/client/cartState"
+import { useFavoriteStore } from "@/state/client/favoriteState"
 
 type FavoritesOrCartProps = {
   lang: string
@@ -18,6 +20,8 @@ export default function FavoritesOrCart({ lang, gender }: FavoritesOrCartProps) 
   const [isCartHovered, setIsCartHovered] = useState(false)
   const { theme } = useThemeStore()
   const { getColor, isOnCart, isOnFavorites } = useFavoritesOrCart(theme)
+  const { cartLength } = useCartStore()
+  const { favoritesLength } = useFavoriteStore()
 
   return (
     (isOnCart || isOnFavorites) ? (
@@ -29,7 +33,9 @@ export default function FavoritesOrCart({ lang, gender }: FavoritesOrCartProps) 
           onMouseLeave={() => setIsCartHovered(false)}
         >
           <IconShoppingBag stroke={getColor('icon', isCartHovered, isOnCart)} />
-          <span className={`text-[0.875rem] ${getColor('text', isCartHovered, isOnCart)}`}>CART</span>
+          <span className={`text-[0.875rem] ${getColor('text', isCartHovered, isOnCart)}`}>
+            CART {`(${cartLength})`}
+          </span>
         </Link>
 
         <Link href={`/${lang}/${gender}/favorites`}
@@ -38,7 +44,9 @@ export default function FavoritesOrCart({ lang, gender }: FavoritesOrCartProps) 
           onMouseLeave={() => setIsFavoritesHovered(false)}
         >
           <IconFavorite stroke={getColor('icon', isFavoritesHovered, isOnFavorites)} />
-          <span className={`text-[0.875rem] ${getColor('text', isFavoritesHovered, isOnFavorites)}`}>FAVORITES</span>
+          <span className={`text-[0.875rem] ${getColor('text', isFavoritesHovered, isOnFavorites)}`}>
+            FAVORITES {`(${favoritesLength})`}
+          </span>
         </Link>
       </div>
 
