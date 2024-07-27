@@ -7,7 +7,11 @@ import LanguagePicker from '@/app/components/navigation/LanguagePicker';
 import useViewport from '@/app/components/hooks/useViewport';
 import { viewport } from '@/app/components/data/universalStyles';
 
-export default function Banner() {
+type BannerProps = {
+  className?: string
+}
+
+export default function Banner({ className }: BannerProps) {
   const { showBanner } = useUIStore()
   const idx = useMessageDisplay(bannerMessages, 5000);
   const textColor = showBanner ? 'text-black' : 'text-content'
@@ -18,7 +22,7 @@ export default function Banner() {
   return (
     <>
       {showBanner ? (
-        <section className={`bg-t_black dark:bg-t_white text-t_white dark:text-t_black z-20 w-screen ${textColor}`}>
+        <section className={`${className} bg-t_black dark:bg-t_white text-t_white dark:text-t_black z-20 w-screen ${textColor}`}>
           <div className={`mx-auto grid ${gridCols} grid-rows-1 items-center gap-4 max-w-[90vw] 3xl:max-w-[1800px] `}>
 
             {hideElement && <LanguagePicker isTop />}
