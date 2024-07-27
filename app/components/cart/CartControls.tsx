@@ -45,7 +45,7 @@ export default function CartControls() {
   }
 
   return (
-    <div className={`mt-[40px] flex items-center gap-4 xl:text-[14px] text-[#757575] ${albert_500.className}`}>
+    <div className={`mt-[40px] flex items-center gap-4 sm:text-[17px] xl:text-[14px] text-[#757575] ${albert_500.className}`}>
       <input type="checkbox" checked={areAllSelected} onChange={toggleAreAllSelected} />
 
       <div className="flex cursor-pointer items-center gap-1">
@@ -60,7 +60,7 @@ export default function CartControls() {
 
       <div className="flex cursor-pointer items-center gap-1" onClick={deleteSelectedFromCart}>
         <RxCross1 />
-        <span className="text-[0.75rem] font-normal">Delete</span>
+        <span className="text-[0.75rem] font-normal">Remove</span>
       </div>
     </div>
   )

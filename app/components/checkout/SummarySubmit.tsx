@@ -8,7 +8,11 @@ import { useOrderSummaryStore } from "@/state/client/orderState";
 
 type Endpoint = 'cart' | 'checkout' | 'summary'
 
-export default function SummarySubmit() {
+type SummarySubmitProps = {
+  className?: string
+}
+
+export default function SummarySubmit({ className }: SummarySubmitProps) {
   const [router, pathname] = [useRouter(), usePathname()]
   const splitPath = pathname.split('/')
   const lang = splitPath[1]
@@ -48,7 +52,7 @@ export default function SummarySubmit() {
 
   return (
     <button
-      className={`bg-t_black text-t_white col-span-full p-3 text-[0.875rem] font-semibold ${borderRadius}`}
+      className={`${className} bg-t_black text-t_white col-span-full p-3 text-[0.875rem] font-semibold ${borderRadius}`}
       onClick={checkout}>
       {textContent}
     </button>

@@ -1,5 +1,5 @@
 "use client"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import CartPaymentMethods from "@/app/components/cart/CartPaymentMethods";
 import { ProductItemType } from "@/types/productItem";
@@ -7,10 +7,10 @@ import SummaryFreeDelivery from "@/app/components/cart/SummaryFreeDelivery";
 import SummaryShippingSelect from "@/app/components/cart/SummaryShippingSelect";
 import SummarySubmit from "@/app/components/checkout/SummarySubmit";
 import { EURO, FREE_HOME_DELIVERY_PRICE } from "@/app/components/data/orderSummary";
-import { borderRadius } from "@/app/components/data/universalStyles";
 import { useOrderStore, useOrderSummaryStore } from "@/state/client/orderState";
 import { useCartStore } from "@/state/client/cartState";
 import { albert, albert_700, albert_900 } from "@/utils/fonts";
+import useViewport from "@/app/components/hooks/useViewport";
 
 type CartOrderSummaryProps = {
   isCheckout?: boolean
@@ -22,8 +22,30 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
   const { cart, cartTotalPrice, setCartTotalPrice, cartLength } = useCartStore()
   const { shippingType, setIsFreeDelivery, isFreeDelivery } = useOrderStore()
   const { shippingPrice, setTotalWithShipping, totalWithShipping, shippingText } = useOrderSummaryStore()
+  const [position, setPosition] = useState('static')
+  const viewportWidth = useViewport()
 
   const h1Style = isCheckout ? "py-4" : "my-10"
+
+  useEffect(() => {
+    if (viewportWidth < 1280) {
+      setPosition('fixed')
+    }
+  }, [viewportWidth])
+
+  const handleScroll = () => {
+    if (window.scrollY > 500) {
+      setPosition('static')
+    } else {
+      setPosition('fixed')
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     if (products) {
@@ -39,36 +61,43 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
   }, [cartTotalPrice])
 
   return (
-    <div className={`w-[350px] min-w-[350px]`}>
-      <h1 className={`${h1Style} text-center text-[0.875rem] text-[18px] ${albert_900.className}`}>
+    <div className={`xl:w-[350px] xl:min-w-[350px]`}>
+      <h1 className={`${h1Style} text-center sm:text-[21px] xl:text-[0.875rem] text-[18px] ${albert_900.className}`}>
         ORDER SUMMARY
       </h1>
 
       <div className={`bg-[#f9f9f9] grid grid-cols-2 gap-3 p-6 ${className} rounded-[35px]`}>
         {!isCheckout && (< SummaryFreeDelivery />)}
 
-        <span className={`text-[14px] ${albert.className}`}>
+        <span className={`sm:text-[17px] xl:text-[14px] ${albert.className}`}>
           {cartLength} {cartLength > 1 ? "items" : "item"}
         </span>
 
-        <span className={`justify-self-end text-[14px] ${albert.className}`}>
+        <span className={`justify-self-end sm:text-[17px] xl:text-[14px] ${albert.className}`}>
           {EURO}{cartTotalPrice}
         </span>
 
-        <span className={`whitespace-nowrap text-[14px] ${albert.className}`}>
+        <span className={`whitespace-nowrap sm:text-[17px] xl:text-[14px] ${albert.className}`}>
           {isCheckout ? (shippingType === "home" ? "Home Delivery 2-3 days" : "Collect from store") : "Shipping"}
         </span>
 
-        <span className={`justify-self-end text-[14px] ${albert.className}`}>
+        <span className={`justify-self-end sm:text-[17px] xl:text-[14px] ${albert.className}`}>
           {isFreeDelivery ? "FREE" : `${shippingText}`}
         </span>
 
         {!isCheckout && <SummaryShippingSelect />}
 
-        <span className={`my-4 whitespace-nowrap text-[15px] ${albert_700.className}`}>TOTAL</span>
-        <span className={`self-center justify-self-end text-[15px] ${albert_700.className}`}>{EURO}{isFreeDelivery ? cartTotalPrice : totalWithShipping}</span>
+        <div className={`${position} w-full col-span-2 grid grid-cols-2 items-center bg-t_white/30 backdrop-blur-md p-2 bottom-0 left-0 right-0 z-50`}>
+          <span className={`my-4 whitespace-nowrap sm:text-[18px] xl:text-[15px] ${position === 'fixed' ? 'px-5' : ''} ${albert_700.className}`}>
+            TOTAL
+          </span>
 
-        <SummarySubmit />
+          <span className={`self-center justify-self-end sm:text-[18px] xl:text-[15px] ${position === 'fixed' ? 'px-5' : ''} ${albert_700.className}`}>
+            {EURO}{isFreeDelivery ? cartTotalPrice : totalWithShipping}
+          </span>
+
+          <SummarySubmit className={``} />
+        </div>
       </div>
 
       {!isCheckout && <CartPaymentMethods />}
