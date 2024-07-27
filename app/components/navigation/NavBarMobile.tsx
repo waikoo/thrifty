@@ -16,15 +16,17 @@ import MobileSearch from "@/app/components/navigation/MobileSearch";
 export default function NavBarMobile() {
   const { theme } = useThemeStore()
   const bgColor = theme === 'dark' ? 'bg-t_black/40' : 'bg-t_white/40'
-  const { lang, gender } = getLangAndGender(usePathname())
+  const pathname = usePathname()
+  const { lang, gender } = getLangAndGender(pathname)
   const { showMobileSearch, setShowMobileSearch, showHamburgerMenu, setShowHamburgerMenu } = useNavigationStore()
+  const isCartOrFavorites = pathname.includes('cart') || pathname.includes('favorites')
 
   const handleSearch = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     setShowMobileSearch(!showMobileSearch)
   }
 
-  return (
+  return isCartOrFavorites ? null : (
     <section
       className={`sm:hidden fixed bottom-[0.3125rem] max-w-[90vw] ${bgColor} rounded-full mt-3 left-0 right-0 mx-auto z-[90]`}
     >
