@@ -22,30 +22,36 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
   const { cart, cartTotalPrice, setCartTotalPrice, cartLength } = useCartStore()
   const { shippingType, setIsFreeDelivery, isFreeDelivery } = useOrderStore()
   const { shippingPrice, setTotalWithShipping, totalWithShipping, shippingText } = useOrderSummaryStore()
-  const [position, setPosition] = useState('static')
   const viewportWidth = useViewport()
-
+  const [position, setPosition] = useState(
+    viewportWidth < 1280 ? 'fixed' : 'static'
+  )
+  const sidePadding = position === 'fixed' ? 'px-5' : '';
   const h1Style = isCheckout ? "py-4" : "my-10"
 
   useEffect(() => {
+    const handleScroll = () => {
+
+      if (window.scrollY > 500) {
+        setPosition('static')
+      } else {
+        setPosition('fixed')
+      }
+    }
+
     if (viewportWidth < 1280) {
       setPosition('fixed')
+    } else {
+      setPosition('static')
+    }
+
+    if (viewportWidth < 1280) {
+
+      window.addEventListener('scroll', handleScroll)
+
+      return () => window.removeEventListener('scroll', handleScroll)
     }
   }, [viewportWidth])
-
-  const handleScroll = () => {
-    if (window.scrollY > 500) {
-      setPosition('static')
-    } else {
-      setPosition('fixed')
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   useEffect(() => {
     if (products) {
@@ -88,15 +94,15 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
         {!isCheckout && <SummaryShippingSelect />}
 
         <div className={`${position} w-full col-span-2 grid grid-cols-2 items-center bg-t_white/30 backdrop-blur-md p-2 bottom-0 left-0 right-0 z-50`}>
-          <span className={`my-4 whitespace-nowrap sm:text-[18px] xl:text-[15px] ${position === 'fixed' ? 'px-5' : ''} ${albert_700.className}`}>
+          <span className={`my-4 whitespace-nowrap sm:text-[18px] xl:text-[15px] ${sidePadding} ${albert_900.className}`}>
             TOTAL
           </span>
 
-          <span className={`self-center justify-self-end sm:text-[18px] xl:text-[15px] ${position === 'fixed' ? 'px-5' : ''} ${albert_700.className}`}>
+          <span className={`self-center justify-self-end sm:text-[18px] xl:text-[15px] ${sidePadding} ${albert_900.className}`}>
             {EURO}{isFreeDelivery ? cartTotalPrice : totalWithShipping}
           </span>
 
-          <SummarySubmit className={``} />
+          <SummarySubmit />
         </div>
       </div>
 
