@@ -1,17 +1,26 @@
+"use client"
+import { useEffect } from "react";
+
 import { EURO, FREE_HOME_DELIVERY_PRICE } from "@/app/components/data/orderSummary";
 import { useCartStore } from "@/state/client/cartState";
 import { useOrderStore } from "@/state/client/orderState";
 import { albert_500 } from "@/utils/fonts";
 
 export default function SummaryFreeDelivery() {
-  const { isFreeDelivery } = useOrderStore()
+  const { isFreeDelivery, setIsFreeDelivery } = useOrderStore()
   const { cartTotalPrice } = useCartStore()
 
-  const freeDeliveryText = isFreeDelivery
+  useEffect(() => {
+    if (FREE_HOME_DELIVERY_PRICE - cartTotalPrice <= 0) {
+      setIsFreeDelivery(true)
+    }
+  }, [cartTotalPrice])
+
+  const freeDeliveryText = FREE_HOME_DELIVERY_PRICE - cartTotalPrice <= 0
     ? "Free shipping reached"
     : "Left until free shipping"
 
-  const amountUntilFreeDelivery = FREE_HOME_DELIVERY_PRICE - cartTotalPrice < 0
+  const amountUntilFreeDelivery = FREE_HOME_DELIVERY_PRICE - cartTotalPrice <= 0
     ? ""
     : `${EURO}${FREE_HOME_DELIVERY_PRICE - cartTotalPrice}`
 
