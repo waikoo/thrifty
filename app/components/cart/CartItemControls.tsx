@@ -64,7 +64,7 @@ export default function CartItemControls({ product }: CartItemControlsProps) {
   }
 
   return (
-    <section className="flex flex-col justify-start gap-3 px-4">
+    <section className="flex flex-col justify-start gap-3 px-4 mt-3">
       <div title="Share">
         <BigMustardButton className="p-[14px]">
           <FiShare2 size={20} />
