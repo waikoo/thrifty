@@ -9,7 +9,7 @@ type ProductStateProps = {
 }
 
 export default async function ProductState({ uuidMatch }: ProductStateProps) {
-  const apiUrl = `${process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000'}/api/admin`;
+  const apiUrl = 'http://thrifty-seven.vercel.app/api/admin';
 
   async function fetchMaterialsAndBrands(apiUrl: string) {
     const res = await fetch(apiUrl)
