@@ -21,14 +21,14 @@ export default function SummaryShippingSelect() {
   }
 
   return (
-    <select className={`text-t_black bg-[#fcfcfc] col-span-full text-[14px] ${albert_500.className} border-[#e3e3e3]`}
+    <select className={`text-t_black bg-[#fcfcfc] col-span-full text-[13px] sm:text-[17px] xl:text-[14px] ${albert_500.className} border-[#e3e3e3]`}
       name="shipping"
       id="shipping"
       ref={selectRef}
       onChange={selectOnChange}
     >
-      <option value="home">Home Delivery 2-4 Days</option>
-      <option value="store">Collect from store </option>
+      <option value="home" className="text-t_black">Home Delivery 2-4 Days</option>
+      <option value="store" className="text-t_black">Collect from store </option>
     </select>
   )
 }

@@ -49,16 +49,16 @@ export default function CartItem({ product }: CartItemType) {
 
           <div className="">
             <div className="flex justify-between">
-              <span className={`text-[14px] ${albert_600.className}`}>
+              <span className={`text-[13px] sm:text-[17px] xl:text-[14px] ${albert_600.className}`}>
                 {`${capitalize(product.brand)}`}
               </span>
 
-              <span className={`text-[14px] ${albert_600.className}`}>
+              <span className={`text-[13px]sm:text-[17px] xl:text-[14px] ${albert_600.className}`}>
                 {EURO}{product.price}
               </span>
             </div>
 
-            <p className={`text-[12px] ${albert_500.className}`}>
+            <p className={`text-[13px] sm:text-[17px] xl:text-[12px] ${albert_500.className}`}>
               {product.size}
             </p>
 

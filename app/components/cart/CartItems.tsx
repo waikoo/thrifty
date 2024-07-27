@@ -28,12 +28,12 @@ export default function CartItems() {
   }, [cart])
 
   return (
-    <section className="flex sm:flex-col xl:flex-row justify-between xl:gap-32 px-20 rounded-b-[35px] bg-[#fff]">
+    <section className="flex flex-col xl:flex-row justify-between xl:gap-32 px-20 rounded-b-[35px] bg-[#fff]">
       <div className="flex flex-col gap-8 rounded-b-[35px]">
 
         <CartControls />
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {products.map((product) => (
             <CartItem key={product.uuid} product={product} />))}
         </div>

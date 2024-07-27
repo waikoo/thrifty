@@ -62,7 +62,7 @@ export default function FillForFreeShipping({ lang, gender = 'women' }: NewArriv
   return cart.length === 0 || isFreeShipping ? null : (
     <section className={`bg-t_white w-full flex flex-col pb-10`}>
       <div className={`${'mx-auto w-[80%]'}`}>
-        <h3 className={`text-t_black py-10 text-2xl font-bold text-center text-[1rem]`}>
+        <h3 className={`text-t_black py-10 text-2xl font-bold text-center text-[20px] sm:text-[22px]`}>
           FILL FOR FREE SHIPPING
         </h3>
 

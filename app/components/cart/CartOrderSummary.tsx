@@ -58,6 +58,9 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
       const matches = products.filter((product) => cart.includes(product.uuid))
       const cartTotalPrice = matches.reduce((prev, curr) => prev + curr.price, 0)
       setCartTotalPrice(cartTotalPrice)
+      if (cartTotalPrice >= FREE_HOME_DELIVERY_PRICE) {
+        setIsFreeDelivery(true)
+      }
     }
   }, [])
 
@@ -68,37 +71,37 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
 
   return (
     <div className={`xl:w-[350px] xl:min-w-[350px]`}>
-      <h1 className={`${h1Style} text-center sm:text-[21px] xl:text-[0.875rem] text-[18px] ${albert_900.className}`}>
+      <h1 className={`${h1Style} text-center text-[16px] sm:text-[21px] xl:text-[0.875rem] text-[18px] ${albert_900.className}`}>
         ORDER SUMMARY
       </h1>
 
       <div className={`bg-[#f9f9f9] grid grid-cols-2 gap-3 p-6 ${className} rounded-[35px]`}>
         {!isCheckout && (< SummaryFreeDelivery />)}
 
-        <span className={`sm:text-[17px] xl:text-[14px] ${albert.className}`}>
+        <span className={`text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
           {cartLength} {cartLength > 1 ? "items" : "item"}
         </span>
 
-        <span className={`justify-self-end sm:text-[17px] xl:text-[14px] ${albert.className}`}>
+        <span className={`text-[13px] justify-self-end sm:text-[17px] xl:text-[14px] ${albert.className}`}>
           {EURO}{cartTotalPrice}
         </span>
 
-        <span className={`whitespace-nowrap sm:text-[17px] xl:text-[14px] ${albert.className}`}>
+        <span className={`whitespace-nowrap text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
           {isCheckout ? (shippingType === "home" ? "Home Delivery 2-3 days" : "Collect from store") : "Shipping"}
         </span>
 
-        <span className={`justify-self-end sm:text-[17px] xl:text-[14px] ${albert.className}`}>
+        <span className={`justify-self-end text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
           {isFreeDelivery ? "FREE" : `${shippingText}`}
         </span>
 
         {!isCheckout && <SummaryShippingSelect />}
 
         <div className={`${position} w-full col-span-2 grid grid-cols-2 items-center bg-t_white/30 backdrop-blur-md p-2 bottom-0 left-0 right-0 z-50`}>
-          <span className={`my-4 whitespace-nowrap sm:text-[18px] xl:text-[15px] ${sidePadding} ${albert_900.className}`}>
+          <span className={`my-4 whitespace-nowrap text-[14px] sm:text-[18px] xl:text-[15px] ${sidePadding} ${albert_900.className}`}>
             TOTAL
           </span>
 
-          <span className={`self-center justify-self-end sm:text-[18px] xl:text-[15px] ${sidePadding} ${albert_900.className}`}>
+          <span className={`self-center justify-self-end text-[14px] sm:text-[18px] xl:text-[15px] ${sidePadding} ${albert_900.className}`}>
             {EURO}{isFreeDelivery ? cartTotalPrice : totalWithShipping}
           </span>
 
