@@ -57,7 +57,7 @@ export const ProductInfo = ({ matchedProduct }: ProductInfoProps) => {
         <div className="flex items-center gap-2 mt-5 w-full">
           <ProductAddToCart
             uuid={matchedProduct.uuid}
-            className="xl:hover:bg-[#C9CC2C] border-none sm:w-screen xl:w-[275px]"
+            className="xl:hover:bg-[#C9CC2C] border-none sm:w-screen xl:w-[275px] py-3"
             bgColor="bg-t_mustard"
             textColor="text-[#3e3e3e]"
           >

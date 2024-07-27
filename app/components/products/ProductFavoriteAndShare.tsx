@@ -42,12 +42,12 @@ export default function ProductFavoriteAndShare({ matchedProduct }: ProductFavor
   return (
     <div className="flex gap-2 self-start">
       <div onClick={handleFavorite}>
-        <BigMustardButton className="p-2 sm:p-3">
+        <BigMustardButton className="p-[14px]">
           <IconHeart isFavorited={isFavorited} />
         </BigMustardButton>
       </div>
 
-      <BigMustardButton className="p-2 sm:p-3">
+      <BigMustardButton className="p-[14px]">
         <FiShare2 color="black" />
       </BigMustardButton>
     </div>
