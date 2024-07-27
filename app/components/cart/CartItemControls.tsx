@@ -66,22 +66,22 @@ export default function CartItemControls({ product }: CartItemControlsProps) {
   return (
     <section className="flex flex-col justify-start gap-3 px-4">
       <div title="Share">
-        <BigMustardButton className="p-4">
-          <FiShare2 size={25} />
+        <BigMustardButton className="p-[14px]">
+          <FiShare2 size={20} />
         </BigMustardButton>
       </div>
 
       <div onClick={toggleItemInFavorites} title="Toggle Favorite">
-        <BigMustardButton className="p-4">
+        <BigMustardButton className="p-[14px]">
           {!favorites.includes(product.uuid)
-            ? <IoMdHeartEmpty size={25} />
-            : <IoMdHeart size={25} />}
+            ? <IoMdHeartEmpty size={20} />
+            : <IoMdHeart size={20} />}
         </BigMustardButton>
       </div>
 
       <div onClick={removeCartItem} title="Remove">
-        <BigMustardButton className="p-4">
-          <RxCross1 size={25} />
+        <BigMustardButton className="p-[14px]">
+          <RxCross1 size={20} />
         </BigMustardButton>
       </div>
     </section>
