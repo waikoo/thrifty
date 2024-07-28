@@ -75,7 +75,7 @@ export const useCartStore = create<TCartStore>((set) => ({
 type TSelectedCartStore = {
   selected: string[]
   areAllSelected: boolean
-  toggleAreAllSelected: () => void
+  toggleAreAllSelected: (value: boolean) => void
   toggleSelected: (id: string) => void
   emptySelectedCart: () => void
   setAllSelectedCartItemsTo: (array: string[]) => void
@@ -84,8 +84,8 @@ type TSelectedCartStore = {
 export const useSelectedCartStore = create<TSelectedCartStore>((set) => ({
   selected: [],
   areAllSelected: false,
-  toggleAreAllSelected: () => set((state) => ({
-    areAllSelected: !state.areAllSelected
+  toggleAreAllSelected: (value: boolean) => set((state) => ({
+    areAllSelected: value
   })),
   setAllSelectedCartItemsTo: (array: string[]) => set({
     selected: array

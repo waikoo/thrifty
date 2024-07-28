@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -26,6 +26,14 @@ export default function CartItem({ product }: CartItemType) {
   }
   const checkedStyle = isChecked ? "border-t_mustard" : 'border-white hover:border-[#e3e3e3] '
   const { lang, gender } = getLangAndGender(usePathname())
+
+  useEffect(() => {
+    if (areAllSelected) {
+      setIsChecked(selected.includes(product.uuid))
+    } else {
+      setIsChecked(false)
+    }
+  }, [areAllSelected])
 
   return (
     <label className="flex gap-2" htmlFor="product">

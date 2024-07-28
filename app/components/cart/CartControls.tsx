@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 
 import { FiShare2 } from "react-icons/fi"
 import { RxCross1 } from "react-icons/rx"
@@ -12,10 +12,21 @@ export default function CartControls() {
   const { emptyCart, cart, removeSelectedFromCart } = useCartStore()
   const { selected, areAllSelected, toggleAreAllSelected, setAllSelectedCartItemsTo, emptySelectedCart } = useSelectedCartStore()
   const { addSelectedToFavorites } = useFavoriteStore()
+  const inputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    setAllSelectedCartItemsTo(areAllSelected ? cart : [])
-  }, [areAllSelected])
+  const handleAreAllSelected = () => {
+    if (inputRef.current) {
+      if (inputRef.current.checked) {
+        toggleAreAllSelected(true)
+        setAllSelectedCartItemsTo(cart)
+        return
+      }
+      toggleAreAllSelected(false)
+      setAllSelectedCartItemsTo([])
+    }
+  }
+
+  useEffect(handleAreAllSelected, [areAllSelected, cart])
 
   const deleteSelectedFromCart = () => {
     if (areAllSelected) {
@@ -47,7 +58,12 @@ export default function CartControls() {
 
   return (
     <div className={`mt-[40px] flex items-center gap-4 text-[13px] sm:text-[17px] xl:text-[14px] text-[#757575] ${albert_500.className}`}>
-      <input type="checkbox" checked={areAllSelected} onChange={toggleAreAllSelected} />
+      <input
+        type="checkbox"
+        checked={areAllSelected}
+        onChange={handleAreAllSelected}
+        ref={inputRef}
+      />
 
       <div className="flex cursor-pointer items-center gap-1">
         <FiShare2 color="#757575" size={13} />
