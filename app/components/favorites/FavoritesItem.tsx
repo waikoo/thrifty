@@ -1,15 +1,17 @@
-"use client"
-import { useEffect, useState } from "react"
-import Image from "next/image"
+'use client'
+import { useEffect, useState } from 'react'
 
-import { ProductItemType } from "@/types/productItem"
-import { capitalize } from "@/utils/capitalize"
-import IconShare from "@/app/components/cart/icons/IconShare"
-import IconDelete from "@/app/components/cart/icons/IconDelete"
-import ProductAddToCart from "@/app/components/products/ProductAddToCart"
-import { EURO } from "@/app/components/data/orderSummary"
-import { useFavoriteStore, useSelectedFavoritesStore } from "@/state/client/favoriteState"
-import { useCartStore } from "@/state/client/cartState"
+import { ProductItemType } from '@/types/productItem'
+import ProductAddToCart from '@/app/components/products/ProductAddToCart'
+import {
+  useFavoriteStore,
+  useSelectedFavoritesStore,
+} from '@/state/client/favoriteState'
+import { useCartStore } from '@/state/client/cartState'
+import CartItemStats from '@/app/components/cart/CartItemStats'
+import FavoritesItemControls from '@/app/components/favorites/FavoritesItemControls'
+import CartItemImage from '@/app/components/cart/CartItemImage'
+import ProductToggleFavorite from '@/app/components/products/ProductToggleFavorite'
 
 type CartItemType = {
   product: ProductItemType
@@ -18,8 +20,11 @@ type CartItemType = {
 export default function FavoritesItem({ product }: CartItemType) {
   const [text, setText] = useState('ADD TO CART')
   const { cart } = useCartStore()
-  const { favorites, removeFromFavorites } = useFavoriteStore()
+  const { favorites } = useFavoriteStore()
   const { selectedFavorites, toggleSelectedFavorites } = useSelectedFavoritesStore()
+  const [isChecked, setIsChecked] = useState(selectedFavorites.includes(product.uuid))
+  const checkedStyle = isChecked ? "border-t_mustard" : 'border-white hover:border-[#e3e3e3] '
+  const { areAllFavoritesSelected } = useSelectedFavoritesStore()
 
   useEffect(() => {
     if (cart.includes(product.uuid)) {
@@ -27,50 +32,60 @@ export default function FavoritesItem({ product }: CartItemType) {
     }
   }, [cart, favorites])
 
-  const removeFavoritesItem = () => {
-    removeFromFavorites(product.uuid)
-
-    const newFavorites = favorites.filter((uuid: string) => uuid !== product.uuid)
-    localStorage.setItem('favorites', JSON.stringify(newFavorites))
-  }
+  useEffect(() => {
+    if (areAllFavoritesSelected) {
+      setIsChecked(true)
+    } else {
+      setIsChecked(false)
+    }
+  }, [areAllFavoritesSelected])
 
   const toggleSelectedItem = () => {
     toggleSelectedFavorites(product.uuid)
+    setIsChecked(!isChecked)
+  }
+
+  function onClickHandler() {
+    toggleSelectedItem()
   }
 
   return (
-    <div className="grid-rows-[auto, auto, auto, auto] grid grid-cols-[auto,auto,300px,auto,auto,auto] items-center gap-4 py-4">
+    <label className="flex gap-2" htmlFor="favorite">
       <input
-        className="col-start-1 col-end-2 row-span-4 self-center"
+        className="self-center"
         type="checkbox"
+        id="favorite py-4"
         checked={selectedFavorites.includes(product.uuid) || false}
         onChange={toggleSelectedItem}
       />
-      <Image className="col-start-2 col-end-3 row-span-4" src={product.img_url[0]} alt="cart image" width={100} height={100} priority={true} />
-      <span className="col-start-3 col-end-4 row-start-1 row-end-2 text-[0.8125rem] font-medium">{`${capitalize(product.brand)} ${capitalize(product.type)}`}</span>
-      <span className="col-start-3 col-end-4 row-start-2 row-end-3 text-[0.8125rem] font-semibold">{product.size}</span>
-      <span className="col-start-3 col-end-4 row-start-4 row-end-5 text-[0.875rem] font-semibold">{EURO}{product.price}</span>
 
-      <div className="col-start-4 col-end-7 row-start-1 row-end-2 flex justify-end gap-4">
-        <div title="Share">
-          <IconShare className="col-start-5 col-end-6 row-start-1 row-end-2 cursor-pointer" />
-        </div>
+      <div className="flex">
 
-        <div onClick={removeFavoritesItem} title="Delete">
-          <IconDelete className="col-start-6 col-end-7 row-start-1 row-end-2 cursor-pointer" />
-        </div>
-      </div>
-
-      <div className="row col-start-4 col-end-7 row-start-4 row-end-5 flex items-center gap-2 justify-self-center">
-        <ProductAddToCart
-          uuid={product.uuid}
-          className="p-4"
-          bgColor="xl:hover:bg-[#e2e2e2]"
-          textColor="text-t_black"
+        <div className={`flex flex-col gap-2 border-[2px] rounded-[20px] hover:border-[2px] hover:rounded-[20px] p-[10px] cursor-pointer relative ${checkedStyle}`}
+          onClick={onClickHandler}
         >
-          {text}
-        </ProductAddToCart>
+          <CartItemImage product={product} /> {/* reused from cart */}
+          <ProductToggleFavorite uuid={product.uuid} />
+
+          <CartItemStats product={product} /> {/* reused from cart */}
+
+
+          <div className="flex items-center gap-2 justify-self-center">
+            <ProductAddToCart
+              uuid={product.uuid}
+              className="p-4"
+              bgColor="xl:hover:bg-[#e2e2e2]"
+              textColor="text-t_black"
+            >
+              {text}
+            </ProductAddToCart>
+          </div>
+
+
+        </div>
+
+        <FavoritesItemControls product={product} />
       </div>
-    </div>
+    </label>
   )
 }

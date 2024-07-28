@@ -45,7 +45,7 @@ export default function FavoritesControls() {
   }
 
   return (
-    <div className="mt-[40px] flex items-center gap-2">
+    <div className="mt-[40px] flex items-center gap-2 xl:text-[14px]">
       <input
         type="checkbox"
         checked={areAllFavoritesSelected}
@@ -54,7 +54,7 @@ export default function FavoritesControls() {
 
       <div className="flex items-center gap-2 underline underline-offset-2">
         <IconShare />
-        <span className="text-[0.75rem] font-normal">Share</span>
+        <span className="">Share</span>
       </div>
 
       <div
@@ -63,7 +63,7 @@ export default function FavoritesControls() {
       >
         {/* <IconHeart /> */}
         <IconFadedCart />
-        <span className="text-[0.75rem] font-normal">Add To Cart</span>
+        <span className="">Add To Cart</span>
       </div>
 
       <div
@@ -71,7 +71,7 @@ export default function FavoritesControls() {
         onClick={deleteSelectedFromFavorites}
       >
         <IconDelete />
-        <span className="text-[0.75rem] font-normal">Delete</span>
+        <span className="">Delete</span>
       </div>
     </div>
   )
