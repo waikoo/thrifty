@@ -69,19 +69,16 @@ export default function FavoritesItem({ product }: CartItemType) {
 
           <CartItemStats product={product} /> {/* reused from cart */}
 
-
           <div className="flex items-center gap-2 justify-self-center">
             <ProductAddToCart
               uuid={product.uuid}
-              className="p-4"
+              className="p-2 border-[#3e3e3e]"
               bgColor="xl:hover:bg-[#e2e2e2]"
               textColor="text-t_black"
             >
               {text}
             </ProductAddToCart>
           </div>
-
-
         </div>
 
         <FavoritesItemControls product={product} />

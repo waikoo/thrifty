@@ -29,7 +29,7 @@ export default function FavoritesItems() {
     <section className="">
       <FavoritesControls />
 
-      <div className="mt-10 grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
         {products.map((product) => (
           <FavoritesItem key={product.uuid} product={product} />
         ))}

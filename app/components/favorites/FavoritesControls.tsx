@@ -45,33 +45,32 @@ export default function FavoritesControls() {
   }
 
   return (
-    <div className="mt-[40px] flex items-center gap-2 xl:text-[14px]">
+    <div className="mt-[40px] text-[#757575] flex items-center gap-2 text-[13px] sm:text-[17px] xl:text-[14px]">
       <input
         type="checkbox"
         checked={areAllFavoritesSelected}
         onChange={toggleAreAllFavoritesSelected}
       />
 
-      <div className="flex items-center gap-2 underline underline-offset-2">
+      <div className="flex items-center gap-2">
         <IconShare />
         <span className="">Share</span>
       </div>
 
       <div
-        className="flex cursor-pointer items-center gap-2 underline underline-offset-2"
+        className="flex cursor-pointer items-center gap-2"
         onClick={saveSelectedToCart}
       >
-        {/* <IconHeart /> */}
         <IconFadedCart />
         <span className="">Add To Cart</span>
       </div>
 
       <div
-        className="flex cursor-pointer items-center gap-2 underline underline-offset-2"
+        className="flex cursor-pointer items-center gap-2"
         onClick={deleteSelectedFromFavorites}
       >
-        <IconDelete />
-        <span className="">Delete</span>
+        <IconDelete size={'14'} />
+        <span className="">Remove</span>
       </div>
     </div>
   )
