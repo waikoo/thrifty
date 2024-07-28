@@ -11,6 +11,7 @@ import HeroButton from '@/app/components/home/HeroButton';
 import getLangAndGender from '@/utils/getLangAndGender';
 import { Gender, Locales } from '@/types/link';
 import { HeroState } from '@/types/home';
+import { albert } from '@/utils/fonts';
 
 type HeroProps = {
   heroState: HeroState
@@ -46,7 +47,15 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
 
       {heroState === 'new_in' ? (<HeroTextNewIn />) : (<HeroTextSale />)}
 
-      <HeroButton lang={lang as Locales} gender={gender as Gender} heroState={heroState} />
+      <HeroButton
+        lang={lang as Locales}
+        gender={gender as Gender}
+        heroState={heroState}
+        position="absolute"
+        bgColor="bg-t_black"
+        textColor="text-t_white"
+        font={albert.className}
+      />
 
     </section>
   )
