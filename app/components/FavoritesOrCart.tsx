@@ -25,7 +25,7 @@ export default function FavoritesOrCart({ lang, gender }: FavoritesOrCartProps) 
 
   return (
     (isOnCart || isOnFavorites) ? (
-      <div className={`bg-[#fff] text-t_black xl:rounded-t-[35px] justify-content grid w-full cursor-pointer grid-cols-2 pt-6 text-[1.125rem] ${albert_700.className} tracking-wider`}>
+      <div className={`bg-[#fff] text-t_black xl:rounded-t-[35px] justify-content grid w-full cursor-pointer grid-cols-2 xl:pt-6 text-[1.125rem] ${albert_700.className} tracking-wider`}>
 
         <Link href={`/${lang}/${gender}/cart`}
           className={`${getColor('border', isCartHovered, isOnCart)} flex items-center justify-center gap-2 border-b-[3px] pb-3`}
@@ -33,7 +33,7 @@ export default function FavoritesOrCart({ lang, gender }: FavoritesOrCartProps) 
           onMouseLeave={() => setIsCartHovered(false)}
         >
           <IconShoppingBag stroke={getColor('icon', isCartHovered, isOnCart)} />
-          <span className={`sm:text-[17px] xl:text-[0.875rem] ${getColor('text', isCartHovered, isOnCart)}`}>
+          <span className={`text-[12px] sm:text-[17px] xl:text-[0.875rem] ${getColor('text', isCartHovered, isOnCart)}`}>
             CART {`(${cartLength})`}
           </span>
         </Link>
@@ -44,7 +44,7 @@ export default function FavoritesOrCart({ lang, gender }: FavoritesOrCartProps) 
           onMouseLeave={() => setIsFavoritesHovered(false)}
         >
           <IconFavorite stroke={getColor('icon', isFavoritesHovered, isOnFavorites)} />
-          <span className={`sm:text-[17px] xl:text-[0.875rem] ${getColor('text', isFavoritesHovered, isOnFavorites)}`}>
+          <span className={`text-[12px] sm:text-[17px] xl:text-[0.875rem] ${getColor('text', isFavoritesHovered, isOnFavorites)}`}>
             FAVORITES {`(${favoritesLength})`}
           </span>
         </Link>
