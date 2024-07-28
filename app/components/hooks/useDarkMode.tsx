@@ -13,11 +13,11 @@ export default function useDarkMode(containsDark: boolean) {
   useEffect(() => {
     // db theme has precedence over browser preference
     if (localTheme === null) {
-      getThemeFromDb().then(themeFromDb => {
-        if (themeFromDb === null) {
+      getThemeFromDb().then(wantsDark => {
+        if (wantsDark === null) {
           setLocalTheme(containsDark ? 'dark' : 'light');
         } else {
-          setLocalTheme(themeFromDb);
+          setLocalTheme(wantsDark ? 'dark' : 'light');
         }
       })
     } else {
@@ -36,6 +36,7 @@ export default function useDarkMode(containsDark: boolean) {
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
     document.documentElement.dataset.theme = newTheme;
     localStorage.setItem(themeSettings.LOCAL_STORAGE_KEY, (newTheme === 'dark').toString());
+    console.warn(newTheme)
     updateTheme(newTheme);
     updateThemeInDb(newTheme);
   };
