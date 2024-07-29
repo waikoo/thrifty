@@ -57,7 +57,7 @@ export const useCartStore = create<TCartStore>((set) => ({
     })
 
     return {
-      cart: [...newCart],
+      cart: newCart,
       cartLength: newCart.length
     }
   }),

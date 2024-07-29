@@ -13,21 +13,26 @@ type CartItemType = {
 }
 
 export default function CartItem({ product }: CartItemType) {
-  const { selected, areAllSelected, toggleSelected } = useSelectedCartStore()
+  const { selected, areAllSelected, toggleSelected, toggleAreAllSelected } = useSelectedCartStore()
   const [isChecked, setIsChecked] = useState(selected.includes(product.uuid))
+
   const toggleSelectedItem = () => {
     toggleSelected(product.uuid)
     setIsChecked(!isChecked)
   }
   const checkedStyle = isChecked ? "border-t_mustard" : 'border-white hover:border-[#e3e3e3] '
 
-  useEffect(() => {
-    if (areAllSelected) {
-      setIsChecked(selected.includes(product.uuid))
-    } else {
-      setIsChecked(false)
-    }
+  useEffect(() => { // toggles selection of cart items
+    setIsChecked(selected.includes(product.uuid))
   }, [areAllSelected])
+
+  useEffect(() => { // untoggles areAllSelected when after all are selected, one is untoggled
+    if (!isChecked) {
+      if (areAllSelected) {
+        toggleAreAllSelected(false)
+      }
+    }
+  }, [isChecked])
 
   return (
     <label className="flex gap-2" htmlFor="product">

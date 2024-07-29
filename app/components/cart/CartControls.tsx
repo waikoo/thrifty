@@ -9,7 +9,7 @@ import { useFavoriteStore } from "@/state/client/favoriteState"
 import { albert_500 } from "@/utils/fonts"
 
 export default function CartControls() {
-  const { emptyCart, cart, removeSelectedFromCart } = useCartStore()
+  const { emptyCart, cart, removeSelectedFromCart, removeFromCart, initCart } = useCartStore()
   const { selected, areAllSelected, toggleAreAllSelected, setAllSelectedCartItemsTo, emptySelectedCart } = useSelectedCartStore()
   const { addSelectedToFavorites } = useFavoriteStore()
   const inputRef = useRef<HTMLInputElement>(null)
@@ -26,8 +26,6 @@ export default function CartControls() {
     }
   }
 
-  useEffect(handleAreAllSelected, [areAllSelected, cart])
-
   const deleteSelectedFromCart = () => {
     if (areAllSelected) {
       emptyCart()
@@ -35,13 +33,13 @@ export default function CartControls() {
       localStorage.setItem('cart', '[]')
       return
     }
-    removeSelectedFromCart(selected)
-    const stringifiedCart = localStorage.getItem('cart')
-    if (stringifiedCart) {
-      const cart = JSON.parse(stringifiedCart)
-      const newCart = cart.filter((uuid: string) => !selected.includes(uuid))
-      localStorage.setItem('cart', JSON.stringify(newCart))
-    }
+
+    const newCart: string[] = Array.from(new Set(cart).difference(new Set(selected)))
+
+    initCart(newCart)
+    emptySelectedCart()
+    localStorage.setItem('cart', JSON.stringify(newCart))
+    toggleAreAllSelected(false)
   }
 
   const saveSelectedToFavorites = () => {
@@ -54,6 +52,7 @@ export default function CartControls() {
       favoritesFromLocalStorage.push(selectedItem)
     })
     localStorage.setItem('favorites', JSON.stringify(favoritesFromLocalStorage))
+    toggleAreAllSelected(false)
   }
 
   return (
