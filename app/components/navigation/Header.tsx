@@ -1,6 +1,8 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation";
 
+import { RxCross1 } from "react-icons/rx";
+
 import { BackToTop, Banner, Logo, NavBar, WithHome } from "@/app/components/navigation";
 import SimpleHeader from "@/app/components/navigation/SimpleHeader";
 import AccountMenuBar from "@/app/components/navigation/AccountMenuBar";
@@ -9,7 +11,6 @@ import MiniCart from "@/app/components/navigation/MiniCart";
 import NavBarMobile from "@/app/components/navigation/NavBarMobile"
 import { viewport } from "@/app/components/data/universalStyles";
 import useViewport from "@/app/components/hooks/useViewport";
-import { RxCross1 } from "react-icons/rx";
 
 export default function Header() {
   const [pathname, router] = [usePathname(), useRouter()]
@@ -18,10 +19,10 @@ export default function Header() {
   const viewportWidth = useViewport()
   const isHomePage = pathname.split('/').length < 4 && !isCheckout
   const isCartOrFavorites = pathname.includes('cart') || pathname.includes('favorites')
-  const cartOrFavoritesStyle = isCartOrFavorites && viewportWidth < 1280 ? 'bg-t_black' : 'dark:bg-t_black bg-t_white dark:text-t_white text-t_black '
+  const cartOrFavoritesStyle = isCartOrFavorites && viewportWidth < 640 ? 'bg-t_black' : 'dark:bg-t_black bg-t_white dark:text-t_white text-t_black '
   const logoColor = !isCartOrFavorites ? "black" : '#d2d62e';
   const crossVisibility = isCartOrFavorites ? 'block' : 'hidden';
-  const hideBanner = isCartOrFavorites && viewportWidth < 1280 ? 'hidden' : '';
+  const hideBanner = isCartOrFavorites && viewportWidth < 640 ? 'hidden' : '';
 
   function onClickGoBack() {
     router.back()
