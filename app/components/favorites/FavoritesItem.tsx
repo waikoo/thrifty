@@ -47,7 +47,7 @@ export default function FavoritesItem({ product }: CartItemType) {
     toggleSelectedFavorites(product.uuid)
     setIsChecked(!isChecked)
   }
-  console.log(selectedFavorites)
+
   return (
     <label className="flex gap-2" htmlFor="favorite">
       <input
