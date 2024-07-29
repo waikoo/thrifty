@@ -71,7 +71,7 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
 
   return (
     <div className={`xl:w-[350px] xl:min-w-[350px]`}>
-      <h1 className={`${h1Style} text-center text-[16px] sm:text-[21px] xl:text-[0.875rem] text-[18px] ${albert_900.className}`}>
+      <h1 className={`${h1Style} text-center text-[16px] sm:text-[21px] xl:text-[18px] ${albert_900.className}`}>
         ORDER SUMMARY
       </h1>
 
