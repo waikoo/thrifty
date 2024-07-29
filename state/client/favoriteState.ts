@@ -65,7 +65,7 @@ export const useFavoriteStore = create<TFavoriteStore>((set) => ({
     })
 
     return {
-      favorites: [...newFavorites],
+      favorites: newFavorites,
       favoritesLength: state.favorites.length + newFavorites.length
     }
 
@@ -79,7 +79,7 @@ export const useFavoriteStore = create<TFavoriteStore>((set) => ({
 type TSelectedFavoritesStore = {
   selectedFavorites: string[]
   areAllFavoritesSelected: boolean
-  toggleAreAllFavoritesSelected: () => void
+  toggleAreAllFavoritesSelected: (value: boolean) => void
   toggleSelectedFavorites: (id: string) => void
   emptySelectedFavorites: () => void
   setAllSelectedFavoritesItemsTo: (array: string[]) => void
@@ -88,8 +88,8 @@ type TSelectedFavoritesStore = {
 export const useSelectedFavoritesStore = create<TSelectedFavoritesStore>((set) => ({
   selectedFavorites: [],
   areAllFavoritesSelected: false,
-  toggleAreAllFavoritesSelected: () => set((state) => ({
-    areAllFavoritesSelected: !state.areAllFavoritesSelected
+  toggleAreAllFavoritesSelected: (value: boolean) => set((state) => ({
+    areAllFavoritesSelected: value
   })),
   setAllSelectedFavoritesItemsTo: (array: string[]) => set({
     selectedFavorites: array

@@ -21,10 +21,9 @@ export default function FavoritesItem({ product }: CartItemType) {
   const [text, setText] = useState('ADD TO CART')
   const { cart } = useCartStore()
   const { favorites } = useFavoriteStore()
-  const { selectedFavorites, toggleSelectedFavorites } = useSelectedFavoritesStore()
+  const { selectedFavorites, toggleSelectedFavorites, toggleAreAllFavoritesSelected, areAllFavoritesSelected } = useSelectedFavoritesStore()
   const [isChecked, setIsChecked] = useState(selectedFavorites.includes(product.uuid))
   const checkedStyle = isChecked ? "border-t_mustard" : 'border-white hover:border-[#e3e3e3] '
-  const { areAllFavoritesSelected } = useSelectedFavoritesStore()
 
   useEffect(() => {
     if (cart.includes(product.uuid)) {
@@ -33,36 +32,36 @@ export default function FavoritesItem({ product }: CartItemType) {
   }, [cart, favorites])
 
   useEffect(() => {
-    if (areAllFavoritesSelected) {
-      setIsChecked(true)
-    } else {
-      setIsChecked(false)
-    }
+    setIsChecked(selectedFavorites.includes(product.uuid))
   }, [areAllFavoritesSelected])
+
+  useEffect(() => {
+    if (!isChecked) {
+      if (areAllFavoritesSelected) {
+        toggleAreAllFavoritesSelected(false)
+      }
+    }
+  }, [isChecked])
 
   const toggleSelectedItem = () => {
     toggleSelectedFavorites(product.uuid)
     setIsChecked(!isChecked)
   }
-
-  function onClickHandler() {
-    toggleSelectedItem()
-  }
-
+  console.log(selectedFavorites)
   return (
     <label className="flex gap-2" htmlFor="favorite">
       <input
         className="self-center"
         type="checkbox"
-        id="favorite py-4"
-        checked={selectedFavorites.includes(product.uuid) || false}
+        id="favorite"
+        checked={isChecked || false}
         onChange={toggleSelectedItem}
       />
 
       <div className="flex">
 
         <div className={`flex flex-col gap-2 border-[2px] rounded-[20px] hover:border-[2px] hover:rounded-[20px] p-[10px] cursor-pointer relative ${checkedStyle}`}
-          onClick={onClickHandler}
+          onClick={toggleSelectedItem}
         >
           <CartItemImage product={product} /> {/* reused from cart */}
           <ProductToggleFavorite uuid={product.uuid} />

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useRef } from 'react'
 
 import IconShare from '@/app/components/cart/icons/IconShare'
 import IconDelete from '@/app/components/cart/icons/IconDelete'
@@ -8,12 +8,9 @@ import { useCartStore } from '@/state/client/cartState'
 
 export default function FavoritesControls() {
   const { selectedFavorites, areAllFavoritesSelected, toggleAreAllFavoritesSelected, setAllSelectedFavoritesItemsTo, emptySelectedFavorites } = useSelectedFavoritesStore()
-  const { favorites, removeSelectedFromFavorites, emptyFavorites } = useFavoriteStore()
+  const { favorites, emptyFavorites, initFavorites } = useFavoriteStore()
   const { addSelectedFavoritesToCart } = useCartStore()
-
-  useEffect(() => {
-    setAllSelectedFavoritesItemsTo(areAllFavoritesSelected ? favorites : [])
-  }, [areAllFavoritesSelected])
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const deleteSelectedFromFavorites = () => {
     if (areAllFavoritesSelected) {
@@ -22,13 +19,12 @@ export default function FavoritesControls() {
       localStorage.setItem('favorites', '[]')
       return
     }
-    removeSelectedFromFavorites(selectedFavorites)
-    const stringifiedFavorites = localStorage.getItem('favorites')
-    if (stringifiedFavorites) {
-      const favorites = JSON.parse(stringifiedFavorites)
-      const newFavorites = favorites.filter((uuid: string) => !selectedFavorites.includes(uuid))
-      localStorage.setItem('favorites', JSON.stringify(newFavorites))
-    }
+
+    const newFavorites: string[] = Array.from(new Set(favorites).difference(new Set(selectedFavorites)))
+    initFavorites(newFavorites)
+    emptySelectedFavorites()
+    localStorage.setItem('favorites', JSON.stringify(newFavorites))
+    toggleAreAllFavoritesSelected(false)
   }
 
   const saveSelectedToCart = () => {
@@ -44,12 +40,26 @@ export default function FavoritesControls() {
     localStorage.setItem('cart', JSON.stringify(cartFromLocalStorage))
   }
 
+  function handleAreAllSelected(): void {
+    if (inputRef.current) {
+      if (inputRef.current.checked) {
+        toggleAreAllFavoritesSelected(true)
+        setAllSelectedFavoritesItemsTo(favorites)
+        return
+      }
+      console.log(selectedFavorites)
+      toggleAreAllFavoritesSelected(false)
+      setAllSelectedFavoritesItemsTo([])
+    }
+  }
+
   return (
     <div className="mt-[40px] text-[#757575] flex items-center gap-2 text-[13px] sm:text-[17px] xl:text-[14px]">
       <input
         type="checkbox"
         checked={areAllFavoritesSelected}
-        onChange={toggleAreAllFavoritesSelected}
+        onChange={handleAreAllSelected}
+        ref={inputRef}
       />
 
       <div className="flex items-center gap-2">
