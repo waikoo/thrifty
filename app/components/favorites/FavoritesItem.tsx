@@ -51,7 +51,7 @@ export default function FavoritesItem({ product }: CartItemType) {
   return (
     <label className="flex gap-2" htmlFor="favorite">
       <input
-        className="self-center"
+        className="self-center checked:bg-t_black"
         type="checkbox"
         id="favorite"
         checked={isChecked || false}

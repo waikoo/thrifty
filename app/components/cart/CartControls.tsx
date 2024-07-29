@@ -62,6 +62,7 @@ export default function CartControls() {
         checked={areAllSelected}
         onChange={handleAreAllSelected}
         ref={inputRef}
+        className="checked:bg-t_black"
       />
 
       <div className="flex cursor-pointer items-center gap-1">

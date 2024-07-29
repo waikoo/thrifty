@@ -36,7 +36,7 @@ export default function CartItem({ product }: CartItemType) {
 
   return (
     <label className="flex gap-2" htmlFor="product">
-      <input className="self-center"
+      <input className="self-center checked:bg-t_black"
         type="checkbox"
         id="product"
         checked={isChecked || false}

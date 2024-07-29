@@ -47,7 +47,6 @@ export default function FavoritesControls() {
         setAllSelectedFavoritesItemsTo(favorites)
         return
       }
-      console.log(selectedFavorites)
       toggleAreAllFavoritesSelected(false)
       setAllSelectedFavoritesItemsTo([])
     }
@@ -60,6 +59,7 @@ export default function FavoritesControls() {
         checked={areAllFavoritesSelected}
         onChange={handleAreAllSelected}
         ref={inputRef}
+        className="checked:bg-t_black"
       />
 
       <div className="flex items-center gap-2">
