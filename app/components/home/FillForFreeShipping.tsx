@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/app/supabase';
 import ProductItem from '../products/ProductItem';
 import { FREE_HOME_DELIVERY_PRICE } from "../data/orderSummary";
+import { albert_900 } from "@/utils/fonts";
 
 type NewArrivalsProps = {
   lang: Locales
@@ -62,7 +63,7 @@ export default function FillForFreeShipping({ lang, gender = 'women' }: NewArriv
   return cart.length === 0 || isFreeShipping ? null : (
     <section className={`bg-t_white w-full flex flex-col pb-10`}>
       <div className={`${'mx-auto w-[80%]'}`}>
-        <h3 className={`text-t_black py-10 text-2xl font-bold text-center text-[20px] sm:text-[22px]`}>
+        <h3 className={`text-t_black py-10 text-2xl font-bold text-center text-[20px] sm:text-[22px] ${albert_900.className}`}>
           FILL FOR FREE SHIPPING
         </h3>
 
