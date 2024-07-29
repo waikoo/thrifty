@@ -9,7 +9,7 @@ import SummarySubmit from "@/app/components/checkout/SummarySubmit";
 import { EURO, FREE_HOME_DELIVERY_PRICE } from "@/app/components/data/orderSummary";
 import { useOrderStore, useOrderSummaryStore } from "@/state/client/orderState";
 import { useCartStore } from "@/state/client/cartState";
-import { albert, albert_700, albert_900 } from "@/utils/fonts";
+import { albert, albert_900 } from "@/utils/fonts";
 import useViewport from "@/app/components/hooks/useViewport";
 
 type CartOrderSummaryProps = {
@@ -75,28 +75,28 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
         ORDER SUMMARY
       </h1>
 
-      <div className={`bg-[#f9f9f9] grid grid-cols-2 gap-3 p-6 ${className} rounded-[35px]`}>
+      <div className={`bg-[#f9f9f9] grid grid-cols-2 gap-3 py-6 ${className} rounded-[35px]`}>
         {!isCheckout && (< SummaryFreeDelivery />)}
 
-        <span className={`text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
+        <span className={`text-[13px] sm:text-[17px] xl:text-[14px] px-6 ${albert.className}`}>
           {cartLength} {cartLength > 1 ? "items" : "item"}
         </span>
 
-        <span className={`text-[13px] justify-self-end sm:text-[17px] xl:text-[14px] ${albert.className}`}>
+        <span className={`text-[13px] justify-self-end sm:text-[17px] xl:text-[14px] px-6 ${albert.className}`}>
           {EURO}{cartTotalPrice}
         </span>
 
-        <span className={`whitespace-nowrap text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
+        <span className={`whitespace-nowrap text-[13px] sm:text-[17px] xl:text-[14px] px-6 ${albert.className}`}>
           {isCheckout ? (shippingType === "home" ? "Home Delivery 2-3 days" : "Collect from store") : "Shipping"}
         </span>
 
-        <span className={`justify-self-end text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className}`}>
+        <span className={`justify-self-end text-[13px] sm:text-[17px] xl:text-[14px] px-6 ${albert.className}`}>
           {isFreeDelivery ? "FREE" : `${shippingText}`}
         </span>
 
         {!isCheckout && <SummaryShippingSelect />}
 
-        <div className={`${position} w-full col-span-2 grid grid-cols-2 items-center bg-t_white/30 backdrop-blur-md p-2 bottom-0 left-0 right-0 z-50`}>
+        <div className={`${position} ${position === 'static' ? 'px-6' : ''} w-full col-span-2 grid grid-cols-2 items-center bg-t_white/30 backdrop-blur-md p-2 bottom-0 left-0 right-0 z-50`}>
           <span className={`my-4 whitespace-nowrap text-[14px] sm:text-[18px] xl:text-[15px] ${sidePadding} ${albert_900.className}`}>
             TOTAL
           </span>

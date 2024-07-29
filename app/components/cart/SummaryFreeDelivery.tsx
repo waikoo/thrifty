@@ -30,8 +30,8 @@ export default function SummaryFreeDelivery() {
 
   return (
     <>
-      <span className={`text-nowrap sm:text-[17px] xl:text-[15px] ${albert_500.className}`}>{freeDeliveryText}</span>
-      <span className={`justify-self-end sm:text-[17px] xl:text-[15px] ${albert_500.className}`}>{amountUntilFreeDelivery}</span>
+      <span className={`text-nowrap sm:text-[17px] xl:text-[15px] px-6 ${albert_500.className}`}>{freeDeliveryText}</span>
+      <span className={`justify-self-end sm:text-[17px] xl:text-[15px] px-6 ${albert_500.className}`}>{amountUntilFreeDelivery}</span>
 
       <div className="h-[0.5rem] w-full bg-white col-span-2">
         <div className={`h-[0.5rem] bg-t_black`}

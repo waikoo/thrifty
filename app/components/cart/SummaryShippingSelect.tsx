@@ -21,7 +21,7 @@ export default function SummaryShippingSelect() {
   }
 
   return (
-    <select className={`text-t_black bg-[#fcfcfc] col-span-full text-[13px] sm:text-[17px] xl:text-[14px] ${albert_500.className} border-[#e3e3e3]`}
+    <select className={`text-t_black bg-[#fcfcfc] col-span-full text-[13px] sm:text-[17px] xl:text-[14px] ${albert_500.className} border-[#e3e3e3] mx-6`}
       name="shipping"
       id="shipping"
       ref={selectRef}
