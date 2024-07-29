@@ -4,10 +4,12 @@ import { getSvgColor } from "@/utils/theme"
 type IconFavoriteProps = {
   stroke?: string
   width?: string
+  fill?: boolean
 }
 
-const IconFavorite = ({ stroke, width }: IconFavoriteProps) => {
+const IconFavorite = ({ stroke, width, fill }: IconFavoriteProps) => {
   const color = useThemeStore((state) => getSvgColor(state.theme))
+  const filledIcon = fill ? 'black' : 'none'
 
   return (
     <div
@@ -18,7 +20,7 @@ const IconFavorite = ({ stroke, width }: IconFavoriteProps) => {
         width={width || 19}
         height={width ? '100%' : 18}
         viewBox="0 0 22 19"
-        fill="none"
+        fill={filledIcon}
       >
         <path
           stroke={stroke || color}

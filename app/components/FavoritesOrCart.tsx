@@ -43,7 +43,10 @@ export default function FavoritesOrCart({ lang, gender }: FavoritesOrCartProps) 
           onMouseEnter={() => setIsFavoritesHovered(true)}
           onMouseLeave={() => setIsFavoritesHovered(false)}
         >
-          <IconFavorite stroke={getColor('icon', isFavoritesHovered, isOnFavorites)} />
+          <IconFavorite
+            stroke={getColor('icon', isFavoritesHovered, isOnFavorites)}
+            fill={false}
+          />
           <span className={`text-[12px] sm:text-[17px] xl:text-[0.875rem] ${getColor('text', isFavoritesHovered, isOnFavorites)}`}>
             FAVORITES {`(${favoritesLength})`}
           </span>

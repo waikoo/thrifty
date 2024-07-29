@@ -1,17 +1,14 @@
 "use client"
 import { useState } from "react";
 
-import { IoMdHeartEmpty } from "react-icons/io";
-import { IoMdHeart } from "react-icons/io";
-import { HiOutlineHeart } from "react-icons/hi";
-import { HiHeart } from "react-icons/hi";
-
 import { useFavoriteStore } from "@/state/client/favoriteState";
 import updateLocalStorage from "@/utils/updateLocalStorage";
+import IconFavorite from "@/app/components/navigation/icons/IconFavorite";
 
 type ProductToggleFavoriteType = {
   uuid: string
 }
+
 export default function ProductToggleFavorite({ uuid }: ProductToggleFavoriteType) {
   const { favorites, toggleFavorite } = useFavoriteStore()
   const [isHovered, setIsHovered] = useState(false)
@@ -30,13 +27,16 @@ export default function ProductToggleFavorite({ uuid }: ProductToggleFavoriteTyp
       >
 
         {!isHovered && !favorites.includes(uuid) ? (
-          <HiOutlineHeart color="#484848" size="20" />
+          <IconFavorite stroke="black" fill={false} />
+
         ) : isHovered && !favorites.includes(uuid) ? (
-          <IoMdHeartEmpty color="#484848" size="25" />
+          <IconFavorite stroke="black" fill={false} width={'25'} />
+
         ) : isHovered && favorites.includes(uuid) ? (
-          <IoMdHeart color="#3e3e3e" size="25" />
+          <IconFavorite stroke="black" fill={true} width={'25'} />
+
         ) : !isHovered && favorites.includes(uuid) ? (
-          <HiHeart color="#484848" size="20" />
+          <IconFavorite stroke="black" fill={true} />
         ) : null}
 
       </div>

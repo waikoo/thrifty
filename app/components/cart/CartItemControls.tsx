@@ -6,6 +6,7 @@ import BigMustardButton from "@/app/components/generic/BigMustardButton"
 import { ProductItemType } from "@/types/productItem"
 import { useFavoriteStore } from "@/state/client/favoriteState"
 import { useCartStore } from "@/state/client/cartState"
+import IconFavorite from "../navigation/icons/IconFavorite"
 
 type CartItemControlsProps = {
   product: ProductItemType
@@ -74,8 +75,8 @@ export default function CartItemControls({ product }: CartItemControlsProps) {
       <div onClick={toggleItemInFavorites} title="Toggle Favorite">
         <BigMustardButton className="p-[14px]">
           {!favorites.includes(product.uuid)
-            ? <IoMdHeartEmpty size={20} />
-            : <IoMdHeart size={20} />}
+            ? <IconFavorite stroke={'black'} fill={false} width={'20'} />
+            : <IconFavorite stroke={'black'} fill={true} width={'20'} />}
         </BigMustardButton>
       </div>
 
