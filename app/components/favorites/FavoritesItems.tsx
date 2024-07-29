@@ -26,7 +26,7 @@ export default function FavoritesItems() {
   }, [favorites])
 
   return (
-    <section className="">
+    <section className="px-20">
       <FavoritesControls />
 
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
