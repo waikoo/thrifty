@@ -19,7 +19,9 @@ export default function CheckoutGuestOrAccount() {
             className="checked:bg-black"
             defaultChecked={true}
           />
-          <span className={`text-[14px] ${albert_600.className}`}>Continue as Guest</span>
+          <span className={`text-[14px] ${albert_600.className}`}>
+            Continue as Guest
+          </span>
         </label>
 
         <label
@@ -33,8 +35,7 @@ export default function CheckoutGuestOrAccount() {
             className="checked:bg-black"
             onClick={() => setShowSignIn(true)}
           />
-          <span
-            className={`text-[14px] ${albert_600.className}`}>
+          <span className={`text-[14px] ${albert_600.className}`}>
             Log In / Create Account
           </span>
         </label>
