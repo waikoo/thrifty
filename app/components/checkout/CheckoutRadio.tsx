@@ -1,5 +1,7 @@
 import { useCheckoutStore } from "@/state/client/checkoutState"
 import { useOrderStore } from "@/state/client/orderState";
+import { albert, albert_600 } from "@/utils/fonts";
+import { borderRadius } from "@/app/components/data/universalStyles";
 
 type CheckoutRadioProps = {
   text: string
@@ -23,16 +25,19 @@ export default function CheckoutRadio({ text, price, value, name }: CheckoutRadi
   }
 
   return (
-    <label className="border-content text-content flex w-full cursor-pointer items-center justify-between gap-4 border-[0.1rem] p-4">
-      <div className="flex items-center gap-2">
+    <label className={`text-[14px] ${albert.className} bg-t_mustard text-content flex w-full cursor-pointer items-center justify-between gap-4 p-4 ${borderRadius}`}>
+      <div className={`flex items-center gap-2`}>
         <input
           type="radio"
           name={name}
           checked={shippingType === value || paymentType === value}
-          onChange={onChangeHandler} />
-        <span className="select-none">{text}</span>
+          onChange={onChangeHandler}
+          className='checked:bg-black'
+        />
+
+        <span className='select-none'>{text}</span>
       </div>
-      <span>{price}</span>
+      <span className={`${price === 'Free' ? '' : albert_600.className}`}>{price}</span>
     </label>
   )
 }

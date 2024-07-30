@@ -8,6 +8,7 @@ import { borderRadius, opacityHalf, opacityFull } from "@/app/components/data/un
 import { AddressesType } from "@/app/components/checkout/CheckoutForm";
 import { useCheckoutStore } from "@/state/client/checkoutState";
 import { useOrderStore } from "@/state/client/orderState";
+import { albert_500 } from "@/utils/fonts";
 
 type ShippingFormProps = {
   defaultAddress: AddressesType
@@ -86,7 +87,9 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
               </div>
             </>
           }
-          <p className="font-regular mr-auto text-[0.6875rem]">*Free shipping above €25 </p>
+          <p className={`${albert_500.className} mr-auto text-[12px]`}>
+            *Free shipping above €25
+          </p>
         </>
       }
     </section>

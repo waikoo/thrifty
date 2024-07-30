@@ -64,7 +64,7 @@ export const useCheckoutStore = create<TCheckoutStore>((set) => ({
   setCountry: (value) => set({ country: value }),
   zipcode: '',
   setZipcode: (value) => set({ zipcode: value }),
-  paymentType: '',
+  paymentType: 'cash',
   setPaymentType: (value) => set({ paymentType: value }),
   isCartOpen: false,
   setIsCartOpen: (value) => set({ isCartOpen: value }),
