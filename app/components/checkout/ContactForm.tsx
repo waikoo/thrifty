@@ -9,6 +9,7 @@ import useUserSession from "@/app/components/hooks/useUserSession";
 import Portal from "@/app/components/generic/Portal";
 import CheckoutDifferentAddressPopup from "@/app/components/checkout/CheckoutDifferentAddressPopup";
 import { useCheckoutStore } from "@/state/client/checkoutState";
+import WithCloseButton from "../navigation/WithCloseButton";
 
 type ContactFormProps = {
   addresses: AddressesType[]
@@ -22,6 +23,7 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
   const sectionRef = useRef(null)
   const { session, error } = useUserSession()
   const [showAddresses, setShowAddresses] = useState(false)
+  const section2Ref = useRef(null)
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     if (e.currentTarget === sectionRef.current) {
@@ -33,6 +35,10 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
 
   function showSavedAddresses() {
     setShowAddresses(!showAddresses)
+  }
+
+  const handleClosePopup = () => {
+    setShowAddresses(false)
   }
 
   return (
@@ -85,12 +91,15 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
           </p>
         </>
       }
+
       {showAddresses && (
         <Portal>
-          <CheckoutDifferentAddressPopup
-            addresses={addresses}
-            setChosenAddressId={setChosenAddressId}
-            setShowAddresses={setShowAddresses} />
+          <WithCloseButton onClose={handleClosePopup} padding="p-8">
+            <CheckoutDifferentAddressPopup
+              addresses={addresses}
+              setChosenAddressId={setChosenAddressId}
+              setShowAddresses={setShowAddresses} />
+          </WithCloseButton>
         </Portal>
       )}
     </section>
