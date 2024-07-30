@@ -22,9 +22,8 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
   }
 
   return (
-    <main className="bg-faded text-content mx-auto flex w-full flex-col items-center px-20 ">
+    <main className="bg-[#f2f2f2] text-t_black mx-auto flex w-full flex-col items-center px-20 ">
 
-      <h1 className="text-bkg py-4 text-[1rem] font-extrabold tracking-wide">CHECKOUT</h1>
       <div id="popup-root"></div>
 
       <div className={`flex gap-12 ${borderBottomRadius}`}>

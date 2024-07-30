@@ -5,6 +5,7 @@ import { supabase } from "@/app/supabase";
 import ContactForm from "@/app/components/checkout/ContactForm";
 import ShippingForm from "@/app/components/checkout/ShippingForm";
 import PaymentForm from "@/app/components/checkout/PaymentForm";
+import CheckoutGuestOrAccount from "./CheckoutGuestOrAccount";
 
 type CheckoutFormProps = {
   className: string
@@ -70,6 +71,8 @@ export default function CheckoutForm({ className }: CheckoutFormProps) {
 
   return (
     <div className={`mb-[10rem] flex w-[800px] flex-col gap-8 ${className}`}>
+      <CheckoutGuestOrAccount />
+
       <ContactForm
         addresses={addresses}
         displayAddress={displayAddress}
