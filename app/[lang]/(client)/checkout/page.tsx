@@ -21,13 +21,15 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
     console.log(error.message)
   }
 
+  const { data: { session } } = await supabase.auth.getSession()
+
   return (
     <main className="bg-[#f2f2f2] text-t_black mx-auto flex w-full flex-col items-center px-20 ">
 
       <div id="popup-root"></div>
 
-      <div className={`flex gap-12 ${borderBottomRadius}`}>
-        <CheckoutForm className="inline" />
+      <div className={`mt-20 flex gap-12 ${borderBottomRadius}`}>
+        <CheckoutForm className="inline" showSignIn={!session} />
 
         <div className={`${borderBottomRadius}`}>
           <CartOrderSummary isCheckout={true} products={products} />

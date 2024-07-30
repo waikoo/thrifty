@@ -5,10 +5,12 @@ import { supabase } from "@/app/supabase";
 import ContactForm from "@/app/components/checkout/ContactForm";
 import ShippingForm from "@/app/components/checkout/ShippingForm";
 import PaymentForm from "@/app/components/checkout/PaymentForm";
-import CheckoutGuestOrAccount from "./CheckoutGuestOrAccount";
+import CheckoutGuestOrAccount from "@/app/components/checkout/CheckoutGuestOrAccount";
+import { getUserId } from "@/utils/getUserId";
 
 type CheckoutFormProps = {
   className: string
+  showSignIn: boolean
 }
 
 export type AddressesType = {
@@ -25,16 +27,12 @@ export type AddressesType = {
   isDefault: boolean
 }
 
-export default function CheckoutForm({ className }: CheckoutFormProps) {
+export default function CheckoutForm({ className, showSignIn }: CheckoutFormProps) {
   const [displayAddress, setDisplayAddress] = useState<AddressesType>({} as AddressesType)
   const [addresses, setAddresses] = useState<AddressesType[]>([])
   const [chosenAddressId, setChosenAddressId] = useState<string>('')
 
   useEffect(() => {
-    const getUserId = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
-      return user?.id
-    }
     const getAddresses = async () => {
       const isSession = await supabase.auth.getSession()
       if (!isSession.data.session) return
@@ -71,7 +69,7 @@ export default function CheckoutForm({ className }: CheckoutFormProps) {
 
   return (
     <div className={`mb-[10rem] flex w-[800px] flex-col gap-8 ${className}`}>
-      <CheckoutGuestOrAccount />
+      {showSignIn && <CheckoutGuestOrAccount />}
 
       <ContactForm
         addresses={addresses}
