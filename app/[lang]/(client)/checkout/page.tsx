@@ -34,6 +34,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
         <div className={`${borderBottomRadius}`}>
           <CartOrderSummary isCheckout={true} products={products} />
 
+          <div className="h-[0.2rem] w-full bg-t_white"></div>
           <CheckoutCart />
         </div>
 

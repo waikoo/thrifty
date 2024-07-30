@@ -7,11 +7,11 @@ import { useCheckoutStore } from "@/state/client/checkoutState";
 
 export default function CheckoutCart() {
   const { isCartOpen, setIsCartOpen } = useCheckoutStore()
+  const cartRadius = isCartOpen ? '' : borderBottomRadius
 
   return (
-    <div className={`${isCartOpen ? '' : borderBottomRadius} `}>
-
-      <div className={`bg-bkg border-faded cursor-pointer ${isCartOpen ? '' : borderBottomRadius} border-b-[0.1rem] p-6`}
+    <div className={`${cartRadius} `}>
+      <div className={`bg-white border-t_white cursor-pointer ${cartRadius} border-b-[0.2rem] p-6`}
         onClick={() => setIsCartOpen(!isCartOpen)}
       >
         <div className="flex items-center justify-between">

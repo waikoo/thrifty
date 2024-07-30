@@ -42,7 +42,7 @@ export default function SummarySubmit({ className }: SummarySubmitProps) {
   const getButtonText = (endpoint: Endpoint) => {
     const text = {
       cart: "CHECKOUT",
-      checkout: "CHECKOUT",
+      checkout: "CONFIRM ORDER",
       summary: `PAY ${EURO}${totalWithShipping}`
     }
 
