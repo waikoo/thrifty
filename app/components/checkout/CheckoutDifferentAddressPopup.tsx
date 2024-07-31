@@ -16,7 +16,7 @@ export default function CheckoutDifferentAddressPopup({
 
   return (
     <div className="scrollbar scrollbar-thumb-darkgrey scrollbar-thumb-rounded-full relative flex h-[60vh] flex-col gap-8 overflow-y-scroll opacity-100">
-      <h1 className={`text-t_black text-center text-[14px] ${albert_800.className}`}>
+      <h1 className={`text-t_black text-center sm:text-[17px] xl:text-[14px] ${albert_800.className}`}>
         CHOOSE CONTACT
       </h1>
 

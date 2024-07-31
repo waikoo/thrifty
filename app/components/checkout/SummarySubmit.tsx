@@ -18,7 +18,7 @@ export default function SummarySubmit({ className }: SummarySubmitProps) {
   const lang = splitPath[1]
   const endpoint = splitPath[splitPath.length - 1]
 
-  const { isContactErrorFree, isShippingErrorFree, isPaymentErrorFree } = useCheckoutStore()
+  const { isContactErrorFree, isShippingErrorFree, isPaymentErrorFree, firstName, lastName, phone, email, address, city, country, zipcode } = useCheckoutStore()
   const { totalWithShipping } = useOrderSummaryStore()
 
   const checkout = () => {
@@ -27,7 +27,13 @@ export default function SummarySubmit({ className }: SummarySubmitProps) {
     }
 
     if (endpoint === 'checkout') {
-      if (isContactErrorFree && isShippingErrorFree && isPaymentErrorFree) {
+      const contactIsPopulated = firstName && lastName && phone && email
+      const shippingIsPopulated = address && city && country && zipcode
+      // card is populated by default
+      const allFieldsArePopulated = contactIsPopulated && shippingIsPopulated
+      const fieldsAreErrorFree = isContactErrorFree && isShippingErrorFree && isPaymentErrorFree
+
+      if (fieldsAreErrorFree || allFieldsArePopulated) {
         router.push(`/${lang}/checkout/summary`)
       } else {
         return

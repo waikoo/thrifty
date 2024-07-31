@@ -51,7 +51,7 @@ export default function CheckoutContact({ type, text, id, activeBg, title, defau
     }
 
   }
-  // console.log(activeBg)
+
   useEffect(() => {
     if (isEmpty) {
       if (title === 'CONTACT') setIsContactErrorFree(false)

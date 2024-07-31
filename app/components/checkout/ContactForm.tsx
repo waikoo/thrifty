@@ -10,7 +10,6 @@ import Portal from "@/app/components/generic/Portal";
 import CheckoutDifferentAddressPopup from "@/app/components/checkout/CheckoutDifferentAddressPopup";
 import { useCheckoutStore } from "@/state/client/checkoutState";
 import WithCloseButton from "@/app/components/navigation/WithCloseButton";
-import { supabase } from "@/app/supabase";
 
 type ContactFormProps = {
   addresses: AddressesType[]
