@@ -21,12 +21,12 @@ export default function CheckoutContactTitle({
 
         <CheckoutContactTitleIcons number={number} />
 
-        <span className={`text-t_dark absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-[14px] ${albert_800.className}`}>
+        <span className={`text-t_dark absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-[13px] sm:text-[18px] xl:text-[14px] ${albert_800.className}`}>
           {' '}{number}{' '}
         </span>
       </div>
 
-      <h2 className={`col-start-1 col-end-2 text-[15px] ${albert_800.className} tracking-wide`}>
+      <h2 className={`col-start-1 col-end-2 text-[13px] sm:text-[17px] xl:text-[15px] ${albert_800.className} tracking-wide`}>
         {title}
       </h2>
 

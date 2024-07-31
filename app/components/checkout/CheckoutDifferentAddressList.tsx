@@ -18,7 +18,7 @@ export default function CheckoutDifferentAddressList({ setChosenAddressId, addre
 
   return addresses.map((address: AddressesType) => (
     <div
-      className={`bg-[#f2f2f2] flex flex-col gap-2 ${borderRadius} *:text-[14px] ${albert_500.className} w-[350px] cursor-pointer p-8 text-black`}
+      className={`bg-[#f2f2f2] flex flex-col gap-2 ${borderRadius} sm:*:text-[17px] xl:*:text-[14px] ${albert_500.className} w-[350px] cursor-pointer p-8 text-black`}
       key={address.addressId}
       data-id={address.addressId}
       onClick={handleClick}

@@ -72,7 +72,7 @@ export default function CheckoutForm({ className, showSignIn }: CheckoutFormProp
   }, [chosenAddressId])
 
   return (
-    <div className={`mb-[10rem] flex w-[800px] flex-col gap-8 ${className}`}>
+    <div className={`sm:mb-10 xl:mb-[10rem] mx-auto flex w-[90vw] sm:w-[800px] sm:max-w-[90vw] xl:max-w-[800px] flex-col gap-8 ${className}`}>
       {showSignIn && <CheckoutGuestOrAccount />}
 
       <ContactForm

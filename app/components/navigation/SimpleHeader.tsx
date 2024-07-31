@@ -35,7 +35,7 @@ export default function SimpleHeader() {
         </Link>
       </div>
 
-      <div className={`bg-t_mustard text-[17px] text-center p-1 ${albert_800.className}`}>
+      <div className={`bg-t_mustard sm:text-[21px] xl:text-[17px] text-center p-1 ${albert_800.className}`}>
         CHECKOUT
       </div>
     </nav>

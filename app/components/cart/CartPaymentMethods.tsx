@@ -16,7 +16,7 @@ export default function CartPaymentMethods({ className }: CartPaymentMethodsProp
 
   return (
     <div className={`mt-3 flex flex-col gap-2 p-4 ${className}`}>
-      <p className={`text-[12px] ${albert.className} tracking-widest`}>
+      <p className={`text-[11px] sm:text-[15px] xl:text-[12px] ${albert.className} tracking-widest whitespace-nowrap`}>
         ACCEPTED PAYMENT METHODS:
       </p>
 
@@ -25,7 +25,7 @@ export default function CartPaymentMethods({ className }: CartPaymentMethodsProp
         <IconMasterCard />
         <FaApplePay size="2.6rem" />
 
-        <div className={`text-t_black dark:t_white grid place-items-center text-center text-[8px] ${inter.className}`}>
+        <div className={`text-t_black dark:t_white grid place-items-center text-center text-[7px] sm:text[12px] xl:text-[8px] ${inter.className}`}>
           <span className="bg-t_white dark:t_black m-0 w-10 border-[#d8d8d8] border-[0.1rem] p-0">
             Cash on delivery
           </span>

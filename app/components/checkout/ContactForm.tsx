@@ -9,7 +9,8 @@ import useUserSession from "@/app/components/hooks/useUserSession";
 import Portal from "@/app/components/generic/Portal";
 import CheckoutDifferentAddressPopup from "@/app/components/checkout/CheckoutDifferentAddressPopup";
 import { useCheckoutStore } from "@/state/client/checkoutState";
-import WithCloseButton from "../navigation/WithCloseButton";
+import WithCloseButton from "@/app/components/navigation/WithCloseButton";
+import { supabase } from "@/app/supabase";
 
 type ContactFormProps = {
   addresses: AddressesType[]
@@ -23,7 +24,6 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
   const sectionRef = useRef(null)
   const { session, error } = useUserSession()
   const [showAddresses, setShowAddresses] = useState(false)
-  const section2Ref = useRef(null)
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     if (e.currentTarget === sectionRef.current) {
@@ -42,12 +42,14 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
   }
 
   return (
-    <section className={`${activeBg} bg-bkg flex flex-col gap-8 p-8 ${borderRadius}`} ref={sectionRef} onClick={handleOnClick}>
+    <section className={`${activeBg} bg-white flex flex-col gap-8 p-8 ${borderRadius}`}
+      ref={sectionRef}
+      onClick={handleOnClick}>
       <CheckoutContactTitle number="1" title="CONTACT" />
 
       {isContactOpen &&
         <>
-          <div className="flex gap-8">
+          <div className="flex flex-col xl:flex-row gap-8">
             <CheckoutContact
               title="CONTACT"
               id="firstname"
@@ -67,7 +69,7 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
             />
           </div>
 
-          <div className="flex gap-8">
+          <div className="flex flex-col xl:flex-row gap-8">
             <CheckoutContact
               title="CONTACT"
               id="phone"
@@ -85,16 +87,20 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
               defaultValue={session?.user.email || ''}
             />
           </div>
-          <p className="ml-auto cursor-pointer text-[0.6875rem] font-extrabold"
-            onClick={showSavedAddresses}>
-            USE DIFFERENT CONTACT
-          </p>
+
+          {session !== null && (
+            <p className="ml-auto cursor-pointer sm:text-[14px] xl:text-[0.6875rem] font-extrabold"
+              onClick={showSavedAddresses}>
+              USE DIFFERENT CONTACT
+            </p>
+          )
+          }
         </>
       }
 
       {showAddresses && (
         <Portal>
-          <WithCloseButton onClose={handleClosePopup} padding="p-8">
+          <WithCloseButton onClose={handleClosePopup} padding="p-8" isPopUp={true}>
             <CheckoutDifferentAddressPopup
               addresses={addresses}
               setChosenAddressId={setChosenAddressId}

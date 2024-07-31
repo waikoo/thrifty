@@ -31,8 +31,8 @@ export default function CheckoutGuestOrAccount() {
   }, [showSignIn])
 
   return (
-    <div className={`bg-white w-[800px] p-4 ${borderRadius}`}>
-      <div className="mx-auto w-1/2 flex justify-around sm:text[17px] xl:text-[14px]">
+    <div className={`bg-white sm:w-auto xl:max-w-[800px] p-4 ${borderRadius}`}>
+      <div className="sm:mx-auto px-4 py-3 w-[80%] flex flex-col gap-4 sm:flex-row sm:gap-2 xl:gap-4 justify-around text-[13px] sm:text-[17px] xl:text-[14px]">
         <label
           htmlFor="guest"
           className="flex gap-2"
@@ -46,7 +46,7 @@ export default function CheckoutGuestOrAccount() {
             ref={inputRef1}
             onChange={onChange}
           />
-          <span className={`${fontWeight1}`}>
+          <span className={`${fontWeight1} whitespace-nowrap`}>
             Continue as Guest
           </span>
         </label>
@@ -60,11 +60,10 @@ export default function CheckoutGuestOrAccount() {
             name="guestOrAccount"
             id="account"
             className={`checked:bg-black`}
-            // onClick={() => setShowSignIn(true)}
             onChange={onChange}
             ref={inputRef2}
           />
-          <span className={`${fontWeight2}`}>
+          <span className={`${fontWeight2} whitespace-nowrap`}>
             Log In / Create Account
           </span>
         </label>

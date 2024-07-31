@@ -35,19 +35,19 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
   }, [isShippingHidden])
 
   return (
-    <section className={`${activeBg} bg-bkg flex flex-col gap-8 p-8 ${borderRadius}`} onClick={handleOnClick} ref={sectionRef}>
+    <section className={`${activeBg} bg-white flex flex-col gap-8 p-8 ${borderRadius}`} onClick={handleOnClick} ref={sectionRef}>
       <CheckoutContactTitle number="2" title="SHIPPING" />
 
       {isShippingOpen &&
         <>
-          <div className="flex gap-8">
+          <div className="flex flex-col xl:flex-row gap-8">
             <CheckoutRadio price="€10*" text="Home Delivery" value="home" name="shipping" />
             <CheckoutRadio price="Free" text="Collect From Store" value="store" name="shipping" />
           </div>
 
           {shippingType === "home" &&
             <>
-              <div className="flex gap-8">
+              <div className="flex flex-col xl:flex-row gap-8">
                 <CheckoutContact
                   id="address"
                   type="text"
@@ -67,7 +67,7 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
                 />
               </div>
 
-              <div className="flex gap-8">
+              <div className="flex flex-col xl:flex-row gap-8">
                 <CheckoutContact
                   id="country"
                   type="text"
@@ -87,7 +87,7 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
               </div>
             </>
           }
-          <p className={`${albert_500.className} mr-auto text-[12px]`}>
+          <p className={`${albert_500.className} mr-auto text-[11px] sm:text-[14px] xl:text-[12px]`}>
             *Free shipping above €25
           </p>
         </>

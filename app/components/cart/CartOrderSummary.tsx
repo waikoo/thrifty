@@ -97,7 +97,7 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
         </span>
 
         <span className={`justify-self-end text-[13px] sm:text-[17px] xl:text-[14px] px-6 ${albert.className}`}>
-          {isFreeDelivery ? "FREE" : `${shippingText}`}
+          {isFreeDelivery ? "FREE" : `${EURO}${shippingText}`}
         </span>
 
         {!isCheckout && <SummaryShippingSelect />}

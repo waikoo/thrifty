@@ -11,7 +11,7 @@ export default function CheckoutCart() {
 
   return (
     <div className={`${cartRadius} `}>
-      <div className={`bg-white border-t_white cursor-pointer ${cartRadius} border-b-[0.2rem] p-6`}
+      <div className={`mb-10 bg-white border-t_white cursor-pointer ${cartRadius} border-b-[0.2rem] p-6`}
         onClick={() => setIsCartOpen(!isCartOpen)}
       >
         <div className="flex items-center justify-between">

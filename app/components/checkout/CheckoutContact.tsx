@@ -50,7 +50,7 @@ export default function CheckoutContact({ type, text, id, activeBg, title, defau
     }
 
   }
-
+  // console.log(activeBg)
   useEffect(() => {
     if (isEmpty) {
       if (title === 'CONTACT') setIsContactErrorFree(false)
@@ -80,7 +80,7 @@ export default function CheckoutContact({ type, text, id, activeBg, title, defau
   return (
     <div className={`relative flex w-full flex-col ${albert_500.className}`}>
       <input
-        className={`$text-[12px] {activeBg} border-b-content ${invalidStyle} peer border-x-0 border-b-[0.1rem] border-t-0 border-solid pl-0 placeholder-transparent focus:border-sky-500 focus:outline-none focus:ring-0`}
+        className={`text-[13px] sm:text-[17px] xl:text-[12px] bg-white ${activeBg} border-b-content ${invalidStyle} peer border-x-0 border-b-[0.1rem] border-t-0 border-solid pl-0 placeholder-transparent focus:border-sky-500 focus:outline-none focus:ring-0`}
         id={id}
         type={type}
         placeholder={text}
@@ -92,7 +92,7 @@ export default function CheckoutContact({ type, text, id, activeBg, title, defau
         required
       />
       <label
-        className={`text-[12px] absolute -top-3.5 left-0 text-gray-600 transition-all  peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-100`}
+        className={`text-[13px] sm:text-[17px] xl:text-[12px] absolute -top-3.5 left-0 text-gray-600 transition-all  peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-100`}
         htmlFor={id}>
         {text}
       </label>
