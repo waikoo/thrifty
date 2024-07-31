@@ -2,6 +2,7 @@
 import CheckMark from "@/app/components/checkout/CheckMark";
 import { borderRadius } from "@/app/components/data/universalStyles";
 import { capitalize } from "@/utils/capitalize";
+import { albert_500, albert_800 } from "@/utils/fonts";
 
 type CheckoutSummaryItemsProps = {
   title: 'CONTACT' | 'SHIPPING' | 'PAYMENT'
@@ -11,18 +12,25 @@ type CheckoutSummaryItemsProps = {
 export default function CheckoutSummaryItem({ title, content }: CheckoutSummaryItemsProps) {
 
   return (
-    <section className={`${borderRadius} bg-bkg text-content relative mt-10 flex w-[250px] flex-col gap-8 p-8`}>
-      <h2 className="text-content mx-auto text-[1rem] font-bold">{title}</h2>
+    <section className={`${borderRadius} bg-white text-t_black w-[35rem] relative flex flex-col gap-4 p-8`}>
+      <h2 className={`text-t_black text-[13px] sm:text-[17px] xl:text-[15px] ${albert_800.className}`}>
+        {title}
+      </h2>
 
-      <div className="*:font-normal *:text-[0.75rem]">
-        {content.map((item) => (
-          <p key={item} className="text-content text-[0.8125rem] font-extrabold">{item === 'cash' ? capitalize(item) : item}</p>
-        ))}
+      <div>
+        {content.map((item) => {
+          const textContent = item === 'cash' ? capitalize(item) : item;
+          return (
+            <p key={item} className={`text-[13px] sm:text-[16px] xl:text-[0.8125rem] ${albert_500.className}`}>{textContent}</p>
+          )
+        })}
       </div>
 
-      <span className="text-content absolute bottom-6 right-6 cursor-pointer text-[0.6875rem] font-extrabold">EDIT</span>
+      <span className={`absolute bottom-6 right-6 cursor-pointer text-[12px] sm:text[16px] xl:text-[12px] ${albert_800.className}`}>
+        EDIT
+      </span>
 
-      <div className="bg-faded absolute -top-[1.10rem] left-0 right-0 mx-auto flex h-[2.3rem] w-[2.3rem] justify-center rounded-full">
+      <div className="bg-t_white absolute -top-[1.10rem] left-0 right-0 mx-auto flex h-[2.3rem] w-[2.3rem] justify-center rounded-full">
         <CheckMark />
       </div>
     </section>

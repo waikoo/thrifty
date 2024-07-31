@@ -26,7 +26,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
 
       <h1 className="text-bkg py-4 text-[1rem] font-extrabold tracking-wide">CHECKOUT</h1>
 
-      <div className={`flex gap-5 ${borderBottomRadius}`}>
+      <div className={`flex flex-col xl:flex-row gap-10 xl:gap-28 ${borderBottomRadius}`}>
         <CheckoutSummaryItems />
 
         <div className={`${borderBottomRadius}`}>
