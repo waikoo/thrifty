@@ -12,6 +12,7 @@ import { useCartStore } from "@/state/client/cartState";
 import { albert, albert_900 } from "@/utils/fonts";
 import useViewport from "@/app/components/hooks/useViewport";
 import { borderTopRadius } from "@/app/components/data/universalStyles";
+import { usePathname } from "next/navigation";
 
 type CartOrderSummaryProps = {
   isCheckout?: boolean
@@ -30,11 +31,14 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
   const sidePadding = position === 'fixed' ? 'px-5' : '';
   const h1Style = isCheckout ? "py-4" : "my-10"
   const bgColor = isCheckout ? 'bg-[#fff]' : 'bg-[#f9f9f9]'
+  const pathname = usePathname()
+  const endpoint = pathname.split('/').at(-1);
+  const buttonToStatic = endpoint === 'checkout' ? 1200 : endpoint === 'cart' ? 500 : 0
 
   useEffect(() => {
     const handleScroll = () => {
 
-      if (window.scrollY > 500) {
+      if (window.scrollY > buttonToStatic) {
         setPosition('static')
       } else {
         setPosition('fixed')
@@ -77,7 +81,7 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
       <h1 className={`${h1Style} text-center text-[16px] sm:text-[21px] xl:text-[18px] ${albert_900.className}`}>
         ORDER SUMMARY
       </h1>
-      <div className={`grid grid-cols-2 gap-3 py-6 ${className} rounded-[35px]`}>
+      <div className={`grid grid-cols-2 gap-3 py-6  ${className} rounded-[35px]`}>
         {!isCheckout && (< SummaryFreeDelivery />)}
 
         <span className={`text-[13px] sm:text-[17px] xl:text-[14px] px-6 ${albert.className}`}>
