@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 
 import { useCheckoutStore } from "@/state/client/checkoutState"
 import { albert_500 } from "@/utils/fonts"
+import { MdError } from "react-icons/md"
 
 type CheckoutContactProps = {
   type: string
@@ -16,7 +17,7 @@ export default function CheckoutContact({ type, text, id, activeBg, title, defau
   const { firstName, setFirstName, lastName, setLastName, phone, setPhone, email, setEmail, address, setAddress, city, setCity, country, setCountry, zipcode, setZipcode, setIsContactErrorFree, setIsShippingErrorFree } = useCheckoutStore()
   const [focusLost, setFocusLost] = useState(false)
   const [isEmpty, setIsEmpty] = useState(true)
-  const invalidStyle = focusLost && isEmpty && 'invalid:border-red'
+  const invalidStyle = focusLost && isEmpty && 'invalid:border-red-500'
 
   const handleOnChange = (e: React.ChangeEvent) => {
     const target = e.target as HTMLInputElement
@@ -97,7 +98,10 @@ export default function CheckoutContact({ type, text, id, activeBg, title, defau
         {text}
       </label>
       {focusLost && isEmpty && (
-        <span className="text-red mt-1">Please enter your {text.toLowerCase()}</span>)}
+        <span className="text-red-500 mt-1 flex gap-2 items-center">
+          <MdError color="red" />
+          Please enter your {text.toLowerCase()}
+        </span>)}
     </div>
   )
 }
