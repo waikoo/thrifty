@@ -6,7 +6,7 @@ export default function CheckoutGuestOrAccount() {
   const { setShowSignIn } = useUIStore()
 
   return (
-    <div className={`bg-white w-[800px] mt-10 p-4 ${borderRadius}`}>
+    <div className={`bg-white w-[800px] p-4 ${borderRadius}`}>
       <div className="mx-auto w-1/2 flex justify-around">
         <label
           htmlFor="guest"

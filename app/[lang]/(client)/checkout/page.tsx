@@ -28,7 +28,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
 
       <div id="popup-root"></div>
 
-      <div className={`mt-20 flex gap-12 ${borderBottomRadius}`}>
+      <div className={`mt-10 flex gap-12 ${borderBottomRadius}`}>
         <CheckoutForm className="inline" showSignIn={!session} />
 
         <div className={`${borderBottomRadius}`}>

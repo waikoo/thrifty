@@ -48,13 +48,17 @@ export default function CheckoutForm({ className, showSignIn }: CheckoutFormProp
       }
     }
     getAddresses().then((addresses) => {
-      setAddresses(addresses)
+      if (addresses) {
+        setAddresses(addresses)
 
-      addresses.forEach((address: AddressesType) => {
-        if (address.isDefault) {
-          setDisplayAddress(address)
-        }
-      })
+        addresses.forEach((address: AddressesType) => {
+          if (address.isDefault) {
+            setDisplayAddress(address)
+          }
+        })
+      } else {
+        return
+      }
     })
   }, [])
 
