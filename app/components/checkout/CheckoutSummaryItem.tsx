@@ -12,7 +12,7 @@ type CheckoutSummaryItemsProps = {
 export default function CheckoutSummaryItem({ title, content }: CheckoutSummaryItemsProps) {
 
   return (
-    <section className={`${borderRadius} bg-white text-t_black w-[35rem] relative flex flex-col gap-4 p-8`}>
+    <section className={`${borderRadius} bg-white text-t_black w-[90vw] xl:w-[35rem] relative flex flex-col gap-4 p-8`}>
       <h2 className={`text-t_black text-[13px] sm:text-[17px] xl:text-[15px] ${albert_800.className}`}>
         {title}
       </h2>
