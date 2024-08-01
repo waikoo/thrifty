@@ -8,10 +8,11 @@ import { useCheckoutStore } from "@/state/client/checkoutState";
 export default function CheckoutCart() {
   const { isCartOpen, setIsCartOpen } = useCheckoutStore()
   const cartRadius = isCartOpen ? '' : borderBottomRadius
+  const conditionalMargin = isCartOpen ? '' : 'mb-10'
 
   return (
     <div className={`${cartRadius} `}>
-      <div className={`mb-10 bg-white border-t_white cursor-pointer ${cartRadius} border-b-[0.2rem] p-6`}
+      <div className={`${conditionalMargin} bg-white border-t_white cursor-pointer ${cartRadius} border-b-[0.2rem] p-6`}
         onClick={() => setIsCartOpen(!isCartOpen)}
       >
         <div className="flex items-center justify-between">
