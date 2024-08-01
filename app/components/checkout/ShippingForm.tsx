@@ -15,9 +15,9 @@ type ShippingFormProps = {
 }
 
 export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
-  const { isShippingOpen, setIsContactHidden, isShippingHidden, setIsPaymentHidden, setIsShippingHidden } = useCheckoutStore()
+  const { isShippingOpen, setIsContactHidden, isShippingHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit } = useCheckoutStore()
   const { shippingType } = useOrderStore()
-  const sectionRef = useRef(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
@@ -31,6 +31,12 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
   useEffect(() => {
     if (isShippingHidden) {
       setActiveBg(opacityHalf)
+    } else {
+      setActiveBg(`shadow-lg ${opacityFull}`)
+    }
+    if (sectionRef.current && edit === 'SHIPPING') {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+      setEdit('')
     }
   }, [isShippingHidden])
 
@@ -52,7 +58,6 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
                   id="address"
                   type="text"
                   text="Street, Number, Apartment"
-                  activeBg={activeBg}
                   title="SHIPPING"
                   defaultValue={defaultAddress.address}
                 />
@@ -61,7 +66,6 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
                   id="city"
                   type="text"
                   text="City"
-                  activeBg={activeBg}
                   title="SHIPPING"
                   defaultValue={defaultAddress.city}
                 />
@@ -72,7 +76,6 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
                   id="country"
                   type="text"
                   text="Country"
-                  activeBg={activeBg}
                   title="SHIPPING"
                   defaultValue={defaultAddress.country}
                 />
@@ -80,7 +83,6 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
                   id="zipcode"
                   type="tel"
                   text="Postal Code"
-                  activeBg={activeBg}
                   title="SHIPPING"
                   defaultValue={defaultAddress.zipcode}
                 />

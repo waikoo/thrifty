@@ -18,11 +18,13 @@ type ContactFormProps = {
 }
 
 export default function ContactForm({ addresses, displayAddress, setChosenAddressId }: ContactFormProps) {
-  const { isContactOpen, isContactHidden, setIsContactHidden, setIsPaymentHidden, setIsShippingHidden } = useCheckoutStore()
-  const activeBg = isContactHidden ? opacityHalf : opacityFull
-  const sectionRef = useRef(null)
+  const { isContactOpen, isContactHidden, setIsContactHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit } = useCheckoutStore()
+  // const activeBg = isContactHidden ? opacityHalf : opacityFull
+  const [activeBg, setActiveBg] = useState(`shadow-lg ${opacityFull}`)
+  const sectionRef = useRef<HTMLElement>(null)
   const { session, error } = useUserSession()
   const [showAddresses, setShowAddresses] = useState(false)
+
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     if (e.currentTarget === sectionRef.current) {
@@ -40,11 +42,25 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
     setShowAddresses(false)
   }
 
+  useEffect(() => {
+    if (isContactHidden) {
+      setActiveBg(opacityHalf)
+    } else {
+      setActiveBg(`shadow-lg ${opacityFull}`)
+    }
+
+    if (sectionRef.current && edit === 'CONTACT') {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+      setEdit('')
+    }
+
+  }, [isContactHidden])
+
   return (
     <section className={`${activeBg} bg-white flex flex-col gap-8 p-8 ${borderRadius}`}
       ref={sectionRef}
       onClick={handleOnClick}>
-      <CheckoutContactTitle number="1" title="CONTACT" />
+      <CheckoutContactTitle number="1" title="CONTACT" isBlockHidden={isContactHidden} />
 
       {isContactOpen &&
         <>
@@ -54,7 +70,7 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
               id="firstname"
               type="text"
               text="First Name"
-              activeBg={activeBg}
+              isBlockHidden={isContactHidden}
               defaultValue={displayAddress.firstName}
             />
 
@@ -63,7 +79,7 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
               id="lastname"
               type="text"
               text="Last Name"
-              activeBg={activeBg}
+              isBlockHidden={isContactHidden}
               defaultValue={displayAddress.lastName}
             />
           </div>
@@ -74,7 +90,7 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
               id="phone"
               type="number"
               text="Phone Number"
-              activeBg={activeBg}
+              isBlockHidden={isContactHidden}
               defaultValue={displayAddress.phone}
             />
             <CheckoutContact
@@ -82,7 +98,7 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
               id="email"
               type="email"
               text="Email Address"
-              activeBg={activeBg}
+              isBlockHidden={isContactHidden}
               defaultValue={session?.user.email || ''}
             />
           </div>

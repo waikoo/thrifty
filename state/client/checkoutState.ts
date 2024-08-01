@@ -39,6 +39,8 @@ type TCheckoutStore = {
   setIsShippingErrorFree: (value: boolean) => void
   isPaymentErrorFree: boolean
   setIsPaymentErrorFree: (value: boolean) => void
+  edit: string
+  setEdit: (value: string) => void
 }
 
 export const useCheckoutStore = create<TCheckoutStore>((set) => ({
@@ -80,4 +82,6 @@ export const useCheckoutStore = create<TCheckoutStore>((set) => ({
   setIsShippingErrorFree: (value) => set({ isShippingErrorFree: value }),
   isPaymentErrorFree: false,
   setIsPaymentErrorFree: (value) => set({ isPaymentErrorFree: value }),
+  edit: '',
+  setEdit: (value) => set({ edit: value }),
 }))

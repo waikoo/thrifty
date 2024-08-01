@@ -8,12 +8,12 @@ type CheckoutContactProps = {
   type: string
   text: string
   id: 'firstname' | 'lastname' | 'phone' | 'email' | 'address' | 'city' | 'country' | 'zipcode'
-  activeBg: string
   title: 'CONTACT' | 'SHIPPING' | 'PAYMENT'
   defaultValue: string
+  isBlockHidden: boolean
 }
 
-export default function CheckoutContact({ type, text, id, activeBg, title, defaultValue }: CheckoutContactProps) {
+export default function CheckoutContact({ type, text, id, title, defaultValue, isBlockHidden }: CheckoutContactProps) {
   const { firstName, setFirstName, lastName, setLastName, phone, setPhone, email, setEmail, address, setAddress, city, setCity, country, setCountry, zipcode, setZipcode, setIsContactErrorFree, setIsShippingErrorFree } = useCheckoutStore()
   const [focusLost, setFocusLost] = useState(false)
   const [isEmpty, setIsEmpty] = useState(true)
@@ -81,7 +81,7 @@ export default function CheckoutContact({ type, text, id, activeBg, title, defau
   return (
     <div className={`relative flex w-full flex-col ${albert_500.className}`}>
       <input
-        className={`text-[13px] sm:text-[17px] xl:text-[12px] bg-white ${activeBg} border-b-content ${invalidStyle} peer border-x-0 border-b-[0.1rem] border-t-0 border-solid pl-0 placeholder-transparent focus:border-sky-500 focus:outline-none focus:ring-0`}
+        className={`text-[13px] ${isBlockHidden ? 'text-gray-500' : 'text-t_black'} sm:text-[17px] xl:text-[12px] ${isBlockHidden ? 'border-b-t_black/30' : 'border-b-t_black'} ${invalidStyle} ${isBlockHidden ? 'bg-white/20' : 'bg-white'} peer border-x-0 border-b-[0.1rem] border-t-0 border-solid pl-0 placeholder-transparent focus:border-sky-500 focus:outline-none focus:ring-0`}
         id={id}
         type={type}
         placeholder={text}
@@ -93,13 +93,13 @@ export default function CheckoutContact({ type, text, id, activeBg, title, defau
         required
       />
       <label
-        className={`text-[13px] sm:text-[17px] xl:text-[12px] absolute -top-3.5 left-0 text-gray-600 transition-all  peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-100`}
+        className={`text-[13px] sm:text-[17px] xl:text-[12px] absolute -top-3.5 left-0 ${isBlockHidden ? 'text-gray-300' : 'text-gray-600'} transition-all  peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-100`}
         htmlFor={id}>
         {text}
       </label>
       {focusLost && isEmpty && (
-        <span className="text-red-500 mt-1 flex gap-2 items-center">
-          <MdError color="red" />
+        <span className={`mt-1 flex gap-2 items-center ${isBlockHidden ? 'text-red-500/20' : 'text-red-500'}`}>
+          <MdError color={`${isBlockHidden ? "pink" : "red"}`} className={``} />
           Please enter your {text.toLowerCase()}
         </span>)}
     </div>

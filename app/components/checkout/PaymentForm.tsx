@@ -8,8 +8,8 @@ import { borderRadius, opacityHalf, opacityFull } from "@/app/components/data/un
 import { useCheckoutStore } from "@/state/client/checkoutState";
 
 export default function PaymentForm() {
-  const { isPaymentOpen, setIsShippingHidden, setIsContactHidden, isPaymentHidden, setIsPaymentHidden } = useCheckoutStore()
-  const sectionRef = useRef(null)
+  const { isPaymentOpen, setIsShippingHidden, setIsContactHidden, isPaymentHidden, setIsPaymentHidden, edit, setEdit } = useCheckoutStore()
+  const sectionRef = useRef<HTMLElement>(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
@@ -24,11 +24,17 @@ export default function PaymentForm() {
   useEffect(() => {
     if (isPaymentHidden) {
       setActiveBg(opacityHalf)
+    } else {
+      setActiveBg(`shadow-lg ${opacityFull}`)
+    }
+    if (sectionRef.current && edit === 'PAYMENT') {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+      setEdit('')
     }
   }, [isPaymentHidden])
 
   return (
-    <section className={`${activeBg} bg-bkg flex flex-col gap-8 p-8 mb-10 ${borderRadius}`} ref={sectionRef} onClick={handleOnClick}>
+    <section className={`${activeBg} bg-white flex flex-col gap-8 p-8 mb-10 ${borderRadius}`} ref={sectionRef} onClick={handleOnClick}>
       <CheckoutContactTitle number="3" title="PAYMENT" />
 
       {isPaymentOpen &&

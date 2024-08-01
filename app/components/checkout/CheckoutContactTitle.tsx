@@ -7,11 +7,13 @@ import CheckoutContactTitleVisibility from '@/app/components/checkout/CheckoutCo
 type CheckoutContactTitleProps = {
   number: string
   title: string
+  isBlockHidden: boolean
 }
 
 export default function CheckoutContactTitle({
   number,
   title,
+  isBlockHidden
 }: CheckoutContactTitleProps) {
 
 
@@ -26,7 +28,7 @@ export default function CheckoutContactTitle({
         </span>
       </div>
 
-      <h2 className={`col-start-1 col-end-2 text-[13px] sm:text-[17px] xl:text-[15px] ${albert_800.className} tracking-wide`}>
+      <h2 className={`col-start-1 col-end-2 text-[13px] sm:text-[17px] xl:text-[15px] ${albert_800.className} ${isBlockHidden ? 'text-gray-500' : 'text-t_black'} tracking-wide`}>
         {title}
       </h2>
 

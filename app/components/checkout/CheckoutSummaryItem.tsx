@@ -1,8 +1,12 @@
 "use client"
+import { usePathname, useRouter } from "next/navigation";
+
 import CheckMark from "@/app/components/checkout/CheckMark";
 import { borderRadius } from "@/app/components/data/universalStyles";
+import { useCheckoutStore } from "@/state/client/checkoutState";
 import { capitalize } from "@/utils/capitalize";
 import { albert_500, albert_800 } from "@/utils/fonts";
+import getLangAndGender from "@/utils/getLangAndGender";
 
 type CheckoutSummaryItemsProps = {
   title: 'CONTACT' | 'SHIPPING' | 'PAYMENT'
@@ -10,6 +14,29 @@ type CheckoutSummaryItemsProps = {
 }
 
 export default function CheckoutSummaryItem({ title, content }: CheckoutSummaryItemsProps) {
+  const router = useRouter()
+  const { lang } = getLangAndGender(usePathname())
+  const { setIsContactHidden, setIsPaymentHidden, setIsShippingHidden, setEdit } = useCheckoutStore()
+
+  function onClickHandler() {
+    if (title === 'CONTACT') {
+      setIsContactHidden(false)
+      setIsShippingHidden(true)
+      setIsPaymentHidden(true)
+    }
+    if (title === 'SHIPPING') {
+      setIsShippingHidden(false)
+      setIsContactHidden(true)
+      setIsPaymentHidden(true)
+    }
+    if (title === 'PAYMENT') {
+      setIsPaymentHidden(false)
+      setIsContactHidden(true)
+      setIsShippingHidden(true)
+    }
+    setEdit(title)
+    router.push(`/${lang}/checkout`)
+  }
 
   return (
     <section className={`${borderRadius} bg-white text-t_black w-[90vw] xl:w-[35rem] relative flex flex-col gap-4 p-8`}>
@@ -26,7 +53,9 @@ export default function CheckoutSummaryItem({ title, content }: CheckoutSummaryI
         })}
       </div>
 
-      <span className={`absolute bottom-6 right-6 cursor-pointer text-[12px] sm:text[16px] xl:text-[12px] ${albert_800.className}`}>
+      <span className={`absolute bottom-6 right-6 cursor-pointer text-[12px] sm:text[16px] xl:text-[12px] ${albert_800.className}`}
+        onClick={onClickHandler}
+      >
         EDIT
       </span>
 
