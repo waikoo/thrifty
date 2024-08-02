@@ -15,7 +15,7 @@ type ShippingFormProps = {
 }
 
 export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
-  const { isShippingOpen, setIsContactHidden, isShippingHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit } = useCheckoutStore()
+  const { isShippingOpen, setIsContactHidden, isShippingHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit, isContactHidden, firstName, lastName, phone, email, setIsShippingErrorFree, setIsContactErrorFree, setIsPaymentErrorFree, isShippingErrorFree } = useCheckoutStore()
   const { shippingType } = useOrderStore()
   const sectionRef = useRef<HTMLElement>(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
@@ -28,7 +28,17 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
       setIsPaymentHidden(true)
       setActiveBg(opacityFull)
     }
+
+    if (firstName && lastName && phone && email) {
+      console.warn('if block')
+      setIsContactErrorFree(true)
+    } else if (!firstName || !lastName || !phone || !email) {
+      console.warn('else block')
+      setIsContactErrorFree(false)
+      setIsShippingErrorFree(null)
+    }
   }
+
   useEffect(() => {
     if (isShippingHidden) {
       setActiveBg(opacityHalf)

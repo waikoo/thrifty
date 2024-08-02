@@ -8,7 +8,7 @@ import { borderRadius, opacityHalf, opacityFull } from "@/app/components/data/un
 import { useCheckoutStore } from "@/state/client/checkoutState";
 
 export default function PaymentForm() {
-  const { isPaymentOpen, setIsShippingHidden, setIsContactHidden, isPaymentHidden, setIsPaymentHidden, edit, setEdit } = useCheckoutStore()
+  const { isPaymentOpen, setIsShippingHidden, setIsContactHidden, isPaymentHidden, setIsPaymentHidden, edit, setEdit, setIsShippingErrorFree, zipcode, country, city, address, setIsContactErrorFree, setIsPaymentErrorFree, isShippingErrorFree } = useCheckoutStore()
   const sectionRef = useRef<HTMLElement>(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
 
@@ -19,6 +19,12 @@ export default function PaymentForm() {
       setIsContactHidden(true)
       setActiveBg(opacityFull)
     }
+    if (address && city && country && zipcode) {
+      setIsShippingErrorFree(true)
+    } else if (!address || !city || !country || !zipcode) {
+      setIsShippingErrorFree(false)
+      setIsPaymentErrorFree(null)
+    }
   }
 
   useEffect(() => {
@@ -27,6 +33,7 @@ export default function PaymentForm() {
     } else {
       setActiveBg(`shadow-lg ${opacityFull}`)
     }
+
     if (sectionRef.current && edit === 'PAYMENT') {
       sectionRef.current.scrollIntoView({ behavior: 'smooth' });
       setEdit('')

@@ -18,12 +18,14 @@ type ContactFormProps = {
 }
 
 export default function ContactForm({ addresses, displayAddress, setChosenAddressId }: ContactFormProps) {
-  const { isContactOpen, isContactHidden, setIsContactHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit } = useCheckoutStore()
+  const { isContactOpen, isContactHidden, setIsContactHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit, isContactErrorFree, isPaymentErrorFree, isShippingErrorFree } = useCheckoutStore()
   const [activeBg, setActiveBg] = useState(`shadow-lg ${opacityFull}`)
   const sectionRef = useRef<HTMLElement>(null)
   const { session, error } = useUserSession()
   const [showAddresses, setShowAddresses] = useState(false)
-
+  // console.log(isContactErrorFree)
+  console.log('isShippingErrorFree', isShippingErrorFree)
+  // console.log(isPaymentErrorFree)
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     if (e.currentTarget === sectionRef.current) {

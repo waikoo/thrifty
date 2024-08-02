@@ -16,12 +16,11 @@ export default function CheckoutContactTitle({
   isBlockHidden
 }: CheckoutContactTitleProps) {
 
-
   return (
     <div className="relative flex items-center justify-between">
       <div className="bg-[#f2f2f2] absolute -top-[3.2rem] left-0 right-0 mx-auto grid h-[2.5rem] w-[2.5rem] place-items-center rounded-full">
 
-        <CheckoutContactTitleIcons number={number} />
+        <CheckoutContactTitleIcons number={number} title={title} />
 
         <span className={`text-t_dark absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-[13px] sm:text-[18px] xl:text-[14px] ${albert_800.className}`}>
           {' '}{number}{' '}

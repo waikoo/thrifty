@@ -44,26 +44,33 @@ export default function CheckoutContact({ type, text, id, title, defaultValue, i
     if (title === 'CONTACT') {
       if (firstName && lastName && phone && email) {
         setIsContactErrorFree(true)
-      } else {
+      } else if (!firstName && !lastName && !phone && !email) {
         setIsContactErrorFree(false)
+      } else {
+        return
       }
     }
 
     if (title === 'SHIPPING') {
       if (address && city && country && zipcode) {
         setIsShippingErrorFree(true)
-      } else {
+      } else if (!address && !city && !country && !zipcode) {
         setIsShippingErrorFree(false)
+      } else {
+        return
       }
     }
   }
 
   useEffect(() => {
-    if (isEmpty) {
-      if (title === 'CONTACT') setIsContactErrorFree(false)
-      if (title === 'SHIPPING') setIsShippingErrorFree(false)
+    if (title === 'CONTACT') {
+      if (firstName && lastName && phone && email) {
+        setIsContactErrorFree(true)
+      } else {
+        return
+      }
     }
-  }, [isEmpty])
+  }, [firstName, lastName, phone, email])
 
   const values = {
     firstname: firstName,
@@ -103,6 +110,7 @@ export default function CheckoutContact({ type, text, id, title, defaultValue, i
         htmlFor={id}>
         {text}
       </label>
+
       {focusLost && isEmpty && (
         <span className={`mt-1 flex gap-2 items-center ${errorMsgStyle}`}>
           <MdError color={`${errorMsgColor}`} className={``} />
