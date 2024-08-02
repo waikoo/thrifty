@@ -23,7 +23,6 @@ export default function PaymentForm() {
       setIsShippingErrorFree(true)
     } else if (!address || !city || !country || !zipcode) {
       setIsShippingErrorFree(false)
-      setIsPaymentErrorFree(null)
     }
   }
 

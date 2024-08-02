@@ -14,7 +14,7 @@ type CheckoutContactProps = {
 }
 
 export default function CheckoutContact({ type, text, id, title, defaultValue, isBlockHidden }: CheckoutContactProps) {
-  const { firstName, setFirstName, lastName, setLastName, phone, setPhone, email, setEmail, address, setAddress, city, setCity, country, setCountry, zipcode, setZipcode, setIsContactErrorFree, setIsShippingErrorFree } = useCheckoutStore()
+  const { firstName, setFirstName, lastName, setLastName, phone, setPhone, email, setEmail, address, setAddress, city, setCity, country, setCountry, zipcode, setZipcode, setIsContactErrorFree, setIsShippingErrorFree, isContactErrorFree } = useCheckoutStore()
   const [focusLost, setFocusLost] = useState(false)
   const [isEmpty, setIsEmpty] = useState(true)
 
@@ -71,6 +71,16 @@ export default function CheckoutContact({ type, text, id, title, defaultValue, i
       }
     }
   }, [firstName, lastName, phone, email])
+
+  useEffect(() => {
+    if (title === 'SHIPPING') {
+      if (address && city && country && zipcode) {
+        setIsShippingErrorFree(true)
+      } else if (!address && !city && !country && !zipcode && isContactErrorFree) {
+        setIsShippingErrorFree(false)
+      }
+    }
+  }, [address, city, country, zipcode])
 
   const values = {
     firstname: firstName,

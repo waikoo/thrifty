@@ -30,10 +30,8 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
     }
 
     if (firstName && lastName && phone && email) {
-      console.warn('if block')
       setIsContactErrorFree(true)
     } else if (!firstName || !lastName || !phone || !email) {
-      console.warn('else block')
       setIsContactErrorFree(false)
       setIsShippingErrorFree(null)
     }
