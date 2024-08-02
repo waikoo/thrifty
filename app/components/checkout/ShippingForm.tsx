@@ -19,6 +19,7 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
   const { shippingType } = useOrderStore()
   const sectionRef = useRef<HTMLElement>(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
+  const freeShippingTextStyle = isShippingHidden ? 'text-gray-300' : 'text-black';
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     if (e.currentTarget === sectionRef.current) {
@@ -42,13 +43,16 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
 
   return (
     <section className={`${activeBg} bg-white flex flex-col gap-8 p-8 ${borderRadius}`} onClick={handleOnClick} ref={sectionRef}>
-      <CheckoutContactTitle number="2" title="SHIPPING" />
+      <CheckoutContactTitle number="2"
+        title="SHIPPING"
+        isBlockHidden={isShippingHidden}
+      />
 
       {isShippingOpen &&
         <>
           <div className="flex flex-col xl:flex-row gap-8">
-            <CheckoutRadio price="€10*" text="Home Delivery" value="home" name="shipping" />
-            <CheckoutRadio price="Free" text="Collect From Store" value="store" name="shipping" />
+            <CheckoutRadio price="€10*" text="Home Delivery" value="home" name="shipping" isBlockHidden={isShippingHidden} />
+            <CheckoutRadio price="Free" text="Collect From Store" value="store" name="shipping" isBlockHidden={isShippingHidden} />
           </div>
 
           {shippingType === "home" &&
@@ -60,6 +64,7 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
                   text="Street, Number, Apartment"
                   title="SHIPPING"
                   defaultValue={defaultAddress.address}
+                  isBlockHidden={isShippingHidden}
                 />
 
                 <CheckoutContact
@@ -68,6 +73,7 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
                   text="City"
                   title="SHIPPING"
                   defaultValue={defaultAddress.city}
+                  isBlockHidden={isShippingHidden}
                 />
               </div>
 
@@ -78,6 +84,7 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
                   text="Country"
                   title="SHIPPING"
                   defaultValue={defaultAddress.country}
+                  isBlockHidden={isShippingHidden}
                 />
                 <CheckoutContact
                   id="zipcode"
@@ -85,11 +92,12 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
                   text="Postal Code"
                   title="SHIPPING"
                   defaultValue={defaultAddress.zipcode}
+                  isBlockHidden={isShippingHidden}
                 />
               </div>
             </>
           }
-          <p className={`${albert_500.className} mr-auto text-[11px] sm:text-[14px] xl:text-[12px]`}>
+          <p className={`${albert_500.className} ${freeShippingTextStyle} mr-auto text-[11px] sm:text-[14px] xl:text-[12px]`}>
             *Free shipping above €25
           </p>
         </>

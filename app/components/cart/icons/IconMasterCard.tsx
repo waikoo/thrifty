@@ -1,4 +1,8 @@
-function IconMasterCard() {
+type IconMasterCardProps = {
+  className?: string
+}
+
+function IconMasterCard({ className }: IconMasterCardProps) {
 
   return (
     <svg
@@ -7,6 +11,7 @@ function IconMasterCard() {
       height="22"
       fill="none"
       viewBox="0 0 28 22"
+      className={className}
     >
       <g clipPath="url(#clip0_2367_2127)">
         <path

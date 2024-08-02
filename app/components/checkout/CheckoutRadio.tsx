@@ -9,15 +9,24 @@ type CheckoutRadioProps = {
   price?: string
   value: string
   name: string
+  isBlockHidden: boolean
 }
 
-export default function CheckoutRadio({ text, price, value, name }: CheckoutRadioProps) {
+export default function CheckoutRadio({ text, price, value, name, isBlockHidden }: CheckoutRadioProps) {
   const { shippingType, setShippingType } = useOrderStore()
   const { paymentType, setPaymentType, setIsPaymentErrorFree } = useCheckoutStore()
   const inputRef = useRef<HTMLInputElement>(null)
-  const conditionalBg = shippingType === value || paymentType === value ? 'bg-t_mustard' : '';
+  const conditionalBg = (shippingType === value || paymentType === value) && !isBlockHidden
+    ? 'bg-t_mustard'
+    : (shippingType === value || paymentType === value) && isBlockHidden
+      ? 'bg-t_mustard/50'
+      : '';
+  const labelTextStyle = isBlockHidden ? 'text-gray-400' : 'text-black';
+  const labelBorderStyle = isBlockHidden ? 'border-t_mustard/50' : 'border-t_mustard';
+  const inputBgStyle = isBlockHidden ? 'checked:bg-black/50' : 'checked:bg-black'
+  const conditionalBold = price === 'Free' ? '' : albert_600.className;
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = () => {
     if (value === "home" || value === "store") {
       setShippingType(value)
     }
@@ -28,20 +37,20 @@ export default function CheckoutRadio({ text, price, value, name }: CheckoutRadi
   }
 
   return (
-    <label className={`${conditionalBg} text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className} border-t_mustard border-[0.1rem] text-content flex w-full cursor-pointer items-center justify-between gap-4 p-4 ${borderRadius}`}>
+    <label className={`${conditionalBg} text-[13px] sm:text-[17px] xl:text-[14px] ${albert.className} ${labelBorderStyle} border-[0.1rem] ${labelTextStyle} flex w-full cursor-pointer items-center justify-between gap-4 p-4 ${borderRadius}`}>
       <div className={`flex items-center gap-2`}>
         <input
           type="radio"
           name={name}
           checked={shippingType === value || paymentType === value}
           onChange={onChangeHandler}
-          className='checked:bg-black'
+          className={inputBgStyle}
           ref={inputRef}
         />
 
         <span className='select-none'>{text}</span>
       </div>
-      <span className={`${price === 'Free' ? '' : albert_600.className}`}>{price}</span>
+      <span className={`${conditionalBold}`}>{price}</span>
     </label>
   )
 }

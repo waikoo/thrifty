@@ -35,16 +35,16 @@ export default function PaymentForm() {
 
   return (
     <section className={`${activeBg} bg-white flex flex-col gap-8 p-8 mb-10 ${borderRadius}`} ref={sectionRef} onClick={handleOnClick}>
-      <CheckoutContactTitle number="3" title="PAYMENT" />
+      <CheckoutContactTitle number="3" title="PAYMENT" isBlockHidden={isPaymentHidden} />
 
       {isPaymentOpen &&
         <>
           <div className="flex flex-col xl:flex-row gap-8">
-            <CheckoutRadio price="" text="Cash" value="cash" name="payment" />
-            <CheckoutRadio price="" text="Credit or Debit Card" value="card" name="payment" />
+            <CheckoutRadio price="" text="Cash" value="cash" name="payment" isBlockHidden={isPaymentHidden} />
+            <CheckoutRadio price="" text="Credit or Debit Card" value="card" name="payment" isBlockHidden={isPaymentHidden} />
           </div>
 
-          <CartPaymentMethods className="" />
+          <CartPaymentMethods isBlockHidden={isPaymentHidden} />
         </>
       }
     </section>

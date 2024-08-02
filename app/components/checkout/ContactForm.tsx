@@ -19,7 +19,6 @@ type ContactFormProps = {
 
 export default function ContactForm({ addresses, displayAddress, setChosenAddressId }: ContactFormProps) {
   const { isContactOpen, isContactHidden, setIsContactHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit } = useCheckoutStore()
-  // const activeBg = isContactHidden ? opacityHalf : opacityFull
   const [activeBg, setActiveBg] = useState(`shadow-lg ${opacityFull}`)
   const sectionRef = useRef<HTMLElement>(null)
   const { session, error } = useUserSession()
