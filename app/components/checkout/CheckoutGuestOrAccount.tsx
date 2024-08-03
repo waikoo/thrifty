@@ -32,7 +32,7 @@ export default function CheckoutGuestOrAccount() {
 
   return (
     <div className={`bg-white sm:w-auto xl:max-w-[800px] p-4 ${borderRadius}`}>
-      <div className="sm:mx-auto px-4 py-3 w-[80%] flex flex-col gap-4 sm:flex-row sm:gap-2 xl:gap-4 justify-around text-[13px] sm:text-[17px] xl:text-[14px]">
+      <div className="sm:mx-auto px-4 py-3 w-[50%] flex flex-col gap-4 sm:flex-row sm:gap-2 xl:gap-4 justify-around text-[13px] sm:text-[17px] xl:text-[14px]">
         <label
           htmlFor="guest"
           className="flex gap-2"
