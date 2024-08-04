@@ -9,7 +9,7 @@ type TOrderStore = {
 }
 
 export const useOrderStore = create<TOrderStore>((set) => ({
-  shippingType: 'home',
+  shippingType: '',
   isFreeDelivery: false,
   setShippingType: (value) => set({ shippingType: value }),
   setIsFreeDelivery: (value) => set({ isFreeDelivery: value }),

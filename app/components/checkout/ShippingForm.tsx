@@ -15,13 +15,14 @@ type ShippingFormProps = {
 }
 
 export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
-  const { isShippingOpen, setIsContactHidden, isShippingHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit, isContactHidden, firstName, lastName, phone, email, setIsShippingErrorFree, setIsContactErrorFree, setIsPaymentErrorFree, isShippingErrorFree } = useCheckoutStore()
+  const { isShippingOpen, setIsContactHidden, isShippingHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit, firstName, lastName, phone, email, setIsContactErrorFree, paymentType, setIsPaymentErrorFree, setIsShippingClicked, isContactClicked, isPaymentClicked } = useCheckoutStore()
   const { shippingType } = useOrderStore()
   const sectionRef = useRef<HTMLElement>(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
   const freeShippingTextStyle = isShippingHidden ? 'text-gray-300' : 'text-black';
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
+    setIsShippingClicked(true)
     if (e.currentTarget === sectionRef.current) {
       setIsShippingHidden(false)
       setIsContactHidden(true)
@@ -31,9 +32,12 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
 
     if (firstName && lastName && phone && email) {
       setIsContactErrorFree(true)
-    } else if (!firstName || !lastName || !phone || !email) {
+    } else if ((!firstName || !lastName || !phone || !email) && isContactClicked) {
       setIsContactErrorFree(false)
-      setIsShippingErrorFree(null)
+      // setIsShippingErrorFree(null)
+    }
+    if (!paymentType && isPaymentClicked) {
+      setIsPaymentErrorFree(false)
     }
   }
 

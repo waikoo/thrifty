@@ -14,7 +14,7 @@ type CheckoutRadioProps = {
 
 export default function CheckoutRadio({ text, price, value, name, isBlockHidden }: CheckoutRadioProps) {
   const { shippingType, setShippingType } = useOrderStore()
-  const { paymentType, setPaymentType, setIsPaymentErrorFree } = useCheckoutStore()
+  const { paymentType, setPaymentType, setIsPaymentErrorFree, setIsShippingErrorFree } = useCheckoutStore()
   const inputRef = useRef<HTMLInputElement>(null)
   const conditionalBg = (shippingType === value || paymentType === value) && !isBlockHidden
     ? 'bg-t_mustard'
@@ -29,6 +29,7 @@ export default function CheckoutRadio({ text, price, value, name, isBlockHidden 
   const onChangeHandler = () => {
     if (value === "home" || value === "store") {
       setShippingType(value)
+      if (value === 'store') setIsShippingErrorFree(true)
     }
     if (value === "cash" || value === "card") {
       setPaymentType(value)

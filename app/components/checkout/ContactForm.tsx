@@ -10,6 +10,7 @@ import Portal from "@/app/components/generic/Portal";
 import CheckoutDifferentAddressPopup from "@/app/components/checkout/CheckoutDifferentAddressPopup";
 import { useCheckoutStore } from "@/state/client/checkoutState";
 import WithCloseButton from "@/app/components/navigation/WithCloseButton";
+import { useOrderStore } from "@/state/client/orderState";
 
 type ContactFormProps = {
   addresses: AddressesType[]
@@ -18,7 +19,8 @@ type ContactFormProps = {
 }
 
 export default function ContactForm({ addresses, displayAddress, setChosenAddressId }: ContactFormProps) {
-  const { isContactOpen, isContactHidden, setIsContactHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit } = useCheckoutStore()
+  const { isContactOpen, isContactHidden, setIsContactHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit, paymentType, setIsPaymentErrorFree, isPaymentClicked, address, city, country, zipcode, isShippingClicked, setIsShippingErrorFree } = useCheckoutStore()
+  const { shippingType } = useOrderStore()
   const [activeBg, setActiveBg] = useState(`shadow-lg ${opacityFull}`)
   const sectionRef = useRef<HTMLElement>(null)
   const { session, error } = useUserSession()
@@ -29,6 +31,16 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
       setIsContactHidden(false)
       setIsShippingHidden(true)
       setIsPaymentHidden(true)
+    }
+
+    if ((address && city && country && zipcode) || shippingType === 'store') {
+      setIsShippingErrorFree(true)
+    } else if ((!address || !city || !country || !zipcode) && isShippingClicked && shippingType === 'home') {
+      setIsShippingErrorFree(false)
+    }
+
+    if (!paymentType && isPaymentClicked) {
+      setIsPaymentErrorFree(false)
     }
   }
 
@@ -54,10 +66,14 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
 
   }, [isContactHidden])
 
+  useEffect(() => {
+
+  }, [])
   return (
     <section className={`${activeBg} bg-white flex flex-col gap-8 p-8 ${borderRadius}`}
       ref={sectionRef}
-      onClick={handleOnClick}>
+      onClick={handleOnClick}
+    >
       <CheckoutContactTitle number="1" title="CONTACT" isBlockHidden={isContactHidden} />
 
       {isContactOpen &&
