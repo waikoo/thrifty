@@ -29,7 +29,7 @@ export default function Gender({ className }: GenderProps) {
 
   return (
     <nav className={`w-screen md:w-full ${className}`}>
-      <div className="mx-auto max-w-[13rem] sm:max-w-[17rem] xl:max-w-[20rem] pt-2">
+      <div className="mx-auto max-w-[13rem] sm:max-w-[17rem] xl:max-w-[20rem] py-2">
 
         <ul className="grid cursor-pointer grid-cols-3 text-[0.75rem] md:text-[0.9375rem] justify-items-center dark:text-t_white text-t_black"
         >
