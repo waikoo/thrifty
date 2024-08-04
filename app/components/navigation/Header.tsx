@@ -19,6 +19,7 @@ export default function Header() {
   const viewportWidth = useViewport()
   const isHomePage = pathname.split('/').length < 4 && !isCheckout
   const isCartOrFavorites = pathname.includes('cart') || pathname.includes('favorites')
+  const isSuccess = pathname.includes('success')
   const cartOrFavoritesStyle = isCartOrFavorites && viewportWidth < 640 ? 'bg-t_black' : 'dark:bg-t_black bg-t_white dark:text-t_white text-t_black '
   const logoColor = !isCartOrFavorites ? "black" : '#d2d62e';
   const crossVisibility = isCartOrFavorites ? 'block' : 'hidden';
@@ -29,7 +30,7 @@ export default function Header() {
   }
 
   return (
-    !isCheckout ? <section className="relative overflow-hidden">
+    !isCheckout || isSuccess ? <section className="relative overflow-hidden">
       <MiniCart />
       <header className={`${cartOrFavoritesStyle} flex flex-col items-center overflow-hidden relative`}>
         <Banner className={`${hideBanner}`} />

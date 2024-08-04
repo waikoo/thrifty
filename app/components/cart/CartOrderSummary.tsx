@@ -115,7 +115,7 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
         </div>
       </div>
 
-      {!isCheckout && <CartPaymentMethods />}
+      {!isCheckout && <CartPaymentMethods isBlockHidden={false} />}
 
     </div >
   )
