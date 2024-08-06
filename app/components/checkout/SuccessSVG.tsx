@@ -1,10 +1,16 @@
+"use client"
+import useViewport from "@/app/components/hooks/useViewport";
+
 export default function SuccessSVG() {
+  const viewportWidth = useViewport()
+  const svgWidth = viewportWidth < 640 ? '124' : viewportWidth <= 1280 ? '281' : '186'
+  const svgHeight = viewportWidth < 640 ? '80' : viewportWidth <= 1280 ? '180' : '119'
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="186"
-      height="119"
+      width={svgWidth}
+      height={svgHeight}
       fill="none"
       viewBox="0 0 186 119"
     >
