@@ -24,6 +24,9 @@ type UIState = {
 
   showSignUpConfirmation: boolean
   setShowSignUpConfirmation: (value: boolean) => void
+
+  showShare: boolean
+  setShowShare: (value: boolean) => void
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -49,5 +52,8 @@ export const useUIStore = create<UIState>((set) => ({
   setShowPasswordConfirmation: (value) => set({ showPasswordConfirmation: value }),
 
   showSignUpConfirmation: false,
-  setShowSignUpConfirmation: (value) => set({ showSignUpConfirmation: value })
+  setShowSignUpConfirmation: (value) => set({ showSignUpConfirmation: value }),
+
+  showShare: false,
+  setShowShare: (value) => set({ showShare: value }),
 }))

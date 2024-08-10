@@ -1,5 +1,6 @@
+import { useState } from "react"
+
 import { FiShare2 } from "react-icons/fi"
-import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io"
 import { RxCross1 } from "react-icons/rx"
 
 import BigMustardButton from "@/app/components/generic/BigMustardButton"
@@ -7,6 +8,8 @@ import { ProductItemType } from "@/types/productItem"
 import { useFavoriteStore } from "@/state/client/favoriteState"
 import { useCartStore } from "@/state/client/cartState"
 import IconFavorite from "../navigation/icons/IconFavorite"
+import { useUIStore } from "@/state/client/uiState"
+import ShareProduct from "../generic/ShareProduct"
 
 type CartItemControlsProps = {
   product: ProductItemType
@@ -15,6 +18,8 @@ type CartItemControlsProps = {
 export default function CartItemControls({ product }: CartItemControlsProps) {
   const { favorites, toggleFavorite, addToFavorites, removeFromFavorites } = useFavoriteStore()
   const { removeFromCart } = useCartStore()
+  const { showShare, setShowShare } = useUIStore()
+  const [selectedToShare, setSelectedToShare] = useState('')
 
   const addItemToFavorites = () => {
     addToFavorites(product.uuid)
@@ -64,9 +69,14 @@ export default function CartItemControls({ product }: CartItemControlsProps) {
     }
   }
 
+  const shareItem = () => {
+    setShowShare(true)
+    setSelectedToShare(product.uuid)
+  }
+
   return (
     <section className="flex flex-col justify-start gap-3 px-4 mt-3">
-      <div title="Share">
+      <div onClick={shareItem} title="Share">
         <BigMustardButton className="p-[14px]">
           <FiShare2 size={20} />
         </BigMustardButton>
@@ -85,6 +95,8 @@ export default function CartItemControls({ product }: CartItemControlsProps) {
           <RxCross1 size={20} />
         </BigMustardButton>
       </div>
+
+      {showShare && selectedToShare && <ShareProduct productUuid={selectedToShare} />}
     </section>
   )
 }

@@ -34,7 +34,7 @@ export default function WithCloseButton({ onClose, children, className, gap, noB
   }
 
   return (
-    <dialog className="fixed inset-0 z-[60] grid h-screen w-full place-items-center bg-black bg-opacity-50"
+    <dialog className="fixed inset-0 z-[60] grid h-screen w-full place-items-center bg-t_black/20"
       onClick={handleOutsideClick}
       ref={dialogRef}
     >
