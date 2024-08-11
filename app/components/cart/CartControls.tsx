@@ -34,7 +34,7 @@ export default function CartControls() {
       return
     }
 
-    const newCart: string[] = Array.from(new Set(cart).difference(new Set(selected)))
+    const newCart = cart.filter(cartItem => !selected.includes(cartItem))
 
     initCart(newCart)
     emptySelectedCart()

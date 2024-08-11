@@ -20,7 +20,9 @@ export default function FavoritesControls() {
       return
     }
 
-    const newFavorites: string[] = Array.from(new Set(favorites).difference(new Set(selectedFavorites)))
+    const newFavorites = favorites.filter(favorite => !selectedFavorites.includes(favorite))
+
+    console.log(newFavorites)
     initFavorites(newFavorites)
     emptySelectedFavorites()
     localStorage.setItem('favorites', JSON.stringify(newFavorites))
