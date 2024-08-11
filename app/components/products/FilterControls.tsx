@@ -41,12 +41,13 @@ export default function FilterControls({ searchParams, className, hideSaveFilter
     }
 
     let result: string[] = [];
-
     genderArray.forEach((gender) => {
 
       categoryArray?.forEach((category) => {
 
-        result.push(...filter.type[gender][category]);
+        if (filter.type[gender] && filter.type[gender][category]) {
+          result.push(...filter.type[gender][category]);
+        }
       });
     });
 
