@@ -24,7 +24,7 @@ export async function fetchProductsByFilters(
     .in("category", byCategoryParams || filter.category.map(fil => fil.toLowerCase()))
     .in("type", byTypeParams || filter.type.all.all.map(fil => fil.toLowerCase()))
     .in("material", byMaterialParams || filter.material.map(fil => fil.toLowerCase()))
-    .in("size", bySizeParams || filter.size.map(fil => fil.toLowerCase()))
+    .in("size", [...bySizeParams || filter.size, ""])
     .in("color", byColorParams || filter.color.map(fil => fil.toLowerCase()))
     .in("brand", byBrandParams || brandNamesArray.map(fil => fil.toLowerCase()))
     .in("condition", byConditionParams || filter.condition.map(fil => fil.toLowerCase()))
@@ -45,7 +45,9 @@ export async function fetchProductsByFilters(
 
   let itemsPerPage = 20;
   const { lowerBound, upperBound } = getPaginationBounds(Number(searchParams.page), itemsPerPage);
-  const { data: paginatedMatches } = await query.range(lowerBound, upperBound);
+  const { data: paginatedMatches, error } = await query.range(lowerBound, upperBound);
+
+  if (error) console.log(error)
 
   return {
     status,
