@@ -17,7 +17,7 @@ type PageProps = {
 
 export default async function Page({ params: { lang, gender }, searchParams }: PageProps) {
   const { status, filteredMatchesTotal, paginatedMatches } = await fetchProductsByFilters(useSupabaseServer(), searchParams)
-
+  console.log(paginatedMatches)
   return (
     <>
       <img src="/images/products/crossing_wider.png"
