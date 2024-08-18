@@ -109,7 +109,7 @@ export default function SearchBar({ className }: SearchBarProps) {
           name="search-bar"
           value={searchTerm}
           placeholder={hide ? '' : t('search')}
-          className={`text-t_black dark:text-t_white w-full appearance-none border-none self-end bg-transparent p-0 outline-0 ring-0 placeholder:text-[0.8rem] placeholder:text-t_black placeholder:dark:text-t_white placeholder:font-semibold focus:outline-none focus:ring-0 ${albert.className} text-[1.0625rem]`}
+          className={`text-t_black dark:text-t_white w-full appearance-none border-none self-end bg-transparent p-0 outline-0 ring-0 placeholder:text-[0.8rem] placeholder:text-[#616161] placeholder:dark:text-t_white placeholder:${albert.className} focus:outline-none focus:ring-0 focus:placeholder-transparent ${albert.className} text-[1.0625rem]`}
           style={{ WebkitAppearance: 'none' }}
           spellCheck="false"
           onChange={handleOnChange}
