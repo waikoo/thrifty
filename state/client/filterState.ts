@@ -52,7 +52,6 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
 
     if (error) console.error(error)
     const savedFiltersInDb = data?.[0].saved_filters
-    console.log(savedFiltersInDb)
 
     if (savedFiltersInDb === null) { // update 1st time
       const { data: insertData, error: insertError } = await supabase
@@ -177,8 +176,8 @@ type TFilterTitleState = {
 
 export const useFilterTitleStore = create<TFilterTitleState>((set) => ({
   allFilters: ['GENDER', 'CATEGORY', 'SHOP BY', 'TYPE', 'PRICE', 'DISCOUNT', 'COLOR', 'BRAND', 'CONDITION', 'MATERIAL', 'SIZE', 'DATE ADDED'],
-  expandedFilters: [],
-  areAllExpanded: false,
+  expandedFilters: ['GENDER', 'CATEGORY', 'SHOP BY', 'TYPE', 'PRICE', 'DISCOUNT', 'COLOR', 'BRAND', 'CONDITION', 'MATERIAL', 'SIZE', 'DATE ADDED'],
+  areAllExpanded: true,
   setAllFilters: (componentId) => set((state) => ({
     allFilters: [...state.allFilters, componentId],
   })),
