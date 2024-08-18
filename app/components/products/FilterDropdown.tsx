@@ -20,7 +20,7 @@ export default function FilterDropdown() {
       <span className="self-center text-[14px]">Sort By</span>
       <div className="flex justify-center gap-2">
         <select
-          className={`text-t_black bg-t_white dark:text-t_white dark:bg-t_black ${albert_500.className} w-44 cursor-pointer border-0 p-2 ring-0`}
+          className={`text-t_black bg-t_white dark:text-t_white dark:bg-t_black ${albert_500.className} w-44 cursor-pointer border-0 p-2 ring-0 text-[14px]`}
           onChange={handleOnChange}>
           <option value={`newfirst `}>Newest to Oldest</option>
           <option value="cheapfirst">Price: Low to High</option>

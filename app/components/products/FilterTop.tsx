@@ -62,7 +62,9 @@ export default function FilterTop({ gender, lang, className }: FilterTopProps) {
 
           <div className="flex cursor-pointer justify-center gap-2">
             <span className="" onClick={filterVisibilityHandler}>{hideOrShowFiltersText}</span>
-            <IconHideFilters />
+            <div className="mt-1">
+              <IconHideFilters />
+            </div>
           </div>
 
           <div className="flex cursor-pointer justify-center gap-2"
