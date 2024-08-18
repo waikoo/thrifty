@@ -16,8 +16,8 @@ export default function GenderMenu() {
   }
 
   return (
-    <section className="absolute inset-0 top-[7.9rem] h-screen bg-black bg-opacity-50 backdrop-blur-sm z-50 mx-auto">
-      <div className="border-darkgrey absolute inset-x-0 left-[-15rem] z-50 w-screen border-t-[0.05rem]"></div>
+    <section className="fixed inset-0 top-[7.9rem] bg-black bg-opacity-50 backdrop-blur-sm z-50 mx-auto">
+      <div className="border-darkgrey inset-x-0 left-[-15rem] z-50 w-screen border-t-[0.05rem]"></div>
       <div
         className={`bg-t_white dark:bg-t_black max-w-screen inset-x-0 z-40 mx-auto overflow-y-hidden px-12 py-12 w-full`}
         onMouseLeave={(e) => handleMouseLeave(e as React.MouseEvent<HTMLDivElement, MouseEvent>)}
