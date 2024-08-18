@@ -5,7 +5,7 @@ export default function HeroTextSale() {
   const upToPercentOff = 80
 
   return (
-    <div className="absolute top-[7rem] left-0 right-0 sm:top-[8rem] md:top-[14rem] xl:-right-[50rem] xl:top-[5rem]">
+    <div className="absolute top-[7rem] left-0 right-0 sm:top-[8rem] md:top-[14rem] xl:-right-[70rem] xl:top-[9rem]">
       <div className="relative text-center">
         <span className={`block ${zen_tokyo_zoo.className} relative text-[1.5625rem] top-[2.3rem] sm:top-[6rem] xl:top-[3rem] text-t_green text-shadow-ne shadow-black sm:text-[3.75rem] xl:text-[2.1875rem]`}>UP TO</span>
 
