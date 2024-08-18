@@ -41,7 +41,7 @@ export default function HeroCarousel() {
 
   return (
     <div className="max-w-[90vw] 3xl:max-w-[1800px] mx-auto">
-      <Carousel className="mx-auto w-full mt-[1.5625rem]"
+      <Carousel className="mx-auto w-full"
         opts={{ startIndex: carouselState === 'new_in' ? 0 : 1 }}
         setApi={setApi}
       >
