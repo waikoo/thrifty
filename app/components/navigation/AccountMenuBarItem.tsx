@@ -1,10 +1,12 @@
 "use client"
 import Link from 'next/link'
 import { useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import getLangAndGender from '@/utils/getLangAndGender'
 import { albert_600, albert_900 } from '@/utils/fonts'
+import { useUIStore } from '@/state/client/uiState'
+import useUserSession from '../hooks/useUserSession'
 
 type AccountMenuBarItemProps = {
   children: React.ReactNode
@@ -18,17 +20,31 @@ export default function AccountMenuBarItem({ children }: AccountMenuBarItemProps
   const selectedStyles = endpoint === lowercaseChildren ? `bg-t_black text-t_white ${albert_900.className}` : ''
   const [isHovered, setIsHovered] = useState(false)
   const hoveredStyles = isHovered ? `${albert_900.className}` : ''
+  const { showSignIn, setShowSignIn } = useUIStore()
+  const { session, error } = useUserSession()
+  const router = useRouter()
 
   return (
-    <div className="flex items-center gap-2">
-      <Link
-        href={`/${lang}/${gender}/${lowercaseChildren}`}
-        className={`p-3 px-5 text-[0.8125rem] sm:text-[1rem] xl:text-[0.875rem] ${albert_600.className} ${selectedStyles} ${hoveredStyles}`}
-        onMouseOver={() => setIsHovered(true)}
-        onMouseOut={() => setIsHovered(false)}
-      >
-        {children}
-      </Link>
+    <div
+      onMouseOver={() => setIsHovered(true)}
+      onMouseOut={() => setIsHovered(false)}
+      className={`flex items-center gap-2 p-3 px-5 text-[0.8125rem] sm:text-[1rem] xl:text-[0.875rem] ${albert_600.className} ${selectedStyles} ${hoveredStyles}`}
+    >
+      {children !== 'PROFILE' ? (
+        <Link href={`/${lang}/${gender}/${lowercaseChildren}`} >
+          {children}
+        </Link>
+      ) : (
+
+        <div className="flex items-center gap-2 cursor-pointer">
+          <span onClick={() => !session
+            ? setShowSignIn(showSignIn ? false : true)
+            : router.push(`/${lang}/${gender}/profile`)}>
+            PROFILE
+          </span>
+        </div>
+      )
+      }
     </div>
   )
 }
