@@ -38,9 +38,7 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
       />
 
       {state === 'sale' && currentViewport >= viewport.xl &&
-        <div className="w-[50%]">
-          <img src="/images/hero/starry.jpg" alt="starry sky" className="w-full h-full object-cover object-center rounded-[1.8rem]" />
-        </div>
+        <div className="bg-black w-[50%]"></div>
       }
     </div>
   )
