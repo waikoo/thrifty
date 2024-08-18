@@ -8,7 +8,7 @@ export default function CartIsEmpty() {
   const { gender, lang } = getLangAndGender(usePathname())
 
   return (
-    <div className="text-t_black w-screen py-20 px-20 text-center tracking-wider h-[calc(80dvh)]">
+    <div className="bg-white text-t_black w-screen py-20 px-20 text-center tracking-wider h-[calc(80dvh)]">
       <h4 className={`mb-[1.375rem] text-[17px] sm:text-[21px] xl:text-[18px] ${albert_800.className}`}>
         Your cart is empty.
       </h4>
