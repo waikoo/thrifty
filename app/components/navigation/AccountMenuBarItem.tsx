@@ -30,21 +30,19 @@ export default function AccountMenuBarItem({ children }: AccountMenuBarItemProps
       onMouseOut={() => setIsHovered(false)}
       className={`flex items-center gap-2 p-3 px-5 text-[0.8125rem] sm:text-[1rem] xl:text-[0.875rem] ${albert_600.className} ${selectedStyles} ${hoveredStyles}`}
     >
-      {children !== 'PROFILE' ? (
-        <Link href={`/${lang}/${gender}/${lowercaseChildren}`} >
-          {children}
-        </Link>
-      ) : (
-
+      {children === 'PROFILE' || children === 'ADDRESSES' ? (
         <div className="flex items-center gap-2 cursor-pointer">
           <span onClick={() => !session
             ? setShowSignIn(showSignIn ? false : true)
-            : router.push(`/${lang}/${gender}/profile`)}>
-            PROFILE
+            : router.push(`/${lang}/${gender}/${children}`)}>
+            {children}
           </span>
         </div>
-      )
-      }
+      ) : (
+        <Link href={`/${lang}/${gender}/${lowercaseChildren}`} >
+          {children}
+        </Link>
+      )}
     </div>
   )
 }
