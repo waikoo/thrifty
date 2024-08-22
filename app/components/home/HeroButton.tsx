@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import { albert } from '@/utils/fonts';
 import { Gender, Locales } from '@/types/link';
 import { HeroState } from '@/types/home';
 
