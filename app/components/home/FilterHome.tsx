@@ -3,7 +3,7 @@
 import Link from 'next/link'
 
 import { Gender, Locales } from '@/types/link'
-import { albert_800, albert_900 } from '@/utils/fonts'
+import { albert_600, albert_800, albert_900 } from '@/utils/fonts'
 import { viewport } from '@/app/components/data/universalStyles'
 import useViewport from '@/app/components/hooks/useViewport'
 
@@ -63,15 +63,20 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
 
           </div>
 
-          <Link href={`/${lang}/${gender}/products?gender=${gender}&sort-by=newfirst&page=1`}
-            className={`${albert_900.className} bg-[#F9F9F9] text-t_black text-[3vw] xl:text-[1.0625rem] whitespace-nowrap cursor-pointer py-3 pb-2 px-6 md:py-4 md:px-16 md:pb-3 xl:px-[2.5rem] rounded-full mx-auto drop-shadow-2xl grid place-items-center buttonShadow mt-[3rem] xl:-mt-[7rem] tracking-wide`}
-          >
-            GO TO FILTERS
-          </Link>
+          <div className="absolute bottom-0 left-0 right-0 grid place-items-center">
+            <Link href={`/${lang}/${gender}/products?gender=${gender}&sort-by=newfirst&page=1`}
+            >
+              <span className={`ml-[30rem] w-[135px] h-[135px] rounded-full grid place-items-center text-white xl:text-[17px] backdrop-blur-md bg-[#2a233e]/20 border-[10px] border-[#fff] mx-auto ${albert_600.className}`}>
+                <span className="w-[90%] text-center">
+                  GO TO FILTERS
+                </span>
+              </span>
+            </Link>
+          </div>
 
         </div>
       </section>
-      <div className="w-full bg-t_white dark:bg-t_black h-[0.9rem] xl:h-[8rem]"></div>
+      <div className="w-full bg-[#6969F2] h-[0.3rem] xl:h-[1.5rem]"></div>
     </>
   )
 }
