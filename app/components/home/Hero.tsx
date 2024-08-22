@@ -51,7 +51,7 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
       <div className="absolute inset-0 w-1/2 ml-auto grid place-items-center" >
         <Link href={`/${lang}/${gender}/products/?gender=${gender}&shop-by=${param}&sort-by=newfirst&page=1`}
         >
-          <span className={`mr-[14rem] h-[135px] w-[135px] whitespace-nowrap rounded-full grid place-items-center text-white xl:text-[17px] backdrop-blur-md bg-opacity-50 bg-transparent border-[0.2rem] border-[#f2f2f230] ${albert_600.className}`}>
+          <span className={`mr-[14rem] h-[135px] w-[135px] whitespace-nowrap rounded-full grid place-items-center text-white xl:text-[17px] backdrop-blur-md bg-[#2a233e]/20 border-[2px] border-[#b398ff20] ${albert_600.className}`}>
             SHOP NOW
           </span>
         </Link>
