@@ -5,8 +5,6 @@ import WithHome from '@/app/components/navigation/WithHome'
 import Logo from '@/app/components/navigation/Logo'
 import HeroImage from '@/app/components/home/HeroImage';
 import HeroSticker from '@/app/components/home/HeroSticker';
-import HeroTextNewIn from '@/app/components/home/HeroTextNewIn';
-import HeroTextSale from '@/app/components/home/HeroTextSale';
 import getLangAndGender from '@/utils/getLangAndGender';
 import { HeroState } from '@/types/home';
 import { albert_600 } from '@/utils/fonts';
@@ -21,9 +19,9 @@ type HeroProps = {
 export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps) {
   const { lang, gender } = getLangAndGender(usePathname())
   const router = useRouter()
-  const buttonBorderColor = heroState === 'new_in' ? 'border-[#b398ff20] ' : 'border-t_green'
   const logoColor = heroState === 'sale' && gender === 'kids' ? 'black' : 'white'
   const param = heroState === 'new_in' ? 'new+in' : 'promos'
+  const buttonBorderColor = heroState === 'new_in' ? 'border-[#b398ff20] ' : 'border-t_green'
 
   function handleClick(): void {
     if (!hasChanged) {
@@ -44,17 +42,17 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
         <WithHome><Logo logoColor={logoColor} width="9.75rem" /> </WithHome>
       </div>
 
-      {heroState === 'new_in' ? (<HeroTextNewIn />) : (<HeroTextSale />)}
 
-      <div className="absolute inset-0 w-1/2 ml-auto grid place-items-center" >
-        <Link href={`/${lang}/${gender}/products/?gender=${gender}&shop-by=${param}&sort-by=newfirst&page=1`}
-        >
-          <span className={`mr-[15rem] h-[135px] w-[135px] whitespace-nowrap rounded-full grid place-items-center text-white xl:text-[17px] backdrop-blur-md bg-[#2a233e]/20 ${buttonBorderColor} border-[2px] ${albert_600.className}`}>
-            SHOP NOW
-          </span>
-        </Link>
+      <div className="ml-auto inset-0 absolute z-90 grid place-items-center w-1/3">
+        <div className="mr-auto -ml-[4.5rem] grid items-center" >
+          <Link href={`/${lang}/${gender}/products/?gender=${gender}&shop-by=${param}&sort-by=newfirst&page=1`}
+          >
+            <span className={`h-[135px] w-[135px] whitespace-nowrap rounded-full grid place-items-center text-white xl:text-[17px] backdrop-blur-md bg-[#2a233e]/20 ${buttonBorderColor} border-[2px] ${albert_600.className}`}>
+              SHOP NOW
+            </span>
+          </Link>
+        </div>
       </div>
-
     </section>
   )
 }

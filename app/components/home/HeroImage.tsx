@@ -1,10 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
+"use client"
 import useViewport from "@/app/components/hooks/useViewport"
 import { useThemeStore } from "@/state/themeState"
 import { heroAlt } from "@/app/components/data/home"
 import { viewport } from "@/app/components/data/universalStyles"
 import { Gender } from "@/types/link"
 import { HeroState } from "@/types/home"
+import HeroTextNewIn from '@/app/components/home/HeroTextNewIn';
+import HeroTextSale from '@/app/components/home/HeroTextSale';
+import getLangAndGender from "@/utils/getLangAndGender"
+import { usePathname } from "next/navigation"
 
 type HeroImageProps = {
   gender: Gender
@@ -14,6 +19,7 @@ type HeroImageProps = {
 export default function HeroImage({ gender, state }: HeroImageProps) {
   const { theme } = useThemeStore()
   const currentViewport = useViewport()
+  const { lang } = getLangAndGender(usePathname())
   const blackOnSale = state === 'sale' ? 'bg-t_black' : ''
   const kidsNewInPosition = state === 'new_in' && gender === 'kids' ? 'objectPosition' : 'object-center'
   const kidsSalePosition = state === 'sale' && gender === 'kids' && currentViewport < viewport.lg ? 'objectPosition2' : 'object-center'
@@ -38,8 +44,15 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
         className={`w-full h-full object-cover ${kidsNewInPosition} ${kidsSalePosition} ${borderRadius} ${height} ${saleBorder}`}
       />
 
+      {state === 'new_in' && currentViewport >= viewport.xl && <HeroTextNewIn />}
+
       {state === 'sale' && currentViewport >= viewport.xl &&
-        <div className="bg-black w-[50%]"></div>
+        <div className="grid place-items-center w-[50%] relative">
+
+          <HeroTextSale />
+
+
+        </div>
       }
     </div>
   )
