@@ -7,11 +7,9 @@ import HeroImage from '@/app/components/home/HeroImage';
 import HeroSticker from '@/app/components/home/HeroSticker';
 import HeroTextNewIn from '@/app/components/home/HeroTextNewIn';
 import HeroTextSale from '@/app/components/home/HeroTextSale';
-import HeroButton from '@/app/components/home/HeroButton';
 import getLangAndGender from '@/utils/getLangAndGender';
-import { Gender, Locales } from '@/types/link';
 import { HeroState } from '@/types/home';
-import { albert, albert_600 } from '@/utils/fonts';
+import { albert_600 } from '@/utils/fonts';
 import Link from 'next/link';
 
 type HeroProps = {
@@ -23,7 +21,7 @@ type HeroProps = {
 export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps) {
   const { lang, gender } = getLangAndGender(usePathname())
   const router = useRouter()
-
+  const buttonBorderColor = heroState === 'new_in' ? 'border-[#b398ff20] ' : 'border-t_green'
   const logoColor = heroState === 'sale' && gender === 'kids' ? 'black' : 'white'
   const param = heroState === 'new_in' ? 'new+in' : 'promos'
 
@@ -51,7 +49,7 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
       <div className="absolute inset-0 w-1/2 ml-auto grid place-items-center" >
         <Link href={`/${lang}/${gender}/products/?gender=${gender}&shop-by=${param}&sort-by=newfirst&page=1`}
         >
-          <span className={`mr-[14rem] h-[135px] w-[135px] whitespace-nowrap rounded-full grid place-items-center text-white xl:text-[17px] backdrop-blur-md bg-[#2a233e]/20 border-[2px] border-[#b398ff20] ${albert_600.className}`}>
+          <span className={`mr-[15rem] h-[135px] w-[135px] whitespace-nowrap rounded-full grid place-items-center text-white xl:text-[17px] backdrop-blur-md bg-[#2a233e]/20 ${buttonBorderColor} border-[2px] ${albert_600.className}`}>
             SHOP NOW
           </span>
         </Link>
