@@ -46,14 +46,14 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
 
       {currentViewport > viewport.xl && (
         <div className="mr-auto xl:mr-0 xl:ml-auto inset-0 absolute z-90 grid place-items-center w-1/3">
-          <div className="mt-[10rem] xl:mt-0 ml-[19rem] xl:mr-auto xl:-ml-[4.5rem] grid items-center" >
+          <div className="mt-[10rem] xl:mt-0 ml-[19rem] xl:mr-auto xl:ml-[1rem] grid items-center" >
             <HeroTransparentButton heroState={heroState} />
           </div>
         </div>
       )}
 
       {currentViewport < viewport.xl && (
-        <div className="absolute z-90 grid right-10 sm:right-20 md:right-0 bottom-12 place-items-center w-1/3">
+        <div className="absolute z-90 grid right-10 sm:right-20 md:right-0 bottom-[2.5rem] place-items-center w-1/3">
           <div className="grid items-center" >
             <HeroTransparentButton heroState={heroState} />
           </div>
