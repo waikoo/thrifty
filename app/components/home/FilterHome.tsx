@@ -66,7 +66,7 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
           <div className="absolute bottom-0 left-0 right-0 grid place-items-center">
             <Link href={`/${lang}/${gender}/products?gender=${gender}&sort-by=newfirst&page=1`}
             >
-              <span className={`ml-[30rem] w-[135px] h-[135px] rounded-full grid place-items-center text-white xl:text-[17px] backdrop-blur-md bg-[#2a233e]/20 border-[10px] border-[#fff] mx-auto ${albert_600.className}`}>
+              <span className={`ml-[25rem] xl:ml-[30rem] mb-[5rem] xl:mb-0 w-[135px] h-[135px] rounded-full grid place-items-center text-white xl:text-[17px] backdrop-blur-md bg-[#2a233e]/20 border-[10px] border-[#fff] mx-auto ${albert_600.className}`}>
                 <span className="w-[90%] text-center">
                   GO TO FILTERS
                 </span>
