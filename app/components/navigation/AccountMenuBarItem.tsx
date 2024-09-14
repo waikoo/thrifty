@@ -34,7 +34,7 @@ export default function AccountMenuBarItem({ children }: AccountMenuBarItemProps
         <div className="flex items-center gap-2 cursor-pointer">
           <span onClick={() => !session
             ? setShowSignIn(showSignIn ? false : true)
-            : router.push(`/${lang}/${gender}/${children}`)}>
+            : router.push(`/${lang}/${gender}/${lowercaseChildren}`)}>
             {children}
           </span>
         </div>
