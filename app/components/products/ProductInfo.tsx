@@ -13,9 +13,10 @@ type ProductInfoProps = {
 }
 
 export const ProductInfo = ({ matchedProduct }: ProductInfoProps) => {
+  const addBottomMargin = matchedProduct.img_url.length === 1 ? 'mb-10' : ''
 
   return (
-    <div className="relative p-5 sm:p-10 xl:p-0 w-full xl:max-w-[500px]">
+    <div className={`relative p-5 sm:p-10 xl:p-0 w-full xl:max-w-[500px] ${addBottomMargin}`}>
       <div className="sticky top-16">
         <div className="flex w-full flex-col gap-0 sm:flex-row md:gap-10 lg:gap-32 xl:gap-0 xl:flex-col">
           <div className="flex gap-2 flex-col sm:flex-row sm:justify-between xl:flex-col w-full">
