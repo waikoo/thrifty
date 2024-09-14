@@ -1,11 +1,11 @@
 "use client"
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 import getLangAndGender from "@/utils/getLangAndGender";
 import { useUserSession } from "@/app/components/hooks"
 import { useUIStore } from "@/state/client/uiState";
 import FooterTitle from "@/app/components/footer/FooterTitle";
+import { capitalize } from "@/utils/capitalize";
 
 type FooterAccountProps = {
   textColor: string
@@ -18,22 +18,25 @@ export default function FooterAccount({ textColor, textSize, tracking }: FooterA
   const { showSignIn, setShowSignIn } = useUIStore()
   const { session, error } = useUserSession()
   const router = useRouter()
+  const links = ['profile', 'orders', 'returns', 'settings']
 
   return (
     <div className={`footerText flex flex-col gap-7 text-[#f2f2f2] ${textSize}`}>
       <FooterTitle>ACCOUNT</FooterTitle>
 
       <div className={`flex flex-col gap-2 ${textColor} ${tracking}`}>
-        <span className={`cursor-pointer`}
-          onClick={() => !session
-            ? setShowSignIn(showSignIn ? false : true)
-            : router.push(`/${lang}/${gender}/profile`)}
-        >Profile
-        </span>
 
-        <Link href={`/${lang}/${gender}/orders`}>Orders</Link>
-        <Link href={`/${lang}/${gender}/returns`}>Returns</Link>
-        <Link href={`/${lang}/${gender}/settings`}>Settings</Link>
+        {links.map((link) => (
+          <span
+            className={`cursor-pointer`}
+            key={link}
+            onClick={() => !session
+              ? setShowSignIn(showSignIn ? false : true)
+              : router.push(`/${lang}/${gender}/${link}`)}
+          >
+            {capitalize(link)}
+          </span>
+        ))}
       </div>
     </div>
   )
