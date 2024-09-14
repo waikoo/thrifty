@@ -32,7 +32,12 @@ export default function GenderGroup({ title, hoveredGender, items, brands }: Cat
         })}
 
       </ul>
-      <span className="mt-4 block underline underline-offset-4">{brands && 'See More'}</span>
+      {brands && (
+        <Link className="mt-4 block underline underline-offset-4"
+          href={`/${lang}/${hoveredGender}/brands`}>
+          See More
+        </Link>
+      )}
     </div>
   )
 }
