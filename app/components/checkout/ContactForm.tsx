@@ -33,9 +33,9 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
       setIsPaymentHidden(true)
     }
 
-    if ((address && city && country && zipcode) || shippingType === 'store') {
+    if (((address && city && country && zipcode) && shippingType === 'store') || (address && city && country && zipcode) && shippingType === 'home') {
       setIsShippingErrorFree(true)
-    } else if ((!address || !city || !country || !zipcode) && isShippingClicked && shippingType === 'home') {
+    } else if ((!address || !city || !country || !zipcode) && isShippingClicked) {
       setIsShippingErrorFree(false)
     }
 
@@ -66,9 +66,6 @@ export default function ContactForm({ addresses, displayAddress, setChosenAddres
 
   }, [isContactHidden])
 
-  useEffect(() => {
-
-  }, [])
   return (
     <section className={`${activeBg} bg-white flex flex-col gap-8 p-8 ${borderRadius}`}
       ref={sectionRef}

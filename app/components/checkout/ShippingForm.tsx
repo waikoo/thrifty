@@ -15,7 +15,7 @@ type ShippingFormProps = {
 }
 
 export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
-  const { isShippingOpen, setIsContactHidden, isShippingHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit, firstName, lastName, phone, email, setIsContactErrorFree, paymentType, setIsPaymentErrorFree, setIsShippingClicked, isContactClicked, isPaymentClicked } = useCheckoutStore()
+  const { isShippingOpen, setIsContactHidden, isShippingHidden, setIsPaymentHidden, setIsShippingHidden, edit, setEdit, firstName, lastName, phone, email, zipcode, country, city, address, setIsContactErrorFree, paymentType, setIsPaymentErrorFree, setIsShippingClicked, isContactClicked, isPaymentClicked, setIsShippingErrorFree } = useCheckoutStore()
   const { shippingType } = useOrderStore()
   const sectionRef = useRef<HTMLElement>(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
@@ -24,17 +24,17 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     setIsShippingClicked(true)
     if (e.currentTarget === sectionRef.current) {
+      // opacity of cards
       setIsShippingHidden(false)
       setIsContactHidden(true)
       setIsPaymentHidden(true)
       setActiveBg(opacityFull)
     }
 
-    if (firstName && lastName && phone && email) {
+    if ((firstName && lastName && phone && email) || defaultAddress.firstName) {
       setIsContactErrorFree(true)
     } else if ((!firstName || !lastName || !phone || !email) && isContactClicked) {
       setIsContactErrorFree(false)
-      // setIsShippingErrorFree(null)
     }
     if (!paymentType && isPaymentClicked) {
       setIsPaymentErrorFree(false)
@@ -53,8 +53,16 @@ export default function ShippingForm({ defaultAddress }: ShippingFormProps) {
     }
   }, [isShippingHidden])
 
+  useEffect(() => {
+    if ((address && city && country || zipcode)) {
+      setIsShippingErrorFree(true)
+    }
+  }, [])
+
   return (
-    <section className={`${activeBg} bg-white flex flex-col gap-8 p-8 ${borderRadius}`} onClick={handleOnClick} ref={sectionRef}>
+    <section className={`${activeBg} bg-white flex flex-col gap-8 p-8 ${borderRadius}`}
+      onClick={handleOnClick}
+      ref={sectionRef}>
       <CheckoutContactTitle number="2"
         title="SHIPPING"
         isBlockHidden={isShippingHidden}

@@ -7,6 +7,7 @@ import ShippingForm from "@/app/components/checkout/ShippingForm";
 import PaymentForm from "@/app/components/checkout/PaymentForm";
 import CheckoutGuestOrAccount from "@/app/components/checkout/CheckoutGuestOrAccount";
 import { getUserId } from "@/utils/getUserId";
+import { useCheckoutStore } from "@/state/client/checkoutState";
 
 type CheckoutFormProps = {
   className: string
@@ -31,6 +32,7 @@ export default function CheckoutForm({ className, showSignIn }: CheckoutFormProp
   const [displayAddress, setDisplayAddress] = useState<AddressesType>({} as AddressesType)
   const [addresses, setAddresses] = useState<AddressesType[]>([])
   const [chosenAddressId, setChosenAddressId] = useState<string>('')
+  const { setIsContactErrorFree } = useCheckoutStore()
 
   useEffect(() => {
     const getAddresses = async () => {
@@ -47,6 +49,7 @@ export default function CheckoutForm({ className, showSignIn }: CheckoutFormProp
         return addresses[0].addresses
       }
     }
+
     getAddresses().then((addresses) => {
       if (addresses) {
         setAddresses(addresses)
@@ -54,12 +57,16 @@ export default function CheckoutForm({ className, showSignIn }: CheckoutFormProp
         addresses.forEach((address: AddressesType) => {
           if (address.isDefault) {
             setDisplayAddress(address)
+            // TODO: set 1st to checked on load
+            setIsContactErrorFree(true)
           }
         })
       } else {
         return
       }
     })
+
+
   }, [])
 
   useEffect(() => {
@@ -82,7 +89,7 @@ export default function CheckoutForm({ className, showSignIn }: CheckoutFormProp
 
       <ShippingForm defaultAddress={displayAddress} />
 
-      <PaymentForm />
+      <PaymentForm defaultAddress={displayAddress} />
     </div>
   )
 }

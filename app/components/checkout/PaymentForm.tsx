@@ -7,9 +7,14 @@ import CartPaymentMethods from "@/app/components/cart/CartPaymentMethods";
 import { borderRadius, opacityHalf, opacityFull } from "@/app/components/data/universalStyles";
 import { useCheckoutStore } from "@/state/client/checkoutState";
 import { useOrderStore } from "@/state/client/orderState";
+import { AddressesType } from "./CheckoutForm";
 
-export default function PaymentForm() {
-  const { isPaymentOpen, setIsShippingHidden, setIsContactHidden, isPaymentHidden, setIsPaymentHidden, edit, setEdit, setIsShippingErrorFree, zipcode, country, city, address, setIsContactErrorFree, firstName, lastName, phone, email, setIsPaymentClicked, isShippingClicked, isContactClicked } = useCheckoutStore()
+type PaymentFormType = {
+  defaultAddress: AddressesType
+}
+
+export default function PaymentForm({ defaultAddress }: PaymentFormType) {
+  const { isPaymentOpen, setIsShippingHidden, setIsContactHidden, isPaymentHidden, setIsPaymentHidden, edit, setEdit, setIsShippingErrorFree, zipcode, country, city, address, setIsContactErrorFree, firstName, lastName, phone, email, setIsPaymentClicked, isPaymentClicked, isShippingClicked, isContactClicked } = useCheckoutStore()
   const { shippingType } = useOrderStore()
   const sectionRef = useRef<HTMLElement>(null)
   const [activeBg, setActiveBg] = useState(opacityHalf)
@@ -24,10 +29,12 @@ export default function PaymentForm() {
     }
     if ((address && city && country && zipcode) || shippingType === 'store') {
       setIsShippingErrorFree(true)
-    } else if ((!address || !city || !country || !zipcode) && isShippingClicked && shippingType === 'home') {
-      setIsShippingErrorFree(false)
     }
-    if (firstName && lastName && phone && email) {
+    // else if ((!address || !city || !country || !zipcode) && isShippingClicked) {
+    //   setIsShippingErrorFree(false)
+    // }
+
+    if ((firstName && lastName && phone && email) || defaultAddress.firstName) {
       setIsContactErrorFree(true)
     } else if ((!firstName || !lastName || !phone || !email) && isContactClicked) {
       setIsContactErrorFree(false)

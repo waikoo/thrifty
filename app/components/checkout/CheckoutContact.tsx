@@ -54,10 +54,6 @@ export default function CheckoutContact({ type, text, id, title, defaultValue, i
     if (title === 'SHIPPING') {
       if (address && city && country && zipcode) {
         setIsShippingErrorFree(true)
-      } else if (!address && !city && !country && !zipcode) {
-        setIsShippingErrorFree(false)
-      } else {
-        return
       }
     }
   }
@@ -76,8 +72,6 @@ export default function CheckoutContact({ type, text, id, title, defaultValue, i
     if (title === 'SHIPPING') {
       if (address && city && country && zipcode) {
         setIsShippingErrorFree(true)
-      } else if (!address && !city && !country && !zipcode && isContactErrorFree) {
-        setIsShippingErrorFree(false)
       }
     }
   }, [address, city, country, zipcode])
