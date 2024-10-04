@@ -47,6 +47,7 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
           alt={heroAlt[state][gender]}
           width={100}
           height={100}
+          fetchPriority="high"
           className={`w-full h-full object-cover ${kidsNewInPosition} ${kidsSalePosition} ${borderRadius} ${height} ${saleBorder}`}
         />
       </picture>
