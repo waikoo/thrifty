@@ -36,14 +36,34 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
 
           <div className="w-[95%] xl:w-[120%] mx-auto relative">
             {viewportWidth < viewport.xl ? (
-              <img src={`/images/filters/${gender}.png`}
-                alt=""
-                className="block w-full drop-shadow-[0_15px_20px_rgba(0,0,0,0.5)]" />
+              <picture>
+                <source
+                  srcSet={`/images/filters/${gender}.avif`}
+                  type="image/avif"
+                />
+                <source
+                  srcSet={`/images/filters/${gender}.webp`}
+                  type="image/webp"
+                />
+                <img src={`/images/filters/${gender}.png`}
+                  alt=""
+                  className="block w-full drop-shadow-[0_15px_20px_rgba(0,0,0,0.5)]" />
+              </picture>
             ) : (
-              <img src={`/images/filters/${gender}_tiled.png`}
-                alt=""
-                className="w-[140vw] -ml-[15rem] object-cover object-center object mr-10"
-              />
+              <picture>
+                <source
+                  srcSet={`/images/filters/${gender}_tiled.avif`}
+                  type="image/avif"
+                />
+                <source
+                  srcSet={`/images/filters/${gender}_tiled.webp`}
+                  type="image/webp"
+                />
+                <img src={`/images/filters/${gender}_tiled.png`}
+                  alt=""
+                  className="w-[140vw] -ml-[15rem] object-cover object-center object mr-10"
+                />
+              </picture>
             )}
 
             <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 flex flex-col gap-4">
