@@ -47,11 +47,21 @@ export default function PopularBrandItem({ brand, lang, gender, theme, className
       onMouseOver={() => setIsBrandHovered(true)}
       onMouseOut={() => setIsBrandHovered(false)}
     >
-      <img
-        src={`/images/brands/${brand}.jpg`}
-        alt={alt}
-        className={`w-full h-full object-cover ${borderRadius}`}
-      />
+      <picture>
+        <source
+          srcSet={`/images/brands/${brand}.avif`}
+          type="image/avif"
+        />
+        <source
+          srcSet={`/images/brands/${brand}.webp`}
+          type="image/webp"
+        />
+        <img
+          src={`/images/brands/${brand}.jpg`}
+          alt={alt}
+          className={`w-full h-full object-cover ${borderRadius}`}
+        />
+      </picture>
       <div className={`absolute inset-0 z-20 ${borderRadius} ${getInvertedBgColor()}`}></div>
       {/* <AdidasSVG className="absolute inset-0 z-30 mx-auto" textColor={getInvertedTextColor()} /> */}
       <SVG className="absolute inset-0 z-30 mx-auto" textColor={getInvertedTextColor()} />
