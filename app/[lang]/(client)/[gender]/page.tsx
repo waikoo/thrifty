@@ -4,6 +4,7 @@ import { Gender, Locales } from "@/types/link"
 import FilterHome from "@/app/components/home/FilterHome"
 import HeroCarousel from "@/app/components/home/HeroCarousel"
 import NewsletterSubscription from "@/app/components/home/NewsletterSubscription"
+import Head from "next/head"
 
 type PageProps = {
   params: {
@@ -15,17 +16,22 @@ type PageProps = {
 export default async function Page({ params: { lang, gender }, searchParams, }: PageProps) {
 
   return (
-    <main className="relative bg-t_white dark:bg-t_black text-t_black dark:text-t_white mx-auto w-full overflow-hidden">
-      <HeroCarousel />
+    <>
+      <Head>
+        <link rel="preload" as="image" href={`/images/hero/new_in_${gender}.avif`} />
+      </Head>
+      <main className="relative bg-t_white dark:bg-t_black text-t_black dark:text-t_white mx-auto w-full overflow-hidden">
+        <HeroCarousel />
 
-      <ColorCarousel gender={gender} />
+        <ColorCarousel gender={gender} />
 
-      <PopularBrands gender={gender} lang={lang} />
+        <PopularBrands gender={gender} lang={lang} />
 
-      <FilterHome gender={gender} lang={lang} />
+        <FilterHome gender={gender} lang={lang} />
 
-      <NewsletterSubscription />
+        <NewsletterSubscription />
 
-    </main>
+      </main>
+    </>
   )
 }
