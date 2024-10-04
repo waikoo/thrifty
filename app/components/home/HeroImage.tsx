@@ -33,13 +33,23 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
         <div className={`w-[50%] h-full bg-gradient-to-l from-black ${showOverlayOnDesktop} absolute right-0 opacity-80 rounded-[1.8rem]`}></div>
       }
 
-      <img
-        src={`/images/hero/${state}_${gender}.jpg`}
-        alt={heroAlt[state][gender]}
-        width={100}
-        height={100}
-        className={`w-full h-full object-cover ${kidsNewInPosition} ${kidsSalePosition} ${borderRadius} ${height} ${saleBorder}`}
-      />
+      <picture className="h-full w-full">
+        <source
+          srcSet={`/images/hero/${state}_${gender}.avif`}
+          type="image/avif"
+        />
+        <source
+          srcSet={`/images/hero/${state}_${gender}.webp`}
+          type="image/webp"
+        />
+        <img
+          src={`/images/hero/${state}_${gender}.jpg`}
+          alt={heroAlt[state][gender]}
+          width={100}
+          height={100}
+          className={`w-full h-full object-cover ${kidsNewInPosition} ${kidsSalePosition} ${borderRadius} ${height} ${saleBorder}`}
+        />
+      </picture>
 
       {state === 'new_in' && <HeroTextNewIn />}
 
