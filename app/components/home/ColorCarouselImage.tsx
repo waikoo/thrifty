@@ -29,11 +29,21 @@ export default function ColorCarouselImage({ index, filename, gender }: ColorCar
         onMouseLeave={() => setShowOverlay(true)}
         className="relative rounded-full w-full overflow-hidden bg:red-400"
       >
-        <img
-          src={`/images/color_carousel/${gender}/${filename}`}
-          alt={`a ${pluralToSingular(gender)} in ${removeExtension(filename)} clothes`}
-          className="rounded-full w-full mx-auto hover:scale-110 object-contain transition-transform duration-50"
-        />
+        <picture>
+          <source
+            srcSet={`/images/color_carousel/${gender}/avif/${filename.replace('.jpg', '.avif')}`}
+            type="image/avif"
+          />
+          <source
+            srcSet={`/images/color_carousel/${gender}/webp/${filename.replace('.jpg', '.webp')}`}
+            type="image/webp"
+          />
+          <img
+            src={`/images/color_carousel/${gender}/${filename}`}
+            alt={`a ${pluralToSingular(gender)} in ${removeExtension(filename)} clothes`}
+            className="rounded-full w-full mx-auto hover:scale-110 object-contain transition-transform duration-50"
+          />
+        </picture>
         {showOverlay && (
           <div className={`absolute h-full w-full ${colorCarouselColors[index]} top-0 z-50 rounded-full hover:transition-transform hover:duration-50`}
           ></div>
