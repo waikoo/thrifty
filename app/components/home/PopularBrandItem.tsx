@@ -59,6 +59,7 @@ export default function PopularBrandItem({ brand, lang, gender, theme, className
         <img
           src={`/images/brands/${brand}.jpg`}
           alt={alt}
+          loading="lazy"
           className={`w-full h-full object-cover ${borderRadius}`}
         />
       </picture>

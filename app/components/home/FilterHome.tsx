@@ -47,7 +47,9 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
                 />
                 <img src={`/images/filters/${gender}.png`}
                   alt=""
-                  className="block w-full drop-shadow-[0_15px_20px_rgba(0,0,0,0.5)]" />
+                  className="block w-full drop-shadow-[0_15px_20px_rgba(0,0,0,0.5)]"
+                  loading="lazy"
+                />
               </picture>
             ) : (
               <picture>
@@ -62,6 +64,7 @@ export default function FilterHome({ gender, lang }: FilterHomeProps) {
                 <img src={`/images/filters/${gender}_tiled.png`}
                   alt=""
                   className="w-[140vw] -ml-[15rem] object-cover object-center object mr-10"
+                  loading="lazy"
                 />
               </picture>
             )}

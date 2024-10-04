@@ -41,6 +41,7 @@ export default function ColorCarouselImage({ index, filename, gender }: ColorCar
           <img
             src={`/images/color_carousel/${gender}/${filename}`}
             alt={`a ${pluralToSingular(gender)} in ${removeExtension(filename)} clothes`}
+            loading="lazy"
             className="rounded-full w-full mx-auto hover:scale-110 object-contain transition-transform duration-50"
           />
         </picture>
