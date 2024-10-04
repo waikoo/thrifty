@@ -45,18 +45,18 @@ const NavBar = ({ className }: NavBarProps) => {
       <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[2rem_4rem_1fr_auto_auto] xl:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] 3xl:max-w-[1800px]`}
         onMouseEnter={() => setShowGenderMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
-        <div className="w-5 h-5 mr-5 self-end col-start-1 col-end-2 row-start-1 md:hidden"
+        <div className="w-5 h-5 mr-5 self-end col-start-1 col-end-2 row-start-1 xl:hidden"
           onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}>
           <IconHamburger width="27px" />
         </div>
 
         {isTablet ? (
-          <div className={`self-end md:ml-4 col-start-2 col-end-3 xl:col-start-1 xl:col-end-2 row-start-1`}
+          <div className={`self-end sm:ml-4 col-start-2 col-end-3 xl:col-start-1 xl:col-end-2 row-start-1`}
             onClick={handleShowSearch}>
             <IconSearch />
           </div>
         ) : (
-          <SearchBar className={`self-end md:ml-4 col-start-2 col-end-3 xl:col-start-1 xl:col-end-2 row-start-1`} />
+          <SearchBar className={`self-end sm:ml-4 col-start-2 col-end-3 xl:col-start-1 xl:col-end-2 row-start-1`} />
         )}
 
         {position === 'static' ? (
