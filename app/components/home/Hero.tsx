@@ -8,6 +8,7 @@ import HeroSticker from '@/app/components/home/HeroSticker';
 import getLangAndGender from '@/utils/getLangAndGender';
 import { HeroState } from '@/types/home';
 import HeroTransparentButton from '@/app/components/home/HeroTransparentButton';
+import HeroNewInArrow from './HeroNewInArrow';
 
 type HeroProps = {
   heroState: HeroState
@@ -30,21 +31,22 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
 
   return (
     <section
-      className="w-full relative cursor-pointer"
+      className="w-full relative cursor-pointer isolate"
       onClick={handleClick}>
       <HeroImage gender={gender} state={heroState} />
 
       <HeroSticker heroState={heroState} />
 
       <div className="sm:hidden absolute top-6 left-0 right-0 h-9 mx-auto">
-        <WithHome><Logo logoColor={logoColor} width="9.75rem" /> </WithHome>
+        <WithHome><Logo logoColor={logoColor} width="9.75rem" /></WithHome>
       </div>
 
+      <div className="z-10 inset-0 absolute h-full flex items-center">
+        <HeroNewInArrow />
+      </div>
 
-      <div className="hidden mr-auto xl:mr-0 xl:ml-auto inset-0 absolute z-90 xl:grid place-items-center w-1/3">
-        <div className="mt-[10rem] xl:mt-0 ml-[19rem] xl:mr-auto xl:ml-[1rem] grid items-center" >
-          <HeroTransparentButton heroState={heroState} />
-        </div>
+      <div className="hidden inset-0 absolute z-90 xl:grid place-items-center">
+        <HeroTransparentButton heroState={heroState} />
       </div>
 
       <div className="absolute z-90 grid xl:hidden right-10 sm:right-20 md:right-0 bottom-[2.5rem] place-items-center w-1/3">

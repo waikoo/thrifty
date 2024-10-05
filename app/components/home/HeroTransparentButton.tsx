@@ -12,12 +12,11 @@ type HeroTransparentButtonProps = {
 export default function HeroTransparentButton({ heroState }: HeroTransparentButtonProps) {
   const { lang, gender } = getLangAndGender(usePathname())
   const param = heroState === 'new_in' ? 'new+in' : 'promos'
-  const buttonBorderColor = heroState === 'new_in' ? 'border-[#b398ff20] ' : 'border-t_green'
 
   return (
     <Link href={`/${lang}/${gender}/products/?gender=${gender}&shop-by=${param}&sort-by=newfirst&page=1`}
     >
-      <span className={`h-[90px] w-[90px] md:h-[150px] md:w-[150px] xl:h-[135px] xl:w-[135px] whitespace-nowrap rounded-full grid place-items-center text-white text-[13px] xl:text-[17px] backdrop-blur-md bg-[#2a233e]/20 ${buttonBorderColor} border-[2px] ${albert_600.className}`}>
+      <span className={`h-[90px] w-[90px] md:h-[150px] md:w-[150px] xl:h-[258px] xl:w-[258px] whitespace-nowrap rounded-full grid place-items-center text-t_yellow text-[13px] xl:text-[21px] bg-[#000000]/30 ${albert_600.className} shadow-[#2a3200] shadow-sm`}>
         SHOP NOW
       </span>
     </Link>
