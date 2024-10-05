@@ -8,8 +8,6 @@ import HeroSticker from '@/app/components/home/HeroSticker';
 import getLangAndGender from '@/utils/getLangAndGender';
 import { HeroState } from '@/types/home';
 import HeroTransparentButton from '@/app/components/home/HeroTransparentButton';
-import useViewport from '../hooks/useViewport';
-import { viewport } from '../data/universalStyles';
 
 type HeroProps = {
   heroState: HeroState
@@ -22,7 +20,6 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
   const router = useRouter()
   const logoColor = heroState === 'sale' && gender === 'kids' ? 'black' : 'white'
   const param = heroState === 'new_in' ? 'new+in' : 'promos'
-  const currentViewport = useViewport()
 
   function handleClick(): void {
     if (!hasChanged) {
@@ -44,21 +41,17 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
       </div>
 
 
-      {currentViewport > viewport.xl && (
-        <div className="mr-auto xl:mr-0 xl:ml-auto inset-0 absolute z-90 grid place-items-center w-1/3">
-          <div className="mt-[10rem] xl:mt-0 ml-[19rem] xl:mr-auto xl:ml-[1rem] grid items-center" >
-            <HeroTransparentButton heroState={heroState} />
-          </div>
+      <div className="hidden mr-auto xl:mr-0 xl:ml-auto inset-0 absolute z-90 xl:grid place-items-center w-1/3">
+        <div className="mt-[10rem] xl:mt-0 ml-[19rem] xl:mr-auto xl:ml-[1rem] grid items-center" >
+          <HeroTransparentButton heroState={heroState} />
         </div>
-      )}
+      </div>
 
-      {currentViewport < viewport.xl && (
-        <div className="absolute z-90 grid right-10 sm:right-20 md:right-0 bottom-[2.5rem] place-items-center w-1/3">
-          <div className="grid items-center" >
-            <HeroTransparentButton heroState={heroState} />
-          </div>
+      <div className="absolute z-90 grid xl:hidden right-10 sm:right-20 md:right-0 bottom-[2.5rem] place-items-center w-1/3">
+        <div className="grid items-center" >
+          <HeroTransparentButton heroState={heroState} />
         </div>
-      )}
+      </div>
 
     </section>
   )
