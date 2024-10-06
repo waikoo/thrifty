@@ -28,7 +28,7 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
   const saleBorder = state === 'sale' ? 'border-t_green border-[2px]' : ''
 
   return (
-    <div className={`w-full transition flex ${salePadding} ${blackOnSale} ${borderRadius} h-[27.3125rem] sm:h-[43rem] md:h-[60rem] xl:h-[35.375rem] 2xl:h-[48.2rem] 3xl:h-[55.2rem] rounded-[1.8rem] relative border-[0.125rem] ${borderColor}`}>
+    <div className={`w-full transition flex ${salePadding} ${blackOnSale} ${borderRadius} object-cover h-[120vw] sm:h-[43rem] xl:h-[35.375rem] 2xl:h-[48.2rem] 3xl:h-[55.2rem] rounded-[1.8rem] relative border-[0.125rem] ${borderColor}`}>
       {state === 'new_in' &&
         <div className={`w-[50%] h-full bg-gradient-to-l from-black ${showOverlayOnDesktop} absolute right-0 opacity-80 rounded-[1.8rem]`}></div>
       }
