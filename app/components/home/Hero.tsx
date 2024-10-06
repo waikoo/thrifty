@@ -41,20 +41,9 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
         <WithHome><Logo logoColor={logoColor} width="9.75rem" /></WithHome>
       </div>
 
-      <div className="z-10 inset-0 absolute h-full flex items-center">
-        <HeroNewInArrow />
-      </div>
-
-      <div className="hidden inset-0 absolute z-90 xl:grid place-items-center">
+      <div className="xl:inset-0 absolute z-90 sm:right-[55px] sm:bottom-[55px] right-[22px] bottom-[22px] xl:grid place-items-center">
         <HeroTransparentButton heroState={heroState} />
       </div>
-
-      <div className="absolute z-90 grid xl:hidden right-10 sm:right-20 md:right-0 bottom-[2.5rem] place-items-center w-1/3">
-        <div className="grid items-center" >
-          <HeroTransparentButton heroState={heroState} />
-        </div>
-      </div>
-
     </section>
   )
 }

@@ -1,31 +1,31 @@
-type HeroNewInArrow = {
+type HeroNewInArrowMobileProps = {
   className?: string
 }
 
-export default function HeroNewInArrow({ className }: HeroNewInArrow) {
+export default function HeroNewInArrowMobile({ className }: HeroNewInArrowMobileProps) {
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="61"
-      height="26"
+      width="37"
+      height="22"
       fill="none"
-      viewBox="0 0 61 26"
+      viewBox="0 0 37 22"
       className={className}
     >
-      <g filter="url(#filter0_d_1584_21429)">
+      <g filter="url(#filter0_d_1601_21509)">
         <path
           fill="#fff"
-          d="M55.707 9.707a1 1 0 000-1.414l-6.364-6.364a1 1 0 10-1.414 1.414L53.586 9l-5.657 5.657a1 1 0 001.414 1.414l6.364-6.364zM55 8H5v2h50V8z"
+          d="M31.53 7.53a.75.75 0 000-1.06l-4.773-4.773a.75.75 0 00-1.06 1.06L29.939 7l-4.242 4.243a.75.75 0 001.06 1.06L31.53 7.53zM31 6.25H5v1.5h26v-1.5z"
         ></path>
       </g>
       <defs>
         <filter
-          id="filter0_d_1584_21429"
-          width="61"
-          height="24.729"
+          id="filter0_d_1601_21509"
+          width="36.75"
+          height="21.047"
           x="0"
-          y="0.636"
+          y="0.477"
           colorInterpolationFilters="sRGB"
           filterUnits="userSpaceOnUse"
         >
@@ -41,11 +41,11 @@ export default function HeroNewInArrow({ className }: HeroNewInArrow) {
           <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"></feColorMatrix>
           <feBlend
             in2="BackgroundImageFix"
-            result="effect1_dropShadow_1584_21429"
+            result="effect1_dropShadow_1601_21509"
           ></feBlend>
           <feBlend
             in="SourceGraphic"
-            in2="effect1_dropShadow_1584_21429"
+            in2="effect1_dropShadow_1601_21509"
             result="shape"
           ></feBlend>
         </filter>
