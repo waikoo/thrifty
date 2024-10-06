@@ -8,7 +8,6 @@ import HeroSticker from '@/app/components/home/HeroSticker';
 import getLangAndGender from '@/utils/getLangAndGender';
 import { HeroState } from '@/types/home';
 import HeroTransparentButton from '@/app/components/home/HeroTransparentButton';
-import HeroNewInArrow from './HeroNewInArrow';
 
 type HeroProps = {
   heroState: HeroState
@@ -21,6 +20,7 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
   const router = useRouter()
   const logoColor = heroState === 'sale' && gender === 'kids' ? 'black' : 'white'
   const param = heroState === 'new_in' ? 'new+in' : 'promos'
+  const borderRadius = 'rounded-[1.5rem] md:rounded-[2.5rem] xl:rounded-[1.8rem]'
 
   function handleClick(): void {
     if (!hasChanged) {
@@ -31,19 +31,17 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
 
   return (
     <section
-      className="w-full relative cursor-pointer isolate"
+      className={`w-full relative cursor-pointer isolate ${borderRadius}`}
       onClick={handleClick}>
       <HeroImage gender={gender} state={heroState} />
 
-      <HeroSticker heroState={heroState} />
+      {heroState === 'new_in' && <HeroSticker heroState={heroState} />}
 
-      <div className="sm:hidden absolute top-6 left-0 right-0 h-9 mx-auto">
+      <div className="sm:hidden absolute top-[5rem] left-0 right-0 h-9 mx-auto">
         <WithHome><Logo logoColor={logoColor} width="9.75rem" /></WithHome>
       </div>
 
-      <div className="xl:inset-0 absolute z-90 sm:right-[55px] sm:bottom-[55px] right-[22px] bottom-[22px] xl:grid place-items-center">
-        <HeroTransparentButton heroState={heroState} />
-      </div>
+      <HeroTransparentButton heroState={heroState} />
     </section>
   )
 }

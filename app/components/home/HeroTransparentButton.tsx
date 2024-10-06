@@ -14,16 +14,20 @@ type HeroTransparentButtonProps = {
 export default function HeroTransparentButton({ heroState }: HeroTransparentButtonProps) {
   const { lang, gender } = getLangAndGender(usePathname())
   const param = heroState === 'new_in' ? 'new+in' : 'promos'
+  const position = heroState === 'new_in' ? 'sm:right-[55px] sm:bottom-[55px] right-[22px] bottom-[22px]' : 'm-auto mb-[-350px] sm:mb-[-550px] xl:mb-[-450px]'
+  const size = heroState === 'new_in' ? 'h-[117px] w-[117px] sm:h-[264px] sm:w-[264px] xl:h-[258px] xl:w-[258px]' : 'p-3 px-8'
+  const rotate = heroState === 'new_in' ? '-ml-[5px] mt-[2px]' : 'rotate-[90deg]'
 
   return (
     <Link href={`/${lang}/${gender}/products/?gender=${gender}&shop-by=${param}&sort-by=newfirst&page=1`}
+      className={`${position} inset-0 absolute z-90 grid place-items-center`}
     >
-      <span className={`relative h-[117px] w-[117px] sm:h-[264px] sm:w-[264px] xl:h-[258px] xl:w-[258px] whitespace-nowrap rounded-full grid place-items-center text-t_yellow text-[14px] sm:text-[24px] xl:text-[21px] bg-[#000000]/30 ${albert_900.className} `}>
+      <span className={`${size} relative  whitespace-nowrap rounded-full grid place-items-center text-t_yellow text-[14px] sm:text-[24px] xl:text-[21px] bg-[#000000]/30 ${albert_900.className} `}>
         <span className="shadow-[#2a3200] text-shadow-sm">
           SHOP NOW
         </span>
 
-        <div className="z-10 inset-0 -ml-[5px] mt-[2px] absolute h-full flex items-center">
+        <div className={` ${rotate} z-10 inset-0 absolute h-full flex items-center`}>
           <HeroNewInArrow className="hidden sm:block " />
           <HeroNewInArrowMobile className="ml-[-15px] sm:hidden" />
         </div>

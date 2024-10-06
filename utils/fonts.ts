@@ -62,6 +62,15 @@ export const avant_garde = localFont({
   variable: '--font-avant_garde'
 })
 
+export const avant_garde_bold = localFont({
+  src: [
+    {
+      path: '../public/fonts/itc_avant_garde/itcavantgardestd-bold-webfont.woff2',
+      weight: '700',
+    }
+  ],
+  variable: '--font-avant_garde_bold'
+})
 
 export const noir_pro = localFont({
   src: [
