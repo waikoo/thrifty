@@ -31,7 +31,7 @@ export default function Banner({ className }: BannerProps) {
               {bannerMessages[idx]}
             </span>
 
-            {hideElement && <ThemeToggler />}
+            {/* {hideElement && <ThemeToggler />} */}
 
           </div>
         </section>
