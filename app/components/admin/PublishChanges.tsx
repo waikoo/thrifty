@@ -30,7 +30,7 @@ export default function PublishChanges({ className, publishSome }: PublishChange
   const tableTotal = realDraftLength + realEditedLength
   const mainStyle = tableTotal === 0
     ? 'text-grey border-grey cursor-not-allowed border-2'
-    : 'hover:bg-content hover:text-bkg text-content border-content cursor-pointer border-2'
+    : 'hover:bg-white hover:text-black border-content cursor-pointer border-2'
 
   const selectedTotal = selectedDraftItems.length + selectedEditedItems.length
 
@@ -60,7 +60,7 @@ export default function PublishChanges({ className, publishSome }: PublishChange
   return (
     <>
       <button
-        className={tm(`bg-bkg whitespace-nowrap justify-self-end px-12 py-3 font-semibold tracking-wider ${mainStyle} ${className}`)}
+        className={tm(`whitespace-nowrap justify-self-end px-12 py-3 font-semibold tracking-wider ${mainStyle} ${className}`)}
         onClick={popUpHandler}
       >
         PUBLISH CHANGES

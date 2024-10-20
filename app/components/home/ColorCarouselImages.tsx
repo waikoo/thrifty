@@ -44,4 +44,3 @@ export default function ColorCarouselImages({ images, gender }: ColorCarouselIma
     </Carousel>
   )
 }
-
