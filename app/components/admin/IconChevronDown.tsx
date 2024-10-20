@@ -12,7 +12,7 @@ function IconChevronDown({ className }: IconChevronDownProps) {
       height="5"
       fill="none"
       viewBox="0 0 10 5"
-      className={tm(`${className}`)}
+      className={tm(`${className} pointer-events-none`)}
     >
       <path
         fill='white'
