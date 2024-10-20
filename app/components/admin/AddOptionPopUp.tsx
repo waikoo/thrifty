@@ -46,9 +46,9 @@ export default function AddOptionPopUp({ name }: AddOptionPopUpProps) {
 
   return (
     <div
-      className="text-bkg absolute inset-0 z-[60] grid h-screen w-screen place-items-center bg-[rgba(0,0,0,0.1)] shadow"
+      className="absolute inset-0 z-[60] grid h-screen w-screen place-items-center bg-[rgba(0,0,0,0.1)] shadow"
     >
-      <div className="bg-content text-bkg w-min-content flex flex-col items-center justify-center p-3"
+      <div className="bg-white text-t_admin_black w-min-content flex flex-col items-center justify-center p-3"
       >
 
         <div className="w-full text-right" onClick={closePopupWithX}>
@@ -61,7 +61,7 @@ export default function AddOptionPopUp({ name }: AddOptionPopUpProps) {
         <input
           ref={inputRef}
           type="text"
-          className="text-content border-bkg w-[80%] border-[0.1rem] p-[0.5rem]"
+          className="bg-[#f2f2f2] text-content border-bkg w-[80%] border-[0.1rem] p-[0.5rem]"
           name="add-option"
           id="add-option"
           spellCheck="false"
@@ -69,7 +69,7 @@ export default function AddOptionPopUp({ name }: AddOptionPopUpProps) {
 
         <button
           onClick={submitNewItem}
-          className="text-content bg-bkg mt-6 block px-10 py-3"
+          className="text-white bg-t_admin_black mt-6 block px-10 py-3 font-semibold tracking-wider"
         >
           SAVE
         </button>
