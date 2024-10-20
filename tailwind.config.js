@@ -28,6 +28,7 @@ module.exports = {
         content: "hsl(var(--clr-content) / <alpha-value>)",
 
         t_black: "hsl(var(--clr-t_black) / <alpha-value>)",
+        t_admin_black: "hsl(var(--clr-t_admin-black) / <alpha-value>)",
         t_black1: "hsl(var(--clr-t_black1) / <alpha-value>)",
         t_grey: "hsl(var(--clr-t_grey) / <alpha-value>)",
         t_cream: "hsl(var(--clr-t_cream) / <alpha-value>)",

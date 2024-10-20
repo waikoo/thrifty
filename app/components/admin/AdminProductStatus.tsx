@@ -48,7 +48,7 @@ export default function AdminProductStatus({ length, children, }: AdminProductSt
   }
 
   return (
-    <div className="bg-content absolute bottom-2 flex w-full items-center justify-between px-6 py-[0.55rem]">
+    <div className="absolute text-t_admin_black bottom-2 flex w-full items-center justify-between px-6 py-[0.55rem]">
       <span className="font-bold">{children}: {length}</span>
       <div
         className="cursor-pointer"

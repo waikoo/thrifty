@@ -24,6 +24,7 @@ html {
 
     --clr-t_black: 0 0 5;
     /*#0D0D0D*/
+    --clr-t_admin-black: 0 1 10;
     --clr-t_grey: 0 0 38;
     /*#616161*/
     --clr-t_cream: 0 0 95;
@@ -199,11 +200,9 @@ html {
 }
 
 .glass {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -273,18 +272,18 @@ html {
   pointer-events: auto;
 }
 
-.slider > input:first-of-type,
-.slider > input:last-of-type::-moz-range-progress {
+.slider>input:first-of-type,
+.slider>input:last-of-type::-moz-range-progress {
   /* background-color: var(--clr-t_black); */
   background: black;
 }
 
-.slider > input:first-of-type::-moz-range-progress {
+.slider>input:first-of-type::-moz-range-progress {
   /* background-color: var(--clr-t_black); */
   background: black;
 }
 
-.slider > input:first-of-type {
+.slider>input:first-of-type {
   background-color: dodgerblue;
 }
 
@@ -306,6 +305,7 @@ html {
 }
 
 @keyframes bouncy {
+
   0%,
   100% {
     transform: translateY(-12%);

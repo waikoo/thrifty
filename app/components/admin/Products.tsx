@@ -2,17 +2,17 @@
 import { useState } from "react"
 import { IconProducts } from "."
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 
 type ProductsProps = {
+  params: { [key: string]: string | string[] | undefined }
 }
 
-export default function Products({ }: ProductsProps) {
+export default function Products({ params }: ProductsProps) {
   const [isHovered, setIsHovered] = useState(false)
-  const lang = usePathname().split('/')[1]
+  const lang = params.lang
 
   return (
-    <div className={`hover:text-bkg hover:bg-content flex whitespace-nowrap self-baseline items-baseline gap-2 cursor-pointer px-2`}
+    <div className={`hover:text-t_admin_black hover:bg-white flex whitespace-nowrap self-baseline items-baseline gap-2 cursor-pointer px-2`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

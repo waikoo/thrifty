@@ -61,7 +61,7 @@ export default function SelectProducts() {
       {toggleSelected && (
         <>
           <span
-            className="text-bkg bg-content cursor-pointer p-1"
+            className="text-bkg cursor-pointer p-1"
             onClick={() => setShowPopup(true)}
           >
             DELETE SELECTED

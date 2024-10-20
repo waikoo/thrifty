@@ -11,7 +11,7 @@ export default function useSignOut() {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
-  const signOutHook = async (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  const signOutHook = async (e: React.MouseEvent<HTMLLIElement | HTMLSpanElement, MouseEvent>) => {
     e.preventDefault()
     setLoading(true)
     await signOut()
