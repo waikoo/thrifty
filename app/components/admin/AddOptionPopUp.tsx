@@ -48,7 +48,7 @@ export default function AddOptionPopUp({ name }: AddOptionPopUpProps) {
     <div
       className="absolute inset-0 z-[60] grid h-screen w-screen place-items-center bg-[rgba(0,0,0,0.1)] shadow"
     >
-      <div className="bg-white text-t_admin_black w-min-content flex flex-col items-center justify-center p-3"
+      <div className="bg-white text-t_admin_black w-[400px] flex flex-col items-center justify-center p-6"
       >
 
         <div className="w-full text-right" onClick={closePopupWithX}>
@@ -61,7 +61,7 @@ export default function AddOptionPopUp({ name }: AddOptionPopUpProps) {
         <input
           ref={inputRef}
           type="text"
-          className="bg-[#f2f2f2] text-content border-bkg w-[80%] border-[0.1rem] p-[0.5rem]"
+          className="mt-4 bg-[#f2f2f2] text-content border-t_admin_black w-[100%] border-[0.1rem] p-[0.5rem]"
           name="add-option"
           id="add-option"
           spellCheck="false"

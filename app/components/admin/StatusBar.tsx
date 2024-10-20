@@ -24,7 +24,7 @@ export default function StatusBar({ children }: StatusBarProps) {
       {children}
 
       <div className="bg-white fixed bottom-0 left-0 right-0 w-screen p-6 ">
-        <div className={`text-t_admin_black mx-auto grid max-w-[1700px] ${gridCols} items-baseline gap-8`}>
+        <div className={`text-t_admin_black mx-auto grid max-w-[1700px] ${gridCols} items-baseline gap-12`}>
           <span>NEW: {realDraftLength} </span>
           <span className="justify-self-start">EDITED: {realEditedLength} </span>
 
