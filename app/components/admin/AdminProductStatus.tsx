@@ -18,7 +18,7 @@ export default function AdminProductStatus({ length, children, }: AdminProductSt
     if (!maximizeNew && !maximizeEdited) {
       setOnTop('')
     }
-  }, [maximizeNew, maximizeEdited])
+  }, [maximizeNew, maximizeEdited, setOnTop])
 
   const onClickHandler = () => {
     const type = typeof children === 'string' ? children.toLowerCase() : ''
@@ -48,7 +48,7 @@ export default function AdminProductStatus({ length, children, }: AdminProductSt
   }
 
   return (
-    <div className="absolute text-t_admin_black bottom-2 flex w-full items-center justify-between px-6 py-[0.55rem]">
+    <div className="absolute bg-white text-t_admin_black bottom-2 flex w-full items-center justify-between px-6 py-[0.55rem]">
       <span className="font-bold">{children}: {length}</span>
       <div
         className="cursor-pointer"
