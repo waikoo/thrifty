@@ -18,7 +18,7 @@ export default function Page({ params, searchParams }: PageProps) {
   return (
     <>
       <header className="bg-t_admin_black text-white border-white mx-auto grid max-w-[1700px] grid-cols-3 items-baseline border-b-[0.1rem] pb-1 pt-5">
-        <div className="grid w-[35%] grid-cols-2 gap-1">
+        <div className="flex w-[35%] gap-1">
           <LayoutAddNew params={params} />
           <Products params={params} />
         </div>
