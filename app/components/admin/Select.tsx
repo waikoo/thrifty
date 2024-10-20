@@ -27,7 +27,7 @@ export default function Select({ name, content, value, defaultSelect = '- Select
     <select
       name={lowerCaseName}
       id={lowerCaseName}
-      className={tm("adminBorder focus:ring-yellow text-white bg-black relative w-full appearance-none p-2 pr-[10.3rem] text-[0.8125rem] font-normal focus:outline-none focus:ring-[0.15rem]")}
+      className={tm("border-[1px] border-t_faded focus:ring-yellow text-[#e6e6e6] bg-t_admin_black relative w-full appearance-none p-2 pr-[10.3rem] text-[0.8125rem] font-normal focus:outline-none focus:ring-[0.15rem]")}
       value={getValue(lowerCaseName)}
       onChange={(e) => getOnChange(e, lowerCaseName)}
     >

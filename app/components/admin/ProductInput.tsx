@@ -30,7 +30,7 @@ export default function ProductInput({ name, placeholder, icon, value }: Product
           type={'text'}
           name={name}
           id={name}
-          className={"bg-t_admin_black text-white adminBorder focus:ring-yellow border-2 p-2 text-[0.8125rem] font-normal focus:outline-none focus:ring-[0.15rem]"}
+          className={"bg-t_admin_black text-white border-[1px] border-t_faded focus:ring-yellow border-2 p-2 text-[0.8125rem] font-normal focus:outline-none focus:ring-[0.15rem]"}
           value={getValue(name) || ''}
           onChange={(e) => {
             getOnChange(e, name)
