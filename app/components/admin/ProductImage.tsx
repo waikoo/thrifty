@@ -19,14 +19,14 @@ export default function ProductImage({ uuidMatch }: ProductImageProps) {
 
       <div className="grid w-full grid-cols-10">
 
-        <span className="self-center justify-self-center text-[0.8125rem] font-semibold">
+        <span className="self-center justify-self-start text-[0.8125rem] font-semibold">
           URL
         </span>
 
         <div className="relative col-span-7">
           <input ref={inputRef}
             type="text"
-            className={`${showError} focus:ring-yellow bg-bkg text-content w-full border-[0.1rem] p-[0.5rem] text-[0.8125rem] font-medium focus:outline-none focus:ring-[0.15rem]`}
+            className={`${showError} focus:ring-yellow bg-t_admin_black text-white w-full border-white border-[0.1rem] p-[0.5rem] text-[0.8125rem] font-medium focus:outline-none focus:ring-[0.15rem]`}
             placeholder="Add link here"
             pattern="https?://.*"
             title="Please enter a valid URL"

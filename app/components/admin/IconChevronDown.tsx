@@ -1,14 +1,9 @@
-"use client"
 import { twMerge as tm } from 'tailwind-merge';
-
-import { useThemeStore } from "@/state/themeState"
-import { getSvgColor } from '@/utils/theme';
 
 type IconChevronDownProps = {
   className?: string
 }
 function IconChevronDown({ className }: IconChevronDownProps) {
-  const color = useThemeStore((state) => getSvgColor(state.theme))
 
   return (
     <svg
@@ -20,7 +15,7 @@ function IconChevronDown({ className }: IconChevronDownProps) {
       className={tm(`${className}`)}
     >
       <path
-        fill={color}
+        fill='white'
         d="M0 0l5 5 5-5H0z"></path>
     </svg>
   );
