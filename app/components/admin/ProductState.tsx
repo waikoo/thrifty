@@ -60,7 +60,7 @@ export default async function ProductState({ uuidMatch }: ProductStateProps) {
         value={uuidMatch?.[0]?.material}
       />}
 
-      <div className="text-content ml-[2.87rem] mt-4 flex gap-4 text-[0.8125rem] font-semibold">
+      <div className="ml-[2.87rem] mt-4 flex gap-4 text-[0.8125rem] font-semibold">
         <span>DATE ADDED</span>
         <span className="font-normal">{getDayMonthYear()}</span>
       </div>

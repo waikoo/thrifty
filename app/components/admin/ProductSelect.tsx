@@ -20,7 +20,7 @@ export default function ProductSelect({ obj: { name, content }, value }: Product
   }
 
   return (
-    <fieldset className="text-content relative flex w-[50%] items-center gap-4">
+    <fieldset className="relative flex w-[50%] items-center gap-4">
       <legend hidden>{name}</legend>
 
       <label

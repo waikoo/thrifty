@@ -16,7 +16,7 @@ export default function ProductInput({ name, placeholder, icon, value }: Product
   useInitValues(!value ? '' : value, name)
 
   return (
-    <fieldset className="text-content relative flex w-[50%] items-center gap-4">
+    <fieldset className="relative flex w-[50%] items-center gap-4">
       <legend hidden>{upperCaseName}</legend>
       <label htmlFor={name}
         className="grid grid-cols-[8rem_21rem] items-center gap-4">

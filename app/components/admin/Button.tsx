@@ -39,7 +39,7 @@ export default function Button({ uuidMatch }: ButtonProps) {
   return (
     <>
       <button
-        className={"focus:ring-yellow border-content text-content hover:text-bkg hover:bg-content col-span-2 mx-auto mt-10 flex w-16 items-center justify-center border-[0.1rem] px-24 py-3 text-[0.8125rem] font-semibold focus:outline-none focus:ring-[0.15rem]"}
+        className={"focus:ring-yellow border-white text-white hover:text-t_admin_black hover:bg-white col-span-2 mx-auto mt-10 flex w-16 items-center justify-center border-[0.1rem] px-24 py-3 text-[0.8125rem] font-semibold focus:outline-none focus:ring-[0.15rem]"}
         onClick={onClickHandler}
       >
         SAVE

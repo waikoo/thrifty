@@ -17,9 +17,9 @@ export default function ProductImage({ uuidMatch }: ProductImageProps) {
   return (
     <div className="flex flex-col items-center gap-6">
 
-      <div className="grid w-full grid-cols-10 items-center">
+      <div className="grid w-full grid-cols-10">
 
-        <span className="text-content self-center justify-self-center text-[0.8125rem] font-semibold">
+        <span className="self-center justify-self-center text-[0.8125rem] font-semibold">
           URL
         </span>
 

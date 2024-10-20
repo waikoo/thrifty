@@ -14,16 +14,17 @@ type PageProps = {
 export default function Page({ params, searchParams }: PageProps) {
   const { lang } = params
   const uuid = searchParams.uuid as string
+
   return (
     <>
-      <header className="bg-bkg text-content border-content mx-auto grid max-w-[1700px] grid-cols-3 items-baseline border-b-[0.1rem] pb-1 pt-5">
+      <header className="bg-t_admin_black text-white border-white mx-auto grid max-w-[1700px] grid-cols-3 items-baseline border-b-[0.1rem] pb-1 pt-5">
         <div className="grid w-[35%] grid-cols-2 gap-1">
           <LayoutAddNew params={params} />
-          <Products />
+          <Products params={params} />
         </div>
 
-        <Link href={`/${lang}/admin`} className="col-start-2 col-end-3 cursor-pointer self-baseline justify-self-center ">
-          <Logo />
+        <Link href={`/${lang}/admin`} className="col-start-2 col-end-3 row-start-1 row-end-2 cursor-pointer self-baseline justify-self-center">
+          <Logo logoColor="white" width={'50%'} className="mx-auto" />
         </Link>
 
         <div className="flex items-baseline gap-2 justify-self-end">
@@ -31,13 +32,13 @@ export default function Page({ params, searchParams }: PageProps) {
         </div>
       </header>
 
-      <main className="mx-auto mt-6 flex w-full max-w-[1600px] flex-col items-center">
+      <main className="bg-t_admin_black text-white mx-auto mt-6 flex w-full max-w-[90vw] flex-col items-center">
         <Manage uuid={uuid} />
         <div id="popup-root"></div>
       </main>
 
 
-      <footer>
+      <footer className="bg-white text-t_admin_black">
         <StatusBar>
           <StatusImages />
         </StatusBar>

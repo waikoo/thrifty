@@ -9,7 +9,7 @@ type ProductsProps = {
 
 export default function Products({ params }: ProductsProps) {
   const [isHovered, setIsHovered] = useState(false)
-  const lang = params.lang
+  const lang = params?.lang
 
   return (
     <div className={`hover:text-t_admin_black hover:bg-white flex whitespace-nowrap self-baseline items-baseline gap-2 cursor-pointer px-2`}

@@ -22,11 +22,11 @@ export default function AddNew({ name }: AddNewProps) {
       <div className="absolute right-[-7rem] ml-3 flex cursor-pointer items-center gap-2"
         onClick={onClickHandler}
       >
-        <div className="bg-content grid h-[1.3rem] w-[1.3rem] place-items-center self-center">
-          <IconPlus isAdmin />
+        <div className="bg-white grid h-[1.3rem] w-[1.3rem] place-items-center self-center">
+          <IconPlus color="black" />
         </div>
 
-        <span className="text-content font-bold">Add new</span>
+        <span className="font-bold">Add new</span>
 
       </div>
 
