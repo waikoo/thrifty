@@ -11,7 +11,7 @@ export default function StatusImages() {
   const { showOptions, setShowOptions } = useUIStore()
 
   return (
-    <div className="bg-content relative bottom-16 flex h-[46vh] w-full gap-6 p-6">
+    <div className="bg-white relative bottom-16 flex h-[46vh] w-full gap-6 p-6">
       <div className={`w-1/2 gap-[1.5rem] grid grid-cols-6 rounded-lg p-6 ${draftStyle} ${statusStyle}`}>
         {draft?.filter(el => el.img_url && el.img_url.length > 0)
           .map((el, i) => (
