@@ -12,7 +12,7 @@ export default function ProductsContent({ products }: ProductsContentProps) {
   const [, lang, admin,] = pathname.split('/')
 
   return (
-    <section className="bg-content max-h-[50vh]">
+    <section className="bg-white max-h-[50vh]">
       <div className="grid grid-cols-[repeat(20,minmax(30px,1fr))] gap-2 p-6">
         {products?.filter(el => el.img_url && el.img_url.length > 0).map((el, i) => (
           <div className={`relative aspect-square`}

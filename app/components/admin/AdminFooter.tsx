@@ -13,7 +13,7 @@ export default function AdminFooter({ lang }: AdminFooterProps) {
       <div className="mx-auto grid max-w-[90vw] grid-cols-3 items-baseline">
         <SelectProducts />
         <Link href={`/${lang}/admin`} className="col-start-2 col-end-3 cursor-pointer self-baseline justify-self-center ">
-          <Logo />
+          <Logo width="50%" className={"mx-auto"} logoColor="white" />
         </Link>
         <PublishChanges
           publishSome

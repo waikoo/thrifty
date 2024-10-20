@@ -11,9 +11,9 @@ export default async function Page({ params }: PageParams) {
   const products = await serverQueryTable('products')
 
   return (
-    <section className="bg-bkg min-h-[70vh]">
+    <section className="bg-t_admin_black text-white min-h-[70vh]">
       <div id="popup-root"></div>
-      <section className="bg-bkg text-content mx-auto flex min-h-[70vh] max-w-[1700px] flex-col items-center">
+      <section className="mx-auto flex min-h-[70vh] max-w-[1700px] flex-col items-center">
 
         <AdminNav params={params} />
 
