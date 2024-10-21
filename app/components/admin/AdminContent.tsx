@@ -8,7 +8,7 @@ export default function AdminContent() {
   const { draftLength, editedLength } = useStatusBarStore()
 
   return (
-    <section className={`flex w-full h-[80vh]
+    <section className={`flex w-full h-[80vh] transition-all duration-300
       ${maximizeNew && maximizeEdited ? 'flex-col-reverse gap-2' :
         maximizeNew ? 'flex-col gap-14' :
           maximizeEdited ? 'flex-col-reverse gap-14' :
