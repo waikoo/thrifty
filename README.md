@@ -13,6 +13,11 @@ Next.js, TypeScript, Tailwind, Supabase
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Features
+- interactive admin dashboard to view, edit & delete clothing articles from the database
+- favorites, cart and dynamic checkout functionality
+- can save your search filters for future use
+
 ## Getting Started
 
 1. Clone this project using your favorite method.
