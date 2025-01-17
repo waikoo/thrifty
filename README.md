@@ -3,7 +3,7 @@
 
 While my wife was pursuing her UI/UX Design Course from Google on Coursera, she designed an e-commerce site as part of her coursework. Inspired by her design, I took on the challenge of bringing it to life. Together, we collaborated to build a responsive e-commerce platform with an admin login UI that allowed administrators to upload new clothing articles to a Supabase database.
 
-This project was a significant milestone for me, as it was my first time diving deep into several new technologies. For example, previously only had limited experience with TypeScript, having used it only once in my Guess My Number project. Tailwind, Supabase was completely new to me at the time. For this project, I decided to leverage the then-new Next.js App Router with server components, which gave me hands-on experience with cutting-edge tools and methodologies in modern web development.
+This project was a significant milestone for me, as it was my first time diving deep into several new technologies. For example, previously only had limited experience with TypeScript, having used it only once in my [Guess My Number](https://www.github.com/waikoo/guess-my-number) project. Tailwind, Supabase was completely new to me at the time. For this project, I decided to leverage the then-new Next.js App Router with server components, which gave me hands-on experience with cutting-edge tools and methodologies in modern web development.
 
 ## Live demo
 [https://monumental-zuccutto-62f1b9.netlify.app/en/women](https://monumental-zuccutto-62f1b9.netlify.app/en/women)
