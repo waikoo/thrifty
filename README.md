@@ -1,5 +1,5 @@
 # Thriftstudio
-[!thriftstudio_preview](https://www.szasz.dev/images/thriftstudio_preview.avif)
+![thriftstudio_preview](https://www.szasz.dev/images/thriftstudio_preview.avif)
 
 While my wife was pursuing her UI/UX Design Course from Google on Coursera, she designed an e-commerce site as part of her coursework. Inspired by her design, I took on the challenge of bringing it to life. Together, we collaborated to build a responsive e-commerce platform with an admin login UI that allowed administrators to upload new clothing articles to a Supabase database.
 
