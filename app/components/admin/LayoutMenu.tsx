@@ -9,7 +9,7 @@ export default function LayoutMenu({ params }: LayoutMenuProps) {
   return (
     <div className="flex gap-6">
       <LayoutAddNew params={params} />
-      <Products />
+      {/* <Products params={params} /> */}
     </div>
   )
 }
