@@ -17,7 +17,8 @@ export default function Banner({ className }: BannerProps) {
   const textColor = showBanner ? 'text-black' : 'text-content'
   const currentViewport = useViewport()
   const hideElement = currentViewport > viewport.xl
-  const gridCols = hideElement ? 'grid-cols-[auto_1fr_auto]' : 'grid-cols-1 py-1'
+  // const gridCols = hideElement ? 'grid-cols-[auto_1fr_auto]' : 'grid-cols-1 py-1'
+  const gridCols = hideElement ? 'grid-cols-3' : 'grid-cols-1 py-1'
 
   return (
     <>
