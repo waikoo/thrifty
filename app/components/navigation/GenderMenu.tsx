@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import GenderImage from "@/app/components/navigation/GenderImage"
 import GenderMember from "@/app/components/navigation/GenderMember"
@@ -9,6 +9,7 @@ export default function GenderMenu() {
   const { gender: hoveredGender, setShowGenderMenu } = useGenderStore()
   const divRef = useRef<HTMLDivElement | null>(null)
   const modalRef = useRef<HTMLDivElement | null>(null)
+  const [y, setY] = useState(window.scrollY)
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (e.target === divRef.current) { // makes popup disappear on the bottom
@@ -22,21 +23,26 @@ export default function GenderMenu() {
         setShowGenderMenu(false)
       }
     }
-    const handleOnScroll = () => {
-      if (modalRef.current) {
-        if (window.scrollY > 0) {
-          modalRef.current.style.top = '3.9rem'
-        } else {
-          modalRef.current.style.top = '7.9rem'
-        }
-      }
-    }
-    window.addEventListener('scroll', handleOnScroll)
     document.addEventListener('keydown', handleEscape)
     return () => {
       document.removeEventListener('keydown', handleEscape)
     }
   }, [setShowGenderMenu])
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => setY(window.scrollY))
+    const handleOnScroll = () => {
+      if (modalRef.current) {
+        if (window.scrollY > 0) {
+          modalRef.current.style.top = '3.9rem'
+        } else if (window.scrollY === 0) {
+          modalRef.current.style.top = '7.9rem'
+        }
+      }
+    }
+    handleOnScroll() // needs to run once on mount
+    window.addEventListener('scroll', handleOnScroll)
+  }, [y])
 
   return (
     <section className="fixed inset-0 top-[7.9rem] bg-black bg-opacity-50 backdrop-blur-sm z-50 mx-auto" ref={modalRef}>
