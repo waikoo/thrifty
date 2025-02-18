@@ -1,5 +1,5 @@
 "use client"
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 
 import GenderImage from "@/app/components/navigation/GenderImage"
 import GenderMember from "@/app/components/navigation/GenderMember"
@@ -8,6 +8,7 @@ import { useGenderStore } from "@/state/client/genderState"
 export default function GenderMenu() {
   const { gender: hoveredGender, setShowGenderMenu } = useGenderStore()
   const divRef = useRef<HTMLDivElement | null>(null)
+  const modalRef = useRef<HTMLDivElement | null>(null)
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (e.target === divRef.current) { // makes popup disappear on the bottom
@@ -15,8 +16,30 @@ export default function GenderMenu() {
     }
   }
 
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowGenderMenu(false)
+      }
+    }
+    const handleOnScroll = () => {
+      if (modalRef.current) {
+        if (window.scrollY > 0) {
+          modalRef.current.style.top = '3.9rem'
+        } else {
+          modalRef.current.style.top = '7.9rem'
+        }
+      }
+    }
+    window.addEventListener('scroll', handleOnScroll)
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [setShowGenderMenu])
+
   return (
-    <section className="fixed inset-0 top-[7.9rem] bg-black bg-opacity-50 backdrop-blur-sm z-50 mx-auto">
+    <section className="fixed inset-0 top-[7.9rem] bg-black bg-opacity-50 backdrop-blur-sm z-50 mx-auto" ref={modalRef}>
       <div className="border-darkgrey inset-x-0 left-[-15rem] z-50 w-screen border-t-[0.05rem]"></div>
       <div
         className={`bg-t_white dark:bg-t_black max-w-screen inset-x-0 z-40 mx-auto overflow-y-hidden px-12 py-12 w-full`}
