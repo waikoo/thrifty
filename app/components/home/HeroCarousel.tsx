@@ -1,5 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
+import Autoplay from 'embla-carousel-autoplay'
+import Fade from 'embla-carousel-fade'
 
 import {
   Carousel,
@@ -42,7 +44,8 @@ export default function HeroCarousel() {
   return (
     <div className="max-w-[90vw] 3xl:max-w-[1800px] mx-auto">
       <Carousel className="mx-auto w-full"
-        opts={{ startIndex: carouselState === 'new_in' ? 0 : 1 }}
+        plugins={[Autoplay({ delay: 5000 }), Fade()]}
+        opts={{ startIndex: carouselState === 'new_in' ? 0 : 1, align: 'start', loop: true, containScroll: false }}
         setApi={setApi}
       >
         <CarouselContent>
