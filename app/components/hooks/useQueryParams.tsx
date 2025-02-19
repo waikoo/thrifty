@@ -23,7 +23,7 @@ const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]
     shoes: cat?.includes('shoes'),
     accessories: cat?.includes('accessories'),
     promos: shopBy?.includes('promos'),
-    ['new in']: shopBy?.includes('new in'),
+    ['new in']: shopBy?.includes('new_in'),
     ['new with tag']: conditionParam?.includes('new with tag'),
     ['new without tag']: conditionParam?.includes('new without tag'),
     ['second hand']: conditionParam?.includes('second hand'),
@@ -53,7 +53,7 @@ export default function useQueryParams(type: string, elements: string[], searchP
   const [checkbox, setCheckbox] = useState(getParams(searchParamos, elements))
   useEffect(() => {
     setCheckbox(getParams(searchParamos, elements))
-  }, [searchParamos])
+  }, [searchParamos, elements])
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = (e.target as unknown as HTMLInputElement).value;
