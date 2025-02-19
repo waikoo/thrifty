@@ -17,7 +17,7 @@ export default function Page({ params: { lang, gender } }: PageProps) {
     <main className="overflow-hidden">
       <BrandsTopBar {... { alphabet }} />
 
-      <section className="mt-16 mx-auto max-w-[60rem] flex flex-col gap-4">
+      <section className="my-16 mx-auto max-w-[60rem] flex flex-col gap-4">
         {alphabet.map((letter) => (
           brands[letter] ? (
             <BrandsLetter brandsArray={brands[letter]}
