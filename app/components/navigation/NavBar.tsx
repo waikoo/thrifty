@@ -56,7 +56,7 @@ const NavBar = ({ className }: NavBarProps) => {
             <IconSearch />
           </div>
         ) : (
-          <SearchBar className={`self-end sm:ml-4 col-start-2 col-end-3 xl:col-start-1 xl:col-end-2 row-start-1`} />
+          <SearchBar className={`self-end sm:ml-4 col-start-2 col-end-3 xl:col-start-1 xl:col-end-2 row-start-1 xl:ml-0`} />
         )}
 
         {position === 'static' ? (

@@ -40,7 +40,6 @@ export default function SearchBar({ className }: SearchBarProps) {
   const { suggestions } = useSearchSuggestions(showSuggestions, searchTerm, setCompletedWord)
   const { savedFilters } = useFiltersInSearchBar()
   const { theme } = useThemeStore()
-  console.log(showSuggestions)
 
   useEffect(() => {
     if (showMobileSearch) {
@@ -82,7 +81,7 @@ export default function SearchBar({ className }: SearchBarProps) {
 
   return (
     <div className="relative">
-      <form className={`text-bkg relative flex items-end gap-2 ${className} w-full`}
+      <form className={`text-bkg relative flex items-end gap-2 ${className} w-full pt-2`}
         onSubmit={(e: React.FormEvent) => handleSubmit(e)}
       >
         {showClearIcon && (
