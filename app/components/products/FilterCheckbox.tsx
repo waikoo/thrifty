@@ -30,7 +30,7 @@ export default function FilterCheckbox({ type, elements, search }: FilterCheckbo
 
           <fieldset
             onChange={updateQueryParams}
-            className="flex flex-col max-h-[300px] xl:max-h-[200px] overflow-y-scroll scrollbar-thin scrollbar-thumb-black scrollbar-track-t_white"
+            className="flex flex-col max-h-[300px] xl:max-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-black scrollbar-track-t_white"
           >
 
             {filteredItems.map((element, i) => {
