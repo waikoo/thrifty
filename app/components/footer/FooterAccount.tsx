@@ -2,10 +2,10 @@
 import { usePathname, useRouter } from "next/navigation";
 
 import getLangAndGender from "@/utils/getLangAndGender";
-import { useUserSession } from "@/app/components/hooks"
 import { useUIStore } from "@/state/client/uiState";
 import FooterTitle from "@/app/components/footer/FooterTitle";
 import { capitalize } from "@/utils/capitalize";
+import useSupabaseGetSession from "../hooks/useSupabaseGetSession";
 
 type FooterAccountProps = {
   textColor: string
@@ -16,7 +16,7 @@ type FooterAccountProps = {
 export default function FooterAccount({ textColor, textSize, tracking }: FooterAccountProps) {
   const { gender, lang } = getLangAndGender(usePathname())
   const { showSignIn, setShowSignIn } = useUIStore()
-  const { session, error } = useUserSession()
+  const { isSession } = useSupabaseGetSession()
   const router = useRouter()
   const links = ['profile', 'orders', 'returns', 'settings']
 
@@ -30,7 +30,7 @@ export default function FooterAccount({ textColor, textSize, tracking }: FooterA
           <span
             className={`cursor-pointer`}
             key={link}
-            onClick={() => !session
+            onClick={() => !isSession
               ? setShowSignIn(showSignIn ? false : true)
               : router.push(`/${lang}/${gender}/${link}`)}
           >

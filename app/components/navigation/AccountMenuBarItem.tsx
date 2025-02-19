@@ -6,7 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import getLangAndGender from '@/utils/getLangAndGender'
 import { albert_600, albert_900 } from '@/utils/fonts'
 import { useUIStore } from '@/state/client/uiState'
-import useUserSession from '../hooks/useUserSession'
+import useSupabaseGetSession from '../hooks/useSupabaseGetSession'
 
 type AccountMenuBarItemProps = {
   children: React.ReactNode
@@ -21,11 +21,11 @@ export default function AccountMenuBarItem({ children }: AccountMenuBarItemProps
   const [isHovered, setIsHovered] = useState(false)
   const hoveredStyles = isHovered ? `${albert_900.className}` : ''
   const { showSignIn, setShowSignIn } = useUIStore()
-  const { session, error } = useUserSession()
+  const { isSession } = useSupabaseGetSession()
   const router = useRouter()
 
   const handleClick = () => {
-    !session
+    !isSession
       ? setShowSignIn(showSignIn ? false : true)
       : router.push(`/${lang}/${gender}/${lowercaseChildren}`)
   }
