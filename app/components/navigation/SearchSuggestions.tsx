@@ -15,7 +15,7 @@ export default function SearchSuggestions({ suggestions, setShowSuggestions, com
   const router = useRouter()
 
   return (
-    <div className="w-full absolute bg-t_white dark:bg-t_black top-[5rem] flex flex-col gap-4 p-4">
+    <div className="top-[5.7rem] w-[300px] fixed bg-t_white dark:bg-t_black top-[5rem] flex flex-col gap-4 p-4 z-[60]">
       {suggestions.map((item) => (
         <div key={item.uuid} onClick={() => {
           setShowSuggestions(false)
