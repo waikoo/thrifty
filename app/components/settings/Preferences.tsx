@@ -35,11 +35,11 @@ export default function Preferences() {
           gender={gender}
         />
 
-        <PreferenceElement
-          title={'Theme'}
-          radioValues={themes}
-          defaultChecked={theme}
-        />
+        {/* <PreferenceElement */}
+        {/*   title={'Theme'} */}
+        {/*   radioValues={themes} */}
+        {/*   defaultChecked={theme} */}
+        {/* /> */}
 
       </div>
 
