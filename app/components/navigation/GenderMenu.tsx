@@ -4,8 +4,13 @@ import { useEffect, useRef, useState } from "react"
 import GenderImage from "@/app/components/navigation/GenderImage"
 import GenderMember from "@/app/components/navigation/GenderMember"
 import { useGenderStore } from "@/state/client/genderState"
+import { Gender, Locales } from "@/types/link"
 
-export default function GenderMenu() {
+type GenderMenuProps = {
+  lang: Locales
+}
+
+export default function GenderMenu({ lang }: GenderMenuProps) {
   const { gender: hoveredGender, setShowGenderMenu } = useGenderStore()
   const divRef = useRef<HTMLDivElement | null>(null)
   const modalRef = useRef<HTMLDivElement | null>(null)
@@ -60,13 +65,16 @@ export default function GenderMenu() {
           <div className="my-auto flex flex-col gap-10 col-start-5 col-end-6 self-start">
             <GenderImage
               src={`/images/gender_hover/${hoveredGender}1.jpg`}
-              className="col-start-5 col-end-6 row-start-1 w-full">
+              className="col-start-5 col-end-6 row-start-1 w-full"
+              href={`/${lang}/${hoveredGender}/products/?gender=${hoveredGender}&shop-by=new_in&sort-by=newfirst&page=1`}
+            >
               NEW IN
             </GenderImage>
 
             <GenderImage
               src={`/images/gender_hover/${hoveredGender}2.jpg`}
-              className="col-start-5 col-end-6 row-start-2 w-full">
+              className="col-start-5 col-end-6 row-start-2 w-full"
+              href={`/${lang}/${hoveredGender}/products/?gender=${hoveredGender}&shop-by=sale&sort-by=newfirst&page=1`}>
               SALE
             </GenderImage>
           </div>

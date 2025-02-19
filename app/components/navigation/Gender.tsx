@@ -55,7 +55,7 @@ export default function Gender({ className }: GenderProps) {
           })}
         </ul>
       </div>
-      {viewportWidth > viewport.lg && showGenderMenu && <GenderMenu />}
+      {viewportWidth > viewport.lg && showGenderMenu && <GenderMenu lang={currentLocale as Locales} />}
     </nav>
   );
 };
