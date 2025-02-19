@@ -33,10 +33,10 @@ export default function HelpReturns() {
         <p className={`${albert_600.className} text-[13px] sm:text-[17px] xl:text-[14px]`}>Items must be returned in their original condition, unworn, and with all tags attached.</p>
         <p className={`${albert_600.className} text-[13px] sm:text-[17px] xl:text-[14px]`}>
           For further assistance, please contact our Customer Service team at
-          <a href="mailto:thriftstudio@shop.com">thriftstudio@shop.com</a>
+          <a href="mailto:thriftstudio@shop.com">{' '} thriftstudio@shop.com {' '}</a>
           or call
-          <a href="tel:1234567890">1234567890</a>
-          . We are here to help you with any questions or concerns you may have."
+          <a href="tel:1234567890">{' '} 1234567890</a>
+          . We are here to help you with any questions or concerns you may have.
         </p>
       </div>
 
