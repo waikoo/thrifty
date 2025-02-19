@@ -1,6 +1,6 @@
 import { usePathname } from "next/navigation";
 
-import { albert_500, albert_700, albert_800 } from "@/utils/fonts";
+import { albert_500, albert_700, albert_900 } from "@/utils/fonts";
 import HeroButton from "@/app/components/home/HeroButton";
 import getLangAndGender from "@/utils/getLangAndGender";
 
@@ -9,7 +9,7 @@ export default function CartIsEmpty() {
 
   return (
     <div className="bg-white text-t_black w-screen py-20 px-20 text-center tracking-wider h-[calc(80dvh)]">
-      <h4 className={`mb-[1.375rem] text-[17px] sm:text-[21px] xl:text-[18px] ${albert_800.className}`}>
+      <h4 className={`mb-[1.375rem] text-[17px] sm:text-[21px] xl:text-[18px] ${albert_900.className}`}>
         Your cart is empty.
       </h4>
 
