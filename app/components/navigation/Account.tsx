@@ -1,28 +1,30 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation"
 
-import { useUserSession } from "@/app/components/hooks"
 import { useUIStore } from "@/state/client/uiState"
 import { IconAccount } from '@/app/components/navigation/icons/'
 import useMouseLeave from "@/app/components/hooks/useMouseLeave"
 import getLangAndGender from "@/utils/getLangAndGender"
 import { viewport } from "../data/universalStyles"
 import useViewport from "../hooks/useViewport"
+import useSupabaseGetSession from "../hooks/useSupabaseGetSession"
 
 type AccountProps = {
   testid: 'mobile-account' | 'desktop-account'
 }
 
 export default function Account({ testid }: AccountProps) {
-  const { session, isAdmin, error } = useUserSession()
+  const { isSession } = useSupabaseGetSession()
+
   const { showMyAccount, setShowMyAccount, showSignIn, setShowSignIn, showRecovery } = useUIStore()
   const { handleMouseMove, getDirection, lastMousePosition } = useMouseLeave()
   const [pathname, router] = [usePathname(), useRouter()]
   const { lang, gender } = getLangAndGender(pathname)
   const currentViewport = useViewport()
 
+
   const handleClick = () => {
-    if (session) {
+    if (isSession) {
       router.push(`/${lang}/${gender}/profile`)
     } else {
       setShowSignIn(true)
@@ -31,7 +33,7 @@ export default function Account({ testid }: AccountProps) {
 
   const handleMouseEnter = () => {
     if (currentViewport < viewport.xl) return
-    if (session) setShowMyAccount(true)
+    if (isSession) setShowMyAccount(true)
   }
 
   const handleMouseLeave = (e: React.MouseEvent) => {
@@ -48,7 +50,7 @@ export default function Account({ testid }: AccountProps) {
     if (testid === 'mobile-account') {
       return ''
     }
-    return session?.user.role ? "Account" : "Sign In"
+    return isSession ? "Account" : "Sign In"
   }
 
   return (

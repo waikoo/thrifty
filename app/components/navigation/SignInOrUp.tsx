@@ -1,7 +1,6 @@
 "use client"
 import { useRef, useState } from 'react'
 
-import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 
 import { Auth, AuthModes } from '@/types/auth'
@@ -13,6 +12,7 @@ import { useUserStore } from '@/state/client/userState'
 import { useThemeStore } from '@/state/themeState'
 import { albert, albert_500, albert_600 } from '@/utils/fonts';
 import AnimatedInput from '@/app/components/AnimatedInput';
+import SignInWithGoogle from '@/app/components/navigation/SignInWithGoogle';
 
 const SignInOrUp = () => {
   const [selected, setSelected] = useState<AuthModes>(Auth.LOGIN)
@@ -54,11 +54,7 @@ const SignInOrUp = () => {
         />
 
         <div className="flex flex-col gap-2 px-5 sm:px-10 mt-5">
-          <button className="xl:w-auto flex gap-2 items-center justify-center w-full border-[0.1rem] border-t_black mx-auto rounded-full py-2 sm:px-11">
-            <FcGoogle />
-            <span className={`${albert_600.className} cursor-pointer whitespace-nowrap`}>Continue with Google</span>
-          </button>
-
+          <SignInWithGoogle setShowSignIn={setShowSignIn} />
           <span className={`mx-auto ${albert.className}`}>or</span>
         </div>
 
