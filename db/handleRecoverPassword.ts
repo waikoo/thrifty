@@ -14,7 +14,9 @@ export const handleRecoverPassword: HandleRecoverPasswordProps = async (
   setShowSignIn
 ) => {
   e.preventDefault();
-  let { data, error }: { data: any, error: any } = await supabase.auth.resetPasswordForEmail(email);
+  let { data, error }: { data: any, error: any } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: 'https://monumental-zuccutto-62f1b9.netlify.app/reset-password',
+  });
 
   if (Object.keys(data).length > 0) {
     console.log('Password reset email sent!');
