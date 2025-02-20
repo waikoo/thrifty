@@ -1,5 +1,7 @@
 import { Suspense } from "react"
 
+import "@/styles/styles.css";
+
 export const metadata = {
   title: 'Reset Password',
   description: 'Reset your password',
@@ -12,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-[#d2d62e]">
         <Suspense>
           {children}
         </Suspense>
