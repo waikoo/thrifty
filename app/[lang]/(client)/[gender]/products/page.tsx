@@ -20,14 +20,14 @@ export default async function Page({ params: { lang, gender }, searchParams }: P
 
   return (
     <>
-      <img src="/images/products/crossing_wider.png"
+      <img src="/images/products/banner.png"
         alt="four women crossing the street, each in a different outfit, cropped from waist down"
         className="xl:hidden w-screen mt-3"
       />
       <main className="bg-t_white dark:bg-t_black text-content mx-auto px-[12px] sm:px-[55px] xl:px-0 lg:max-w-[900px] xl:max-w-[1440px] 3xl:max-w-[1800px]">
-        <img src="/images/products/crossing.png"
+        <img src="/images/products/banner.png"
           alt="four women crossing the street, each in a different outfit, only legs are visible"
-          className="hidden xl:block xl:my-3 xl:w-full"
+          className="hidden xl:block xl:my-3 xl:w-full rounded-[20px]"
         />
         <FilterTop {...{ gender, lang }} className="hidden xl:block" />
         <div id="popup-root"></div>
