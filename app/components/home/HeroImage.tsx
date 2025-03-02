@@ -20,10 +20,10 @@ export default function HeroImage({ gender, state }: HeroImageProps) {
   const kidsNewInPosition = state === 'new_in' && gender === 'kids' ? 'objectPosition' : 'object-center'
   const kidsSalePosition = state === 'sale' && gender === 'kids' && currentViewport < viewport.lg ? 'objectPosition2' : 'object-center'
   const showOverlayOnDesktop = state === 'new_in' && currentViewport > viewport.xl ? '' : 'hidden'
-  const borderRadius = 'rounded-[1.5rem] md:rounded-[2.5rem] xl:rounded-[1.8rem]'
+  const borderRadius = 'rounded-[20px] md:rounded-[2.5rem] xl:rounded-[1.8rem]'
   const borderColor = state === 'sale' && theme === 'dark' ? 'border-t_green' : state === 'new_in' && theme === 'dark' ? 'border-t_purple' : ''
   const height = state === 'new_in' ? 'h-[437px] xl:h-[35rem] 2xl:h-[48rem] 3xl:h-[55rem]' : 'h-[437px] xl:h-[39.375]'
-  const saleBorder = state === 'sale' ? 'border-t_yellow border-[20px]' : ''
+  const saleBorder = state === 'sale' ? 'border-t_yellow border-[10px] sm:border-[20px]' : ''
 
   return (
     <div className={`w-full transition flex ${borderRadius} object-cover h-[437px] xl:h-[35.375rem] 2xl:h-[48.2rem] 3xl:h-[55.2rem] rounded-[1.8rem] relative border-[0.125rem] ${borderColor}`}>
