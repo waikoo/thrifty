@@ -37,7 +37,7 @@ export default function Hero({ heroState, hasChanged, setHasChanged }: HeroProps
 
       {heroState === 'new_in' && <HeroSticker heroState={heroState} />}
 
-      <div className="sm:hidden absolute top-[5rem] left-0 right-0 h-9 mx-auto">
+      <div className="sm:hidden absolute top-[3rem] left-0 right-0 h-9 mx-auto">
         <WithHome><Logo logoColor={logoColor} width="9.75rem" /></WithHome>
       </div>
 
