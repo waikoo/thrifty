@@ -40,7 +40,7 @@ export default function ShareProduct({ productUuid }: ShareProductProps) {
       <WithCloseButton onClose={() => setShowShare(false)} isPopUp={true} padding="p-6">
         <div className="flex flex-col gap-4">
           <h1 className={`${albert_800.className} text-[17px] sm:text-[21px] xl:text-[18px] text-center`}>
-            SHARE 1 SELECTED ITEM
+            SHARE {typeof productUuid === 'string' ? '1' : productUuid.length} SELECTED ITEM{typeof productUuid === 'string' ? '' : 'S'}
           </h1>
 
           <p className={`${albert.className} text-[13px] sm:text-[17px] xl:text-[14px] `}>Copy link</p>
