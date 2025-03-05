@@ -8,7 +8,6 @@ import Number from "@/app/components/navigation/Number"
 import Account from "@/app/components/navigation/Account"
 import getLangAndGender from "@/utils/getLangAndGender"
 import { getFromLocalStorage } from "@/utils/getFromLocalStorage"
-import useUserSession from "@/app/components/hooks/useUserSession"
 import { useNavigationStore } from "@/state/client/navigationState"
 import { useFavoriteStore } from "@/state/client/favoriteState"
 import { useCartStore } from "@/state/client/cartState"
@@ -23,7 +22,6 @@ export default function NavIcons({ className }: NavIconsProps) {
   const { initCart, cartLength } = useCartStore()
   const { initFavorites, favoritesLength } = useFavoriteStore()
   const { showMiniCartView, setShowMiniCartView } = useNavigationStore()
-  const { session, error } = useUserSession()
   const linkRef = useRef(null)
   const { handleMouseMove, getDirection, lastMousePosition } = useMouseLeave()
 
@@ -48,7 +46,7 @@ export default function NavIcons({ className }: NavIconsProps) {
 
       <Link href={`/${lang}/${gender}/favorites`} className="relative" title="Favorites">
         <IconFavorite />
-        {session && <Number itemLength={favoritesLength} />}
+        <Number itemLength={favoritesLength} />
       </Link>
 
       <Link href={`/${lang}/${gender}/cart`}
@@ -60,7 +58,7 @@ export default function NavIcons({ className }: NavIconsProps) {
         ref={linkRef}
       >
         <IconShoppingBag />
-        {session && <Number itemLength={cartLength} />}
+        <Number itemLength={cartLength} />
       </Link>
     </nav>
   )
