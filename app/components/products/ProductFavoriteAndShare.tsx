@@ -7,6 +7,8 @@ import { ProductItemType } from "@/types/productItem";
 import updateLocalStorage from "@/utils/updateLocalStorage";
 import { useFavoriteStore } from "@/state/client/favoriteState";
 import BigMustardButton from "../generic/BigMustardButton";
+import { useUIStore } from "@/state/client/uiState";
+import ShareProduct from "../generic/ShareProduct";
 
 type ProductFavoriteAndShareProps = {
   matchedProduct: ProductItemType
@@ -15,6 +17,7 @@ type ProductFavoriteAndShareProps = {
 export default function ProductFavoriteAndShare({ matchedProduct }: ProductFavoriteAndShareProps) {
   const [isFavorited, setIsFavorited] = useState(false)
   const { favorites, toggleFavorite, initFavorites } = useFavoriteStore()
+  const { showShare, setShowShare } = useUIStore()
 
   const handleFavorite = () => {
     const productUuid = matchedProduct.uuid
@@ -47,9 +50,14 @@ export default function ProductFavoriteAndShare({ matchedProduct }: ProductFavor
         </BigMustardButton>
       </div>
 
-      <BigMustardButton className="p-[14px]">
-        <FiShare2 color="black" />
-      </BigMustardButton>
+      <div onClick={() => setShowShare(true)}>
+        <BigMustardButton className="p-[14px]">
+          <FiShare2 color="black" />
+        </BigMustardButton>
+      </div>
+
+
+      {showShare && <ShareProduct productUuid={matchedProduct.uuid} />}
     </div>
   )
 }
