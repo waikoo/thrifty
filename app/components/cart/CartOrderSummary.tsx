@@ -11,7 +11,7 @@ import { useOrderStore, useOrderSummaryStore } from "@/state/client/orderState";
 import { useCartStore } from "@/state/client/cartState";
 import { albert, albert_900 } from "@/utils/fonts";
 import useViewport from "@/app/components/hooks/useViewport";
-import { borderTopRadius } from "@/app/components/data/universalStyles";
+import { borderBottomRadius, borderTopRadius } from "@/app/components/data/universalStyles";
 import { usePathname } from "next/navigation";
 
 type CartOrderSummaryProps = {
@@ -76,12 +76,12 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
   }, [cartTotalPrice])
 
   return (
-    <div className={`xl:w-[350px] xl:min-w-[350px] ${bgColor} ${borderTopRadius}`}>
+    <div className={`xl:w-[350px] xl:min-w-[350px] self-start pb-[30px]`}>
 
       <h1 className={`${h1Style} text-center text-[16px] sm:text-[21px] xl:text-[18px] ${albert_900.className}`}>
         ORDER SUMMARY
       </h1>
-      <div className={`grid grid-cols-2 gap-3 py-6  ${className} rounded-[35px]`}>
+      <div className={`grid grid-cols-2 gap-3 py-6  ${className} rounded-[35px] ${borderTopRadius} ${borderBottomRadius} ${bgColor}`}>
         {!isCheckout && (< SummaryFreeDelivery />)}
 
         <span className={`text-[13px] sm:text-[17px] xl:text-[14px] px-6 ${albert.className}`}>
