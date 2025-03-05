@@ -58,7 +58,7 @@ export default function SummarySubmit({ className }: SummarySubmitProps) {
 
   return (
     <button
-      className={`${className} bg-t_black text-t_white col-span-full p-3 text-[0.875rem] font-semibold ${borderRadius}`}
+      className={`${className} bg-t_black text-t_white col-span-full p-3 text-[0.875rem] font-semibold ${borderRadius} hover:bg-t_mustard hover:text-t_black`}
       onClick={checkout}>
       {textContent}
     </button>
