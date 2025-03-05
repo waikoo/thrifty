@@ -74,17 +74,17 @@ export default function CartControls() {
         className="checked:bg-t_black hover:bg-gray-200"
       />
 
-      <div className="flex cursor-pointer items-center gap-1" onClick={shareSelectedProducts}>
-        <FiShare2 color="#757575" size={13} />
+      <div className="flex cursor-pointer items-center gap-1 text-[#757575] hover:text-[#151515]" onClick={shareSelectedProducts}>
+        <FiShare2 size={13} />
         <span className="">Share</span>
       </div>
 
-      <div className="flex cursor-pointer items-center gap-1" onClick={saveSelectedToFavorites}>
+      <div className="flex cursor-pointer items-center gap-1 hover:text-[#151515]" onClick={saveSelectedToFavorites}>
         <IoMdHeartEmpty />
         <span className="">Save</span>
       </div>
 
-      <div className="flex cursor-pointer items-center gap-1" onClick={deleteSelectedFromCart}>
+      <div className="flex cursor-pointer items-center gap-1 hover:text-[#151515]" onClick={deleteSelectedFromCart}>
         <RxCross1 />
         <span className="">Remove</span>
       </div>

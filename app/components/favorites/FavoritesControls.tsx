@@ -64,13 +64,13 @@ export default function FavoritesControls() {
         className="checked:bg-t_black hover:bg-gray-200"
       />
 
-      <div className="flex items-center gap-2">
+      <div className="flex cursor-pointer items-center gap-2 text-[#757575]  hover:text-[#151515]">
         <IconShare />
         <span className="">Share</span>
       </div>
 
       <div
-        className="flex cursor-pointer items-center gap-2"
+        className="flex cursor-pointer items-center gap-2 text-[#757575] hover:text-[#151515]"
         onClick={saveSelectedToCart}
       >
         <IconFadedCart />
@@ -78,7 +78,7 @@ export default function FavoritesControls() {
       </div>
 
       <div
-        className="flex cursor-pointer items-center gap-2"
+        className="flex cursor-pointer items-center gap-2 text-[#757575] hover:text-[#151515]"
         onClick={deleteSelectedFromFavorites}
       >
         <IconDelete size={'14'} />
