@@ -1,15 +1,17 @@
 "use client";
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "../supabase";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { albert, albert_600, albert_800, albert_900 } from "@/utils/fonts";
 import Logo from "../components/navigation/Logo";
+import Link from "next/link";
 
 export default function Page() {
   const searchParams = useSearchParams();
   const access_token = searchParams.get("code");
+  const router = useRouter()
 
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -29,6 +31,7 @@ export default function Page() {
       setMessage(error.message);
     } else {
       setMessage("Password successfully updated!");
+      router.push("/en/women")
     }
   };
 
@@ -38,9 +41,9 @@ export default function Page() {
 
   return (
     <div className="h-screen w-screen grid place-items-center">
-      <div className="fixed top-[50px] left-[50%] translate-x-[-50%]">
+      <Link href={`/en/women`} className="fixed top-[50px] left-[50%] translate-x-[-50%]">
         <Logo width="206" className="" />
-      </div>
+      </Link>
 
       <div className="">
         <h2 className={`${albert_800.className} text-[#1b1b1b] text-[17px] sm:text-[21px] text-center whitespace-nowrap`} >
@@ -62,7 +65,7 @@ export default function Page() {
         </div>
         <button className={`hidden w-[90%] left-0 right-0 mx-auto block bg-[#0d0d0d] text-[#f9f9f9] text-[13px] sm:text-[20px] xl:text-[13px] xl:mt-[20px] block py-4 rounded-full xl:w-fit xl:px-12 xl:py-3 xl:block ${albert_600.className}`} onClick={handleReset}>RESET PASSWORD</button>
 
-        <p className={`text-[13px] sm:text-[17px] xl:text-[15px] ${albert.className} text-[#1b1b1b]`}>{message}</p>
+        <p className={`text-[13px] sm:text-[17px] xl:text-[15px] text-center ${albert.className} text-[#1b1b1b]`}>{message}</p>
       </div>
 
       <button className={`fixed bottom-[20px] w-[90%] left-0 right-0 mx-auto block bg-[#0d0d0d] text-[#f9f9f9] text-[13px] sm:text-[20px] xl:text-[13px] xl:mt-[20px] block py-4 rounded-full xl:w-fit xl:px-12 xl:py-3 xl:hidden ${albert_600.className}`} onClick={handleReset}>RESET PASSWORD</button>
