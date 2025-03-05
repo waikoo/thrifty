@@ -58,7 +58,7 @@ export default function ProductItem({ product, index, lang, gender, className, s
 
       <ProductAddToCart
         uuid={uuid}
-        className={`border-[#3e3e3e] xl:hover:border-none xl:hover:bg-[#e3e3e3] xl:hover:text-black ${!size ? 'mt-[18px]' : ''}`}
+        className={`border-[#3e3e3e] xl:hover:border-none xl:hover:bg-[#d2d62e] xl:hover:text-black ${!size ? 'mt-[18px]' : ''}`}
         bgColor="bg-t_white"
         textColor="text-[#3e3e3e]"
       >ADD TO CART
