@@ -11,14 +11,16 @@ import { viewport } from '../data/universalStyles'
 import useViewport from '../hooks/useViewport'
 
 type ShareProductProps = {
-  productUuid: string
+  productUuid: string | string[]
 }
+
+const BASE_URL = 'https://monumental-zuccutto-62f1b9.netlify.app/en/women/products/'
 
 export default function ShareProduct({ productUuid }: ShareProductProps) {
   const { setShowShare } = useUIStore()
   const [buttonText, setButtonText] = useState('COPY')
   const [link, setLink] = useState(
-    `https://thrifty-seven.vercel.app/en/women/products/${productUuid}`
+    typeof productUuid === 'string' ? `${BASE_URL}${productUuid}` : productUuid.map(item => `${BASE_URL}${item}`).join('\n')
   )
   const [buttonStyle, setButtonStyle] = useState('bg-black text-t_white')
   const viewportWidth = useViewport()
