@@ -14,7 +14,7 @@ type HeroTransparentButtonProps = {
 export default function HeroTransparentButton({ heroState }: HeroTransparentButtonProps) {
   const { lang, gender } = getLangAndGender(usePathname())
   const param = heroState === 'new_in' ? 'new+in' : 'promos'
-  const position = heroState === 'new_in' ? 'mb-[-280px] ml-[150px] sm:mb-0 sm:ml-0' : 'm-auto mb-[-350px] sm:mb-[-550px] xl:mb-[-450px]'
+  const position = heroState === 'new_in' ? 'mb-[-280px] ml-[150px] sm:mb-[-700px] sm:ml-[400px] xl:mb-0 xl:ml-0' : 'm-auto mb-[-350px] sm:mb-[-550px] xl:mb-[-450px]'
   const size = heroState === 'new_in' ? 'h-[117px] w-[117px] sm:h-[264px] sm:w-[264px] xl:h-[258px] xl:w-[258px]' : 'p-3 px-8'
   const rotate = heroState === 'new_in' ? '-ml-[5px] mt-[2px]' : 'rotate-[90deg]'
 
