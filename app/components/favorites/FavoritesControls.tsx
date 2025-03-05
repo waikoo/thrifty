@@ -61,7 +61,7 @@ export default function FavoritesControls() {
         checked={areAllFavoritesSelected}
         onChange={handleAreAllSelected}
         ref={inputRef}
-        className="checked:bg-t_black"
+        className="checked:bg-t_black hover:bg-gray-200"
       />
 
       <div className="flex items-center gap-2">

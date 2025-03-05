@@ -65,7 +65,7 @@ export default function FilterSize({ type, sizes }: FilterSizeProps) {
                   key={`sizes-${i}`}
                   data-value={size}
                   onClick={() => setIsFilteringProducts(true)}
-                  className={`grid cursor-pointer place-items-center border-[0.1rem] p-3 text-[13px] sm:text-[16px] xl:text-[13px] focus:bg-t_mustard rounded-[5px] ${albert_500.className} ${colorOnClick}`}
+                  className={`grid cursor-pointer place-items-center border-[0.1rem] p-3 text-[13px] sm:text-[16px] xl:text-[13px] focus:bg-t_mustard rounded-[5px] hover:bg-gray-200 ${albert_500.className} ${colorOnClick}`}
                 >
                   {size}</div>
               )
