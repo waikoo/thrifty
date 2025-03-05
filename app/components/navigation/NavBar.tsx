@@ -35,6 +35,7 @@ const NavBar = ({ className }: NavBarProps) => {
   const { showMobileSearch, setShowMobileSearch, showHamburgerMenu, setShowHamburgerMenu } = useNavigationStore()
   const isTabletAndProductsEndpoint = isTablet && pathname.split('/')[3] === 'products'
   const finalPosition = isTabletAndProductsEndpoint ? 'static' : position
+  const nonStaticHeaderAlignment = position !== 'static' ? 'items-end' : ''
 
   const handleShowSearch = (e: React.MouseEvent) => {
     setShowMobileSearch(true)
@@ -42,7 +43,7 @@ const NavBar = ({ className }: NavBarProps) => {
 
   return (
     <nav className={`bg-t_white dark:bg-t_black ${finalPosition} top-0 z-50 w-screen ${className} overflow-hidden`}>
-      <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[2rem_4rem_1fr_auto_auto] xl:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] 3xl:max-w-[1800px]`}
+      <div className={`${noBorderOnScroll} relative grid w-screen grid-cols-[2rem_4rem_1fr_auto_auto] xl:grid-cols-3 pb-2 pt-4 mx-auto max-w-[90vw] 3xl:max-w-[1800px] ${nonStaticHeaderAlignment}`}
         onMouseEnter={() => setShowGenderMenu(false)} // makes categorymenu disappear when exiting with mouseover on top
       >
         <div className="w-5 h-5 mr-5 self-end col-start-1 col-end-2 row-start-1 xl:hidden"
@@ -62,7 +63,7 @@ const NavBar = ({ className }: NavBarProps) => {
         {position === 'static' ? (
           <WithHome className="row-start-1 xl:col-start-2 xl:col-end-2"> <Logo className="self-end " width={logoWidth} /> </WithHome>
         ) : (
-          <Gender />
+          <Gender isScrolled={true} />
         )}
 
         {/* on scroll Category shows up instead of Thriftstudio logo */}
