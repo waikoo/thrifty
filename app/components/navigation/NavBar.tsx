@@ -48,7 +48,7 @@ const NavBar = ({ className }: NavBarProps) => {
       >
         <div className="w-5 h-5 mr-5 self-end col-start-1 col-end-2 row-start-1 xl:hidden"
           onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}>
-          <IconHamburger width="27px" />
+          <IconHamburger width="20px" />
         </div>
 
         {isTablet ? (

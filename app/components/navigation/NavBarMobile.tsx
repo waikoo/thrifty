@@ -34,7 +34,7 @@ export default function NavBarMobile() {
 
         <div onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}
           data-testid="hamburger-icon">
-          <IconHamburger />
+          <IconHamburger width="20px" />
         </div>
 
         <div className="" onClick={handleSearch}>
