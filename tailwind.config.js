@@ -112,6 +112,7 @@ module.exports = {
         off: "3px 3px 10px var(--tw-shadow-color)",
         fil: "0px 3px 6px var(--tw-shadow-color)",
         tra: "0px 0px 10px var(--tw-shadow-color)",
+        upto: "2px 0px 2px var(--tw-shadow-color)",
       },
       boxShadow: {
         card: '0px 15px 10px #000',
