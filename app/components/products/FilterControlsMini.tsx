@@ -52,7 +52,7 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
           />
         </div>
 
-        <div className="p-5 sm:pt-10 bg-t_white" >
+        <div className="p-5 sm:pt-10 pb-[80px] bg-t_white" >
           <FilterControls {...{ searchParams }}
             className="flex w-full overflow-y-scroll"
             hideSaveFilter={true}
