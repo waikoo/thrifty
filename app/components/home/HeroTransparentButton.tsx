@@ -5,7 +5,6 @@ import getLangAndGender from '@/utils/getLangAndGender';
 import { usePathname } from 'next/navigation';
 import { HeroState } from '@/types/home';
 import HeroNewInArrow from './HeroNewInArrow';
-import HeroNewInArrowMobile from './HeroNewInArrowMobile';
 
 type HeroTransparentButtonProps = {
   heroState: HeroState
@@ -29,7 +28,6 @@ export default function HeroTransparentButton({ heroState }: HeroTransparentButt
 
         <div className={` ${rotate} z-10 inset-0 absolute h-full flex items-center`}>
           <HeroNewInArrow className="hidden sm:block " />
-          <HeroNewInArrowMobile className="ml-[-15px] sm:hidden" />
         </div>
       </span>
     </Link>
