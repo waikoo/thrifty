@@ -15,7 +15,7 @@ export default function HamburgerLanguageAndTheme({ lang, gender }: HamburgerLan
   return (
     <div className="bg-t_mustard p-4 px-5 grid gap-6 relative">
       <div className="grid grid-cols-2 items-center">
-        <span className={`${albert_900.className} text-[0.75rem] sm:text-[1rem]`}>LANGUAGE</span>
+        <span className={`${albert_900.className} text-[15px] sm:text-[1rem]`}>LANGUAGE</span>
         <div className="justify-self-end flex items-center gap-4">
           {languages.map((language) => {
             const style = language === lang ? `${albert_900.className} bg-t_white text-t_black dark:bg-t_black dark:text-t_white p-1 px-2 rounded-[0.1875rem]` : 'text-t_black'
