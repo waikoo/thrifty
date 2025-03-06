@@ -43,7 +43,7 @@ export default function HamburgerMenu() {
       onClick={handleCloseHamburgerMenu}
       data-testid="hamburger-menu"
     >
-      <div className="w-[80%] sm:max-w-[26.0625rem] text-t_black dark:text-t_black h-[calc(100dvh)] overflow-y-scroll">
+      <div className="w-[80%] sm:max-w-[26.0625rem] text-t_black dark:text-t_black overflow-y-auto">
 
         <div className="bg-t_white dark:bg-t_black w-full p-4 pb-0">
           <HamburgerAccountBar />

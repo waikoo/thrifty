@@ -34,13 +34,13 @@ export default function HamburgerLanguageAndTheme({ lang, gender }: HamburgerLan
         </div>
       </div>
 
-      <div className="grid grid-cols-2 items-center">
-        <span className={`${albert_900.className} text-[0.75rem] sm:text-[1rem]`}>THEME</span>
-        <ThemeToggler />
-      </div>
+      {/* <div className="grid grid-cols-2 items-center"> */}
+      {/*   <span className={`${albert_900.className} text-[0.75rem] sm:text-[1rem]`}>THEME</span> */}
+      {/*   <ThemeToggler /> */}
+      {/* </div> */}
 
       {/* <div className="absolute bottom-0 h-svh"></div> */}
-      {/* <div className="h-svh"></div> */}
+      <div className="h-svh"></div>
     </div>
   )
 }
