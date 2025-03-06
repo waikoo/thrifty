@@ -16,7 +16,7 @@ export default function FooterShop({ textColor, textSize, tracking }: FooterShop
   const { lang } = getLangAndGender(usePathname())
 
   return (
-    <div className={`footerText flex flex-col gap-7 text-[#f2f2f2] ${textSize}`}>
+    <div className={`footerText flex flex-col gap-7 text-t_mustard ${textSize}`}>
       <FooterTitle>SHOP</FooterTitle>
 
       <div className={`flex flex-col gap-2 ${textColor} ${tracking} ${albert.className}`}>

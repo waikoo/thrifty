@@ -4,7 +4,7 @@ type FooterTitleProps = {
 
 export default function FooterTitle({ children }: FooterTitleProps) {
   return (
-    <h3 className="footerTitles">{children}</h3>
+    <h3 className="footerTitles text-t_mustard">{children}</h3>
   )
 }
 

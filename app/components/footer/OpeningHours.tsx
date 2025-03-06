@@ -13,7 +13,7 @@ export default function OpeningHours({ textSize, tracking, theme, invert }: Open
 
   return (
     <div className={`footerText flex flex-col gap-7 ${textSize}`}>
-      <span className={`text-[13px] sm:text-[17px] xl:text-[16px] whitespace-nowrap ${albert_800.className} ${weekdaysColor}`}>STORE OPENING HOURS</span>
+      <span className={`text-[13px] sm:text-[17px] xl:text-[16px] whitespace-nowrap text-t_mustard ${albert_800.className} ${weekdaysColor}`}>STORE OPENING HOURS</span>
 
       <div className={`flex flex-col gap-2 whitespace-nowrap ${tracking}`}>
         <span>
