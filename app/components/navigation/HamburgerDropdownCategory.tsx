@@ -26,7 +26,7 @@ export default function HamburgerDropdownCategory({ category, selectedGender, ge
   }
 
   return (
-    <section className="absolute z-[70] w-[80%]">
+    <section className="absolute z-[999] w-[80%]">
 
       <div className="grid grid-cols-[auto_1fr_auto] items-center bg-t_mustard py-3 px-2">
         <div onClick={() => setCategory('')}>
