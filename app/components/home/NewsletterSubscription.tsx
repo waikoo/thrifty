@@ -27,7 +27,7 @@ export default function NewsletterSubscription() {
 
   return (
     <section className={`text-t_black bg-t_mustard grid w-screen place-items-center gap-4 py-[4rem] text-[35px]`}>
-      <h3 className="font-allenoire max-w-[300px] text-center text-[1.5rem] md:text-[2.1875rem] xl:text-[3.125rem] whitespace-nowrap flex flex-col items-center">
+      <h3 className="font-allenoire max-w-[300px] text-center text-[2rem] md:text-[2.1875rem] xl:text-[3.125rem] whitespace-nowrap flex flex-col items-center">
         subscribe to our
         <span className="-mt-2">newsletter</span>
       </h3>
