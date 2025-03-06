@@ -22,7 +22,7 @@ export default function FooterSmall({ lang, gender }: FooterSmallProps) {
 
       <WithHome className=""><Logo logoColor="#1b1b1b" /></WithHome>
 
-      <div className={`flex flex-col gap-3 text-[0.8125rem] mt-10 ${albert_600.className}`}>
+      <div className={`flex flex-col gap-3 text-[15px] text-[0.8125rem] mt-10 ${albert_600.className}`}>
         <FooterSmallDropdown theme={theme} title="ACCOUNT">
           <Link href={`${lang}/${gender}/profile`}>Profile</Link>
           <Link href={`${lang}/${gender}/orders`}>Orders</Link>

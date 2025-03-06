@@ -33,9 +33,9 @@ export default function NewsletterSubscription() {
       </h3>
 
       <form className="flex flex-col gap-7 w-[80%] max-w-[400px] xl:max-w-[350px]" onSubmit={handleSubmit}>
-        <AnimatedInput type="text" id="newsletter" placeholder="Enter your email address" value={email} onChange={handleOnChange} />
+        <AnimatedInput type="text" id="newsletter" placeholder="Enter your email address" value={email} border="border-b-black" onChange={handleOnChange} />
 
-        <button className={`bg-t_black text-t_white rounded-full p-3 text-[20px] tracking-wide w-full xl:px-8 xl:py-3 xl:mt-3 xl:mx-auto ${albert_600.className}`}>
+        <button className={`bg-t_black text-t_white rounded-full p-3 text-[15px] tracking-wide w-full xl:px-8 xl:py-3 xl:mt-3 xl:mx-auto ${albert_600.className}`}>
           SUBSCRIBE
         </button>
       </form>

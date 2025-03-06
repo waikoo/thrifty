@@ -21,7 +21,7 @@ export default function HeroTransparentButton({ heroState }: HeroTransparentButt
     <Link href={`/${lang}/${gender}/products/?gender=${gender}&shop-by=${param}&sort-by=newfirst&page=1`}
       className={`${position} inset-0 absolute z-90 grid place-items-center`}
     >
-      <span className={`${size} relative  whitespace-nowrap rounded-full grid place-items-center text-t_yellow text-[14px] sm:text-[24px] xl:text-[21px] bg-[#000000]/30 ${albert_900.className} `}>
+      <span className={`${size} relative  whitespace-nowrap rounded-full grid place-items-center text-t_yellow text-[15px] sm:text-[24px] xl:text-[21px] bg-[#000000]/30 ${albert_900.className} `}>
         <span className="shadow-[#2a3200] text-shadow-sm">
           SHOP NOW
         </span>

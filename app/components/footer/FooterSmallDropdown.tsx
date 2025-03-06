@@ -20,7 +20,7 @@ export default function FooterSmallDropdown({ theme, children, title }: FooterSm
       <div className={`grid grid-cols-2 w-[90%] items-center mx-auto mt-3`}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
-        <span className={` ${albert_800.className}`}>{title}</span>
+        <span className={`text-[15px] text-t_mustard ${albert_800.className}`}>{title}</span>
         <div className="justify-self-end relative" >
           <div className={`absolute ${iconColor} h-[2px] w-3 -left-[5px] transition-transform duration-500 ease-in-out ${horizontalStyle}`}></div>
           <div className={`absolute ${iconColor} h-3 w-[2px] -top-[5px] transition-transform duration-500 ease-in-out ${verticalStyle}`}></div>
