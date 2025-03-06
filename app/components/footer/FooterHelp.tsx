@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 import getLangAndGender from "@/utils/getLangAndGender";
 import FooterTitle from "@/app/components/footer/FooterTitle";
-import { albert_500 } from "@/utils/fonts";
+import { albert } from "@/utils/fonts";
 
 type FooterHelpProps = {
   textColor: string
@@ -19,7 +19,7 @@ export default function FooterHelp({ textColor, textSize, tracking }: FooterHelp
     <div className={`footerText flex flex-col gap-7 text-[#f2f2f2] ${textSize}`}>
       <FooterTitle>HELP</FooterTitle>
 
-      <div className={`flex flex-col gap-2 whitespace-nowrap ${textColor} ${tracking} ${albert_500.className}`}>
+      <div className={`flex flex-col gap-2 whitespace-nowrap ${textColor} ${tracking} ${albert.className}`}>
         <Link href={`/${lang}/${gender}/help`}>About Us</Link>
         <Link href={`/${lang}/${gender}/help?section=1`}>Shipping & Delivery</Link>
         <Link href={`/${lang}/${gender}/returns`}>Returns</Link>

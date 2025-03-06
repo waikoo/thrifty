@@ -6,7 +6,7 @@ import { useUIStore } from "@/state/client/uiState";
 import FooterTitle from "@/app/components/footer/FooterTitle";
 import { capitalize } from "@/utils/capitalize";
 import useSupabaseGetSession from "../hooks/useSupabaseGetSession";
-import { albert_500 } from "@/utils/fonts";
+import { albert } from "@/utils/fonts";
 
 type FooterAccountProps = {
   textColor: string
@@ -29,7 +29,7 @@ export default function FooterAccount({ textColor, textSize, tracking }: FooterA
 
         {links.map((link) => (
           <span
-            className={`cursor-pointer ${albert_500.className}`}
+            className={`cursor-pointer ${albert.className}`}
             key={link}
             onClick={() => !isSession
               ? setShowSignIn(showSignIn ? false : true)
