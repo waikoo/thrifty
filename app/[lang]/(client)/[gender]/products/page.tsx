@@ -20,15 +20,31 @@ export default async function Page({ params: { lang, gender }, searchParams }: P
 
   return (
     <>
-      <img src="/images/products/banner.png"
-        alt="four women crossing the street, each in a different outfit, cropped from waist down"
-        className="xl:hidden w-screen mt-3"
-      />
-      <main className="bg-t_white dark:bg-t_black text-content mx-auto px-[12px] sm:px-[55px] xl:px-0 lg:max-w-[900px] xl:max-w-[1440px] 3xl:max-w-[1800px]">
-        <img src="/images/products/banner.png"
-          alt="four women crossing the street, each in a different outfit, only legs are visible"
-          className="hidden xl:block xl:my-3 xl:w-full rounded-[20px]"
+      <picture>
+        <source srcSet="/images/products/banner_mobile.avif" type="image/avif" />
+        <source srcSet="/images/products/banner_mobile.webp" type="image/webp" />
+        <img src="/images/products/banner_mobile.jpg"
+          alt=""
+          className="sm:hidden w-screen mt-3"
         />
+      </picture>
+      <picture>
+        <source srcSet="/images/products/banner_tablet.avif" type="image/avif" />
+        <source srcSet="/images/products/banner_tablet.webp" type="image/webp" />
+        <img src="/images/products/banner_tablet.jpg"
+          alt=""
+          className="hidden sm:block xl:hidden w-screen mt-3"
+        />
+      </picture>
+      <main className="bg-t_white dark:bg-t_black text-content mx-auto px-[12px] sm:px-[55px] xl:px-0 lg:max-w-[900px] xl:max-w-[1440px] 3xl:max-w-[1800px]">
+        <picture>
+          <source srcSet="/images/products/banner.avif" type="image/avif" />
+          <source srcSet="/images/products/banner.webp" type="image/webp" />
+          <img src="/images/products/banner.png"
+            alt="four women crossing the street, each in a different outfit, only legs are visible"
+            className="hidden xl:block xl:my-3 xl:w-full rounded-[20px]"
+          />
+        </picture>
         <FilterTop {...{ gender, lang }} className="hidden xl:block" />
         <div id="popup-root"></div>
 
