@@ -42,7 +42,7 @@ export default function HeroCarousel() {
 
 
   return (
-    <div className="max-w-[90vw] 3xl:max-w-[1800px] mx-auto mt-[30px] sm:mt-0">
+    <div className="max-w-[90vw] 3xl:max-w-[1800px] mx-auto">
       <Carousel className="mx-auto w-full"
         plugins={[Autoplay({ delay: 5000 }), Fade()]}
         opts={{ startIndex: carouselState === 'new_in' ? 0 : 1, align: 'start', loop: true, containScroll: false }}

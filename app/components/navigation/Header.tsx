@@ -35,7 +35,7 @@ export default function Header() {
       <header className={`${cartOrFavoritesStyle} flex flex-col items-center overflow-hidden relative`}>
         <Banner className={`${hideBanner}`} />
         <NavBar className="hidden sm:block" />
-        <Gender className="hidden sm:block" />
+        <Gender className="" />
 
         {!isHomePage && (
           <WithHome className="sm:hidden">
