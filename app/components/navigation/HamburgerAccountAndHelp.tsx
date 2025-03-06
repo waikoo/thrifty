@@ -18,17 +18,17 @@ export default function HamburgerAccountAndHelp({ lang, gender }: HamburgerAccou
   const { showSignIn, setShowSignIn } = useUIStore()
 
   const hideHamburger = async (e: React.MouseEvent) => {
+    e.preventDefault()
+
     const { data: { user } } = await supabase.auth.getUser()
-    const target = e.target as HTMLAnchorElement
-    const targetText = target.textContent!.toLowerCase()
 
     if (!user) {
-      e.preventDefault()
-      setShowSignIn(!showSignIn)
+      setShowSignIn(true)
     } else {
+      const target = e.target as HTMLAnchorElement
+      const targetText = target.textContent!.toLowerCase()
       router.push(`/${lang}/${gender}/${targetText}`)
     }
-
     setShowHamburgerMenu(false)
   }
 
