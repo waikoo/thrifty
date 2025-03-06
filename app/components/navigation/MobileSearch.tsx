@@ -15,7 +15,7 @@ export default function MobileSearch() {
 
   return (
     <section
-      className="text-bkg absolute inset-0 z-[60] grid h-screen w-screen bg-[rgba(0,0,0,0.5)] shadow"
+      className="text-bkg fixed inset-0 z-[60] grid h-screen w-screen bg-[rgba(0,0,0,0.5)] shadow"
       ref={sectionRef}
       onClick={handleClickOut}
     >

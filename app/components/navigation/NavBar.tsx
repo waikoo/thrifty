@@ -14,6 +14,7 @@ import IconSearch from "@/app/components/navigation/icons/IconSearch"
 import { useNavigationStore } from "@/state/client/navigationState";
 import HamburgerMenu from "@/app/components/navigation/HamburgerMenu"
 import Portal from "@/app/components/generic/Portal"
+import MobileSearch from "./MobileSearch"
 
 type NavBarProps = {
   className: string
@@ -37,7 +38,7 @@ const NavBar = ({ className }: NavBarProps) => {
   const finalPosition = isTabletAndProductsEndpoint ? 'static' : position
   const nonStaticHeaderAlignment = position !== 'static' ? 'items-end' : ''
 
-  const handleShowSearch = (e: React.MouseEvent) => {
+  const handleShowSearch = () => {
     setShowMobileSearch(true)
   }
 
@@ -69,6 +70,8 @@ const NavBar = ({ className }: NavBarProps) => {
         {/* on scroll Category shows up instead of Thriftstudio logo */}
         <NavIcons className="flex items-center gap-6 pt-2 self-end justify-self-end col-start-5 col-end-6 xl:col-start-3 xl:col-end-4 row-start-1" />
       </div>
+
+      {showMobileSearch && <MobileSearch />}
     </nav>
   )
 }
