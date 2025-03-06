@@ -8,16 +8,17 @@ type AnimatedInputProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   className?: string
   font?: string
+  border?: string
 }
 
-export default function AnimatedInput({ type, id, placeholder, value, onChange, className, font }: AnimatedInputProps) {
+export default function AnimatedInput({ type, id, placeholder, value, onChange, className, font, border }: AnimatedInputProps) {
   const isSetNewFilter = placeholder !== 'Filter Name'
   const placeholderStyle = isSetNewFilter ? 'placeholder-transparent' : ''
 
   return (
     <div className="relative w-full">
       <input
-        className={tm(`${className} bg-transparent border-b-[#9d9d9d] peer w-full border-x-0 border-b-[0.1rem] border-t-0 border-solid pl-0 ${placeholderStyle} focus:border-sky-500 focus:outline-none focus:ring-0`)}
+        className={tm(`${className} bg-transparent ${border ? border : 'border-b-[#9d9d9d]'} peer w-full border-x-0 border-b-[0.1rem] border-t-0 border-solid pl-0 ${placeholderStyle} focus:border-sky-500 focus:outline-none focus:ring-0`)}
         id={id}
         type={type}
         placeholder={placeholder}
