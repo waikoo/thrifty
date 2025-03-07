@@ -36,7 +36,7 @@ export default async function Page({ params: { lang, gender }, searchParams }: P
           className="hidden sm:block xl:hidden w-screen mt-3"
         />
       </picture>
-      <main className="bg-t_white dark:bg-t_black text-content mx-auto px-[12px] sm:px-[55px] xl:px-0 lg:max-w-[900px] xl:max-w-[1440px] 3xl:max-w-[1800px]">
+      <main className="bg-t_white dark:bg-t_black text-content mx-auto px-[12px] sm:px-[55px] lg:max-w-[900px] xl:max-w-[1440px] 3xl:max-w-[1800px]">
         <picture>
           <source srcSet="/images/products/banner.avif" type="image/avif" />
           <source srcSet="/images/products/banner.webp" type="image/webp" />
