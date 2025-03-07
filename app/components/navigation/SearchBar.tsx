@@ -105,7 +105,7 @@ export default function SearchBar({ className }: SearchBarProps) {
         )}
 
         {viewportWidth < viewport.xl && showMobileSearch && (
-          <span className={`${albert_700.className} absolute right-[1rem] md:right-[0.6rem] top-[0.8rem] text-[12px] text-t_black dark:text-t_white`}
+          <span className={`${albert_700.className} absolute right-[1rem] md:right-[0.6rem] top-[0.8rem] text-[12px] sm:text-[17px] sm:top-[0.6rem] text-t_black dark:text-t_white`}
             onClick={() => setShowMobileSearch(false)}>
             CLOSE
           </span>
@@ -141,9 +141,9 @@ export default function SearchBar({ className }: SearchBarProps) {
       {showMobileSearch && savedFilters?.length > 0 ? (
         <SavedFiltersInSearchBar savedFilters={savedFilters} />
       ) : showMobileSearch && !isSession && !searchTerm ? (
-        <div className="text-t_black text-[14px] mx-auto w-[75%] text-center mt-[30px]">
+        <div className="text-t_black text-[14px] sm:text-[17px] mx-auto w-[75%] text-center mt-[30px]">
           <p>Don't miss out on your personalized shopping experience!</p>
-          <p><span className={`${albert_700.className}`} onClick={() => setShowSignIn(true)}>Sign in</span> to access your saved filters.</p>
+          <p><span className={`${albert_700.className} underline`} onClick={() => setShowSignIn(true)}>Sign in</span> to access your saved filters.</p>
         </div>
       ) : showMobileSearch && isSession && savedFilters?.length === 0 ? (
         <p className="text-center text-t_black">It looks like you haven't saved any filters yet.</p>
