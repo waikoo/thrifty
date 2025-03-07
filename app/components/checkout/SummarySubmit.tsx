@@ -5,6 +5,7 @@ import { borderRadius } from "@/app/components/data/universalStyles";
 import { EURO } from "@/app/components/data/orderSummary";
 import { useCheckoutStore } from "@/state/client/checkoutState";
 import { useOrderSummaryStore } from "@/state/client/orderState";
+import { albert_700 } from "@/utils/fonts";
 
 type Endpoint = 'cart' | 'checkout' | 'summary'
 
@@ -58,7 +59,7 @@ export default function SummarySubmit({ className }: SummarySubmitProps) {
 
   return (
     <button
-      className={`${className} bg-t_black text-t_white col-span-full p-3 text-[0.875rem] font-semibold ${borderRadius} hover:bg-t_mustard hover:text-t_black`}
+      className={`${className} ${albert_700.className} bg-t_black text-t_white col-span-full p-3 text-[0.875rem] font-semibold ${borderRadius} hover:bg-t_mustard hover:text-t_black`}
       onClick={checkout}>
       {textContent}
     </button>
