@@ -7,13 +7,22 @@ export default function useSupabaseGetSession() {
   useEffect(() => {
     const fetchSession = async () => {
       const { data } = await supabase.auth.getSession()
-      if (data.session) setIsSession(true)
+      setIsSession(Boolean(data.session))
     }
+
     fetchSession()
+
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setIsSession(Boolean(session))
+      }
+    )
+
+    return () => {
+      authListener.subscription.unsubscribe()
+    }
   }, [])
 
-  return {
-    isSession
-  }
+  return { isSession }
 }
 

@@ -12,12 +12,15 @@ import useViewport from '@/app/components/hooks/useViewport';
 import { viewport } from '@/app/components/data/universalStyles';
 import getLangAndGender from '@/utils/getLangAndGender';
 import { useNavigationStore } from "@/state/client/navigationState";
-import { albert, albert_700 } from '@/utils/fonts';
+import { albert, albert_700, albert_800 } from '@/utils/fonts';
 import useSearchSuggestions from '@/app/components/hooks/useSearchSuggestions';
 import useFiltersInSearchBar from '@/app/components/hooks/useFiltersInSearchBar';
 import SearchSuggestions from '@/app/components/navigation/SearchSuggestions';
 import SavedFiltersInSearchBar from '@/app/components/navigation/SavedFiltersInSearchBar';
 import { useThemeStore } from '@/state/themeState';
+import useSupabaseGetSession from '../hooks/useSupabaseGetSession';
+import { useUIStore } from '@/state/client/uiState';
+import { supabase } from '@/app/supabase';
 
 type SearchBarProps = {
   className?: string
@@ -40,11 +43,22 @@ export default function SearchBar({ className }: SearchBarProps) {
   const { suggestions } = useSearchSuggestions(showSuggestions, searchTerm, setCompletedWord)
   const { savedFilters } = useFiltersInSearchBar()
   const { theme } = useThemeStore()
+  const { setShowSignIn } = useUIStore()
+  const [isSession, setIsSession] = useState(false)
 
   useEffect(() => {
     if (showMobileSearch) {
       inputRef.current?.focus()
     }
+
+    const fetchSession = async () => {
+      const { data } = await supabase.auth.getSession()
+      if (data.session) {
+        setIsSession(true)
+      }
+    }
+
+    fetchSession()
   }, [])
 
   useEffect(() => {
@@ -80,18 +94,18 @@ export default function SearchBar({ className }: SearchBarProps) {
   }
 
   return (
-    <div className="relative">
-      <form className={`text-bkg relative flex items-end gap-2 ${className} w-full pt-2`}
+    <div className={`relative`}>
+      <form className={`text-t_black relative flex items-end gap-2 ${className} w-full pt-2 px-[20px] pb-2 xl:pb-0`}
         onSubmit={(e: React.FormEvent) => handleSubmit(e)}
       >
         {showClearIcon && (
-          <div onClick={() => setSearchTerm("")} className="absolute right-[6rem] md:right-[7rem] top-1">
+          <div onClick={() => setSearchTerm("")} className="absolute right-[6rem] md:right-[7rem] top-[0.75rem]">
             <RxCross2 className="" size={20} color={theme === 'light' ? "t_black" : "t_white"} />
           </div>
         )}
 
         {viewportWidth < viewport.xl && showMobileSearch && (
-          <span className={`${albert_700.className} absolute right-[1rem] md:right-[0.6rem] top-[0.05rem] text-[1.0625rem] text-t_black dark:text-t_white`}
+          <span className={`${albert_700.className} absolute right-[1rem] md:right-[0.6rem] top-[0.8rem] text-[12px] text-t_black dark:text-t_white`}
             onClick={() => setShowMobileSearch(false)}>
             CLOSE
           </span>
@@ -117,16 +131,23 @@ export default function SearchBar({ className }: SearchBarProps) {
         />
       </form>
 
-      {viewportWidth < viewport.xl && searchTerm !== '' && showMobileSearch && (
-        <>
-          <br />
-          <div className="h-[0.1rem] bg-t_black dark:bg-t_white w-full " />
-        </>
-      )}
+      {showMobileSearch && (
+        <div className={`bg-t_black text-t_white dark:bg-t_white dark:text-t_black p-2 w-screen text-center text-[13px] sm:text-[17px] ${albert_800.className}`}>
+          SAVED FILTERS
+        </div>
+      )
+      }
 
-      {showMobileSearch && searchTerm === '' && savedFilters?.length > 0 && (
+      {showMobileSearch && savedFilters?.length > 0 ? (
         <SavedFiltersInSearchBar savedFilters={savedFilters} />
-      )}
+      ) : showMobileSearch && !isSession && !searchTerm ? (
+        <div className="text-t_black text-[14px] mx-auto w-[75%] text-center mt-[30px]">
+          <p>Don't miss out on your personalized shopping experience!</p>
+          <p><span className={`${albert_700.className}`} onClick={() => setShowSignIn(true)}>Sign in</span> to access your saved filters.</p>
+        </div>
+      ) : showMobileSearch && isSession && savedFilters?.length === 0 ? (
+        <p className="text-center text-t_black">It looks like you haven't saved any filters yet.</p>
+      ) : null}
 
       {showSuggestions && (
         <SearchSuggestions

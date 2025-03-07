@@ -15,7 +15,7 @@ export default function SearchSuggestions({ suggestions, setShowSuggestions, com
   const router = useRouter()
 
   return (
-    <div className="top-[5.7rem] w-[300px] fixed bg-t_white dark:bg-t_black top-[5rem] flex flex-col gap-4 p-4 z-[60]">
+    <div className="text-t_black top-[5.1rem] w-[300px] fixed bg-t_white dark:bg-t_black top-[5rem] flex flex-col gap-4 p-4 z-[60]">
       {suggestions.map((item) => (
         <div key={item.uuid} onClick={() => {
           setShowSuggestions(false)
@@ -27,6 +27,7 @@ export default function SearchSuggestions({ suggestions, setShowSuggestions, com
           <span>{item.brand}</span>
           <span className="ml-2">{item.type}</span>
           <span className="ml-2">{item.gender}</span>
+          <span className="ml-2">{item.color}</span>
         </div>
       ))}
     </div>

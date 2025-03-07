@@ -19,7 +19,7 @@ export default function MobileSearch() {
       ref={sectionRef}
       onClick={handleClickOut}
     >
-      <div className="relative bg-t_white dark:bg-t_black w-min-content p-7 opacity-100">
+      <div className="relative bg-t_white dark:bg-t_black w-min-content opacity-100">
         <SearchBar />
       </div>
     </section>
