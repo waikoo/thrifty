@@ -33,7 +33,7 @@ export default function FilterControlsMini({ lang, gender, searchParams, filtere
     <Portal>
       <section className="fixed left-0 right-0 z-[100] overflow-y-scroll h-[calc(100dvh)] bg-t_white ">
 
-        <div className="fixed top-0 left-0 right-0 p-5 sm:p-10 bg-t_mustard text-t_black py-1 sm:py-3 flex justify-between items-center">
+        <div className="fixed top-0 left-0 right-0 p-5 sm:p-10 bg-t_mustard text-t_black py-[10px] sm:py-3 flex justify-between items-center">
           <span className={`${albert_800.className} text-[13px] sm:text-[19px]`}>FILTERS</span>
 
           <div className="flex gap-2">
