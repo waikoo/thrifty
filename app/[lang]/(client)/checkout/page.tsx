@@ -35,7 +35,7 @@ export default async function Page({ params: { lang, gender }, searchParams, }: 
         <div className={`w-[90vw] sm:w-auto ${borderBottomRadius}`}>
           <CartOrderSummary isCheckout={true} products={products} />
 
-          <div className="h-[0.2rem] w-full bg-t_white"></div>
+          <div className="h-[0.2rem] w-full bg-t_white border-t-[2px] border-[#f2f2f2]"></div>
           <CheckoutCart />
         </div>
 

@@ -4,6 +4,7 @@ import { FaPlus, FaMinus } from "react-icons/fa6";
 import CheckoutCartItems from "@/app/components/checkout/CheckoutCartItems";
 import { borderBottomRadius } from "@/app/components/data/universalStyles";
 import { useCheckoutStore } from "@/state/client/checkoutState";
+import { albert_700 } from "@/utils/fonts";
 
 export default function CheckoutCart() {
   const { isCartOpen, setIsCartOpen } = useCheckoutStore()
@@ -16,7 +17,7 @@ export default function CheckoutCart() {
         onClick={() => setIsCartOpen(!isCartOpen)}
       >
         <div className="flex items-center justify-between">
-          <span className="select-none">YOUR CART</span>
+          <span className={`select-none text-[12px] ${albert_700.className}`}>YOUR CART</span>
           <div>
             {!isCartOpen ? <FaPlus className="" /> : <FaMinus />}
           </div>

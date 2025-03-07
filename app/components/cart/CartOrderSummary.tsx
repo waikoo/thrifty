@@ -76,12 +76,12 @@ export default function CartOrderSummary({ isCheckout, products, className }: Ca
   }, [cartTotalPrice])
 
   return (
-    <div className={`xl:w-[350px] xl:min-w-[350px] self-start pb-[30px] mx-auto`}>
+    <div className={`xl:w-[350px] xl:min-w-[350px] self-start ${isCheckout ? '' : 'pb-[30px]'} mx-auto`}>
 
       <h1 className={`${h1Style} text-center text-[16px] sm:text-[21px] xl:text-[18px] ${albert_900.className}`}>
         ORDER SUMMARY
       </h1>
-      <div className={`grid grid-cols-2 gap-3 py-6  ${className} rounded-[35px] ${borderTopRadius} ${borderBottomRadius} ${bgColor}`}>
+      <div className={`grid grid-cols-2 gap-3 py-6  ${className} ${isCheckout ? 'rounded-bl-none rounded-br-none' : 'rounded-[35px]'} ${borderTopRadius} ${borderBottomRadius} ${bgColor}`}>
         {!isCheckout && (< SummaryFreeDelivery />)}
 
         <span className={`text-[13px] sm:text-[17px] xl:text-[14px] px-6 ${albert.className}`}>
