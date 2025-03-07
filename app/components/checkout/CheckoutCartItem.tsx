@@ -2,7 +2,6 @@ import Image from "next/image"
 import { ProductItemType } from "@/types/productItem"
 import { capitalize } from "@/utils/capitalize"
 import { EURO } from "@/app/components/data/orderSummary"
-import IconClock from "@/app/components/cart/icons/IconClock"
 
 type CheckoutCartItemProps = {
   product: ProductItemType
@@ -27,11 +26,6 @@ export default function CheckoutCartItem({ product }: CheckoutCartItemProps) {
         <p>{product.size}</p>
         <p className="mt-auto">{EURO}{product.price}</p>
       </div>
-      <div className={`ml-auto flex gap-2 self-end `}>
-        <IconClock />
-        <span className="whitespace-nowrap text-[0.6875rem] font-semibold"> 30 Min. </span>
-      </div>
-
     </div>
   )
 }
