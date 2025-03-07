@@ -7,7 +7,7 @@ export default function CheckMark() {
       height="28"
       fill="none"
       viewBox="0 0 28 28"
-      className="bg-t_white"
+      className="bg-[#F2F2F2]"
     >
       <path
         fill="#6CA648"
