@@ -28,7 +28,7 @@ export default function CartItems() {
   }, [cart])
 
   return (
-    <section className="flex flex-col xl:flex-row justify-between xl:gap-32 px-20 rounded-b-[35px] bg-[#fff] min-h-[calc(80dvh)]">
+    <section className="flex flex-col xl:flex-row justify-between xl:gap-32 px-5 sm:px-20 rounded-b-[35px] bg-[#fff] min-h-[calc(80dvh)]">
       <div className="flex flex-col gap-8 rounded-b-[35px]">
 
         <CartControls />
