@@ -16,7 +16,7 @@ export default function LayoutAddNew({ params }: LayoutAddNewParams) {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="hover:text-t_admin_black hover:bg-white flex w-21 cursor-pointer items-baseline justify-start gap-2 self-baseline px-2"
+      className="hover:text-t_admin_black hover:bg-white text-[#e3e3e3] flex w-21 cursor-pointer items-baseline justify-start gap-2 self-baseline px-2"
     >
       <IconPlus isHovered={isHovered} />
 

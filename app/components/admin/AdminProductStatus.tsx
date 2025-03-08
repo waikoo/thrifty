@@ -5,6 +5,7 @@ import { ImEnlarge } from "react-icons/im";
 import { TbArrowsMinimize } from "react-icons/tb";
 
 import { useNewAndEditedPositionStore } from "@/state/admin/newAndEditedPositionState";
+import { albert_600 } from "@/utils/fonts";
 
 type AdminProductStatusProps = {
   length: number
@@ -49,7 +50,7 @@ export default function AdminProductStatus({ length, children, }: AdminProductSt
 
   return (
     <div className="absolute bg-white text-t_admin_black bottom-2 flex w-full items-center justify-between px-6 py-[0.55rem]">
-      <span className="font-bold">{children}: {length}</span>
+      <span className={`text-[13px] ${albert_600.className}`}>{children}: {length}</span>
       <div
         className="cursor-pointer"
         onClick={onClickHandler}

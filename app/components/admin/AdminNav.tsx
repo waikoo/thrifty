@@ -5,6 +5,7 @@ import { LayoutAddNew, Products } from "."
 import useSignOut from "../hooks/useSignOut"
 import { IconAccount } from "../navigation/icons"
 import { useRouter } from "next/navigation"
+import { albert_600 } from "@/utils/fonts"
 
 type AdminNavProps = {
   params: { [key: string]: string | string[] | undefined }
@@ -29,7 +30,7 @@ export default function AdminNav({ params }: AdminNavProps) {
       <div className="ml-auto flex items-center gap-2 relative"
         onClick={() => setShowSignOut(!showSignOut)}>
         <IconAccount isAdmin={true} />
-        <span className="cursor-pointer">ADMIN</span>
+        <span className={`cursor-pointer text-[#e3e3e3] text-[13px] ${albert_600.className}`}>ADMIN</span>
 
         {showSignOut && (
           <div className="absolute top-10 bg-white hover:bg-t_admin_black hover:text-white text-t_admin_black p-3 z-10">

@@ -12,7 +12,7 @@ export default function Products({ params }: ProductsProps) {
   const lang = params?.lang
 
   return (
-    <div className={`hover:text-t_admin_black hover:bg-white flex whitespace-nowrap self-baseline items-baseline gap-2 cursor-pointer px-2`}
+    <div className={`hover:text-t_admin_black hover:bg-white text-[#e3e3e3] flex whitespace-nowrap self-baseline items-baseline gap-2 cursor-pointer px-2`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

@@ -7,6 +7,7 @@ import { Popup } from "@/app/components/generic"
 import { useRealtime } from "@/app/components/hooks"
 import { useDraftStore, useEditedStore } from "@/state/admin/adminSelectState"
 import { useUIStore } from "@/state/admin/uiState"
+import { albert_600 } from "@/utils/fonts"
 
 export default function SelectProducts() {
   const { toggleSelected, setToggleSelected } = useUIStore()
@@ -15,7 +16,7 @@ export default function SelectProducts() {
   const [showPopup, setShowPopup] = useState(false)
   const draft = useRealtime('draft')
   const edited = useRealtime('edited')
-  const mainStyle = (draft.length + edited.length) !== 0 ? 'text-content cursor-pointer' : 'text-grey cursor-not-allowed'
+  const mainStyle = (draft.length + edited.length) !== 0 ? 'text-content cursor-pointer' : 'text-[#e3e3e3]/70 cursor-not-allowed'
 
   const deleteSelected = async () => {
     selectedDraft.forEach(async (uuid) => {
@@ -50,13 +51,13 @@ export default function SelectProducts() {
   }
 
   return (
-    <div className="flex items-baseline gap-4 text-[0.8125rem] font-semibold">
-      <span
+    <div className={`flex items-baseline gap-4 text-[0.8125rem] ${albert_600.className}`}>
+      <button
         className={`text-bold w-content underline underline-offset-4 ${mainStyle}`}
         onClick={selectHandler}
       >
         {!toggleSelected ? 'SELECT' : 'CANCEL'}
-      </span>
+      </button>
 
       {toggleSelected && (
         <>

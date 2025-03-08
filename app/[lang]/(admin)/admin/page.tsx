@@ -10,7 +10,7 @@ export default function Page({ params }: PageParams) {
   const { lang } = params
 
   return (
-    <section className="bg-t_admin_black">
+    <section className="bg-[#0d0d0d]">
       <div id="popup-root"></div>
       <section className="text-white mx-auto h-[90vh] flex max-w-[90vw] flex-col items-center">
         <AdminNav params={params} />
