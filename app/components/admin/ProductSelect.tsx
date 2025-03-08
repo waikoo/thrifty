@@ -26,7 +26,7 @@ export default function ProductSelect({ obj: { name, content }, value }: Product
       <label
         htmlFor={name.toLowerCase()}
         className="grid grid-cols-[8rem_21rem] items-center gap-4 whitespace-nowrap">
-        <span className="flex flex-row-reverse gap-2 justify-self-end text-[0.8125rem] font-semibold">
+        <span className="text-[#e3e3e3] flex flex-row-reverse gap-2 justify-self-end text-[0.8125rem] font-semibold">
           {name}
           {['BRAND', 'MATERIAL'].includes(name) ? <Optional /> : null}
         </span>
@@ -40,7 +40,7 @@ export default function ProductSelect({ obj: { name, content }, value }: Product
 
       {['BRAND', 'MATERIAL'].includes(name) ? <AddNew {... { name }} /> : null}
 
-      <IconChevronDown className="absolute right-3 " />
+      <IconChevronDown color="#c2c2c2" className="absolute right-[13px]" />
 
     </fieldset>
   )

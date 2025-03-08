@@ -19,15 +19,12 @@ export default function AddNew({ name }: AddNewProps) {
 
   return (
     <>
-      <div className="absolute right-[-7rem] ml-3 flex cursor-pointer items-center gap-2"
+      <div className="absolute right-[-2rem] ml-3 flex cursor-pointer items-center gap-2"
         onClick={onClickHandler}
       >
-        <div className="bg-white grid h-[1.3rem] w-[1.3rem] place-items-center self-center">
+        <div className="bg-[#e3e3e3] grid h-[1.3rem] w-[1.3rem] place-items-center self-center">
           <IconPlus color="black" />
         </div>
-
-        <span className="font-bold">Add new</span>
-
       </div>
 
       {(name === 'BRAND' && addBrand) || (name === 'MATERIAL' && addMaterial) ? (

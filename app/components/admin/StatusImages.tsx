@@ -11,8 +11,8 @@ export default function StatusImages() {
   const { showOptions, setShowOptions } = useUIStore()
 
   return (
-    <div className="bg-white relative bottom-16 flex h-[46vh] w-full gap-6 p-6">
-      <div className={`w-1/2 gap-[1.5rem] grid grid-cols-6 rounded-lg p-6 ${draftStyle} ${statusStyle}`}>
+    <div className="bg-white relative bottom-16 flex h-[46vh] w-full gap-6 p-6 px-[110px]">
+      <div className={`bg-[#f9f9f9] w-1/2 gap-[1.5rem] grid grid-cols-6 rounded-lg p-6 ${draftStyle} ${statusStyle}`}>
         {draft?.filter(el => el.img_url && el.img_url.length > 0)
           .map((el, i) => (
             <div className="relative aspect-square w-[180px]"
@@ -33,7 +33,7 @@ export default function StatusImages() {
           ))}
       </div>
 
-      <div className={`w-1/2 gap-[1.5rem] grid grid-cols-6 rounded-lg p-6 ${editedStyle} ${statusStyle}`}>
+      <div className={`bg-[#f9f9f9] w-1/2 gap-[1.5rem] grid grid-cols-6 rounded-lg p-6 ${editedStyle} ${statusStyle}`}>
         {edited?.filter(el => el.img_url && el.img_url.length > 0)
           .map((el, i) => (
             <div className="relative aspect-square w-[180px]"

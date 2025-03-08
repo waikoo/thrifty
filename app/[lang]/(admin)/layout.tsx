@@ -18,7 +18,7 @@ export default function RootLayout({ children, params }: RootLayoutProps) {
   return (
     <html data-theme={themeSettings.DEFAULT_THEME} className={inter.className}>
       <head className={inter.className} />
-      <body className={`bg-t_admin_black text-white ${inter.className}`}>
+      <body className={`bg-[#0d0d0d] text-white ${inter.className}`}>
         {children}
       </body>
     </html >

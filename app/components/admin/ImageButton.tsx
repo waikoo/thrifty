@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 
 import { useProductStore } from "@/state/admin/uploadNewProductToDb";
+import { albert_700 } from "@/utils/fonts";
 
 type ImageButtonProps = {
   inputRef: React.RefObject<HTMLInputElement>
@@ -39,7 +40,7 @@ export default function ImageButton(props: ImageButtonProps) {
 
   return (
     <button
-      className={"focus:ring-yellow border-white text-white col-span-2 border-[0.1rem] p-[0.5rem] text-[1rem] font-semibold focus:outline-none focus:ring-[0.15rem] tracking-wider "}
+      className={`rounded-[5px] bg-[#1b1b1b] border-[1px] border-[#3e3e3e] focus:ring-yellow text-[#f2f2f2] col-span-2 border-[0.1rem] text-[13px] ${albert_700.className} focus:outline-none focus:ring-[0.15rem] tracking-wider`}
       onClick={handleNewImage}>
       UPLOAD
     </button>

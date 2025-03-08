@@ -1,4 +1,5 @@
 'use client'
+import { albert_600 } from "@/utils/fonts"
 import { Optional } from "."
 import { useInitValues } from "../hooks"
 import useProductInputUtils from "../hooks/useProductInputUtils"
@@ -20,7 +21,7 @@ export default function ProductInput({ name, placeholder, icon, value }: Product
       <legend hidden>{upperCaseName}</legend>
       <label htmlFor={name}
         className="grid grid-cols-[8rem_21rem] items-center gap-4">
-        <span className="relative flex flex-row-reverse gap-2 justify-self-end text-[0.8125rem] font-semibold">
+        <span className={`text-[#e3e3e3] relative flex flex-row-reverse gap-2 justify-self-end text-[0.8125rem] ${albert_600.className}`}>
           {upperCaseName}
           {['discount', 'size'].includes(name) ? <Optional /> : null}
 
@@ -30,16 +31,14 @@ export default function ProductInput({ name, placeholder, icon, value }: Product
           type={'text'}
           name={name}
           id={name}
-          className={"bg-t_admin_black text-white border-[1px] border-t_faded focus:ring-yellow border-2 p-2 text-[0.8125rem] font-normal focus:outline-none focus:ring-[0.15rem]"}
+          className={"bg-[#151515] text-white border-[1px] border-[#1B1B1B] focus:ring-yellow border-2 p-2 text-[0.8125rem] font-normal focus:outline-none focus:ring-[0.15rem]"}
           value={getValue(name) || ''}
           onChange={(e) => {
             getOnChange(e, name)
-          }
-          }
+          }}
         />
       </label>
-      <span className="absolute right-2">{icon}</span>
-
+      <span className="absolute right-2 text-[#c2c2c2]">{icon}</span>
     </fieldset>
   )
 }

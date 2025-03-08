@@ -2,8 +2,9 @@ import { twMerge as tm } from 'tailwind-merge';
 
 type IconChevronDownProps = {
   className?: string
+  color?: string
 }
-function IconChevronDown({ className }: IconChevronDownProps) {
+function IconChevronDown({ className, color }: IconChevronDownProps) {
 
   return (
     <svg
@@ -15,7 +16,7 @@ function IconChevronDown({ className }: IconChevronDownProps) {
       className={tm(`${className} pointer-events-none`)}
     >
       <path
-        fill='white'
+        fill={color || 'white'}
         d="M0 0l5 5 5-5H0z"></path>
     </svg>
   );

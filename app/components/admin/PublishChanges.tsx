@@ -63,7 +63,7 @@ export default function PublishChanges({ className, publishSome }: PublishChange
         className={tm(`whitespace-nowrap justify-self-end px-[100px] py-3 font-semibold tracking-wider rounded-[5px] ${mainStyle} ${className}`)}
         onClick={popUpHandler}
       >
-        SAVE
+        PUBLISH CHANGES
       </button>
 
       {showPopup && (

@@ -26,7 +26,7 @@ export default function ProductImage({ uuidMatch }: ProductImageProps) {
         <div className="relative col-span-7">
           <input ref={inputRef}
             type="text"
-            className={`${showError} focus:ring-yellow bg-t_admin_black text-white w-full border-white border-[0.1rem] p-[0.5rem] text-[0.8125rem] font-medium focus:outline-none focus:ring-[0.15rem]`}
+            className={`${showError} rounded-tl-[7px] rounded-bl-[7px] focus:ring-yellow bg-[#151515] text-white w-full border-[#1b1b1b] border-[0.1rem] p-[0.3rem] text-[0.8125rem] font-medium focus:outline-none focus:ring-[0.15rem]`}
             placeholder="Add link here"
             pattern="https?://.*"
             title="Please enter a valid URL"
