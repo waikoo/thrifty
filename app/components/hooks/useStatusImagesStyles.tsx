@@ -6,6 +6,6 @@ export default function useStatusImagesStyles() {
   return {
     draftStyle: `${draftLength === 0 ? '' : 'hover:bg-darkgrey '}`,
     editedStyle: `${editedLength === 0 ? '' : 'hover:bg-darkgrey '}`,
-    statusStyle: `${statusBar ? 'ring-1 ring-gray-300' : ''}`
+    statusStyle: `${statusBar ? 'shadow-[inset_0_0_7px_4px_rgba(0,0,0,0.25)] border-[#f2f2f2]' : ''}`
   }
 }
