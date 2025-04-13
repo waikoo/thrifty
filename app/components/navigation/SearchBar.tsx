@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client"
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
 import { RxCross2 } from "react-icons/rx";
@@ -40,7 +40,7 @@ export default function SearchBar({ className }: SearchBarProps) {
   const viewportWidth = useViewport()
   const inputRef = useRef<HTMLInputElement>(null)
   const showClearIcon = searchTerm !== '' && showMobileSearch
-  const { suggestions } = useSearchSuggestions(showSuggestions, searchTerm, setCompletedWord)
+  const { suggestions } = useSearchSuggestions(showSuggestions, searchTerm, gender, setCompletedWord)
   const { savedFilters } = useFiltersInSearchBar()
   const { theme } = useThemeStore()
   const { setShowSignIn } = useUIStore()
@@ -67,7 +67,6 @@ export default function SearchBar({ className }: SearchBarProps) {
     } else {
       setShowSuggestions(false)
     }
-
   }, [searchTerm])
 
   const handleSubmit = (e: React.FormEvent) => {
