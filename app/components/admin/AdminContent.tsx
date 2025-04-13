@@ -6,7 +6,7 @@ import { useNewAndEditedPositionStore } from "@/state/admin/newAndEditedPosition
 export default function AdminContent() {
   const { maximizeNew, maximizeEdited, onTop } = useNewAndEditedPositionStore()
   const { draftLength, editedLength } = useStatusBarStore()
-  const paneHeight = 'h-[75vh]'
+  const paneHeight = 'h-[70vh]'
 
   return (
     <section className={`flex w-full ${paneHeight} transition-all duration-300
