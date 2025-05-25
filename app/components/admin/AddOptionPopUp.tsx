@@ -26,9 +26,16 @@ export default function AddOptionPopUp({ name }: AddOptionPopUpProps) {
 
   const addItem = async () => {
     if (inputRef.current) {
-      await addItemToName(name, inputRef.current.value)
+      try {
+        console.log(inputRef.current.value)
+        await addItemToName(name, inputRef.current.value)
+      } catch (err) {
+        console.log(err)
+        alert('Something went wrong')
+      } finally {
+        inputRef.current.value = ''
+      }
     }
-    inputRef.current!.value = ''
   }
 
   const submitNewItem = (e: React.MouseEvent<HTMLButtonElement>) => {
