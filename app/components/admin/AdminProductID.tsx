@@ -22,7 +22,7 @@ export default function AdminProductID({ type }: AdminProductIDProps) {
       title="Click to copy ID"
     >
       ID
-      <span className="bg-content text-bkg ml-2 justify-self-start p-1">
+      <span className="bg-white text-[#191A1A] ml-2 justify-self-start p-1">
         {type.length > 20 ? type.substring(0, 20) + '...' : type}
       </span>
 

@@ -22,7 +22,7 @@ export default function AdminProductItem({ children, type }: AdminProductItemPro
         {children}:
       </span>
 
-      <span className="justify-self-start whitespace-nowrap text-[0.75rem] font-medium">
+      <span className="justify-self-start whitespace-nowrap text-[0.75rem] font-medium text-[#E6E6E6]">
         {children === 'DATE ADDED' ? getDayMonthYear(type as string) : getValue(type)}
       </span>
     </>

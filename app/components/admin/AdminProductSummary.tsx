@@ -7,8 +7,8 @@ type AdminProductSummaryProps = {
 
 export default function AdminProductSummary({ el }: AdminProductSummaryProps) {
   return (
-    <section className="bg-bkg text-content border-content shadow-custom absolute z-10 w-auto whitespace-nowrap rounded-md border-[0.1875rem] p-[1.125rem]">
-      <div className="bg-bkg text-content z-10 grid grid-cols-2 gap-1 rounded-md text-center">
+    <section className="bg-[#191A1A] border-content shadow-custom absolute z-10 w-auto whitespace-nowrap rounded-md border-[0.1875rem] p-[1.125rem]">
+      <div className="z-10 grid grid-cols-2 gap-1 rounded-md text-center">
 
         <AdminProductID type={el.uuid} />
 
