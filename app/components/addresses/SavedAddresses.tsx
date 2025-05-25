@@ -13,7 +13,7 @@ type SavedAddressProps = {
 }
 
 export default function SavedAddresses({ dbAddresses }: SavedAddressProps) {
-  const { deleteAddress, setAsDefault, showEditForm, setShowEditForm } = useAddressStore()
+  const { deleteAddress, savedAddresses, setAsDefault, showEditForm, setShowEditForm } = useAddressStore()
   const [updatedAddresses, setUpdatedAddresses] = useState(dbAddresses)
   const [addressBeingEdited, setAddressBeingEdited] = useState('')
 

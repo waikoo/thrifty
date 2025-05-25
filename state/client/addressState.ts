@@ -122,6 +122,7 @@ export const useAddressStore = create<TAddressStore>((set, get) => ({
     set({ firstName: '', lastName: '', address: '', city: '', zipcode: '', country: '', phone: 0, isDefault: false })
     set({ showAddAddress: false })
     set({ showEditForm: false })
+    location.reload()
   },
   setAsDefault: async (addressId, userId) => {
     const { data: dbAddresses, error: dbError } = await supabase
