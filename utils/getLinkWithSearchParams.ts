@@ -47,7 +47,7 @@ const buildSearchParams = (filters: Filters, lang: string, gender: string) => {
   queryParams.append('page', '1')
   const baseUrl = `/${lang}/${gender}/products`
 
-  return `${baseUrl}?${queryParams.toString()}&gender=${gender}`
+  return `${baseUrl}?${queryParams.toString()}`
 
 };
 

@@ -6,7 +6,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 
 import { lowerCaseSpaceToDash } from "@/utils/lowerCaseSpaceToDash"
 
-const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]) => {
+const getParams = (searchParamos: ReadonlyURLSearchParams) => {
 
   const gend = searchParamos.getAll('gender')?.[0]?.split(',')
   const cat = searchParamos.getAll('category')?.[0]?.split(',')
@@ -23,36 +23,37 @@ const getParams = (searchParamos: ReadonlyURLSearchParams, productType: string[]
     shoes: cat?.includes('shoes'),
     accessories: cat?.includes('accessories'),
     promos: shopBy?.includes('promos'),
-    ['new in']: shopBy?.includes('new_in'),
+    ['new in']: shopBy?.includes('new in'),
     ['new with tag']: conditionParam?.includes('new with tag'),
     ['new without tag']: conditionParam?.includes('new without tag'),
     ['second hand']: conditionParam?.includes('second hand'),
   } as { [key: string]: boolean }
 
   const brands: { [key: string]: boolean } = {};
-  for (const brand of productType) {
-    if (brandParam) {
+
+  if (brandParam) {
+    for (const brand of brandParam) {
       brands[brand.toLowerCase()] = brandParam.includes(brand.toLowerCase());
     }
   }
 
   const dynamicTypes: { [key: string]: boolean } = {};
-  for (const type of productType) {
-    if (typeParam) {
+  if (typeParam) {
+    for (const type of typeParam) {
       dynamicTypes[type.toLowerCase()] = typeParam.includes(type.toLowerCase());
     }
   }
 
-  const computedParamState = { ...others, ...brands, ...dynamicTypes }
+  const computedParamState = { ...dynamicTypes, ...brands, ...others }
 
   return computedParamState
 }
 
 export default function useQueryParams(type: string, elements: string[], searchParamos: ReadonlyURLSearchParams, router: AppRouterInstance, pathname: string) {
 
-  const [checkbox, setCheckbox] = useState(getParams(searchParamos, elements))
+  const [checkbox, setCheckbox] = useState(getParams(searchParamos))
   useEffect(() => {
-    setCheckbox(getParams(searchParamos, elements))
+    setCheckbox(getParams(searchParamos))
   }, [searchParamos, elements])
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
