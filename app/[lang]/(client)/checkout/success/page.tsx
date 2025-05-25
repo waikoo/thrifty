@@ -1,7 +1,11 @@
+"use client"
 import SuccessSVG from "@/app/components/checkout/SuccessSVG"
+import { useCartStore } from "@/state/client/cartState"
 import { Gender, Locales } from "@/types/link"
 import { albert, albert_700, albert_900 } from "@/utils/fonts"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useEffect } from "react"
 
 type PageProps = {
   params: {
@@ -11,10 +15,19 @@ type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default async function Page({
+export default function Page({
   params: { lang, gender },
-  searchParams,
 }: PageProps) {
+  const { emptyCart } = useCartStore()
+  const pathname = usePathname()
+  const endpoint = pathname.split('/').at(-1);
+
+  useEffect(() => {
+    if (endpoint === 'success') {
+      emptyCart()
+      localStorage.setItem('cart', JSON.stringify([]))
+    }
+  }, [emptyCart, endpoint])
 
   return (
     <main className="bg-faded text-content mx-auto px-[44px] xl:px-20 pb-10 h-[calc(100svh)] bg-white">
@@ -29,7 +42,7 @@ export default async function Page({
           Your order has been confirmed, and we’re excited to get it ready for you! You will receive an email shortly with the details.
         </p>
 
-        <Link href={`/${lang}/${gender}/products/?gender=${gender}&shop-by=new+in&sort-by=newfirst&page=1`}
+        <Link href={`/${lang}/${gender || 'women'}/products/?gender=${gender || 'women'}&shop-by=new+in&sort-by=newfirst&page=1`}
           className={`bg-t_black text-t_white px-6 py-3 mt-10 rounded-full text-[13px] sm:text-[15px] xl:text-[13px] whitespace-nowrap ${albert_700.className}`}
         >
           CONTINUE SHOPPING
