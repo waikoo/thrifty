@@ -9,7 +9,7 @@ type ProductStateProps = {
 }
 
 export default async function ProductState({ uuidMatch }: ProductStateProps) {
-  const apiUrl = 'http://thrifty-seven.vercel.app/api/admin';
+  const apiUrl = 'https://monumental-zuccutto-62f1b9.netlify.app/api/admin';
 
   async function fetchMaterialsAndBrands(apiUrl: string) {
     const res = await fetch(apiUrl)
