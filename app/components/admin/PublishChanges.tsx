@@ -25,7 +25,6 @@ export default function PublishChanges({ className, publishSome }: PublishChange
   const realEditedLength = useRealtime('edited').length
   const { toggleSelected } = useUIStore()
   const [showPopup, setShowPopup] = useState(false)
-  const router = useRouter()
 
   const tableTotal = realDraftLength + realEditedLength
   const mainStyle = tableTotal === 0
@@ -40,16 +39,21 @@ export default function PublishChanges({ className, publishSome }: PublishChange
 
   const onClick = async () => {
 
-    if (!publishSome || selectedTotal === tableTotal || !toggleSelected) {
-      await saveDraftToProducts()
-      await updateProductsWithEdited()
-      return
+    try {
+      if (!publishSome || selectedTotal === tableTotal || !toggleSelected) {
+        await saveDraftToProducts()
+        await updateProductsWithEdited()
+        return
+      }
+      if (realDraftLength === 0) return
+      await saveSomeToProducts('draft', selectedDraftItems)
+      await saveSomeToProducts('edited', selectedEditedItems)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setShowPopup(false)
+      location.reload()
     }
-    if (realDraftLength === 0) return
-    await saveSomeToProducts('draft', selectedDraftItems)
-    await saveSomeToProducts('edited', selectedEditedItems)
-    setShowPopup(false)
-    router.refresh()
   }
 
   const popUpHandler = () => {
