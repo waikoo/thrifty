@@ -16,7 +16,7 @@ export default function Button({ uuidMatch }: ButtonProps) {
   const [pathname, router] = [usePathname(), useRouter()]
 
   const onClickHandler = async () => {
-    if (hasNoImage) {
+    if (!uuidMatch && hasNoImage) {
       setShowImgError(true)
       return
     }
@@ -39,7 +39,7 @@ export default function Button({ uuidMatch }: ButtonProps) {
   return (
     <>
       <button
-        className={"bg-t_mustard rounded-[5px] text-[#0d0d0d] focus:ring-yellow text-white hover:text-t_admin_black hover:bg-white col-span-2 mx-auto mt-10 flex w-[260px] items-center justify-center px-24 py-3 text-[13px] font-semibold focus:outline-none focus:ring-[0.15rem] font-semibold tracking-wider"}
+        className={"bg-t_mustard rounded-[5px] text-[#0d0d0d] focus:ring-yellow hover:text-t_admin_black hover:bg-white col-span-2 mx-auto mt-10 flex w-[260px] items-center justify-center px-24 py-3 text-[13px] font-semibold focus:outline-none focus:ring-[0.15rem] font-semibold tracking-wider"}
         onClick={onClickHandler}
       >
         SAVE

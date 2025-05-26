@@ -12,7 +12,7 @@ export default function ProductImage({ uuidMatch }: ProductImageProps) {
   const inputRef = useRef<HTMLInputElement | null>(null)
   const { showImgError } = useProductStore()
   const [showValidityError, setShowValidityError] = useState(false)
-  const showError = showImgError || showValidityError ? "border-red" : "border-content"
+  const showError = uuidMatch?.[0]?.img_url.length === 0 && (showImgError || showValidityError) ? "border-red-400" : "border-content"
 
   return (
     <div className="flex flex-col items-center gap-6">
@@ -31,11 +31,11 @@ export default function ProductImage({ uuidMatch }: ProductImageProps) {
             pattern="https?://.*"
             title="Please enter a valid URL"
           />
-          {showImgError && (
-            <span className="text-red absolute left-0 top-10">This field is required.</span>
+          {uuidMatch?.[0]?.img_url.length === 0 && showImgError && (
+            <span className="text-red-400 absolute left-0 top-10">This field is required.</span>
           )}
           {showValidityError && (
-            <span className="text-red absolute left-0 top-10">Invalid URL. Please make sure the link is correct.</span>
+            <span className="text-red-400 absolute left-0 top-10">Invalid URL. Please make sure the link is correct.</span>
           )}
         </div>
 
