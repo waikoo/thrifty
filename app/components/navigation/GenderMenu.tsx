@@ -66,7 +66,7 @@ export default function GenderMenu({ lang }: GenderMenuProps) {
             <GenderImage
               src={`/images/gender_hover/${hoveredGender}1.jpg`}
               className="col-start-5 col-end-6 row-start-1 w-full"
-              href={`/${lang}/${hoveredGender}/products/?gender=${hoveredGender}&shop-by=new_in&sort-by=newfirst&page=1`}
+              href={`/${lang}/${hoveredGender}/products/?gender=${hoveredGender}&shop-by=new+in&sort-by=newfirst&page=1`}
             >
               NEW IN
             </GenderImage>
@@ -74,7 +74,7 @@ export default function GenderMenu({ lang }: GenderMenuProps) {
             <GenderImage
               src={`/images/gender_hover/${hoveredGender}2.jpg`}
               className="col-start-5 col-end-6 row-start-2 w-full"
-              href={`/${lang}/${hoveredGender}/products/?gender=${hoveredGender}&shop-by=sale&sort-by=newfirst&page=1`}>
+              href={`/${lang}/${hoveredGender}/products/?gender=${hoveredGender}&shop-by=promos&sort-by=newfirst&page=1`}>
               SALE
             </GenderImage>
           </div>
