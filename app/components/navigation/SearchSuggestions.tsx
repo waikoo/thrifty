@@ -33,8 +33,8 @@ export default function SearchSuggestions({ suggestions, setShowSuggestions, lan
           <Image src={item.img_url[0]} alt="" width={50} height={50} />
 
           <div>
-            <span>{item.brand}</span>
-            <span className="ml-2">{item.type}</span>
+            <span className="capitalize">{item.brand}</span>
+            <span className="ml-2 capitalize">{item.type}</span>
           </div>
 
           <div className="ml-auto font-bold">€{item.price}</div>
